@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    {% load static %}
+
+    <title>Maneu</title>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/foundation/5.5.3/css/foundation.min.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    {% block css %}
+    <!--    #预留css口子-->
+    {% endblock %}
+</head>
+
+<body>
+<!--导航栏begin-->
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+        <li class="name">
+            <h1>
+                <a href="{% url 'index_page' %}">MANEU</a>
+            </h1>
+        </li>
+        <li class="toggle-topbar menu-icon">
+            <a href="{% url 'index_page' %}">
+                <small>menu</small>
+            </a>
+        </li>
+    </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li><a href="{% url 'order_list' %}">查看订单</a></li>
+            <li><a href="{% url 'add_order' %}">添加订单</a></li>
+            <li><a href="{% url 'index_page' %}">返回首页</a></li>
+            <li><a href="{% url 'login_user' %}">登录</a></li>
+        </ul>
+    </section>
+</nav>
+
+<!--导航栏end-->
+{% block content %}
+{% endblock %}
+</body>
+
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/foundation/5.5.3/js/foundation.min.js"></script>
+<script src="https://cdn.staticfile.org/foundation/5.5.3/js/vendor/modernizr.js"></script>
+<script>
+$(document).ready(function() {
+    $(document).foundation();
+})
+</script>
+{% block js %}
+<!--#预留js口子-->
+{% endblock %}
+
+</html>

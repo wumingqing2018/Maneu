@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-06" align="center">
+            <form action="/update_order/" method="POST">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td colspan="2" class="Banner">
+                            <h3>客户信息</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" >{{ form.c_name}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{ form.c_phone}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="Banner">
+                            <h3>镜框信息</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{ form.frame }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="Banner">
+                            <h3>镜片信息</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Banner">
+                            <h3>L</h3>
+                        </td>
+                        <td class="Banner">
+                            <h3>R</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.l_glasses }}</td>
+                        <td>{{ form.r_glasses }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.l_sphere }}</td>
+                        <td>{{ form.r_sphere }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.l_astigmatic }}</td>
+                        <td>{{ form.r_astigmatic }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.l_deviation }}</td>
+                        <td>{{ form.r_deviation }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.l_add }}</td>
+                        <td>{{ form.r_add }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.l_pd}}</td>
+                        <td>{{ form.r_pd}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">{{ form.todo }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="Banner">
+                            <input class="btn btn-primary" type="submit" value="提交">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock%}

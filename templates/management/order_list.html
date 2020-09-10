@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="panel" align="center">
+    <div class="row">
+        <div class="medium-12">
+            <form method="post" action="{% url 'check_order' %}">
+                {% csrf_token %}
+                <div class="row collapse postfix-radius">
+                    <div class="medium-9 columns">
+                        {{ form.id }}
+                    </div>
+                    <div class="medium-3 columns">
+                        <input id="search_button" type="submit" class="postfix" value="搜索">
+                    </div>
+                    <div class="medium-12 columns">
+                        <ul class="no-bullet">
+                            <li>{{ form.id.errors }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        {% if contacts != none %}
+        <div style="overflow-x:hidden">
+            <table class="medium-12">
+                <thead>
+                <tr>
+                    <th>单号</th>
+                    <th>姓名</th>
+                    <th>电话</th>
+                    <th>时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for contact in contacts %}
+                <tr>
+                    <td>{{contact.order_id}}</td>
+                    <td>{{contact.c_name}}</td>
+                    <td>{{contact.c_phone}}</td>
+                    <td>{{contact.c_time }}</td>
+                    <td>
+                        <form method="POST" action='{% url "check_order" %}'>
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{contact.id}}">
+                            <input class="btn btn-primary" type="submit" value="查看">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="medium-12 columns">
+                <div class="row collapse prefix-radius">
+                    <div class="medium-3 columns">
+                        {% if contacts.has_previous %}<a class="prefix button" href="?page={{ contacts.previous_page_number }}">上一页</a>{% endif %}
+                    </div>
+                    {% if contacts.has_previous == False %}<div class="medium-6 medium-offset-3 columns">{% else %}<div class="medium-6 columns">{% endif %}
+                    当前第{{ contacts.number }}页, 一共{{ contacts.paginator.num_pages }}页
+                </div>
+                    <div class="medium-3 columns">
+                        {% if contacts.has_next %}<a class="postfix button" href="?page={{ contacts.next_page_number }}" type="btn">下一页</a>{% endif %}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        {% else %}
+        <p>暂无数据</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

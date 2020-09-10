@@ -1,0 +1,147 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<!--内容栏-->
+<div class="panel">
+    <div class="row">
+        <div class="overflow-x:auto">
+            <table class="medium-12">
+                <tr>
+                    <td class="blue" colspan="2">
+                        订单信息
+                    </td>
+                </tr>
+                <tr>
+                    <td>订单编号</td>
+                    <td>{{order.id}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="blue">客户信息</td>
+                </tr>
+                <tr>
+                    <td>客户姓名</td>
+                    <td>{{order.c_name}}</td>
+                </tr>
+                <tr>
+                    <td>客户电话</td>
+                    <td>{{order.c_phone}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="blue">镜框信息</td>
+                </tr>
+                <tr>
+                    <td>产品名称</td>
+                    <td>{{order.frame}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="blue">镜片信息</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="yellow">
+                        <span>L</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>产品名称</td>
+                    <td>
+                        <strong>{{order.l_glasses}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>球镜:DS</span>
+                    </td>
+                    <td>
+                        <strong>{{order.l_sphere}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>柱镜:DC</span>
+                    </td>
+                    <td>
+                        <strong>{{order.l_astigmatic}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>轴位:AX</span>
+                    </td>
+                    <td>
+                        <strong>{{order.l_deviation}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ADD:DS</td>
+                    <td>
+                        <strong>{{order.l_add}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>瞳距:mm</span>
+                    </td>
+                    <td>
+                        <strong>{{order.l_pd}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="yellow">
+                        <span>R</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>产品名称</td>
+                    <td>
+                        <strong>{{order.r_glasses}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>球镜:DS</span>
+                    </td>
+                    <td>
+                        <strong>{{order.r_sphere}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>柱镜:DC</span>
+                    </td>
+                    <td>
+                        <strong>{{order.r_astigmatic}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>轴位:AX</span>
+                    </td>
+                    <td>
+                        <strong>{{order.r_deviation}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ADD:DS</td>
+                    <td>
+                        <strong>{{order.r_add}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>瞳距:mm</span>
+                    </td>
+                    <td>
+                        <strong>{{order.r_pd}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="blue">备注</td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{order.todo}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!--内容栏-->
+{% endblock %}

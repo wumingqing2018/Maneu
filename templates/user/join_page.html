@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="panel">
+    <div class="row" align="center">
+        <form method="post" action="{% url 'join_user' %}">
+            {% csrf_token %}
+            {{ form.username }}
+            {{ form.username.errors}}
+            {{ form.password }}
+            {{ form.password.errors }}
+            {{ form.nickname }}
+            {{ form.nickname.errors }}
+            {{ form.phone }}
+            {{ form.nickname.errors }}
+
+            <input class="medium-12 button" type="submit" value="提交">
+        </form>
+    </div>
+</div>
+{% endblock %}

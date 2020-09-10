@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="panel">
+    <div class="row" align="center">
+        <div class="medium-4">
+            <form method="post" action="{% url 'login_user' %}">
+                {% csrf_token %}
+                {{ form.username }}
+                {{ form.username.errors}}
+                {{ form.password }}
+                {{ form.username.errors}}
+                <input class="medium-12 button" type="submit" value="登录">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

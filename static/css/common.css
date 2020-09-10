@@ -1,0 +1,39 @@
+div.button {
+    width: 280px;
+    height: 70px;
+    padding: 2px;
+    box-sizing: border-box;
+    margin-top: 8px;
+    border: solid 1px #ebe9ea;
+    border-radius: 8px;
+    background: #0060A8;
+}
+
+
+a.button {
+    color: #ffffff;
+    vertical-align:middle;
+}
+
+
+h3 {
+    color: #ffffff;
+    text-align: center
+}
+
+
+.panel {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+td.blue{
+    background: #0060A8;
+    color: #ffffff;
+}
+
+td.yellow{
+    background: #FFC048;
+    color: #ffffff;
+}
