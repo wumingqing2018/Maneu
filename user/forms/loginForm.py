@@ -4,6 +4,7 @@ from django.core.validators import RegexValidator
 
 
 class LoginForm(forms.Form):
+
     username = forms.CharField(label="账号",
                                required=True,
                                strip=True,
@@ -24,3 +25,9 @@ class LoginForm(forms.Form):
                                error_messages={'required': '请输入密码'},
                                )
 
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+
+        if username != 'unlock' or password != 'XMacheNike':
+            raise forms.ValidationError('登录失败')

@@ -17,8 +17,9 @@ from django.urls import path
 
 from .views import *
 urlpatterns = [
-    path('login/', user_login, name='login_user'),
-    path('join/', user_join, name='join_user'),
-    path('list/', user_list, name='list_user'),
+    path('', login, name='login_user'),
+    path('logout/', logout, name='user_logout'),
+    path('join/', join, name='join_user'),
+    path('list/', list, name='list_user'),
     path('check_user/', check_user, name='check_user')
 ]

@@ -1,5 +1,6 @@
 from django.shortcuts import HttpResponse
 from django.shortcuts import render
+from django.shortcuts import redirect
 
 # 当前APP文件
 from .forms.loginForm import LoginForm
@@ -16,19 +17,26 @@ from django.core.paginator import EmptyPage
 # Create your views here.
 
 
-def user_login(request):
+def login(request):
     if request.method == 'GET':
+        request.session['user'] = None
         form = LoginForm()
         return render(request, 'user/login_page.html', {'form': form})
     elif request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            return HttpResponse('ok')
+            request.session['user'] = 'admin'
+            return render(request, 'index_page.html')
         else:
-            return render(request, 'user/login_page.html', {'form': form})
+            return render(request, 'user/login_page.html', {'form': form, 'error': '登录失败'})
 
 
-def user_join(request):
+def logout(request):
+    request.session['user'] = None
+    return render(request, 'index_page.html')
+
+
+def join(request):
     if request.method == 'GET':
         form = JoinForm()
         return render(request, 'user/join_page.html', {'form': form})
@@ -44,7 +52,7 @@ def user_join(request):
             return render(request, 'user/join_page.html', {'form': form})
 
 
-def user_list(request):
+def list(request):
     """初始化容器"""
     item = {}
     """加载搜索表单"""
@@ -72,8 +80,8 @@ def user_list(request):
 
 def check_user(request):
     if request.method == 'POST':
-        if request.POST['user_id']:
-            user = find_user(user_id=request.POST['user_id'])
-            return render(request, 'user/user_page.html', {'user': user})
+        if request.POST['id']:
+            user = find_user(id=request.POST['id'])
+            return render(request, 'user/page.html', {'user': user})
         return HttpResponse(request.POST)
     return render(request, 'error_page.html')

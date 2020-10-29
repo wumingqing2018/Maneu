@@ -6,9 +6,8 @@
             <form method="post" action="{% url 'login_user' %}">
                 {% csrf_token %}
                 {{ form.username }}
-                {{ form.username.errors}}
                 {{ form.password }}
-                {{ form.username.errors}}
+                <p>{{ error }}</p>
                 <input class="medium-12 button" type="submit" value="登录">
             </form>
         </div>
