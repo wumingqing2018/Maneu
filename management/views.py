@@ -50,13 +50,18 @@ def order_list(request):
 
 
 def check_order(request):
-    if request.method == "POST":
-        form = CheckOrderForm(request.POST)
-        if form.is_valid():
-            HttpResponse(form)
-        else:
-            print(form.errors)
-            return render(request, 'management/order_list.html', {'form': form})
+    if request.method == 'POST':
+        order_id = request.POST['order_id']
+        order = service.find_one_order_with_order_id(order_id)
+        return render(request, 'management/check_order.html', {'order': order})
+    return redirect(order_list())
+    # if request.method == "POST":
+    #     form = CheckOrderForm(request.POST)
+    #     if form.is_valid():
+    #         HttpResponse(form)
+    #     else:
+    #         print(form.errors)
+    #         return render(request, 'management/order_list.html', {'form': form})
 
 
 def add_order(request):
@@ -114,9 +119,13 @@ def qr_code_api(request):
         return HttpResponse(image_stream, content_type='image/png')
 
 
-def find_order(request, order_id, token):
-    order = service.guest_find_order(order_id, token)
-    return render(request, 'management/guest_order_page.html', {'order': order})
+def find_order(request):
+    # order = service.guest_find_order(order_id, token)
+    # return render(request, 'management/guest_order_page.html', {'order': order})
+    if request.method == 'POST':
+        order_id = request.POST['order_id']
+        order = service.find_one_order_with_order_id(order_id)
+        return render(request, 'management/check_order.html', {'order': order})
 
 
 def ajax_test(request):

@@ -44,7 +44,7 @@
                     <td>
                         <form method="POST" action='{% url "check_order" %}'>
                             {% csrf_token %}
-                            <input type="hidden" name="id" value="{{contact.id}}">
+                            <input type="hidden" name="order_id" value="{{contact.order_id}}">
                             <input class="btn btn-primary" type="submit" value="查看">
                         </form>
                     </td>

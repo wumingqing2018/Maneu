@@ -20,6 +20,7 @@ urlpatterns = [
     path('add_order/', views.add_order, name='add_order'),
     path('order_list', views.order_list, name='order_list'),
     path('check_order/', views.check_order, name='check_order'),
+    path('find_order/', views.find_order, name='find_order'),
     path('delete_order/', views.delete_order, name='delete_order'),
     path('update_order/', views.update_order, name='update_order'),
     path('QR_code/', views.qr_code_api, name='QR_code'),

@@ -22,13 +22,11 @@ class UserMiddleware(MiddlewareMixin):
         """
         if request.path in white_list:
             return None
-
         try:
             ticket = request.session['user']
         except:
             request.session['user'] = None
             ticket = request.session['user']
-
         if ticket is None:
             return HttpResponseRedirect('/user')
         return None
