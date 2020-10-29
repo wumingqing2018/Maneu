@@ -7,7 +7,6 @@ from management.models import ProductManage
 
 
 def add_order(order):
-
     item = ProductManage.objects.create(
         order_id=my_lib.creste_order_id(),
         c_name=order['c_name'],
@@ -24,11 +23,6 @@ def add_order(order):
 
 def find_all_order():
     item = ProductManage.objects.all()
-    return item
-
-
-def guest_find_order(order_id, token):
-    item = ProductManage.objects.filter(order_id=order_id, token=token).first()
     return item
 
 
