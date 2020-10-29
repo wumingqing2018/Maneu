@@ -1,5 +1,5 @@
 from django.utils.deprecation import MiddlewareMixin
-from django.shortcuts import HttpResponseRedirect
+
 
 class TestMiddleware(MiddlewareMixin):
     """中间件类"""

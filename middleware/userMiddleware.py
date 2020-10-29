@@ -20,15 +20,14 @@ class UserMiddleware(MiddlewareMixin):
         用户没有登录, 跳转到登录页
         用户已经登录, 允许通过
         """
+        if request.path in white_list:
+            return None
+
         try:
             ticket = request.session['user']
         except:
             request.session['user'] = None
             ticket = request.session['user']
-        print(ticket)
-
-        if request.path in white_list:
-            return None
 
         if ticket is None:
             return HttpResponseRedirect('/user')
