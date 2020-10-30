@@ -13,27 +13,34 @@ from django.core.paginator import EmptyPage
 from management import service
 
 # 二维码组件
-import qrcode
 from io import BytesIO
+import qrcode
 
 # from组件
 from management.forms.addOrderForm import AddOrderForms
 from management.forms.updateOrderForm import UpdateOrderForms
 from .forms.checkOrderForm import CheckOrderForm
 
+import time
+
 # Create your views here.
 
 
 def order_list(request):
-    """初始化容器"""
+    """
+    初始化容器
+    """
     item = {}
-    """加载搜索表单"""
+    """
+    加载搜索表单
+    """
     form = CheckOrderForm()
     item['form'] = form
     """
     已借图书查询并展示到前端页面
     """
-    all_order = service.find_one_order_with_data(u_time='2020-08-12')  # 获取借书表中所有的数据
+    today = time.strftime("%Y-%m-%d", time.localtime())
+    all_order = service.find_one_order_with_data(u_time=today)  # 获取借书表中所有的数据
     paginator = Paginator(all_order, 30)  # Show 25 contacts per page
 
     page = request.GET.get('page')
@@ -50,8 +57,8 @@ def order_list(request):
 
 
 def check_order(request):
-    if request.method == 'POST':
-        order_id = request.POST['order_id']
+    if request.method == 'GET':
+        order_id = request.GET['order_id']
         order = service.find_one_order_with_order_id(order_id)
         return render(request, 'management/check_order.html', {'order': order})
     return redirect(order_list())
@@ -69,7 +76,8 @@ def add_order(request):
         ret = {'status': True, 'error': None, 'data': None}
         form = AddOrderForms(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
+            order = service.add_order(order=request.POST)
+            return redirect(order_list)
         else:
             print(form.errors)
             ret['status'] = False
@@ -91,9 +99,10 @@ def update_order(request):
         return render(request, 'management/update_order.html', {'form': form})
     elif request.method == "GET":
         order_id = request.GET['order_id']
+        print(order_id)
         order = service.find_one_order_with_order_id(order_id)
         form = AddOrderForms(model_to_dict(order))
-        return render(request, 'management/update_order.html', {'form': form})
+        return render(request, 'management/add_order.html', {'form': form})
 
 
 def delete_order(request):
@@ -109,14 +118,16 @@ def delete_order(request):
 
 
 def qr_code_api(request):
-    if request.method == "GET":
-        arg = request.GET['id'] + '/' + request.GET['token']
-        url = 'http://172.20.10.6:8000/guest_find_order/'+arg
-        img = qrcode.make(url)
+    if request.method == 'GET':
+        data = 'http://maneu/guest/check_order/' + request.GET['order_id'] + '/' + request.GET['token']
+        img = qrcode.make(data)
+
         buf = BytesIO()
         img.save(buf)
         image_stream = buf.getvalue()
-        return HttpResponse(image_stream, content_type='image/png')
+
+        response = HttpResponse(image_stream, content_type="image/png")
+        return response
 
 
 def find_order(request):

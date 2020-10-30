@@ -11,7 +11,13 @@
                 <tr>
                     <td>订单编号</td>
                     <td colspan="6">
-                        <span>{{order.id}}</span>
+                        <span>{{order.order_id}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>查询密钥</td>
+                    <td colspan="6">
+                        <span>{{order.token}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -113,19 +119,19 @@
                     </td>
                     <td colspan="2">
                         <form method="get" action="{% url 'update_order' %}">
-                            <input type="hidden" name="id" value="{{order.id}}">
+                            <input type="hidden" name="order_id" value="{{order.order_id}}">
                             <input type="submit" value="更新">
                         </form>
                     </td>
                     <td colspan="2">
                         <form method="get" action="{% url 'delete_order' %}">
-                            <input type="hidden" name="id" value="{{order.id}}">
+                            <input type="hidden" name="id" value="{{order.order_id}}">
                             <input type="submit" value="删除">
                         </form>
                     </td>
                     <td colspan="2">
                         <form method="get" action="{% url 'QR_code' %}">
-                            <input type="hidden" name="id" value="{{order.id}}">
+                            <input type="hidden" name="order_id" value="{{order.order_id}}">
                             <input type="hidden" name="token" value="{{order.token}}">
                             <input type="submit" value="二维码">
                         </form>

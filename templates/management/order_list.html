@@ -22,7 +22,6 @@
         </div>
     </div>
     <div class="row">
-        {% if contacts != none %}
         <div style="overflow-x:hidden">
             <table class="medium-12">
                 <thead>
@@ -42,8 +41,7 @@
                     <td>{{contact.c_phone}}</td>
                     <td>{{contact.c_time }}</td>
                     <td>
-                        <form method="POST" action='{% url "check_order" %}'>
-                            {% csrf_token %}
+                        <form method="get" action='{% url "check_order" %}'>
                             <input type="hidden" name="order_id" value="{{contact.order_id}}">
                             <input class="btn btn-primary" type="submit" value="查看">
                         </form>
@@ -69,10 +67,6 @@
                 </div>
             </div>
         </div>
-
-        {% else %}
-        <p>暂无数据</p>
-        {% endif %}
     </div>
 </div>
 {% endblock %}

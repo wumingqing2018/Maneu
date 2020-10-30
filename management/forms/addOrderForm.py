@@ -33,16 +33,14 @@ class AddOrderForms(forms.Form):
                                 validators=[RegexValidator(r'^[\u4E00-\u9FA5A-Za-z0-9_]+$', '不能输入特殊字符')],
                                 error_messages={'min_value': '超出范围', 'max_value': '超出范围'},
                                 )
-    l_sphere = forms.DecimalField(label="L_球镜",
-                                  required=False,
-                                  min_value=-24,
-                                  max_value=16,
-                                  max_digits=5,
-                                  decimal_places=2,
-                                  widget=widgets.TextInput(
-                                      attrs={'id': 'l_sphere', 'placeholder': '球镜'}),
-                                  error_messages={'min_value': '超出范围', 'max_value': '超出范围'},
-                                  )
+    l_sphere = forms.CharField(label="L_球镜",
+                               required=False,
+                               strip=True,
+                               max_length=20,
+                               widget=widgets.TextInput(
+                                   attrs={'id': 'l_sphere', 'placeholder': '球镜'}),
+                               error_messages={'min_value': '超出范围', 'max_value': '超出范围'},
+                               )
     l_astigmatic = forms.DecimalField(label="L_散光",
                                       required=False,
                                       min_value=0,
