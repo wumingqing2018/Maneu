@@ -22,6 +22,7 @@ def login(request):
                 return render(request, 'user/user_login.html', {'form': LoginForm()})
         else:
             request.session['user'] = None
+            print('test')
             return render(request, 'user/user_login.html', {'form': LoginForm()})
 
 
