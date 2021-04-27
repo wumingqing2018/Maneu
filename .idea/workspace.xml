@@ -13,10 +13,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0b9dbe5-4e31-4acd-9c92-b49e3c0d06a0" name="Default Changelist" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="d0b9dbe5-4e31-4acd-9c92-b49e3c0d06a0" name="Default Changelist" comment="update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -472,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619515648216</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="update">
+      <created>1619516354699</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1619516354699</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
