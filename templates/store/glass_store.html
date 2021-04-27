@@ -1,0 +1,55 @@
+{% extends 'base/admin.html' %}
+
+{% load static %}
+
+{% block content %}
+    <!--内容栏-->
+    <div class="container">
+        <table class="table" style="margin-top: 10%">
+            <thead>
+            <tr>
+                <td>
+                    <p class="yellow">品牌</p>
+                </td>
+                <td>
+                    <p class="yellow">名称</p>
+                </td>
+                <td>
+                    <p class="yellow">折射</p>
+                </td>
+                <td>
+                    <p class="yellow">数量</p>
+                </td>
+                <td>
+                    <p class="yellow">操作</p>
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            {{ glass_list }}
+            {% for glass in glass_list %}
+                <tr>
+                    <td>
+                        <p class="yellow">{{ glass.brand }}</p>
+                    </td>
+                    <td>
+                        <p class="yellow">{{ glass.model }}</p>
+                    </td>
+                    <td>
+                        <p class="yellow">{{ glass.glass }}</p>
+                    </td>
+                    <td>
+                        <p class="yellow">{{ glass.count }}</p>
+                    </td>
+                    <td>
+                        <form method="get" action="{% url 'glass_content' %}">
+                            <input type="hidden" name="glass_id" value="{{ glass.glass_id }}">
+                            <input type="submit" value="查看库存" class="btn btn-primary">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

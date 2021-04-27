@@ -1,0 +1,39 @@
+{% extends 'base/admin.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container" id="body" align="center">
+        <div class="col-md-6">
+            <p class="col-md-8 yellow">添加产品</p>
+        </div>
+        <form class="col-md-6" method="post" action="{% url 'store:api_framework_insert' %}">
+            {% csrf_token %}
+            <div class="form-row">
+                <label class="col-md-2 yellow">品牌</label>
+                <input class="col-md-8" type="text" name="brand">
+            </div>
+            <br>
+            <div class="form-row">
+                <label class="col-md-2 yellow">型号</label>
+                <input class="col-md-8" type="text" name="model">
+            </div>
+            <br>
+            <div class="form-row">
+                <label class="col-md-2 yellow">备注</label>
+                <textarea rows="5" class="col-md-8" name="remark"></textarea>
+            </div>
+            <br>
+            <div class="form-row">
+                <input class="col-md-8 offset-md-2 btn btn-warning" type="submit">
+            </div>
+            <br>
+            <div class="form-row">
+                <a href="{% url 'store:store' %}" class="col-md-8 offset-md-2 btn btn-primary" type="button">返回</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'js/maneu/body_modules.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'base/admin.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container" id="content">
+        <table class="table">
+            <form method="POST" action="{% url 'order_update' %}" id="update_order">
+                {% csrf_token %}
+                <input type="hidden" name="order_id" value="{{ order_id }}">
+                <tr>
+                    <td colspan="6">
+                        <h5 class="yellow">客户信息</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" >{{ form.c_name}}</td>
+                </tr>
+                <tr>
+                    <td colspan="6">{{ form.c_phone}}</td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="Banner">
+                        <h5 class="yellow">镜框信息</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">{{ form.frame }}</td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="Banner">
+                        <h5 class="yellow">镜片信息</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{ form.l_glasses }}</td>
+                    <td>{{ form.l_sphere }}</td>
+                    <td>{{ form.l_astigmatic }}</td>
+                    <td>{{ form.l_deviation }}</td>
+                    <td>{{ form.l_add }}</td>
+                    <td>{{ form.l_pd}}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.r_glasses }}</td>
+                    <td>{{ form.r_sphere }}</td>
+                    <td>{{ form.r_astigmatic }}</td>
+                    <td>{{ form.r_deviation }}</td>
+                    <td>{{ form.r_add }}</td>
+                    <td>{{ form.r_pd}}</td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <h5 class="yellow">备注</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        {{ form.todo }}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <input class="btn btn-warning col-md-12" type="button" id="update" value="提交">
+                    </td>
+                </tr>
+            </form>
+            <form method="post" action="{% url 'order_detail' %}">
+                <tr>
+                    <td colspan="6">
+                        {% csrf_token %}
+                        <input type="hidden" name="order_id" value="{{ order_id }}">
+                        <input class="btn btn-primary col-md-12" type="submit" value="返回">
+                    </td>
+                </tr>
+            </form>
+
+        </table>
+    </div>
+{% endblock%}
+
+{% block js %}
+    <script>
+        var api_order_update = '{% url 'api_order_update' %}';
+    </script>
+    <script src="{% static "js/order/order_update.js" %}"></script>
+{% endblock %}

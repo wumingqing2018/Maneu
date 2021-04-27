@@ -15,9 +15,12 @@ class User(models.Model):
     password = models.CharField(max_length=64)
     email = models.CharField(max_length=128)
     phone = models.IntegerField()
+    level = models.IntegerField()
+    status = models.IntegerField()
     join_time = models.DateField()
     last_time = models.DateField()
 
     class Meta:
         managed = False
         db_table = 'user'
+        unique_together = (('username', 'nickname'),)

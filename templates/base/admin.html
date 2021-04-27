@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>徕可</title>
+
+    <!-- local -->
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/maneu/admin.css' %}">
+    <!-- local -->
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--bootstrap -->
+</head>
+
+<body style="background: #0E2340">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="{% url 'index_page' %}">徕可</a>
+    <!-- Links -->
+    <ul class="nav navbar-nav navbar-right">
+        <!-- 订单管理 -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">订单管理</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'order:order_list' %}">订单列表</a>
+                <a class="dropdown-item" href="{% url 'order:order_insert' %}">添加订单</a>
+                <a class="dropdown-item" href="{% url 'order:order_search' %}">查找订单</a>
+            </div>
+        </li>
+        <!-- 仓库管理 -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">仓库管理</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'store:store' %}">仓库首页</a>
+                <a class="dropdown-item" href="">订单列表</a>
+                <a class="dropdown-item" href="">查找订单</a>
+            </div>
+        </li>
+        <!-- 用户管理 -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">用户管理</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'user:user_list' %}">用户管理</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="{% url 'user:logout' %}" id="navbardrop">账户登出</a>
+        </li>
+    </ul>
+</nav>
+
+{% block content %} {% endblock %}
+</body>
+
+<footer>
+    <div id="footer" class="yellow" style="text-align: center">
+        <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
+    </div>
+</footer>
+
+{% block css %}{% endblock %}
+{% block js %}{% endblock %}
+</html>

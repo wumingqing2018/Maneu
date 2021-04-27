@@ -1,0 +1,458 @@
+{% extends 'base/admin.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div id="content">
+            <form id="order_insert">
+                {% csrf_token %}
+                <input type="hidden" name="order" id="order">
+                <table class="table" style="margin-top: 5%">
+                    <tr>
+                        <td colspan="6">
+                            <h5 class="yellow">客户信息</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%">
+                            <h5 class="yellow">客户姓名</h5>
+                        </td>
+                        <td colspan="5">
+                            <input type="text" name="c_name" class="form-control">
+                            <span id="username_error" class="yellow"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="yellow">客户电话</h5>
+                        </td>
+                        <td colspan="5">
+                            <input type="text" name="c_phone" class="form-control">
+                            <span id="phone_error" class="yellow"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="width: 15%">
+                            <input type="button" class="btn btn-primary" id="glass_insert_show" value="添加镜片">
+                            <input type="button" class="btn btn-warning" id="glass_insert_hide" value="取消添加" style="display: none">
+                        </td>
+                        <td style="width: 15%">
+                            <input type="button" class="btn btn-primary" id="framework_insert_show" value="添加镜框">
+                            <input type="button" class="btn btn-warning" id="framework_insert_hide" value="取消添加" style="display: none">
+                        </td>
+
+                        <td style="width: 15%">
+                            <input class="btn btn-danger" id="insert" type="button" value="提交订单">
+                        </td>
+                        <td style="width: 15%">
+                            <input type="button" class="btn btn-warning" id="order_list" value="返回列表">
+                        </td>
+                        <td style="width: 30%"></td>
+                    </tr>
+                </table>
+            </form>
+
+            <form id="framework_insert">
+                <input type="hidden" id="framework" name="framework">
+                <table class="table" id="framework_insert_table" style="display: none">
+                    <tr>
+                        <td colspan="3">
+                            <h5 class="yellow">镜框信息</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%">
+                            <h5 class="yellow">产品信息</h5>
+                        </td>
+                        <td style="width: 40%">
+                            <select id="framework_brand_select" class="form-control"></select>
+                        </td>
+                        <td style="width: 40%">
+                            <select id="framework_model_select" class="form-control"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%">
+                            <h5 class="yellow">镜框备注</h5>
+                        </td>
+                        <td style="width: 80%" colspan="2">
+                            <input type="text" class="form-control" name="remark">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="2">
+                            <input type="button" id="framework_insert_btn" class="col-md-12 btn btn-primary" value="提交">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <form id="glass_insert">
+                <table class="table" id="glass_insert_table" style="display: none">
+                    <tr>
+                        <td style="width: 10%" colspan="6" class="Banner">
+                            <h5 class="yellow">镜片信息</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%">
+                            <h5 class="yellow">产品信息</h5>
+                            <input type="hidden" name="glass" id="glass">
+                        </td>
+                        <td style="width: 15%">
+                            <select class="form-control" id="glass_brand_select">
+                                <option></option>
+                            </select>
+                        </td>
+                        <td style="width: 15%">
+                            <select class="form-control" id="glass_model_select">
+                                <option></option>
+                            </select>
+                        </td>
+                        <td style="width: 15%">
+                            <select class="form-control" id="glass_sphere_select">
+                                <option></option>
+                            </select>
+                        </td>
+                        <td style="width: 15%">
+                            <select class="form-control" id="glass_astigmatic_select">
+                                <option></option>
+                            </select>
+                        </td>
+                        <td style="width: 15%">
+                            <select class="form-control" id="glass_refraction_select">
+                                <option></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="yellow">
+                            <h5 class="yellow">定制信息</h5>
+                        </td>
+                        <td>
+                            <select class="form-control" name="Around">
+                                <option value="0">无</option>
+                                <option value="1">左</option>
+                                <option value="2">右</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" placeholder="瞳距" name="pd">
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" placeholder="渐进" name="add">
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" placeholder="偏光" name="deviation">
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="yellow">镜片备注</h5>
+                        </td>
+                        <td colspan="5">
+                            <input type="text" name="remark" class="form-control" placeholder="备注">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="5">
+                            <input type="button" class="col-md-12 btn btn-primary" id="glass_insert_btn" value="提交">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+{% endblock%}
+
+{% block js %}
+    <script>
+        c_name = $("#c_name")
+        c_phone = $("#c_phone")
+
+        order = new Array();
+        order_list = $('#order_list');
+        framework = $('#framework');
+        framework_model_select = $('#framework_model_select');
+        framework_brand_select = $('#framework_brand_select');
+        framework_insert_table = $('#framework_insert_table');
+        framework_insert_show = $('#framework_insert_show');
+        framework_insert_hide = $('#framework_insert_hide');
+        framework_insert_btn = $('#framework_insert_btn')
+        glass = $('#glass');
+        glass_insert = $('#glass_insert');
+        glass_insert_btn = $('#glass_insert_btn');
+        glass_insert_hide = $('#glass_insert_hide');
+        glass_insert_show = $('#glass_insert_show');
+        glass_insert_table = $('#glass_insert_table');
+        glass_brand_select = $('#glass_brand_select');
+        glass_model_select = $('#glass_model_select');
+        glass_sphere_select = $('#glass_sphere_select');
+        glass_astigmatic_select = $('#glass_astigmatic_select');
+        glass_refraction_select = $('#glass_refraction_select');
+    </script>
+    <script>
+        api_order_list = '{% url 'order:order_list' %}';
+        api_order_insert = '{% url 'order:api_order_insert' %}';
+        api_glass_store_count = '{% url 'store:api_glass_store_count' %}';
+        api_glass_store_brand = '{% url 'store:api_glass_store_brand' %}';
+        api_glass_store_model = '{% url 'store:api_glass_store_model' %}';
+        api_glass_store_sphere = '{% url 'store:api_glass_store_sphere' %}';
+        api_glass_store_astigmatic = '{% url 'store:api_glass_store_astigmatic' %}';
+        api_glass_store_refraction = '{% url 'store:api_glass_store_refraction' %}';
+        api_framework_store_brand = '{% url 'store:api_framework_store_brand' %}';
+        api_framework_store_model = '{% url 'store:api_framework_store_model' %}';
+        api_framework_store_count = '{% url 'store:api_framework_store_count' %}';
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#c_name").blur(function(){
+                var c_name = $('#c_name').val();
+                if (c_name == null) {
+                    $('#username_error').text('请输入姓名');
+                }
+                else {
+                    $('#username_error').text('');
+                }
+            });
+            c_phone.blur(function(){
+                c_phone_val = c_phone.val();
+                if (c_phone_val == null) {
+                    $('#phone_error').text('请输入电话');
+                }
+                else if (isNaN(c_phone_val)) {
+                    $('#phone_error').text('电话由数字构成');
+                }
+                else {
+                    $('#phone_error').text('');
+                }
+            });
+            $('#insert').click(function () {
+                $("#order").val(order);
+                console.log($('#order_insert').serialize())
+                $.ajax({
+                    url: api_order_insert,
+                    type: 'POST',
+                    data: $('#order_insert').serialize(),
+                    success: function (res) {
+                        alert(res)
+                    }
+                });
+            });
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            order_list.click(function () {
+                window.location.href = api_order_list;
+            })
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            framework_insert_show.click(function () {
+                framework_show()
+                $.ajax({
+                    url: api_framework_store_brand,
+                    type: 'GET',
+                    success: function (res) {
+                        if (res.code === 0){
+                            for (i in res.data){
+                                data = res.data[i]
+                                framework_brand_select.append('<option value="' + data + '">' + data + '</option>')
+                            }
+                        }
+                    }
+                })
+            });
+            framework_insert_hide.click(function () {
+                framework_hide()
+            });
+            framework_brand_select.change(function () {
+                framework_model_select.find('option').remove()
+                framework_model_select.append('<option></option>')
+                $.ajax({
+                    url: api_framework_store_model,
+                    type: 'GET',
+                    data: {'brand': framework_brand_select.val()},
+                    success: function (res) {
+                        if (res.code === 0){
+                            for (i in res.data){
+                                data = res.data[i]
+                                framework_model_select.append('<option value="' + data + '">' + data + '</option>')
+                            }
+                        }
+                    }
+                })
+            });
+            framework_model_select.change(function () {
+                $.ajax({
+                    url: api_framework_store_count,
+                    type: 'GET',
+                    data: {'brand': framework_brand_select.val(), 'model': framework_model_select.val()},
+                    success: function (res) {
+                        if (res.code === 0){
+                            framework.val(res.data)
+                        }
+                    }
+                })
+            });
+            framework_insert_btn.click(function () {
+                order.push($('#framework_insert').serialize())
+                framework_hide()
+                console.log($('#framework_insert').serialize())
+            });
+            function framework_show() {
+                framework_insert_table.show()
+                framework_insert_show.hide()
+                framework_insert_hide.show()
+                framework_brand_select.children('option').remove()
+                framework_brand_select.append('<option></option>')
+            }
+            function framework_hide() {
+                framework_insert_table.hide()
+                framework_insert_show.show()
+                framework_insert_hide.hide()
+            }
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            glass_insert_show.click(function () {
+                glass_show()
+                $.ajax({
+                    url: api_glass_store_brand,
+                    type: 'GET',
+                    success: function (res) {
+                        if (res.code === 0) {
+                            for (i in res.data) {
+                                data = res.data[i]
+                                glass_brand_select.append('<option value="' + data + '">' + data + '</option>')
+                            }
+                        }
+                    }
+                })
+            });
+            glass_insert_hide.click(function () {
+                glass_hide()
+            });
+            glass_brand_select.change(function () {
+                glass_model_select.find('option').remove()
+                glass_sphere_select.find('option').remove()
+                glass_astigmatic_select.find('option').remove()
+                glass_refraction_select.find('option').remove()
+                $.ajax({
+                    url: api_glass_store_model,
+                    type: 'GET',
+                    data: {'brand': glass_brand_select.val()},
+                    success: function (res) {
+                        if (res.code === 0){
+                            glass_model_select.append('<option></option>')
+                            for (i in res.data){
+                                data = res.data[i]
+                                glass_model_select.append('<option value="' + data + '">' + data + '</option>')
+                            }
+                        }
+                    }
+                })
+            });
+            glass_model_select.change(function () {
+                glass_sphere_select.find('option').remove()
+                glass_astigmatic_select.find('option').remove()
+                glass_refraction_select.find('option').remove()
+                $.ajax({
+                    url: api_glass_store_sphere,
+                    type: 'GET',
+                    data: {'brand': glass_brand_select.val(),
+                        'model': glass_model_select.val()},
+                    success: function (res) {
+                        glass_sphere_select.append('<option></option>')
+                        if (res.code === 0){
+                            for (i in res.data){
+                                data = res.data[i]
+                                glass_sphere_select.append('<option value="' + data + '">' + data + '</option>')
+                            }
+                        }
+                    }
+                })
+            });
+            glass_sphere_select.change(function () {
+                glass_astigmatic_select.find('option').remove()
+                glass_refraction_select.find('option').remove()
+                $.ajax({
+                    url: api_glass_store_astigmatic,
+                    type: 'GET',
+                    data: {'brand': glass_brand_select.val(),
+                        'model': glass_model_select.val(),
+                        'sphere': glass_sphere_select.val()
+                    },
+                    success: function (res) {
+                        if (res.code === 0){
+                            glass_astigmatic_select.append('<option></option>')
+                            for (i in res.data){
+                                data = res.data[i]
+                                glass_astigmatic_select.append('<option value="' + data + '">' + data + '</option>')
+                            }
+                        }
+                    }
+                })
+            });
+            glass_astigmatic_select.change(function () {
+                glass_refraction_select.find('option').remove()
+                $.ajax({
+                    url: api_glass_store_refraction,
+                    type: 'GET',
+                    data: {'brand': glass_brand_select.val(),
+                        'model': glass_model_select.val(),
+                        'sphere': glass_sphere_select.val(),
+                        'astigmatic': glass_astigmatic_select.val()},
+                    success: function (res) {
+                        if (res.code === 0){
+                            glass_refraction_select.append('<option></option>')
+                            for (i in res.data){
+                                data = res.data[i]
+                                glass_refraction_select.append('<option value="' + data + '">' + data + '</option>')
+                            }
+                        }
+                    }
+                })
+            });
+            glass_refraction_select.change(function () {
+                $.ajax({
+                    url: api_glass_store_count,
+                    type: 'GET',
+                    data: {'brand': glass_brand_select.val(),
+                        'model': glass_model_select.val(),
+                        'sphere': glass_sphere_select.val(),
+                        'astigmatic': glass_astigmatic_select.val(),
+                        'refraction': glass_refraction_select.val()},
+                    success: function (res) {
+                        res_data = res.data[0][0]
+                        glass.val(res_data)
+                    }
+                })
+            });
+            glass_insert_btn.click(function () {
+                order.push(glass_insert.serialize())
+                console.log(order)
+            });
+            function glass_show() {
+                glass_insert_table.show()
+                glass_insert_hide.show()
+                glass_insert_show.hide()
+                glass_brand_select.children('option').remove()
+                glass_brand_select.append('<option></option>')
+            }
+            function glass_hide(){
+                glass_insert_hide.hide()
+                glass_insert_show.show()
+                glass_insert_table.hide()
+            }
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends 'base/admin.html' %}
+
+{% load static %}
+
+{% block content %}
+    <!--内容栏-->
+    <div class="container text-align`" id="content">
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <td class="yellow text-center" colspan="7">
+                        订单信息
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow">订单编号</td>
+                    <td class="yellow" colspan="6">
+                        {{orders.order_id}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow">查询密钥</td>
+                    <td class="yellow" colspan="6">
+                        {{orders.token}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow" colspan="7">客户信息</td>
+                </tr>
+                <tr>
+                    <td class="yellow">客户姓名</td>
+                    <td class="yellow" colspan="6">
+                        {{orders.c_name}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow">客户电话</td>
+                    <td class="yellow" colspan="6">
+                        {{orders.c_phone}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow">购买时间</td>
+                    <td class="yellow" colspan="6">
+                        {{orders.c_time}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow text-center" colspan="7">产品信息</td>
+                </tr>
+                <tr>
+                    <td width="10%" class="yellow">处方信息</td>
+                    <td width="15%" class="yellow">产品</td>
+                    <td width="15%" class="yellow">球镜:DS</td>
+                    <td width="15%" class="yellow">柱镜:DC</td>
+                    <td width="15%" class="yellow">轴位:AX</td>
+                    <td width="15%" class="yellow">ADD:DS</td>
+                    <td width="15%" class="yellow">瞳距:mm</td>
+                </tr>
+                <tr>
+                    <td class="yellow">左眼</td>
+                    <td class="yellow">{{orders.l_glasses}}</td>
+                    <td class="yellow">
+                        <b>{{orders.l_sphere}}</b>
+                    </td>
+                    <td class="yellow">
+                        <b>{{orders.l_astigmatic}}</b>
+                    </td>
+                    <td class="yellow">{{orders.l_deviation}}</td>
+                    <td class="yellow">{{orders.l_add}}</td>
+                    <td class="yellow">{{orders.l_pd}}</td>
+                </tr>
+                <tr>
+                    <td class="yellow">右眼</td>
+                    <td class="yellow">{{orders.r_glasses}}</td>
+                    <td class="yellow">
+                        <b>{{orders.r_sphere}}</b>
+                    </td>
+                    <td class="yellow">
+                        <b>{{orders.r_astigmatic}}</b>
+                    </td>
+                    <td class="yellow">{{orders.r_deviation}}</td>
+                    <td class="yellow">{{orders.r_add}}</td>
+                    <td class="yellow">{{orders.r_pd}}</td>
+                </tr>
+                <tr>
+                    <td class="yellow">镜框</td>
+                    <td class="yellow" colspan="6">
+                        {{orders.frame}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow">备注</td>
+                    <td class="yellow" colspan="6">{{orders.todo}}</td>
+                </tr>
+                <tr>
+                    <td class="yellow">操作</td>
+                    <td>
+                        <form id="order_delete">
+                            {% csrf_token %}
+                            <input type="hidden" name="order_id" value="{{orders.order_id}}">
+                            <input type="button" class="btn btn-danger" value="删除" id="delete">
+                        </form>
+                    </td>
+                    <td>
+                        <form method="get" action="{% url 'order:order_update' %}">
+                            <input type="hidden" name="order_id" value="{{orders.order_id}}">
+                            <input type="submit" class="btn btn-warning" value="更新">
+                        </form>
+                    </td>
+                    <td>
+                        <form id="qr_code">
+                            {% csrf_token %}
+                            <input type="hidden" name="order_id" value="{{orders.order_id}}">
+                            <input type="hidden" name="token" value="{{orders.token}}">
+                            <input type="button" class="btn btn-primary" id="get_qr_code" value="扫码">
+                        </form>
+                    </td>
+                    <td>
+                        <form method="get" action="">
+                            <input class="btn btn-primary" type="submit" value="返回">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        var api_qr_code = '{% url 'order:api_qr_code' %}';
+        var api_order_delete = '{% url 'order:api_order_delete' %}';
+        var order_list = '{% url 'order:order_list' %}';
+    </script>
+    <script src="{% static 'js/order/order_detail.js' %}"></script>
+    <script src="{% static 'js/maneu/base.js' %}"></script>
+{% endblock %}

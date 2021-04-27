@@ -3,7 +3,16 @@ from django.forms import widgets
 from django.core.validators import RegexValidator
 
 
-class LoginForm(forms.Form):
+class UserInsertForm(forms.Form):
+    nickname = forms.CharField(label="姓名",
+                               required=True,
+                               strip=True,
+                               min_length=2,
+                               max_length=32,
+                               error_messages={'required': '请输入账号',
+                                               'min_length': '最少2位字符',
+                                               'max_length': '最多32位字符'},
+                               )
 
     username = forms.CharField(label="账号",
                                required=True,

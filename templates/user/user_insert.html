@@ -1,0 +1,69 @@
+{% extends 'base/admin.html' %}
+
+{% load static %}
+
+{% block content %}
+    <!--内容栏-->
+    <div class="container">
+        <div class="col-md-6 offset-md-3">
+            <table class="table" style="margin-top: 20%">
+                <tbody>
+                <form id="user_insert">
+                    {% csrf_token %}
+                    <tr>
+                        <td class="yellow">姓名</td>
+                        <td><input class="text" name="nickname"></td>
+                    </tr>
+                    <tr>
+                        <td class="yellow">账号</td>
+                        <td><input class="text" name="username"></td>
+                    </tr>
+                    <tr>
+                        <td class="yellow">密码</td>
+                        <td><input class="text" name="password"></td>
+                    </tr>
+                    <tr>
+                        <td class="yellow">电话</td>
+                        <td><input class="text" name="Phone"></td>
+                    </tr>
+                    <tr>
+                        <td class="yellow">邮件</td>
+                        <td><input class="text" name="Email"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="btn btn-primary" id="btn-insert" type="button" value="添加">
+                        </td>
+                        <td>
+                            <input class="btn btn-primary" id="btn-back" type="button" value="返回">
+                        </td>
+                    </tr>
+                </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+    user_insert = "{% url 'user:api_insert' %}"
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#btn-insert").click(function () {
+                $.ajax({
+                    url: user_insert,
+                    type: "POST",
+                    data: $("#user_insert").serialize(),
+                    success:function (res) {
+                        alert(res.data)
+                    }
+                })
+            })
+            $("#btn-back").click(function () {
+                $(location).attr("href","{% url 'user:user_list' %}")
+            })
+        })
+    </script>
+{% endblock %}
