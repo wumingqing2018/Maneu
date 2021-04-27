@@ -13,7 +13,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0b9dbe5-4e31-4acd-9c92-b49e3c0d06a0" name="Default Changelist" comment="update" />
+    <list default="true" id="d0b9dbe5-4e31-4acd-9c92-b49e3c0d06a0" name="Default Changelist" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +63,7 @@
     <property name="SearchEverywhereHistoryKey" value="c&#9;FILE&#9;file://E:/wamp64/www/djangoPorject/templates/check_order.html" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/readme/requirements.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -82,7 +84,7 @@
       <recent name="E:\wamp64\www\MANEU\static\img" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.addOrderForm">
+  <component name="RunManager" selected="Django 服务器.Maneu">
     <configuration name="addOrderForm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MANEU" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -149,6 +151,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Maneu" type="Python.DjangoServer" factoryName="Django server">
+      <module name="Maneu" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="maneu" type="Python.DjangoServer" factoryName="Django server">
       <module name="Maneu" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -177,6 +202,7 @@
       <item itemvalue="Python.addOrderForm" />
       <item itemvalue="Python.verifyLib" />
       <item itemvalue="Python.views" />
+      <item itemvalue="Django 服务器.Maneu" />
     </list>
     <recent_temporary>
       <list>
@@ -184,7 +210,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="StructureViewFactory">
     <option name="AUTOSCROLL_MODE" value="false" />
   </component>
@@ -314,6 +340,7 @@
       <workItem from="1613714281561" duration="7674000" />
       <workItem from="1613783529411" duration="16992000" />
       <workItem from="1613891117041" duration="1077000" />
+      <workItem from="1619516503161" duration="24000" />
     </task>
     <task id="LOCAL-00001" summary="Default Changelist">
       <created>1608717065735</created>
@@ -476,11 +503,18 @@
       <option name="project" value="LOCAL" />
       <updated>1619516354699</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="update">
+      <created>1619516456016</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1619516456016</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
