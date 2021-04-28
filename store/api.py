@@ -25,7 +25,7 @@ def glass_insert(request):
 
 def glass_store_brand(request):
     if request.method == 'GET':
-        brand = glass_store.glass_store_brand()
+        brand = glass_store.glass_store_brand().values_list('brand').distinct()
         res = {'code': 0, 'msg': 'request succeed', 'data': list(brand)}
     else:
         res = {'code': 1, 'msg': 'request failed', 'data': []}
@@ -40,7 +40,7 @@ def glass_store_model(request):
             print(msg)
             brand = ''
         print(brand)
-        model = glass_store.glass_store_model(brand=brand)
+        model = glass_store.glass_store_model(brand=brand).values_list('model').distinct()
         res = {'code': 0, 'msg': 'request succeed', 'data': list(model)}
     else:
         res = {'code': 1, 'msg': 'request failed', 'data': []}

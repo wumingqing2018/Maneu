@@ -86,12 +86,12 @@ def order_delete(order_id):
         return False
 
 
-def find_order_all(min=0, max=0):
+def find_order_all():
     """
     全部订单
     """
     try:
-        return Order.objects.order_by('-c_time').all()[min:max]
+        return Order.objects.order_by('-c_time').all()
     except:
         return None
 

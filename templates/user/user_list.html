@@ -4,13 +4,12 @@
 {% block content %}
     <!--内容栏-->
     <div class="container">
-        <table class="table">
-            <tbody>
+        <table class="table" id="table" style="margin-top: 10%">
             <tr>
                 <td class="yellow" style="width: 25%">昵称</td>
                 <td class="yellow" style="width: 25%">状态</td>
                 <td class="yellow" style="width: 25%">权限</td>
-                <td colspan="3">
+                <td>
                     <form method="get" action="{% url 'user:api_insert' %}">
                         <input class="btn btn-primary" type="submit" value="添加">
                     </form>
@@ -18,36 +17,17 @@
             </tr>
             {% for user in user_list %}
                 <tr>
-                    <td class="yellow">{{ user.nickname }}</td>
-                    <td class="yellow">{{ user.status }}</td>
-                    <td class="yellow">{{ user.level }}</td>
+                    <td class="yellow" style="width: 25%">{{ user.nickname }}</td>
+                    <td class="yellow" style="width: 25%">{{ user.status }}</td>
+                    <td class="yellow" style="width: 25%">{{ user.level }}</td>
                     <td>
-                        <form method="get" action="{% url 'user:user_find' %}">
+                        <form method="get" action="{% url 'user:user_find' %}">`
                             <input type="hidden" name="user_id" value="{{ user.user_id }}">
                             <input class="btn btn-primary" type="submit" value="查看">
                         </form>
                     </td>
-                    <td>
-                        <form method="get" action="{% url 'user:user_update' %}">
-                            <input type="hidden" name="user_id" value="{{ user.user_id }}">
-                            <input class="btn btn-primary" type="submit" value="修改">
-                        </form>
-                    </td>
-                    <td>
-                        <form id="user_freeze">
-                            {% csrf_token %}
-                            <input type="hidden" name="user_id" value="{{ user.user_id }}">
-                            <input id="btn_freeze" class="btn btn-primary" type="button" value="冻结">
-                        </form>
-                        <form id="user_unfreeze">
-                            {% csrf_token %}
-                            <input type="hidden" name="user_id" value="{{ user.user_id }}">
-                            <input id="btn_unfreeze" class="btn btn-primary" type="button" value="解冻">
-                        </form>
-                    </td>
                 </tr>
             {% endfor %}
-            </tbody>
         </table>
     </div>
 {% endblock %}
@@ -56,6 +36,36 @@
     <script>
         user_freeze = "{% url 'user:api_freeze' %}";
         user_unfreeze = "{% url 'user:api_unfreeze' %}"
+        user_list = "{% url 'user:api_list' %}";
+        user_find = "{% url 'user:user_find' %}";
+        user_update = "{% url 'user:user_update' %}";
     </script>
-    <script src="{% static 'js/user/freeze_and_unfreeze.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn_freeze").click(function () {
+                $.ajax({
+                    url: user_freeze,
+                    type: "POST",
+                    data: $("#user_freeze").serialize(),
+                    success: function (res) {
+                        $("#user_unfreeze").show();
+                        $("#user_freeze").hide();
+                        alert(res)
+                    }
+                })
+            })
+            $("#btn_unfreeze").click(function () {
+                $.ajax({
+                    url: user_unfreeze,
+                    type: "POST",
+                    data: $("#user_unfreeze").serialize(),
+                    success: function (res) {
+                        $("#user_freeze").show();
+                        $("#user_unfreeze").hide();
+                        alert(res)
+                    }
+                })
+            })
+        })
+    </script>
 {% endblock %}

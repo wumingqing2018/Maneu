@@ -14,7 +14,7 @@
     <!-- local -->
 
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"  >
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -33,7 +33,6 @@
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="{% url 'order:order_list' %}">订单列表</a>
                 <a class="dropdown-item" href="{% url 'order:order_insert' %}">添加订单</a>
-                <a class="dropdown-item" href="{% url 'order:order_search' %}">查找订单</a>
             </div>
         </li>
         <!-- 仓库管理 -->
@@ -60,12 +59,6 @@
 
 {% block content %} {% endblock %}
 </body>
-
-<footer>
-    <div id="footer" class="yellow" style="text-align: center">
-        <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
-    </div>
-</footer>
 
 {% block css %}{% endblock %}
 {% block js %}{% endblock %}

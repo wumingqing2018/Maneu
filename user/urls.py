@@ -29,6 +29,7 @@ urlpatterns = [
     path('user_update/', views.user_update, name='user_update'),
 
     # api
+    path('api_list/', api.user_list, name='api_list'),
     path('api_login/', api.login, name='api_login'),
     path('api_insert/', api.user_insert, name='api_insert'),
     path('api_freeze/', api.user_freeze, name='api_freeze'),

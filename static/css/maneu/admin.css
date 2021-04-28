@@ -21,15 +21,10 @@ body {
    height:100%;
    _height:100%; /* IE6 hack */
 }
-#container {
-    min-height:100%;
-    position:relative;
-}
 #header {
     background:#ff0;
     padding:10px;
 }
-#body {
-    padding:10px;
-    padding-bottom:60px; /* Height of the footer */
+table{
+    margin-top: 5%
 }

@@ -11,7 +11,7 @@ from common import verify
 
 def order_list(request):
     """查看今日订单"""
-    orders = service.find_order_all(min=0, max=10)  # 查找今日订单
+    orders = service.find_order_all()  # 查找今日订单
     return render(request, 'order/order_list.html', {'orders': orders})
 
 

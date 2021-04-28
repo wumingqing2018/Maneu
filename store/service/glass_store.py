@@ -11,11 +11,11 @@ def glass_store_id(glass_id):
 
 
 def glass_store_brand():
-    return GlassStore.objects.all().values_list('brand').distinct()
+    return GlassStore.objects.all()
 
 
 def glass_store_model(brand):
-    return GlassStore.objects.filter(brand=brand).all().values_list('model').distinct()
+    return GlassStore.objects.filter(brand=brand).all()
 
 
 def glass_store_sphere(brand, model):
