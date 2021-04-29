@@ -2,50 +2,43 @@
 {% load static %}
 
 {% block content %}
-    <div class="container">
-        <div class="row justify-content-center">
-            <table class="table">
-                <tbody>
-                <tr>
-                    <td style="width: 20%" class="yellow">单号</td>
-                    <td style="width: 20%" class="yellow">姓名</td>
-                    <td style="width: 20%" class="yellow">电话</td>
-                    <td style="width: 20%" class="yellow">时间</td>
-                    <td style="width: 20%" class="yellow">
-                        <button class="btn btn-primary" id="order_insert">添加订单</button>
-                    </td>
-                </tr>
-                {% for order in orders %}
-                    <tr>
-                        <td class="yellow">{{order.order_id}}</td>
-                        <td class="yellow">{{order.c_name}}</td>
-                        <td class="yellow">{{order.c_phone}}</td>
-                        <td class="yellow">{{order.c_time }}</td>
-                        <td class="yellow">
-                            <form method="post" action="{% url 'order:order_detail' %}">
-                                {% csrf_token %}
-                                <input type="hidden" name="order_id" value="{{order.order_id}}">
-                                <input type="submit" class="btn btn-primary" value="查看订单">
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-                <tr>
-                    <td>
-                        <button style="display: none" align="right" id="up" class="btn btn-primary">上页</button>
-                    </td>
-                    <td colspan="3"></td>
-                    <td>
-                        <button style="display: none" align="left" id="down" class="btn btn-primary">下页</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <div style="margin: 5%">
-                <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
-            </div>
-        </div>
-    </div>
+    <table class="table">
+        <tbody>
+        <tr>
+            <td style="width: 20%" class="yellow">单号</td>
+            <td style="width: 20%" class="yellow">姓名</td>
+            <td style="width: 20%" class="yellow">电话</td>
+            <td style="width: 20%" class="yellow">时间</td>
+            <td style="width: 20%" class="yellow">
+                <button class="btn btn-primary" id="order_insert">添加订单</button>
+            </td>
+        </tr>
+        {% for order in orders %}
+            <tr>
+                <td class="yellow">{{order.order_id}}</td>
+                <td class="yellow">{{order.c_name}}</td>
+                <td class="yellow">{{order.c_phone}}</td>
+                <td class="yellow">{{order.c_time }}</td>
+                <td class="yellow">
+                    <form method="post" action="{% url 'order:order_detail' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="order_id" value="{{order.order_id}}">
+                        <input type="submit" class="btn btn-primary" value="查看订单">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <button style="display: none" align="right" id="up" class="btn btn-primary">上页</button>
+            </td>
+            <td colspan="3"></td>
+            <td>
+                <button style="display: none" align="left" id="down" class="btn btn-primary">下页</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 {% endblock %}
 
 {% block js %}

@@ -3,48 +3,48 @@
 {% load static %}
 
 {% block content %}
-    <div class="container" id="body">
+    <div class="col-md-12" style="margin-top: 5%">
         <div class="col-md-6 offset-md-5">
             <p class="yellow">添加产品</p>
         </div>
         <form class="col-md-6 offset-md-3" method="post" action="{% url 'store:api_glass_insert' %}">
             {% csrf_token %}
             <div class="form-row">
-                <label class="col-md-2 yellow">品牌：</label>
-                <input class="col-md-8" type="text" name="brand">
+                <label class="yellow offset-md-1">品牌：</label>
+                <input class="col-md-9" type="text" name="brand">
             </div>
             <br>
             <div class="form-row">
-                <label class="col-md-2 yellow">型号：</label>
-                <input class="col-md-8" type="text" name="model">
+                <label class="yellow offset-md-1">型号：</label>
+                <input class="col-md-9" type="text" name="model">
             </div>
             <br>
             <div class="form-row">
-                <label class="col-md-2 yellow">度数：</label>
-                <input class="col-md-8" type="text" name="sphere">
+                <label class="yellow offset-md-1">度数：</label>
+                <input class="col-md-9" type="text" name="sphere">
             </div>
             <br>
             <div class="form-row">
-                <label class="col-md-2 yellow">散光：</label>
-                <input class="col-md-8" type="text" name="astigmatic">
+                <label class="yellow offset-md-1">散光：</label>
+                <input class="col-md-9" type="text" name="astigmatic">
             </div>
             <br>
             <div class="form-row">
-                <label class="col-md-2 yellow">折射：</label>
-                <input class="col-md-8" type="text" name="refraction">
+                <label class="yellow offset-md-1">折射：</label>
+                <input class="col-md-9" type="text" name="refraction">
             </div>
             <br>
             <div class="form-row">
-                <label class="col-md-2 yellow">备注：</label>
-                <textarea rows="5" class="col-md-8" name="remark"></textarea>
+                <label class="yellow offset-md-1">备注：</label>
+                <textarea rows="5" class="col-md-9" name="remark"></textarea>
             </div>
             <br>
             <div class="form-row">
-                <input class="col-md-8 offset-md-2 btn btn-warning" type="submit">
+                <input class="offset-md-2 col-md-9 btn btn-warning" type="submit">
             </div>
             <br>
             <div class="form-row">
-                <a href="{% url 'store:store' %}" class="col-md-8 offset-md-2 btn btn-primary" type="button">返回</a>
+                <a class="offset-md-2 col-md-9 btn btn-primary" href="{% url 'store:store' %}" type="button">返回</a>
             </div>
         </form>
     </div>

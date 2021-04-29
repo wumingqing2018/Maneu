@@ -4,38 +4,36 @@
 
 {% block content %}
     <!--内容栏-->
-    <div class="container">
-        <table class="table" style="margin-top: 10%">
-            <tbody>
-            <tr>
-                <td width="80%">
-                    <p class="yellow">眼镜仓库</p>
-                </td>
-                <td>
-                    <a href="{% url 'store:glass_insert' %}" class="yellow">添加产品</a>
-                </td>
-                <td>
-                    <a href="{% url 'store:glass_store' %}" class="yellow">查看列表</a>
-                </td>
-            </tr>
-            <tr>
-                <td width="80%">
-                    <p class="yellow">镜框仓库</p>
-                </td>
-                <td>
-                    <a href="{% url 'store:framework_insert' %}" class="yellow">添加产品</a>
-                </td>
-                <td>
-                    <a href="{% url 'store:framework_store' %}" class="yellow">查看列表</a>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" width="80%"></td>
-                <td>
-                    <a href="#" class="yellow">返回首页</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <table class="table">
+        <tbody>
+        <tr>
+            <td style="width:80%;">
+                <p class="yellow">眼镜仓库</p>
+            </td>
+            <td>
+                <a href="{% url 'store:glass_insert' %}" class="yellow">添加产品</a>
+            </td>
+            <td>
+                <a href="{% url 'store:glass_store' %}" class="yellow">查看列表</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:80%;">
+                <p class="yellow">镜框仓库</p>
+            </td>
+            <td>
+                <a href="{% url 'store:framework_insert' %}" class="yellow">添加产品</a>
+            </td>
+            <td>
+                <a href="{% url 'store:framework_store' %}" class="yellow">查看列表</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" width="80%"></td>
+            <td>
+                <a href="#" class="yellow">返回首页</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 {% endblock %}

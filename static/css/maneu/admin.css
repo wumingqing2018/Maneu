@@ -7,7 +7,7 @@
     color: #fbc21d
 }
 img{
-    height: 100px; width: 100px
+    height: 100px; width: 140px
 }
 #footer {
     position:absolute;
@@ -24,7 +24,4 @@ body {
 #header {
     background:#ff0;
     padding:10px;
-}
-table{
-    margin-top: 5%
 }

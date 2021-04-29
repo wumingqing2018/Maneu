@@ -4,17 +4,16 @@
 {% load static %}
 
 <head>
+    <!-- local -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>徕可</title>
-
-    <!-- local -->
-    <link rel="icon" href="{% static 'images/logo.png' %}">
+    <link rel="icon" href="{% static 'img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/maneu/admin.css' %}">
     <!-- local -->
 
     <!-- bootstrap -->
-    <link href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"  >
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -57,7 +56,16 @@
     </ul>
 </nav>
 
-{% block content %} {% endblock %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div style="margin: 5%;" class="col-md-12">
+            {% block content %} {% endblock %}
+        </div>
+        <div style="margin: 5%">
+            <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
+        </div>
+    </div>
+</div>
 </body>
 
 {% block css %}{% endblock %}

@@ -1,59 +1,65 @@
-{% extends 'base/admin.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
 {% load static %}
 
-{% block css %}
+<head>
+    <!-- local -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>徕可</title>
+    <link rel="icon" href="{% static 'img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/maneu/admin.css' %}">
-{% endblock %}
+    <script src="{% static 'js/maneu/base.js' %}"></script>
+    <!-- bootstrap -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--bootstrap -->
+</head>
 
-{% block content %}
-    <div class="container">
-        <div class="text-center" id="content">
-            <div class="row justify-content-center">
-                <div class="col-md-12" style="padding: 5%">
-/                        <img src="{% static 'images/logo.svg' %}">
-                        <h4 class="yellow">徕可</h4>
-                    </a>
+<body style="background: #0E2340">
+<div class="container">
+    <div class="text-center" id="content">
+        <div class="row justify-content-center">
+            <div class="col-md-12" style="padding: 5%">
+                <a href="{% url 'user:login' %}">
+                    <img src="{% static 'img/logo.png' %}" class="img-responsive" alt="Cinque Terre">
+                    <h4 class="yellow">徕可</h4>
+                </a>
+            </div>
+            <div class="col-md-12" style="padding: 5%">
+                <h4 class="yellow">官方授权许可正品</h4>
+                <p class="yellow">Officially licensed products</p>
+            </div>
+            <div class="col-md-12" style="padding: 5%">
+                <div>
+                    <p class="yellow">执行标准：</p>
                 </div>
 
-                <div class="col-md-12" style="padding: 5%">
-                    <h4 class="yellow">官方授权许可正品</h4>
-                    <p class="yellow">Officially licensed products</p>
+                <div>
+                    <a class="yellow" href="http://www.bz.bzko.com/bzxx/56116.html">
+                        QB/T2506-2017</a>
                 </div>
 
-                <div class="col-md-12" style="padding: 5%">
-                    <div>
-                        <p class="yellow">执行标准：</p>
-                    </div>
-
-                    <div>
-                        <a class="yellow" href="http://www.bz.bzko.com/bzxx/56116.html">
-                            QB/T2506-2017</a>
-                    </div>
-
-                    <div>
-                        <a class="yellow" href="https://wenku.baidu.com/view/edf15852a417866fb94a8e06.html">
-                            GB10810.3-2006</a>
-                    </div>
-
-                    <div>
-                        <a class="yellow" href="http://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A587E31519ED1F6BFF23FC9132469137">
-                            GB/T 38120-2019</a>
-                    </div>
-
-                    <div>
-                        <p class="yellow">光安全要求</p>
-                    </div>
+                <div>
+                    <a class="yellow" href="https://wenku.baidu.com/view/edf15852a417866fb94a8e06.html">
+                        GB10810.3-2006</a>
                 </div>
-                    <div class="col-md-12 yellow" style="text-align: center;">
-        <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
-    </div>
 
+                <div>
+                    <a class="yellow" href="http://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A587E31519ED1F6BFF23FC9132469137">
+                        GB/T 38120-2019</a>
+                </div>
+
+                <div>
+                    <p class="yellow">光安全要求</p>
+                </div>
+            </div>
+            <div class="col-md-12 yellow" style="text-align: center;">
+                <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block js %}
-    <script src="{% static 'js/maneu/base.js' %}"></script>
-{% endblock %}
+</div>
