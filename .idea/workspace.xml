@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="修改底部样式">
+    <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="修改首页">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/maneu/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/maneu/admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maneu/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/maneu/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/admin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/error.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/maneu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order/order_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order/order_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/store/glass_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/store/store.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/store.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +83,8 @@
       <option name="presentableId" value="Default" />
       <updated>1619573296976</updated>
       <workItem from="1619573298101" duration="24674000" />
-      <workItem from="1619659379824" duration="4944000" />
+      <workItem from="1619659379824" duration="6457000" />
+      <workItem from="1619666663965" duration="3908000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1619573416247</created>
@@ -104,7 +100,21 @@
       <option name="project" value="LOCAL" />
       <updated>1619600507740</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="修改首页">
+      <created>1619664463086</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1619664463086</updated>
+    </task>
+    <task id="LOCAL-00004" summary="修改首页">
+      <created>1619664483764</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1619664483764</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +135,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
     <MESSAGE value="修改底部样式" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改底部样式" />
+    <MESSAGE value="修改首页" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改首页" />
   </component>
 </project>

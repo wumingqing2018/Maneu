@@ -4,7 +4,7 @@ from .forms.loginForm import LoginForm
 from .serivce import *
 
 
-def login(request):
+def user_login(request):
     """
     登录模块
     判断用户是否登录
@@ -26,7 +26,7 @@ def login(request):
             return render(request, 'user/user_login.html', {'form': LoginForm()})
 
 
-def logout(request):
+def user_logout(request):
     request.session['user'] = None
     form = LoginForm()
     return render(request, 'user/user_login.html', {'form': form})
@@ -37,7 +37,7 @@ def user_list(request):
     return render(request, 'user/user_list.html', {'user_list': user_list})
 
 
-def user_find(request):
+def user_content(request):
     if request.method == 'GET':
         id = request.GET['user_id']
         user = find_user(user_id=id)

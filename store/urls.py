@@ -20,7 +20,7 @@ from . import api
 app_name = 'store'
 urlpatterns = [
     # glass_views
-    path('store/', views.store, name='store'),
+    path('store_list/', views.store, name='store'),
     path('glass_store/', views.glass_store_all, name='glass_store'),
     path('glass_content/', views.glass_content, name='glass_content'),
     path('glass_insert/', views.glass_insert, name='glass_insert'),

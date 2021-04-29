@@ -20,7 +20,7 @@ from . import api
 app_name = 'order'
 urlpatterns = [
     # views
-    path('', views.order_list, name='order_list'),
+    path('order_list/', views.order_list, name='order_list'),
     path('order_detail/', views.order_detail, name='order_detail'),
     path('order_search/', views.order_search, name='order_search'),
     path('order_insert/', views.order_insert, name='order_insert'),

@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from user import serivce
 
 
-def login(request):
+def user_login(request):
     """登录接口"""
     if request.method == 'POST':
         from .forms.loginForm import LoginForm

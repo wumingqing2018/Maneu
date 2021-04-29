@@ -21,16 +21,16 @@ from . import api
 app_name = 'user'
 urlpatterns = [
     # view
-    path('login/', views.login, name='login'),
-    path('logout/', views.logout, name='logout'),
-    path('user_list/', views.user_list, name='user_list'),
-    path('user_find/', views.user_find, name='user_find'),
-    path('user_insert/', views.user_insert, name='user_insert'),
-    path('user_update/', views.user_update, name='user_update'),
+    path('login/', views.user_login, name='login'),
+    path('logout/', views.user_logout, name='logout'),
+    path('list/', views.user_list, name='list'),
+    path('content/', views.user_content, name='content'),
+    path('insert/', views.user_insert, name='insert'),
+    path('update/', views.user_update, name='update'),
 
     # api
     path('api_list/', api.user_list, name='api_list'),
-    path('api_login/', api.login, name='api_login'),
+    path('api_login/', api.user_login, name='api_login'),
     path('api_insert/', api.user_insert, name='api_insert'),
     path('api_freeze/', api.user_freeze, name='api_freeze'),
     path('api_unfreeze/', api.user_unfreeze, name='api_unfreeze'),
