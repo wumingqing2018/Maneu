@@ -1,15 +1,15 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from .forms.loginForm import LoginForm
 from .serivce import *
+from common.verify import *
 
 
 def user_login(request):
     """
     登录模块
     判断用户是否登录
-
     """
+    from .forms.loginForm import LoginForm
     if request.session['user']:
         return redirect('index_page')
     else:
@@ -27,6 +27,7 @@ def user_login(request):
 
 
 def user_logout(request):
+    from .forms.loginForm import LoginForm
     request.session['user'] = None
     form = LoginForm()
     return render(request, 'user/user_login.html', {'form': form})
@@ -38,9 +39,9 @@ def user_list(request):
 
 
 def user_content(request):
-    if request.method == 'GET':
-        id = request.GET['user_id']
-        user = find_user(user_id=id)
+    user_id = verify_id_get(request)
+    if user_id:
+        user = find_user(user_id)
     return render(request, 'user/user_page.html', {'user': user})
 
 

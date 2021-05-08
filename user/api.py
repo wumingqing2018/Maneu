@@ -9,11 +9,11 @@ def user_login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             request.session['user'] = 'admin'
-            res = {'code': 0, 'msg': '登录成功'}
+            res = {'code': 0, 'msg': '登录成功', 'data': {}}
         else:
-            res = {'code': 2, 'msg': form.errors}
+            res = {'code': 2, 'msg': form.errors, 'data': {}}
     else:
-        res = {'code': 1, 'msg': '请求错误'}
+        res = {'code': 1, 'msg': '请求错误', 'data': {}}
     return JsonResponse(res)
 
 
@@ -32,12 +32,16 @@ def user_insert(request):
         form = UserInsertForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            print(data)
-            res = {'code': 0, 'data': data}
+            add_user = serivce.add_user(data)
+            print(type(add_user))
+            if add_user:
+                res = {'code': 0, 'msg': '保存成功', 'data': {}}
+            else:
+                res = {'code': 3, 'msg': '保存失败', 'data': {}}
         else:
-            res = {'code': 2, 'data': form.errors}
+            res = {'code': 2, 'msg': form.errors, 'data': {}}
     else:
-        res = {'code': 1, 'data': 'post'}
+        res = {'code': 1, 'msg': 'post', 'data': {}}
     return JsonResponse(res)
 
 

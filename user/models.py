@@ -16,9 +16,8 @@ class User(models.Model):
     email = models.CharField(max_length=128)
     phone = models.IntegerField()
     level = models.IntegerField()
-    status = models.IntegerField()
-    join_time = models.DateField()
-    last_time = models.DateField()
+    state = models.IntegerField()
+    create_time = models.TimeField()
 
     class Meta:
         managed = False

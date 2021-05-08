@@ -11,7 +11,7 @@ def find_user(user_id):
 
 def find_all_user():
     """查找所有用户"""
-    return User.objects.all()
+    return User.objects.all().order_by('-create_time')
 
 
 def add_user(post):
@@ -21,11 +21,13 @@ def add_user(post):
             user_id=common.order_id(),
             username=post['username'],
             password=post['password'],
-            nickname=post['nickname'],
+            email=post['email'],
             phone=post['phone'],
-            join_time=common.today(),
-            last_time=common.token(),
+            level=post['level'],
+            state=post['state'],
+            create_time=common.today(),
         )
         return item
-    except:
+    except BaseException as msg:
+        print(msg)
         return None

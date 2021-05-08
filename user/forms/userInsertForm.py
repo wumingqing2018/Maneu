@@ -4,16 +4,6 @@ from django.core.validators import RegexValidator
 
 
 class UserInsertForm(forms.Form):
-    nickname = forms.CharField(label="姓名",
-                               required=True,
-                               strip=True,
-                               min_length=2,
-                               max_length=32,
-                               error_messages={'required': '请输入账号',
-                                               'min_length': '最少2位字符',
-                                               'max_length': '最多32位字符'},
-                               )
-
     username = forms.CharField(label="账号",
                                required=True,
                                strip=True,
@@ -34,9 +24,22 @@ class UserInsertForm(forms.Form):
                                error_messages={'required': '请输入密码'},
                                )
 
-    def clean(self):
-        username = self.cleaned_data.get('username')
-        password = self.cleaned_data.get('password')
+    email = forms.EmailField(label="邮件",
+                             required=True,
+                             error_messages={'required': '请输入邮箱'},
+                             )
 
-        if username != 'unlock' or password != 'XMacheNike':
-            raise forms.ValidationError('登录失败')
+    phone = forms.CharField(label="电话",
+                            required=True,
+                            error_messages={'required': '请输入电话'},
+                            )
+
+    level = forms.CharField(label="等级",
+                            required=True,
+                            error_messages={'required': '请输入电话'},
+                            )
+
+    state = forms.CharField(label="状态",
+                            required=True,
+                            error_messages={'required': '请输入电话'},
+                            )
