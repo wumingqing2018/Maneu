@@ -5,70 +5,63 @@
 {% block content %}
     <!--内容栏-->
     <div class="container">
-        <table class="table" style="margin-top: 5%">
-            <tbody>
-            <tr>
-                <td colspan="4">
-                    <p class="yellow">镜片信息</p>
+        <table class="table">
+            <tr class="yellow">
+                <td colspan="7">
+                    <p>镜片信息</p>
                 </td>
             </tr>
-            {% for glass in glass_list %}
-                <tr>
-                    <td>
-                        <p class="yellow">品牌:  {{ glass.brand }}</p>
-                    </td>
-                    <td>
-                        <p class="yellow">型号:  {{ glass.model }}</p>
-                    </td>
-                    <td>
-                        <p class="yellow">折射:  {{ glass.glass }}</p>
-                    </td>
-                    <td>
-                        <p class="yellow">数量:  {{ glass.count }}</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <p class="yellow">备注:  {{ glass.remark }}</p>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <p class="yellow">{{ record_list }}</p>
-        <table class="table" style="margin-top: 5%">
-            <tr>
-                <td colspan="4" style="width: 80%">
-                    <p class="yellow">销售记录</p>
+            <tr class="yellow">
+                <td>
+                    <p>品牌:  {{ glass.brand }}</p>
+                </td>
+                <td>
+                    <p>型号:  {{ glass.model }}</p>
+                </td>
+                <td>
+                    <p>度数:  {{ glass.sphere }}</p>
+                </td>
+                <td>
+                    <p>散光:  {{ glass.astigmatic }}</p>
+                </td>
+                <td>
+                    <p>折射:  {{ glass.refraction }}</p>
+                </td>
+                <td>
+                    <p>数量:  {{ glass.count }}</p>
                 </td>
             </tr>
-            <tr>
+            <tr class="yellow">
                 <td>
-                    <p class="yellow">单号</p>
+                    <p>销售记录</p>
+                <td>
+                    <p>单号</p>
                 </td>
                 <td>
-                    <p class="yellow">时间</p>
+                    <p>时间</p>
                 </td>
                 <td>
-                    <p class="yellow">数量</p>
+                    <p>用户</p>
                 </td>
                 <td>
-                    <p class="yellow">用户</p>
+                    <p>数量</p>
                 </td>
             </tr>
-            <tr>
+            <tr class="yellow">
+                <td></td>
                 <td>
-                    <p class="yellow">单号</p>
+                    <p>单号</p>
                 </td>
                 <td>
-                    <p class="yellow">时间</p>
+                    <p>时间</p>
                 </td>
                 <td>
-                    <p class="yellow">数量</p>
+                    <p>用户</p>
                 </td>
                 <td>
-                    <p class="yellow">用户</p>
+                    <p>数量</p>
                 </td>
+                <td></td>
             </tr>
         </table>
     </div>

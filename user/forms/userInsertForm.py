@@ -36,10 +36,10 @@ class UserInsertForm(forms.Form):
 
     level = forms.CharField(label="等级",
                             required=True,
-                            error_messages={'required': '请输入电话'},
+                            error_messages={'required': '请输入等级'},
                             )
 
     state = forms.CharField(label="状态",
                             required=True,
-                            error_messages={'required': '请输入电话'},
+                            error_messages={'required': '请输入状态'},
                             )

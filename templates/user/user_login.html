@@ -1,5 +1,4 @@
 {% extends 'base/base.html' %}
-
 {% load static %}
 
 {% block content %}
@@ -7,15 +6,15 @@
         <div class="text-center" id="content">
             <div class="row justify-content-center">
                 <div class="col-md-12" style="padding: 5%">
-                    <a methods="get" href="{% url "index_page" %}">
-                        <img src="{% static 'images/../../static/img/logo.svg' %}">
+                    <a methods="get" href="{% url 'index_page' %}">
+                        <img src="{% static 'img/logo.svg' %}">
                         <h4>徕可</h4>
                     </a>
                 </div>
 
                 <div align="center" style="padding: 5%">
                     <div class="col-md-12">
-                        <form method="POST" action="{% url 'login' %}">
+                        <form method="POST" action="{% url 'user:login' %}">
                             {% csrf_token %}
                             <br>
                             <p>{{ error }}</p>

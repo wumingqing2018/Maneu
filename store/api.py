@@ -5,27 +5,25 @@ from .service import framework_store
 
 def glass_insert(request):
     from store.forms.glass_store_insert import GlassStoreInsert
+    print(request.method)
     if request.method == 'POST':
         form = GlassStoreInsert(request.POST)
         if form.is_valid():
             glass_insert = glass_store.glass_store_insert(form=form.clean())
             if glass_insert:
                 res = {'code': 0, 'msg': 'save succeed'}
-                return JsonResponse(res)
             else:
                 res = {'code': 3, 'msg': 'save failed'}
-                return JsonResponse(res)
         else:
             res = {'code': 2, 'msg': form.errors}
-            return JsonResponse(res)
     else:
         res = {'code': 1, 'msg': 'request method error'}
-        return JsonResponse(res)
+    return JsonResponse(res)
 
 
 def glass_store_brand(request):
     if request.method == 'GET':
-        brand = glass_store.glass_store_brand().values_list('brand').distinct()
+        brand = glass_store.glass_store_all().values_list('brand').distinct()
         res = {'code': 0, 'msg': 'request succeed', 'data': list(brand)}
     else:
         res = {'code': 1, 'msg': 'request failed', 'data': []}
@@ -116,8 +114,8 @@ def glass_store_count(request):
             sphere = ''
             astigmatic = ''
             refraction = ''
-        store_id = glass_store.glass_store_count(brand, model, sphere, astigmatic, refraction).values_list('store_id').distinct()
-        print(glass_store.glass_store_count(brand, model, sphere, astigmatic, refraction))
+        store_id = glass_store.glass_store_count(brand, model, sphere, astigmatic, refraction).values_list('store_id', 'count').distinct()
+        print(store_id)
         res = {'code': 0, 'msg': 'request succeed', 'data': list(store_id)}
     else:
         res = {'code': 1, 'msg': 'request failed', 'data': []}

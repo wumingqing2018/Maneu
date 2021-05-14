@@ -91,7 +91,7 @@ def find_order_all():
     全部订单
     """
     try:
-        return Order.objects.order_by('-c_time').all()
+        return Order.objects.order_by('-c_time').all()[0:10]
     except:
         return None
 

@@ -29,11 +29,10 @@ def user_list(request):
 def user_insert(request):
     from user.forms.userInsertForm import UserInsertForm
     if request.method == 'POST':
+        print(request.POST)
         form = UserInsertForm(request.POST)
         if form.is_valid():
-            data = form.cleaned_data
-            add_user = serivce.add_user(data)
-            print(type(add_user))
+            add_user = serivce.add_user(form.cleaned_data)
             if add_user:
                 res = {'code': 0, 'msg': '保存成功', 'data': {}}
             else:

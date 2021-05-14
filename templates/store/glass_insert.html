@@ -3,50 +3,110 @@
 {% load static %}
 
 {% block content %}
-    <div class="col-md-12" style="margin-top: 5%">
-        <div class="col-md-6 offset-md-5">
-            <p class="yellow">添加产品</p>
-        </div>
-        <form class="col-md-6 offset-md-3" method="post" action="{% url 'store:api_glass_insert' %}">
-            {% csrf_token %}
-            <div class="form-row">
-                <label class="yellow offset-md-1">品牌：</label>
-                <input class="col-md-9" type="text" name="brand">
-            </div>
-            <br>
-            <div class="form-row">
-                <label class="yellow offset-md-1">型号：</label>
-                <input class="col-md-9" type="text" name="model">
-            </div>
-            <br>
-            <div class="form-row">
-                <label class="yellow offset-md-1">度数：</label>
-                <input class="col-md-9" type="text" name="sphere">
-            </div>
-            <br>
-            <div class="form-row">
-                <label class="yellow offset-md-1">散光：</label>
-                <input class="col-md-9" type="text" name="astigmatic">
-            </div>
-            <br>
-            <div class="form-row">
-                <label class="yellow offset-md-1">折射：</label>
-                <input class="col-md-9" type="text" name="refraction">
-            </div>
-            <br>
-            <div class="form-row">
-                <label class="yellow offset-md-1">备注：</label>
-                <textarea rows="5" class="col-md-9" name="remark"></textarea>
-            </div>
-            <br>
-            <div class="form-row">
-                <input class="offset-md-2 col-md-9 btn btn-warning" type="submit">
-            </div>
-            <br>
-            <div class="form-row">
-                <a class="offset-md-2 col-md-9 btn btn-primary" href="{% url 'store:store' %}" type="button">返回</a>
-            </div>
-        </form>
+    <div class="container">
+        <table class="table col-md-6 offset-md-3">
+            <form id="glass_insert">
+                {% csrf_token %}
+                <tr class="yellow">
+                    <td style="width: 20%">品牌:</td>
+                    <td>
+                        <input class="col-md-12 form-control" type="text" name="brand">
+                    </td>
+                </tr>
+
+                <tr class="yellow">
+                    <td>型号:</td>
+                    <td>
+                        <input class="col-md-12 form-control" type="text" name="model">
+                    </td>
+                </tr>
+
+                <tr class="yellow">
+                    <td>
+                        <span>度数:</span>
+                        <span id="sphere_msg">400</span>
+                    </td>
+                    <td>
+                        <input class="col-md-12 custom-range" type="range" min="0" max="800" step="25" id="sphere" name="sphere">
+                    </td>
+                </tr>
+
+                <tr class="yellow">
+                    <td>
+                        <span>散光:</span>
+                        <span id="astigmatic_msg">150</span>
+                    </td>
+                    <td>
+                        <input class="col-md-12 custom-range" type="range" min="0" max="300" step="25" id="astigmatic" name="astigmatic">
+                    </td>
+                </tr>
+
+                <tr class="yellow">
+                    <td>
+                        <span>折射:</span>
+                        <span id="refraction_msg">1.60</span>
+                    </td>
+                    <td>
+                        <input class="col-md-12 custom-range" type="range" min="1.5" max="1.8" step="0.01" id="refraction" name="refraction">
+                    </td>
+                </tr>
+
+                <tr class="yellow">
+                    <td>
+                        <span>数量:</span>
+                        <span id="count_msg">500</span>
+                    </td>
+                    <td>
+                        <input class="col-md-12 custom-range" type="range" min="1" max="999" step="1" id="count" name="count">
+                    </td>
+                </tr>
+
+                <tr class="yellow">
+                    <td>备注:</td>
+                    <td>
+                        <textarea rows="5" class="col-md-12 form-control" name="remark"></textarea>
+                    </td>
+                </tr>
+
+                <tr class="yellow">
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'store:store' %}" type="button">返回</a>
+                    </td>
+                    <td>
+                        <input class="btn btn-warning col-md-12" id="btn_glass_insert" type="button" value="提交">
+                    </td>
+                </tr>
+            </form>
+        </table>
     </div>
 {% endblock %}
-{% block js %}{% endblock %}
+
+{% block js %}
+    <script>
+        api_glass_insert = "{% url 'store:api_glass_insert' %}"
+        $(document).ready(function () {
+            $('#sphere').change(function () {
+                $('#sphere_msg').html($('#sphere').val())
+            })
+            $('#astigmatic').change(function () {
+                $('#astigmatic_msg').html($('#astigmatic').val())
+            })
+            $('#count').change(function () {
+                $('#count_msg').html($('#count').val())
+            })
+            $('#refraction').change(function () {
+                $('#refraction_msg').html($('#refraction').val())
+            })
+            $('#btn_glass_insert').click(function () {
+                $.ajax({
+                    url: api_glass_insert,
+                    type: "POST",
+                    data: $('#glass_insert').serialize(),
+                    success: function (res) {
+                        console.log(res)
+                    }
+                })
+            })
+        })
+    </script>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from .serivce import *
+from django.shortcuts import HttpResponse
+from user import serivce
 from common.verify import *
 
 
@@ -34,15 +35,17 @@ def user_logout(request):
 
 
 def user_list(request):
-    user_list = find_all_user
+    user_list = serivce.find_all_user
     return render(request, 'user/user_list.html', {'user_list': user_list})
 
 
 def user_content(request):
     user_id = verify_id_get(request)
     if user_id:
-        user = find_user(user_id)
-    return render(request, 'user/user_page.html', {'user': user})
+        user = serivce.find_user(user_id)
+        return render(request, 'user/user_content.html', {'user': user})
+    else:
+        return HttpResponse('请求出错')
 
 
 def user_insert(request):
@@ -50,4 +53,9 @@ def user_insert(request):
 
 
 def user_update(request):
-    return render(request, 'user/user_update.html')
+    user_id = verify_id_get(request)
+    if user_id:
+        user = serivce.find_user(user_id)
+        return render(request, 'user/user_update.html', {'user': user})
+    else:
+        return HttpResponse('请求出错')

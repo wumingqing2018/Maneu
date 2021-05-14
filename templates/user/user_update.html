@@ -5,7 +5,7 @@
     <!--内容栏-->
     <div class="container">
         <div class="col-md-6 offset-md-3">
-            <table class="table" style="margin-top: 20%">
+            <table class="table">
                 <form id="user_insert">
                     {% csrf_token %}
                     <tr class="yellow">
@@ -13,7 +13,7 @@
                             <p>账号: </p>
                         </td>
                         <td>
-                            <input class="col-md-12" type="text" name="username">
+                            <input class="col-md-12" type="text" name="username" placeholder="{{ user.username }}">
                             <p id="username"></p>
                         </td>
                     </tr>
@@ -22,7 +22,7 @@
                             <p>密码: </p>
                         </td>
                         <td>
-                            <input class="col-md-12" type="text" name="password">
+                            <input class="col-md-12" type="text" name="password" placeholder="{{ user.password }}">
                             <p id="password"></p>
                         </td>
                     </tr>
@@ -31,7 +31,7 @@
                             <p>电话: </p>
                         </td>
                         <td>
-                            <input class="col-md-12" type="text" name="phone">
+                            <input class="col-md-12" type="text" name="phone" placeholder="{{ user.phone }}">
                             <p id="phone"></p>
                         </td>
                     </tr>
@@ -40,7 +40,7 @@
                             <p>邮件: </p>
                         </td>
                         <td>
-                            <input class="col-md-12" type="text" name="email">
+                            <input class="col-md-12" type="text" name="email" placeholder="{{ user.email }}">
                             <p id="email"></p>
                         </td>
                     </tr>
@@ -49,8 +49,7 @@
                             <p>状态: </p>
                         </td>
                         <td>
-                            <input type="hidden" name="state" id="state" value="0">
-                            <select class="col-md-12" id="state_select">
+                            <select class="col-md-12" form="user_insert" name="state">
                                 <option value="0">使用</option>
                                 <option value="1">冻结</option>
                             </select>
@@ -61,10 +60,9 @@
                             <p>等级: </p>
                         </td>
                         <td>
-                            <input type="hidden" name="level" id="level" value="0">
-                            <select class="col-md-12" id="level_select">
+                            <select class="col-md-12" form="user_insert" name="level">
                                 <option value="1">用户</option>
-                                <option value="0">管理员</option>
+                                <option value="0">管理</option>
                             </select>
                         </td>
                     </tr>
@@ -112,12 +110,6 @@
             })
             $("#btn-back").click(function () {
                 $(location).attr("href", user_list)
-            })
-            $("#level_select").change(function () {
-                $("#level").val($("#level_select").val())
-            })
-            $("#state_select").change(function () {
-                $("#state").val($("#state_select").val())
             })
         })
     </script>

@@ -146,3 +146,25 @@ def verify_id_get(request):
             return None
     else:
         return None
+
+
+def verify_store_id_get(request):
+    """
+    判断请求是否为 GET
+    判断user_id 是否存在
+    判断user_id 是否为16位纯数字
+    """
+    if request.method == 'GET':
+        try:
+            pattern = r"^\d{32}$"
+            user_id = request.GET['store_id']
+            re_match = re.match(pattern, user_id, flags=0)
+            if re_match:
+                return user_id
+            else:
+                return None
+        except BaseException as msg:
+            print(msg)
+            return None
+    else:
+        return None

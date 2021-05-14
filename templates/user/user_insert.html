@@ -49,8 +49,7 @@
                             <p>状态: </p>
                         </td>
                         <td>
-                            <input type="hidden" name="state" id="state" value="0">
-                            <select class="col-md-12" id="state_select">
+                            <select class="col-md-12" name="state" form="user_insert">
                                 <option value="0">使用</option>
                                 <option value="1">冻结</option>
                             </select>
@@ -61,8 +60,7 @@
                             <p>等级: </p>
                         </td>
                         <td>
-                            <input type="hidden" name="level" id="level" value="0">
-                            <select class="col-md-12" id="level_select">
+                            <select class="col-md-12" name="level" form="user_insert">
                                 <option value="1">用户</option>
                                 <option value="0">管理员</option>
                             </select>
@@ -78,7 +76,6 @@
                     </tr>
                 </form>
             </table>
-            <p class="yellow" id="message"></p>
         </div>
     </div>
 {% endblock %}
@@ -102,7 +99,8 @@
                             alert("请求错误")
                         } else if (res.code === 2){
                             for (i in res.msg){
-                                $("#" + i).append(res.msg[i])
+                                error = $("#" + i)
+                                error.html(res.msg[i])
                             }
                         } else if (res.code === 3) {
                             alert(res.msg)
@@ -113,17 +111,6 @@
             $("#btn-back").click(function () {
                 $(location).attr("href", user_list)
             })
-            $("#level_select").change(function () {
-                $("#level").val($("#level_select").val())
-            })
-            $("#state_select").change(function () {
-                $("#state").val($("#state_select").val())
-            })
-        })
-    </script>
-    <script>
-        $(document).ready(function () {
-
         })
     </script>
 {% endblock %}

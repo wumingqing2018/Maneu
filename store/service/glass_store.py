@@ -6,8 +6,8 @@ def glass_store_all():
     return GlassStore.objects.all()
 
 
-def glass_store_id(glass_id):
-    return GlassStore.objects.filter(glass_id=glass_id)
+def glass_store_id(store_id):
+    return GlassStore.objects.filter(store_id=store_id).first()
 
 
 def glass_store_brand():
@@ -65,12 +65,12 @@ def glass_store_insert(form):
         model = GlassStore()
         model.glass_id = common.order_id()
         model.remark = form['remark']
+        model.count = form['count']
         model.brand = form['brand']
         model.model = form['model']
         model.sphere = form['sphere']
         model.astigmatic = form['astigmatic']
         model.refraction = form['refraction']
-
         model.save()
         return model
     except Exception as msg:

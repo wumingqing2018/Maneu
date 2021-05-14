@@ -8,12 +8,12 @@
         <div class="row">
             <table class="table">
                 <tr>
-                    <td class="yellow text-center" colspan="7">
+                    <td class="yellow" colspan="7">
                         订单信息
                     </td>
                 </tr>
                 <tr>
-                    <td class="yellow">订单编号</td>
+                    <td class="yellow" style="width: 20%">订单编号</td>
                     <td class="yellow" colspan="6">
                         {{orders.order_id}}
                     </td>
@@ -46,7 +46,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="yellow text-center" colspan="7">产品信息</td>
+                    <td class="yellow" colspan="7">产品信息</td>
                 </tr>
                 <tr>
                     <td width="10%" class="yellow">处方信息</td>
@@ -117,7 +117,7 @@
                         </form>
                     </td>
                     <td>
-                        <form method="get" action="">
+                        <form method="get" action="{% url 'order:order_list' %}">
                             <input class="btn btn-primary" type="submit" value="返回">
                         </form>
                     </td>

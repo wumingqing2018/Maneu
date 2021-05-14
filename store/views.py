@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .service import framework_store
 from .service import glass_store
+from common import verify
 
 
 def store(request):
@@ -13,8 +14,10 @@ def glass_store_all(request):
 
 
 def glass_content(request):
-    glass_list = glass_store.glass_store_id(glass_id=request.GET['glass_id'])
-    return render(request, 'store/glass.html', {'glass_list': glass_list})
+    store_id = verify.verify_store_id_get(request)
+    if store_id:
+        glass = glass_store.glass_store_id(store_id)
+        return render(request, 'store/glass.html', {'glass': glass})
 
 
 def glass_insert(request):
