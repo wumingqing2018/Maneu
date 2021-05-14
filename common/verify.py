@@ -168,3 +168,37 @@ def verify_store_id_get(request):
             return None
     else:
         return None
+
+
+def verify_order_id_get(request):
+    if request.method == 'GET':
+        try:
+            order_id = request.GET['order_id']
+        except:
+            return None
+        if order_id:
+            pattern = r"^\d{32}$"
+            re_match = re.match(pattern, order_id, flags=0)
+            if re_match:
+                return order_id
+
+        return None
+
+    else:
+        return None
+
+
+def verify_phone_get(request):
+    if request.method == 'GET':
+        try:
+            pattern = r"^\d{11}$"
+            phone = request.GET['search']
+            re_match = re.match(pattern, phone, flags=0)
+            if re_match:
+                return phone
+            else:
+                return None
+        except:
+            return None
+    else:
+        return None
