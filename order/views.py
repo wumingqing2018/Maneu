@@ -13,6 +13,7 @@ def order_list(request):
 
 def order_detail(request):
     """查看订单详情"""
+    print(request.GET)
     order_id = verify.verify_order_id_get(request)
     if order_id:
         orders = service.find_order_one(order_id)

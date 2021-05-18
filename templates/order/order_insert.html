@@ -2,217 +2,221 @@
 {% load static %}
 
 {% block content %}
-    <div class="container">
-        <div id="content">
-            <form id="order_insert">
-                {% csrf_token %}
-                <input type="hidden" name="order" id="order">
-                <table class="table" style="margin-top: 5%">
-                    <tr>
-                        <td colspan="6">
-                            <h5 class="yellow">客户信息</h5>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 15%">
-                            <h5 class="yellow">客户姓名</h5>
-                        </td>
-                        <td colspan="5">
-                            <input type="text" name="c_name" class="form-control">
-                            <span id="username_error" class="yellow"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5 class="yellow">客户电话</h5>
-                        </td>
-                        <td colspan="5">
-                            <input type="text" name="c_phone" class="form-control">
-                            <span id="phone_error" class="yellow"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 15%">
-                            <input type="button" class="btn btn-warning" id="order_list" value="返回列表">
-                        </td>
-                        <td style="width: 15%">
-                            <input type="button" class="btn btn-primary" id="glass_insert_show" value="添加镜片">
-                            <input type="button" class="btn btn-warning" id="glass_insert_hide" value="取消添加" style="display: none">
-                        </td>
-                        <td style="width: 15%">
-                            <input type="button" class="btn btn-primary" id="framework_insert_show" value="添加镜框">
-                            <input type="button" class="btn btn-warning" id="framework_insert_hide" value="取消添加" style="display: none">
-                        </td>
+    <div id="content">
+        <form id="order_insert">
+            {% csrf_token %}
+            <input type="hidden" name="order" id="order">
+            <table class="table" style="margin-top: 5%">
+                <tr>
+                    <td colspan="5">
+                        <h5 class="yellow">信息</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%">
+                        <h5 class="yellow">姓名</h5>
+                    </td>
+                    <td colspan="4">
+                        <input type="text" name="c_name" class="form-control">
+                        <span id="username_error" class="yellow"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%">
+                        <h5 class="yellow">电话</h5>
+                    </td>
+                    <td colspan="4">
+                        <input type="text" name="c_phone" class="form-control">
+                        <span id="phone_error" class="yellow"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%">
+                        <h5 class="yellow">订单</h5>
+                    </td>
+                    <td colspan="4">
+                        <span id="order_content" class="yellow"></span>
+                    </td>
+                </tr>
 
-                        <td style="width: 15%">
-                            <input class="btn btn-danger" id="insert" type="button" value="提交订单">
-                        </td>
-                        <td style="width: 30%"></td>
-                    </tr>
-                </table>
-            </form>
+                <tr>
+                    <td style="width: 15%">
+                        <input type="button" class="btn btn-warning" id="order_list" value="返回列表">
+                    </td>
+                    <td style="width: 15%">
+                        <input type="button" class="btn btn-primary" id="glass_insert_show" value="添加镜片">
+                        <input type="button" class="btn btn-warning" id="glass_insert_hide" value="取消添加" style="display: none">
+                    </td>
+                    <td style="width: 15%">
+                        <input type="button" class="btn btn-primary" id="framework_insert_show" value="添加镜框">
+                        <input type="button" class="btn btn-warning" id="framework_insert_hide" value="取消添加" style="display: none">
+                    </td>
 
-            <form id="framework_insert">
-                <table class="table" id="framework_insert_table" style="display: none">
-                    <tr>
-                        <td style="width: 15%">
-                            <h5 class="yellow">品牌</h5>
-                        </td>
-                        <td>
-                            <select id="framework_brand_select" class="form-control"></select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 15%">
-                            <h5 class="yellow">型号</h5>
-                        </td>
-                        <td>
-                            <select id="framework_model_select" class="form-control"></select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 15%">
-                            <h5 class="yellow">备注</h5>
-                        </td>
-                        <td>
-                            <input type="text" class="form-control" name="remark">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="hidden" id="framework" name="framework">
-                        </td>
-                        <td>
-                            <input type="button" id="framework_insert_btn" class="col-md-12 btn btn-primary" value="提交">
-                        </td>
-                    </tr>
-                </table>
-            </form>
+                    <td style="width: 15%">
+                        <input class="btn btn-danger" id="insert" type="button" value="提交订单">
+                    </td>
+                    <td style="width: 40%"></td>
+                </tr>
+            </table>
+        </form>
 
-            <form id="glass_insert">
-                <table class="table" id="glass_insert_table" style="display: none">
-                    <tr class="yellow">
-                        <td style="width: 15%">
-                            <h5 class="yellow">品牌</h5>
-                        </td>
-                        <td colspan="3">
-                            <select class="form-control" id="glass_brand_select">
-                                <option></option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="yellow">
-                        <td style="width: 15%">
-                            <h5 class="yellow">型号</h5>
+        <form id="framework_insert">
+            <table class="table" id="framework_table" style="display: none">
+                <tr>
+                    <td style="width: 15%">
+                        <h5 class="yellow">品牌</h5>
+                    </td>
+                    <td>
+                        <select id="framework_brand_select" class="form-control"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%">
+                        <h5 class="yellow">型号</h5>
+                    </td>
+                    <td>
+                        <select id="framework_model_select" class="form-control"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%">
+                        <h5 class="yellow">备注</h5>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="remark">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="hidden" id="framework" name="framework">
+                    </td>
+                    <td>
+                        <input type="button" id="framework_insert_btn" class="col-md-12 btn btn-primary" value="提交">
+                    </td>
+                </tr>
+            </table>
+        </form>
 
-                        </td>
-                        <td colspan="3">
-                            <select class="form-control" id="glass_model_select">
-                                <option></option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="yellow">
-                        <td style="width: 15%">
-                            <h5 class="yellow">度数</h5>
+        <form id="glass_insert">
+            <table class="table" id="glass_table" style="display: none">
+                <tr class="yellow">
+                    <td style="width: 15%">
+                        <h5 class="yellow">品牌</h5>
+                    </td>
+                    <td>
+                        <select class="form-control" id="glass_brand_select">
+                            <option></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="yellow">
+                    <td style="width: 15%">
+                        <h5 class="yellow">型号</h5>
 
-                        </td>
-                        <td colspan="3">
-                            <select class="form-control" id="glass_sphere_select">
-                                <option></option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="yellow">
-                        <td style="width: 15%">
-                            <h5 class="yellow">散光</h5>
+                    </td>
+                    <td>
+                        <select class="form-control" id="glass_model_select">
+                            <option></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="yellow">
+                    <td style="width: 15%">
+                        <h5 class="yellow">度数</h5>
+                    </td>
+                    <td>
+                        <select class="form-control" id="glass_sphere_select">
+                            <option></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="yellow">
+                    <td style="width: 15%">
+                        <h5 class="yellow">散光</h5>
 
-                        </td>
-                        <td colspan="3">
-                            <select class="form-control" id="glass_astigmatic_select">
-                                <option></option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="yellow">
-                        <td style="width: 15%">
-                            <h5 class="yellow">折射</h5>
+                    </td>
+                    <td>
+                        <select class="form-control" id="glass_astigmatic_select">
+                            <option></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="yellow">
+                    <td style="width: 15%">
+                        <h5 class="yellow">折射</h5>
 
-                        </td>
-                        <td colspan="3">
-                            <select class="form-control" id="glass_refraction_select">
-                                <option></option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="yellow">
-                        <td style="width: 15%">
-                            <h5 class="yellow">数量</h5>
+                    </td>
+                    <td>
+                        <select class="form-control" id="glass_refraction_select">
+                            <option></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="yellow">
+                    <td style="width: 15%">
+                        <h5 class="yellow">数量:</h5>
+                    </td>
+                    <td>
+                        <h5 class="yellow" id="glass_table_count">999</h5>
+                        <input form="glass_insert" class="col-md-12 custom-range" name="count" id="glass_insert_count" type="range" min="1" max="1" step="1">
+                    </td>
+                </tr>
+                <tr class="yellow">
+                    <td style="width: 15%">
+                        <h5 class="yellow">方向</h5>
+                    </td>
+                    <td>
+                        <select class="form-control" name="Around" form="glass_insert">
+                            <option name="1">无</option>
+                            <option name="0">左</option>
+                            <option name="2">右</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="yellow">
+                    <td style="width: 15%">
+                        <h5 class="yellow">瞳距</h5>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" placeholder="瞳距" name="pd">
+                    </td>
+                </tr>
+                <tr class="yellow">
+                    <td style="width: 15%">
+                        <h5 class="yellow">渐进</h5>
 
-                        </td>
-                        <td colspan="3">
-                            <span id="count">0</span>
-                        </td>
-                    </tr>
-                    <tr class="yellow">
-                        <td style="width: 15%">
-                            <h5 class="yellow">方向</h5>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" placeholder="渐进" name="add">
+                    </td>
+                </tr>
+                <tr class="yellow">
+                    <td style="width: 15%">
+                        <h5 class="yellow">偏光</h5>
 
-                        </td>
-                        <td colspan="3">
-                            <select class="form-control" name="Around" form="glass_insert">
-                                <option name="1">无</option>
-                                <option name="0">左</option>
-                                <option name="2">右</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="yellow">
-                        <td style="width: 15%">
-                            <h5 class="yellow">瞳距</h5>
-
-                        </td>
-                        <td colspan="3">
-                            <input class="form-control" type="text" placeholder="瞳距" name="pd">
-                        </td>
-                    </tr>
-                    <tr class="yellow">
-                        <td style="width: 15%">
-                            <h5 class="yellow">渐进</h5>
-
-                        </td>
-                        <td colspan="3">
-                            <input class="form-control" type="text" placeholder="渐进" name="add">
-                        </td>
-                    </tr>
-                    <tr class="yellow">
-                        <td style="width: 15%">
-                            <h5 class="yellow">偏光</h5>
-
-                        </td>
-                        <td colspan="3">
-                            <input class="form-control" type="text" placeholder="偏光" name="deviation">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5 class="yellow">备注</h5>
-                        </td>
-                        <td colspan="5">
-                            <input type="text" name="remark" class="form-control" placeholder="备注">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="hidden" name="glass" id="glass">
-                        </td>
-                        <td colspan="5">
-                            <input type="button" class="col-md-12 btn btn-primary" id="glass_insert_btn" value="提交">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" placeholder="偏光" name="deviation">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5 class="yellow">备注</h5>
+                    </td>
+                    <td colspan="2">
+                        <input type="text" name="remark" class="form-control" placeholder="备注">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="hidden" name="glass" id="glass">
+                    </td>
+                    <td colspan="5">
+                        <input type="button" class="col-md-12 btn btn-primary" id="glass_insert_btn" value="提交">
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 {% endblock%}
 
@@ -226,7 +230,7 @@
         framework = $('#framework');
         framework_model_select = $('#framework_model_select');
         framework_brand_select = $('#framework_brand_select');
-        framework_insert_table = $('#framework_insert_table');
+        framework_table = $('#framework_table');
         framework_insert_show = $('#framework_insert_show');
         framework_insert_hide = $('#framework_insert_hide');
         framework_insert_btn = $('#framework_insert_btn')
@@ -235,7 +239,7 @@
         glass_insert_btn = $('#glass_insert_btn');
         glass_insert_hide = $('#glass_insert_hide');
         glass_insert_show = $('#glass_insert_show');
-        glass_insert_table = $('#glass_insert_table');
+        glass_table = $('#glass_table');
         glass_brand_select = $('#glass_brand_select');
         glass_count_select = $('#glass_count_select');
         glass_model_select = $('#glass_model_select');
@@ -361,14 +365,14 @@
                 console.log($('#framework_insert').serialize())
             });
             function framework_show() {
-                framework_insert_table.show()
+                framework_table.show()
                 framework_insert_show.hide()
                 framework_insert_hide.show()
                 framework_brand_select.children('option').remove()
                 framework_brand_select.append('<option></option>')
             }
             function framework_hide() {
-                framework_insert_table.hide()
+                framework_table.hide()
                 framework_insert_show.show()
                 framework_insert_hide.hide()
             }
@@ -490,12 +494,11 @@
                         'astigmatic': glass_astigmatic_select.val(),
                         'refraction': glass_refraction_select.val()},
                     success: function (res) {
-                        console.log(res)
                         if (res.code===0){
                             store_id = res.data[0][0]
                             store_count = res.data[0][1]
                             glass.val(store_id)
-                            $('#count').html(store_count)
+                            $('#glass_insert_count').attr({'max':store_count})
                         }
                     }
                 })
@@ -506,7 +509,7 @@
                 console.log(order)
             });
             function glass_show() {
-                glass_insert_table.show()
+                glass_table.show()
                 glass_insert_hide.show()
                 glass_insert_show.hide()
                 glass_brand_select.children('option').remove()
@@ -515,7 +518,7 @@
             function glass_hide(){
                 glass_insert_hide.hide()
                 glass_insert_show.show()
-                glass_insert_table.hide()
+                glass_table.hide()
             }
         })
     </script>

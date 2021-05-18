@@ -3,7 +3,6 @@
 
 {% block content %}
     <table class="table">
-        <tbody>
         <tr>
             <td style="width: 25%" class="yellow">单号</td>
             <td style="width: 25%" class="yellow">姓名</td>
@@ -20,7 +19,7 @@
                 <td class="yellow">{{order.c_phone}}</td>
                 <td class="yellow">{{order.c_time }}</td>
                 <td class="yellow">
-                    <form method="post" action="{% url 'order:order_detail' %}">
+                    <form method="GET" action="{% url 'order:order_detail' %}">
                         {% csrf_token %}
                         <input type="hidden" name="order_id" value="{{order.order_id}}">
                         <input type="submit" class="btn btn-primary" value="查看订单">
@@ -37,7 +36,6 @@
                 <button style="display: none" align="left" id="down" class="btn btn-primary">下页</button>
             </td>
         </tr>
-        </tbody>
     </table>
 {% endblock %}
 
