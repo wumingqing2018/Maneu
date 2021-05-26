@@ -29,11 +29,12 @@ h3 {
 }
 
 td.blue{
-    background: #0060A8;
-    color: #ffffff;
+    color: #0060A8;
 }
 
 td.yellow{
-    background: #FFC048;
-    color: #ffffff;
+    color: #FFC048;
+}
+span{
+    color: #FFC048;
 }

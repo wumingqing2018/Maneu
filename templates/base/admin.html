@@ -9,6 +9,7 @@
     <title>徕可</title>
     <link rel="icon" href="{% static 'img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/maneu/admin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
     <!-- local -->
 
     <!-- bootstrap -->
@@ -46,11 +47,11 @@
         </li>
         <!-- 用户管理 -->
         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="{% url 'user:user_list' %}">用户管理</a>
-{#            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">用户管理</a>#}
-{#            <div class="dropdown-menu">#}
-{#                <a class="dropdown-item" href="{% url 'user:user_list' %}">用户管理</a>#}
-{#            </div>#}
+            <a class="nav-link dropdown-toggle" href="{% url 'user:user_list' %}">用户管理</a>
+            {#            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">用户管理</a>#}
+            {#            <div class="dropdown-menu">#}
+            {#                <a class="dropdown-item" href="{% url 'user:user_list' %}">用户管理</a>#}
+            {#            </div>#}
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link" href="{% url 'user:logout' %}" id="navbardrop">账户登出</a>
@@ -67,6 +68,7 @@
             <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
         </div>
     </div>
+
 </div>
 </body>
 

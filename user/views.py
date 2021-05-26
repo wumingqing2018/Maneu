@@ -35,7 +35,7 @@ def user_logout(request):
 
 
 def user_list(request):
-    user_list = serivce.find_all_user
+    user_list = serivce.find_all_user()
     return render(request, 'user/user_list.html', {'user_list': user_list})
 
 

@@ -1,14 +1,25 @@
 from store.models import FrameworkStore
-from common.common import order_id
+from common import common
+
+
+def store_all():
+    return FrameworkStore.objects.all()
+
+
+def find_store_id(store_id):
+    return FrameworkStore.objects.filter(store_id=store_id).first()
 
 
 def framework_store_insert(form):
     try:
         model = FrameworkStore()
-        model.store_id = order_id()
+        model.store_id = common.order_id()
         model.brand = form['brand']
         model.model = form['model']
-        model.remark = form['model']
+        model.count = form['count']
+        model.remark = form['remark']
+        model.time = common.current_time()
+
         model.save()
         return model
     except BaseException as msg:

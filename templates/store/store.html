@@ -4,20 +4,20 @@
 {% block content %}
     <!--内容栏-->
     <table class="table">
-        <tr>
+        <tr class="yellow">
             <td style="width:90%;">
-                <a href="{% url 'store:glass_store' %}" class="yellow">眼镜仓库</a>
+                <a href="{% url 'store:glass_store' %}">眼镜仓库</a>
             </td>
-            <td>
-                <a href="{% url 'store:glass_insert' %}" class="yellow">添加产品</a>
+            <td style="width:90%;">
+                <a href="{% url 'store:glass_insert' %}">添加产品</a>
             </td>
         </tr>
-        <tr>
+        <tr class="yellow">
             <td style="width:90%;">
-                <a href="{% url 'store:framework_store' %}" class="yellow">镜框仓库</a>
+                <a href="{% url 'store:framework_store' %}">镜框仓库</a>
             </td>
-            <td>
-                <a href="{% url 'store:framework_insert' %}" class="yellow">添加产品</a>
+            <td style="width:90%;">
+                <a href="{% url 'store:framework_insert' %}">添加产品</a>
             </td>
         </tr>
     </table>

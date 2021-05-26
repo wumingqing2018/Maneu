@@ -1,135 +1,102 @@
 {% extends 'base/admin.html' %}
-
 {% load static %}
 
 {% block content %}
     <!--内容栏-->
     <div class="container text-align`" id="content">
         <div class="row">
-            <div class="col-md-2 col-xs-12" style="color: yellow">
-                <span>订单编号:</span><span>123</span>
-            </div>
-            <div class="col-md-2 col-xs-12" style="color: yellow">
-                <span>订单编号:</span><span>123</span>
-            </div>
-            <div class="col-md-2 col-xs-12" style="color: yellow">
-                <span>订单编号:</span><span>123</span>
-            </div>
-            <div class="col-md-2 col-xs-12" style="color: yellow">
-                <span>订单编号:</span><span>123</span>
-            </div>
-            <div class="col-md-2 col-xs-12" style="color: yellow">
-                <span>订单编号:</span><span>123</span>
-            </div>
-            <div class="col-md-2 col-xs-12" style="color: yellow">
-                <span>订单编号:</span><span>123</span>
-            </div>
-            <div class="col-md-2 col-xs-12" style="color: yellow">
-                <span>订单编号:</span><span>123</span>
-            </div>
-            <div class="col-md-2 col-xs-12" style="color: yellow">
-                <span>订单编号:</span><span>123</span>
-            </div>
-            <div class="col-md-2 col-xs-12" style="color: yellow">
-                <span>订单编号:</span><span>123</span>
-            </div>
-        </div>
-        <div class="row">
             <table class="table">
                 <tr>
-                    <td class="yellow" colspan="7">
-                        订单信息
+                    <td colspan="10">
+                        <span>订单信息</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="yellow" style="width: 20%">订单编号</td>
-                    <td class="yellow" colspan="6">
-                        {{orders.order_id}}
+                    <td style="width: 10%">
+                        <span>订单编号</span>
+                    </td>
+                    <td colspan="9">
+                        <span>{{orders.order_id}}</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="yellow">查询密钥</td>
-                    <td class="yellow" colspan="6">
-                        {{orders.token}}
+                    <td><span>查询密钥</span></td>
+                    <td colspan="9">
+                        <span>{{orders.token}}</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="yellow" colspan="7">客户信息</td>
-                </tr>
-                <tr>
-                    <td class="yellow">客户姓名</td>
-                    <td class="yellow" colspan="6">
-                        {{orders.c_name}}
+                    <td colspan="10">
+                        <span>客户信息</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="yellow">客户电话</td>
-                    <td class="yellow" colspan="6">
-                        {{orders.c_phone}}
+                    <td><span>客户姓名</span></td>
+                    <td colspan="9">
+                        <span>{{orders.c_name}}</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="yellow">购买时间</td>
-                    <td class="yellow" colspan="6">
-                        {{orders.c_time}}
+                    <td><span>客户电话</span></td>
+                    <td colspan="9">
+                        <span>{{orders.c_phone}}</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="yellow" colspan="7">产品信息</td>
-                </tr>
-                <tr>
-                    <td width="10%" class="yellow">处方信息</td>
-                    <td width="15%" class="yellow">产品</td>
-                    <td width="15%" class="yellow">球镜:DS</td>
-                    <td width="15%" class="yellow">柱镜:DC</td>
-                    <td width="15%" class="yellow">轴位:AX</td>
-                    <td width="15%" class="yellow">ADD:DS</td>
-                    <td width="15%" class="yellow">瞳距:mm</td>
-                </tr>
-                <tr>
-                    <td class="yellow">左眼</td>
-                    <td class="yellow">{{orders.l_glasses}}</td>
-                    <td class="yellow">
-                        <b>{{orders.l_sphere}}</b>
-                    </td>
-                    <td class="yellow">
-                        <b>{{orders.l_astigmatic}}</b>
-                    </td>
-                    <td class="yellow">{{orders.l_deviation}}</td>
-                    <td class="yellow">{{orders.l_add}}</td>
-                    <td class="yellow">{{orders.l_pd}}</td>
-                </tr>
-                <tr>
-                    <td class="yellow">右眼</td>
-                    <td class="yellow">{{orders.r_glasses}}</td>
-                    <td class="yellow">
-                        <b>{{orders.r_sphere}}</b>
-                    </td>
-                    <td class="yellow">
-                        <b>{{orders.r_astigmatic}}</b>
-                    </td>
-                    <td class="yellow">{{orders.r_deviation}}</td>
-                    <td class="yellow">{{orders.r_add}}</td>
-                    <td class="yellow">{{orders.r_pd}}</td>
-                </tr>
-                <tr>
-                    <td class="yellow">镜框</td>
-                    <td class="yellow" colspan="6">
-                        {{orders.frame}}
+                    <td><span>购买时间</span></td>
+                    <td colspan="9">
+                        <span>{{orders.c_time}}</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="yellow">备注</td>
-                    <td class="yellow" colspan="6">{{orders.todo}}</td>
+                    <td colspan="10">
+                        <span>产品信息</span>
+                    </td>
                 </tr>
                 <tr>
-                    <td class="yellow">操作</td>
+                    <td style="width:10%;"><span>品牌</span></td>
+                    <td style="width:10%;"><span>型号</span></td>
+                    <td style="width:10%;"><span>折射:RF</span></td>
+                    <td style="width:10%;"><span>球镜:DS</span></td>
+                    <td style="width:10%;"><span>柱镜:DC</span></td>
+                    <td style="width:10%;"><span>方向:AD</span></td>
+                    <td style="width:10%;"><span>轴位:AX</span></td>
+                    <td style="width:10%;"><span>渐进:DS</span></td>
+                    <td style="width:10%;"><span>瞳距:mm</span></td>
+                    <td style="width:10%;"><span>数量:co</span></td>
+                </tr>
+                <tr>
+                    <td style="width:10%;"><span>蔡司</span></td>
+                    <td style="width:10%;"><span>清锐</span></td>
+                    <td style="width:10%;"><span>1.67</span></td>
+                    <td style="width:10%;"><span>300</span></td>
+                    <td style="width:10%;"><span>50</span></td>
+                    <td style="width:10%;"><span>左</span></td>
+                    <td style="width:10%;"><span>1</span></td>
+                    <td style="width:10%;"><span>2</span></td>
+                    <td style="width:10%;"><span>3</span></td>
+                    <td style="width:10%;"><span>5</span></td>
+                </tr>
+                <tr>
+                    <td style="width:10%;"><span>豪雅</span></td>
+                    <td style="width:10%;"><span>123467890123456</span></td>
+                    <td style="width:10%;" colspan="7"></td>
+                    <td style="width:10%;"><span>12</span></td>
+                </tr>
+                <tr>
+                    <td><span>备注</span></td>
+                    <td colspan="9">
+                        <span>{{orders.todo}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
                     <td>
                         <form id="order_delete">
                             {% csrf_token %}
                             <input type="hidden" name="order_id" value="{{orders.order_id}}">
                             <input type="button" class="btn btn-danger" value="删除" id="delete">
-                        </form>
+                        </form> 
                     </td>
                     <td>
                         <form method="get" action="{% url 'order:order_update' %}">
@@ -155,6 +122,14 @@
         </div>
 
     </div>
+{% endblock %}
+
+{% block css %}
+    <style>
+        span{
+            color: #FFC048;
+        }
+    </style>
 {% endblock %}
 
 {% block js %}

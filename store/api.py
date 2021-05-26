@@ -1,19 +1,19 @@
 from django.http import JsonResponse
 from .service import glass_store
 from .service import framework_store
+from store.forms.glass_store_insert import GlassStoreInsert
+from store.forms.frame_store_insert import FrameStoreInsert
 
 
 def glass_insert(request):
-    from store.forms.glass_store_insert import GlassStoreInsert
-    print(request.method)
     if request.method == 'POST':
         form = GlassStoreInsert(request.POST)
         if form.is_valid():
-            glass_insert = glass_store.glass_store_insert(form=form.clean())
-            if glass_insert:
-                res = {'code': 0, 'msg': 'save succeed'}
+            insert = glass_store.glass_store_insert(form=form.clean())
+            if insert:
+                res = {'code': 0, 'msg': 'save succeed', 'data': []}
             else:
-                res = {'code': 3, 'msg': 'save failed'}
+                res = {'code': 3, 'msg': 'save failed', 'data': []}
         else:
             res = {'code': 2, 'msg': form.errors}
     else:
@@ -37,7 +37,6 @@ def glass_store_model(request):
         except BaseException as msg:
             print(msg)
             brand = ''
-        print(brand)
         model = glass_store.glass_store_model(brand=brand).values_list('model').distinct()
         res = {'code': 0, 'msg': 'request succeed', 'data': list(model)}
     else:
@@ -115,7 +114,6 @@ def glass_store_count(request):
             astigmatic = ''
             refraction = ''
         store_id = glass_store.glass_store_count(brand, model, sphere, astigmatic, refraction).values_list('store_id', 'count').distinct()
-        print(store_id)
         res = {'code': 0, 'msg': 'request succeed', 'data': list(store_id)}
     else:
         res = {'code': 1, 'msg': 'request failed', 'data': []}
@@ -133,7 +131,6 @@ def framework_store_brand(request):
 
 def framework_store_model(request):
     if request.method == 'GET':
-        print(request)
         try:
             brand = request.GET['brand']
         except BaseException as msg:
@@ -148,7 +145,6 @@ def framework_store_model(request):
 
 def framework_store_count(request):
     if request.method == 'GET':
-        print(request)
         try:
             brand = request.GET['brand']
             model = request.GET['model']
@@ -164,7 +160,6 @@ def framework_store_count(request):
 
 
 def framework_insert(request):
-    from store.forms.frame_store_insert import FrameStoreInsert
     if request.method == 'POST':
         form = FrameStoreInsert(request.POST)
         if form.is_valid():

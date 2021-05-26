@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+    <!--内容栏-->
     <table class="table">
         <tr>
             <td style="width: 25%" class="yellow">单号</td>
@@ -27,16 +28,15 @@
                 </td>
             </tr>
         {% endfor %}
-        <tr>
-            <td>
-                <button style="display: none" align="right" id="up" class="btn btn-primary">上页</button>
-            </td>
-            <td colspan="3"></td>
-            <td>
-                <button style="display: none" align="left" id="down" class="btn btn-primary">下页</button>
-            </td>
-        </tr>
     </table>
+{#    <div class="row offset-5">#}
+{#        <div style="margin: 5%">#}
+{#            <button class="btn btn-primary" id="up">上页</button>#}
+{#        </div>#}
+{#        <div style="margin: 5%">#}
+{#            <button class="btn btn-primary" id="down">上页</button>#}
+{#        </div>#}
+{#    </div>#}
 {% endblock %}
 
 {% block js %}

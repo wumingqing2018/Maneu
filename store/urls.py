@@ -19,15 +19,16 @@ from . import api
 
 app_name = 'store'
 urlpatterns = [
-    # glass_views
+    # index
     path('store_list/', views.store, name='store'),
-    path('glass_store/', views.glass_store_all, name='glass_store'),
-    path('glass_content/', views.glass_content, name='glass_content'),
+    # glass_views
+    path('glass_list/', views.glass_list, name='glass_list'),
     path('glass_insert/', views.glass_insert, name='glass_insert'),
+    path('glass_content/', views.glass_content, name='glass_content'),
     # framework_views
-    path('framework_find/', views.framework_find, name='framework_find'),
-    path('framework_store/', views.framework_list, name='framework_store'),
+    path('framework_list/', views.framework_list, name='framework_list'),
     path('framework_insert/', views.framework_insert, name='framework_insert'),
+    path('framework_content/', views.framework_content, name='framework_content'),
 
     # glass_api
     path('api_glass_insert/', api.glass_insert, name='api_glass_insert'),
