@@ -3,125 +3,108 @@
 
 {% block content %}
     <!--内容栏-->
-    <div class="container text-align`" id="content">
-        <div class="row">
-            <table class="table">
-                <tr>
-                    <td colspan="10">
-                        <span>订单信息</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 10%">
-                        <span>订单编号</span>
-                    </td>
-                    <td colspan="9">
-                        <span>{{orders.order_id}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span>查询密钥</span></td>
-                    <td colspan="9">
-                        <span>{{orders.token}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="10">
-                        <span>客户信息</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span>客户姓名</span></td>
-                    <td colspan="9">
-                        <span>{{orders.c_name}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span>客户电话</span></td>
-                    <td colspan="9">
-                        <span>{{orders.c_phone}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span>购买时间</span></td>
-                    <td colspan="9">
-                        <span>{{orders.c_time}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="10">
-                        <span>产品信息</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:10%;"><span>品牌</span></td>
-                    <td style="width:10%;"><span>型号</span></td>
-                    <td style="width:10%;"><span>折射:RF</span></td>
-                    <td style="width:10%;"><span>球镜:DS</span></td>
-                    <td style="width:10%;"><span>柱镜:DC</span></td>
-                    <td style="width:10%;"><span>方向:AD</span></td>
-                    <td style="width:10%;"><span>轴位:AX</span></td>
-                    <td style="width:10%;"><span>渐进:DS</span></td>
-                    <td style="width:10%;"><span>瞳距:mm</span></td>
-                    <td style="width:10%;"><span>数量:co</span></td>
-                </tr>
-                <tr>
-                    <td style="width:10%;"><span>蔡司</span></td>
-                    <td style="width:10%;"><span>清锐</span></td>
-                    <td style="width:10%;"><span>1.67</span></td>
-                    <td style="width:10%;"><span>300</span></td>
-                    <td style="width:10%;"><span>50</span></td>
-                    <td style="width:10%;"><span>左</span></td>
-                    <td style="width:10%;"><span>1</span></td>
-                    <td style="width:10%;"><span>2</span></td>
-                    <td style="width:10%;"><span>3</span></td>
-                    <td style="width:10%;"><span>5</span></td>
-                </tr>
-                <tr>
-                    <td style="width:10%;"><span>豪雅</span></td>
-                    <td style="width:10%;"><span>123467890123456</span></td>
-                    <td style="width:10%;" colspan="7"></td>
-                    <td style="width:10%;"><span>12</span></td>
-                </tr>
-                <tr>
-                    <td><span>备注</span></td>
-                    <td colspan="9">
-                        <span>{{orders.todo}}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3"></td>
-                    <td>
-                        <form id="order_delete">
-                            {% csrf_token %}
-                            <input type="hidden" name="order_id" value="{{orders.order_id}}">
-                            <input type="button" class="btn btn-danger" value="删除" id="delete">
-                        </form> 
-                    </td>
-                    <td>
-                        <form method="get" action="{% url 'order:order_update' %}">
-                            <input type="hidden" name="order_id" value="{{orders.order_id}}">
-                            <input type="submit" class="btn btn-warning" value="更新">
-                        </form>
-                    </td>
-                    <td>
-                        <form id="qr_code">
-                            {% csrf_token %}
-                            <input type="hidden" name="order_id" value="{{orders.order_id}}">
-                            <input type="hidden" name="token" value="{{orders.token}}">
-                            <input type="button" class="btn btn-primary" id="get_qr_code" value="扫码">
-                        </form>
-                    </td>
-                    <td>
-                        <form method="get" action="{% url 'order:order_list' %}">
-                            <input class="btn btn-primary" type="submit" value="返回">
-                        </form>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-    </div>
+    <table class="table">
+        <tr>
+            <td colspan="11">
+                <span>订单信息</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 15%">
+                <span>订单编号</span>
+            </td>
+            <td colspan="10">
+                <span>{{orders.order_id}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>查询密钥</span>
+            </td>
+            <td colspan="10">
+                <span>{{orders.token}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="11"><span>客户信息</span></td>
+        </tr>
+        <tr>
+            <td><span>客户姓名</span></td>
+            <td colspan="10">
+                <span>{{orders.c_name}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td><span>客户电话</span></td>
+            <td colspan="10">
+                <span>{{orders.c_phone}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td><span>购买时间</span></td>
+            <td colspan="10">
+                <span>{{orders.c_time}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="11">
+                <span>产品信息</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width:15%;"><span>产品</span></td>
+            <td style="width:8.5%;"><span>品牌</span></td>
+            <td style="width:8.5%;"><span>型号</span></td>
+            <td style="width:8.5%;"><span>折射</span></td>
+            <td style="width:8.5%;"><span>球镜</span></td>
+            <td style="width:8.5%;"><span>柱镜</span></td>
+            <td style="width:8.5%;"><span>方向</span></td>
+            <td style="width:8.5%;"><span>轴位</span></td>
+            <td style="width:8.5%;"><span>ADD</span></td>
+            <td style="width:8.5%;"><span>瞳距</span></td>
+            <td style="width:8.5%;"><span>数量</span></td>
+        </tr>
+        <tr>
+            <td><span>镜片</span></td>
+            <td><span>蔡司</span></td>
+            <td><span>清锐</span></td>
+            <td><span>1.67</span></td>
+            <td><span>300</span></td>
+            <td><span>50</span></td>
+            <td><span>左</span></td>
+            <td><span>1</span></td>
+            <td><span>2</span></td>
+            <td><span>3</span></td>
+            <td><span>5</span></td>
+        </tr>
+        <tr>
+            <td><span>镜框</span></td>
+            <td><span>豪雅</span></td>
+            <td colspan="8"><span>123467890123456</span></td>
+            <td><span>12</span></td>
+        </tr>
+        <tr>
+            <td><span>备注</span></td>
+            <td colspan="10">
+                <span>{{orders.todo}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form method="get" action="{% url 'order:order_list' %}">
+                    <input class="btn btn-primary" type="submit" value="返回">
+                </form>
+            </td>
+            <td colspan="10">
+                <form id="qr_code">
+                    {% csrf_token %}
+                    <input type="hidden" name="order_id" value="{{orders.order_id}}">
+                    <input type="hidden" name="token" value="{{orders.token}}">
+                    <input type="button" class="btn btn-primary" id="get_qr_code" value="扫码">
+                </form>
+            </td>
+        </tr>
+    </table>
 {% endblock %}
 
 {% block css %}

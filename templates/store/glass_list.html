@@ -57,17 +57,9 @@
             </tr>
         {% endfor %}
         <tr>
-            <td colspan="2">
-
-            </td>
-            <td colspan="2">
-                <button id="store" class="btn btn-primary">上页</button>
-            </td>
-            <td colspan="2">
-                <button id="store" class="btn btn-primary">下页</button>
-            </td>
+            <td colspan="6"></td>
             <td>
-                <form method="get" action="{% url 'store:store' %}">
+                <form method="get" action="{% url 'store:list' %}">
                     <input type="submit" class="btn btn-primary" value="返回列表">
                 </form>
             </td>

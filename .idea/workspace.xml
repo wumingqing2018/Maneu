@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="优化页面">
-      <change afterPath="$PROJECT_DIR$/templates/store/framework_content.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/store/framework_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/store/glass_content.html" afterDir="false" />
+    <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="fix bug">
+      <change afterPath="$PROJECT_DIR$/static/js/order/order_insert/framework_modules.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/order/order_insert/glass_modules.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/common.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/common/input_range.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/common/input_range.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/forms/frame_store_insert.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/forms/frame_store_insert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/forms/glass_store_insert.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/forms/glass_store_insert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/service/framework_store.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/service/framework_store.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/order/order_insert.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/order/order_insert/order_insert.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/error_page.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/order/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order/order_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/store/frame_store.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/store/framework_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/framework_insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/store/glass.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/store/glass_store.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/order_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/store/framework_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/framework_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/store/glass_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/store/store.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/store.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_content.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/test.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,10 +60,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\75982\PycharmProjects\Maneu\static\js\order\order_insert" />
       <recent name="C:\Users\75982\PycharmProjects\Maneu\static\img" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript 调试.test.html">
+    <configuration name="test.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Maneu/templates/test.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="Maneu" type="Python.DjangoServer" factoryName="Django server">
       <module name="Maneu" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -97,6 +91,11 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript 调试.test.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -134,7 +133,9 @@
       <workItem from="1621998437867" duration="33000" />
       <workItem from="1621998481928" duration="46000" />
       <workItem from="1621998544763" duration="379000" />
-      <workItem from="1621998938636" duration="16464000" />
+      <workItem from="1621998938636" duration="17729000" />
+      <workItem from="1622078991771" duration="20580000" />
+      <workItem from="1622180538387" duration="5797000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1619573416247</created>
@@ -199,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621323710979</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix bug">
+      <created>1622022688961</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1622022688961</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +230,18 @@
     <MESSAGE value="修改底部样式" />
     <MESSAGE value="修改首页" />
     <MESSAGE value="优化页面" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化页面" />
+    <MESSAGE value="fix bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/store/api.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
