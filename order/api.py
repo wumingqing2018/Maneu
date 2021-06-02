@@ -26,7 +26,7 @@ def order_insert(request):
     if request.method == "POST":
         form = OrderInsertForm(request.POST)
         if form.is_valid():
-            add_order = service.order_insert(form=request.POST)
+            add_order = service.order_insert(form=form.clean())
             if add_order:
                 res = {'code': 0, 'msg': '创建成功'}
             else:

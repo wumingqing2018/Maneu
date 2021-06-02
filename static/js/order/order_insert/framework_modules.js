@@ -51,24 +51,9 @@ $(document).ready(function () {
     });
     framework_insert_btn.click(function () {
         framework_hide()
-        order.push($('#framework_insert').serializeObject())
-        console.log($('#framework_insert').serializeObject())
+        order.push(framework_insert.serializeJsonStr())
+        order_content(content=framework_insert.serializeJsonStr())
     });
-    $.fn.serializeObject = function() {
-        var o = {};
-        var a = this.serializeArray();
-        $.each(a, function() {
-            if (o[this.name] !== undefined) {
-                if (!o[this.name].push) {
-                    o[this.name] = [o[this.name]];
-                }
-                o[this.name].push(this.value || '');
-            } else {
-                o[this.name] = this.value || '';
-            }
-        });
-        return o;
-    };
     function framework_show() {
         /*
         添加镜框表格 id=framework_table
@@ -84,6 +69,7 @@ $(document).ready(function () {
         framework_brand_select.append('<option></option>')
         framework_model_select.children('option').remove()
         framework_model_select.append('<option></option>')
+        // glass_insert_hide.click()
     }
     function framework_hide() {
         /*
@@ -94,5 +80,30 @@ $(document).ready(function () {
         framework_table.hide()
         framework_insert_show.show()
         framework_insert_hide.hide()
+    }
+    function order_content (content){
+        order = jQuery.parseJSON(content)
+        html = ''
+        html += '<tr class="yellow">'
+        html += '<td>'+ order.brand +'</td>'
+        html += '<td colspan="8">'+ order.model +'</td>'
+        html += '<td>'+ order.count +'</td>'
+        html += '</tr>'
+        $('#order_content').append(html)
+    }
+    $.fn.serializeJsonStr = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return JSON.stringify(o);
     }
 })

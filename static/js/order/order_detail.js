@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     // 获取二维码
     $("#get_qr_code").click(function(){

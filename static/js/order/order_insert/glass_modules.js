@@ -117,15 +117,15 @@ $(document).ready(function () {
                     store_id = res.data[0][0]
                     store_count = res.data[0][1]
                     glass.val(store_id)
-                    $('#glass_insert_count').attr({'max':store_count})
+                    $('#count').attr({'max':store_count})
                 }
             }
         })
     });
     glass_insert_btn.click(function () {
-        console.log($('#glass_insert').serialize())
-        order.push(glass_insert.serialize())
-        console.log(order)
+        content = glass_insert.serializeJsonStr()
+        order.push(content)
+        order_content(content)
     });
     function glass_show() {
         /*
@@ -140,6 +140,7 @@ $(document).ready(function () {
         glass_insert_show.hide()
         glass_brand_select.children('option').remove()
         glass_brand_select.append('<option></option>')
+        // framework_insert_hide.click()
     }
     function glass_hide(){
         /*
@@ -151,5 +152,38 @@ $(document).ready(function () {
         glass_insert_hide.hide()
         glass_insert_show.show()
         glass_table.hide()
+    }
+    function order_content (content){
+        order = jQuery.parseJSON(content)
+        html = ''
+        html += '<tr class="yellow">'
+        html += '<td>'+ order.brand +'</td>'
+        html += '<td>'+ order.model +'</td>'
+        html += '<td>'+ order.sphere +'</td>'
+        html += '<td>'+ order.astigmatic +'</td>'
+        html += '<td>'+ order.refraction +'</td>'
+        html += '<td>'+ order.Around +'</td>'
+        html += '<td>'+ order.pd +'</td>'
+        html += '<td>'+ order.add +'</td>'
+        html += '<td>'+ order.deviation +'</td>'
+        html += '<td>'+ order.count +'</td>'
+        html += '</tr>'
+        $('#order_content').append(html)
+    }
+
+    $.fn.serializeJsonStr = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return JSON.stringify(o);
     }
 })

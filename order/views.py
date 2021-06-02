@@ -13,10 +13,9 @@ def order_list(request):
 
 def order_detail(request):
     """查看订单详情"""
-    print(request.GET)
     order_id = verify.verify_order_id_get(request)
     if order_id:
-        orders = service.find_order_one(order_id)
+        orders = service.find_order_id(order_id)
         if orders:
             return render(request, 'order/order_detail.html', {'orders': orders})
         else:
@@ -38,8 +37,7 @@ def order_search(request):
 
 def order_insert(request):
     """添加订单"""
-    from .forms.orderInsertForm import OrderInsertForm
-    return render(request, 'order/order_insert.html', {'form': OrderInsertForm()})
+    return render(request, 'order/order_insert.html')
 
 
 def order_update(request):
@@ -49,7 +47,7 @@ def order_update(request):
 
     order_id = verify.is_order_id(request)
     if order_id:
-        orders = service.find_order_one(order_id)
+        orders = service.find_order_id(order_id)
         if orders:
             orders = model_to_dict(orders)
             form = OrderUpdateForm(initial=orders)

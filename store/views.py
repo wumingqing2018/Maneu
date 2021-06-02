@@ -39,8 +39,8 @@ def framework_insert(request):
 
 
 def framework_content(request):
-    print(request.GET)
     store_id = verify.verify_store_id_get(request)
     if store_id:
         framework = framework_store.find_store_id(store_id=store_id)
+        print(framework['order'])
         return render(request, 'store/framework_content.html', {'framework': framework})

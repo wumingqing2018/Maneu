@@ -8,6 +8,7 @@ def order_insert(form):
     添加订单
     """
     try:
+        print(form['order'])
         item = Order.objects.create(
             # 订单
             order_id=common.order_id(),
@@ -18,27 +19,13 @@ def order_insert(form):
             c_time=common.current_time(),
             # 商家
             besiness='',
-            # 镜架
-            frame=form['frame'],
-            # 左眼
-            l_glasses=form['l_glasses'],
-            l_pd=form['l_pd'],
-            l_add=form['l_add'],
-            l_sphere=form['l_sphere'],
-            l_deviation=form['l_deviation'],
-            l_astigmatic=form['l_astigmatic'],
-            # 右眼
-            r_glasses=form['r_glasses'],
-            r_pd=form['r_pd'],
-            r_add=form['r_add'],
-            r_sphere=form['r_sphere'],
-            r_astigmatic=form['r_astigmatic'],
-            r_deviation=form['r_deviation'],
+            order='['+form['order']+']',
             # 备注
             todo=form['todo'],
         )
         return item
     except BaseException as msg:
+        print(msg)
         return msg
 
 
@@ -91,7 +78,7 @@ def find_order_all():
     全部订单
     """
     try:
-        return Order.objects.order_by('-c_time').all()[0:10]
+        return Order.objects.order_by('-c_time').all()
     except:
         return None
 
@@ -109,7 +96,7 @@ def find_order_today():
         return None
 
 
-def find_order_one(order_id):
+def find_order_id(order_id):
     """
     查找指定订单
     根据时间排序
