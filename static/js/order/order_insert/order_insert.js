@@ -8,21 +8,30 @@ $(document).ready(function () {
         window.location.href = api_order_list;
     })
     $("#c_name").blur(function(){
-        var c_name = $('#c_name').val();
-        if (c_name === '') {
+        if ($('#c_name').val() === '') {
             $('#username_error').text('请输入姓名');
         } else {
             $('#username_error').text('');
+            if (c_phone.val() === '') {
+                $('#insert').hide()
+            } else {
+                $('#insert').show()
+            }
         }
     });
     c_phone.blur(function(){
-        c_phone_val = c_phone.val();
-        if (c_phone_val === '') {
+        if (c_phone.val() === '') {
             $('#phone_error').text('请输入电话');
-        } else if (isNaN(c_phone_val)) {
+        } else if (isNaN(c_phone.val())) {
             $('#phone_error').text('电话由数字构成');
         } else {
             $('#phone_error').text('');
+            alert(1)
+            if (c_name.val() === '') {
+                $('#insert').hide()
+            } else {
+                $('#insert').show()
+            }
         }
     });
     $('#insert').click(function () {

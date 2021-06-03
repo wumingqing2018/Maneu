@@ -154,19 +154,21 @@ $(document).ready(function () {
         glass_table.hide()
     }
     function order_content (content){
-        order = jQuery.parseJSON(content)
+        content = jQuery.parseJSON(content)
+        console.log(content)
         html = ''
         html += '<tr class="yellow">'
-        html += '<td>'+ order.brand +'</td>'
-        html += '<td>'+ order.model +'</td>'
-        html += '<td>'+ order.sphere +'</td>'
-        html += '<td>'+ order.astigmatic +'</td>'
-        html += '<td>'+ order.refraction +'</td>'
-        html += '<td>'+ order.Around +'</td>'
-        html += '<td>'+ order.pd +'</td>'
-        html += '<td>'+ order.add +'</td>'
-        html += '<td>'+ order.deviation +'</td>'
-        html += '<td>'+ order.count +'</td>'
+        html += '<td>'+ content.product +'</td>'
+        html += '<td>'+ content.brand +'</td>'
+        html += '<td>'+ content.model +'</td>'
+        html += '<td>'+ content.sphere +'</td>'
+        html += '<td>'+ content.astigmatic +'</td>'
+        html += '<td>'+ content.refraction +'</td>'
+        html += '<td>'+ content.Around +'</td>'
+        html += '<td>'+ content.pd +'</td>'
+        html += '<td>'+ content.add +'</td>'
+        html += '<td>'+ content.deviation +'</td>'
+        html += '<td>'+ content.count +'</td>'
         html += '</tr>'
         $('#order_content').append(html)
     }

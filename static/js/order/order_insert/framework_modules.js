@@ -8,6 +8,7 @@ $(document).ready(function () {
             url: api_framework_store_brand,
             type: 'GET',
             success: function (res) {
+                framework_brand_select.append('<option></option>')
                 if (res.code === 0){
                     for (i in res.data){
                         data = res.data[i]
@@ -21,6 +22,7 @@ $(document).ready(function () {
         framework_hide()
     });
     framework_brand_select.change(function () {
+        // 眼镜品牌选择框改变后加载眼镜框型号
         framework_model_select.find('option').remove()
         framework_model_select.append('<option></option>')
         $.ajax({
@@ -38,6 +40,7 @@ $(document).ready(function () {
         })
     });
     framework_model_select.change(function () {
+        // 眼镜型号选择框改变后加载眼镜框数量
         $.ajax({
             url: api_framework_store_count,
             type: 'GET',
@@ -50,9 +53,15 @@ $(document).ready(function () {
         })
     });
     framework_insert_btn.click(function () {
+        /*
+        点击framework_insert_btn按钮
+        把添加镜框表单转换为json字符串并保存到order数组
+        把表单内容显示到order_content的表格位置
+         */
+        content=framework_insert.serializeJsonStr()
+        order.push("content");
+        order_content(content)
         framework_hide()
-        order.push(framework_insert.serializeJsonStr())
-        order_content(content=framework_insert.serializeJsonStr())
     });
     function framework_show() {
         /*
@@ -65,11 +74,7 @@ $(document).ready(function () {
         framework_table.show()
         framework_insert_show.hide()
         framework_insert_hide.show()
-        framework_brand_select.children('option').remove()
-        framework_brand_select.append('<option></option>')
-        framework_model_select.children('option').remove()
-        framework_model_select.append('<option></option>')
-        // glass_insert_hide.click()
+        framework_insert.find('option').remove()
     }
     function framework_hide() {
         /*
@@ -82,16 +87,19 @@ $(document).ready(function () {
         framework_insert_hide.hide()
     }
     function order_content (content){
-        order = jQuery.parseJSON(content)
+        // 传入json字符串显示到id=order_content的表格位置
+        content = jQuery.parseJSON(content)
         html = ''
         html += '<tr class="yellow">'
-        html += '<td>'+ order.brand +'</td>'
-        html += '<td colspan="8">'+ order.model +'</td>'
-        html += '<td>'+ order.count +'</td>'
+        html += '<td>'+ content.product +'</td>'
+        html += '<td>'+ content.brand +'</td>'
+        html += '<td colspan="8">'+ content.model +'</td>'
+        html += '<td>'+ content.count +'</td>'
         html += '</tr>'
         $('#order_content').append(html)
     }
     $.fn.serializeJsonStr = function () {
+        // 把from表单内容转换为json字符串
         var o = {};
         var a = this.serializeArray();
         $.each(a, function() {
