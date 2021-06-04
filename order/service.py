@@ -1,6 +1,5 @@
 from order.models import Order
 from common import common
-import json
 
 
 def order_insert(form):
@@ -8,7 +7,6 @@ def order_insert(form):
     添加订单
     """
     try:
-        print(form['order'])
         item = Order.objects.create(
             # 订单
             order_id=common.order_id(),
@@ -19,14 +17,14 @@ def order_insert(form):
             c_time=common.current_time(),
             # 商家
             besiness='',
-            order='['+form['order']+']',
+            order=form['order'],
             # 备注
             todo=form['todo'],
         )
         return item
     except BaseException as msg:
         print(msg)
-        return msg
+        return None
 
 
 def order_update(order_id, form):
@@ -69,7 +67,8 @@ def order_delete(order_id):
         order = Order.objects.filter(order_id=order_id).all()
         order.delete()
         return True
-    except BaseException:
+    except BaseException as msg:
+        print(msg)
         return False
 
 
@@ -79,7 +78,8 @@ def find_order_all():
     """
     try:
         return Order.objects.order_by('-c_time').all()
-    except:
+    except BaseException as msg:
+        print(msg)
         return None
 
 
@@ -103,26 +103,30 @@ def find_order_id(order_id):
     """
     try:
         return Order.objects.filter(order_id=order_id).first()
-    except:
+    except BaseException as msg:
+        print(msg)
         return None
 
 
 def find_order_phone(phone):
     try:
         return Order.objects.filter(c_phone=phone).all()
-    except:
+    except BaseException as msg:
+        print(msg)
         return None
 
 
 def find_order_name(name):
     try:
         return Order.objects.filter(c_name=name).all()
-    except:
+    except BaseException as msg:
+        print(msg)
         return None
 
 
 def find_order_time(time):
     try:
         return Order.objects.filter(c_time__day=time).all()
-    except:
+    except BaseException as msg:
+        print(msg)
         return None

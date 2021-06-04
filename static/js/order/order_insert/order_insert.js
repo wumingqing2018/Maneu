@@ -26,7 +26,6 @@ $(document).ready(function () {
             $('#phone_error').text('电话由数字构成');
         } else {
             $('#phone_error').text('');
-            alert(1)
             if (c_name.val() === '') {
                 $('#insert').hide()
             } else {
@@ -35,7 +34,7 @@ $(document).ready(function () {
         }
     });
     $('#insert').click(function () {
-        $("#order").val(order);
+        $("#order").val('['+order+']');
         $.ajax({
             url: api_order_insert,
             type: 'POST',

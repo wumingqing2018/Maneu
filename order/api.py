@@ -3,9 +3,11 @@ from django.http import JsonResponse
 from .forms.orderInsertForm import OrderInsertForm
 from .forms.orderUpdateForm import OrderUpdateForm
 from . import service
+from store.service import framework_store
 
 from common import verify
 from common import common
+import json
 
 
 def order_list(request):
@@ -22,11 +24,14 @@ def order_list(request):
 
 def order_insert(request):
     """创建订单"""
-    print(request.POST)
     if request.method == "POST":
         form = OrderInsertForm(request.POST)
         if form.is_valid():
-            add_order = service.order_insert(form=form.clean())
+            form = form.clean()
+            add_order = service.order_insert(form)
+            order = json.loads(form['order'])
+            for i in order:
+                framework_store.framework_count_out(store_id=i['framework'])
             if add_order:
                 res = {'code': 0, 'msg': '创建成功'}
             else:
@@ -76,14 +81,14 @@ def order_update(request):
     return JsonResponse(res)
 
 
-def qr_code(request):
+def order_qrcode(request):
     """二维码接口"""
     if request.method == 'POST':
         order_id = verify.is_order_id(request)
         if order_id:
             token = verify.is_order_id(request)
             if token:
-                qrcode = common.qrcode_api(order_id, token)
+                qrcode = common.qrcode(order_id, token)
                 if qrcode:
                     res = {'code': 0, 'msg': '生成成功'}
                 else:

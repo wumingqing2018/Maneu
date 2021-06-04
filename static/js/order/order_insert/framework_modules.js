@@ -5,7 +5,7 @@ $(document).ready(function () {
     framework_insert_show.click(function () {
         framework_show()
         $.ajax({
-            url: api_framework_store_brand,
+            url: api_framework_brand,
             type: 'GET',
             success: function (res) {
                 framework_brand_select.append('<option></option>')
@@ -26,7 +26,7 @@ $(document).ready(function () {
         framework_model_select.find('option').remove()
         framework_model_select.append('<option></option>')
         $.ajax({
-            url: api_framework_store_model,
+            url: api_framework_model,
             type: 'GET',
             data: {'brand': framework_brand_select.val()},
             success: function (res) {
@@ -42,7 +42,7 @@ $(document).ready(function () {
     framework_model_select.change(function () {
         // 眼镜型号选择框改变后加载眼镜框数量
         $.ajax({
-            url: api_framework_store_count,
+            url: api_framework_count,
             type: 'GET',
             data: {'brand': framework_brand_select.val(), 'model': framework_model_select.val()},
             success: function (res) {
@@ -59,7 +59,7 @@ $(document).ready(function () {
         把表单内容显示到order_content的表格位置
          */
         content=framework_insert.serializeJsonStr()
-        order.push("content");
+        order.push(content);
         order_content(content)
         framework_hide()
     });

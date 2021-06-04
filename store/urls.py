@@ -20,7 +20,7 @@ from . import api
 app_name = 'store'
 urlpatterns = [
     # index
-    path('list/', views.store, name='list'),
+    path('store_list/', views.store_list, name='store_list'),
     # glass_views
     path('glass_list/', views.glass_list, name='glass_list'),
     path('glass_insert/', views.glass_insert, name='glass_insert'),
@@ -32,15 +32,15 @@ urlpatterns = [
 
     # glass_api
     path('api_glass_insert/', api.glass_insert, name='api_glass_insert'),
-    path('api_glass_store_brand/', api.glass_store_brand, name='api_glass_store_brand'),
-    path('api_glass_store_model/', api.glass_store_model, name='api_glass_store_model'),
-    path('api_glass_store_sphere/', api.glass_store_sphere, name='api_glass_store_sphere'),
-    path('api_glass_store_astigmatic/', api.glass_store_astigmatic, name='api_glass_store_astigmatic'),
-    path('api_glass_store_refraction/', api.glass_store_refraction, name='api_glass_store_refraction'),
-    path('api_glass_store_count/', api.glass_store_count, name='api_glass_store_count'),
+    path('api_glass_brand/', api.glass_brand, name='api_glass_brand'),
+    path('api_glass_model/', api.glass_model, name='api_glass_model'),
+    path('api_glass_sphere/', api.glass_sphere, name='api_glass_sphere'),
+    path('api_glass_astigmatic/', api.glass_astigmatic, name='api_glass_astigmatic'),
+    path('api_glass_refraction/', api.glass_refraction, name='api_glass_refraction'),
+    path('api_glass_count/', api.glass_count, name='api_glass_count'),
     # framework_api
     path('api_framework_insert/', api.framework_insert, name='api_framework_insert'),
-    path('api_framework_store_brand/', api.framework_store_brand, name='api_framework_store_brand'),
-    path('api_framework_store_model/', api.framework_store_model, name='api_framework_store_model'),
-    path('api_framework_store_count/', api.framework_store_count, name='api_framework_store_count'),
+    path('api_framework_brand/', api.framework_brand, name='api_framework_brand'),
+    path('api_framework_model/', api.framework_model, name='api_framework_model'),
+    path('api_framework_count/', api.framework_count, name='api_framework_count'),
 ]

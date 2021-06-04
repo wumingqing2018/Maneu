@@ -49,3 +49,14 @@ def framework_store_count(brand, model):
     except BaseException as msg:
         print(msg)
         return None
+
+
+def framework_count_out(store_id, count=1):
+    try:
+        model = FrameworkStore.objects.filter(store_id=store_id).first()
+        model.count = int(model.count)-count
+        model.save()
+        return True
+    except BaseException as msg:
+        print(msg)
+        return False

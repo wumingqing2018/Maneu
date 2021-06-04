@@ -2,7 +2,7 @@ $(document).ready(function () {
     glass_insert_show.click(function () {
         glass_show()
         $.ajax({
-            url: api_glass_store_brand,
+            url: api_glass_brand,
             type: 'GET',
             success: function (res) {
                 if (res.code === 0) {
@@ -28,7 +28,7 @@ $(document).ready(function () {
         glass_astigmatic_select.find('option').remove()
         glass_refraction_select.find('option').remove()
         $.ajax({
-            url: api_glass_store_model,
+            url: api_glass_model,
             type: 'GET',
             data: {'brand': glass_brand_select.val()},
             success: function (res) {
@@ -47,7 +47,7 @@ $(document).ready(function () {
         glass_astigmatic_select.find('option').remove()
         glass_refraction_select.find('option').remove()
         $.ajax({
-            url: api_glass_store_sphere,
+            url: api_glass_sphere,
             type: 'GET',
             data: {'brand': glass_brand_select.val(),
                 'model': glass_model_select.val()},
@@ -66,7 +66,7 @@ $(document).ready(function () {
         glass_astigmatic_select.find('option').remove()
         glass_refraction_select.find('option').remove()
         $.ajax({
-            url: api_glass_store_astigmatic,
+            url: api_glass_astigmatic,
             type: 'GET',
             data: {'brand': glass_brand_select.val(),
                 'model': glass_model_select.val(),
@@ -86,7 +86,7 @@ $(document).ready(function () {
     glass_astigmatic_select.change(function () {
         glass_refraction_select.find('option').remove()
         $.ajax({
-            url: api_glass_store_refraction,
+            url: api_glass_refraction,
             type: 'GET',
             data: {'brand': glass_brand_select.val(),
                 'model': glass_model_select.val(),
@@ -105,7 +105,7 @@ $(document).ready(function () {
     });
     glass_refraction_select.change(function () {
         $.ajax({
-            url: api_glass_store_count,
+            url: api_glass_count,
             type: 'GET',
             data: {'brand': glass_brand_select.val(),
                 'model': glass_model_select.val(),

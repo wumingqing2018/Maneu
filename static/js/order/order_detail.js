@@ -3,7 +3,7 @@ $(document).ready(function(){
     // 获取二维码
     $("#get_qr_code").click(function(){
         $.ajax({
-            url: api_qr_code,
+            url: api_order_qrcode,
             type: 'POST',
             data: $('#qr_code').serialize(),
             success: function (res) {

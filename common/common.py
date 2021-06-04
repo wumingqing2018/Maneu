@@ -35,3 +35,7 @@ def token():
     rand_int = random.randint(10000000000000000000000000000000,
                               99999999999999999999999999999999)
     return rand_int
+
+
+def qrcode(order_id, token):
+    return None

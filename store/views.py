@@ -5,7 +5,7 @@ from store.service import glass_store
 from common import verify
 
 
-def store(request):
+def store_list(request):
     return render(request, 'store/store.html')
 
 

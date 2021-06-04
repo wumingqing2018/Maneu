@@ -118,9 +118,9 @@
 
 {% block js %}
     <script>
-        var api_qr_code = '{% url 'order:api_qr_code' %}';
-        var api_order_delete = '{% url 'order:api_order_delete' %}';
-        var order_list = '{% url 'order:order_list' %}';
+        api_order_qrcode = '{% url 'order:api_order_qrcode' %}';
+        api_order_delete = '{% url 'order:api_order_delete' %}';
+        order_list = '{% url 'order:order_list' %}';
     </script>
     <script src="{% static 'js/order/order_detail.js' %}"></script>
     <script src="{% static 'js/maneu/base.js' %}"></script>

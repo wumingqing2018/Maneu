@@ -3,6 +3,7 @@ from .service import glass_store
 from .service import framework_store
 from store.forms.glass_store_insert import GlassStoreInsert
 from store.forms.frame_store_insert import FrameStoreInsert
+from common import verify
 
 
 def glass_insert(request):
@@ -21,7 +22,7 @@ def glass_insert(request):
     return JsonResponse(res)
 
 
-def glass_store_brand(request):
+def glass_brand(request):
     if request.method == 'GET':
         brand = glass_store.glass_store_all().values_list('brand').distinct()
         res = {'code': 0, 'msg': 'request succeed', 'data': list(brand)}
@@ -30,7 +31,7 @@ def glass_store_brand(request):
     return JsonResponse(res)
 
 
-def glass_store_model(request):
+def glass_model(request):
     if request.method == 'GET':
         try:
             brand = request.GET['brand']
@@ -44,7 +45,7 @@ def glass_store_model(request):
     return JsonResponse(res)
 
 
-def glass_store_sphere(request):
+def glass_sphere(request):
     if request.method == 'GET':
         try:
             brand = request.GET['brand']
@@ -60,7 +61,7 @@ def glass_store_sphere(request):
     return JsonResponse(res)
 
 
-def glass_store_astigmatic(request):
+def glass_astigmatic(request):
     if request.method == 'GET':
         try:
             brand = request.GET['brand']
@@ -78,7 +79,7 @@ def glass_store_astigmatic(request):
     return JsonResponse(res)
 
 
-def glass_store_refraction(request):
+def glass_refraction(request):
     if request.method == 'GET':
         try:
             brand = request.GET['brand']
@@ -98,7 +99,7 @@ def glass_store_refraction(request):
     return JsonResponse(res)
 
 
-def glass_store_count(request):
+def glass_count(request):
     if request.method == 'GET':
         try:
             brand = request.GET['brand']
@@ -120,7 +121,8 @@ def glass_store_count(request):
     return JsonResponse(res)
 
 
-def framework_store_brand(request):
+
+def framework_brand(request):
     if request.method == 'GET':
         brand = framework_store.framework_store_brand().values_list('brand').distinct()
         res = {'code': 0, 'msg': 'request succeed', 'data': list(brand)}
@@ -129,7 +131,7 @@ def framework_store_brand(request):
     return JsonResponse(res)
 
 
-def framework_store_model(request):
+def framework_model(request):
     if request.method == 'GET':
         try:
             brand = request.GET['brand']
@@ -143,7 +145,7 @@ def framework_store_model(request):
     return JsonResponse(res)
 
 
-def framework_store_count(request):
+def framework_count(request):
     if request.method == 'GET':
         try:
             brand = request.GET['brand']
