@@ -29,6 +29,7 @@ urlpatterns = [
     # api
     path('api_order_list/', api.order_list, name='api_order_list'),
     path('api_order_qrcode/', api.order_qrcode, name='api_order_qrcode'),
+    path('api_order_detail/', api.order_detail, name='api_order_detail'),
     path('api_order_insert/', api.order_insert, name='api_order_insert'),
     path('api_order_update/', api.order_update, name='api_order_update'),
     path('api_order_delete/', api.order_delete, name='api_order_delete'),

@@ -184,17 +184,17 @@ def verify_store_id_get(request):
         return None
 
 
-def verify_order_id_get(request):
+def verify_id_get(request):
     if request.method == 'GET':
         try:
-            order_id = request.GET['order_id']
+            id = request.GET['id']
         except:
             return None
-        if order_id:
+        if id:
             pattern = r"^\d{32}$"
-            re_match = re.match(pattern, order_id, flags=0)
+            re_match = re.match(pattern, id, flags=0)
             if re_match:
-                return order_id
+                return id
 
         return None
 

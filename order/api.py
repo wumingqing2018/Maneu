@@ -1,8 +1,8 @@
 from django.http import JsonResponse
 
-from .forms.orderInsertForm import OrderInsertForm
-from .forms.orderUpdateForm import OrderUpdateForm
-from . import service
+from order.forms.orderInsertForm import OrderInsertForm
+from order.forms.orderUpdateForm import OrderUpdateForm
+from order import service
 from store.service import framework_store
 
 from common import verify
@@ -16,7 +16,7 @@ def order_list(request):
         min = verify.is_int(string=request.GET['min'])
         max = verify.is_int(string=request.GET['max'])
         orders = service.find_order_all(min, max).values_list('c_name', 'c_phone', 'c_time')
-        res = {'code': 0, 'data': list(orders)}
+        res = {'': 0, 'data': list(orders)}
     else:
         res = {'code': 1, 'data': 'request method error'}
     return JsonResponse(res)
@@ -99,4 +99,9 @@ def order_qrcode(request):
             res = {'code': 2, 'msg': '参数1出错'}
     else:
         res = {'code': 1, 'msg': '请求出错'}
+    return JsonResponse(res)
+
+
+def order_detail():
+    res = {"code": 0, "msg": "", "data": {}}
     return JsonResponse(res)

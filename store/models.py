@@ -2,7 +2,7 @@ from django.db import models
 
 
 class GlassStore(models.Model):
-    store_id = models.CharField(primary_key=True, max_length=32)
+    id = models.CharField(primary_key=True, max_length=32)
     brand = models.CharField(max_length=255)
     model = models.CharField(max_length=255)
     sphere = models.CharField(max_length=255)
@@ -18,7 +18,7 @@ class GlassStore(models.Model):
 
 
 class FrameworkStore(models.Model):
-    store_id = models.CharField(primary_key=True, max_length=32)
+    id = models.CharField(primary_key=True, max_length=32)
     brand = models.CharField(max_length=255)
     model = models.CharField(max_length=255)
     count = models.CharField(max_length=255)

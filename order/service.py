@@ -9,7 +9,7 @@ def order_insert(form):
     try:
         item = Order.objects.create(
             # 订单
-            order_id=common.order_id(),
+            id=common.create_id(),
             token=common.token(),
             # 客户
             c_name=form['c_name'],
@@ -27,10 +27,10 @@ def order_insert(form):
         return None
 
 
-def order_update(order_id, form):
+def order_update(id, form):
     """更新订单"""
     try:
-        order = Order.objects.filter(order_id=order_id)
+        order = Order.objects.filter(id=id)
         order.update(c_name=form.data['c_name'],
                      c_phone=form.data['c_phone'],
                      c_time=common.current_time(),
@@ -61,10 +61,10 @@ def order_update(order_id, form):
         return None
 
 
-def order_delete(order_id):
+def order_delete(id):
     """删除订单"""
     try:
-        order = Order.objects.filter(order_id=order_id).all()
+        order = Order.objects.filter(id=id).all()
         order.delete()
         return True
     except BaseException as msg:
@@ -96,13 +96,13 @@ def find_order_today():
         return None
 
 
-def find_order_id(order_id):
+def find_id(id):
     """
     查找指定订单
     根据时间排序
     """
     try:
-        return Order.objects.filter(order_id=order_id).first()
+        return Order.objects.filter(id=id).first()
     except BaseException as msg:
         print(msg)
         return None

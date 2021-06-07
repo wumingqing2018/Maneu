@@ -1,5 +1,7 @@
 
 $(document).ready(function(){
+    $.ajax({
+    })
     // 获取二维码
     $("#get_qr_code").click(function(){
         $.ajax({

@@ -13,9 +13,10 @@ def order_list(request):
 
 def order_detail(request):
     """查看订单详情"""
-    order_id = verify.verify_order_id_get(request)
-    if order_id:
-        orders = service.find_order_id(order_id)
+    id = verify.verify_id_get(request)
+    print(id)
+    if id:
+        orders = service.find_id(id)
         if orders:
             return render(request, 'order/order_detail.html', {'orders': orders})
         else:

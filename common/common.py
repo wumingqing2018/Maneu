@@ -19,7 +19,7 @@ def today():
     return time.strftime("%Y-%m-%d", time.localtime())
 
 
-def order_id():
+def create_id():
     """
     生成32位纯数字订单编号
     """
@@ -38,4 +38,9 @@ def token():
 
 
 def qrcode(order_id, token):
+    print(order_id, token)
     return None
+
+
+def res():
+    return {'code': '', 'msg': '', 'data': {}}

@@ -11,18 +11,18 @@
         </tr>
         <tr>
             <td style="width: 15%">
-                <span>订单编号</span>
+                <span>编号</span>
             </td>
             <td colspan="10">
-                <span>{{orders.order_id}}</span>
+                <span id="order_id"></span>
             </td>
         </tr>
         <tr>
             <td>
-                <span>查询密钥</span>
+                <span>密钥</span>
             </td>
             <td colspan="10">
-                <span>{{orders.token}}</span>
+                <span id="order_token"></span>
             </td>
         </tr>
         <tr>
@@ -31,19 +31,19 @@
         <tr>
             <td><span>客户姓名</span></td>
             <td colspan="10">
-                <span>{{orders.c_name}}</span>
+                <span id="c_name"></span>
             </td>
         </tr>
         <tr>
             <td><span>客户电话</span></td>
             <td colspan="10">
-                <span>{{orders.c_phone}}</span>
+                <span id="c_phone"></span>
             </td>
         </tr>
         <tr>
             <td><span>购买时间</span></td>
             <td colspan="10">
-                <span>{{orders.c_time}}</span>
+                <span id="c_time"></span>
             </td>
         </tr>
         <tr>
@@ -63,25 +63,6 @@
             <td style="width:8.5%;"><span>ADD</span></td>
             <td style="width:8.5%;"><span>瞳距</span></td>
             <td style="width:8.5%;"><span>数量</span></td>
-        </tr>
-        <tr>
-            <td><span>镜片</span></td>
-            <td><span>蔡司</span></td>
-            <td><span>清锐</span></td>
-            <td><span>1.67</span></td>
-            <td><span>300</span></td>
-            <td><span>50</span></td>
-            <td><span>左</span></td>
-            <td><span>1</span></td>
-            <td><span>2</span></td>
-            <td><span>3</span></td>
-            <td><span>5</span></td>
-        </tr>
-        <tr>
-            <td><span>镜框</span></td>
-            <td><span>豪雅</span></td>
-            <td colspan="8"><span>123467890123456</span></td>
-            <td><span>12</span></td>
         </tr>
         <tr>
             <td><span>备注</span></td>
@@ -105,23 +86,14 @@
             </td>
         </tr>
     </table>
-    {{ orders.order }}
-{% endblock %}
-
-{% block css %}
-    <style>
-        span{
-            color: #FFC048;
-        }
-    </style>
 {% endblock %}
 
 {% block js %}
     <script>
+        api_order_detail = '{% url '' %}';
         api_order_qrcode = '{% url 'order:api_order_qrcode' %}';
         api_order_delete = '{% url 'order:api_order_delete' %}';
         order_list = '{% url 'order:order_list' %}';
     </script>
     <script src="{% static 'js/order/order_detail.js' %}"></script>
-    <script src="{% static 'js/maneu/base.js' %}"></script>
 {% endblock %}
