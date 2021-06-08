@@ -4,6 +4,7 @@
 {% block content %}
     <!--内容栏-->
     <table class="table">
+        <thead>
         <tr>
             <td colspan="11">
                 <span>订单信息</span>
@@ -64,10 +65,15 @@
             <td style="width:8.5%;"><span>瞳距</span></td>
             <td style="width:8.5%;"><span>数量</span></td>
         </tr>
+        </thead>
+        <tbody id="order_content">
+
+        </tbody>
+        <tfoot>
         <tr>
             <td><span>备注</span></td>
             <td colspan="10">
-                <span>{{orders.todo}}</span>
+                <span id="todo"></span>
             </td>
         </tr>
         <tr>
@@ -85,15 +91,47 @@
                 </form>
             </td>
         </tr>
+        </tfoot>
     </table>
 {% endblock %}
 
-{% block js %}
+{% block javascript %}
     <script>
-        api_order_detail = '{% url '' %}';
         api_order_qrcode = '{% url 'order:api_order_qrcode' %}';
         api_order_delete = '{% url 'order:api_order_delete' %}';
-        order_list = '{% url 'order:order_list' %}';
+        api_order_detail = '{% url 'order:api_order_detail' %}';
+    </script>
+    <script>
     </script>
     <script src="{% static 'js/order/order_detail.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: api_order_detail,
+                type: "GET",
+                data: {order_id: '{{ order_id }}', order_token: '{{ order_token }}'},
+                success: function (res) {
+                    if (res.code === 0){
+                        $("#c_name").html(res.data.c_name)
+                        $("#c_time").html(res.data.c_time)
+                        $("#c_phone").html(res.data.c_phone)
+                        $("#order_id").html(res.data.order_id)
+                        $("#order_token").html(res.data.order_token)
+                        order = jQuery.parseJSON(res.data.order)
+                        for (i in order){
+                            content = ''
+                            content += '<tr>'
+                            content += '<td><span>'+ order[i]['product'] + '</span></td>'
+                            content += '<td><span>'+ order[i]['brand'] +'</span></td>'
+                            content += '<td><span>'+ order[i]['model'] + '</span></td>'
+                            content += '<td><span>'+ order[i]['sphere'] + '</span></td>'
+                            content += '<td><span>'+ order[i]['count'] + '</span></td>'
+                            content += '</tr>'
+                            $('#order_content').append(content)
+                        }
+                    }
+                }
+            })
+        })
+    </script>
 {% endblock %}

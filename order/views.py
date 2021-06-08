@@ -13,12 +13,12 @@ def order_list(request):
 
 def order_detail(request):
     """查看订单详情"""
-    id = verify.verify_id_get(request)
-    print(id)
-    if id:
-        orders = service.find_id(id)
+    order_id = verify.verify_order_id_get(request)
+    if order_id:
+        orders = service.find_order_id(order_id)
         if orders:
-            return render(request, 'order/order_detail.html', {'orders': orders})
+            return render(request, 'order/order_detail.html', {'order_id': orders.order_id,
+                                                               'order_token': orders.order_token})
         else:
             return HttpResponse('error: 2')
     else:

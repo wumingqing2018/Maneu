@@ -184,22 +184,32 @@ def verify_store_id_get(request):
         return None
 
 
-def verify_id_get(request):
+def verify_order_id_get(request):
     if request.method == 'GET':
         try:
-            id = request.GET['id']
+            order_id = request.GET['order_id']
         except:
             return None
-        if id:
+        if order_id:
             pattern = r"^\d{32}$"
-            re_match = re.match(pattern, id, flags=0)
+            re_match = re.match(pattern, order_id, flags=0)
             if re_match:
-                return id
+                return order_id
+    return None
 
-        return None
 
-    else:
-        return None
+def verify_order_token_get(request):
+    if request.method == 'GET':
+        try:
+            order_token = request.GET['order_token']
+        except:
+            return None
+        if order_token:
+            pattern = r"^\d{32}$"
+            re_match = re.match(pattern, order_token, flags=0)
+            if re_match:
+                return order_token
+    return None
 
 
 def verify_phone_get(request):

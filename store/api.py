@@ -121,7 +121,6 @@ def glass_count(request):
     return JsonResponse(res)
 
 
-
 def framework_brand(request):
     if request.method == 'GET':
         brand = framework_store.framework_store_brand().values_list('brand').distinct()

@@ -1,8 +1,20 @@
 from django.db import models
 
 
+class FrameworkStore(models.Model):
+    store_id = models.CharField(primary_key=True, max_length=32)
+    brand = models.CharField(max_length=255)
+    model = models.CharField(max_length=255)
+    count = models.CharField(max_length=255)
+    time = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'framework_store'
+
+
 class GlassStore(models.Model):
-    id = models.CharField(primary_key=True, max_length=32)
+    store_id = models.CharField(primary_key=True, max_length=32)
     brand = models.CharField(max_length=255)
     model = models.CharField(max_length=255)
     sphere = models.CharField(max_length=255)
@@ -15,15 +27,3 @@ class GlassStore(models.Model):
     class Meta:
         managed = False
         db_table = 'glass_store'
-
-
-class FrameworkStore(models.Model):
-    id = models.CharField(primary_key=True, max_length=32)
-    brand = models.CharField(max_length=255)
-    model = models.CharField(max_length=255)
-    count = models.CharField(max_length=255)
-    time = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'framework_store'

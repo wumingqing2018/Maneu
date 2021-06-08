@@ -96,13 +96,25 @@ def find_order_today():
         return None
 
 
-def find_id(id):
+def find_order_id(order_id):
     """
     查找指定订单
     根据时间排序
     """
     try:
-        return Order.objects.filter(id=id).first()
+        return Order.objects.filter(order_id=order_id).first()
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
+def find_order_id_and_token(order_id, order_token):
+    """
+    查找指定订单
+    根据时间排序
+    """
+    try:
+        return Order.objects.filter(order_id=order_id, order_token=order_token).first()
     except BaseException as msg:
         print(msg)
         return None

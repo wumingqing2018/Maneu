@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.forms import model_to_dict
 
 from order.forms.orderInsertForm import OrderInsertForm
 from order.forms.orderUpdateForm import OrderUpdateForm
@@ -52,7 +53,7 @@ def order_delete(request):
             if delete:
                 res = {'code': 0, 'msg': '删除成功'}
             else:
-                res = {'code': 3, 'msg': '删除失败'}
+                res = {'code': 3, 'msg':  '删除失败'}
         else:
             res = {'code': 2, 'msg': '请求参数出错'}
     else:
@@ -102,6 +103,13 @@ def order_qrcode(request):
     return JsonResponse(res)
 
 
-def order_detail():
-    res = {"code": 0, "msg": "", "data": {}}
+def order_detail(request):
+    res = common.res()
+    token = verify.verify_order_token_get(request)
+    order_id = verify.verify_order_id_get(request)
+    if order_id and token:
+        res['data'] = model_to_dict(service.find_order_id_and_token(order_id, token))
+        res['code'] = 0
+    else:
+        res['code'] = 1
     return JsonResponse(res)
