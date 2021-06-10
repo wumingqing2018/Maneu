@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="优化bootstrap">
+    <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="优化static">
+      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/maneu/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/maneu/admin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/guest/check_order.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/management/add_order.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/management/check_order.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/management/guest_order_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/management/order_list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/management/update_order.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/order_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/order_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/order_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/order_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/store/framework_content.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/framework_content.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/store/framework_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/framework_insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/store/framework_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/framework_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/store/glass_content.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_content.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/store/glass_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/store/glass_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +36,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -138,7 +156,7 @@
       <workItem from="1623029992551" duration="14460000" />
       <workItem from="1623054105704" duration="5739000" />
       <workItem from="1623131840648" duration="12838000" />
-      <workItem from="1623288740626" duration="5671000" />
+      <workItem from="1623288740626" duration="6330000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1619573416247</created>
@@ -259,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623293613804</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="优化static">
+      <created>1623296273904</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1623296273904</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +309,8 @@
     <MESSAGE value="优化页面" />
     <MESSAGE value="fix bug" />
     <MESSAGE value="优化bootstrap" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化bootstrap" />
+    <MESSAGE value="优化static" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化static" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
