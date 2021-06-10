@@ -101,8 +101,6 @@
         api_order_delete = '{% url 'order:api_order_delete' %}';
         api_order_detail = '{% url 'order:api_order_detail' %}';
     </script>
-    <script>
-    </script>
     <script src="{% static 'js/order/order_detail.js' %}"></script>
     <script>
         $(document).ready(function () {
@@ -125,6 +123,12 @@
                             content += '<td><span>'+ order[i]['brand'] +'</span></td>'
                             content += '<td><span>'+ order[i]['model'] + '</span></td>'
                             content += '<td><span>'+ order[i]['sphere'] + '</span></td>'
+                            content += '<td><span>'+ order[i]['astigmatic'] + '</span></td>'
+                            content += '<td><span>'+ order[i]['refraction'] + '</span></td>'
+                            content += '<td><span>'+ order[i]['Around'] + '</span></td>'
+                            content += '<td><span>'+ order[i]['pd'] + '</span></td>'
+                            content += '<td><span>'+ order[i]['add'] + '</span></td>'
+                            content += '<td><span>'+ order[i]['deviation'] + '</span></td>'
                             content += '<td><span>'+ order[i]['count'] + '</span></td>'
                             content += '</tr>'
                             $('#order_content').append(content)

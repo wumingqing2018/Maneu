@@ -3,16 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="fix bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/verify.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/verify.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/order/order_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/order/order_detail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/add_order.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/common.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/maneu/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/maneu/admin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/guest/check_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guest/check_order.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/order/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/order_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_insert.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/order/order_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +70,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\75982\PycharmProjects\Maneu\static" />
       <recent name="C:\Users\75982\PycharmProjects\Maneu\order" />
       <recent name="C:\Users\75982\PycharmProjects\Maneu\order\service" />
       <recent name="C:\Users\75982\PycharmProjects\Maneu\static\js\order\order_insert" />
@@ -145,6 +156,8 @@
       <workItem from="1622788534767" duration="10879000" />
       <workItem from="1623029992551" duration="14460000" />
       <workItem from="1623054105704" duration="5739000" />
+      <workItem from="1623131840648" duration="12838000" />
+      <workItem from="1623288740626" duration="3311000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1619573416247</created>
@@ -251,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623034980211</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fix bug">
+      <created>1623131977969</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1623131977969</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
