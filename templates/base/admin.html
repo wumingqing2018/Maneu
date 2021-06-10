@@ -1,54 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
-
 <head>
+    <title>徕可</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>徕可</title>
-
 
     <link rel="icon" href="{% static 'img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/maneu/admin.css' %}">
-    <link href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
-<body style="background: #0E2340">
+<body class="blue">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <!-- Brand -->
+    <!-- 标题栏 -->
     <a class="navbar-brand" href="{% url 'index_page' %}">徕可</a>
-    <!-- Links -->
+    <!-- 导航栏 -->
     <ul class="nav navbar-nav navbar-right">
         <!-- 订单管理 -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="{% url 'order:order_list' %}">订单管理</a>
-            {#            <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">订单管理</a>#}
-            {#            <div class="dropdown-menu">#}
-            {#                <a class="dropdown-item" href="{% url 'order:order_list' %}">订单列表</a>#}
-            {#                <a class="dropdown-item" href="{% url 'order:order_insert' %}">添加订单</a>#}
-            {#            </div>#}
         </li>
         <!-- 仓库管理 -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="{% url 'store:store_list' %}">仓库管理</a>
-            {#            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">仓库管理</a>#}
-            {#            <div class="dropdown-menu">#}
-            {#                <a class="dropdown-item" href="{% url 'store:store' %}">仓库首页</a>#}
-            {#                <a class="dropdown-item" href="">订单列表</a>#}
-            {#                <a class="dropdown-item" href="">查找订单</a>#}
-            {#            </div>#}
         </li>
         <!-- 用户管理 -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="{% url 'user:user_list' %}">用户管理</a>
-            {#            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">用户管理</a>#}
-            {#            <div class="dropdown-menu">#}
-            {#                <a class="dropdown-item" href="{% url 'user:user_list' %}">用户管理</a>#}
-            {#            </div>#}
         </li>
+        <!-- 账户登出 -->
         <li class="nav-item dropdown">
             <a class="nav-link" href="{% url 'user:logout' %}" id="navbardrop">账户登出</a>
         </li>
@@ -64,7 +49,6 @@
             <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
         </div>
     </div>
-
 </div>
 </body>
 
