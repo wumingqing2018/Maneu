@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="优化static">
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/guest/check_order.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index_page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/management/add_order.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/management/check_order.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/management/guest_order_page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/management/order_list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/management/update_order.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/maneu/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/maneu/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/order/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/order/order_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_insert.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/order/order_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_list.html" afterDir="false" />
@@ -23,6 +16,7 @@
       <change beforePath="$PROJECT_DIR$/templates/store/glass_content.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_content.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/store/glass_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_insert.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/store/glass_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/store/store.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/store.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +59,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -157,6 +151,7 @@
       <workItem from="1623054105704" duration="5739000" />
       <workItem from="1623131840648" duration="12838000" />
       <workItem from="1623288740626" duration="6330000" />
+      <workItem from="1623297052499" duration="5937000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1619573416247</created>
