@@ -14,6 +14,7 @@ def user_login(request):
             res = {'code': 2, 'msg': form.errors, 'data': {}}
     else:
         res = {'code': 1, 'msg': '请求错误', 'data': {}}
+    print(res)
     return JsonResponse(res)
 
 

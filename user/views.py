@@ -23,7 +23,6 @@ def user_login(request):
                 return render(request, 'user/user_login.html', {'form': LoginForm()})
         else:
             request.session['user'] = None
-            print('test')
             return render(request, 'user/user_login.html', {'form': LoginForm()})
 
 
@@ -39,11 +38,11 @@ def user_list(request):
     return render(request, 'user/user_list.html', {'user_list': user_list})
 
 
-def user_content(request):
+def user_detail(request):
     user_id = verify_id_get(request)
     if user_id:
         user = serivce.find_user(user_id)
-        return render(request, 'user/user_content.html', {'user': user})
+        return render(request, 'user/user_detail.html', {'user': user})
     else:
         return HttpResponse('请求出错')
 

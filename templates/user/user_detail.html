@@ -1,4 +1,4 @@
-{% extends 'base/admin.html' %}
+{% extends 'maneu/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -32,13 +32,13 @@
                 <a class="btn btn-primary" type="button" href="{% url 'user:user_list' %}">返回</a>
             </td>
             <td style="width: 15%">
-                <form method="get" action="{% url 'user:update' %}">
+                <form method="get" action="{% url 'user:user_update' %}">
                     <input type="hidden" value="{{ user.user_id }}" name="user_id">
                     <input type="submit" value="更改" class="btn btn-warning">
                 </form>
             </td>
             <td>
-                <form method="get" action="{% url 'user:update' %}">
+                <form method="get" action="{% url 'user:user_update' %}">
                     <input type="hidden" value="{{ user.user_id }}" name="user_id">
                     <input type="submit" value="冻结" class="btn btn-warning">
                 </form>

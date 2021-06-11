@@ -18,7 +18,7 @@ def add_user(post):
     """添加用户"""
     try:
         item = User.objects.create(
-            user_id=common.order_id(),
+            user_id=common.create_id(),
             username=post['username'],
             password=post['password'],
             email=post['email'],
