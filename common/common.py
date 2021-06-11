@@ -21,7 +21,7 @@ def today():
 
 def create_id():
     """
-    生成32位纯数字订单编号
+    生成32位纯数字id
     """
     rand_int = random.randint(10000000000000000000000000000000,
                               99999999999999999999999999999999)
@@ -30,11 +30,11 @@ def create_id():
 
 def token():
     """
-    生成64位纯数字token
+    生成32位纯数字token
     """
     rand_int = random.randint(10000000000000000000000000000000,
                               99999999999999999999999999999999)
-    return rand_int
+    return str(rand_int)
 
 
 def qrcode(order_id, token):
@@ -43,4 +43,10 @@ def qrcode(order_id, token):
 
 
 def res():
+    """
+    约束返回json格式
+    code: 状态代码
+    date: 信息内容
+    msg: 返回信息
+    """
     return {'code': '', 'msg': '', 'data': {}}
