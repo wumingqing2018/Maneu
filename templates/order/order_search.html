@@ -1,11 +1,5 @@
 {% extends 'maneu/base.html' %}
-
 {% load static %}
-
-{% block css %}
-    <link rel="stylesheet" href="{% static 'css/maneu/admin.css' %}">
-{% endblock %}
-
 {% block content %}
     <div class="container">
         <div class="text-center" id="content">
@@ -28,7 +22,9 @@
         </div>
     </div>
 {% endblock %}
-
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/maneu/base.css' %}">
+{% endblock %}
 {% block js %}
     <script src="{% static 'js/maneu/base.js' %}"></script>
 {% endblock %}

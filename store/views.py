@@ -6,7 +6,7 @@ from common import verify
 
 
 def store_list(request):
-    return render(request, 'store/store.html')
+    return render(request, 'store/store_list.html')
 
 
 def glass_list(request):
