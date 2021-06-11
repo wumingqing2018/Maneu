@@ -21,12 +21,12 @@ def glass_insert(request):
     return render(request, 'store/glass_insert.html')
 
 
-def glass_content(request):
+def glass_detail(request):
     store_id = verify.verify_store_id_get(request)
     if store_id:
         glass = glass_store.glass_store_id(store_id)
         if glass:
-            return render(request, 'store/glass_content.html', {'glass': glass})
+            return render(request, 'store/glass_detail.html', {'glass': glass})
 
 
 def framework_list(request):
@@ -38,9 +38,9 @@ def framework_insert(request):
     return render(request, 'store/framework_insert.html')
 
 
-def framework_content(request):
+def framework_detail(request):
     store_id = verify.verify_store_id_get(request)
     if store_id:
         framework = framework_store.find_store_id(store_id=store_id)
         print(framework['order'])
-        return render(request, 'store/framework_content.html', {'framework': framework})
+        return render(request, 'store/framework_detail.html', {'framework': framework})
