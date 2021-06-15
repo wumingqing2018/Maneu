@@ -5,6 +5,7 @@ from order.forms.orderInsertForm import OrderInsertForm
 from order.forms.orderUpdateForm import OrderUpdateForm
 from order import service
 from store.service import framework_store
+from store.service import glass_store
 
 from common import verify
 from common import common
@@ -32,7 +33,10 @@ def order_insert(request):
             add_order = service.order_insert(form)
             order = json.loads(form['order'])
             for i in order:
-                framework_store.framework_count_out(store_id=i['framework'])
+                if i['product'] == "镜框":
+                    framework_store.framework_count_out(store_id=i['store_id'])
+                elif i['product'] == "镜片":
+                    glass_store.glass_count_out(store_id=i['store_id'])
             if add_order:
                 res = {'code': 0, 'msg': '创建成功'}
             else:

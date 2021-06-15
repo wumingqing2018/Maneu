@@ -27,12 +27,10 @@ class OrderInsertForm(forms.Form):
     order = forms.CharField(label="订单",
                             required=False,
                             strip=True,
-    )
-    todo = forms.CharField(label="备注",
-                           required=False,
-                           strip=True,
-                           max_length=2048,
-                           widget=widgets.Textarea(
-                               attrs={'id': 'todo', 'class': 'form-control', 'placeholder': '备注'}),
-                           validators=[RegexValidator(r'^[\u4E00-\u9FA5A-Za-z0-9_]+$', '不能输入特殊字符')],
-                           )
+                            )
+    remark = forms.CharField(label="备注",
+                             required=False,
+                             strip=True,
+                             max_length=2048,
+                             # validators=[RegexValidator(r'^[\u4E00-\u9FA5A-Za-z0-9_]+$', '不能输入特殊字符')],
+                             )

@@ -9,8 +9,8 @@ def order_insert(form):
     try:
         item = Order.objects.create(
             # 订单
-            id=common.create_id(),
-            token=common.token(),
+            order_id=common.create_id(),
+            order_token=common.token(),
             # 客户
             c_name=form['c_name'],
             c_phone=form['c_phone'],
@@ -19,7 +19,7 @@ def order_insert(form):
             besiness='',
             order=form['order'],
             # 备注
-            todo=form['todo'],
+            remark=form['remark'],
         )
         return item
     except BaseException as msg:

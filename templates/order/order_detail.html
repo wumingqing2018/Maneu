@@ -6,27 +6,6 @@
     <table class="table">
         <thead>
         <tr>
-            <td colspan="11">
-                <span>订单信息</span>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 15%">
-                <span>编号</span>
-            </td>
-            <td colspan="10">
-                <span id="order_id"></span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>密钥</span>
-            </td>
-            <td colspan="10">
-                <span id="order_token"></span>
-            </td>
-        </tr>
-        <tr>
             <td colspan="11"><span>客户信息</span></td>
         </tr>
         <tr>
@@ -53,17 +32,17 @@
             </td>
         </tr>
         <tr>
-            <td style="width:15%;"><span>产品</span></td>
-            <td style="width:8.5%;"><span>品牌</span></td>
-            <td style="width:8.5%;"><span>型号</span></td>
-            <td style="width:8.5%;"><span>折射</span></td>
-            <td style="width:8.5%;"><span>球镜</span></td>
-            <td style="width:8.5%;"><span>柱镜</span></td>
-            <td style="width:8.5%;"><span>方向</span></td>
-            <td style="width:8.5%;"><span>轴位</span></td>
-            <td style="width:8.5%;"><span>ADD</span></td>
-            <td style="width:8.5%;"><span>瞳距</span></td>
-            <td style="width:8.5%;"><span>数量</span></td>
+            <td><span>产品</span></td>
+            <td><span>品牌</span></td>
+            <td><span>型号</span></td>
+            <td><span>折射</span></td>
+            <td><span>球镜</span></td>
+            <td><span>柱镜</span></td>
+            <td><span>方向</span></td>
+            <td><span>轴位</span></td>
+            <td><span>ADD</span></td>
+            <td><span>瞳距</span></td>
+            <td><span>数量</span></td>
         </tr>
         </thead>
         <tbody id="order_content">
@@ -73,16 +52,16 @@
         <tr>
             <td><span>备注</span></td>
             <td colspan="10">
-                <span id="todo"></span>
+                <span id="remark"></span>
             </td>
         </tr>
         <tr>
-            <td>
+            <td colspan="2">
                 <form method="get" action="{% url 'order:order_list' %}">
                     <input class="btn btn-primary" type="submit" value="返回">
                 </form>
             </td>
-            <td colspan="10">
+            <td colspan="2">
                 <form id="qr_code">
                     {% csrf_token %}
                     <input type="hidden" name="order_id" value="{{orders.order_id}}">
@@ -90,6 +69,7 @@
                     <input type="button" class="btn btn-primary" id="get_qr_code" value="扫码">
                 </form>
             </td>
+            <td colspan="7"></td>
         </tr>
         </tfoot>
     </table>
@@ -113,23 +93,23 @@
                         $("#c_name").html(res.data.c_name)
                         $("#c_time").html(res.data.c_time)
                         $("#c_phone").html(res.data.c_phone)
-                        $("#order_id").html(res.data.order_id)
-                        $("#order_token").html(res.data.order_token)
-                        order = jQuery.parseJSON(res.data.order)
-                        for (i in order){
+                                                $("#remark").html(res.data.remark)
+                        orders = jQuery.parseJSON(res.data.order)
+                        for (i in orders){
+                            order = orders[i]
                             content = ''
                             content += '<tr>'
-                            content += '<td><span>'+ order[i]['product'] + '</span></td>'
-                            content += '<td><span>'+ order[i]['brand'] +'</span></td>'
-                            content += '<td><span>'+ order[i]['model'] + '</span></td>'
-                            content += '<td><span>'+ order[i]['sphere'] + '</span></td>'
-                            content += '<td><span>'+ order[i]['astigmatic'] + '</span></td>'
-                            content += '<td><span>'+ order[i]['refraction'] + '</span></td>'
-                            content += '<td><span>'+ order[i]['Around'] + '</span></td>'
-                            content += '<td><span>'+ order[i]['pd'] + '</span></td>'
-                            content += '<td><span>'+ order[i]['add'] + '</span></td>'
-                            content += '<td><span>'+ order[i]['deviation'] + '</span></td>'
-                            content += '<td><span>'+ order[i]['count'] + '</span></td>'
+                            content += '<td><span>'+ order['product'] + '</span></td>'
+                            content += '<td><span>'+ order['brand'] +'</span></td>'
+                            content += '<td><span>'+ order['model'] + '</span></td>'
+                            content += '<td><span>'+ order['sphere'] + '</span></td>'
+                            content += '<td><span>'+ order['astigmatic'] + '</span></td>'
+                            content += '<td><span>'+ order['refraction'] + '</span></td>'
+                            content += '<td><span>'+ order['Around'] + '</span></td>'
+                            content += '<td><span>'+ order['pd'] + '</span></td>'
+                            content += '<td><span>'+ order['add'] + '</span></td>'
+                            content += '<td><span>'+ order['deviation'] + '</span></td>'
+                            content += '<td><span>'+ order['count'] + '</span></td>'
                             content += '</tr>'
                             $('#order_content').append(content)
                         }

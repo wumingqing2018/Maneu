@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="优化urls">
+    <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="优化登录页面">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maneu" beforeDir="false" afterPath="$PROJECT_DIR$/maneu" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_content.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/serivce.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/serivce.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/forms/orderInsertForm.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/forms/orderInsertForm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/service/glass_store.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/service/glass_store.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/order_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/store/glass_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/store/glass_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/join_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/list_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/login_page.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="pyconsole" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -100,6 +102,9 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\75982\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
       <changelist id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="" />
@@ -148,7 +153,10 @@
       <workItem from="1623131840648" duration="12838000" />
       <workItem from="1623288740626" duration="6330000" />
       <workItem from="1623297052499" duration="8362000" />
-      <workItem from="1623374564809" duration="11199000" />
+      <workItem from="1623374564809" duration="11320000" />
+      <workItem from="1623396685506" duration="4121000" />
+      <workItem from="1623577235558" duration="1025000" />
+      <workItem from="1623720679540" duration="12720000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1619573416247</created>
@@ -304,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623392407405</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="优化登录页面">
+      <created>1623396556041</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1623396556041</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +346,8 @@
     <MESSAGE value="优化bootstrap" />
     <MESSAGE value="优化static" />
     <MESSAGE value="优化urls" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化urls" />
+    <MESSAGE value="优化登录页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化登录页面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

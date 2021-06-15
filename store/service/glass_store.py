@@ -86,3 +86,14 @@ def glass_store_delete(form):
     except Exception as msg:
         print(msg)
         return False
+
+
+def glass_count_out(store_id, count=1):
+    try:
+        model = GlassStore.objects.filter(store_id=store_id).first()
+        model.count = int(model.count)-count
+        model.save()
+        return True
+    except BaseException as msg:
+        print(msg)
+        return False
