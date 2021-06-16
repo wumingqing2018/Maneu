@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="优化登录页面">
+    <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/forms/orderInsertForm.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/forms/orderInsertForm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/service/glass_store.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/service/glass_store.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/order/order_insert/framework_modules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/order/order_insert/framework_modules.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/order/order_insert/glass_modules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/order/order_insert/glass_modules.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/order/order_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/store/glass_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_insert.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/store/glass_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/store/glass_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/join_page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/list_page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/login_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/user_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +150,7 @@
       <workItem from="1623396685506" duration="4121000" />
       <workItem from="1623577235558" duration="1025000" />
       <workItem from="1623720679540" duration="12720000" />
+      <workItem from="1623808566950" duration="5596000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1619573416247</created>

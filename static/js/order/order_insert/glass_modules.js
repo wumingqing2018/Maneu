@@ -155,22 +155,21 @@ $(document).ready(function () {
     }
     function order_content (content){
         content = jQuery.parseJSON(content)
-        console.log(content)
         html = ''
-        html += '<tr class="yellow">'
-        html += '<td>'+ content.product +'</td>'
-        html += '<td>'+ content.brand +'</td>'
-        html += '<td>'+ content.model +'</td>'
-        html += '<td>'+ content.sphere +'</td>'
-        html += '<td>'+ content.astigmatic +'</td>'
-        html += '<td>'+ content.refraction +'</td>'
-        html += '<td>'+ content.Around +'</td>'
-        html += '<td>'+ content.pd +'</td>'
-        html += '<td>'+ content.add +'</td>'
-        html += '<td>'+ content.deviation +'</td>'
-        html += '<td>'+ content.count +'</td>'
+        html += '<tr>'
+        html += '<td><span>'+ content.product +'</span></td>'
+        html += '<td><span>'+ content.brand +'</span></td>'
+        html += '<td><span>'+ content.model +'</span></td>'
+        html += '<td><span>'+ content.sphere +'</span></td>'
+        html += '<td><span>'+ content.astigmatic +'</span></td>'
+        html += '<td><span>'+ content.refraction +'</span></td>'
+        html += '<td><span>'+ content.Around +'</span></td>'
+        html += '<td><span>'+ content.pd +'</span></td>'
+        html += '<td><span>'+ content.add +'</span></td>'
+        html += '<td><span>'+ content.deviation +'</span></td>'
         html += '</tr>'
         $('#order_content').append(html)
+        $("#order_banner").show()
     }
 
     $.fn.serializeJsonStr = function () {

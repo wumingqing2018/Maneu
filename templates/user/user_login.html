@@ -1,32 +1,32 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
-    <title>徕可</title>
+    <!-- local -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <title>徕可</title>
     <link rel="icon" href="{% static 'img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/maneu/base.css' %}">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-
+    <script src="{% static 'js/maneu/base.js' %}"></script>
+    <!-- bootstrap -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--bootstrap -->
 </head>
 
-<body class="blue">
+<body style="background: #0E2340">
 <div class="container">
-    <div class="row justify-content-center">
-        <div style="margin: 5%; min-height: 680px" class="col-md-12">
-                <div class="text-center" id="content">
-                    <div class="row justify-content-center">
-                        <div class="col-md-12" style="padding: 5%">
-                            <a methods="get" href="{% url 'index_page' %}">
-                                <img src="{% static 'img/logo.svg' %}">
-                                <h4>徕可</h4>
-                            </a>
-                        </div>
+    <div class="text-center" id="content">
+        <div class="row justify-content-center">
+            <div class="col-md-12" style="padding: 10%">
+                <a href="{% url 'index_page' %}">
+                    <img src="{% static 'img/logo.png' %}" class="img-responsive" alt="Cinque Terre">
+                    <h4 class="yellow">徕可</h4>
+                </a>
+            </div>
                         <div style="padding: 5%; text-align: center">
                             <div class="col-md-12">
                                 <form method="POST" action="{% url 'user:user_login' %}">
@@ -42,14 +42,9 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </div>
+            <div class="col-md-12 yellow" style="text-align: center;margin-top: 15%">
+                <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
             </div>
         </div>
-        <div class="col-md-6 offset-md-5">
-            <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
-        </div>
     </div>
-</body>
-<script src="{% static 'js/maneu/base.js' %}"></script>
-</html>
+</div>

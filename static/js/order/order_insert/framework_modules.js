@@ -90,13 +90,13 @@ $(document).ready(function () {
         // 传入json字符串显示到id=order_content的表格位置
         content = jQuery.parseJSON(content)
         html = ''
-        html += '<tr class="yellow">'
-        html += '<td>'+ content.product +'</td>'
-        html += '<td>'+ content.brand +'</td>'
-        html += '<td colspan="8">'+ content.model +'</td>'
-        html += '<td>'+ content.count +'</td>'
+        html += '<tr>'
+        html += '<td><span>'+ content.product +'</span></td>'
+        html += '<td><span>'+ content.brand +'</span></td>'
+        html += '<td colspan="8"><span>'+ content.model +'</span></td>'
         html += '</tr>'
         $('#order_content').append(html)
+        $("#order_banner").show()
     }
     $.fn.serializeJsonStr = function () {
         // 把from表单内容转换为json字符串
