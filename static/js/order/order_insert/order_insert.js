@@ -40,8 +40,22 @@ $(document).ready(function () {
             type: 'POST',
             data: $('#order_insert').serialize(),
             success: function (res) {
-                console.log(res)
+                if(res.code === 0){
+                    alert("创建成功")
+                } else if(res.code === 1) {
+                    alert("请求出错 , 请刷新页面")
+                } else if(res.code === 2) {
+                    console.log(res.msg)
+                    for (i in res.msg){
+                        alert(res.msg[0])
+                    }
+                } else if(res.code === 3) {
+                    alert("创建失败")
+                }
             }
         });
     });
+    $("#order_content").blur(function () {
+        console.log('1')
+    })
 });

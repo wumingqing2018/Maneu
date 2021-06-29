@@ -9,19 +9,19 @@
             <td colspan="11"><span>客户信息</span></td>
         </tr>
         <tr>
-            <td><span>客户姓名</span></td>
+            <td style="width: 9%"><span>客户姓名</span></td>
             <td colspan="10">
                 <span id="c_name"></span>
             </td>
         </tr>
         <tr>
-            <td><span>客户电话</span></td>
+            <td style="width: 9%"><span>客户电话</span></td>
             <td colspan="10">
                 <span id="c_phone"></span>
             </td>
         </tr>
         <tr>
-            <td><span>购买时间</span></td>
+            <td style="width: 9%"><span>购买时间</span></td>
             <td colspan="10">
                 <span id="c_time"></span>
             </td>
@@ -32,17 +32,17 @@
             </td>
         </tr>
         <tr>
-            <td><span>产品</span></td>
-            <td><span>品牌</span></td>
-            <td><span>型号</span></td>
-            <td><span>折射</span></td>
-            <td><span>球镜</span></td>
-            <td><span>柱镜</span></td>
-            <td><span>方向</span></td>
-            <td><span>轴位</span></td>
-            <td><span>ADD</span></td>
-            <td><span>瞳距</span></td>
-            <td><span>数量</span></td>
+            <td style="width: 9%"><span>产品</span></td>
+            <td style="width: 9%"><span>品牌</span></td>
+            <td style="width: 9%"><span>型号</span></td>
+            <td style="width: 9%"><span>折射</span></td>
+            <td style="width: 9%"><span>球镜</span></td>
+            <td style="width: 9%"><span>柱镜</span></td>
+            <td style="width: 9%"><span>方向</span></td>
+            <td style="width: 9%"><span>轴位</span></td>
+            <td style="width: 9%"><span>ADD</span></td>
+            <td style="width: 9%"><span>瞳距</span></td>
+            <td style="width: 9%"><span>数量</span></td>
         </tr>
         </thead>
         <tbody id="order_content">
@@ -50,7 +50,7 @@
         </tbody>
         <tfoot>
         <tr>
-            <td><span>备注</span></td>
+            <td style="width: 9%"><span>备注</span></td>
             <td colspan="10">
                 <span id="remark"></span>
             </td>
@@ -76,46 +76,18 @@
 {% endblock %}
 
 {% block javascript %}
-    <script>
+    <script type="text/javascript">
         api_order_qrcode = '{% url 'order:api_order_qrcode' %}';
         api_order_delete = '{% url 'order:api_order_delete' %}';
         api_order_detail = '{% url 'order:api_order_detail' %}';
     </script>
-    <script src="{% static 'js/order/order_detail.js' %}"></script>
-    <script>
-        $(document).ready(function () {
-            $.ajax({
-                url: api_order_detail,
-                type: "GET",
-                data: {order_id: '{{ order_id }}', order_token: '{{ order_token }}'},
-                success: function (res) {
-                    if (res.code === 0){
-                        $("#c_name").html(res.data.c_name)
-                        $("#c_time").html(res.data.c_time)
-                        $("#c_phone").html(res.data.c_phone)
-                                                $("#remark").html(res.data.remark)
-                        orders = jQuery.parseJSON(res.data.order)
-                        for (i in orders){
-                            order = orders[i]
-                            content = ''
-                            content += '<tr>'
-                            content += '<td><span>'+ order['product'] + '</span></td>'
-                            content += '<td><span>'+ order['brand'] +'</span></td>'
-                            content += '<td><span>'+ order['model'] + '</span></td>'
-                            content += '<td><span>'+ order['sphere'] + '</span></td>'
-                            content += '<td><span>'+ order['astigmatic'] + '</span></td>'
-                            content += '<td><span>'+ order['refraction'] + '</span></td>'
-                            content += '<td><span>'+ order['Around'] + '</span></td>'
-                            content += '<td><span>'+ order['pd'] + '</span></td>'
-                            content += '<td><span>'+ order['add'] + '</span></td>'
-                            content += '<td><span>'+ order['deviation'] + '</span></td>'
-                            content += '<td><span>'+ order['count'] + '</span></td>'
-                            content += '</tr>'
-                            $('#order_content').append(content)
-                        }
-                    }
-                }
-            })
-        })
+    <script type="text/javascript">
+        order_id = '{{ order_id }}';
+        order_token = '{{ order_token }}';
+        remark = $("#remark");
+        c_name = $("#c_name");
+        c_time = $("#c_time");
+        c_phone = $("#c_phone");
     </script>
+    <script src="{% static 'js/order/order_detail.js' %}"></script>
 {% endblock %}

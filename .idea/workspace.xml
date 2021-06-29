@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="">
+    <list default="true" id="46b8e35d-3fad-4fde-8cf2-45c744132b53" name="默认变更列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/order/order_insert/framework_modules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/order/order_insert/framework_modules.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/order/order_insert/glass_modules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/order/order_insert/glass_modules.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order/order_insert.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_insert.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maneu" beforeDir="false" afterPath="$PROJECT_DIR$/maneu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maneu/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/maneu/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maneu/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/maneu/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/UserLoginMiddleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/UserLoginMiddleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/testMiddleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/testMiddleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/order/order_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/order/order_detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/order/order_insert/order_insert.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/order/order_insert/order_insert.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/user_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/forms/loginForm.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/forms/loginForm.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,15 +24,6 @@
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-        <option value="Python Script" />
-        <option value="HTML File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,34 +36,26 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProjectId" id="1rmFKmt5D7ZwDAjaNXyHo6uUX4p" />
+  <component name="ProjectId" id="1u6oVzMeBX3HSncbZ4zxW7XtEYO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="credentialsType com.jetbrains.python.remote.PyCreateRemoteInterpreterDialog$PyCreateRemoteSdkForm" value="Web 部署" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="pyconsole" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\75982\PycharmProjects\Maneu\static" />
-      <recent name="C:\Users\75982\PycharmProjects\Maneu\order" />
-      <recent name="C:\Users\75982\PycharmProjects\Maneu\order\service" />
-      <recent name="C:\Users\75982\PycharmProjects\Maneu\static\js\order\order_insert" />
-      <recent name="C:\Users\75982\PycharmProjects\Maneu\static\img" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JavaScript 调试.test.html">
-    <configuration name="test.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Maneu/templates/test.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Docker.maneu">
     <configuration name="Maneu" type="Python.DjangoServer" factoryName="Django server">
       <module name="Maneu" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -88,232 +79,110 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Docker 镜像 (1)" type="docker-deploy" factoryName="docker-image" temporary="true" server-name="Docker">
+      <deployment type="docker-image">
+        <settings>
+          <option name="imageTag" value="ubuntu:20.04" />
+          <option name="command" value="" />
+          <option name="containerName" value="maneu" />
+          <option name="entrypoint" value="" />
+          <option name="portBindings">
+            <list>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="22" />
+                <option name="hostIp" value="127.0.0.1" />
+                <option name="hostPort" value="9022" />
+              </DockerPortBindingImpl>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="8000" />
+                <option name="hostIp" value="127.0.0.1" />
+                <option name="hostPort" value="9000" />
+              </DockerPortBindingImpl>
+            </list>
+          </option>
+          <option name="commandLineOptions" value="" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="Docker 镜像" type="docker-deploy" factoryName="docker-image" temporary="true" server-name="Docker">
+      <deployment type="docker-image">
+        <settings>
+          <option name="imageTag" value="ubuntu:20.04" />
+          <option name="command" value="" />
+          <option name="containerName" value="maneu" />
+          <option name="entrypoint" value="" />
+          <option name="portBindings">
+            <list>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="22" />
+                <option name="hostPort" value="9022" />
+              </DockerPortBindingImpl>
+            </list>
+          </option>
+          <option name="commandLineOptions" value="" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="maneu" type="docker-deploy" factoryName="docker-image" singleton="false" temporary="true" server-name="Docker">
+      <deployment type="docker-image">
+        <settings>
+          <option name="imageTag" value="ubuntu:20.04" />
+          <option name="command" value="" />
+          <option name="containerName" value="maneu" />
+          <option name="entrypoint" value="" />
+          <option name="portBindings">
+            <list>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="22" />
+                <option name="hostIp" value="::" />
+                <option name="hostPort" value="10022" />
+              </DockerPortBindingImpl>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="8000" />
+                <option name="hostIp" value="::" />
+                <option name="hostPort" value="10000" />
+              </DockerPortBindingImpl>
+              <DockerPortBindingImpl />
+            </list>
+          </option>
+          <option name="commandLineOptions" value="" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript 调试.test.html" />
+        <item itemvalue="Docker.maneu" />
+        <item itemvalue="Docker.Docker 镜像 (1)" />
+        <item itemvalue="Docker.Docker 镜像" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration>C:\Users\75982\AppData\Roaming\Subversion</configuration>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="3f2c354e-bf6b-4b80-9e59-43b8e5cd0f22" name="默认变更列表" comment="" />
-      <created>1619573296976</created>
+      <changelist id="46b8e35d-3fad-4fde-8cf2-45c744132b53" name="默认变更列表" comment="" />
+      <created>1623995431851</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1619573296976</updated>
-      <workItem from="1619573298101" duration="24674000" />
-      <workItem from="1619659379824" duration="6457000" />
-      <workItem from="1619666663965" duration="5659000" />
-      <workItem from="1619679213940" duration="1575000" />
-      <workItem from="1620121355977" duration="764000" />
-      <workItem from="1620124234255" duration="1127000" />
-      <workItem from="1620351183787" duration="18986000" />
-      <workItem from="1620437002646" duration="23406000" />
-      <workItem from="1620610393152" duration="20955000" />
-      <workItem from="1620696850038" duration="16548000" />
-      <workItem from="1620956230182" duration="19801000" />
-      <workItem from="1621051920996" duration="1094000" />
-      <workItem from="1621071578730" duration="3663000" />
-      <workItem from="1621215766132" duration="15593000" />
-      <workItem from="1621301432171" duration="2574000" />
-      <workItem from="1621318385951" duration="9747000" />
-      <workItem from="1621560441959" duration="852000" />
-      <workItem from="1621561586287" duration="5570000" />
-      <workItem from="1621586648812" duration="2629000" />
-      <workItem from="1621760427398" duration="1005000" />
-      <workItem from="1621819585967" duration="12557000" />
-      <workItem from="1621863992771" duration="706000" />
-      <workItem from="1621905971454" duration="11721000" />
-      <workItem from="1621997498326" duration="826000" />
-      <workItem from="1621998351556" duration="58000" />
-      <workItem from="1621998437867" duration="33000" />
-      <workItem from="1621998481928" duration="46000" />
-      <workItem from="1621998544763" duration="379000" />
-      <workItem from="1621998938636" duration="17729000" />
-      <workItem from="1622078991771" duration="20580000" />
-      <workItem from="1622180538387" duration="5797000" />
-      <workItem from="1622616967989" duration="9555000" />
-      <workItem from="1622684608685" duration="15477000" />
-      <workItem from="1622710604822" duration="3702000" />
-      <workItem from="1622770785042" duration="9083000" />
-      <workItem from="1622788534767" duration="10879000" />
-      <workItem from="1623029992551" duration="14460000" />
-      <workItem from="1623054105704" duration="5739000" />
-      <workItem from="1623131840648" duration="12838000" />
-      <workItem from="1623288740626" duration="6330000" />
-      <workItem from="1623297052499" duration="8362000" />
-      <workItem from="1623374564809" duration="11320000" />
-      <workItem from="1623396685506" duration="4121000" />
-      <workItem from="1623577235558" duration="1025000" />
-      <workItem from="1623720679540" duration="12720000" />
-      <workItem from="1623808566950" duration="5596000" />
+      <updated>1623995431851</updated>
+      <workItem from="1623995433910" duration="107000" />
+      <workItem from="1624006281184" duration="745000" />
+      <workItem from="1624174656337" duration="14659000" />
+      <workItem from="1624239409073" duration="9362000" />
+      <workItem from="1624255121311" duration="6463000" />
+      <workItem from="1624331632429" duration="1541000" />
+      <workItem from="1624498996464" duration="2715000" />
+      <workItem from="1624527732882" duration="18000" />
+      <workItem from="1624603061652" duration="2716000" />
+      <workItem from="1624690644440" duration="393000" />
+      <workItem from="1624847434663" duration="205000" />
+      <workItem from="1624867601171" duration="4341000" />
+      <workItem from="1624873394436" duration="944000" />
+      <workItem from="1624931580134" duration="7152000" />
     </task>
-    <task id="LOCAL-00001" summary="update">
-      <created>1619573416247</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1619573416247</updated>
-    </task>
-    <task id="LOCAL-00002" summary="修改底部样式">
-      <created>1619600507740</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1619600507740</updated>
-    </task>
-    <task id="LOCAL-00003" summary="修改首页">
-      <created>1619664463086</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1619664463086</updated>
-    </task>
-    <task id="LOCAL-00004" summary="修改首页">
-      <created>1619664483764</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1619664483764</updated>
-    </task>
-    <task id="LOCAL-00005" summary="修改首页">
-      <created>1619677252839</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1619677252839</updated>
-    </task>
-    <task id="LOCAL-00006" summary="修改首页">
-      <created>1620453584966</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1620453584966</updated>
-    </task>
-    <task id="LOCAL-00007" summary="优化页面">
-      <created>1620978231175</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1620978231175</updated>
-    </task>
-    <task id="LOCAL-00008" summary="优化页面">
-      <created>1620984393954</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1620984393954</updated>
-    </task>
-    <task id="LOCAL-00009" summary="优化页面">
-      <created>1621323710979</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1621323710979</updated>
-    </task>
-    <task id="LOCAL-00010" summary="fix bug">
-      <created>1622022688961</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1622022688961</updated>
-    </task>
-    <task id="LOCAL-00011" summary="fix bug">
-      <created>1622597640839</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1622597640839</updated>
-    </task>
-    <task id="LOCAL-00012" summary="fix bug">
-      <created>1622702973921</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1622702973921</updated>
-    </task>
-    <task id="LOCAL-00013" summary="fix bug">
-      <created>1622703065834</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1622703065834</updated>
-    </task>
-    <task id="LOCAL-00014" summary="fix bug">
-      <created>1622792314895</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1622792314895</updated>
-    </task>
-    <task id="LOCAL-00015" summary="fix bug">
-      <created>1623034980211</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1623034980211</updated>
-    </task>
-    <task id="LOCAL-00016" summary="fix bug">
-      <created>1623131977969</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1623131977969</updated>
-    </task>
-    <task id="LOCAL-00017" summary="优化bootstrap">
-      <created>1623293613804</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1623293613804</updated>
-    </task>
-    <task id="LOCAL-00018" summary="优化static">
-      <created>1623296273904</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1623296273904</updated>
-    </task>
-    <task id="LOCAL-00019" summary="优化static">
-      <created>1623310805971</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1623310805971</updated>
-    </task>
-    <task id="LOCAL-00020" summary="优化static">
-      <created>1623391382380</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1623391382380</updated>
-    </task>
-    <task id="LOCAL-00021" summary="优化urls">
-      <created>1623391602179</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1623391602179</updated>
-    </task>
-    <task id="LOCAL-00022" summary="优化urls">
-      <created>1623392407405</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1623392407405</updated>
-    </task>
-    <task id="LOCAL-00023" summary="优化登录页面">
-      <created>1623396556041</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1623396556041</updated>
-    </task>
-    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,28 +199,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="update" />
-    <MESSAGE value="修改底部样式" />
-    <MESSAGE value="修改首页" />
-    <MESSAGE value="优化页面" />
-    <MESSAGE value="fix bug" />
-    <MESSAGE value="优化bootstrap" />
-    <MESSAGE value="优化static" />
-    <MESSAGE value="优化urls" />
-    <MESSAGE value="优化登录页面" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化登录页面" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/store/api.py</url>
-          <line>52</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
