@@ -16,16 +16,14 @@ class UserLoginMiddleware(MiddlewareMixin):
         用户已经登录, 允许通过
         """
         login_url = '/user/login/'
-        verify_url = ['/order', '/store']
-        if request.path in verify_url:
-            print('拦截' + request.path)
-            try:
-                ticket = request.session['user']
-            except Exception as msg:
-                print(msg)
-                ticket = None
-            if ticket == None:
-                request.session['user'] = None
+        verify_list = ["order", "store"]
+        request_url = request.path
+        for verify in verify_list:
+            if verify in request_url:
+                try:
+                    if request.session['user']:
+                        return None
+                except Exception as msg:
+                    print(msg)
                 return HttpResponseRedirect(login_url)
         return None
-

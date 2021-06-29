@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46b8e35d-3fad-4fde-8cf2-45c744132b53" name="默认变更列表" comment="">
+    <list default="true" id="46b8e35d-3fad-4fde-8cf2-45c744132b53" name="默认变更列表" comment="添加验证码">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maneu" beforeDir="false" afterPath="$PROJECT_DIR$/maneu" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maneu/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/maneu/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maneu/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/maneu/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middleware/UserLoginMiddleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/UserLoginMiddleware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/testMiddleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/testMiddleware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/order/order_detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/order/order_detail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/order/order_insert/order_insert.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/order/order_insert/order_insert.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/order_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/user_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/user_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/forms/loginForm.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/forms/loginForm.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +45,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="credentialsType com.jetbrains.python.remote.PyCreateRemoteInterpreterDialog$PyCreateRemoteSdkForm" value="Web 部署" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RunManager" selected="Docker.maneu">
     <configuration name="Maneu" type="Python.DjangoServer" factoryName="Django server">
@@ -181,8 +173,16 @@
       <workItem from="1624847434663" duration="205000" />
       <workItem from="1624867601171" duration="4341000" />
       <workItem from="1624873394436" duration="944000" />
-      <workItem from="1624931580134" duration="7152000" />
+      <workItem from="1624931580134" duration="14711000" />
     </task>
+    <task id="LOCAL-00001" summary="添加验证码">
+      <created>1624946950294</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1624946950294</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,5 +199,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加验证码" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加验证码" />
   </component>
 </project>
