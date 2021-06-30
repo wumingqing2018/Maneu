@@ -22,7 +22,7 @@ def glass_insert(request):
 
 
 def glass_detail(request):
-    store_id = verify.verify_store_id_get(request)
+    store_id = verify.store_id_method_get(request)
     if store_id:
         glass = glass_store.glass_store_id(store_id)
         if glass:
@@ -39,7 +39,7 @@ def framework_insert(request):
 
 
 def framework_detail(request):
-    store_id = verify.verify_store_id_get(request)
+    store_id = verify.store_id_method_get(request)
     if store_id:
         framework = framework_store.find_store_id(store_id=store_id)
         print(framework['order'])

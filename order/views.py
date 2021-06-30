@@ -13,7 +13,7 @@ def order_list(request):
 
 def order_detail(request):
     """查看订单详情"""
-    order_id = verify.verify_order_id_get(request)
+    order_id = verify.order_id_method_get(request)
     if order_id:
         orders = service.find_order_id(order_id)
         if orders:
@@ -28,7 +28,7 @@ def order_detail(request):
 def order_search(request):
     """查找指定订单"""
     from .forms.orderSearchForm import OrderSearchForm
-    phone = verify.is_phone(request)
+    phone = verify.phone_method_get(request)
     if phone:
         orders = service.find_order_phone(phone)  # 查找今日订单
         if orders:
@@ -46,7 +46,7 @@ def order_update(request):
     from .forms.orderUpdateForm import OrderUpdateForm
     from django.forms import model_to_dict
 
-    order_id = verify.is_order_id(request)
+    order_id = verify.order_id_method_get(request)
     if order_id:
         orders = service.find_order_id(order_id)
         if orders:

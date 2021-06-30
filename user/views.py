@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import HttpResponse
 from user import serivce
-from common.verify import *
+from common import verify
 
 
 def user_login(request):
@@ -11,7 +11,12 @@ def user_login(request):
     判断用户是否登录
     """
     from .forms.loginForm import LoginForm
-    if request.session['user']:
+    try:
+        user = request.session['user']
+    except Exception as msg:
+        user = ''
+        print(msg)
+    if user:
         return redirect('index_page')
     else:
         if request.method == 'POST':
@@ -29,17 +34,15 @@ def user_login(request):
 def user_logout(request):
     from .forms.loginForm import LoginForm
     request.session['user'] = None
-    form = LoginForm()
-    return render(request, 'user/user_login.html', {'form': form})
+    return render(request, 'user/user_login.html', {'form': LoginForm()})
 
 
 def user_list(request):
-    user_list = serivce.find_all_user()
-    return render(request, 'user/user_list.html', {'user_list': user_list})
+    return render(request, 'user/user_list.html', {'user_list': serivce.find_all_user()})
 
 
 def user_detail(request):
-    user_id = verify_id_get(request)
+    user_id = verify.user_id_method_get(request)
     if user_id:
         user = serivce.find_user(user_id)
         return render(request, 'user/user_detail.html', {'user': user})
@@ -52,7 +55,7 @@ def user_insert(request):
 
 
 def user_update(request):
-    user_id = verify_id_get(request)
+    user_id = verify.user_id_method_get(request)
     if user_id:
         user = serivce.find_user(user_id)
         return render(request, 'user/user_update.html', {'user': user})
