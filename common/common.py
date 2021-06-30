@@ -37,8 +37,8 @@ def token():
     return str(rand_int)
 
 
-def qrcode(order_id, token):
-    print(order_id, token)
+def qrcode(order_id, order_token):
+    print(order_id, order_token)
     return None
 
 

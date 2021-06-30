@@ -51,7 +51,7 @@ def order_insert(request):
 def order_delete(request):
     """删除订单"""
     if request.method == 'POST':
-        order_id = verify.is_order_id(request)
+        order_id = verify.order_id_method_post(request)
         if order_id:
             delete = service.order_delete(order_id)
             if delete:
@@ -68,7 +68,7 @@ def order_delete(request):
 def order_update(request):
     """更新订单"""
     if request.method == 'POST':
-        order_id = verify.is_order_id(request)
+        order_id = verify.order_id_method_post(request)
         if order_id:
             form = OrderUpdateForm(request.POST)
             if form.is_valid():
@@ -89,9 +89,9 @@ def order_update(request):
 def order_qrcode(request):
     """二维码接口"""
     if request.method == 'POST':
-        order_id = verify.is_order_id(request)
+        order_id = verify.order_id_method_post(request)
         if order_id:
-            token = verify.is_order_id(request)
+            token = verify.order_token_method_post(request)
             if token:
                 qrcode = common.qrcode(order_id, token)
                 if qrcode:
@@ -109,10 +109,10 @@ def order_qrcode(request):
 
 def order_detail(request):
     res = common.res()
-    token = verify.verify_order_token_get(request)
-    order_id = verify.verify_order_id_get(request)
-    if order_id and token:
-        res['data'] = model_to_dict(service.find_order_id_and_token(order_id, token))
+    order_id = verify.order_id_method_get(request)
+    order_token = verify.order_token_method_get(request)
+    if order_id and order_token:
+        res['data'] = model_to_dict(service.find_order_id_and_token(order_id, order_token))
         res['code'] = 0
     else:
         res['code'] = 1

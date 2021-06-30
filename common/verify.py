@@ -1,6 +1,11 @@
 import re
 
 
+"""
+通用校验工具
+"""
+
+
 def is_int(string):
     """
     判读content值是否为正整数
@@ -58,10 +63,32 @@ def order_id_method_get(request):
     return None
 
 
+def order_id_method_post(request):
+    if request.method == 'POST':
+        try:
+            order_id = request.POST['order_id']
+            re_match = re.match(r"^\d{32}$", order_id, flags=0)
+            if re_match:return order_id
+        except Exception as msg:
+            print(msg)
+    return None
+
+
 def order_token_method_get(request):
     if request.method == 'GET':
         try:
             order_token = request.GET['order_token']
+            re_match = re.match(r"^\d{32}$", order_token, flags=0)
+            if re_match:return order_token
+        except Exception as msg:
+            print(msg)
+    return None
+
+
+def order_token_method_post(request):
+    if request.method == 'POST':
+        try:
+            order_token = request.POST['order_token']
             re_match = re.match(r"^\d{32}$", order_token, flags=0)
             if re_match:return order_token
         except Exception as msg:
