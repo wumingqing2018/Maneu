@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
-
-from . import service
+from order import service
 from common import verify
 
 
