@@ -2,7 +2,7 @@ from django.utils.deprecation import MiddlewareMixin
 from django.shortcuts import HttpResponseRedirect
 
 
-class UserLoginMiddleware(MiddlewareMixin):
+class LoginMiddleware(MiddlewareMixin):
     def __init__(self, get_response):
         self.get_response = get_response
         print("--用户登录校验中间件启动--")
