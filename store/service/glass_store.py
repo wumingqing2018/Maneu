@@ -63,7 +63,7 @@ def glass_store_count(brand, model, sphere, astigmatic, refraction):
 def glass_store_insert(form):
     try:
         model = GlassStore()
-        model.glass_id = common.order_id()
+        model.glass_id = common.create_id()
         model.remark = form['remark']
         model.count = form['count']
         model.brand = form['brand']

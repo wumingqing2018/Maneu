@@ -68,7 +68,7 @@
 
             <tr class="yellow">
                 <td>
-                    <a class="btn btn-primary" href="{% url 'store:store_list' %}" type="button">返回</a>
+                    <a class="btn btn-primary" href="{% url 'store:glass_list' %}" type="button">返回</a>
                 </td>
                 <td>
                     <input class="btn btn-warning col-md-12" id="btn_glass_insert" type="button" value="提交">
@@ -78,23 +78,10 @@
     </table>
 {% endblock %}
 
-{% block js %}
+{% block javascript %}
     <script>
         api_glass_insert = "{% url 'store:api_glass_insert' %}"
     </script>
     <script src="{% static 'js/common/input_range.js' %}"></script>
-    <script>
-        $(document).ready(
-            $('#btn_glass_insert').click(function () {
-                $.ajax({
-                    url: api_glass_insert,
-                    type: "POST",
-                    data: $('#glass_insert').serialize(),
-                    success: function (res) {
-                        alert(res['msg'])
-                    }
-                })
-            })
-        )
-    </script>
+    <script src="{% static 'js/store/glass_install.js' %}"></script>
 {% endblock %}
