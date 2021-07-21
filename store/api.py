@@ -1,9 +1,9 @@
 from django.http import JsonResponse
-from store.service import glass_store
-from store.service import framework_store
-from store.forms.glass_store_insert import GlassStoreInsert
+
 from store.forms.frame_store_insert import FrameStoreInsert
-from common import verify
+from store.forms.glass_store_insert import GlassStoreInsert
+from store.service import framework_store
+from store.service import glass_store
 
 
 def glass_insert(request):

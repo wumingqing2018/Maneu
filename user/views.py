@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
 from django.shortcuts import HttpResponse
-from user import serivce
+from django.shortcuts import redirect
+from django.shortcuts import render
+
 from common import verify
+from user import serivce
 
 
 def user_login(request):

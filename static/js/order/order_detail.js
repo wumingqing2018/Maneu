@@ -1,9 +1,9 @@
-
+ 
 $(document).ready(function(){
     $.ajax({
         url: api_order_detail,
         type: "GET",
-        data: {order_id: order_id, order_token: order_token},
+        data: {order_id: order_id},
         success: function (res) {
             if (res.code === 0){
                 c_name.html(res.data.c_name)

@@ -1,5 +1,5 @@
-from order.models import Order
 from common import common
+from order.models import Order
 
 
 def order_insert(form):
@@ -108,13 +108,13 @@ def find_order_id(order_id):
         return None
 
 
-def find_order_id_and_token(order_id, order_token):
+def find_order_id(order_id):
     """
     查找指定订单
     根据时间排序
     """
     try:
-        return Order.objects.filter(order_id=order_id, order_token=order_token).first()
+        return Order.objects.filter(order_id=order_id).first()
     except BaseException as msg:
         print(msg)
         return None

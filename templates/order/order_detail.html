@@ -64,8 +64,8 @@
             <td colspan="2">
                 <form id="qr_code">
                     {% csrf_token %}
-                    <input type="hidden" name="order_id" value="{{orders.order_id}}">
-                    <input type="hidden" name="token" value="{{orders.token}}">
+                    <input type="hidden" name="order_id" value="{{order_id}}">
+                    <input type="hidden" name="order_token" value="{{order_token}}">
                     <input type="button" class="btn btn-primary" id="get_qr_code" value="扫码">
                 </form>
             </td>
@@ -77,9 +77,9 @@
 
 {% block javascript %}
     <script type="text/javascript">
-        api_order_qrcode = '{% url 'order:api_order_qrcode' %}';
-        api_order_delete = '{% url 'order:api_order_delete' %}';
-        api_order_detail = '{% url 'order:api_order_detail' %}';
+        api_order_qrcode = "{% url 'order:api_order_qrcode' %}";
+        api_order_delete = "{% url 'order:api_order_delete' %}";
+        api_order_detail = "{% url 'order:api_order_detail' %}";
     </script>
     <script type="text/javascript">
         order_id = '{{ order_id }}';

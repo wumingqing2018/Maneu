@@ -1,5 +1,5 @@
-from store.models import FrameworkStore
 from common import common
+from store.models import FrameworkStore
 
 
 def store_all():

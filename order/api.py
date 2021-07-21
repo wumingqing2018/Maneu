@@ -1,15 +1,15 @@
-from django.http import JsonResponse
-from django.forms import model_to_dict
+import json
 
+from django.forms import model_to_dict
+from django.http import JsonResponse
+
+from common import common
+from common import verify
+from order import service
 from order.forms.orderInsertForm import OrderInsertForm
 from order.forms.orderUpdateForm import OrderUpdateForm
-from order import service
 from store.service import framework_store
 from store.service import glass_store
-
-from common import verify
-from common import common
-import json
 
 
 def order_list(request):
@@ -108,12 +108,10 @@ def order_qrcode(request):
 
 
 def order_detail(request):
-    print(request.method)
     res = common.res()
     order_id = verify.order_id_method_get(request)
-    order_token = verify.order_token_method_get(request)
-    if order_id and order_token:
-        res['data'] = model_to_dict(service.find_order_id_and_token(order_id, order_token))
+    if order_id:
+        res['data'] = model_to_dict(service.find_order_id(order_id))
         res['code'] = 0
     else:
         res['code'] = 1

@@ -1,0 +1,22 @@
+{% extends 'maneu/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <p class="yellow">{{ msg }}</p>
+            <button class="btn btn-warning" id="go_back">返回上一页</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('#go_back').click(function () {
+                    window.history.back();
+                }
+            )
+        })
+    </script>
+{% endblock %}

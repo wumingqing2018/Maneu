@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.shortcuts import HttpResponse
-from order import service
+
 from common import verify
+from order import service
 
 
 def order_list(request):
@@ -11,17 +11,19 @@ def order_list(request):
 
 
 def order_detail(request):
-    """查看订单详情"""
+    """
+    查看订单详情
+    校验请求模式 GET 校验order_id是否符合
+    true
+        渲染order_detail页面并传输参数order_id
+    false
+        渲染error页面并传输错误参数
+    """
     order_id = verify.order_id_method_get(request)
     if order_id:
-        orders = service.find_order_id(order_id)
-        if orders:
-            return render(request, 'order/order_detail.html', {'order_id': orders.order_id,
-                                                               'order_token': orders.order_token})
-        else:
-            return HttpResponse('error: 2')
+        return render(request, 'order/order_detail.html', {'order_id': order_id})
     else:
-        return HttpResponse('error: 1')
+        return render(request, 'maneu/error.html', {'msg': '参数错误'})
 
 
 def order_search(request):
@@ -53,6 +55,6 @@ def order_update(request):
             form = OrderUpdateForm(initial=orders)
             return render(request, 'order/order_update.html', {'form': form, 'order_id': order_id})
         else:
-            return HttpResponse('error: 2')
+            return render(request, 'maneu/error.html', {'msg': '没有订单'})
     else:
-        return HttpResponse('error: 1')
+        return render(request, 'maneu/error.html', {'msg': '参数错误'})

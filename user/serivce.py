@@ -1,5 +1,5 @@
-from .models import User
 from common import common
+from .models import User
 
 
 def find_user(user_id):

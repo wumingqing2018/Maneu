@@ -1,6 +1,6 @@
 from django import forms
-from django.forms import widgets
 from django.core.validators import RegexValidator
+from django.forms import widgets
 
 
 class OrderUpdateForm(forms.Form):

@@ -1,6 +1,6 @@
 # 依赖包
-import time
 import random
+import time
 
 
 def current_time():
