@@ -108,6 +108,7 @@ def order_qrcode(request):
 
 
 def order_detail(request):
+    print(request.method)
     res = common.res()
     order_id = verify.order_id_method_get(request)
     order_token = verify.order_token_method_get(request)
