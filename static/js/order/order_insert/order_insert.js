@@ -4,9 +4,6 @@
 校验 c_phone 是否符合输入要求
 */
 $(document).ready(function () {
-    order_list.click(function () {
-        window.location.href = api_order_list;
-    })
     $("#c_name").blur(function(){
         if ($('#c_name').val() === '') {
             $('#username_error').text('请输入姓名');
@@ -55,7 +52,4 @@ $(document).ready(function () {
             }
         });
     });
-    $("#order_content").blur(function () {
-        console.log('1')
-    })
 });

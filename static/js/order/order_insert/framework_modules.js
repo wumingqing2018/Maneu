@@ -2,6 +2,10 @@
 添加镜框相关js模块
  */
 $(document).ready(function () {
+    /**
+     * 点击 id=framework_insert_show 按钮调用一下function
+     * ajax 请求 api_framework_brand
+     */
     framework_insert_show.click(function () {
         framework_show()
         $.ajax({

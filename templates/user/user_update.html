@@ -78,7 +78,7 @@
                     </tr>
                     <tr class="yellow">
                         <td>
-                            <input class="btn btn-warning" id="btn-back" type="button" value="返回">
+                            <button class="btn btn-warning" id="btn-back">返回</button>
                         </td>
                         <td>
                             <input class="btn btn-primary col-md-12" id="btn-insert" type="button" value="添加">
@@ -95,8 +95,8 @@
 {% block javascript %}
     <script>
         user_insert = "{% url 'user:api_user_insert' %}";
-        user_list = "{% url 'user:user_list' %}";
     </script>
+    <script src="{% static 'js/common/windos_back.js' %}"></script>
     <script>
         $(document).ready(function () {
             $("#btn-insert").click(function () {

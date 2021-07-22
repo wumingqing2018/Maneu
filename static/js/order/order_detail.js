@@ -1,4 +1,3 @@
- 
 $(document).ready(function(){
     $.ajax({
         url: api_order_detail,
