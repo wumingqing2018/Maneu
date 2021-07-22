@@ -49,7 +49,7 @@
             <tfoot>
             <tr>
                 <td colspan="2">
-                    <input type="button" class="btn btn-warning" id="order_list" value="返回列表">
+                    <button class="btn btn-warning" id="btn-back">返回</button>
                 </td>
                 <td colspan="2">
                     <input type="button" class="btn btn-primary" id="glass_insert_show" value="添加镜片">
@@ -180,15 +180,22 @@
 
 {% block javascript %}
     <script>
-        c_name = $("#c_name")       //客户姓名
-        c_phone = $("#c_phone")     //客户电话
-        order = [];        //订单存放列表
-        order_list = $("#order_list");      //返回上一页按钮
-        framework = $("#framework");        //仓库编号
-        framework_table = $("#framework_table");        //添加镜框表格
-        framework_insert = $("#framework_insert");      //添加镜框表单
-        framework_insert_btn = $("#framework_insert_btn");      //添加按钮
-        framework_insert_show = $("#framework_insert_show");        //显示镜框表格
+        //客户姓名
+        c_name = $("#c_name")
+        //客户电话
+        c_phone = $("#c_phone")
+        //订单存放列表
+        order = [];
+        //仓库编号
+        framework = $("#framework");
+        //添加镜框表格
+        framework_table = $("#framework_table");
+        //添加镜框表单
+        framework_insert = $("#framework_insert");
+        //添加按钮
+        framework_insert_btn = $("#framework_insert_btn");
+        //显示镜框表格
+        framework_insert_show = $("#framework_insert_show");
         framework_insert_hide = $("#framework_insert_hide");        //隐藏镜框表格
         framework_model_select = $("#framework_model_select");      //镜框品牌选择框
         framework_brand_select = $("#framework_brand_select");      //镜框型号选择框
@@ -218,6 +225,7 @@
         api_framework_model = '{% url 'store:api_framework_model' %}';
         api_framework_count = '{% url 'store:api_framework_count' %}';
     </script>
+    <script src="{% static 'js/common/windos_back.js' %}"></script>
     <script src="{% static 'js/order/order_insert/order_insert.js' %}">/*提交订单modules*/</script>
     <script src="{% static 'js/order/order_insert/glass_modules.js' %}">/*添加镜片相关js模块*/</script>
     <script src="{% static 'js/order/order_insert/framework_modules.js' %}">/*添加镜框相关js模块*/</script>

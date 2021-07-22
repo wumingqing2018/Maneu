@@ -57,9 +57,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <form method="get" action="{% url 'order:order_list' %}">
-                    <input class="btn btn-primary" type="submit" value="返回">
-                </form>
+                <button class="btn btn-primary" id="btn-back">返回</button>
             </td>
             <td colspan="2">
                 <form id="qr_code">
@@ -90,4 +88,5 @@
         c_phone = $("#c_phone");
     </script>
     <script src="{% static 'js/order/order_detail.js' %}"></script>
+    <script src="{% static 'js/common/windos_back.js' %}"></script>
 {% endblock %}

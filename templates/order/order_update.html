@@ -64,23 +64,19 @@
                     </td>
                 </tr>
             </form>
-            <form method="post" action="{% url 'order_detail' %}">
-                <tr>
-                    <td colspan="6">
-                        {% csrf_token %}
-                        <input type="hidden" name="order_id" value="{{ order_id }}">
-                        <input class="btn btn-primary col-md-12" type="submit" value="返回">
-                    </td>
-                </tr>
-            </form>
-
+            <tr>
+                <td colspan="6">
+                    <button class="btn btn-primary col-md-12" id="btn-back">返回</button>
+                </td>
+            </tr>
         </table>
     </div>
 {% endblock%}
 
 {% block js %}
     <script>
-        var api_order_update = '{% url 'api_order_update' %}';
+        api_order_update = '{% url 'api_order_update' %}';
     </script>
     <script src="{% static "js/order/order_update.js" %}"></script>
+    <script src="{% static "js/common/windos_back.js" %}"></script>
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'base/admin.html' %}
+{% extends 'maneu/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -10,61 +10,71 @@
                     {% csrf_token %}
                     <tr class="yellow">
                         <td style="width: 20%">
-                            <p>账号: </p>
+                            <span>账号: </span>
                         </td>
                         <td>
-                            <input class="col-md-12" type="text" name="username" placeholder="{{ user.username }}">
-                            <p id="username"></p>
+                            <input class="col-md-12 form-control" type="text" name="username" placeholder="{{ user.username }}">
+                        </td>
+                        <td>
+                            <span id="username"></span>
                         </td>
                     </tr>
                     <tr class="yellow">
                         <td style="width: 20%">
-                            <p>密码: </p>
+                            <span>密码: </span>
                         </td>
                         <td>
-                            <input class="col-md-12" type="text" name="password" placeholder="{{ user.password }}">
-                            <p id="password"></p>
+                            <input class="col-md-12 form-control" type="text" name="password" placeholder="{{ user.password }}">
+                        </td>
+                        <td>
+                            <span id="password"></span>
                         </td>
                     </tr>
                     <tr class="yellow">
                         <td style="width: 20%">
-                            <p>电话: </p>
+                            <span>电话: </span>
                         </td>
                         <td>
-                            <input class="col-md-12" type="text" name="phone" placeholder="{{ user.phone }}">
-                            <p id="phone"></p>
+                            <input class="col-md-12 form-control" type="text" name="phone" placeholder="{{ user.phone }}">
+                        </td>
+                        <td>
+                            <span id="phone"></span>
                         </td>
                     </tr>
                     <tr class="yellow">
                         <td style="width: 20%">
-                            <p>邮件: </p>
+                            <span>邮件: </span>
                         </td>
                         <td>
                             <input class="col-md-12" type="text" name="email" placeholder="{{ user.email }}">
-                            <p id="email"></p>
+                        </td>
+                        <td>
+                            <span id="email"></span>
                         </td>
                     </tr>
                     <tr class="yellow">
                         <td style="width: 20%">
-                            <p>状态: </p>
+                            <span>状态: </span>
                         </td>
                         <td>
-                            <select class="col-md-12" form="user_insert" name="state">
+                            <select class="col-md-12 form-control" form="user_insert" name="state">
                                 <option value="0">使用</option>
                                 <option value="1">冻结</option>
                             </select>
                         </td>
+                        <td></td>
                     </tr>
                     <tr class="yellow">
                         <td style="width: 20%">
-                            <p>等级: </p>
+                            <span>等级: </span>
                         </td>
                         <td>
-                            <select class="col-md-12" form="user_insert" name="level">
+                            <select class="col-md-12 form-control" form="user_insert" name="level">
                                 <option value="1">用户</option>
                                 <option value="0">管理</option>
                             </select>
                         </td>
+                        <td></td>
                     </tr>
                     <tr class="yellow">
                         <td>
@@ -73,17 +83,18 @@
                         <td>
                             <input class="btn btn-primary col-md-12" id="btn-insert" type="button" value="添加">
                         </td>
+                        <td></td>
                     </tr>
                 </form>
             </table>
-            <p class="yellow" id="message"></p>
+            <span class="yellow" id="message"></span>
         </div>
     </div>
 {% endblock %}
 
-{% block js %}
+{% block javascript %}
     <script>
-        user_insert = "{% url 'user:api_insert' %}";
+        user_insert = "{% url 'user:api_user_insert' %}";
         user_list = "{% url 'user:user_list' %}";
     </script>
     <script>
@@ -107,9 +118,6 @@
                         }
                     }
                 })
-            })
-            $("#btn-back").click(function () {
-                $(location).attr("href", user_list)
             })
         })
     </script>
