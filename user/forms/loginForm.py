@@ -28,14 +28,13 @@ class LoginForm(forms.Form):
 
     captcha = CaptchaField(label="验证码",
                            required=True,
-                           error_messages={"required":"验证码不能为空",
-                                           "invalid": u"验证码错误"}
+                           error_messages={"required": "验证码不能为空",
+                                           "invalid": "验证码错误"}
                            )
-
 
     def clean(self):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
 
-        if username != 'unlock' or password != 'XMacheNike':
+        if username != 'unlock' and password != 'XMacheNike':
             raise forms.ValidationError('登录失败')

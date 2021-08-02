@@ -1,6 +1,5 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
-
 {% block content %}
     <!--内容栏-->
     <table class="table">
@@ -9,16 +8,24 @@
             <td style="width: 25%" class="yellow">姓名</td>
             <td style="width: 25%" class="yellow">电话</td>
             <td style="width: 25%" class="yellow">时间</td>
-            <td style="width: 25%" class="yellow">
-                <button class="btn btn-primary" id="order_insert">添加订单</button>
+            <td style="width: 25%">
+                <a type="button" class="btn btn-warning" href="{% url 'order:order_insert'%}">添加订单</a>
             </td>
         </tr>
         {% for order in orders %}
             <tr>
-                <td class="yellow">{{order.order_id}}</td>
-                <td class="yellow">{{order.c_name}}</td>
-                <td class="yellow">{{order.c_phone}}</td>
-                <td class="yellow">{{order.c_time }}</td>
+                <td class="yellow">
+                    <p>{{order.order_id}}</p>
+                </td>
+                <td class="yellow">
+                    <p>{{order.c_name}}</p>
+                </td>
+                <td class="yellow">
+                    <p>{{order.c_phone}}</p>
+                </td>
+                <td class="yellow">
+                    <p>{{order.c_time }}</p>
+                </td>
                 <td class="yellow">
                     <form method="GET" action="{% url 'order:order_detail' %}">
                         <input type="hidden" name="order_id" value="{{order.order_id}}">
@@ -36,20 +43,4 @@
 {#            <button class="btn btn-primary" id="down">上页</button>#}
 {#        </div>#}
 {#    </div>#}
-{% endblock %}
-
-{% block javascript %}
-    <script>
-        api_order_list = "{% url 'order:api_order_list' %}"
-        api_order_insert = "{% url 'order:order_insert' %}"
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#order_insert').click(function () {
-                window.location.href = api_order_insert
-            })
-        })
-    </script>
-    {#    <script src="{% static 'js/order/order_list/load-order-list.js' %}"></script>#}
-    {#    <script src="{% static 'js/order/order_list/upAndDown.js' %}"></script>#}
 {% endblock %}

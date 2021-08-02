@@ -1,3 +1,5 @@
+import time
+
 from django.shortcuts import HttpResponseRedirect
 from django.utils.deprecation import MiddlewareMixin
 
@@ -15,9 +17,8 @@ class LoginMiddleware(MiddlewareMixin):
         用户没有登录, 跳转到登录页
         用户已经登录, 允许通过
         """
-        """
-        login_url = '/user/login/'
-        verify_list = ["order", "store"]
+        login_url = '/login/'
+        verify_list = ["order", "store", "user"]
         request_url = request.path
         for verify in verify_list:
             if verify in request_url:
@@ -25,17 +26,5 @@ class LoginMiddleware(MiddlewareMixin):
                     if request.session['user']:
                         return None
                 except Exception as msg:
-                    print(msg)
-                return HttpResponseRedirect(login_url)
-        """
-        login_url = '/user/login/'
-        if request.path == login_url:
-            return None
-        else:
-            try:
-                if request.session['user']:
-                    return None
-            except Exception as msg:
-                print(msg)
-                return HttpResponseRedirect(login_url)
-
+                    return HttpResponseRedirect(login_url)
+        return None

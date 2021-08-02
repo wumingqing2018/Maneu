@@ -45,12 +45,12 @@
             <td style="width: 9%"><span>数量</span></td>
         </tr>
         </thead>
-        <tbody id="order_content">
-
-        </tbody>
+        <tbody id="order_content"></tbody>
         <tfoot>
         <tr>
-            <td style="width: 9%"><span>备注</span></td>
+            <td style="width: 9%">
+                <span>备注</span>
+            </td>
             <td colspan="10">
                 <span id="remark"></span>
             </td>
@@ -80,8 +80,8 @@
         api_order_detail = "{% url 'order:api_order_detail' %}";
     </script>
     <script type="text/javascript">
-        order_id = '{{ order_id }}';
-        order_token = '{{ order_token }}';
+        order_id = "{{ order_id }}";    //订单ID
+        order_token = "{{ order_token }}";  //订单密钥
         remark = $("#remark");
         c_name = $("#c_name");
         c_time = $("#c_time");

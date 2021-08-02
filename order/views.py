@@ -1,7 +1,10 @@
+from common import verify
+from django.forms import model_to_dict
 from django.shortcuts import render
 
-from common import verify
 from order import service
+from order.forms.orderUpdateForm import OrderUpdateForm
+from order.forms.orderSearchForm import OrderSearchForm
 
 
 def order_list(request):
@@ -18,7 +21,7 @@ def order_detail(request):
         渲染order_detail页面并传输参数order_id
     false
         渲染error页面并传输错误参数
-    """
+    """ 
     order_id = verify.order_id_method_get(request)
     if order_id:
         return render(request, 'order/order_detail.html', {'order_id': order_id})
@@ -28,7 +31,6 @@ def order_detail(request):
 
 def order_search(request):
     """查找指定订单"""
-    from .forms.orderSearchForm import OrderSearchForm
     phone = verify.phone_method_get(request)
     if phone:
         orders = service.find_order_phone(phone)  # 查找今日订单
@@ -44,9 +46,6 @@ def order_insert(request):
 
 def order_update(request):
     """更新订单"""
-    from .forms.orderUpdateForm import OrderUpdateForm
-    from django.forms import model_to_dict
-
     order_id = verify.order_id_method_get(request)
     if order_id:
         orders = service.find_order_id(order_id)

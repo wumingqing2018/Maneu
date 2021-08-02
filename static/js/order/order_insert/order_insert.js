@@ -4,6 +4,13 @@
 校验 c_phone 是否符合输入要求
 */
 $(document).ready(function () {
+    /*
+     *  c_name 的值改变后, 判断 c_name 是否为空
+     *  c_name 为空
+     *      在username_error填充请输入姓名
+     *  c_name 不为空
+     *      清空username_error的值
+     */
     $("#c_name").blur(function(){
         if ($('#c_name').val() === '') {
             $('#username_error').text('请输入姓名');
