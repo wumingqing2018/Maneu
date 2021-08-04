@@ -7,7 +7,6 @@ app_name = 'user'
 urlpatterns = [
     # view
     path('list/', views.user_list, name='user_list'),
-    path('login/', views.user_login, name='user_login'),
     path('logout/', views.user_logout, name='user_logout'),
     path('insert/', views.user_insert, name='user_insert'),
     path('update/', views.user_update, name='user_update'),

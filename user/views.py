@@ -1,40 +1,15 @@
 from django.shortcuts import HttpResponse
-from django.shortcuts import redirect
 from django.shortcuts import render
 
 from common import verify
 from user import serivce
-
-
-def user_login(request):
-    """
-    登录模块
-    判断用户是否登录
-    """
-    from .forms.loginForm import LoginForm
-    try:
-        user = request.session['user']
-    except Exception as msg:
-        user = ''
-        print(msg)
-    if user:
-        return redirect('index_page')
-    else:
-        if request.method == 'POST':
-            form = LoginForm(request.POST)
-            if form.is_valid():
-                request.session['user'] = 'admin'
-                return redirect('index_page')
-            else:
-                return render(request, 'user/user_login.html', {'form': LoginForm()})
-        else:
-            request.session['user'] = None
-            return render(request, 'user/user_login.html', {'form': LoginForm()})
+from user import server_redis
+from user.forms.loginForm import LoginForm
 
 
 def user_logout(request):
-    from .forms.loginForm import LoginForm
-    request.session['user'] = None
+    session_key = request.session.session_key
+    server_redis.del_user_login(session_key)
     return render(request, 'user/user_login.html', {'form': LoginForm()})
 
 
