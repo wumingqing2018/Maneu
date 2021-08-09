@@ -1,11 +1,11 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
 {% block content %}
-<form id="order_insert">
-    {% csrf_token %}
-    <input type="hidden" name="order" id="order">
-    <table class="table">
-        <thead>
+    <form id="order_insert">
+        {% csrf_token %}
+        <input type="hidden" name="order" id="order">
+        <table class="table">
+            <thead>
             <tr>
                 <td colspan="10">
                     <span>客户</span>
@@ -36,11 +36,11 @@
                     <span id="remake_error"></span>
                 </td>
             </tr>
-        </thead>
-        <tbody id="order_content">
+            </thead>
+            <tbody id="order_content">
             <tr id="order_banner" style="display: none">
                 <td>
-                <span>产品</span></td>
+                    <span>产品</span></td>
                 <td><span>品牌</span></td>
                 <td><span>型号</span></td>
                 <td><span>度数</span></td>
@@ -51,8 +51,8 @@
                 <td><span>渐进</span></td>
                 <td><span>偏光</span></td>
             </tr>
-        </tbody>
-        <tfoot>
+            </tbody>
+            <tfoot>
             <tr>
                 <td colspan="2">
                     <a type="button" class="btn btn-warning" href="{% url 'order:order_list' %}">返回列表</a>
@@ -69,173 +69,173 @@
                     <input class="btn btn-danger" id="insert" type="button" value="提交订单" style="display: none">
                 </td>
             </tr>
-        </tfoot>
-    </table>
-</form>
-<form id="framework_insert">
-    <table class="table" id="framework_table" style="display: none">
-        <tr>
-            <td style="width: 10%">
-                <span>品牌</span>
-            </td>
-            <td>
-                <select id="framework_brand_select" class="form-control" form="framework_insert" name="brand"></select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>型号</span>
-            </td>
-            <td>
-                <select id="framework_model_select" class="form-control" form="framework_insert" name="model"></select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="hidden" name="store_id" id="framework">
-                <input type="hidden" name="count" value="1">
-                <input type="hidden" name="product" value="镜框">
-            </td>
-            <td>
-                <input type="button" id="framework_insert_btn" class="col-md-12 btn btn-primary" value="提交">
-            </td>
-        </tr>
-    </table>
-</form>
-<form id="glass_insert">
-    <table class="table" id="glass_table" style="display: none">
-        <tr>
-            <td style="width: 10%">
-                <span>品牌</span>
-            </td>
-            <td>
-                <select class="form-control" id="glass_brand_select" form="glass_insert" name="brand">
-                    <option></option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>型号</span>
-            </td>
-            <td>
-                <select class="form-control" id="glass_model_select" form="glass_insert" name="model">
-                    <option></option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>度数</span>
-            </td>
-            <td>
-                <select class="form-control" id="glass_sphere_select" form="glass_insert" name="sphere">
-                    <option></option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>散光</span>
-            </td>
-            <td>
-                <select class="form-control" id="glass_astigmatic_select" form="glass_insert" name="astigmatic">
-                    <option></option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>折射</span>
-            </td>
-            <td>
-                <select class="form-control" id="glass_refraction_select" form="glass_insert" name="refraction">
-                    <option></option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td><span>方向</span></td>
-            <td>
-                <select class="form-control" name="Around" form="glass_insert">
-                    <option name="N">无</option>
-                    <option name="L">左</option>
-                    <option name="R">右</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td><span>瞳距</span></td>
-            <td>
-                <input class="form-control" type="text" name="pd">
-            </td>
-        </tr>
-        <tr>
-            <td><span>渐进</span></td>
-            <td>
-                <input class="form-control" type="text" name="add">
-            </td>
-        </tr>
-        <tr>
-            <td><span>偏光</span></td>
-            <td>
-                <input class="form-control" type="text" name="deviation">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="hidden" name="count" value="1">
-                <input type="hidden" name="product" value="镜片">
-                <input type="hidden" name="store_id" id="glass">
-            </td>
-            <td colspan="10">
-                <input type="button" class="col-md-12 btn btn-primary" id="glass_insert_btn" value="提交">
-            </td>
-        </tr>
-    </table>
-</form>
+            </tfoot>
+        </table>
+    </form>
+    <form id="framework_insert">
+        <table class="table" id="framework_table" style="display: none">
+            <tr>
+                <td style="width: 10%">
+                    <span>品牌</span>
+                </td>
+                <td>
+                    <select id="framework_brand_select" class="form-control" form="framework_insert" name="brand"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>型号</span>
+                </td>
+                <td>
+                    <select id="framework_model_select" class="form-control" form="framework_insert" name="model"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="hidden" name="store_id" id="framework">
+                    <input type="hidden" name="count" value="1">
+                    <input type="hidden" name="product" value="镜框">
+                </td>
+                <td>
+                    <input type="button" id="framework_insert_btn" class="col-md-12 btn btn-primary" value="提交">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <form id="glass_insert">
+        <table class="table" id="glass_table" style="display: none">
+            <tr>
+                <td style="width: 10%">
+                    <span>品牌</span>
+                </td>
+                <td>
+                    <select class="form-control" id="glass_brand_select" form="glass_insert" name="brand">
+                        <option></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>型号</span>
+                </td>
+                <td>
+                    <select class="form-control" id="glass_model_select" form="glass_insert" name="model">
+                        <option></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>度数</span>
+                </td>
+                <td>
+                    <select class="form-control" id="glass_sphere_select" form="glass_insert" name="sphere">
+                        <option></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>散光</span>
+                </td>
+                <td>
+                    <select class="form-control" id="glass_astigmatic_select" form="glass_insert" name="astigmatic">
+                        <option></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>折射</span>
+                </td>
+                <td>
+                    <select class="form-control" id="glass_refraction_select" form="glass_insert" name="refraction">
+                        <option></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><span>方向</span></td>
+                <td>
+                    <select class="form-control" name="Around" form="glass_insert">
+                        <option name="N">无</option>
+                        <option name="L">左</option>
+                        <option name="R">右</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><span>瞳距</span></td>
+                <td>
+                    <input class="form-control" type="text" name="pd">
+                </td>
+            </tr>
+            <tr>
+                <td><span>渐进</span></td>
+                <td>
+                    <input class="form-control" type="text" name="add">
+                </td>
+            </tr>
+            <tr>
+                <td><span>偏光</span></td>
+                <td>
+                    <input class="form-control" type="text" name="deviation">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="hidden" name="count" value="1">
+                    <input type="hidden" name="product" value="镜片">
+                    <input type="hidden" name="store_id" id="glass">
+                </td>
+                <td colspan="10">
+                    <input type="button" class="col-md-12 btn btn-primary" id="glass_insert_btn" value="提交">
+                </td>
+            </tr>
+        </table>
+    </form>
 {% endblock%}
 {% block javascript %}
-<script>
-    c_name = $("#c_name")                                       //客户姓名
-    c_phone = $("#c_phone")                                     //客户电话
-    order = [];                                                 //订单存放列表
-    framework = $("#framework");                                //仓库编号
-    framework_table = $("#framework_table");                    //添加镜框表格
-    framework_insert = $("#framework_insert");                  //添加镜框表单
-    framework_insert_btn = $("#framework_insert_btn");          //添加按钮
-    framework_insert_show = $("#framework_insert_show");        //显示镜框表格
-    framework_insert_hide = $("#framework_insert_hide");        //隐藏镜框表格
-    framework_model_select = $("#framework_model_select");      //镜框品牌选择框
-    framework_brand_select = $("#framework_brand_select");      //镜框型号选择框
-    glass = $("#glass");                                        //仓库编号
-    glass_table = $("#glass_table");                            //镜片表格
-    glass_insert = $("#glass_insert");                          //镜片表单
-    glass_insert_btn = $("#glass_insert_btn");                  //镜片添加按钮
-    glass_insert_hide = $("#glass_insert_hide");                //隐藏镜片表格
-    glass_insert_show = $("#glass_insert_show");                //显示镜片表格
-    glass_brand_select = $("#glass_brand_select");              //镜片品牌选择框
-    glass_count_select = $("#glass_count_select");              //镜片数量选择框
-    glass_model_select = $("#glass_model_select");              //镜片型号选择框
-    glass_sphere_select = $("#glass_sphere_select");            //镜片度数选择框
-    glass_astigmatic_select = $("#glass_astigmatic_select");    //镜片散光选择框
-    glass_refraction_select = $("#glass_refraction_select");    //镜片折射选择框
-</script>
-<script>
-    api_order_list = "{% url 'order:order_list' %}";
-    api_glass_count = "{% url 'store:api_glass_count' %}";
-    api_glass_brand = "{% url 'store:api_glass_brand' %}";
-    api_glass_model = "{% url 'store:api_glass_model' %}";
-    api_glass_sphere = "{% url 'store:api_glass_sphere' %}";
-    api_order_insert = "{% url 'order:api_order_insert' %}";
-    api_glass_astigmatic = "{% url 'store:api_glass_astigmatic' %}";
-    api_glass_refraction = "{% url 'store:api_glass_refraction' %}";
-    api_framework_brand = "{% url 'store:api_framework_brand' %}";
-    api_framework_model = "{% url 'store:api_framework_model' %}";
-    api_framework_count = "{% url 'store:api_framework_count' %}";
-</script>
-<script src="{% static 'js/common/windos_back.js' %}">/*返回上一层modules*/</script>
-<script src="{% static 'js/order/order_insert/order_insert.js' %}">/*提交订单modules*/</script>
-<script src="{% static 'js/order/order_insert/glass_modules.js' %}">/*添加镜片相关js模块*/</script>
-<script src="{% static 'js/order/order_insert/framework_modules.js' %}">/*添加镜框相关js模块*/</script>
+    <script>
+        c_name = $("#c_name")                                       //客户姓名
+        c_phone = $("#c_phone")                                     //客户电话
+        order = [];                                                 //订单存放列表
+        framework = $("#framework");                                //仓库编号
+        framework_table = $("#framework_table");                    //添加镜框表格
+        framework_insert = $("#framework_insert");                  //添加镜框表单
+        framework_insert_btn = $("#framework_insert_btn");          //添加按钮
+        framework_insert_show = $("#framework_insert_show");        //显示镜框表格
+        framework_insert_hide = $("#framework_insert_hide");        //隐藏镜框表格
+        framework_model_select = $("#framework_model_select");      //镜框品牌选择框
+        framework_brand_select = $("#framework_brand_select");      //镜框型号选择框
+        glass = $("#glass");                                        //仓库编号
+        glass_table = $("#glass_table");                            //镜片表格
+        glass_insert = $("#glass_insert");                          //镜片表单
+        glass_insert_btn = $("#glass_insert_btn");                  //镜片添加按钮
+        glass_insert_hide = $("#glass_insert_hide");                //隐藏镜片表格
+        glass_insert_show = $("#glass_insert_show");                //显示镜片表格
+        glass_brand_select = $("#glass_brand_select");              //镜片品牌选择框
+        glass_count_select = $("#glass_count_select");              //镜片数量选择框
+        glass_model_select = $("#glass_model_select");              //镜片型号选择框
+        glass_sphere_select = $("#glass_sphere_select");            //镜片度数选择框
+        glass_astigmatic_select = $("#glass_astigmatic_select");    //镜片散光选择框
+        glass_refraction_select = $("#glass_refraction_select");    //镜片折射选择框
+    </script>
+    <script>
+        api_order_list = "{% url 'order:api_order_list' %}";
+        api_glass_count = "{% url 'store:api_glass_count' %}";
+        api_glass_brand = "{% url 'store:api_glass_brand' %}";
+        api_glass_model = "{% url 'store:api_glass_model' %}";
+        api_glass_sphere = "{% url 'store:api_glass_sphere' %}";
+        api_order_insert = "{% url 'order:api_order_insert' %}";
+        api_glass_astigmatic = "{% url 'store:api_glass_astigmatic' %}";
+        api_glass_refraction = "{% url 'store:api_glass_refraction' %}";
+        api_framework_brand = "{% url 'store:api_framework_brand' %}";
+        api_framework_model = "{% url 'store:api_framework_model' %}";
+        api_framework_count = "{% url 'store:api_framework_count' %}";
+    </script>
+    <script src="{% static 'js/common/windos_back.js' %}">/*返回上一层modules*/</script>
+    <script src="{% static 'js/order/order_insert/order_insert.js' %}">/*提交订单modules*/</script>
+    <script src="{% static 'js/order/order_insert/glass_modules.js' %}">/*添加镜片相关js模块*/</script>
+    <script src="{% static 'js/order/order_insert/framework_modules.js' %}">/*添加镜框相关js模块*/</script>
 {% endblock %}

@@ -83,14 +83,16 @@ def find_order_all():
         return None
 
 
-def find_order_today():
+def find_order_today(PageNumber):
     """
     查找今日订单
     根据时间排序
     """
     try:
-        u_time = common.today()
-        return Order.objects.filter(u_time__gt=u_time).order_by('-c_time').all()
+        # u_time = common.today()
+        # return Order.objects.filter(u_time__gt=u_time).order_by('-c_time')[PageNumber: PageNumber+20]
+        return Order.objects.filter().order_by('-c_time')[PageNumber: PageNumber + 20]
+
     except BaseException as msg:
         print(msg)
         return None

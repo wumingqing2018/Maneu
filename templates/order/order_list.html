@@ -35,12 +35,58 @@
             </tr>
         {% endfor %}
     </table>
-{#    <div class="row offset-5">#}
-{#        <div style="margin: 5%">#}
-{#            <button class="btn btn-primary" id="up">上页</button>#}
-{#        </div>#}
-{#        <div style="margin: 5%">#}
-{#            <button class="btn btn-primary" id="down">上页</button>#}
-{#        </div>#}
-{#    </div>#}
+    <div class="row offset-5">
+        <div style="margin: 5%">
+            <input type="button" class="btn btn-primary" id="up" value="上">
+        </div>
+        <div style="margin: 5%">
+            <input type="button" class="btn btn-primary" id="down" value="下">
+        </div>
+    </div>
 {% endblock %}
+{% block javascript %}
+    <script>
+        PageNumber = 0
+        api_order_list = "{% url 'order:api_order_list' %}";
+        $(document).ready(function () {
+            $.ajax({
+                url: api_order_list,
+                type: 'GET',
+                data: {'PageNumber': PageNumber},
+                success: function (res) {
+                    console.log(res)
+                }
+            })
+
+            $('#up').click(function () {
+                console.log('1')
+                PageNumber = PageNumber-20
+                if (PageNumber > 0){
+                    $.ajax({
+                        url: api_order_list,
+                        type: 'GET',
+                        data: {'PageNumber': PageNumber},
+                        success: function (res) {
+                            console.log(res)
+                        }
+                    })
+                }
+            });
+            $('#down').click(function () {
+                PageNumber = PageNumber+20
+                console.log(PageNumber)
+                if (PageNumber > 0){
+                    $.ajax({
+                        url: api_order_list,
+                        type: 'GET',
+                        data: {'PageNumber': PageNumber},
+                        success: function (res) {
+                            console.log(res)
+                        }
+                    })
+                }
+            });
+        })
+    </script>
+    <script src="{% static 'js/order/order_list/LoadOrderList.js' %}"></script>
+{% endblock javascript %}

@@ -1,16 +1,15 @@
-from django.shortcuts import HttpResponse
 from django.shortcuts import render
+from django.shortcuts import redirect
 
 from common import verify
 from user import serivce
 from user import server_redis
-from user.forms.loginForm import LoginForm
 
 
 def user_logout(request):
     session_key = request.session.session_key
     server_redis.del_user_login(session_key)
-    return render(request, 'user/user_login.html', {'form': LoginForm()})
+    return redirect('login')
 
 
 def user_list(request):
@@ -23,11 +22,11 @@ def user_detail(request):
         user = serivce.find_user(user_id)
         return render(request, 'user/user_detail.html', {'user': user})
     else:
-        return HttpResponse('请求出错')
+        return render(request, 'maneu/error.html', {'msg': "请求出错"})
 
 
 def user_insert(request):
-    return render(request, 'user/user_insert.html', )
+    return render(request, 'user/user_insert.html')
 
 
 def user_update(request):
@@ -36,4 +35,4 @@ def user_update(request):
         user = serivce.find_user(user_id)
         return render(request, 'user/user_update.html', {'user': user})
     else:
-        return HttpResponse('请求出错')
+        return render(request, 'maneu/error.html', {'msg': "请求出错"})

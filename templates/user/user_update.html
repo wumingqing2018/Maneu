@@ -1,6 +1,5 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
-
 {% block content %}
     <!--内容栏-->
     <div class="container">
@@ -91,7 +90,6 @@
         </div>
     </div>
 {% endblock %}
-
 {% block javascript %}
     <script>
         user_insert = "{% url 'user:api_user_insert' %}";

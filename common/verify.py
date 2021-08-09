@@ -1,6 +1,4 @@
 import re
-
-
 """
 通用校验工具
 """
@@ -14,7 +12,8 @@ def is_int(string):
     """
     try:
         re_match = re.match(r"^[0-9]\d*$", string, flags=0)
-        if re_match:return int(string)
+        if re_match:
+            return int(string)
     except BaseException as msg:
         print("error", msg)
     return 0
@@ -30,7 +29,8 @@ def user_id_method_get(request):
         try:
             user_id = request.GET['user_id']
             re_match = re.match(r"^\d{32}$", user_id, flags=0)
-            if re_match:return user_id
+            if re_match:
+                return user_id
         except BaseException as msg:
             print(msg)
     return None
@@ -46,18 +46,23 @@ def store_id_method_get(request):
         try:
             user_id = request.GET['store_id']
             re_match = re.match(r"^\d{32}$", user_id, flags=0)
-            if re_match:return user_id
+            if re_match:
+                return user_id
         except BaseException as msg:
             print(msg)
     return None
 
 
 def order_id_method_get(request):
+    """
+    检验GET请求的order_id是否为32位正整数
+    """
     if request.method == 'GET':
         try:
             order_id = request.GET['order_id']
             re_match = re.match(r"^\d{32}$", order_id, flags=0)
-            if re_match:return order_id
+            if re_match:
+                return order_id
         except Exception as msg:
             print(msg)
     return None
@@ -68,7 +73,8 @@ def order_id_method_post(request):
         try:
             order_id = request.POST['order_id']
             re_match = re.match(r"^\d{32}$", order_id, flags=0)
-            if re_match:return order_id
+            if re_match:
+                return order_id
         except Exception as msg:
             print(msg)
     return None
@@ -79,7 +85,8 @@ def order_token_method_get(request):
         try:
             order_token = request.GET['order_token']
             re_match = re.match(r"^\d{32}$", order_token, flags=0)
-            if re_match:return order_token
+            if re_match:
+                return order_token
         except Exception as msg:
             print(msg)
     return None
@@ -90,7 +97,8 @@ def order_token_method_post(request):
         try:
             order_token = request.POST['order_token']
             re_match = re.match(r"^\d{32}$", order_token, flags=0)
-            if re_match:return order_token
+            if re_match:
+                return order_token
         except Exception as msg:
             print(msg)
     return None
@@ -101,7 +109,8 @@ def phone_method_get(request):
         try:
             phone = request.GET['search']
             re_match = re.match(r"^\d{11}$", phone, flags=0)
-            if re_match:return phone
+            if re_match:
+                return phone
         except Exception as msg:
             print(msg)
     return None

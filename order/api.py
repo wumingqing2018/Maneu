@@ -14,18 +14,20 @@ from store.service import glass_store
 
 def order_list(request):
     """查看今日订单"""
+    res = common.res()
     if request.method == "GET":
-        min = verify.is_int(string=request.GET['min'])
-        max = verify.is_int(string=request.GET['max'])
-        orders = service.find_order_all(min, max).values_list('c_name', 'c_phone', 'c_time')
-        res = {'': 0, 'data': list(orders)}
+        PageNumber = verify.is_int(string=request.GET['PageNumber'])
+        orders = service.find_order_today(PageNumber).values_list('c_name', 'c_phone', 'c_time')
+        res['data'] = list(orders)
     else:
-        res = {'code': 1, 'data': 'request method error'}
+        res['code'] = 1
+        res['msg'] = "request method error"
     return JsonResponse(res)
 
 
 def order_insert(request):
     """创建订单"""
+    res = common.res()
     if request.method == "POST":
         form = OrderInsertForm(request.POST)
         if form.is_valid():
@@ -44,7 +46,8 @@ def order_insert(request):
         else:
             res = {'code': 2, 'msg': form.errors}
     else:
-        res = {'code': 1, 'msg': '请求出错'}
+        res['code'] = 1
+        res['msg'] = "请求出错"
     return JsonResponse(res)
 
 
