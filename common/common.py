@@ -1,6 +1,7 @@
 # 依赖包
 import random
 import time
+import qrcode
 
 
 def current_time():
@@ -37,7 +38,7 @@ def token():
     return str(rand_int)
 
 
-def qrcode(order_id, order_token):
+def make_qrcode(order_id, order_token):
     print(order_id, order_token)
     return None
 

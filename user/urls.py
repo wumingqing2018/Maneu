@@ -15,6 +15,4 @@ urlpatterns = [
     # api
     path('api_list/', api.user_list, name='api_user_list'),
     path('api_insert/', api.user_insert, name='api_user_insert'),
-    path('api_freeze/', api.user_freeze, name='api_user_freeze'),
-    path('api_unfreeze/', api.user_unfreeze, name='api_user_unfreeze'),
 ]

@@ -9,7 +9,7 @@ def find_user(user_id):
     return User.objects.filter(user_id=user_id).first()
 
 
-def find_all_user():
+def find_user_all():
     """查找所有用户"""
     return User.objects.all().order_by('-create_time')
 
