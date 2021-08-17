@@ -17,13 +17,13 @@ urlpatterns = [
     path('framework_content/', views.framework_detail, name='framework_content'),
 
     # glass_api
-    path('api_glass_insert/', api.glass_insert, name='api_glass_insert'),
+    path('api_glass_count/', api.glass_count, name='api_glass_count'),
     path('api_glass_brand/', api.glass_brand, name='api_glass_brand'),
     path('api_glass_model/', api.glass_model, name='api_glass_model'),
+    path('api_glass_insert/', api.glass_insert, name='api_glass_insert'),
     path('api_glass_sphere/', api.glass_sphere, name='api_glass_sphere'),
     path('api_glass_astigmatic/', api.glass_astigmatic, name='api_glass_astigmatic'),
     path('api_glass_refraction/', api.glass_refraction, name='api_glass_refraction'),
-    path('api_glass_count/', api.glass_count, name='api_glass_count'),
     # framework_api
     path('api_framework_insert/', api.framework_insert, name='api_framework_insert'),
     path('api_framework_brand/', api.framework_brand, name='api_framework_brand'),
