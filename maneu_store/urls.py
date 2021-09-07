@@ -1,9 +1,9 @@
 from django.urls import path
 
-from store import api
-from store import views
+from maneu_store import api
+from maneu_store import views
 
-app_name = 'store'
+app_name = 'maneu_store'
 urlpatterns = [
     # index
     path('store_list/', views.store_list, name='store_list'),
@@ -31,6 +31,6 @@ urlpatterns = [
     path('api_framework_model/', api.framework_model, name='api_framework_model'),
     path('api_framework_count/', api.framework_count, name='api_framework_count'),
 
-    # store
+    # maneu_store
     path('store_insert/', views.store_insert, name='store_insert'),
 ]

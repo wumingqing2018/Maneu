@@ -1,5 +1,5 @@
 from common import common
-from order.models import Order
+from maneu_order.models import Order
 import time
 
 
@@ -18,7 +18,7 @@ def order_insert(form):
             c_time=common.current_time(),
             # 商家
             besiness='',
-            order=form['order'],
+            order=form['maneu_order'],
             # 备注
             remark=form['remark'],
         )

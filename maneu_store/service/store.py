@@ -1,5 +1,5 @@
 from common import common
-from store.models import Store
+from maneu_store.models import Store
 
 
 def store_item_all():

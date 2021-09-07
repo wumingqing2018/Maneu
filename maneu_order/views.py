@@ -2,9 +2,9 @@ from common import verify
 from django.forms import model_to_dict
 from django.shortcuts import render
 
-from order import service
-from order.forms.orderUpdateForm import OrderUpdateForm
-from order.forms.orderSearchForm import OrderSearchForm
+from maneu_order import service
+from maneu_order.forms.orderUpdateForm import OrderUpdateForm
+from maneu_order.forms.orderSearchForm import OrderSearchForm
 from common.common import yesterday
 
 
@@ -27,7 +27,7 @@ def order_detail(request):
     order_id = verify.order_id_method_get(request)
     order = service.find_order_id(order_id)
     if order_id:
-        return render(request, 'order/order_detail.html', {'order': order})
+        return render(request, 'order/order_detail.html', {'maneu_order': order})
     else:
         return render(request, 'maneu/error.html', {'msg': '参数错误'})
 

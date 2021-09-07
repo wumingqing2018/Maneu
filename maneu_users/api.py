@@ -1,8 +1,8 @@
 from django.http import JsonResponse
 
-from users import serivce
-from users.forms.InsertForm import UserInsertForm
-from users.forms.loginForm import LoginForm
+from maneu_users import serivce
+from maneu_users.forms.InsertForm import UserInsertForm
+from maneu_users.forms.loginForm import LoginForm
 
 
 def user_login(request):
@@ -10,7 +10,7 @@ def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            request.session['users'] = 'admin'
+            request.session['maneu_users'] = 'admin'
             res = {'code': 0, 'msg': '登录成功', 'data': {}}
         else:
             res = {'code': 2, 'msg': form.errors, 'data': {}}

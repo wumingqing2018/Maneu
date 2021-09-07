@@ -1,9 +1,9 @@
 from django.urls import path
 
-from users import api
-from users import views
+from maneu_users import api
+from maneu_users import views
 
-app_name = 'users'
+app_name = 'maneu_users'
 urlpatterns = [
     # view
     path('list/', views.user_list, name='user_list'),

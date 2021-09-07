@@ -1,5 +1,5 @@
 from common import common
-from users.models import User
+from maneu_users.models import User
 
 
 def find_user(user_id):

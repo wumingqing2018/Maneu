@@ -1,10 +1,10 @@
 from django.http import JsonResponse
 
-from store.forms.frame_store_insert import FrameStoreInsert
-from store.forms.glass_store_insert import GlassStoreInsert
-from store.service import framework_store
-from store.service import glass_store
-from store.service import store
+from maneu_store.forms.frame_store_insert import FrameStoreInsert
+from maneu_store.forms.glass_store_insert import GlassStoreInsert
+from maneu_store.service import framework_store
+from maneu_store.service import glass_store
+from maneu_store.service import store
 
 
 def item_list(request):

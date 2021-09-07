@@ -1,9 +1,9 @@
 from django.urls import path
 
-from order import api
-from order import views
+from maneu_order import api
+from maneu_order import views
 
-app_name = 'order'
+app_name = 'maneu_order'
 urlpatterns = [
     # views
     path('order_list/', views.order_list, name='order_list'),

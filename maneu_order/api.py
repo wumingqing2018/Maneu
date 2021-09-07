@@ -5,11 +5,11 @@ from django.http import JsonResponse
 
 from common import common
 from common import verify
-from order import service
-from order.forms.orderInsertForm import OrderInsertForm
-from order.forms.orderUpdateForm import OrderUpdateForm
-from store.service import framework_store
-from store.service import glass_store
+from maneu_order import service
+from maneu_order.forms.orderInsertForm import OrderInsertForm
+from maneu_order.forms.orderUpdateForm import OrderUpdateForm
+from maneu_store.service import framework_store
+from maneu_store.service import glass_store
 
 
 def order_list(request):
@@ -30,7 +30,7 @@ def order_insert(request):
         if form.is_valid():
             form = form.clean()
             add_order = service.order_insert(form)
-            order = json.loads(form['order'])
+            order = json.loads(form['maneu_order'])
             for i in order:
                 if i['product'] == "镜框":
                     framework_store.framework_count_out(store_id=i['store_id'])

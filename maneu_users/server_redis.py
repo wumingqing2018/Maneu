@@ -22,4 +22,4 @@ def user_login_update(session_key):
 
 
 def user_login_verify(session_key):
-    return cache.get_or_set(session_key, {'users': False}, 600)
+    return cache.get_or_set(session_key, {'maneu_users': False}, 600)

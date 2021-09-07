@@ -13,4 +13,4 @@ class User(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'users'
+        db_table = 'maneu_users'

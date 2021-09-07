@@ -38,4 +38,4 @@ class Store(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'store'
+        db_table = 'maneu_store'

@@ -1,8 +1,8 @@
 from django.shortcuts import redirect
 from django.utils.deprecation import MiddlewareMixin
 
-from users.server_redis import user_login_update
-from users.server_redis import user_login_verify
+from maneu_users.server_redis import user_login_update
+from maneu_users.server_redis import user_login_verify
 
 
 class LoginMiddleware(MiddlewareMixin):
@@ -20,10 +20,10 @@ class LoginMiddleware(MiddlewareMixin):
         用户已经登录, 允许通过
         """
 
-        verify_list = ["order", "store", "users"]
+        verify_list = ["maneu_order", "maneu_store", "maneu_users"]
         request_url = request.path
         session_key = request.session.session_key
-        stats_login = user_login_verify(session_key)['users']
+        stats_login = user_login_verify(session_key)['maneu_users']
 
         for verify in verify_list:
             if verify in request_url:

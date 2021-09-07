@@ -13,4 +13,4 @@ class Order(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'order'
+        db_table = 'maneu_order'

@@ -10,7 +10,7 @@ class TokenAuth():
         token["token"] = request.META.get('HTTP_TOKEN')
         valid_data = VerifyJSONWebTokenSerializer().validate(token)
         print(valid_data)
-        user = valid_data['users']
+        user = valid_data['maneu_users']
         print(user)
         if user:
             return

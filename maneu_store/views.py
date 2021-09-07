@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
 from common import verify
-from store.service import framework_store
-from store.service import glass_store
-from store.service import store
+from maneu_store.service import framework_store
+from maneu_store.service import glass_store
+from maneu_store.service import store
 
 
 def store_insert(request):

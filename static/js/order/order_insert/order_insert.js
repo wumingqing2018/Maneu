@@ -38,7 +38,7 @@ $(document).ready(function () {
         }
     });
     $('#insert').click(function () {
-        $("#order").val('['+order+']');
+        $("#maneu_order").val('['+order+']');
         $.ajax({
             url: api_order_insert,
             type: 'POST',

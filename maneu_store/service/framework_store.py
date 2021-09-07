@@ -1,5 +1,5 @@
 from common import common
-from store.models import FrameworkStore
+from maneu_store.models import FrameworkStore
 
 
 def store_all():
