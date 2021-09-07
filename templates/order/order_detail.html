@@ -11,19 +11,25 @@
         <tr>
             <td style="width: 9%"><span>客户姓名</span></td>
             <td colspan="10">
-                <span id="c_name"></span>
+                <span id="c_name">
+                    {{ order.c_name }}
+                </span>
             </td>
         </tr>
         <tr>
             <td style="width: 9%"><span>客户电话</span></td>
             <td colspan="10">
-                <span id="c_phone"></span>
+                <span id="c_phone">
+                    {{ order.c_phone }}
+                </span>
             </td>
         </tr>
         <tr>
             <td style="width: 9%"><span>购买时间</span></td>
             <td colspan="10">
-                <span id="c_time"></span>
+                <span id="c_time">
+                    {{ order.c_time }}
+                </span>
             </td>
         </tr>
         <tr>
@@ -52,14 +58,16 @@
                 <span>备注</span>
             </td>
             <td colspan="10">
-                <span id="remark"></span>
+                <span id="remark">{{ order.remark }}</span>
             </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <button class="btn btn-primary" id="btn-back">返回</button>
+            <td>
+                <form method="get" action="{% url 'order:order_list' %}">
+                    <input type="submit" class="btn btn-primary" value="返回">
+                </form>
             </td>
-            <td colspan="2">
+            <td>
                 <form id="qr_code">
                     {% csrf_token %}
                     <input type="hidden" name="order_id" value="{{order_id}}">
@@ -67,7 +75,7 @@
                     <input type="button" class="btn btn-primary" id="get_qr_code" value="扫码">
                 </form>
             </td>
-            <td colspan="7"></td>
+            <td colspan="9"></td>
         </tr>
         </tfoot>
     </table>
@@ -75,18 +83,10 @@
 
 {% block javascript %}
     <script type="text/javascript">
+        order_id = "{{ order.order_id }}"
         api_order_qrcode = "{% url 'order:api_order_qrcode' %}";
         api_order_delete = "{% url 'order:api_order_delete' %}";
         api_order_detail = "{% url 'order:api_order_detail' %}";
     </script>
-    <script type="text/javascript">
-        order_id = "{{ order_id }}";    //订单ID
-        order_token = "{{ order_token }}";  //订单密钥
-        remark = $("#remark");
-        c_name = $("#c_name");
-        c_time = $("#c_time");
-        c_phone = $("#c_phone");
-    </script>
     <script src="{% static 'js/order/order_detail.js' %}"></script>
-    <script src="{% static 'js/common/windos_back.js' %}"></script>
 {% endblock %}

@@ -1,5 +1,6 @@
 from common import common
 from order.models import Order
+import time
 
 
 def order_insert(form):
@@ -83,28 +84,14 @@ def find_order_all():
         return None
 
 
-def find_order_today(PageNumber):
+def find_order_today():
     """
     查找今日订单
     根据时间排序
     """
     try:
-        # u_time = common.today()
-        # return Order.objects.filter(u_time__gt=u_time).order_by('-c_time')[PageNumber: PageNumber+20]
-        return Order.objects.filter().order_by('-c_time')[PageNumber: PageNumber + 20]
-
-    except BaseException as msg:
-        print(msg)
-        return None
-
-
-def find_order_id(order_id):
-    """
-    查找指定订单
-    根据时间排序
-    """
-    try:
-        return Order.objects.filter(order_id=order_id).first()
+        today = common.today()
+        return Order.objects.filter(c_time__gt=today)
     except BaseException as msg:
         print(msg)
         return None

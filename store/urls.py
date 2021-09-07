@@ -9,6 +9,7 @@ urlpatterns = [
     path('store_list/', views.store_list, name='store_list'),
     # glass_views
     path('glass_list/', views.glass_list, name='glass_list'),
+
     path('glass_insert/', views.glass_insert, name='glass_insert'),
     path('glass_content/', views.glass_detail, name='glass_content'),
     # framework_views
@@ -29,4 +30,7 @@ urlpatterns = [
     path('api_framework_brand/', api.framework_brand, name='api_framework_brand'),
     path('api_framework_model/', api.framework_model, name='api_framework_model'),
     path('api_framework_count/', api.framework_count, name='api_framework_count'),
+
+    # store
+    path('store_insert/', views.store_insert, name='store_insert'),
 ]

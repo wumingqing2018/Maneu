@@ -1,16 +1,15 @@
 from django.shortcuts import redirect
 from django.utils.deprecation import MiddlewareMixin
 
-from user.server_redis import verify_user_login
+from users.server_redis import user_login_update
+from users.server_redis import user_login_verify
 
 
 class LoginMiddleware(MiddlewareMixin):
 
-
     def __init__(self, get_response):
         self.get_response = get_response
         print("--用户登录校验中间件启动--")
-
 
     def process_request(self, request):
         """
@@ -21,15 +20,15 @@ class LoginMiddleware(MiddlewareMixin):
         用户已经登录, 允许通过
         """
 
-        verify_list = ["order", "store", "user"]
+        verify_list = ["order", "store", "users"]
         request_url = request.path
         session_key = request.session.session_key
-        stats_login = verify_user_login(session_key)['user']
+        stats_login = user_login_verify(session_key)['users']
 
         for verify in verify_list:
             if verify in request_url:
                 if stats_login:
-                    return None
+                    user_login_update(session_key)
                 else:
                     return redirect('login')
-        return None
+        user_login_update(session_key)

@@ -3,6 +3,11 @@ from django.shortcuts import render
 from common import verify
 from store.service import framework_store
 from store.service import glass_store
+from store.service import store
+
+
+def store_insert(request):
+    return render(request, 'store/store_insert.html')
 
 
 def store_list(request):

@@ -1,7 +1,7 @@
 # 依赖包
 import random
 import time
-import qrcode
+import datetime
 
 
 def current_time():
@@ -18,6 +18,12 @@ def today():
     格式: Y-M-D
     """
     return time.strftime("%Y-%m-%d", time.localtime())
+
+
+def yesterday(days):
+    now = datetime.date.today()
+    timedelta = datetime.timedelta(days=days)
+    return now-timedelta 
 
 
 def create_id():

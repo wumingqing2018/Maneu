@@ -4,6 +4,12 @@ from store.forms.frame_store_insert import FrameStoreInsert
 from store.forms.glass_store_insert import GlassStoreInsert
 from store.service import framework_store
 from store.service import glass_store
+from store.service import store
+
+
+def item_list(request):
+    item = list(store.store_item_all())
+    return JsonResponse(item)
 
 
 def glass_insert(request):
@@ -36,7 +42,6 @@ def glass_model(request):
         try:
             brand = request.GET['brand']
         except BaseException as msg:
-            print(msg)
             brand = ''
         model = glass_store.glass_store_model(brand=brand).values_list('model').distinct()
         res = {'code': 0, 'msg': 'request succeed', 'data': list(model)}
@@ -167,13 +172,11 @@ def framework_insert(request):
             insert = framework_store.framework_store_insert(form=form.clean())
             if insert:
                 res = {'code': 0, 'msg': 'save succeed'}
-                return JsonResponse(res)
             else:
                 res = {'code': 3, 'msg': 'save failed'}
-                return JsonResponse(res)
         else:
             res = {'code': 2, 'msg': form.errors}
-            return JsonResponse(res)
     else:
         res = {'code': 1, 'msg': 'request method error'}
-        return JsonResponse(res)
+    return JsonResponse(res)
+

@@ -1,26 +1,18 @@
 from django.shortcuts import render
-from django.shortcuts import redirect
 
 from common import verify
-from user import serivce
-from user import server_redis
-
-
-def user_logout(request):
-    session_key = request.session.session_key
-    server_redis.del_user_login(session_key)
-    return redirect('login')
+from users import serivce
 
 
 def user_list(request):
-    return render(request, 'user/user_list.html', {'user_list': serivce.find_all_user()})
+    return render(request, 'user/user_list.html', {'user_list': serivce.find_user_all()})
 
 
 def user_detail(request):
     user_id = verify.user_id_method_get(request)
     if user_id:
         user = serivce.find_user(user_id)
-        return render(request, 'user/user_detail.html', {'user': user})
+        return render(request, 'user/user_detail.html', {'users': user})
     else:
         return render(request, 'maneu/error.html', {'msg': "请求出错"})
 
@@ -33,6 +25,6 @@ def user_update(request):
     user_id = verify.user_id_method_get(request)
     if user_id:
         user = serivce.find_user(user_id)
-        return render(request, 'user/user_update.html', {'user': user})
+        return render(request, 'user/user_update.html', {'users': user})
     else:
         return render(request, 'maneu/error.html', {'msg': "请求出错"})

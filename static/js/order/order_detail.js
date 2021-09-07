@@ -5,25 +5,28 @@ $(document).ready(function(){
         data: {order_id: order_id},
         success: function (res) {
             if (res.code === 0){
-                c_name.html(res.data.c_name)
-                c_time.html(res.data.c_time)
-                c_phone.html(res.data.c_phone)
-                remark.html(res.data.remark)
-                order = jQuery.parseJSON(res.data.order)
-                for (i in order){
-                    content = ''
-                    content += '<tr>'
-                    content += '<td style="width: 9%"><span>'+ order[i]['product'] + '</span></td>'
-                    content += '<td style="width: 9%"><span>'+ order[i]['brand'] +'</span></td>'
-                    content += '<td style="width: 9%"><span>'+ order[i]['model'] + '</span></td>'
-                    content += '<td style="width: 9%"><span>'+ order[i]['sphere'] + '</span></td>'
-                    content += '<td style="width: 9%"><span>'+ order[i]['astigmatic'] + '</span></td>'
-                    content += '<td style="width: 9%"><span>'+ order[i]['refraction'] + '</span></td>'
-                    content += '<td style="width: 9%"><span>'+ order[i]['Around'] + '</span></td>'
-                    content += '<td style="width: 9%"><span>'+ order[i]['pd'] + '</span></td>'
-                    content += '<td style="width: 9%"><span>'+ order[i]['add'] + '</span></td>'
-                    content += '<td style="width: 9%"><span>'+ order[i]['deviation'] + '</span></td>'
-                    content += '<td style="width: 9%"><span>'+ order[i]['count'] + '</span></td>'
+                orders = jQuery.parseJSON(res.data[0].order)
+                for (i in orders){
+                    content =  '<tr>'
+                    if (orders[i]['product'] === '镜框'){
+                        content += '<td style="width: 9%"><span>'+ orders[i]['product'] + '</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['brand'] +'</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['model'] + '</span></td>'
+                        content += '<td colspan="7" style="width: 9%"></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['count'] + '</span></td>'
+                    }else if (orders[i]['product'] === '镜片'){
+                        content += '<td style="width: 9%"><span>'+ orders[i]['product'] + '</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['brand'] +'</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['model'] + '</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['sphere'] + '</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['astigmatic'] + '</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['refraction'] + '</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['Around'] + '</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['pd'] + '</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['add'] + '</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['deviation'] + '</span></td>'
+                        content += '<td style="width: 9%"><span>'+ orders[i]['count'] + '</span></td>'
+                    }
                     content += '</tr>'
                     $('#order_content').append(content)
                 }
@@ -37,7 +40,12 @@ $(document).ready(function(){
             type: 'POST',
             data: $('#qr_code').serialize(),
             success: function (res) {
-                if (res.code !== 0){
+                if (res.code === 0){
+                    old_html = window.document.body.innerHTML
+                    window.document.body.innerHTML = res.data
+                    window.print();
+                    window.document.body.innerHTML = old_html
+                } else {
                     alert(res.msg)
                 }
             },

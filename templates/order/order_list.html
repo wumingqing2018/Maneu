@@ -4,11 +4,11 @@
     <!--内容栏-->
     <table class="table">
         <tr>
-            <td style="width: 25%" class="yellow">单号</td>
-            <td style="width: 25%" class="yellow">姓名</td>
-            <td style="width: 25%" class="yellow">电话</td>
-            <td style="width: 25%" class="yellow">时间</td>
-            <td style="width: 25%">
+            <td class="yellow col-md-3">单号</td>
+            <td class="yellow col-md-2">姓名</td>
+            <td class="yellow col-md-3">电话</td>
+            <td class="yellow col-md-2">时间</td>
+            <td class="yellow col-md-2">
                 <a type="button" class="btn btn-warning" href="{% url 'order:order_insert'%}">添加订单</a>
             </td>
         </tr>
@@ -35,58 +35,7 @@
             </tr>
         {% endfor %}
     </table>
-    <div class="row offset-5">
-        <div style="margin: 5%">
-            <input type="button" class="btn btn-primary" id="up" value="上">
-        </div>
-        <div style="margin: 5%">
-            <input type="button" class="btn btn-primary" id="down" value="下">
-        </div>
-    </div>
 {% endblock %}
 {% block javascript %}
-    <script>
-        PageNumber = 0
-        api_order_list = "{% url 'order:api_order_list' %}";
-        $(document).ready(function () {
-            $.ajax({
-                url: api_order_list,
-                type: 'GET',
-                data: {'PageNumber': PageNumber},
-                success: function (res) {
-                    console.log(res)
-                }
-            })
-
-            $('#up').click(function () {
-                console.log('1')
-                PageNumber = PageNumber-20
-                if (PageNumber > 0){
-                    $.ajax({
-                        url: api_order_list,
-                        type: 'GET',
-                        data: {'PageNumber': PageNumber},
-                        success: function (res) {
-                            console.log(res)
-                        }
-                    })
-                }
-            });
-            $('#down').click(function () {
-                PageNumber = PageNumber+20
-                console.log(PageNumber)
-                if (PageNumber > 0){
-                    $.ajax({
-                        url: api_order_list,
-                        type: 'GET',
-                        data: {'PageNumber': PageNumber},
-                        success: function (res) {
-                            console.log(res)
-                        }
-                    })
-                }
-            });
-        })
-    </script>
 {#    <script src="{% static 'js/order/order_list/LoadOrderList.js' %}"></script>#}
 {% endblock javascript %}

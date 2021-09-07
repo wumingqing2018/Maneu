@@ -22,7 +22,7 @@ def order_list(request):
         res = {'code': 1, 'msg': "request method error", 'data': []}
     return JsonResponse(res)
 
- 
+
 def order_insert(request):
     """创建订单"""
     if request.method == "POST":
@@ -89,15 +89,15 @@ def order_qrcode(request):
     """二维码接口"""
     if request.method == 'POST':
         order_id = verify.order_id_method_post(request)
-        token = verify.order_token_method_post(request)
-        if token and token:
-            qrcode = common.make_qrcode(order_id=order_id, order_token=token)
+        order_token = verify.order_token_method_post(request)
+        if order_id and order_token:
+            qrcode = common.make_qrcode(order_id=order_id, order_token=order_token)
             if qrcode:
                 res = {'code': 0, 'msg': '生成成功', 'data': []}
             else:
                 res = {'code': 3, 'msg': '生成失败', 'data': []}
         else:
-            res = {'code': 2, 'msg': '参数1出错', 'data': []}
+            res = {'code': 2, 'msg': '参数出错', 'data': []}
     else:
         res = {'code': 1, 'msg': '请求出错', 'data': []}
     return JsonResponse(res)

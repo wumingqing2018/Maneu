@@ -5,11 +5,13 @@ from django.shortcuts import render
 from order import service
 from order.forms.orderUpdateForm import OrderUpdateForm
 from order.forms.orderSearchForm import OrderSearchForm
+from common.common import yesterday
 
 
 def order_list(request):
     """查看今日订单"""
-    orders = service.find_order_all()  # 查找今日订单
+    orders = service.find_order_today()  # 查找今日订单
+    print(yesterday(days=1))
     return render(request, 'order/order_list.html', {'orders': orders})
 
 
@@ -23,8 +25,9 @@ def order_detail(request):
         渲染error页面并传输错误参数
     """ 
     order_id = verify.order_id_method_get(request)
+    order = service.find_order_id(order_id)
     if order_id:
-        return render(request, 'order/order_detail.html', {'order_id': order_id})
+        return render(request, 'order/order_detail.html', {'order': order})
     else:
         return render(request, 'maneu/error.html', {'msg': '参数错误'})
 
