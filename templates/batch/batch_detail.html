@@ -1,0 +1,55 @@
+{% extends 'maneu/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!--内容栏-->
+    <table class="table">
+        <thead>
+        <tr>
+            <td colspan="21"><span>客户信息</span></td>
+        </tr>
+        <tr>
+            <td style="width: 9%"><span>客户姓名</span></td>
+            <td colspan="20">
+                <span id="c_name">
+                    {{ order.c_name }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 9%"><span>客户电话</span></td>
+            <td colspan="20">
+                <span id="c_phone">
+                    {{ order.c_phone }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 9%"><span>购买时间</span></td>
+            <td colspan="20">
+                <span id="c_time">
+                    {{ order.c_time }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 9%">
+                <span>产品信息</span>
+            </td>
+            <td colspan="20">
+                <span id="remark">{{ order.remark }}</span>
+            </td>
+        </tr>
+        </thead>
+    <tr><td colspan="20">
+    </td></tr>
+    </table>
+{% endblock %}
+{% block javascript %}
+<script>
+order = '{{ order.order }}'
+$(document).ready(function () {
+    console.log($.parseJSON(order))
+})
+</script>
+{% endblock %}

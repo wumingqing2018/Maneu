@@ -6,10 +6,10 @@
         <tr>
             <td class="yellow col-md-3">单号</td>
             <td class="yellow col-md-2">姓名</td>
-            <td class="yellow col-md-3">电话</td>
-            <td class="yellow col-md-2">时间</td>
+            <td class="yellow col-md-2">电话</td>
+            <td class="yellow col-md-3">时间</td>
             <td class="yellow col-md-2">
-                <a type="button" class="btn btn-warning" href="{% url 'maneu_batch:batch_insert'%}">添加订单</a>
+                <a type="button" class="btn btn-warning offset-md-5" href="{% url 'maneu_batch:batch_insert'%}">添加订单</a>
             </td>
         </tr>
         {% for order in orders %}
@@ -29,7 +29,7 @@
                 <td class="yellow">
                     <form method="GET" action="{% url 'maneu_batch:batch_detail' %}">
                         <input type="hidden" name="order_id" value="{{order.order_id}}">
-                        <input type="submit" class="btn btn-primary" value="查看订单">
+                        <input type="submit" class="btn btn-primary offset-md-5 " value="查看订单">
                     </form>
                 </td>
             </tr>

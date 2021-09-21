@@ -93,8 +93,7 @@ def find_order_today():
         today = common.today()
         return Order.objects.filter(c_time__gt=today)
     except BaseException as msg:
-        print(msg)
-        return None
+        return msg
 
 
 def find_order_id(order_id):

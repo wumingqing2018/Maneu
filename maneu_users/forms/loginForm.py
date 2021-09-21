@@ -35,5 +35,6 @@ class LoginForm(forms.Form):
     def clean(self):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
+        
         if username != 'unlock' and password != 'XMacheNike':
             raise forms.ValidationError('登录失败')
