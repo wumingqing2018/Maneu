@@ -17,4 +17,5 @@ def execl_to_json(execl):
             json_sheet[sheet] = json_row
         return json.dumps(json_sheet)
     except BaseException as msg:
-        return msg
+        print(msg)
+        return None
