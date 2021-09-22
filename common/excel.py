@@ -1,5 +1,6 @@
 from openpyxl import load_workbook
 import json
+import os
 
 
 def execl_to_json(execl):
@@ -16,6 +17,27 @@ def execl_to_json(execl):
                 json_row[ws.cell(r, 1).value] = json_col
             json_sheet[sheet] = json_row
         return json.dumps(json_sheet)
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
+def excel_save(excel, order_id):
+    try:
+        load_workbook(excel, data_only=True)
+        with open(f'excel/{order_id}.xlsx', 'wb+') as f:
+            for chunk in excel.chunks():
+                f.write(chunk)
+            f.close()
+        return f'{order_id}.xlsx'
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
+def excel_remove(order_id):
+    try:
+        os.remove(f'excel/{order_id}.xlsx')
     except BaseException as msg:
         print(msg)
         return None

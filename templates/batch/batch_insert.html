@@ -6,54 +6,58 @@
             {% csrf_token %}
             <table class="table">
                 <tr>
-                    <td colspan="6">
-                        <span>客户信息</span>
+                    <td>
+                        <span class='offset-md-1'>客户姓名</span>
                     </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <span>姓名</span>
-                    </td>
-                    <td colspan="4">
+                    <td>
                         <input type="text" name="c_name" id="name" class="form-control">
-                        <span id="username_error"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <span>电话</span>
-                    </td>
-                    <td colspan="4">
-                        <input type="text" name="c_phone" id="phone" class="form-control">
-                        <span id="phone_error"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <span>备注</span>
-                    </td>
-                    <td colspan="4">
-                        <input type="text" name="remark" id="remark" class="form-control">
-                        <span id="remake_error"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <span>上传表格</span>
+                        <span class='offset-md-1'>客户电话</span>
                     </td>
-                    <td colspan="4">
-                        <input class="btn btn-primary" name="execl" type="file" value="上传文件">
+                    <td>
+                        <input type="text" name="c_phone" id="phone" class="form-control">
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
-                        <a type="button" class="btn btn-warning" style="width: 100%" href="">返回列表</a>
+                    <td>
+                        <span class='offset-md-1'>产品信息</span>
                     </td>
-                    <td colspan="4">
+                    <td>
+                        <input type="text" name="remark" id="remark" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class='offset-md-1'>上传表格</span>
+                    </td>
+                    <td>
+                        <input class="btn btn-primary col-md-12" name="excel" type="file" value="上传文件">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a type="button" class="btn btn-warning" href="{% url 'maneu_batch:batch_list' %}">返回列表</a>
+                    </td>
+                    <td>
                         <input class="btn btn-danger" style="width: 100%" type="submit" value="提交订单">
                     </td>
                 </tr>
             </table>
         </form>
     </div>
-{% endblock%}
+{% endblock %}
+{% block javascript %}
+    <script>
+        msg = '{{ msg }}'
+        $(document).ready(function(){
+            if (msg == "None"){
+                console.log(msg)
+            } else{
+                alert(msg)
+            }
+        })
+    </script>
+{% endblock %}

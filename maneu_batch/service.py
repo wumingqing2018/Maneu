@@ -1,6 +1,5 @@
+
 from maneu_batch.models import Batch
-from common.common import create_id
-from common.common import current_time
 
 
 def batch_list():
@@ -11,10 +10,10 @@ def batch_detail(order_id):
     return Batch.objects.filter(order_id=order_id).get()
 
 
-def batch_insert(form, order):
+def batch_insert(form, order, order_id):
     try:
         Batch.objects.create(
-            order_id=create_id(),
+            order_id=order_id,
             c_name=form['c_name'],
             c_phone=form['c_phone'],
             order=order,
@@ -24,3 +23,7 @@ def batch_insert(form, order):
     except BaseException as msg:
         print(msg)
         return False
+
+
+def batch_delete(order_id):
+    Batch.objects.filter(order_id=order_id).delete()

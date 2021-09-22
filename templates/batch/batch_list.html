@@ -4,19 +4,18 @@
     <!--内容栏-->
     <table class="table">
         <tr>
-            <td class="yellow col-md-3">单号</td>
-            <td class="yellow col-md-2">姓名</td>
-            <td class="yellow col-md-2">电话</td>
-            <td class="yellow col-md-3">时间</td>
+            <td class="yellow col-md-2">客户姓名</td>
+            <td class="yellow col-md-2">客户电话</td>
+            <td class="yellow col-md-3">创建时间</td>
+            <td class="yellow col-md-3">产品信息</td>
             <td class="yellow col-md-2">
-                <a type="button" class="btn btn-warning offset-md-5" href="{% url 'maneu_batch:batch_insert'%}">添加订单</a>
+                <form method='get' action="{% url 'maneu_batch:batch_insert'%}">
+                    <input type="submit" class="btn btn-warning offset-md-6" value='添加订单'>
+                </form>
             </td>
         </tr>
         {% for order in orders %}
             <tr>
-                <td class="yellow">
-                    <p>{{order.order_id}}</p>
-                </td>
                 <td class="yellow">
                     <p>{{order.c_name}}</p>
                 </td>
@@ -27,15 +26,15 @@
                     <p>{{order.c_time }}</p>
                 </td>
                 <td class="yellow">
+                    <p>{{order.remark}}</p>
+                </td>
+                <td class="yellow">
                     <form method="GET" action="{% url 'maneu_batch:batch_detail' %}">
                         <input type="hidden" name="order_id" value="{{order.order_id}}">
-                        <input type="submit" class="btn btn-primary offset-md-5 " value="查看订单">
+                        <input type="submit" class="btn btn-primary offset-md-6 " value="查看订单">
                     </form>
                 </td>
             </tr>
         {% endfor %}
     </table>
 {% endblock %}
-{% block javascript %}
-{#    <script src="{% static 'js/order/order_list/LoadOrderList.js' %}"></script>#}
-{% endblock javascript %}
