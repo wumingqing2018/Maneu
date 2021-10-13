@@ -9,7 +9,7 @@
             <td class="yellow col-md-3">电话</td>
             <td class="yellow col-md-3">时间</td>
             <td class="yellow col-md-1">
-                <a type="button" class="btn btn-warning" href="{% url 'maneu_batch:batch_insert'%}">添加订单</a>
+                <a type="button" class="btn btn-warning" href="{% url 'maneu_order:order_insert'%}">添加订单</a>
             </td>
         </tr>
         {% for order in orders %}
@@ -36,6 +36,3 @@
         {% endfor %}
     </table>
 {% endblock %}
-{% block javascript %}
-{#    <script src="{% static 'js/order/order_list/LoadOrderList.js' %}"></script>#}
-{% endblock javascript %}

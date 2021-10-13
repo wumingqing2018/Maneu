@@ -2,7 +2,7 @@ from captcha.fields import CaptchaField
 from django import forms
 from django.core.validators import RegexValidator
 from django.forms import widgets
-
+from maneu_users.serivce import find_username_password
 
 class LoginForm(forms.Form):
     username = forms.CharField(label="账号",
@@ -35,6 +35,6 @@ class LoginForm(forms.Form):
     def clean(self):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
-        
-        if username != 'unlock' and password != 'XMacheNike':
+        verify = find_username_password(username, password)
+        if verify == None:
             raise forms.ValidationError('登录失败')

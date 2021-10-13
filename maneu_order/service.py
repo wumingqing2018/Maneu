@@ -18,7 +18,7 @@ def order_insert(form):
             c_time=common.current_time(),
             # 商家
             besiness='',
-            order=form['maneu_order'],
+            order=form['order'],
             # 备注
             remark=form['remark'],
         )
@@ -103,6 +103,18 @@ def find_order_id(order_id):
     """
     try:
         return Order.objects.filter(order_id=order_id).first()
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
+def find_order_id_token(order_id, token):
+    """
+    查找指定订单
+    根据时间排序
+    """
+    try:
+        return Order.objects.filter(order_id=order_id, order_token=token).first()
     except BaseException as msg:
         print(msg)
         return None

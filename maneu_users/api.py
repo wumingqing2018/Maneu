@@ -32,11 +32,27 @@ def user_insert(request):
     if request.method == 'POST':
         form = UserInsertForm(request.POST)
         if form.is_valid():
-            add_user = serivce.add_user(form.cleaned_data)
-            if add_user:
-                res = {'code': 0, 'msg': '保存成功', 'data': {}}
+            add_user = serivce.add_user(form.clean())
+            if type(add_user) == str:
+                res = {'code': 3, 'msg': add_user, 'data': {}}
             else:
-                res = {'code': 3, 'msg': '保存失败', 'data': {}}
+                res = {'code': 0, 'msg': '保存成功', 'data': {}}
+        else:
+            res = {'code': 2, 'msg': form.errors, 'data': {}}
+    else:
+        res = {'code': 1, 'msg': 'post', 'data': {}}
+    return JsonResponse(res)
+
+
+def user_update(request):
+    if request.method == 'POST':
+        form = UserInsertForm(request.POST)
+        if form.is_valid():
+            add_user = serivce.add_user(form.clean())
+            if type(add_user) == str:
+                res = {'code': 3, 'msg': add_user, 'data': {}}
+            else:
+                res = {'code': 0, 'msg': '保存成功', 'data': {}}
         else:
             res = {'code': 2, 'msg': form.errors, 'data': {}}
     else:

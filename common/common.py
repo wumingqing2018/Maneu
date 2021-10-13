@@ -2,6 +2,7 @@
 import random
 import time
 import datetime
+import qrcode
 
 
 def current_time():
@@ -23,15 +24,14 @@ def today():
 def yesterday(days):
     now = datetime.date.today()
     timedelta = datetime.timedelta(days=days)
-    return now-timedelta 
+    return now-timedelta
 
 
 def create_id():
     """
     生成32位纯数字id
     """
-    rand_int = random.randint(10000000000000000000000000000000,
-                              99999999999999999999999999999999)
+    rand_int = random.randint(10000000000000000000000000000000,99999999999999999999999999999999)
     return str(rand_int)
 
 
@@ -39,15 +39,21 @@ def token():
     """
     生成32位纯数字token
     """
-    rand_int = random.randint(10000000000000000000000000000000,
-                              99999999999999999999999999999999)
+    rand_int = random.randint(10000000000000000000000000000000,99999999999999999999999999999999)
     return str(rand_int)
 
 
 def make_qrcode(order_id, order_token):
-    print(order_id, order_token)
-    return None
-
+    qr = qrcode.QRCode(
+        version=2,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=1
+    )  # 设置二维码的大小
+    url = f'http://maneu.online/guess/?order_id={order_id}&order_token={order_token}'
+    qr.add_data(url)
+    qr.make(fit=True)
+    return qr
 
 def res():
     """
@@ -57,3 +63,10 @@ def res():
     msg: 返回信息
     """
     return {'code': '', 'msg': '', 'data': {}}
+
+
+def get_ip(request):
+    if request.META.get('HTTP_X_FORWARDED_FOR'):
+        return request.META.get("HTTP_X_FORWARDED_FOR")
+    else:
+        return request.META.get("REMOTE_ADDR")

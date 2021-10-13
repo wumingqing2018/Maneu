@@ -68,7 +68,7 @@
 
             <tr class="yellow">
                 <td>
-                    <a class="btn btn-primary" href="{% url 'store:glass_list' %}" type="button">返回</a>
+                    <a class="btn btn-primary" href="{% url 'maneu_store:glass_list' %}" type="button">返回</a>
                 </td>
                 <td>
                     <input class="btn btn-warning col-md-12" id="btn_glass_insert" type="button" value="提交">
@@ -80,7 +80,7 @@
 
 {% block javascript %}
     <script>
-        api_glass_insert = "{% url 'store:api_glass_insert' %}"
+        api_glass_insert = "{% url 'maneu_store:api_glass_insert' %}"
     </script>
     <script src="{% static 'js/common/input_range.js' %}"></script>
     <script src="{% static 'js/store/glass_install.js' %}"></script>

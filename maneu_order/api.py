@@ -1,16 +1,14 @@
-import json
-
 from django.forms import model_to_dict
 from django.http import JsonResponse
+from django.http import HttpResponse
 
 from common import common
 from common import verify
 from maneu_order import service
 from maneu_order.forms.orderInsertForm import OrderInsertForm
 from maneu_order.forms.orderUpdateForm import OrderUpdateForm
-from maneu_store.service import framework_store
-from maneu_store.service import glass_store
-
+from io import BytesIO
+import qrcode
 
 def order_list(request):
     """查看今日订单"""
@@ -26,16 +24,10 @@ def order_list(request):
 def order_insert(request):
     """创建订单"""
     if request.method == "POST":
+        print(request.POST)
         form = OrderInsertForm(request.POST)
         if form.is_valid():
-            form = form.clean()
-            add_order = service.order_insert(form)
-            order = json.loads(form['maneu_order'])
-            for i in order:
-                if i['product'] == "镜框":
-                    framework_store.framework_count_out(store_id=i['store_id'])
-                elif i['product'] == "镜片":
-                    glass_store.glass_count_out(store_id=i['store_id'])
+            add_order = service.order_insert(form=form.clean())
             if add_order:
                 res = {'code': 0, 'msg': '创建成功', 'data': []}
             else:
@@ -87,20 +79,15 @@ def order_update(request):
 
 def order_qrcode(request):
     """二维码接口"""
-    if request.method == 'POST':
-        order_id = verify.order_id_method_post(request)
-        order_token = verify.order_token_method_post(request)
-        if order_id and order_token:
-            qrcode = common.make_qrcode(order_id=order_id, order_token=order_token)
-            if qrcode:
-                res = {'code': 0, 'msg': '生成成功', 'data': []}
-            else:
-                res = {'code': 3, 'msg': '生成失败', 'data': []}
-        else:
-            res = {'code': 2, 'msg': '参数出错', 'data': []}
-    else:
-        res = {'code': 1, 'msg': '请求出错', 'data': []}
-    return JsonResponse(res)
+    order_id = verify.order_id_method_post(request)
+    token = verify.order_token_method_post(request)
+    if order_id and token:
+        url = f'http://maneu.online/guess/?order_id={order_id}&order_token={token}'
+        img = qrcode.make(url)
+        buf = BytesIO()
+        img.save(buf)
+        image_stream = buf.getvalue()
+        return HttpResponse(image_stream, content_type="image/png")
 
 
 def order_detail(request):

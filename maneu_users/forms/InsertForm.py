@@ -26,6 +26,10 @@ class UserInsertForm(forms.Form):
 
     email = forms.EmailField(label="邮件",
                              required=True,
+                             widget=widgets.TextInput(
+                                 attrs={
+                                     'id': 'email', 'class': 'form-control', 'placeholder': '邮件'}
+                             ),
                              error_messages={'required': '请输入邮箱'},
                              )
 
@@ -34,12 +38,12 @@ class UserInsertForm(forms.Form):
                             error_messages={'required': '请输入电话'},
                             )
 
-    level = forms.CharField(label="等级",
-                            required=True,
-                            error_messages={'required': '请输入等级'},
-                            )
-
-    state = forms.CharField(label="状态",
-                            required=True,
-                            error_messages={'required': '请输入状态'},
-                            )
+    # level = forms.ChoiceField(label="等级",
+    #                         required=True,
+    #                         error_messages={'required': '请输入等级'},
+    #                         )
+    #
+    # state = forms.CharField(label="状态",
+    #                         required=True,
+    #                         error_messages={'required': '请输入状态'},
+    #                         )

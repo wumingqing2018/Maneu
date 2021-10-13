@@ -1,18 +1,18 @@
-from common import verify
 from django.forms import model_to_dict
 from django.shortcuts import render
 
+from common import verify
 from maneu_order import service
-from maneu_order.forms.orderUpdateForm import OrderUpdateForm
 from maneu_order.forms.orderSearchForm import OrderSearchForm
-from common.common import yesterday
+from maneu_order.forms.orderUpdateForm import OrderUpdateForm
 
 
 def order_list(request):
     """查看今日订单"""
-    orders = service.find_order_today()  # 查找今日订单
-    print(yesterday(days=1))
-    return render(request, 'order/order_list.html', {'orders': orders})
+    # orders = service.find_order_today()  # 查找今日订单
+    # print(yesterday(days=1))
+    orders = service.find_order_all()
+    return render(request, 'maneu_order/order_list.html', {'orders': orders})
 
 
 def order_detail(request):
@@ -27,7 +27,7 @@ def order_detail(request):
     order_id = verify.order_id_method_get(request)
     order = service.find_order_id(order_id)
     if order_id:
-        return render(request, 'order/order_detail.html', {'maneu_order': order})
+        return render(request, 'maneu_order/order_detail.html', {'order': order})
     else:
         return render(request, 'maneu/error.html', {'msg': '参数错误'})
 
@@ -38,13 +38,13 @@ def order_search(request):
     if phone:
         orders = service.find_order_phone(phone)  # 查找今日订单
         if orders:
-            return render(request, 'order/order_list.html', {'orders': orders})
-    return render(request, 'order/order_search.html', {'form': OrderSearchForm()})
+            return render(request, 'maneu_order/order_list.html', {'orders': orders})
+    return render(request, 'maneu_order/order_search.html', {'form': OrderSearchForm()})
 
 
 def order_insert(request):
     """添加订单"""
-    return render(request, 'order/order_insert.html')
+    return render(request, 'maneu_order/order_insert.html')
 
 
 def order_update(request):
@@ -55,7 +55,7 @@ def order_update(request):
         if orders:
             orders = model_to_dict(orders)
             form = OrderUpdateForm(initial=orders)
-            return render(request, 'order/order_update.html', {'form': form, 'order_id': order_id})
+            return render(request, 'maneu_order/order_update.html', {'form': form, 'order_id': order_id})
         else:
             return render(request, 'maneu/error.html', {'msg': '没有订单'})
     else:

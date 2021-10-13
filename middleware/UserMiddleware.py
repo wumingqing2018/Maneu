@@ -1,8 +1,9 @@
+from common.common import get_ip
 from django.shortcuts import redirect
 from django.utils.deprecation import MiddlewareMixin
 
 from maneu_users.server_redis import user_login_update
-from maneu_users.server_redis import user_login_verify
+from maneu_users.server_redis import user_login_get
 
 
 class LoginMiddleware(MiddlewareMixin):
@@ -19,16 +20,16 @@ class LoginMiddleware(MiddlewareMixin):
         用户没有登录, 跳转到登录页
         用户已经登录, 允许通过
         """
-
-        verify_list = ["maneu_order", "maneu_store", "maneu_users"]
-        request_url = request.path
-        session_key = request.session.session_key
-        stats_login = user_login_verify(session_key)['maneu_users']
-
-        for verify in verify_list:
-            if verify in request_url:
-                if stats_login:
-                    user_login_update(session_key)
+        session_key = request.session.get('ip')
+        request_url = request.path  # method:string, demo:/login/,
+        #   判断是否需要校验字段
+        if request_url.startswith('/maneu'):
+            if session_key:
+                #   判断用户是否登录
+                if session_key:
+                    return None
                 else:
                     return redirect('login')
-        user_login_update(session_key)
+            else:
+                return redirect('login')
+        return None

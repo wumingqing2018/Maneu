@@ -6,55 +6,8 @@ $(document).ready(function () {
      * 点击 id=framework_insert_show 按钮调用一下function
      * ajax 请求 api_framework_brand
      */
-    framework_insert_show.click(function () {
-        framework_show()
-        $.ajax({
-            url: api_framework_brand,
-            type: 'GET',
-            success: function (res) {
-                framework_brand_select.append('<option></option>')
-                if (res.code === 0){
-                    for (i in res.data){
-                        data = res.data[i]
-                        framework_brand_select.append('<option value="' + data + '">' + data + '</option>')
-                    }
-                }
-            }
-        })
-    });
     framework_insert_hide.click(function () {
         framework_hide()
-    });
-    framework_brand_select.change(function () {
-        // 眼镜品牌选择框改变后加载眼镜框型号
-        framework_model_select.find('option').remove()
-        framework_model_select.append('<option></option>')
-        $.ajax({
-            url: api_framework_model,
-            type: 'GET',
-            data: {'brand': framework_brand_select.val()},
-            success: function (res) {
-                if (res.code === 0){
-                    for (i in res.data){
-                        data = res.data[i]
-                        framework_model_select.append('<option value="' + data + '">' + data + '</option>')
-                    }
-                }
-            }
-        })
-    });
-    framework_model_select.change(function () {
-        // 眼镜型号选择框改变后加载眼镜框数量
-        $.ajax({
-            url: api_framework_count,
-            type: 'GET',
-            data: {'brand': framework_brand_select.val(), 'model': framework_model_select.val()},
-            success: function (res) {
-                if (res.code === 0){
-                    framework.val(res.data)
-                }
-            }
-        })
     });
     framework_insert_btn.click(function () {
         /*
@@ -62,7 +15,7 @@ $(document).ready(function () {
         把添加镜框表单转换为json字符串并保存到order数组
         把表单内容显示到order_content的表格位置
          */
-        content=framework_insert.serializeJsonStr()
+        content = framework_insert.serializeJsonStr()
         order.push(content);
         order_content(content)
         framework_hide()
@@ -78,7 +31,6 @@ $(document).ready(function () {
         framework_table.show()
         framework_insert_show.hide()
         framework_insert_hide.show()
-        framework_insert.find('option').remove()
     }
     function framework_hide() {
         /*

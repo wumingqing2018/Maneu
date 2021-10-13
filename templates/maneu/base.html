@@ -22,19 +22,23 @@
     <ul class="nav navbar-nav navbar-right">
         <!-- 订单管理 -->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="{% url 'maneu_order:order_list' %}">客户订单</a>
+            <a class="nav-link dropdown-toggle" href="{% url 'maneu_order:order_list' %}">零售订单</a>
         </li>
+        <!-- 批发订单 -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="{% url 'maneu_batch:batch_list' %}">批发订单</a>
         </li>
-
         <!-- 仓库管理 -->
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="{% url 'maneu_store:store_list' %}">仓库管理</a>
-        </li>
+        {#        <li class="nav-item dropdown">#}
+        {#            <a class="nav-link dropdown-toggle" href="{% url 'maneu_store:store_list' %}">仓库管理</a>#}
+        {#        </li>#}
+        <!-- 用户管理 -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{% url 'maneu_users:user_list' %}">用户管理</a>
+            </li>
         <!-- 账户登出 -->
         <li class="nav-item dropdown">
-            <a class="nav-link" href="{% url 'logout' %}" id="navbardrop">账户登出</a>
+            <a class="nav-link" href='{% url "login" %}' id="navbardrop">账户登出</a>
         </li>
     </ul>
 </nav>
