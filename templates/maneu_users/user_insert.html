@@ -1,4 +1,4 @@
-{% extends 'base/admin.html' %}
+{% extends 'maneu/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -45,30 +45,8 @@
                         </td>
                     </tr>
                     <tr class="yellow">
-                        <td style="width: 20%">
-                            <p>状态: </p>
-                        </td>
                         <td>
-                            <select class="col-md-12 form-control" name="state" form="user_insert">
-                                <option value="0">使用</option>
-                                <option value="1">冻结</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="yellow">
-                        <td style="width: 20%">
-                            <p>等级: </p>
-                        </td>
-                        <td>
-                            <select class="col-md-12 form-control" name="level" form="user_insert">
-                                <option value="1">用户</option>
-                                <option value="0">管理员</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr class="yellow">
-                        <td>
-                            <button class="btn btn-warning" id="btn-back">返回</button>
+                            <a class="btn btn-warning" type="button" href="{% url 'maneu_users:user_list' %}">返回</a>
                         </td>
                         <td>
                             <input class="btn btn-primary col-md-12" id="btn-insert" type="button" value="添加">
@@ -80,11 +58,10 @@
     </div>
 {% endblock %}
 
-{% block js %}
+{% block javascript %}
     <script>
-        user_insert = "{% url 'user:api_insert' %}";
+        user_insert = "{% url 'maneu_users:api_user_insert' %}";
     </script>
-    <script src="{% static 'js/common/windos_back.js' %}"></script>
     <script>
         $(document).ready(function () {
             $("#btn-insert").click(function () {
@@ -93,6 +70,7 @@
                     type: "POST",
                     data: $("#user_insert").serialize(),
                     success:function (res) {
+                        console.log(res)
                         if (res.code === 0){
                             alert(res.msg)
                         } else if (res.code === 1) {
@@ -107,9 +85,6 @@
                         }
                     }
                 })
-            })
-            $("#btn-back").click(function () {
-                $(location).attr("href", user_list)
             })
         })
     </script>

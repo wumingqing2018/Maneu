@@ -5,33 +5,33 @@
     <table class="table">
         <tr>
             <td class="col-md-2">
-                <span>客户姓名</span>
+                <span class='offset-md-1'>客户姓名</span>
             </td>
-            <td class="col-md-10" colspan="2">
+            <td class="col-md-10">
                 <span>{{ order.c_name }}</span>
             </td>
         </tr>
         <tr>
             <td class="col-md-2">
-                <span>客户电话</span>
+                <span class='offset-md-1'>客户电话</span>
             </td>
-            <td class="col-md-10" colspan="2">
+            <td class="col-md-10">
                 <span>{{ order.c_phone }}</span>
             </td>
         </tr>
         <tr>
             <td class="col-md-2">
-                <span>购买时间</span>
+                <span class='offset-md-1'>购买时间</span>
             </td>
-            <td class="col-md-10" colspan="2">
+            <td class="col-md-10">
                 <span>{{ order.c_time }}</span>
             </td>
         </tr>
         <tr>
             <td class="col-md-2">
-                <span>产品信息</span>
+                <span class='offset-md-1'>产品信息</span>
             </td>
-            <td class="col-md-10" colspan="2">
+            <td class="col-md-10">
                 <span>{{ order.remark }}</span>
             </td>
         </tr>
@@ -41,12 +41,7 @@
                     <input type="submit" class="btn btn-warning" value="返回列表">
                 </form>
             </td>
-            <td class="col-md-2">
-                <form method="get" action="{% url "maneu_batch:batch_detail" %}{{order.order}}">
-                    <input type="submit" class="btn btn-warning" value="下载订单">
-                </form>
-            </td>
-            <td class="col-md-8">
+            <td class="col-md-10">
                 <form method="get" action="{% url "maneu_batch:batch_delete" %}">
                     <input type="hidden" name="order_id" value="{{ order.order_id }}">
                     <input type="submit" class="btn btn-warning" value="删除订单">
@@ -55,7 +50,7 @@
         </tr>
     </table>
     
-    <iframe src='https://view.officeapps.live.com/op/view.aspx?src=http://maneu.online/maneu_batch/batch_detail/{{ order.order }}'
+    <iframe src='http://office.yujiaojiaoyu.com/op/view.aspx?src=http://maneu.online/{{ order.order}}'
             width='100%'
             height='150%'
             frameborder='1'>

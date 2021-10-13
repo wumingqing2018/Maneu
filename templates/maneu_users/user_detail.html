@@ -1,46 +1,51 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
-
 {% block content %}
     <table class="table">
         <tr class="yellow">
             <td style="width: 15%">账号</td>
-            <td style="width: 80%" colspan="2">{{user.username}}</td>
+            <td style="width: 80%" colspan="3">{{user.username}}</td>
         </tr>
         <tr class="yellow">
             <td style="width: 15%">电话</td>
-            <td style="width: 80%" colspan="2">{{user.phone}}</td>
+            <td style="width: 80%" colspan="3">{{user.phone}}</td>
         </tr>
         <tr class="yellow">
             <td style="width: 15%">邮件</td>
-            <td style="width: 80%" colspan="2">{{user.email}}</td>
+            <td style="width: 80%" colspan="3">{{user.email}}</td>
         </tr>
         <tr class="yellow">
             <td style="width: 15%">等级</td>
-            <td style="width: 80%" colspan="2">{{user.level}}</td>
+            <td style="width: 80%" colspan="3">{{user.level}}</td>
         </tr>
         <tr class="yellow">
             <td style="width: 15%">状态</td>
-            <td style="width: 80%" colspan="2">{{user.state}}</td>
+            <td style="width: 80%" colspan="3">{{user.state}}</td>
         </tr>
         <tr class="yellow">
             <td style="width: 15%">创建时间</td>
-            <td style="width: 80%" colspan="2">{{user.create_time}}</td>
+            <td style="width: 80%" colspan="3">{{user.create_time}}</td>
         </tr>
         <tr class="yellow">
             <td style="width: 15%">
                 <button class="btn btn-primary" id="btn-back">返回</button>
             </td>
             <td style="width: 15%">
-                <form method="get" action="{% url 'user:user_update' %}">
+                <form method="get" action="{% url 'maneu_users:user_update' %}">
                     <input type="hidden" value="{{ user.user_id }}" name="user_id">
                     <input type="submit" value="更改" class="btn btn-warning">
                 </form>
             </td>
             <td>
-                <form method="get" action="{% url 'user:user_update' %}">
+                <form method="get" action="{% url 'maneu_users:user_update' %}">
                     <input type="hidden" value="{{ user.user_id }}" name="user_id">
                     <input type="submit" value="冻结" class="btn btn-warning">
+                </form>
+            </td>
+            <td style="width: 15%">
+                <form method="get" action="{% url 'maneu_users:user_delete' %}">
+                    <input type="hidden" value="{{ user.user_id }}" name="user_id">
+                    <input type="submit" value="删除" class="btn btn-warning">
                 </form>
             </td>
         </tr>
