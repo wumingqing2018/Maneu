@@ -1,7 +1,8 @@
 # 依赖包
+import datetime
 import random
 import time
-import datetime
+
 import qrcode
 
 

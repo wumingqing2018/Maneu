@@ -7,15 +7,15 @@ from maneu_users.forms.InsertForm import UserInsertForm
 
 
 def user_list(request):
-    user_list = serivce.find_user_all()
-    return render(request, 'maneu_users/user_list.html', {'user_list': user_list})
+
+    
+    return render(request, 'maneu_users/user_list.html', {'user_list': serivce.find_user_all()})
 
 
 def user_detail(request):
     user_id = verify.user_id_method_get(request)
     if user_id:
-        user = serivce.find_user(user_id)
-        return render(request, 'maneu_users/user_detail.html', {'user': user})
+        return render(request, 'maneu_users/user_detail.html', {'user': serivce.find_user(user_id)})
     else:
         return render(request, 'maneu/error.html', {'msg': "请求出错"})
 

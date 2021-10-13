@@ -8,7 +8,6 @@
     <title>徕可</title>
     <link rel="icon" href="{% static 'img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/maneu/base.css' %}">
-    <script src="{% static 'js/maneu/base.js' %}"></script>
     <!-- bootstrap -->
     <link href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
@@ -18,89 +17,103 @@
 </head>
 <body style="background: #0E2340">
 <div class="container">
-    <div class="text-center" id="content">
-        <table class="table">
-            <thead>
-            <tr>
-                <td colspan="11"><span>客户信息</span></td>
-            </tr>
-            <tr>
-                <td style="width: 9%"><span>客户姓名</span></td>
-                <td colspan="10">
-                <span id="c_name">
-                    {{ order.c_name }}
-                </span>
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 9%"><span>客户电话</span></td>
-                <td colspan="10">
-                <span id="c_phone">
-                    {{ order.c_phone }}
-                </span>
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 9%"><span>购买时间</span></td>
-                <td colspan="10">
-                <span id="c_time">
-                    {{ order.c_time }}
-                </span>
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 9%">
-                    <span>备注信息</span>
-                </td>
-                <td colspan="10">
-                    <span id="remark">{{ order.remark }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="11">
-                    <span>产品信息</span>
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 9%"><span>产品</span></td>
-                <td style="width: 9%"><span>品牌</span></td>
-                <td style="width: 9%"><span>型号</span></td>
-                <td style="width: 9%"><span>折射</span></td>
-                <td style="width: 9%"><span>球镜</span></td>
-                <td style="width: 9%"><span>柱镜</span></td>
-                <td style="width: 9%"><span>方向</span></td>
-                <td style="width: 9%"><span>轴位</span></td>
-                <td style="width: 9%"><span>ADD</span></td>
-                <td style="width: 9%"><span>瞳距</span></td>
-                <td style="width: 9%"><span>数量</span></td>
-            </tr>
-            </thead>
-            <tbody id="order_content"></tbody>
-            <tfoot>
-            <tr>
-                <td>
-                    <form method="get" action="{% url 'maneu_order:order_list' %}">
-                        <input type="submit" class="btn btn-primary" value="返回">
-                    </form>
-                </td>
-                <td colspan="10">
-                    {#                <form id="qr_code">#}
-                    {#                    {% csrf_token %}#}
-                    {#                    <input type="hidden" name="order_id" value="{{order.order_id}}">#}
-                    {#                    <input type="hidden" name="order_token" value="{{order.order_token}}">#}
-                    {#                    <input type="button" class="btn btn-primary" id="get_qr_code" value="扫码">#}
-                    {#                </form>#}
-                    <form method="post" action="{% url 'maneu_order:api_order_qrcode' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="order_id" value="{{order.order_id}}">
-                        <input type="hidden" name="order_token" value="{{order.order_token}}">
-                        <input type="submit" class="btn btn-primary" id="get_qr_code" value="扫码">
-                    </form>
-
-                </td>
-            </tr>
-            </tfoot>
-        </table>
-    </div>
+    <table class="table">
+        <tr>
+            <td colspan="11" class="text-center">
+                <h5>客户信息</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>客户姓名</span>
+            </td>
+            <td colspan="10">
+                <span>{{ order.c_name }}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>客户电话</span>
+            </td>
+            <td colspan="10">
+                <span>{{ order.c_phone }}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>购买时间</span>
+            </td>
+            <td colspan="10">
+                <span>{{ order.c_time }}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>备注信息</span>
+            </td>
+            <td colspan="10">
+                <span>{{ order.remark }}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="11" class="text-center">
+                <h5>产品信息</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>产品</span>
+            </td>
+            <td>
+                <span>品牌</span>
+            </td>
+            <td>
+                <span>型号</span>
+            </td>
+            <td>
+                <span>折射</span>
+            </td>
+            <td>
+                <span>球镜</span>
+            </td>
+            <td>
+                <span>柱镜</span>
+            </td>
+            <td>
+                <span>方向</span>
+            </td>
+            <td>
+                <span>轴位</span>
+            </td>
+            <td>
+                <span>ADD</span>
+            </td>
+            <td>
+                <span>瞳距</span>
+            </td>
+            <td>
+                <span>数量</span>
+            </td>
+        </tr>
+        {% for foo in content %}
+            {% if foo.product == "镜框" %}
+                <tr>
+                    <td>
+                        <span>{{ foo.product }}</span>
+                    </td>
+                    <td>
+                        <span>{{ foo.brand }}</span>
+                    </td>
+                    <td colspan="8">
+                        <span>{{ foo.model }}</span>
+                    </td>
+                    <td>
+                        <span>{{ foo.count }}</span>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
 </div>
 </body>
+</html>

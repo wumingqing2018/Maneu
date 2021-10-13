@@ -1,6 +1,5 @@
 from common import common
 from maneu_order.models import Order
-import time
 
 
 def order_insert(form):

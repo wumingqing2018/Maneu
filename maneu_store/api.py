@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+
 from maneu_store.service import store
 
 

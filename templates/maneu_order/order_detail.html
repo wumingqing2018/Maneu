@@ -3,24 +3,30 @@
 {% block content %}
     <table class="table">
         <tr>
-            <td colspan="11">
+            <td colspan="11" class="text-center">
                 <span>客户信息</span>
             </td>
         </tr>
         <tr>
-            <td class="col-md-1"><span>客户姓名</span></td>
+            <td class="col-md-1">
+                <span>客户姓名</span>
+            </td>
             <td class="col-md-10" colspan="10">
                 <span>{{ order.c_name }}</span>
             </td>
         </tr>
         <tr>
-            <td class="col-md-1"><span>客户电话</span></td>
+            <td class="col-md-1">
+                <span>客户电话</span>
+            </td>
             <td class="col-md-10" colspan="10">
                 <span id="c_phone">{{ order.c_phone }}</span>
             </td>
         </tr>
         <tr>
-            <td class="col-md-1"><span>购买时间</span></td>
+            <td class="col-md-1">
+                <span>购买时间</span>
+            </td>
             <td class="col-md-10" colspan="10">
                 <span id="c_time">{{ order.c_time }}</span>
             </td>
@@ -34,7 +40,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="11" style='text-align: center'>
+            <td colspan="11" class="text-center">
                 <span>产品信息</span>
             </td>
         </tr>

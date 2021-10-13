@@ -2,7 +2,9 @@ from captcha.fields import CaptchaField
 from django import forms
 from django.core.validators import RegexValidator
 from django.forms import widgets
+
 from maneu_users.serivce import find_username_password
+
 
 class LoginForm(forms.Form):
     username = forms.CharField(label="账号",

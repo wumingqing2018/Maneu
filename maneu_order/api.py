@@ -1,14 +1,15 @@
-from django.forms import model_to_dict
-from django.http import JsonResponse
-from django.http import HttpResponse
+from io import BytesIO
 
-from common import common
+import qrcode
+from django.forms import model_to_dict
+from django.http import HttpResponse
+from django.http import JsonResponse
+
 from common import verify
 from maneu_order import service
 from maneu_order.forms.orderInsertForm import OrderInsertForm
 from maneu_order.forms.orderUpdateForm import OrderUpdateForm
-from io import BytesIO
-import qrcode
+
 
 def order_list(request):
     """查看今日订单"""

@@ -1,4 +1,3 @@
-from common import common
 from maneu_store.models import Store
 
 
