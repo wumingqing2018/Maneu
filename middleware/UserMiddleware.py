@@ -1,9 +1,5 @@
-from common.common import get_ip
 from django.shortcuts import redirect
 from django.utils.deprecation import MiddlewareMixin
-
-from maneu_users.server_redis import user_login_update
-from maneu_users.server_redis import user_login_get
 
 
 class LoginMiddleware(MiddlewareMixin):
