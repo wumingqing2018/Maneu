@@ -7,8 +7,6 @@ from maneu_users.forms.InsertForm import UserInsertForm
 
 
 def user_list(request):
-
-    
     return render(request, 'maneu_users/user_list.html', {'user_list': serivce.find_user_all()})
 
 
