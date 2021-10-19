@@ -17,6 +17,4 @@ class FileMiddleware(MiddlewareMixin):
         """
         request_url = request.path  # method:string, demo:/login/,
         #   判断是否需要校验字段
-        if request_url.endswith('.excel'):
-            if request.session.get('ip') == '124.70.81.40':
-                return None
+        print(request_url)
