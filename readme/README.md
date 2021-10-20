@@ -1,4 +1,5 @@
 # Maneu 聪少的订单管理系统
+
 manage 基本操作
 > 收集静态文件
 > > python3 manage.py collectstatic
