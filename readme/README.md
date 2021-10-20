@@ -35,7 +35,7 @@ uwsgi 基本操作
 
 python 迁徙模块
 > 导出安装模块的文档
-> > pip freeze > my_freeze.txt
+> > pip freeze > readme/requirements.txt
 > 
 > 安装该文档里的模块
-> > pip install -r my_freeze.txt
+> > pip install -r readme/requirements.txt
