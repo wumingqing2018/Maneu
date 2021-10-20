@@ -25,11 +25,9 @@ uwsgi 基本操作
 > 
 > > /etc/nginx/
 > 
-> maneu.conf 放在这个路径并执行以下链接
+> maneu_store.conf 和 maneu_online.conf 放在这个路径并执行以下链接
 > 
 > > /etc/nginx/sites-enabled/
-> > 
-> > sudo ln -s /etc/nginx/sites-available/maneu.conf /etc/nginx/sites-enabled/maneu.conf
 > 
 > uwsgi.ini 放在这个路径
 > 
