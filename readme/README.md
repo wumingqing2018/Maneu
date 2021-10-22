@@ -19,7 +19,7 @@ uwsgi 基本操作
 > 
 > 查看状态
 > > uwsgi --connect-and-read uwsgi/uwsgi.status
-
+ 
 配置文件
 > nginx.conf 放在这个路径
 > 

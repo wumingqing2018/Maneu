@@ -49,15 +49,3 @@
         </form>
     </div>
 {% endblock %}
-{% block javascript %}
-    <script>
-        msg = '{{ msg }}'
-        $(document).ready(function(){
-            if (msg == "None"){
-                console.log(msg)
-            } else{
-                alert(msg)
-            }
-        })
-    </script>
-{% endblock %}
