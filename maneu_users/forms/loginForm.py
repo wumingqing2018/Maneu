@@ -29,11 +29,7 @@ class LoginForm(forms.Form):
                                    r'^[A-Za-z0-9_]+$', '只支持数字和字母')],
                                error_messages={'required': '请输入密码'},
                                )
-    captcha = CaptchaField(label="验证码",
-                           required=True,
-                           error_messages={"required": "验证码不能为空",
-                                           "invalid": "验证码错误"},
-                           )
+
     def clean(self):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')

@@ -1,119 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'maneu/base0.html' %}
 {% load static %}
-<head>
-    <!-- local -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>徕可</title>
-    <link rel="icon" href="{% static 'img/logo.png' %}">
-    <link rel="stylesheet" href="{% static 'css/maneu/base.css' %}">
-    <!-- bootstrap -->
-    <link href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!--bootstrap -->
-</head>
-<body style="background: #0E2340">
-<div class="container">
-    <table class="table">
-        <tr>
-            <td colspan="11" class="text-center">
-                <h5>客户信息</h5>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>客户姓名</span>
-            </td>
-            <td colspan="10">
-                <span>{{ order.c_name }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>客户电话</span>
-            </td>
-            <td colspan="10">
-                <span>{{ order.c_phone }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>购买时间</span>
-            </td>
-            <td colspan="10">
-                <span>{{ order.c_time }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>备注信息</span>
-            </td>
-            <td colspan="10">
-                <span>{{ order.remark }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="11" class="text-center">
-                <h5>产品信息</h5>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>产品</span>
-            </td>
-            <td>
-                <span>品牌</span>
-            </td>
-            <td>
-                <span>型号</span>
-            </td>
-            <td>
-                <span>折射</span>
-            </td>
-            <td>
-                <span>球镜</span>
-            </td>
-            <td>
-                <span>柱镜</span>
-            </td>
-            <td>
-                <span>方向</span>
-            </td>
-            <td>
-                <span>轴位</span>
-            </td>
-            <td>
-                <span>ADD</span>
-            </td>
-            <td>
-                <span>瞳距</span>
-            </td>
-            <td>
-                <span>数量</span>
-            </td>
-        </tr>
-        {% for foo in content %}
-            {% if foo.product == "镜框" %}
-                <tr>
-                    <td>
-                        <span>{{ foo.product }}</span>
-                    </td>
-                    <td>
-                        <span>{{ foo.brand }}</span>
-                    </td>
-                    <td colspan="8">
-                        <span>{{ foo.model }}</span>
-                    </td>
-                    <td>
-                        <span>{{ foo.count }}</span>
-                    </td>
-                </tr>
-            {% endif %}
-        {% endfor %}
-    </table>
-</div>
-</body>
-</html>
+{% block content %}
+    <div class="text-center" id="content">
+        <div class="row justify-content-center">
+            <div class="col-md-12" style="padding: 10%">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'img/logo16x9.svg' %}" class="img-responsive" alt="Cinque Terre">
+                    <h4 class="yellow">徕可</h4>
+                </a>
+            </div>
+            <div style="padding: 5%; text-align: center">
+
+                <form id="order_insert" class="vertical col-md-4 offset-md-4" action="{% url 'guess' %}" method="post">
+                    {% csrf_token %}
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text">手机号</span>
+                        <input type="text" name="phone" class="form-control">
+                        <span id="phone_error"></span>
+                    </div>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text">验证码</span>
+                        <input type="text" name="code" class="form-control">
+                        <span id="phone_error"></span>
+                    </div>
+                    <div class="input-group input-group-sm mb-2">
+                        <input type="submit" id="guess_phone" class="form-control">
+                    </div>
+                    <div class="input-group input-group-sm mb-2" style="text-align: center">
+                        <a type="button" href="{% url 'index' %}" class="form-control">返回</a>
+                    </div>
+                    <div style="text-align: center">
+                        <p class="yellow">{{ msg }}</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

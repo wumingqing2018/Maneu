@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 from common.common import create_id
-from common.excel import excel_remove
 from common.excel import excel_save
 from common.verify import order_id_method_get
 from maneu_batch import service
@@ -10,7 +9,19 @@ from maneu_batch.forms.BatchInsertForm import BatchInsertForm
 
 # Create your views here.
 def batch_list(request):
-    orders = service.batch_list()
+    orderlist = service.batch_list()
+    return render(request, 'maneu_batch/batch_list.html', {'orderlist': orderlist})
+
+
+def batch_list_ByName(request):
+    print(request.GET['arg'])
+    orders = service.batch_list_ByName(arg=request.GET['arg'])
+    return render(request, 'maneu_batch/batch_list.html', {'orders': orders})
+
+
+def batch_list_ByPhone(request):
+    print(request.GET['arg'])
+    orders = service.batch_list_ByPhone(arg=request.GET['arg'])
     return render(request, 'maneu_batch/batch_list.html', {'orders': orders})
 
 
@@ -26,10 +37,9 @@ def batch_detail(request):
 def batch_delete(request):
     order_id = order_id_method_get(request)
     if order_id:
-        service.batch_delete(order_id)
-        excel_remove(order_id)
-        orders = service.batch_list()
-        return render(request, 'maneu_batch/batch_list.html', {'orders': orders})
+        print(service.batch_delete(order_id))
+        # excel_remove(order_id)
+        return batch_list(request)
     else:
         return render(request, 'maneu/error.html')
 
@@ -46,3 +56,8 @@ def batch_insert(request):
             return batch_list(request)
         msg = '参数错误'
     return render(request, 'maneu_batch/batch_insert.html', {'msg': msg})
+
+
+def batch_sreach(request):
+    orders = service.batch_list_ByName(arg=request.GET['arg'])
+    return render(request, 'maneu_batch/batch_list.html', {'orders': orders})

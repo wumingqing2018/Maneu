@@ -23,11 +23,15 @@ $(document).ready(function () {
             }
         }
     });
-    c_phone.blur(function(){
+    c_phone.change(function(){
         if (c_phone.val() === '') {
             $('#phone_error').text('请输入电话');
         } else if (isNaN(c_phone.val())) {
             $('#phone_error').text('电话由数字构成');
+        } else if (c_phone.val().length<11) {
+            $('#phone_error').text('电话长度不足11位');
+        } else if (c_phone.val().length>11) {
+            $('#phone_error').text('电话长度超过11位');
         } else {
             $('#phone_error').text('');
             if (c_name.val() === '') {
@@ -50,9 +54,6 @@ $(document).ready(function () {
                     alert("请求出错 , 请刷新页面")
                 } else if(res.code === 2) {
                     console.log(res.msg)
-                    for (i in res.msg){
-                        alert(res.msg[0])
-                    }
                 } else if(res.code === 3) {
                     alert("创建失败")
                 }

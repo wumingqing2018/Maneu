@@ -1,9 +1,18 @@
 
+from os import name
 from maneu_batch.models import Batch
 
 
 def batch_list():
-    return Batch.objects.order_by('-c_time')[0:20]
+    return Batch.objects.order_by('-c_time').all()
+
+
+def batch_list_ByName(arg):
+    return Batch.objects.filter(c_name=arg).order_by('-c_time').all()
+
+
+def batch_list_ByPhone(arg):
+    return Batch.objects.filter(c_phone=arg).order_by('-c_time').all()
 
 
 def batch_detail(order_id):
@@ -26,4 +35,9 @@ def batch_insert(form, order, order_id):
 
 
 def batch_delete(order_id):
-    Batch.objects.filter(order_id=order_id).delete()
+    try:
+        Batch.objects.filter(order_id=order_id).first().delete()
+        return True
+    except BaseException as msg:
+        print(msg)
+        return False

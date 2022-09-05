@@ -9,6 +9,13 @@ def find_user(user_id):
     return User.objects.filter(user_id=user_id).first()
 
 
+def find_user_username(username=''):
+    """
+    通过username查找用户
+    """
+    return User.objects.filter(username=username).first()
+
+
 def find_username_password(username, password):
     return User.objects.filter(username=username, password=password).first()
 
@@ -38,8 +45,9 @@ def user_delete(user_id):
     return User.objects.filter(user_id=user_id).delete()
 
 
-def user_update(form):
+def user_update(old_password='', user_id='', nickname='', password='', email='', phone='', remark=''):
     try:
-        form['user']
+        User.objects.filter(user_id=user_id, password=old_password).update(nickname=nickname, password=password,
+                                                                           email=email, phone=phone, remark=remark)
     except BaseException as msg:
         return str(msg)

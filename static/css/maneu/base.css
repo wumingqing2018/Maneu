@@ -1,22 +1,36 @@
-.yellow{
+.yellow {
     font-weight: bold;
-    color: #fbc21d;
+    color: #FCDA5E;
 }
-.blue{
-    color: #fbc21d;
-    background: #0E2340;
+
+.blue {
+    color: #FCDA5E;
+    background: #002FA7;
 }
-img{
+
+tr.yellow {
+    background: #FCDA5E;
+}
+
+.logo {
+    margin: 10%;
+}
+
+table {
+    text-align: left;
+}
+
+img {
     height: 100px;
     width: 140px;
 }
-span{
+
+span {
+    font-size: 10px;
     color: #FFC048;
     display: block;
 }
-h5{
+
+h5 {
     color: #FFC048;
-}
-td{
-    width: 9%;
 }

@@ -1,0 +1,28 @@
+.yellow {
+    font-weight: bold;
+    color: #fbc21d;
+}
+
+.blue {
+    color: #fbc21d;
+    background: #0E2340;
+}
+
+img {
+    height: 100px;
+    width: 140px;
+}
+
+span {
+    font-size: 10px;
+    color: #FFC048;
+    display: block;
+}
+
+h5 {
+    color: #FFC048;
+}
+
+td {
+    width: 9%;
+}

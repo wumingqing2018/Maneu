@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <!-- local -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>徕可</title>
+    <link rel="icon" href="{% static 'img/logo16x9.svg' %}">
+    <link rel="stylesheet" href="{% static 'css/maneu/base2.css' %}">
+    <!-- bootstrap -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--bootstrap -->
+</head>
+
+<body style="background: #0E2340">
+<div class="container">
+    <div class="text-center" id="content">
+        <div class="row justify-content-center">
+            <div class="col-md-12" style="margin: 10%">
+                <a href="{% url 'maneu_order:order_list' %}">
+                    <img src="{% static 'img/logo16x9.svg' %}" class="img-responsive" alt="Cinque Terre">
+                    <h4 class="yellow">徕可</h4>
+                </a>
+            </div>
+            <div class="col-md-12" style="margin: 5%">
+                {#                <h4 class="yellow">官方授权许可正品</h4>#}
+                {#                <p class="yellow">Officially licensed products</p>#}
+            </div>
+            <table class="table table-bordered table-sm" style="text-align:left">
+                <tr style="background: #FFC048">
+                    <td colspan="3">
+                        <b style="margin-left: 10px">验光中心信息(Optometry center information)</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">中心名称</span>
+                    </td>
+                    <td colspan="2">
+                        <span style="margin-left: 10px">徕可视光中心</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">联系电话</span>
+                    </td>
+                    <td colspan="2">
+                        <span style="margin-left: 10px">12345678912</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">所在地址</span>
+                    </td>
+                    <td colspan="2">
+                        <span style="margin-left: 10px">广东省广州市越秀区xxx号</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">特色服务</span>
+                    </td>
+                    <td colspan="2">
+                        <span style="margin-left: 10px">近视克星</span>
+                    </td>
+                </tr>
+
+                <tr style="background: #FFC048">
+                    <td colspan="3">
+                        <b style="margin-left: 10px">屈光检验结果（Subjective refraction）</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">报告日期</span>
+                    </td>
+                    <td colspan="2">
+                        <span style="margin-left: 10px">2022/7/15</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">参数</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">右眼 OS</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">左眼 OD</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">裸眼视力 VA</span>
+
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">0.4</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">0.5</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">球镜 Sph</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">-3.00</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">-2.00</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">柱镜 Cyl</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">-1.00</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">-1.00</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">轴位 Axial</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">85</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">155</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">角膜曲率 AK</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">43.6</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">43.6</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">眼轴长度 AL</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">24</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">24</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">矫正视力 BCVA</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">1.0</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">1.0</span>
+                    </td>
+                </tr>
+                <tr style="background: #FFC048;">
+                    <td colspan="3">
+                        <b style="margin-left: 10px">视力解决方案（Vision Solutions）</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">报告日期</span>
+                    </td>
+                    <td colspan="2">
+                        <span style="margin-left: 10px">2022/7/15</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">使用需求</span>
+                    </td>
+                    <td colspan="2">
+                        <span style="margin-left: 10px">近用</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">参数</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">右眼 OS</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">左眼 OD</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">球镜 Sph</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">-3.00</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">-2.00</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">柱镜 Cyl</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">-1.00</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">-1.00</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">轴位 Axial</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">85</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">155</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">棱镜 Pr</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">*</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">基底取向 Base</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">*</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">下加光 ADD</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">+1.50</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">+1.50</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">矫正视力 BSCVA</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">1.0</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">1.0</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">瞳距 PD</span>
+                    </td>
+                    <td colspan="2">
+                        <span style="margin-left: 10px">64</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">验光师建议</span>
+                    </td>
+                    <td colspan="2">
+                        <span style="margin-left: 10px">佩戴合适折射率眼镜，按时眼光检测</span>
+                    </td>
+                </tr>
+                <tr style="background: #FFC048;">
+                    <td colspan="3">
+                        <b style="margin-left: 10px">产品订单信息（Product Orders）</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">购买日期</span>
+                    </td>
+                    <td colspan="2">
+                        <span style="margin-left: 10px">2022/7/15</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">类别</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">品牌</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">型号</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">镜片</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">蔡司</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">清锐</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">镜框</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">蔡司</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">黑色商务款</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">其他</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">擦镜布</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">蓝色</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">其他</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">镜盒</span>
+                    </td>
+                    <td>
+                        <span style="margin-left: 10px">黑色</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span style="margin-left: 10px">配镜师建议</span>
+                    </td>
+                    <td colspan="2">
+                        <span style="margin-left: 10px">佩戴合适折射率眼镜，按时眼光检测</span>
+                    </td>
+                </tr>
+                <tr style="background: #FFC048;">
+                    <td colspan="3">
+                        <b style="margin-left: 10px">注意事项（matters need attention）</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <span style="margin-left: 10px">处方由眼科专家根据患者屈光不正性质、年龄、用眼需求等综合因素决定。</span>
+                        <span style="margin-left: 10px">选择镜片、镜架及按眼科专家指导的配戴方法才能确保矫正效果和视觉健康。</span>
+                        <span style="margin-left: 10px">数据为当时检查状态的结果，检查后如超过六个月配镜，建议复查。</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-12" style="margin-top: 5%">
+            <div>
+                <p class="yellow">执行标准：</p>
+            </div>
+            <div>
+                <a class="yellow" href="http://www.bz.bzko.com/bzxx/56116.html">QB/T2506-2017</a>
+            </div>
+            <div>
+                <a class="yellow" href="https://wenku.baidu.com/view/edf15852a417866fb94a8e06.html">GB10810.3-2006</a>
+            </div>
+            <div>
+                <a class="yellow"
+                   href="http://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A587E31519ED1F6BFF23FC9132469137">GB/T
+                    38120-2019</a>
+            </div>
+            <div>
+                <p class="yellow">光安全要求</p>
+            </div>
+        </div>
+        <div class="col-md-12 yellow" style="text-align: center; margin-top: 5%">
+            <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

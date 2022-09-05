@@ -6,6 +6,9 @@ $(document).ready(function () {
      * 点击 id=framework_insert_show 按钮调用一下function
      * ajax 请求 api_framework_brand
      */
+    framework_insert_show.click(function (){
+        framework_show()
+    });
     framework_insert_hide.click(function () {
         framework_hide()
     });
@@ -54,6 +57,7 @@ $(document).ready(function () {
         $('#order_content').append(html)
         $("#order_banner").show()
     }
+
     $.fn.serializeJsonStr = function () {
         // 把from表单内容转换为json字符串
         var o = {};

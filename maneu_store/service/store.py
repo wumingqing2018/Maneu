@@ -1,4 +1,4 @@
-from maneu_store.models import Store
+from maneu_store.model import Store
 
 
 def store_item_all():

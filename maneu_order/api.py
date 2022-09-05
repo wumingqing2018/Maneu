@@ -15,7 +15,8 @@ def order_list(request):
     """查看今日订单"""
     if request.method == "GET":
         PageNumber = verify.is_int(string=request.GET['PageNumber'])
-        orders = service.find_order_today(PageNumber).values_list('c_name', 'c_phone', 'c_time')
+        orders = service.find_order_today(
+            PageNumber).values_list('c_name', 'c_phone', 'c_time')
         res = {'code': 0, 'msg': '', 'data': list(orders)}
     else:
         res = {'code': 1, 'msg': "request method error", 'data': []}
@@ -30,6 +31,7 @@ def order_insert(request):
         if form.is_valid():
             add_order = service.order_insert(form=form.clean())
             if add_order:
+
                 res = {'code': 0, 'msg': '创建成功', 'data': []}
             else:
                 res = {'code': 3, 'msg': '创建失败', 'data': []}
@@ -94,7 +96,8 @@ def order_qrcode(request):
 def order_detail(request):
     order_id = verify.order_id_method_get(request)
     if order_id:
-        res = {'code': 0, 'msg': '', 'data': [model_to_dict(service.find_order_id(order_id))]}
+        res = {'code': 0, 'msg': '', 'data': [
+            model_to_dict(service.find_order_id(order_id))]}
     else:
         res = {'code': 1, 'msg': '参数错误', 'data': []}
     return JsonResponse(res)

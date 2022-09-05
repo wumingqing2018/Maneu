@@ -1,107 +1,408 @@
-{% extends 'maneu/base.html' %}
+{% extends 'maneu/base1.html' %}
 {% load static %}
 {% block content %}
-    <table class="table">
-        <tr>
-            <td class="text-center" colspan="11">
-                <span>客户信息</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="col-md-1">
-                <span>客户姓名</span>
-            </td>
-            <td class="col-md-10" colspan="10">
-                <span>{{ order.c_name }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="col-md-1">
-                <span>客户电话</span>
-            </td>
-            <td class="col-md-10" colspan="10">
-                <span id="c_phone">{{ order.c_phone }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="col-md-1">
-                <span>购买时间</span>
-            </td>
-            <td class="col-md-10" colspan="10">
-                <span id="c_time">{{ order.c_time }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="col-md-1">
-                <span>备注信息</span>
-            </td>
-            <td class="col-md-10" colspan="10">
-                <span id="remark">{{ order.remark }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-center" colspan="11">
-                <span>产品信息</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="col-md-1">
-                <span>产品</span>
-            </td>
-            <td class="col-md-1">
-                <span>品牌</span>
-            </td>
-            <td class="col-md-1">
-                <span>型号</span>
-            </td>
-            <td class="col-md-1">
-                <span>折射</span>
-            </td>
-            <td class="col-md-1">
-                <span>球镜</span>
-            </td><x></x>
-            <td class="col-md-1">
-                <span>柱镜</span>
-            </td>
-            <td class="col-md-1">
-                <span>方向</span>
-            </td>
-            <td class="col-md-1">
-                <span>轴位</span>
-            </td>
-            <td class="col-md-1">
-                <span>ADD</span>
-            </td>
-            <td class="col-md-1">
-                <span>瞳距</span>
-            </td>
-            <td class="col-md-1">
-                <span>数量</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="col-md-1">
-                <form method="get" action="{% url 'maneu_order:order_list' %}">
-                    <input type="submit" class="btn btn-primary" value="返回">
-                </form>
-            </td>
-            <td class="col-md-10" colspan="10">
-                <form method="post" action="{% url 'maneu_order:api_order_qrcode' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="order_id" value="{{order.order_id}}">
-                    <input type="hidden" name="order_token" value="{{order.order_token}}">
-                    <input type="submit" class="btn btn-primary" id="get_qr_code" value="扫码">
-                </form>
-            </td>
-        </tr>
-    </table>
-{% endblock %}
-{% block javascript %}
-    <script type="text/javascript">
-        order_id = "{{ order.order_id }}"
-        api_order_qrcode = "{% url 'maneu_order:api_order_qrcode' %}";
-        api_order_delete = "{% url 'maneu_order:api_order_delete' %}";
-        api_order_detail = "{% url 'maneu_order:api_order_detail' %}";
-    </script>
-    <script src="{% static 'js/order/order_detail.js' %}"></script>
+    <div class="container">
+        <div class="text-center" id="content">
+            <div class="row justify-content-center">
+                <div class="col-md-12" style="margin: 10%">
+                    <a href="{% url 'maneu_order:order_list' %}">
+                        <img src="{% static 'img/logo16x9.svg' %}" class="img-responsive" alt="Cinque Terre">
+                        <h4 class="yellow">徕可</h4>
+                    </a>
+                </div>
+                <div class="col-md-12" style="margin: 5%">
+                </div>
+                <table class="table table-bordered table-sm" style="text-align:left">
+                    <tr style="background: #FFC048">
+                        <td colspan="3">
+                            <b style="margin-left: 10px">验光中心信息(Optometry center information)</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">中心名称</span>
+                        </td>
+                        <td colspan="2">
+                            <span style="margin-left: 10px">{{ users.nickname }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">联系电话</span>
+                        </td>
+                        <td colspan="2">
+                            <span style="margin-left: 10px">{{ users.phone }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">所在地址</span>
+                        </td>
+                        <td colspan="2">
+                            <span style="margin-left: 10px">{{ users.add }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">特色服务</span>
+                        </td>
+                        <td colspan="2">
+                            <span style="margin-left: 10px">{{ users.remark }}</span>
+                        </td>
+                    </tr>
+                    <tr style="background: #FFC048">
+                        <td colspan="3">
+                            <b style="margin-left: 10px">屈光检验结果（Subjective refraction）</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">报告日期</span>
+                        </td>
+                        <td colspan="2">
+                            <span style="margin-left: 10px">{{ order.time }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">参数</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">右眼 OS</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">左眼 OD</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">裸眼视力 VA</span>
+
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OS_Nv }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OD_Nv }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">球镜 Sph</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OS_DS }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OD_DS }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">柱镜 Cyl</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OS_CYL }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OD_CYL }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">轴位 Axial</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OS_AX }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OD_AX }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">角膜曲率 AK</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OS_NA }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OD_AX }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">眼轴长度 AL</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OS_AL }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OD_AL }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">矫正视力 BCVA</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OS_AC }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ subjectiverefraction.OS_AC }}</span>
+                        </td>
+                    </tr>
+                    <tr style="background: #FFC048;">
+                        <td colspan="3">
+                            <b style="margin-left: 10px">视力解决方案（Vision Solutions）</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">报告日期</span>
+                        </td>
+                        <td colspan="2">
+                            <span style="margin-left: 10px">{{ order.time }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">使用需求</span>
+                        </td>
+                        <td colspan="2">
+                            <span style="margin-left: 10px">{{ visionsolutions.function }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">参数</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">右眼 OS</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">左眼 OD</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">球镜 Sph</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OS_BC_DS }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OD_BC_DS }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">柱镜 Cyl</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OS_BC_CYL }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OD_BC_CYL }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">轴位 Axial</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OS_BC_AX }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OD_BC_AX }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">棱镜 Pr</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OS_BC_PR }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OD_BC_PR }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">基底取向 Base</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OS_BC_FR }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OD_BC_FR }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">下加光 ADD</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OS_BC_ADD }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OD_BC_ADD }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">矫正视力 BSCVA</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OS_BC_NA }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ visionsolutions.OD_BC_NA }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">瞳距 PD</span>
+                        </td>
+                        <td colspan="2">
+                            <span style="margin-left: 10px">{{ visionsolutions.PD }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">验光师建议</span>
+                        </td>
+                        <td colspan="2">
+                            <span style="margin-left: 10px">{{ visionsolutions.remark }}</span>
+                        </td>
+                    </tr>
+                    <tr style="background: #FFC048;">
+                        <td colspan="3">
+                            <b style="margin-left: 10px">产品订单信息（Product Orders）</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">购买日期</span>
+                        </td>
+                        <td colspan="2">
+                            <span style="margin-left: 10px">{{ order.time }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">类别</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">品牌</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">型号</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg11 }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg12 }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg13 }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg21 }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg22 }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg23 }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg31 }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg32 }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg33 }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg41 }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg42 }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg43 }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg51 }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg52 }}</span>
+                        </td>
+                        <td>
+                            <span style="margin-left: 10px">{{ store.arg53 }}</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span style="margin-left: 10px">配镜师建议</span>
+                        </td>
+                        <td colspan="2">
+                            <span style="margin-left: 10px">{{ store.remark }}</span>
+                        </td>
+                    </tr>
+                    <tr style="background: #FFC048;">
+                        <td colspan="3">
+                            <b style="margin-left: 10px">注意事项（matters need attention）</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <span style="margin-left: 10px">处方由眼科专家根据患者屈光不正性质、年龄、用眼需求等综合因素决定。</span>
+                            <span style="margin-left: 10px">选择镜片、镜架及按眼科专家指导的配戴方法才能确保矫正效果和视觉健康。</span>
+                            <span style="margin-left: 10px">数据为当时检查状态的结果，检查后如超过六个月配镜，建议复查。</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-12" style="margin-top: 5%">
+                <div>
+                    <p class="yellow">执行标准：</p>
+                </div>
+                <div>
+                    <a class="yellow" href="http://www.bz.bzko.com/bzxx/56116.html">QB/T2506-2017</a>
+                </div>
+                <div>
+                    <a class="yellow"
+                       href="https://wenku.baidu.com/view/edf15852a417866fb94a8e06.html">GB10810.3-2006</a>
+                </div>
+                <div>
+                    <a class="yellow"
+                       href="http://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A587E31519ED1F6BFF23FC9132469137">GB/T
+                        38120-2019</a>
+                </div>
+                <div>
+                    <p class="yellow">光安全要求</p>
+                </div>
+            </div>
+            <div class="col-md-12 yellow" style="text-align: center; margin-top: 5%">
+                <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

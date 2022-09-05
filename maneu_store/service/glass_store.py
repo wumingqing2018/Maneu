@@ -1,5 +1,5 @@
 from common import common
-from maneu_store.models import GlassStore
+from maneu_store.model import GlassStore
 
 
 def glass_store_all():

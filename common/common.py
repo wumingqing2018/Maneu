@@ -32,8 +32,8 @@ def create_id():
     """
     生成32位纯数字id
     """
-    rand_int = random.randint(10000000000000000000000000000000,99999999999999999999999999999999)
-    return str(rand_int)
+    order = random.randint(10000000000000000000000000000000,99999999999999999999999999999999)
+    return order
 
 
 def token():
@@ -41,7 +41,7 @@ def token():
     生成32位纯数字token
     """
     rand_int = random.randint(10000000000000000000000000000000,99999999999999999999999999999999)
-    return str(rand_int)
+    return rand_int
 
 
 def make_qrcode(order_id, order_token):

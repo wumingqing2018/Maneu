@@ -1,0 +1,76 @@
+{% extends 'maneu/base1.html' %}
+{% load static %}
+{% block content %}
+    <div class="container yellow">
+        <div class="col-md-6 offset-md-3" style="margin-top: 20%; margin-bottom: 20%">
+            <form method="post" action="{% url 'maneu_users:user_updata' %}">
+                {% csrf_token %}
+                <div class="input-group input-group-sm mb-2">
+                    <span class="input-group-text">密码验证</span>
+                    <input type="text" name="old_password" id="old_passwor" class="form-control">
+                    <span id="phone_error"></span>
+                </div>
+
+                <div class="input-group input-group-sm mb-2">
+                    <span class="input-group-text">商家名称</span>
+                    <input type="text" name="nickname" id="nickname" class="form-control" value="{{ user.nickname }}">
+                    <span id="phone_error"></span>
+                </div>
+                <div class="input-group input-group-sm mb-2">
+                    <span class="input-group-text">手机号码</span>
+                    <input type="text" name="phone" id="phone" value="{{ user.phone }}" class="form-control">
+                    <span id="phone_error"></span>
+                </div>
+                <div class="input-group input-group-sm mb-2">
+                    <span class="input-group-text">电子邮箱</span>
+                    <input type="text" name="email" id="email" value="{{ user.email }}" class="form-control">
+                    <span id="phone_error"></span>
+                </div>
+                <div class="input-group input-group-sm mb-2">
+                    <span class="input-group-text">修改密码</span>
+                    <input type="text" name="password" id="password" class="form-control">
+                    <span id="phone_error"></span>
+                </div>
+                <div class="input-group input-group-sm mb-2">
+                    <span class="input-group-text">特色服务</span>
+                    <input type="text" name="remark" id="remark" value="{{ user.remark }}" class="form-control">
+                    <span id="phone_error"></span>
+                </div>
+                <br>
+                <p>{{ msg }}</p>
+                <input type="submit" class="col-md-12 btn btn-primary">
+            </form>
+            <a href="{% url 'maneu_order:order_list' %}" type="button" class="col-md-12 btn btn-warning">返回</a>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    <script>
+        user_insert = "{% url 'maneu_users:api_user_insert' %}";
+    </script>
+    <script src="{% static 'js/common/windos_back.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn-insert").click(function () {
+                $.ajax({
+                    url: user_insert,
+                    type: "POST",
+                    data: $("#user_insert").serialize(),
+                    success: function (res) {
+                        if (res.code === 0) {
+                            alert(res.msg)
+                        } else if (res.code === 1) {
+                            alert("请求错误")
+                        } else if (res.code === 2) {
+                            for (i in res.msg) {
+                                $("#" + i).append(res.msg[i])
+                            }
+                        } else if (res.code === 3) {
+                            alert(res.msg)
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+{% endblock %}

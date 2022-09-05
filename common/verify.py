@@ -5,10 +5,13 @@ import re
 
 
 def is_int(string):
-    """
-    判读content值是否为正整数
-    如果content值为正整数返回content值
-    如果content值非正整数返回0
+    """_summary_
+
+    Args:
+        string (_type_): _description_
+
+    Returns:
+        _type_: _description_
     """
     try:
         re_match = re.match(r"^[0-9]\d*$", string, flags=0)
@@ -60,8 +63,7 @@ def order_id_method_get(request):
     if request.method == 'GET':
         try:
             order_id = request.GET['order_id']
-            re_match = re.match(r"^\d{32}$", order_id, flags=0)
-            if re_match:
+            if len(order_id) == 36:
                 return order_id
         except Exception as msg:
             print(msg)
@@ -104,10 +106,10 @@ def order_token_method_post(request):
     return None
 
 
-def phone_method_get(request):
-    if request.method == 'GET':
+def phone_method_Post(request):
+    if request.method == 'POST':
         try:
-            phone = request.GET['search']
+            phone = request.POST['phone']
             re_match = re.match(r"^\d{11}$", phone, flags=0)
             if re_match:
                 return phone
