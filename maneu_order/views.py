@@ -11,12 +11,7 @@ import json
 
 def order_list(request):
     """查看今日订单"""
-    orderlist = service.find_order_all()  # 查找今日订单
-    return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
-
-
-def order_list_by_guess(request):
-    orderlist = service.find_order_all()
+    orderlist = service.find_order_all(users_id=request.session['id'])  # 查找今日订单
     return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
 
 
@@ -30,7 +25,7 @@ def order_delete(request):
         subjectiverefraction = service.delete_subjectiverefraction_id(id=order.subjectiverefraction_id)
         order = service.delete_order_id(id=order_id)
         print(order, guess, store, visionsolutions, subjectiverefraction)
-    return HttpResponseRedirect(reverse('maneu_order:order_list'))
+    return  (reverse('maneu_order:order_list'))
 
 
 def order_detail(request):
@@ -51,16 +46,11 @@ def order_detail(request):
         visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
         subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
         print(store)
-        return render(request, 'maneu_order/order_detail.html',
-                      {'order': order, 'users': users, 'guess': guess, 'store': json.loads(store.content),
+        return render(request, 'maneu_order/order_detail.html', {'order': order, 'users': users, 'guess': guess, 'store': json.loads(store.content),
                        'visionsolutions': json.loads(visionsolutions.content),
                        'subjectiverefraction': json.loads(subjectiverefraction.content)})
     else:
         return render(request, 'maneu/error.html', {'msg': '参数错误'})
-
-
-def order_detail_v2(request):
-    return render(request, 'maneu_order/order_detail_V2.html')
 
 
 def order_search(request):

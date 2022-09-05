@@ -1,6 +1,6 @@
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
-#   * Rearrange models' maneu_order
+#   * Rearrange models' order
 #   * Make sure each model has one field with primary_key=True
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
@@ -9,7 +9,7 @@ from django.db import models
 import uuid
 
 
-class User(models.Model):
+class ManeuUsers(models.Model):
     user_id = models.CharField(max_length=36, primary_key=True, default=uuid.uuid1, editable=False)
     nickname = models.CharField(unique=True, max_length=36)
     username = models.CharField(unique=True, max_length=36)
@@ -19,7 +19,8 @@ class User(models.Model):
     level = models.IntegerField()
     state = models.IntegerField()
     create_time = models.DateTimeField()
-    remark = models.CharField(max_length=255)
+    remark = models.CharField(max_length=36)
+
 
     class Meta:
         managed = False

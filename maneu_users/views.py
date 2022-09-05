@@ -1,5 +1,6 @@
 from django.forms import model_to_dict
 from django.shortcuts import render
+from django.shortcuts import HttpResponseRedirect, reverse
 from common import verify
 from maneu_users import serivce
 from maneu_users.forms.InsertForm import UserInsertForm
@@ -51,24 +52,15 @@ def user_delete(request):
 
 
 def user_insert(request):
+    if request.method == 'POST':
+        if request.POST['gift_password'] == '214772680':
+            updata = serivce.user_insert(username=request.POST['username'],
+                                         nickname=request.POST['nickname'], password=request.POST['password'],
+                                         phone=request.POST['phone'], email=request.POST['email'],
+                                         remark=request.POST['remark'])
+            print(updata)
+            return HttpResponseRedirect(reverse('login'))
     return render(request, 'maneu_users/user_insert.html')
-
-
-def user_update(request):
-    user_id = verify.user_id_method_get(request)
-    if user_id:
-        user = serivce.find_user(user_id)
-        if user:
-            form = UserInsertForm(initial=model_to_dict(user))
-            return render(request, 'maneu_users/user_updata.html', {'user_id': user_id, 'form': form})
-        else:
-            return render(request, 'maneu/error.html', {'msg': '没有订单'})
-    else:
-        return render(request, 'maneu/error.html', {'msg': "请求出错"})
-
-
-def user_ResetPassword(request):
-    return render(request, 'maneu_users/user_ResetPassword.html')
 
 
 def user_updata(request):
@@ -80,6 +72,7 @@ def user_updata(request):
                                      nickname=request.POST['nickname'], password=request.POST['password'],
                                      phone=request.POST['phone'], email=request.POST['email'],
                                      remark=request.POST['remark'])
+        print(updata)
         if updata == None:
             msg = '密码验证错误，请正确输入登录密码'
         else:
