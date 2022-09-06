@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="15911f3b-db11-43b7-97e7-384ed3a18533" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Maneu.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Maneu.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/order_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu_users/user_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_users/user_update.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,21 +80,44 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1662469688369</updated>
-      <workItem from="1662469689739" duration="99000" />
+      <workItem from="1662469689739" duration="5469000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="552" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1662469721265">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="552" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662469721265" />
+    <state x="690" y="262" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1662469997870">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="690" y="262" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662469997870" />
     <state x="461" y="160" key="SettingsEditor" timestamp="1662469789042">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="461" y="160" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1662469789042" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1662469940183">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1032@0.0.1920.1032" timestamp="1662469940183" />
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1662469969298">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1662469969298" />
   </component>
 </project>
