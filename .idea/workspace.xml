@@ -21,9 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="15911f3b-db11-43b7-97e7-384ed3a18533" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/order_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu_users/user_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_users/user_update.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/verify.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/verify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maneu_order/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/maneu_order/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maneu_order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/maneu_order/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_update.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,11 +36,19 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JupyterTrust" id="46c60bdb-7d8b-4e4c-8dbd-124b065b4e9f" />
   <component name="ProjectId" id="2EObgFHqgZUNHTsRid8kPIdhAAX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -81,6 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1662469688369</updated>
       <workItem from="1662469689739" duration="5469000" />
+      <workItem from="1662519405899" duration="10687000" />
     </task>
     <servers />
   </component>
@@ -97,6 +109,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1662469721265">
@@ -115,9 +128,20 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1032@0.0.1920.1032" timestamp="1662469940183" />
-    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1662469969298">
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1662523777363">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1662469969298" />
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1662523777363" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="django-line">
+          <url>file://$PROJECT_DIR$/templates/maneu_order/order_update.html</url>
+          <line>3</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

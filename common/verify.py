@@ -74,8 +74,7 @@ def order_id_method_post(request):
     if request.method == 'POST':
         try:
             order_id = request.POST['order_id']
-            re_match = re.match(r"^\d{32}$", order_id, flags=0)
-            if re_match:
+            if len(order_id) == 36:
                 return order_id
         except Exception as msg:
             print(msg)
