@@ -190,8 +190,7 @@ def order_update(request):
                                                                                     OS_AL=request.POST['OS_AL'],
                                                                                     OS_AC=request.POST['OS_AC'],
                                                                                     )
-            service.ManeuOrderV2_update(order_id=order.id, name=request.POST['guess_name'],
-                                        phone=request.POST['guess_phone'])
+            service.ManeuOrderV2_update(order_id=order.id, name=request.POST['guess_name'], phone=request.POST['guess_phone'])
             return HttpResponseRedirect(reverse('maneu_order:order_list'))
     else:
         return render(request, 'maneu/error.html', {'msg': '参数错误'})

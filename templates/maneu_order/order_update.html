@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <form id="order_insert" class="vertical col-md-12" action="{% url 'maneu_order:order_update' %}" method="post">
-    <input type="text" name="order_id" value="{{ order.id }}">
+        <input type="hidden" name="order_id" value="{{ order.id }}">
         {% csrf_token %}
         <h4>客户个人信息</h4>
         <table class="table">
