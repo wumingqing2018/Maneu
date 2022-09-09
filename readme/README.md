@@ -23,15 +23,15 @@ uwsgi 基本操作
 配置文件
 > nginx.conf 放在这个路径
 > 
-> > /etc/nginx/
+> > /etc/nginx/nginx.conf
 > 
 > maneu_store.conf 和 maneu_online.conf 放在这个路径并执行以下链接
 > 
-> > /etc/nginx/sites-enabled/
+> > /etc/nginx/sites-enabled/maneu_online.conf
 > 
 > uwsgi.ini 放在这个路径
 > 
-> > /root/maneu
+> > /root/maneu/uwsgi.ini
 
 python 迁徙模块
 > 导出安装模块的文档

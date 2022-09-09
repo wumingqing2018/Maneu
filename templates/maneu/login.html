@@ -11,6 +11,7 @@
             </div>
             <div class="col-md-4" style="margin-top: 15%; margin-bottom: 10%">
                 <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
                     <div class="input-group input-group-sm" style="margin-bottom: 3%">
                         <span class="input-group-text">账号</span>
                         <input type="text" name="username" class="form-control">
