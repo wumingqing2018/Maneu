@@ -27,15 +27,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15911f3b-db11-43b7-97e7-384ed3a18533" name="默认的" comment="常规更新">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/guess.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/guess.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
@@ -54,7 +53,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="46c60bdb-7d8b-4e4c-8dbd-124b065b4e9f" />
+  <component name="JupyterTrust" id="c3b84a3e-3d4d-49a9-a84d-48324bf3a285" />
   <component name="ProjectId" id="2EObgFHqgZUNHTsRid8kPIdhAAX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -64,7 +63,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/readme" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -102,6 +101,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="15911f3b-db11-43b7-97e7-384ed3a18533" name="默认的" comment="" />
+      <changelist id="" name="New changelist" comment="" />
       <created>1662469688369</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -111,6 +111,7 @@
       <workItem from="1662540264833" duration="1052000" />
       <workItem from="1662655958448" duration="2349000" />
       <workItem from="1662731316311" duration="1811000" />
+      <workItem from="1662806905660" duration="330000" />
     </task>
     <task id="LOCAL-00001" summary="常规更新">
       <created>1662533958994</created>
@@ -189,14 +190,22 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="92" y="92" width="1736" height="848" key="ShowDiffWithBranchDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662658222990" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1662732187250">
+    <state x="1270" y="385" key="VCS.EditChangelistDialog" timestamp="1662807191389">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1032@0.0.1920.1032" timestamp="1662732187250" />
+    <state x="1270" y="385" key="VCS.EditChangelistDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662807191389" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1662806962641">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1032@0.0.1920.1032" timestamp="1662806962641" />
     <state x="773" y="429" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1662656046286">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="773" y="429" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1032@0.0.1920.1032" timestamp="1662656046286" />
+    <state x="1215" y="415" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1662806955161">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="1215" y="415" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662806955161" />
     <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1662732324815">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
