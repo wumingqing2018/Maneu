@@ -336,24 +336,35 @@ def ManeuGuess_update(id='', name='', phone='', sex='', age='', OT='', EM='', DF
         return None
 
 
-def ManeuStore_insert(arg51='', arg52='', arg53='', arg41='', arg42='', arg43='', arg31='', arg32='', arg33='',
-                      arg21='', arg22='', arg23='', arg11='', arg12='', arg13='', ):
+def ManeuStore_insert(arg10="", arg11="", arg12="", arg13="",
+                      arg20="", arg21="", arg22="", arg23="",
+                      arg30="", arg31="", arg32="", arg33="",
+                      arg40="", arg41="", arg42="", arg43="",
+                      arg50="", arg51="", arg52="", arg53="",):
     try:
-        ManeuStore_content = {'arg51': arg51, 'arg52': arg52, 'arg53': arg53, 'arg41': arg41, 'arg42': arg42,
-                              'arg43': arg43, 'arg31': arg31, 'arg32': arg32, 'arg33': arg33, 'arg21': arg21,
-                              'arg22': arg22, 'arg23': arg23, 'arg11': arg11, 'arg12': arg12, 'arg13': arg13, }
+        ManeuStore_content = {'arg50': arg50, 'arg51': arg51, 'arg52': arg52, 'arg53': arg53,
+                              'arg40': arg40, 'arg41': arg41, 'arg42': arg42, 'arg43': arg43,
+                              'arg30': arg30, 'arg31': arg31, 'arg32': arg32, 'arg33': arg33,
+                              'arg20': arg20, 'arg21': arg21, 'arg22': arg22, 'arg23': arg23,
+                              'arg10': arg10, 'arg11': arg11, 'arg12': arg12, 'arg13': arg13}
         return ManeuStore.objects.create(content=json.dumps(ManeuStore_content))
     except BaseException as msg:
         print(msg)
         return None
 
 
-def ManeuStore_update(id='', arg51='', arg52='', arg53='', arg41='', arg42='', arg43='', arg31='', arg32='', arg33='',
-                      arg21='', arg22='', arg23='', arg11='', arg12='', arg13='', ):
+def ManeuStore_update(arg10="", arg11="", arg12="", arg13="",
+                      arg20="", arg21="", arg22="", arg23="",
+                      arg30="", arg31="", arg32="", arg33="",
+                      arg40="", arg41="", arg42="", arg43="",
+                      arg50="", arg51="", arg52="", arg53="",
+                      id=''):
     try:
-        ManeuStore_content = {'arg51': arg51, 'arg52': arg52, 'arg53': arg53, 'arg41': arg41, 'arg42': arg42,
-                              'arg43': arg43, 'arg31': arg31, 'arg32': arg32, 'arg33': arg33, 'arg21': arg21,
-                              'arg22': arg22, 'arg23': arg23, 'arg11': arg11, 'arg12': arg12, 'arg13': arg13, }
+        ManeuStore_content = {'arg50': arg50, 'arg51': arg51, 'arg52': arg52, 'arg53': arg53,
+                              'arg40': arg40, 'arg41': arg41, 'arg42': arg42, 'arg43': arg43,
+                              'arg30': arg30, 'arg31': arg31, 'arg32': arg32, 'arg33': arg33,
+                              'arg20': arg20, 'arg21': arg21, 'arg22': arg22, 'arg23': arg23,
+                              'arg10': arg10, 'arg11': arg11, 'arg12': arg12, 'arg13': arg13}
         return ManeuStore.objects.filter(id=id).update(content=json.dumps(ManeuStore_content))
     except BaseException as msg:
         print(msg)

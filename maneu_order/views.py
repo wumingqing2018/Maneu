@@ -101,14 +101,12 @@ def order_insert(request):
                                                   sex=request.POST['sex'], age=request.POST['age'],
                                                   OT=request.POST['OT'], EM=request.POST['EM'], DFH=request.POST['DFH'],
                                                   remark=request.POST['remark'])
-        ManeuStore_id = service.ManeuStore_insert(arg51=request.POST['arg51'], arg52=request.POST['arg52'],
-                                                  arg53=request.POST['arg53'], arg41=request.POST['arg41'],
-                                                  arg42=request.POST['arg42'], arg43=request.POST['arg43'],
-                                                  arg31=request.POST['arg31'], arg32=request.POST['arg32'],
-                                                  arg33=request.POST['arg33'], arg21=request.POST['arg21'],
-                                                  arg22=request.POST['arg22'], arg23=request.POST['arg23'],
-                                                  arg11=request.POST['arg11'], arg12=request.POST['arg12'],
-                                                  arg13=request.POST['arg13'])
+        ManeuStore_id = service.ManeuStore_insert(arg10=request.POST['arg10'], arg11=request.POST['arg11'], arg12=request.POST['arg12'], arg13=request.POST['arg13'],
+                                                  arg20=request.POST['arg20'], arg21=request.POST['arg21'], arg22=request.POST['arg22'], arg23=request.POST['arg23'],
+                                                  arg30=request.POST['arg30'], arg31=request.POST['arg31'], arg32=request.POST['arg32'], arg33=request.POST['arg33'],
+                                                  arg40=request.POST['arg40'], arg41=request.POST['arg41'], arg42=request.POST['arg42'], arg43=request.POST['arg43'],
+                                                  arg50=request.POST['arg50'], arg51=request.POST['arg51'], arg52=request.POST['arg52'], arg53=request.POST['arg53'],)
+
         service.ManeuOrderV2_insert(name=request.POST['guess_name'], phone=request.POST['guess_phone'],
                                     users_id=request.session['id'], store_id=ManeuStore_id.id,
                                     guess_id=ManeuGuess_id.id, visionsolutions_id=ManeuVisionSolutions_id.id,
@@ -145,16 +143,11 @@ def order_update(request):
                                                       OT=request.POST['OT'], EM=request.POST['EM'],
                                                       DFH=request.POST['DFH'],
                                                       remark=request.POST['remark'])
-            ManeuStore_id = service.ManeuStore_update(arg51=request.POST['arg51'], arg52=request.POST['arg52'],
-                                                      arg53=request.POST['arg53'],
-                                                      arg41=request.POST['arg41'], arg42=request.POST['arg42'],
-                                                      arg43=request.POST['arg43'],
-                                                      arg31=request.POST['arg31'], arg32=request.POST['arg32'],
-                                                      arg33=request.POST['arg33'],
-                                                      arg21=request.POST['arg21'], arg22=request.POST['arg22'],
-                                                      arg23=request.POST['arg23'],
-                                                      arg11=request.POST['arg11'], arg12=request.POST['arg12'],
-                                                      arg13=request.POST['arg13'],
+            ManeuStore_id = service.ManeuStore_update(arg10=request.POST['arg10'], arg11=request.POST['arg11'], arg12=request.POST['arg12'], arg13=request.POST['arg13'],
+                                                      arg20=request.POST['arg20'], arg21=request.POST['arg21'], arg22=request.POST['arg22'], arg23=request.POST['arg23'],
+                                                      arg30=request.POST['arg30'], arg31=request.POST['arg31'], arg32=request.POST['arg32'], arg33=request.POST['arg33'],
+                                                      arg40=request.POST['arg40'], arg41=request.POST['arg41'], arg42=request.POST['arg42'], arg43=request.POST['arg43'],
+                                                      arg50=request.POST['arg50'], arg51=request.POST['arg51'], arg52=request.POST['arg52'], arg53=request.POST['arg53'],
                                                       id=order.store_id)
             ManeuVisionSolutions_id = service.ManeuVisionSolutions_update(id=order.visionsolutions_id,
                                                                           VS_remark=request.POST['VS_remark'],
