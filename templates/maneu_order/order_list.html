@@ -25,24 +25,24 @@
                 <a type="button" class="col-sm-12 btn btn-warning" href="{% url 'maneu_order:order_insert' %}">添加订单</a>
             </td>
         </tr>
-            {% for order in orderlist %}
-                <tr>
-                    <td class="yellow">
-                        <p>{{ order.name }}</p>
-                    </td>
-                    <td class="yellow">
-                        <p>{{ order.phone }}</p>
-                    </td>
-                    <td class="yellow">
-                        <p>{{ order.time }}</p>
-                    </td>
-                    <td class="yellow">
-                        <form method="GET" action="{% url 'maneu_order:order_detail' %}">
-                            <input type="hidden" name="order_id" value="{{ order.id }}">
-                            <input type="submit" class="btn btn-primary col-sm-12" value="查看订单">
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
+        {% for order in orderlist %}
+            <tr>
+                <td class="yellow">
+                    <p>{{ order.name }}</p>
+                </td>
+                <td class="yellow">
+                    <p>{{ order.phone }}</p>
+                </td>
+                <td class="yellow">
+                    <p>{{ order.time }}</p>
+                </td>
+                <td class="yellow">
+                    <form method="GET" action="{% url 'maneu_order:order_detail' %}">
+                        <input type="hidden" name="order_id" value="{{ order.id }}">
+                        <input type="submit" class="btn btn-primary col-sm-12" value="查看订单">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
     </table>
 {% endblock %}

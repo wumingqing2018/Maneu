@@ -27,17 +27,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15911f3b-db11-43b7-97e7-384ed3a18533" name="默认的" comment="修复查询订单讯息">
+      <change afterPath="$PROJECT_DIR$/static/css/maneu/guess.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/maneu/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/maneu/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/maneu/order_detail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/maneu_order/order_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/readme/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme/uwsgi.ini" beforeDir="false" afterPath="$PROJECT_DIR$/readme/uwsgi.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/maneu/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/maneu/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/maneu/base2.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/maneu/base0.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/base0.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/maneu/base1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/base1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu/guess.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/guess.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/maneu/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/maneu/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/order_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_insert_v2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_insert_v2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_detail_V2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_detail_V2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_insert.html.back.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_update.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +61,7 @@
       <list>
         <option value="HTML File" />
         <option value="Python Script" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -74,12 +83,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/css/maneu_order" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Maneu\static\css\maneu_order" />
       <recent name="D:\Maneu\readme" />
     </key>
   </component>
@@ -125,7 +136,8 @@
       <workItem from="1662868768941" duration="5191000" />
       <workItem from="1662901934774" duration="2440000" />
       <workItem from="1662962769175" duration="920000" />
-      <workItem from="1662973192410" duration="4700000" />
+      <workItem from="1662973192410" duration="4998000" />
+      <workItem from="1662992146734" duration="3644000" />
     </task>
     <task id="LOCAL-00001" summary="常规更新">
       <created>1662533958994</created>
@@ -169,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662836920063</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="修复零售订单列表样式">
+      <created>1662978789326</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1662978789326</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,7 +222,8 @@
     <MESSAGE value="常规更新" />
     <MESSAGE value="修复maneu问题" />
     <MESSAGE value="修复查询订单讯息" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复查询订单讯息" />
+    <MESSAGE value="修复零售订单列表样式" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复零售订单列表样式" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1662469721265">
@@ -214,10 +234,10 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="755" y="316" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1032@0.0.1920.1032" timestamp="1662871462802" />
-    <state x="690" y="262" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1662469997870">
+    <state x="690" y="262" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1662992232276">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="690" y="262" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662469997870" />
+    <state x="690" y="262" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662992232276" />
     <state x="711" y="368" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1662731782846">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
@@ -226,14 +246,14 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="649" y="102" key="CommitChangelistDialog2/0.0.1920.1032@0.0.1920.1032" timestamp="1662732178213" />
-    <state x="92" y="92" width="1736" height="848" key="DiffContextDialog" timestamp="1662658222990">
+    <state x="92" y="92" width="1736" height="848" key="DiffContextDialog" timestamp="1662978698505">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="92" y="92" width="1736" height="848" key="DiffContextDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662658222990" />
-    <state x="805" y="217" key="RollbackChangesDialog" timestamp="1662977180217">
+    <state x="92" y="92" width="1736" height="848" key="DiffContextDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662978698505" />
+    <state x="805" y="217" key="RollbackChangesDialog" timestamp="1662978700162">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="805" y="217" key="RollbackChangesDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662977180217" />
+    <state x="805" y="217" key="RollbackChangesDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662978700162" />
     <state x="461" y="160" key="SettingsEditor" timestamp="1662656137299">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
@@ -258,10 +278,10 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="1215" y="415" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662806955161" />
-    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1662975449258">
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1662994245519">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1662975449258" />
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1662994245519" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

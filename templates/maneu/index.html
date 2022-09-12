@@ -1,22 +1,25 @@
 {% extends 'maneu/base0.html' %}
 {% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/maneu/index.css' %}">
+{% endblock %}
 {% block content %}
-    <div class="text-center" id="content">
+    <div class="container text-center" id="content">
         <div class="row justify-content-center">
-            <div class="col-md-12" style="margin: 10%">
+            <div class="col-md-12" id="header">
                 <a href="{% url 'maneu_order:order_list' %}">
                     <img src="{% static 'img/logo16x9.svg' %}" class="img-responsive" alt="Cinque Terre">
                     <h4 class="yellow">徕可</h4>
                 </a>
             </div>
-            <div class="col-md-12" style="margin: 5%">
+            <div class="col-md-12" id="bodyer">
                 <a href="{% url 'guess' %}">
                     <h4 class="yellow">官方授权许可正品</h4>
                     <p class="yellow">Officially licensed products</p>
                     <p class="yellow">点击查询订单详情</p>
                 </a>
             </div>
-            <div class="col-md-12" style="margin: 5%">
+            <div class="col-md-12" id="footer">
                 <div>
                     <p class="yellow">执行标准：</p>
                 </div>

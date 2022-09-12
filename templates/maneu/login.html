@@ -1,33 +1,34 @@
 {% extends 'maneu/base0.html' %}
 {% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/maneu/guess.css' %}">
+{% endblock %}
 {% block content %}
-    <div class="text-center" id="content">
-        <div class="row justify-content-center">
-            <div class="col-md-12" style="margin-top: 10%">
-                <a href="{% url 'index' %}">
-                    <img src="{% static 'img/logo16x9.svg' %}" class="img-responsive" alt="Cinque Terre">
-                    <h4 class="yellow">徕可</h4>
-                </a>
-            </div>
-            <div class="col-md-4" style="margin-top: 15%; margin-bottom: 10%">
-                <form method="post" action="{% url 'login' %}">
-                    {% csrf_token %}
-                    <div class="input-group input-group-sm" style="margin-bottom: 3%">
-                        <span class="input-group-text">账号</span>
-                        <input type="text" name="username" class="form-control">
-                    </div>
-                    <div class="input-group input-group-sm" style="margin-bottom: 3%">
-                        <span class="input-group-text">密码</span>
-                        <input type="text" name="password" class="form-control">
-                    </div>
-                    <div class="input-group input-group-sm" style="margin-bottom: 3%">
-                        <input type="submit" class="col-12 btn btn-warning" value="登录">
-                    </div>
-                    <div class="input-group input-group-sm" style="margin-bottom: 3%">
-                        <a type="button" href="{% url 'index' %}" class="col-12 btn btn-primary">返回</a>
-                    </div>
-                </form>
-            </div>
+    <div class="container text-center" id="content">
+        <div class="col-md-12" id="header">
+            <a href="{% url 'index' %}">
+                <img src="{% static 'img/logo16x9.svg' %}" class="img-responsive" alt="Cinque Terre">
+                <h4 class="yellow">徕可</h4>
+            </a>
+        </div>
+        <div id="bodyer">
+            <form id="order_insert" class="vertical col-md-4 offset-md-4" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="input-group input-group-sm" style="margin-bottom: 3%">
+                    <span class="input-group-text">账号</span>
+                    <input type="text" name="username" class="form-control">
+                </div>
+                <div class="input-group input-group-sm" style="margin-bottom: 3%">
+                    <span class="input-group-text">密码</span>
+                    <input type="text" name="password" class="form-control">
+                </div>
+                <div class="input-group input-group-sm" style="margin-bottom: 3%">
+                    <input type="submit" class="col-12 btn btn-warning" value="登录">
+                </div>
+                <div class="input-group input-group-sm" style="margin-bottom: 3%">
+                    <a type="button" href="{% url 'index' %}" class="col-12 btn btn-primary">返回</a>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock %}

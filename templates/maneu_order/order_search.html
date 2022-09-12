@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <!--内容栏-->
-    <table class="table col-md-10 offset-md-1">
+    <table class="table col-md-10 offset-md-1 text-center">
         <tr>
             <form method="post" action="{% url 'maneu_order:order_search' %}">
                 {% csrf_token %}
@@ -44,7 +44,7 @@
             {% endfor %}
         {% else %}
             <tr>
-                <td colspan="4" class="yellow" style="text-align: center">
+                <td colspan="4" class="yellow">
                     <p>没有数据</p>
                 </td>
             </tr>
