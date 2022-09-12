@@ -48,13 +48,15 @@ def user_delete(user_id):
 def user_update(old_password='', user_id='', nickname='', password='', email='', phone='', remark=''):
     try:
         ManeuUsers.objects.filter(user_id=user_id, password=old_password).update(nickname=nickname, password=password,
-                                                                           email=email, phone=phone, remark=remark)
+                                                                                 email=email, phone=phone,
+                                                                                 remark=remark)
     except BaseException as msg:
         return str(msg)
 
 
 def user_insert(username='', nickname='', password='', email='', phone='', remark=''):
     try:
-        return ManeuUsers.objects.create(username=username, password=password, nickname=nickname, email=email, phone=phone,level=0, state=0, remark=remark)
+        return ManeuUsers.objects.create(username=username, password=password, nickname=nickname, email=email,
+                                         phone=phone, level=0, state=0, remark=remark)
     except BaseException as msg:
         return str(msg)

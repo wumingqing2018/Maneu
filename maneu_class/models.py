@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+
 class ManeuClass(models.Model):
     # Field name made lowercase.
     classid = models.IntegerField(db_column='classID', primary_key=True)

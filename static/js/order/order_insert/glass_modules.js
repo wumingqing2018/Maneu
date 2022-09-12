@@ -12,6 +12,7 @@ $(document).ready(function () {
         glass_hide()
         console.log(order)
     });
+
     function glass_show() {
         /*
         点击添加镜片按钮执行以下操作 id = glass_insert_show
@@ -25,7 +26,8 @@ $(document).ready(function () {
         glass_insert_show.hide()
         // framework_insert_hide.click()
     }
-    function glass_hide(){
+
+    function glass_hide() {
         /*
         点击取消添加按钮
         隐藏添加镜片表格 id = glass_table
@@ -36,7 +38,8 @@ $(document).ready(function () {
         glass_insert_show.show()
         glass_table.hide()
     }
-    function order_content (content){
+
+    function order_content(content) {
         content = jQuery.parseJSON(content)
         html = ''
         html += '<tr>'
@@ -57,7 +60,7 @@ $(document).ready(function () {
     $.fn.serializeJsonStr = function () {
         var o = {};
         var a = this.serializeArray();
-        $.each(a, function() {
+        $.each(a, function () {
             if (o[this.name] !== undefined) {
                 if (!o[this.name].push) {
                     o[this.name] = [o[this.name]];

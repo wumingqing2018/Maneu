@@ -1,27 +1,27 @@
 {% extends 'maneu/base1.html' %}
 {% load static %}
 {% block content %}
-<div class="col-md-12">
-    <table class="table">
-        <tr>
-            <td colspan="5" class="yellow">商品目录</td>
-            <td>
-                <a href="{% url 'maneu_class:class_insert' %}" type="button" class="btn btn-primary">添加商品</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="yellow">类型</td>
-            <td class="yellow">时间</td>
-            <td class="yellow">品牌</td>
-            <td class="yellow">型号</td>
-            <td class="yellow">参数</td>
-            <td class="yellow">状态</td>
-        </tr>
-        {% for foo in classList %}
-        <tr>
-            <td>{{ foo.class_batch }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <td colspan="5" class="yellow">商品目录</td>
+                <td>
+                    <a href="{% url 'maneu_class:class_insert' %}" type="button" class="btn btn-primary">添加商品</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="yellow">类型</td>
+                <td class="yellow">时间</td>
+                <td class="yellow">品牌</td>
+                <td class="yellow">型号</td>
+                <td class="yellow">参数</td>
+                <td class="yellow">状态</td>
+            </tr>
+            {% for foo in classList %}
+                <tr>
+                    <td>{{ foo.class_batch }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}

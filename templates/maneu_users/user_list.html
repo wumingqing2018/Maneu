@@ -42,7 +42,7 @@
             $("#btn_freeze").click(function () {
                 $.ajax({
                     url: user_freeze,
-                    type: "POST", 
+                    type: "POST",
                     data: $("#user_freeze").serialize(),
                     success: function (res) {
                         $("#user_unfreeze").show();

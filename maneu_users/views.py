@@ -1,9 +1,8 @@
-from django.forms import model_to_dict
-from django.shortcuts import render
 from django.shortcuts import HttpResponseRedirect, reverse
+from django.shortcuts import render
+
 from common import verify
 from maneu_users import serivce
-from maneu_users.forms.InsertForm import UserInsertForm
 
 
 def user_list(request):

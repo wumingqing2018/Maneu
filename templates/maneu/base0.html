@@ -12,14 +12,14 @@
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
 
-    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
     <!--bootstrap -->
     {% block css %}{% endblock %}
 </head>
 <body class="blue">
-    {% block content %}{% endblock %}
-<div class="col-md-12 yellow" style="text-align: center; margin-top: 5%">
+{% block content %}{% endblock %}
+<div class="col-md-12 yellow text-center">
     <a class="yellow" href="https://beian.miit.gov.cn">粤ICP备2020134991号</a>
 </div>
 </body>

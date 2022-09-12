@@ -4,7 +4,6 @@ from django.forms import widgets
 
 
 class OrderSearchForm(forms.Form):
-
     search = forms.CharField(label="单号",
                              required=True,
                              widget=widgets.TextInput(

@@ -23,7 +23,7 @@ class FrameStoreInsert(forms.Form):
                             required=True,
                             strip=True,
                             min_length=1,
-                            max_length=3,)
+                            max_length=3, )
     remark = forms.CharField(label="备注",
                              required=False,
                              strip=True,

@@ -6,7 +6,7 @@ $(document).ready(function () {
      * 点击 id=framework_insert_show 按钮调用一下function
      * ajax 请求 api_framework_brand
      */
-    framework_insert_show.click(function (){
+    framework_insert_show.click(function () {
         framework_show()
     });
     framework_insert_hide.click(function () {
@@ -23,6 +23,7 @@ $(document).ready(function () {
         order_content(content)
         framework_hide()
     });
+
     function framework_show() {
         /*
         添加镜框表格 id=framework_table
@@ -35,6 +36,7 @@ $(document).ready(function () {
         framework_insert_show.hide()
         framework_insert_hide.show()
     }
+
     function framework_hide() {
         /*
         添加镜框表格 id=framework_table
@@ -45,14 +47,15 @@ $(document).ready(function () {
         framework_insert_show.show()
         framework_insert_hide.hide()
     }
-    function order_content (content){
+
+    function order_content(content) {
         // 传入json字符串显示到id=order_content的表格位置
         content = jQuery.parseJSON(content)
         html = ''
         html += '<tr>'
-        html += '<td><span>'+ content.product +'</span></td>'
-        html += '<td><span>'+ content.brand +'</span></td>'
-        html += '<td colspan="8"><span>'+ content.model +'</span></td>'
+        html += '<td><span>' + content.product + '</span></td>'
+        html += '<td><span>' + content.brand + '</span></td>'
+        html += '<td colspan="8"><span>' + content.model + '</span></td>'
         html += '</tr>'
         $('#order_content').append(html)
         $("#order_banner").show()
@@ -62,7 +65,7 @@ $(document).ready(function () {
         // 把from表单内容转换为json字符串
         var o = {};
         var a = this.serializeArray();
-        $.each(a, function() {
+        $.each(a, function () {
             if (o[this.name] !== undefined) {
                 if (!o[this.name].push) {
                     o[this.name] = [o[this.name]];

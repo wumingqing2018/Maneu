@@ -25,14 +25,14 @@ def today():
 def yesterday(days):
     now = datetime.date.today()
     timedelta = datetime.timedelta(days=days)
-    return now-timedelta
+    return now - timedelta
 
 
 def create_id():
     """
     生成32位纯数字id
     """
-    order = random.randint(10000000000000000000000000000000,99999999999999999999999999999999)
+    order = random.randint(10000000000000000000000000000000, 99999999999999999999999999999999)
     return order
 
 
@@ -40,7 +40,7 @@ def token():
     """
     生成32位纯数字token
     """
-    rand_int = random.randint(10000000000000000000000000000000,99999999999999999999999999999999)
+    rand_int = random.randint(10000000000000000000000000000000, 99999999999999999999999999999999)
     return rand_int
 
 
@@ -55,6 +55,7 @@ def make_qrcode(order_id, order_token):
     qr.add_data(url)
     qr.make(fit=True)
     return qr
+
 
 def res():
     """

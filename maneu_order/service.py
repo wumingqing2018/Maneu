@@ -1,13 +1,14 @@
+import datetime
+import json
+
 from common import common
-from maneu_order.models import ManeuUsers
 from maneu_order.models import ManeuGuess
-from maneu_order.models import ManeuStore
 from maneu_order.models import ManeuOrder
 from maneu_order.models import ManeuOrderV2
-from maneu_order.models import ManeuVisionSolutions
+from maneu_order.models import ManeuStore
 from maneu_order.models import ManeuSubjectiveRefraction
-
-import json, datetime
+from maneu_order.models import ManeuUsers
+from maneu_order.models import ManeuVisionSolutions
 
 
 def order_insert(form):
@@ -310,7 +311,8 @@ def ManeuSubjectiveRefraction_update(id='', SR_remark='',
                                              'OS_Nv': OS_Nv, 'OS_DS': OS_DS, 'OS_CYL': OS_CYL, 'OS_AX': OS_AX,
                                              'OS_NA': OS_NA, 'OS_AL': OS_AL, 'OS_AC': OS_AC
                                              }
-        return ManeuSubjectiveRefraction.objects.filter(id=id).update(content=json.dumps(ManeuSubjectiveRefraction_content))
+        return ManeuSubjectiveRefraction.objects.filter(id=id).update(
+            content=json.dumps(ManeuSubjectiveRefraction_content))
     except BaseException as msg:
         print(msg)
         return None
@@ -330,7 +332,8 @@ def ManeuGuess_update(id='', name='', phone='', sex='', age='', OT='', EM='', DF
     try:
         if age == '':
             age = datetime.datetime(2022, 1, 1)
-        return ManeuGuess.objects.filter(id=id).update(name=name, phone=phone, sex=sex, age=age, ot=OT, em=EM, dfh=DFH, remark=remark)
+        return ManeuGuess.objects.filter(id=id).update(name=name, phone=phone, sex=sex, age=age, ot=OT, em=EM, dfh=DFH,
+                                                       remark=remark)
     except BaseException as msg:
         print(msg)
         return None
@@ -340,7 +343,7 @@ def ManeuStore_insert(arg10="", arg11="", arg12="", arg13="",
                       arg20="", arg21="", arg22="", arg23="",
                       arg30="", arg31="", arg32="", arg33="",
                       arg40="", arg41="", arg42="", arg43="",
-                      arg50="", arg51="", arg52="", arg53="",):
+                      arg50="", arg51="", arg52="", arg53="", ):
     try:
         ManeuStore_content = {'arg50': arg50, 'arg51': arg51, 'arg52': arg52, 'arg53': arg53,
                               'arg40': arg40, 'arg41': arg41, 'arg42': arg42, 'arg43': arg43,

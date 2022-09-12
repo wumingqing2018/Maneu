@@ -51,7 +51,7 @@ def order_delete(request):
             if delete:
                 res = {'code': 0, 'msg': '删除成功', 'data': []}
             else:
-                res = {'code': 3, 'msg':  '删除失败', 'data': []}
+                res = {'code': 3, 'msg': '删除失败', 'data': []}
         else:
             res = {'code': 2, 'msg': '请求参数出错', 'data': []}
     else:

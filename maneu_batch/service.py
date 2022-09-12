@@ -1,5 +1,3 @@
-
-from os import name
 from maneu_batch.models import Batch
 
 

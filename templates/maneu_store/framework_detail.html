@@ -47,7 +47,8 @@
                 {% csrf_token %}
                 <td colspan="3">
                     <input type="hidden" name="store_id" value="{{ framework.store_id }}">
-                    <input type="range" name="count" class="custom-range" step="1" min="1" max="999" id="count" form="update">
+                    <input type="range" name="count" class="custom-range" step="1" min="1" max="999" id="count"
+                           form="update">
                 </td>
                 <td>
                     <span>数量:</span>

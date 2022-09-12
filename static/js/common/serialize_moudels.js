@@ -1,7 +1,7 @@
 $.fn.serializeJsonStr = function () {
     var o = {};
     var a = this.serializeArray();
-    $.each(a, function() {
+    $.each(a, function () {
         if (o[this.name] !== undefined) {
             if (!o[this.name].push) {
                 o[this.name] = [o[this.name]];
@@ -13,10 +13,10 @@ $.fn.serializeJsonStr = function () {
     });
     return JSON.stringify(o);
 }
-$.fn.serializeObject = function() {
+$.fn.serializeObject = function () {
     var o = {};
     var a = this.serializeArray();
-    $.each(a, function() {
+    $.each(a, function () {
         if (o[this.name] !== undefined) {
             if (!o[this.name].push) {
                 o[this.name] = [o[this.name]];

@@ -27,25 +27,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15911f3b-db11-43b7-97e7-384ed3a18533" name="默认的" comment="修复查询订单讯息">
-      <change afterPath="$PROJECT_DIR$/static/css/maneu/guess.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/maneu/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/maneu/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/maneu/order_detail.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/maneu_order/order_detail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/maneu/base2.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/maneu/base0.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/base0.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/base1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/base1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/guess.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/guess.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu/order_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_detail_V2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_detail_V2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_insert.html.back.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maneu_order/order_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maneu_order/order_update.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +119,7 @@
       <workItem from="1662901934774" duration="2440000" />
       <workItem from="1662962769175" duration="920000" />
       <workItem from="1662973192410" duration="4998000" />
-      <workItem from="1662992146734" duration="3644000" />
+      <workItem from="1662992146734" duration="4114000" />
     </task>
     <task id="LOCAL-00001" summary="常规更新">
       <created>1662533958994</created>
@@ -188,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662978789326</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="修改样式表">
+      <created>1662995995357</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662995995357</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +212,8 @@
     <MESSAGE value="修复maneu问题" />
     <MESSAGE value="修复查询订单讯息" />
     <MESSAGE value="修复零售订单列表样式" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复零售订单列表样式" />
+    <MESSAGE value="修改样式表" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改样式表" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1662469721265">
@@ -266,10 +256,10 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="1270" y="385" key="VCS.EditChangelistDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1662807191389" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1662836926266">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1662996001906">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1032@0.0.1920.1032" timestamp="1662836926266" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1032@0.0.1920.1032" timestamp="1662996001906" />
     <state x="773" y="429" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1662656046286">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>

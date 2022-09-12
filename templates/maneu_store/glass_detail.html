@@ -56,7 +56,8 @@
                 {% csrf_token %}
                 <td colspan="5">
                     <input type="hidden" name="store_id" value="{{ glass.store_id }}">
-                    <input type="range" name="count" class="col-md-12 custom-range" step="1" min="1" max="999" id="count" form="update">
+                    <input type="range" name="count" class="col-md-12 custom-range" step="1" min="1" max="999"
+                           id="count" form="update">
                 </td>
                 <td>
                     <span>数量:</span>

@@ -10,7 +10,7 @@
                         <td>
                             <span>账号: </span>
                         </td>
-                        <td>{{ form.username}}</td>
+                        <td>{{ form.username }}</td>
                         <td>
                             <span id="username"></span>
                         </td>
@@ -29,7 +29,8 @@
                             <span>电话: </span>
                         </td>
                         <td>
-                            <input class="col-md-12 form-control" type="text" name="phone" placeholder="{{ user.phone }}">
+                            <input class="col-md-12 form-control" type="text" name="phone"
+                                   placeholder="{{ user.phone }}">
                         </td>
                         <td>
                             <span id="phone"></span>
@@ -40,7 +41,7 @@
                             <span>邮件: </span>
                         </td>
                         <td>
-                            {{form.email}}
+                            {{ form.email }}
                             {% comment %} <input class="col-md-12" type="text" name="email" placeholder="{{ user.email }}"> {% endcomment %}
                         </td>
                         <td>
@@ -97,13 +98,13 @@
                     url: user_insert,
                     type: "POST",
                     data: $("#user_insert").serialize(),
-                    success:function (res) {
-                        if (res.code === 0){
+                    success: function (res) {
+                        if (res.code === 0) {
                             alert(res.msg)
                         } else if (res.code === 1) {
                             alert("请求错误")
-                        } else if (res.code === 2){
-                            for (i in res.msg){
+                        } else if (res.code === 2) {
+                            for (i in res.msg) {
                                 $("#" + i).append(res.msg[i])
                             }
                         } else if (res.code === 3) {

@@ -1,89 +1,89 @@
 {% extends 'maneu/base1.html' %}
 {% load static %}
 {% block content %}
-<div class="col-md-8 offset-md-2">
-    <table class="table">
-        <form method="post" action="{% url 'maneu_class:class_insert' %}">
-            {% csrf_token %}
-            <tr>
-                <td class="yellow col-md-3">
-                    <p>类型</p>
-                </td>
-                <td class="yellow col-md-9">
-                    <input type="hidden" id="class_name" class="form-control" value=1 name="name">
-                    <select class="form-control" id="class_name_select">
-                        <option value=1>镜片</option>
-                        <option value=2>镜框</option>
-                        <option value=3>其他</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td class="yellow">
-                    <p>品牌</p>
-                </td>
-                <td class="yellow">
-                    <input type="text" class="form-control" name="brand">
-                </td>
-            </tr>
-            <tr>
-                <td class="yellow">
-                    <p>型号</p>
-                </td>
-                <td class="yellow">
-                    <input type="text" class="form-control" name="model">
-                </td>
-            </tr>
-            <tr>
-                <td class="yellow">
-                    <p>参数</p>
-                </td>
-                <td class="yellow">
-                    <input type="text" class="form-control" name="prame">
-                </td>
-            </tr>
-            <tr>
-                <td class="yellow">
-                    <p>状态</p>
-                </td>
-                <td class="yellow">
-                    <input type="hidden" class="form-control" value="1">
-                    <select class="form-control" id="state">
-                        <option value="1">上架</option>
-                        <option value="2">下架</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td class="yellow">
-                    <p>备注</p>
-                </td>
-                <td class="yellow">
-                    <input type="text" class="form-control" name="remark">
-                </td>
-            </tr>
-            <tr>
-                <td class="yellow">
-                    <a type="button" class="btn btn-primary" href="{% url 'maneu_class:class_list' %}">返回</a>
-                </td>
-                <td class="yellow">
-                    <input type="submit" class="btn btn-warning" style="width: 100%;">
-                </td>
-            </tr>
-        </form>
-    </table>
-</div>
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <form method="post" action="{% url 'maneu_class:class_insert' %}">
+                {% csrf_token %}
+                <tr>
+                    <td class="yellow col-md-3">
+                        <p>类型</p>
+                    </td>
+                    <td class="yellow col-md-9">
+                        <input type="hidden" id="class_name" class="form-control" value=1 name="name">
+                        <select class="form-control" id="class_name_select">
+                            <option value=1>镜片</option>
+                            <option value=2>镜框</option>
+                            <option value=3>其他</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow">
+                        <p>品牌</p>
+                    </td>
+                    <td class="yellow">
+                        <input type="text" class="form-control" name="brand">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow">
+                        <p>型号</p>
+                    </td>
+                    <td class="yellow">
+                        <input type="text" class="form-control" name="model">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow">
+                        <p>参数</p>
+                    </td>
+                    <td class="yellow">
+                        <input type="text" class="form-control" name="prame">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow">
+                        <p>状态</p>
+                    </td>
+                    <td class="yellow">
+                        <input type="hidden" class="form-control" value="1">
+                        <select class="form-control" id="state">
+                            <option value="1">上架</option>
+                            <option value="2">下架</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow">
+                        <p>备注</p>
+                    </td>
+                    <td class="yellow">
+                        <input type="text" class="form-control" name="remark">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="yellow">
+                        <a type="button" class="btn btn-primary" href="{% url 'maneu_class:class_list' %}">返回</a>
+                    </td>
+                    <td class="yellow">
+                        <input type="submit" class="btn btn-warning" style="width: 100%;">
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </div>
 {% endblock %}
 {% block javascript %}
-<script>
-    $(document).ready(function () {
-        $('#class_name_select').change(function () {
-            $('#class_name').val($('#class_name_select').val())
-        })
-        $('#class_state_select').change(function () {
-            $('#class_state').val($('#class_state_select').val())
-        })
+    <script>
+        $(document).ready(function () {
+            $('#class_name_select').change(function () {
+                $('#class_name').val($('#class_name_select').val())
+            })
+            $('#class_state_select').change(function () {
+                $('#class_state').val($('#class_state_select').val())
+            })
 
-    })
-</script>
+        })
+    </script>
 {% endblock %}

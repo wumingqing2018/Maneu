@@ -1,6 +1,6 @@
 from django import forms
-from django.forms import widgets
 from django.core.validators import RegexValidator
+from django.forms import widgets
 
 
 class VisionSolutionsInsertForm(forms.Form):
@@ -12,7 +12,6 @@ class VisionSolutionsInsertForm(forms.Form):
                              validators=[RegexValidator(r'^[0-9]+$', '请输入正确手机号')],
                              error_messages={'request': '请输入手机号'},
                              )
-
 
     # VS_remark = request.POST['VS_remark'],
     # OD_BC_DS = request.POST['OD_BC_DS'],
