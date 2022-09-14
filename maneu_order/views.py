@@ -59,7 +59,7 @@ def order_search(request):
         orders = service.find_order_phone(phone=phone)  # 查找今日订单
         print(orders)
         return render(request, 'maneu_order/order_list.html', {'orderlist': orders})
-    return render(request, 'maneu_order/order_list.html', {'orderlist': ''})
+    return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
 def order_insert(request):

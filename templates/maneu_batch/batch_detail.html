@@ -1,5 +1,8 @@
 {% extends 'maneu/base1.html' %}
 {% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/maneu_batch/batch_detail.css' %}">
+{% endblock %}
 {% block content %}
     <table class="table">
         <tr>
@@ -48,10 +51,5 @@
             </td>
         </tr>
     </table>
-
-    <iframe src='http://office.yujiaojiaoyu.com/op/view.aspx?src=http://maneu.online/{{ order.order }}'
-            width='100%'
-            height='150%'
-            frameborder='1'>
-    </iframe>
+    <iframe id="content" src='http://office.yujiaojiaoyu.com/op/view.aspx?src=http://maneu.online/{{ order.order }}'></iframe>
 {% endblock %}
