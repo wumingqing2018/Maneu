@@ -75,7 +75,6 @@
         <tr>
             <td>
                 <span>裸眼视力 VA</span>
-
             </td>
             <td>
                 <span>{{ subjectiverefraction.OS_Nv }}</span>
@@ -451,28 +450,6 @@
                 <span>处方由眼科专家根据患者屈光不正性质、年龄、用眼需求等综合因素决定。</span>
                 <span>选择镜片、镜架及按眼科专家指导的配戴方法才能确保矫正效果和视觉健康。</span>
                 <span>数据为当时检查状态的结果，检查后如超过六个月配镜，建议复查。</span>
-            </td>
-        </tr>
-        <tr class="banner">
-            <td colspan="3">
-                <b>操作（attention）</b>
-            </td>
-        </tr>
-        <tr>
-            <td class="col-4">
-                <a class="btn btn-primary" type="button" href="{% url 'maneu_order:order_list' %}">返回</a>
-            </td>
-            <td class="col-4">
-                <form method="get" action="{% url 'maneu_order:order_update' %}">
-                    <input type="hidden" name="order_id" value="{{ order.id }}">
-                    <input type="submit" class="btn btn-warning" value="更改">
-                </form>
-            </td>
-            <td class="col-4">
-                <form method="get" action="{% url 'maneu_order:order_delete' %}">
-                    <input type="hidden" name="order_id" value="{{ order.id }}">
-                    <input type="submit" class="btn btn-danger" value="删除">
-                </form>
             </td>
         </tr>
     </table>
