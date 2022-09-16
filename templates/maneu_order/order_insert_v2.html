@@ -12,7 +12,7 @@
                 <td class="col-sm-2" colspan="2">
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text">电话</span>
-                        <input type="text" name="guess_phone" id="guess_phone" class="form-control">
+                        <input autocomplete="off" type="text" name="guess_phone" id="guess_phone" class="form-control">
                         <span id="phone_error"></span>
                     </div>
                 </td>
@@ -22,14 +22,14 @@
                 <td class="col-sm-2">
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text">姓名</span>
-                        <input type="hidden" name="order" id="order">
-                        <input type="text" name="guess_name" id="guess_name" class="form-control">
+                        <input autocomplete="off" type="hidden" name="order" id="order">
+                        <input autocomplete="off" type="text" name="guess_name" id="guess_name" class="form-control">
                     </div>
                 </td>
                 <td class="col-sm-2">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text">性别</span>
-                        <input type="text" name="sex" class="form-control" list="sex">
+                        <input autocomplete="off" type="text" name="sex" class="form-control" list="sex">
                         <datalist id="sex">
                             <option>男</option>
                             <option>女</option>
@@ -39,13 +39,13 @@
                 <td class="col-sm-2">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text">出生日期</span>
-                        <input type="date" name="age" class="form-control">
+                        <input autocomplete="off" type="date" name="age" class="form-control">
                     </div>
                 </td>
                 <td class="col-sm-2">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text">眼位</span>
-                        <input type="text" name="OT" list="OT" class="form-control">
+                        <input autocomplete="off" type="text" name="OT" list="OT" class="form-control">
                         <datalist id="OT">
                             <option>正位眼</option>
                             <option>斜视</option>
@@ -55,7 +55,7 @@
                 <td class="col-sm-2">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text">主视眼</span>
-                        <input type="text" name="EM" list="EM" class="form-control">
+                        <input autocomplete="off" type="text" name="EM" list="EM" class="form-control">
                         <datalist id="EM">
                             <option>右</option>
                             <option>左</option>
@@ -65,7 +65,7 @@
                 <td class="col-sm-2">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text">病族史</span>
-                        <input type="text" name="DFH" list="DFH" class="form-control">
+                        <input autocomplete="off" type="text" name="DFH" list="DFH" class="form-control">
                         <datalist id="DFH">
                             <option>有</option>
                             <option>无</option>
@@ -77,7 +77,7 @@
                 <td class="col-sm-12" colspan="12">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text">备注</span>
-                        <input type="text" name="remark" id="remark" class="form-control">
+                        <input autocomplete="off" type="text" name="remark" id="remark" class="form-control">
                         <span id="remake_error"></span>
                     </div>
                 </td>
@@ -99,8 +99,8 @@
             <tr>
                 <td class="col-sm-8" colspan="8">
                     <div class="input-group input-group-sm mb-7">
-                        <span class="input-group-text col-md-1">右眼OS</span>
-                        <input type="text" name="OS_Nv" list="OS_Nv" class="form-control">
+                        <span class="input-group-text col-md-1">左眼OS</span>
+                        <input autocomplete="off" type="text" name="OS_Nv" list="OS_Nv" class="form-control">
                         <datalist id="OS_Nv">
                             <option>4.0</option>
                             <option>4.1</option>
@@ -116,7 +116,7 @@
                             <option>5.1</option>
                             <option>5.2</option>
                         </datalist>
-                        <input type="text" name="OS_DS" list="OS_DS" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_DS" list="OS_DS" class="form-control">
                         <datalist id="OS_DS">
                             <option>-0.00</option>
                             <option>-0.25</option>
@@ -160,7 +160,7 @@
                             <option>-9.75</option>
                             <option>-10.00</option>
                         </datalist>
-                        <input type="text" name="OS_CYL" list="OS_CYL" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_CYL" list="OS_CYL" class="form-control">
                         <datalist id="OS_CYL">
                             <option>-0.00</option>
                             <option>-0.25</option>
@@ -188,7 +188,7 @@
                             <option>-5.75</option>
                             <option>-6.00</option>
                         </datalist>
-                        <input type="text" name="OS_AX" list="OS_AX" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_AX" list="OS_AX" class="form-control">
                         <datalist id="OS_AX">
                             <option>0</option>
                             <option>1</option>
@@ -372,7 +372,7 @@
                             <option>179</option>
                             <option>180</option>
                         </datalist>
-                        <input type="text" name="OS_NA" list="OS_NA" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_NA" list="OS_NA" class="form-control">
                         <datalist id="OS_NA">
                             <option>4.0</option>
                             <option>4.1</option>
@@ -388,7 +388,7 @@
                             <option>5.1</option>
                             <option>5.2</option>
                         </datalist>
-                        <input type="text" name="OS_AL" list="OS_AL" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_AL" list="OS_AL" class="form-control">
                         <datalist id="OS_AL">
                             <option>18</option>
                             <option>19</option>
@@ -404,7 +404,7 @@
                             <option>29</option>
                             <option>30</option>
                         </datalist>
-                        <input type="text" name="OS_AC" list="OS_AC" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_AC" list="OS_AC" class="form-control">
                         <datalist id="OS_AC">
                             <option>30</option>
                             <option>31</option>
@@ -439,8 +439,8 @@
             <tr>
                 <td class="col-sm-8" colspan="8">
                     <div class="input-group input-group-sm mb-8">
-                        <span class="input-group-text col-md-1">左眼OD</span>
-                        <input type="text" name="OD_Nv" list="OD_Nv" class="form-control">
+                        <span class="input-group-text col-md-1">右眼OD</span>
+                        <input autocomplete="off" type="text" name="OD_Nv" list="OD_Nv" class="form-control">
                         <datalist id="OD_Nv">
                             <option>4.0</option>
                             <option>4.1</option>
@@ -456,7 +456,7 @@
                             <option>5.1</option>
                             <option>5.2</option>
                         </datalist>
-                        <input type="text" name="OD_DS" list="OD_DS" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_DS" list="OD_DS" class="form-control">
                         <datalist id="OD_DS">
                             <option>-0.00</option>
                             <option>-0.25</option>
@@ -500,7 +500,7 @@
                             <option>-9.75</option>
                             <option>-10.00</option>
                         </datalist>
-                        <input type="text" name="OD_CYL" list="OD_CYL" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_CYL" list="OD_CYL" class="form-control">
                         <datalist id="OD_CYL">
                             <option>-0.00</option>
                             <option>-0.25</option>
@@ -528,7 +528,7 @@
                             <option>-5.75</option>
                             <option>-6.00</option>
                         </datalist>
-                        <input type="text" name="OD_AX" list="OD_AX" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_AX" list="OD_AX" class="form-control">
                         <datalist id="OD_AX">
                             <option>0</option>
                             <option>1</option>
@@ -712,7 +712,7 @@
                             <option>179</option>
                             <option>180</option>
                         </datalist>
-                        <input type="text" name="OD_NA" list="OD_NA" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_NA" list="OD_NA" class="form-control">
                         <datalist id="OD_NA">
                             <option>4.0</option>
                             <option>4.1</option>
@@ -728,7 +728,7 @@
                             <option>5.1</option>
                             <option>5.2</option>
                         </datalist>
-                        <input type="text" name="OD_AL" list="OD_AL" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_AL" list="OD_AL" class="form-control">
                         <datalist id="OD_AL">
                             <option>18</option>
                             <option>19</option>
@@ -744,7 +744,7 @@
                             <option>29</option>
                             <option>30</option>
                         </datalist>
-                        <input type="text" name="OD_AC" list="OD_AC" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_AC" list="OD_AC" class="form-control">
                         <datalist id="OD_AC">
                             <option>30</option>
                             <option>31</option>
@@ -780,7 +780,7 @@
                 <td class="col-sm-8" colspan="8">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text col-md-1">备注</span>
-                        <input type="text" name="SR_remark" id="SR_remark" class="form-control">
+                        <input autocomplete="off" type="text" name="SR_remark" id="SR_remark" class="form-control">
                     </div>
                 </td>
             </tr>
@@ -802,8 +802,8 @@
             <tr>
                 <td class="col-sm-8" colspan="8">
                     <div class="input-group input-group-sm mb-7">
-                        <span class="input-group-text col-md-1">右眼OS</span>
-                        <input type="text" name="OS_BC_DS" list="OS_BC_DS" class="form-control">
+                        <span class="input-group-text col-md-1">左眼OS</span>
+                        <input autocomplete="off" type="text" name="OS_BC_DS" list="OS_BC_DS" class="form-control">
                         <datalist id="OS_BC_DS">
                             <option>-0.00</option>
                             <option>-0.25</option>
@@ -847,7 +847,7 @@
                             <option>-9.75</option>
                             <option>-10.00</option>
                         </datalist>
-                        <input type="text" name="OS_BC_CYL" list="OS_BC_CYL" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_BC_CYL" list="OS_BC_CYL" class="form-control">
                         <datalist id="OS_BC_CYL">
                             <option>-0.00</option>
                             <option>-0.25</option>
@@ -891,7 +891,7 @@
                             <option>-9.75</option>
                             <option>-10.00</option>
                         </datalist>
-                        <input type="text" name="OS_BC_AX" list="OS_BC_AX" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_BC_AX" list="OS_BC_AX" class="form-control">
                         <datalist id="OS_BC_AX">
                             <option>0</option>
                             <option>1</option>
@@ -1075,9 +1075,9 @@
                             <option>179</option>
                             <option>180</option>
                         </datalist>
-                        <input type="text" name="OS_BC_PR" list="OS_BC_PR" class="form-control">
-                        <input type="text" name="OS_BC_FR" list="OS_BC_FR" class="form-control">
-                        <input type="text" name="OS_BC_ADD" list="OS_BC_ADD" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_BC_PR" list="OS_BC_PR" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_BC_FR" list="OS_BC_FR" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_BC_ADD" list="OS_BC_ADD" class="form-control">
                         <datalist id="OS_BC_ADD">
                             <option>+0.25</option>
                             <option>+0.50</option>
@@ -1100,7 +1100,7 @@
                             <option>+4.75</option>
                             <option>+5.00</option>
                         </datalist>
-                        <input type="text" name="OS_BC_NA" list="OS_BC_NA" class="form-control">
+                        <input autocomplete="off" type="text" name="OS_BC_NA" list="OS_BC_NA" class="form-control">
                         <datalist id="OS_BC_NA">
                             <option>4.0</option>
                             <option>4.1</option>
@@ -1122,8 +1122,8 @@
             <tr>
                 <td colspan="8" class="col-md-8">
                     <div class="input-group input-group-sm mb-7">
-                        <span class="input-group-text col-md-1">左眼OD</span>
-                        <input type="text" name="OD_BC_DS" list="OD_BC_DS" class="form-control">
+                        <span class="input-group-text col-md-1">右眼OD</span>
+                        <input autocomplete="off" type="text" name="OD_BC_DS" list="OD_BC_DS" class="form-control">
                         <datalist id="OD_BC_DS">
                             <option>-0.00</option>
                             <option>-0.25</option>
@@ -1167,7 +1167,7 @@
                             <option>-9.75</option>
                             <option>-10.00</option>
                         </datalist>
-                        <input type="text" name="OD_BC_CYL" list="OD_BC_CYL" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_BC_CYL" list="OD_BC_CYL" class="form-control">
                         <datalist id="OD_BC_CYL">
                             <option>-0.00</option>
                             <option>-0.25</option>
@@ -1211,7 +1211,7 @@
                             <option>-9.75</option>
                             <option>-10.00</option>
                         </datalist>
-                        <input type="text" name="OD_BC_AX" list="OD_BC_AX" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_BC_AX" list="OD_BC_AX" class="form-control">
                         <datalist id="OD_BC_AX">
                             <option>0</option>
                             <option>1</option>
@@ -1395,9 +1395,9 @@
                             <option>179</option>
                             <option>180</option>
                         </datalist>
-                        <input type="text" name="OD_BC_PR" list="OD_BC_PR" class="form-control">
-                        <input type="text" name="OD_BC_FR" list="OD_BC_FR" class="form-control">
-                        <input type="text" name="OD_BC_ADD" list="OD_BC_ADD" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_BC_PR" list="OD_BC_PR" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_BC_FR" list="OD_BC_FR" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_BC_ADD" list="OD_BC_ADD" class="form-control">
                         <datalist id="OD_BC_ADD">
                             <option>+0.25</option>
                             <option>+0.50</option>
@@ -1420,7 +1420,7 @@
                             <option>+4.75</option>
                             <option>+5.00</option>
                         </datalist>
-                        <input type="text" name="OD_BC_NA" list="OD_BC_NA" class="form-control">
+                        <input autocomplete="off" type="text" name="OD_BC_NA" list="OD_BC_NA" class="form-control">
                         <datalist id="OD_BC_NA">
                             <option>4.0</option>
                             <option>4.1</option>
@@ -1443,7 +1443,7 @@
                 <td class="col-sm-6" colspan="4">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text col-md-2">瞳距</span>
-                        <input type="text" class="form-control" name="pd" list="pd">
+                        <input autocomplete="off" type="text" class="form-control" name="pd" list="pd">
                         <datalist id="pd">
                             <option>42.0</option>
                             <option>42.5</option>
@@ -1535,7 +1535,7 @@
                 <td class="col-sm-6" colspan="4">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text col-md-2">方案类型</span>
-                        <input type="text" class="form-control" name="function" list="function">
+                        <input autocomplete="off" type="text" class="form-control" name="function" list="function">
                         <datalist id="function">
                             <option>近用解决方案</option>
                             <option>远用解决方案</option>
@@ -1547,7 +1547,7 @@
                 <td class="col-sm-22" colspan="8">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text col-md-1">备注</span>
-                        <input type="text" name="VS_remark" id="VS_remark" class="form-control">
+                        <input autocomplete="off" type="text" name="VS_remark" id="VS_remark" class="form-control">
                         <span id="remake_error"></span>
                     </div>
                 </td>
@@ -1573,50 +1573,50 @@
             <tr>
                 <td class="col-sm-8" colspan="6">
                     <div class="input-group input-group-sm mb-8">
-                        <input type="text" name="arg10" class="form-control ">
-                        <input type="text" name="arg11" class="form-control ">
-                        <input type="text" name="arg12" class="form-control ">
-                        <input type="text" name="arg13" class="form-control " style="width:55%">
+                        <input autocomplete="off" type="text" name="arg10" class="form-control ">
+                        <input autocomplete="off" type="text" name="arg11" class="form-control ">
+                        <input autocomplete="off" type="text" name="arg12" class="form-control ">
+                        <input autocomplete="off" type="text" name="arg13" class="form-control " style="width:55%">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td class="col-sm-8" colspan="6">
                     <div class="input-group input-group-sm mb-7">
-                        <input type="text" name="arg20" class="form-control">
-                        <input type="text" name="arg21" class="form-control">
-                        <input type="text" name="arg22" class="form-control">
-                        <input type="text" name="arg23" class="form-control " style="width:55%">
+                        <input autocomplete="off" type="text" name="arg20" class="form-control">
+                        <input autocomplete="off" type="text" name="arg21" class="form-control">
+                        <input autocomplete="off" type="text" name="arg22" class="form-control">
+                        <input autocomplete="off" type="text" name="arg23" class="form-control " style="width:55%">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td class="col-sm-8" colspan="8">
                     <div class="input-group input-group-sm mb-7">
-                        <input type="text" name="arg30" class="form-control">
-                        <input type="text" name="arg31" class="form-control">
-                        <input type="text" name="arg32" class="form-control">
-                        <input type="text" name="arg33" class="form-control " style="width:55%">
+                        <input autocomplete="off" type="text" name="arg30" class="form-control">
+                        <input autocomplete="off" type="text" name="arg31" class="form-control">
+                        <input autocomplete="off" type="text" name="arg32" class="form-control">
+                        <input autocomplete="off" type="text" name="arg33" class="form-control " style="width:55%">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td class="col-sm-8" colspan="8">
                     <div class="input-group input-group-sm mb-7">
-                        <input type="text" name="arg40" class="form-control">
-                        <input type="text" name="arg41" class="form-control">
-                        <input type="text" name="arg42" class="form-control">
-                        <input type="text" name="arg43" class="form-control " style="width:55%">
+                        <input autocomplete="off" type="text" name="arg40" class="form-control">
+                        <input autocomplete="off" type="text" name="arg41" class="form-control">
+                        <input autocomplete="off" type="text" name="arg42" class="form-control">
+                        <input autocomplete="off" type="text" name="arg43" class="form-control " style="width:55%">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td class="col-sm-8" colspan="8">
                     <div class="input-group input-group-sm mb-7">
-                        <input type="text" name="arg50" class="form-control">
-                        <input type="text" name="arg51" class="form-control">
-                        <input type="text" name="arg52" class="form-control">
-                        <input type="text" name="arg53" class="form-control " style="width:55%">
+                        <input autocomplete="off" type="text" name="arg50" class="form-control">
+                        <input autocomplete="off" type="text" name="arg51" class="form-control">
+                        <input autocomplete="off" type="text" name="arg52" class="form-control">
+                        <input autocomplete="off" type="text" name="arg53" class="form-control " style="width:55%">
                     </div>
                 </td>
             </tr>
@@ -1625,7 +1625,7 @@
                     <a type="button" class="btn btn-warning col-sm-12" href="{% url 'maneu_order:order_list' %}">返回</a>
                 </td>
                 <td>
-                    <input class="btn btn-danger" id="insert" type="submit" value="提交订单">
+                    <input autocomplete="off" class="btn btn-danger" id="insert" type="submit" value="提交订单">
                 </td>
                 <td colspan="2"></td>
             </tr>
