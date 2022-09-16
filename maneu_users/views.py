@@ -78,3 +78,10 @@ def user_updata(request):
             msg = '更新成功'
     user = serivce.find_user(user_id)
     return render(request, 'maneu_users/user_updata.html', {'user': user, 'msg': msg})
+
+
+def user_repassword(request):
+    if request.method == 'POST':
+        updata = serivce.user_updata(password=request.POST['password'], username=request.POST['username'])
+        print(updata)
+    return render(request, 'maneu_users/user_update.html')

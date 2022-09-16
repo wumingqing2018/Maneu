@@ -8,33 +8,26 @@
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">密码验证</span>
                     <input type="text" name="old_password" id="old_passwor" class="form-control">
-
                 </div>
-
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">商家名称</span>
                     <input type="text" name="nickname" id="nickname" class="form-control" value="{{ user.nickname }}">
-
                 </div>
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">手机号码</span>
                     <input type="text" name="phone" id="phone" value="{{ user.phone }}" class="form-control">
-
                 </div>
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">电子邮箱</span>
                     <input type="text" name="email" id="email" value="{{ user.email }}" class="form-control">
-
                 </div>
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">修改密码</span>
-                    <input type="text" name="password" id="password" class="form-control">
-
+                    <input type="password" name="password" id="password" value="{{ user.password }}" class="form-control">
                 </div>
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">特色服务</span>
                     <input type="text" name="remark" id="remark" value="{{ user.remark }}" class="form-control">
-
                 </div>
                 <br>
                 <p>{{ msg }}</p>

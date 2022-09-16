@@ -1,8 +1,6 @@
 {% extends 'maneu/base1.html' %}
 {% load static %}
 {% block content %}
-    <!--内容栏-->
-
     <div class="col-md-12" style="margin: 1%;">
         <form class="row" method="get" action="{% url 'maneu_batch:batch_sreach' %}">
             <div class="col-md-10">
@@ -37,14 +35,12 @@
             {% for order in orders %}
                 <tr>
                     <td>
-                        <a href="{% url 'maneu_batch:batch_list_ByName' %}?arg={{ order.c_name }}" title="查询关联该客户订单"
-                           class="yellow">
+                        <a href="{% url 'maneu_batch:batch_list_ByName' %}?arg={{ order.c_name }}" title="查询关联该客户订单" class="yellow">
                             {{ order.c_name }}
                         </a>
                     </td>
                     <td>
-                        <a href="{% url 'maneu_batch:batch_list_ByPhone' %}?arg={{ order.c_phone }}" title="查询关联该电话订单"
-                           class="yellow">
+                        <a href="{% url 'maneu_batch:batch_list_ByPhone' %}?arg={{ order.c_phone }}" title="查询关联该电话订单" class="yellow">
                             {{ order.c_phone }}
                         </a>
                     </td>

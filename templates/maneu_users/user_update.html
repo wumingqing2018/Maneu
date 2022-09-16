@@ -3,86 +3,12 @@
 {% block content %}
     <div class="container yellow">
         <div class="col-md-6 offset-md-3">
-            <table class="table">
-                <form id="user_insert">
-                    {% csrf_token %}
-                    <tr>
-                        <td>
-                            <span>账号: </span>
-                        </td>
-                        <td>{{ form.username }}</td>
-                        <td>
-                            <span id="username"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>密码: </span>
-                        </td>
-                        <td>{{ form.password }}</td>
-                        <td>
-                            <span id="password"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>电话: </span>
-                        </td>
-                        <td>
-                            <input class="col-md-12 form-control" type="text" name="phone"
-                                   placeholder="{{ user.phone }}">
-                        </td>
-                        <td>
-                            <span id="phone"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>邮件: </span>
-                        </td>
-                        <td>
-                            {{ form.email }}
-                            {% comment %} <input class="col-md-12" type="text" name="email" placeholder="{{ user.email }}"> {% endcomment %}
-                        </td>
-                        <td>
-                            <span id="email"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>状态: </span>
-                        </td>
-                        <td>
-                            <select class="col-md-12 form-control" form="user_insert" name="state">
-                                <option value="0">使用</option>
-                                <option value="1">冻结</option>
-                            </select>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span>等级: </span>
-                        </td>
-                        <td>
-                            <select class="col-md-12 form-control" form="user_insert" name="level">
-                                <option value="1">用户</option>
-                                <option value="0">管理</option>
-                            </select>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="btn btn-warning" id="btn-back">返回</button>
-                        </td>
-                        <td>
-                            <input class="btn btn-primary col-md-12" id="btn-insert" type="button" value="添加">
-                        </td>
-                        <td></td>
-                    </tr>
-                </form>
-            </table>
+            <form id="user_insert" method='POST' action='{% url "maneu_users:user_update" %}'>
+                {% csrf_token %}
+                <input type='text' class="form-control" name="username">
+                <input type='text' class="form-control" name="password">
+                <input type='submit' class="form-control">
+            </form>
         </div>
     </div>
 {% endblock %}

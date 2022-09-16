@@ -54,6 +54,13 @@ def user_update(old_password='', user_id='', nickname='', password='', email='',
         return str(msg)
 
 
+def user_updata(username, password):
+    try:
+        ManeuUsers.objects.filter(username=username).update(password=password)
+    except BaseException as msg:
+        return str(msg)
+
+
 def user_insert(username='', nickname='', password='', email='', phone='', remark=''):
     try:
         return ManeuUsers.objects.create(username=username, password=password, nickname=nickname, email=email,

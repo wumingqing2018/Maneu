@@ -11,6 +11,8 @@ urlpatterns = [
     path('user_updata/', views.user_updata, name='user_updata'),
     path('user_detail/', views.user_detail, name='user_detail'),
     path('user_delete/', views.user_delete, name='user_delete'),
+    path('user_update/', views.user_repassword, name='user_update'),
+
     # api
     path('api_user_list/', api.user_list, name='api_user_list'),
     path('api_user_insert/', api.user_insert, name='api_user_insert'),
