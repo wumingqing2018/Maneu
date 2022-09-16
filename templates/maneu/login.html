@@ -4,15 +4,16 @@
     <link rel="stylesheet" href="{% static 'css/maneu/guess.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="container text-center" id="content">
-        <div class="col-md-12" id="header">
-            <a href="{% url 'index' %}">
-                <img src="{% static 'img/logo16x9.svg' %}" class="img-responsive" alt="Cinque Terre">
+<div class="container" id="content">
+    <div class="row justify-content-center">
+        <div id="header">
+            <a href="{% url 'maneu_order:order_list' %}">
+                <img class="col-md-2" src="{% static 'img/logo16x9.svg' %}" class="img-responsive" alt="Cinque Terre">
                 <h4 class="yellow">徕可</h4>
             </a>
         </div>
-        <div id="bodyer">
-            <form id="order_insert" class="vertical col-md-4 offset-md-4" method="post" action="{% url 'login' %}">
+        <div class="col-md-12" id="bodyer">
+        <form id="order_insert" class="vertical col-md-4 offset-md-4" method="post" action="{% url 'login' %}">
                 {% csrf_token %}
                 <div class="input-group input-group-sm" style="margin-bottom: 3%">
                     <span class="input-group-text">账号</span>
