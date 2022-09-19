@@ -53,6 +53,7 @@ def order_detail(request):
 
 
 def order_search(request):
+    print(request.POST)
     """查找指定订单"""
     phone = verify.phone_method_Post(request)
     if phone:
