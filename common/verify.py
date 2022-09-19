@@ -23,19 +23,17 @@ def is_int(string):
     return 0
 
 
-def user_id_method_get(request):
+def user_id_method_get(user_id=''):
     """
     判断请求是否为 GET
     判断user_id 是否存在
     判断user_id 是否为16位纯数字
     """
-    if request.method == 'GET':
-        try:
-            user_id = request.GET['user_id']
-            re_match = re.match(r"^\d{32}$", user_id, flags=0)
-            if re_match:
-                return user_id
-        except BaseException as msg:
+    try:
+        re_match = re.match(r"^\d{32}$", user_id, flags=0)
+        if re_match:
+            return user_id
+    except BaseException as msg:
             print(msg)
     return None
 
