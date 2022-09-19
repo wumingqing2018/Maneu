@@ -53,12 +53,19 @@ def order_detail(request):
 
 
 def order_search(request):
-    print(request.POST)
     """查找指定订单"""
-    phone = verify.phone_method_Post(request)
-    if phone:
-        orders = service.find_order_phone(phone=phone)  # 查找今日订单
-        print(orders)
+    date = verify.date_method_post(request)
+    if date:
+        orders = service.find_order_date(date=date)  # 查找今日订单
+        return render(request, 'maneu_order/order_list.html', {'orderlist': orders})
+    return HttpResponseRedirect(reverse('maneu_order:order_list'))
+
+
+def order_search_V2(request):
+    """查找指定订单"""
+    date = verify.date_method_post(request)
+    if date:
+        orders = service.find_order_date(date=date)  # 查找今日订单
         return render(request, 'maneu_order/order_list.html', {'orderlist': orders})
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 

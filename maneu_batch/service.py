@@ -39,3 +39,11 @@ def batch_delete(order_id):
     except BaseException as msg:
         print(msg)
         return False
+
+
+def find_batch_date(date=''):
+    try:
+        return Batch.objects.filter(c_time__gt=date).all()
+    except BaseException as msg:
+        print(msg)
+        return None

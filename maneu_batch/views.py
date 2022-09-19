@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from django.shortcuts import HttpResponseRedirect
+from django.shortcuts import reverse
 
-from common.common import create_id
+from common import common
 from common.excel import excel_save
-from common.verify import order_id_method_get
+from common import verify
 from maneu_batch import service
 from maneu_batch.forms.BatchInsertForm import BatchInsertForm
 
@@ -26,7 +28,8 @@ def batch_list_ByPhone(request):
 
 
 def batch_detail(request):
-    order_id = order_id_method_get(request)
+
+    order_id = verify.order_id_method_get(request)
     if order_id:
         order = service.batch_detail(order_id)
         return render(request, 'maneu_batch/batch_detail.html', {'order': order})
@@ -58,6 +61,10 @@ def batch_insert(request):
     return render(request, 'maneu_batch/batch_insert.html', {'msg': msg})
 
 
-def batch_sreach(request):
-    orders = service.batch_list_ByName(arg=request.GET['arg'])
-    return render(request, 'maneu_batch/batch_list.html', {'orders': orders})
+def batch_search(request):
+    """查找指定订单"""
+    date = verify.date_method_post(request)
+    if date:
+        orderlist = service.find_batch_date(date=date)  # 查找今日订单
+        return render(request, 'maneu_batch/batch_list.html', {'orderlist': orderlist})
+    return HttpResponseRedirect(reverse('maneu_order:order_list'))

@@ -157,17 +157,9 @@ def find_order_phone(phone=''):
         return None
 
 
-def find_order_name(name):
+def find_order_date(date=''):
     try:
-        return ManeuOrder.objects.filter(c_name=name).all()
-    except BaseException as msg:
-        print(msg)
-        return None
-
-
-def find_order_time(time):
-    try:
-        return ManeuOrder.objects.filter(c_time__gt=time).all()
+        return ManeuOrderV2.objects.filter(time__gt=date).all()
     except BaseException as msg:
         print(msg)
         return None

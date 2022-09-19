@@ -1,4 +1,5 @@
 import re
+import time
 
 """
 通用校验工具
@@ -114,3 +115,16 @@ def phone_method_Post(request):
         except Exception as msg:
             print(msg)
     return None
+
+
+def date_method_post(request):
+    '''判断是否是一个有效的日期字符串'''
+    try:
+        strdate = request.POST['content']
+        if ":" in strdate:
+            time.strptime(strdate, "%Y-%m-%d %H:%M:%S")
+        else:
+            time.strptime(strdate, "%Y-%m-%d")
+        return strdate
+    except:
+        return None

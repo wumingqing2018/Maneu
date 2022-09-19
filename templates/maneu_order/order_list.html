@@ -7,16 +7,10 @@
             <tr>
                 <td colspan=4>
                     <form method="post" action="{% url 'maneu_order:order_search' %}">
-                        <div class="input-group input-group-sm col-sm-10">
+                        <div class="input-group input-group-sm">
                             {% csrf_token %}
-                            <select class="form-select col-sm-3" name='type'>
-                                <option selected>Choose...</option>
-                                <option>France</option>
-                                <option>Germany</option>
-                                <option>Hungary</option>
-                            </select>
-                            <input type="text" name="phone" class="col-sm-6 form-control" placeholder="通过手机号查询">
-                            <input type="submit" class=" btn btn-primary" value="搜索订单">
+                            <input type="date" name="content" class="form-control" placeholder="通过手机号查询">
+                            <input type="submit" class=" btn btn-primary" value="按日期查找">
                         </div>
                     </form>
                 </td>
