@@ -15,13 +15,13 @@
             </tr>
             <tr>
                 {# <td class="col-sm-3">单号</td>#}
-                <td class="yellow col-sm-3">姓名</td>
-                <td class="yellow col-sm-3">电话</td>
-                <td class="yellow col-sm-3">时间</td>
-                <td class="yellow col-sm-1">
+                <td class="blue col-sm-3">姓名</td>
+                <td class="blue col-sm-3">电话</td>
+                <td class="blue col-sm-3">时间</td>
+                <td class="blue col-sm-1">
                     <form method='get' action="{% url 'maneu_order:order_insert' %}">
                         <div class="input-group input-group-sm">
-                            <input type='submit' class='btn btn-warning' value='添加订单'>
+                            <input type='submit' class='btn btn-warning col-sm-12' value='添加订单'>
                         </div>
                     </form>
                 </td>
@@ -29,16 +29,16 @@
             {% for order in orderlist %}
                 <tr>
 
-                    <td class="yellow col-sm-3">
+                    <td class="blue col-sm-3">
                         <p>{{ order.name }}</p>
                     </td>
-                    <td class="yellow col-sm-3">
+                    <td class="blue col-sm-3">
                         <p>{{ order.phone }}</p>
                     </td>
-                    <td class="yellow col-sm-3">
+                    <td class="blue col-sm-3">
                         <p>{{ order.time }}</p>
                     </td>
-                    <td class="yellow col-sm-1">
+                    <td class="blue col-sm-1">
                         <form method="GET" action="{% url 'maneu_order:order_detail' %}">
                             <div class="input-group input-group-sm">
                                 <input type="hidden" name="order_id" value="{{ order.id }}">
