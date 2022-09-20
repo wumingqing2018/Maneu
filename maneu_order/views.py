@@ -52,7 +52,7 @@ def order_detail(request):
         return render(request, 'maneu/error.html', {'msg': '参数错误'})
 
 
-def order_search(request):
+def order_search_v1(request):
     """查找指定订单"""
     date = verify.date_method_post(request)
     if date:
@@ -61,13 +61,19 @@ def order_search(request):
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
-def order_search_V2(request):
+def order_search_v2(request):
     """查找指定订单"""
-    date = verify.date_method_post(request)
-    if date:
-        orders = service.find_order_date(date=date)  # 查找今日订单
-        return render(request, 'maneu_order/order_list.html', {'orderlist': orders})
-    return HttpResponseRedirect(reverse('maneu_order:order_list'))
+    try:
+        user_id = request.session['id']
+        content = request.POST['content']
+    except BaseException as e:
+        user_id = None
+        content = None
+        print(e)
+    if content and user_id:
+        orderlist = service.find_ManeuOrderV2_search(content=content, user_id=user_id)
+        return render(request, 'maneu_order/order_search.html', {'orderlist': orderlist})
+    return render(request, 'maneu_order/order_search.html')
 
 
 def order_insert(request):

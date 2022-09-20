@@ -40,13 +40,13 @@
         <tr>
             <td class="col-md-2">
                 <form method="get" action="{% url 'maneu_batch:batch_list' %}">
-                    <input type="submit" class="btn btn-warning" value="返回列表">
+                    <input class="btn btn-warning" type="submit" value="返回列表">
                 </form>
             </td>
             <td class="col-md-10">
                 <form method="get" action="{% url 'maneu_batch:batch_delete' %}">
-                    <input type="hidden" name="order_id" value="{{ order.order_id }}">
-                    <input type="submit" class="btn btn-warning" value="删除订单">
+                    <input name="order_id" type="hidden" value="{{ order.order_id }}">
+                    <input class="btn btn-warning" type="submit" value="删除订单">
                 </form>
             </td>
         </tr>

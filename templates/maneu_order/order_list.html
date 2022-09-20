@@ -6,7 +6,7 @@
         <table class="table">
             <tr>
                 <td colspan=4>
-                    <form method="post" action="{% url 'maneu_order:order_search' %}">
+                    <form method="post" action="{% url 'maneu_order:order_search_v1' %}">
                         <div class="input-group input-group-sm">
                             {% csrf_token %}
                             <input type="date" name="content" class="form-control" placeholder="通过手机号查询">

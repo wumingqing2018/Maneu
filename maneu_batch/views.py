@@ -15,18 +15,6 @@ def batch_list(request):
     return render(request, 'maneu_batch/batch_list.html', {'orderlist': orderlist})
 
 
-def batch_list_ByName(request):
-    print(request.GET['arg'])
-    orders = service.batch_list_ByName(arg=request.GET['arg'])
-    return render(request, 'maneu_batch/batch_list.html', {'orders': orders})
-
-
-def batch_list_ByPhone(request):
-    print(request.GET['arg'])
-    orders = service.batch_list_ByPhone(arg=request.GET['arg'])
-    return render(request, 'maneu_batch/batch_list.html', {'orders': orders})
-
-
 def batch_detail(request):
 
     order_id = verify.order_id_method_get(request)
@@ -38,7 +26,7 @@ def batch_detail(request):
 
 
 def batch_delete(request):
-    order_id = order_id_method_get(request)
+    order_id = verify.order_id_method_get(request)
     if order_id:
         print(service.batch_delete(order_id))
         # excel_remove(order_id)
@@ -53,7 +41,7 @@ def batch_insert(request):
         form = BatchInsertForm(request.POST)
         excel = request.FILES.get('excel')
         if form.is_valid() and excel:
-            order_id = create_id()
+            order_id = common.create_id()
             order = excel_save(excel, order_id)
             service.batch_insert(form.clean(), order, order_id)
             return batch_list(request)

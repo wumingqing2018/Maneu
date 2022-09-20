@@ -1,6 +1,8 @@
 import datetime
 import json
 
+from django.db.models import Q
+
 from common import common
 from maneu_order.models import ManeuGuess
 from maneu_order.models import ManeuOrder
@@ -205,6 +207,11 @@ def find_users_id(id=''):
     except BaseException as msg:
         print(msg)
         return None
+
+
+def find_ManeuOrderV2_search(content='', user_id=''):
+    return ManeuOrderV2.objects.filter(users_id=user_id).filter(Q(name=content) | Q(phone=content)).order_by(
+        '-time').all()
 
 
 def find_ManeuVisionSolutions_id(id=''):

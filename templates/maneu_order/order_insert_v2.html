@@ -1,7 +1,7 @@
 {% extends 'maneu/base1.html' %}
 {% load static %}
 {% block content %}
-    <form id="order_insert" class="vertical col-md-12" action="{% url 'maneu_order:order_insert' %}" method="post">
+    <form class="vertical col-md-12" id="order_insert" method="post" action="{% url 'maneu_order:order_insert' %}">
         {% csrf_token %}
         <h4>客户个人信息</h4>
         <table class="table">
@@ -12,7 +12,7 @@
                 <td class="col-sm-2" colspan="2">
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text">电话</span>
-                        <input autocomplete="off" type="text" name="guess_phone" id="guess_phone" class="form-control">
+                        <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off">
                         <span id="phone_error"></span>
                     </div>
                 </td>
@@ -22,8 +22,8 @@
                 <td class="col-sm-2">
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text">姓名</span>
-                        <input autocomplete="off" type="hidden" name="order" id="order">
-                        <input autocomplete="off" type="text" name="guess_name" id="guess_name" class="form-control">
+                        <input id="order" name="order" type="hidden" autocomplete="off">
+                        <input class="form-control" id="guess_name" name="guess_name" type="text" autocomplete="off">
                     </div>
                 </td>
                 <td class="col-sm-2">
