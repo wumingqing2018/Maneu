@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'captcha',
     'maneu_order',
     'maneu_store',
     'maneu_users',
@@ -113,28 +112,6 @@ DATABASES = {
 
 
 """
-django_simple_captcha config
-"""
-CAPTCHA_OUTPUT_FORMAT = '%(image)s %(text_field)s %(hidden_field)s'
-# 验证码混淆样式
-CAPTCHA_NOISE_FUNCTIONS = (
-    'captcha.helpers.noise_null',  # 没有样式
-    'captcha.helpers.noise_arcs',  # 线
-    'captcha.helpers.noise_dots',  # 点
-)
-# 图片中的文字为随机英文字母，如 mdsh
-# CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
-# 图片中的文字为数字表达式，如2+2=
-CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
-# 字符个数
-CAPTCHA_LENGTH = 8
-# 超时(minutes)
-CAPTCHA_TIMEOUT = 1
-# 验证码宽度和高度
-CAPTCHA_IMAGE_SIZE = (100, 100)
-
-
-"""
 密码验证
 Password validation
 https:#docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -177,14 +154,14 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 MEDIA_URL = "/excel/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "excel")
+MEDIA_ROOT = os.path.join(BASE_DIR, "/static/excel/")
 
 
 """
 session config
 """
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-# Session的cookie保存在浏览器上时的key，即：sessionid＝随机字符串（默认）
+# Session的cookie保存在浏览器上时的key，即：session_id＝随机字符串（默认）
 SESSION_COOKIE_NAME = "sessionid"
 # Session的cookie保存的路径（默认）
 SESSION_COOKIE_PATH = "/"

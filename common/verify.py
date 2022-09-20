@@ -35,7 +35,7 @@ def user_id_method_get(user_id=''):
         if re_match:
             return user_id
     except BaseException as msg:
-            print(msg)
+        print(msg)
     return None
 
 
@@ -118,13 +118,14 @@ def phone_method_Post(request):
 
 
 def date_method_post(request):
-    '''判断是否是一个有效的日期字符串'''
+    """判断是否是一个有效的日期字符串"""
     try:
-        strdate = request.POST['content']
-        if ":" in strdate:
-            time.strptime(strdate, "%Y-%m-%d %H:%M:%S")
+        str_date = request.POST['content']
+        if ":" in str_date:
+            time.strptime(str_date, "%Y-%m-%d %H:%M:%S")
         else:
-            time.strptime(strdate, "%Y-%m-%d")
-        return strdate
-    except:
+            time.strptime(str_date, "%Y-%m-%d")
+        return str_date
+    except BaseException as e:
+        print(e)
         return None

@@ -4,33 +4,22 @@
     <link rel="stylesheet" href="{% static 'css/maneu/login.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="container" id="content">
-        <div class="row justify-content-center">
-            <div id="header">
-                <a href="{% url 'maneu_order:order_list' %}">
-                    <img src="{% static 'img/logo16x9.svg' %}" class="img-responsive col-2" alt="Cinque Terre">
-                    <h4 class="blue">徕可</h4>
-                </a>
-            </div>
-            <div class="col-md-12" id="bodyer">
-                <form id="order_insert" class="vertical col-md-4 offset-md-4" method="post" action="{% url 'login' %}">
-                        {% csrf_token %}
-                        <div class="input-group input-group-sm" style="margin-bottom: 3%">
-                            <span class="input-group-text">账号</span>
-                            <input type="text" name="username" class="form-control">
-                        </div>
-                        <div class="input-group input-group-sm" style="margin-bottom: 3%">
-                            <span class="input-group-text">密码</span>
-                            <input type="password" name="password" class="form-control">
-                        </div>
-                        <div class="input-group input-group-sm" style="margin-bottom: 3%">
-                            <input type="submit" class="col-12 btn btn-warning" value="登录">
-                        </div>
-                        <div class="input-group input-group-sm" style="margin-bottom: 3%">
-                            <a type="button" href="{% url 'index' %}" class="col-12 btn btn-primary">返回</a>
-                        </div>
-                    </form>
-                </div>
+    <div class="container-fluid">
+        <div class="login-wrapper">
+            <div class="header">徕可管理系统</div>
+            <div class="form-wrapper">
+                <form method="post" action="{% url 'login' %}" class="test1">
+                    {% csrf_token %}
+                    <label for="username">账号:</label>
+                    <input type="text" name="username" class="input-item" placeholder="username">
+                    <label for="password">密码:</label>
+                    <input type="password" name="password" class="input-item" placeholder="password"><br>
+                    {% if msg %}<span class="msg">{{msg}}</span>{% endif %}
+                    <input type="submit" class="btn" value="登录">
+                </form>
+                <button class="btn">
+                    <a style="color: white" href="{% url 'index' %}">返回</a>
+                </button>
             </div>
         </div>
     </div>

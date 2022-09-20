@@ -31,7 +31,8 @@ def login(request):
             return HttpResponseRedirect(reverse('maneu_order:order_list'))
         else:
             print(form.errors)
-    request.session.flush()  # 删除服务端的session，删除当前的会话数据并删除会话的Cookie。
+    print(request.session.flush())  # 删除服务端的session，删除当前的会话数据并删除会话的Cookie。
+    print(request.session.get('id'))
     return render(request, 'maneu/login.html', {'form': LoginForm()})
 
 
