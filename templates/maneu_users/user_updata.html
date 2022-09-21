@@ -1,7 +1,7 @@
 {% extends 'maneu/base1.html' %}
 {% load static %}
 {% block content %}
-    <div class="container yellow">
+    <div class="container blue">
         <div class="col-md-6 offset-md-3" style="margin-top: 20%; margin-bottom: 20%">
             <form method="post" action="{% url 'maneu_users:user_updata' %}">
                 {% csrf_token %}
