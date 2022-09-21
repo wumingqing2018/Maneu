@@ -26,8 +26,9 @@ def user_detail(request):
     Returns:
         _type_: _description_
     """
-    session_id = request.session['id']
-    user_id = verify.user_id_method_get(user_id=session_id)
+    # session_id = request.session['id']
+    # user_id = verify.user_id_method_get(user_id=session_id)
+    user_id = request.session.get('id')
     if user_id:
         return render(request, 'maneu_users/user_detail.html', {'user': serivce.find_user(user_id)})
     else:
