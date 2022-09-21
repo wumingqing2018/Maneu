@@ -64,19 +64,18 @@ def user_insert(request):
 
 
 def user_updata(request):
-    user_id = request.session['id']
+    user_id = request.session.get('id')
+    user = serivce.find_user(user_id)
     msg = ''
-    print(request.POST)
     if request.method == 'POST':
         updata = serivce.user_update(old_password=request.POST['old_password'], user_id=user_id,
                                      nickname=request.POST['nickname'], password=request.POST['password'],
                                      phone=request.POST['phone'], email=request.POST['email'],
                                      remark=request.POST['remark'])
         if updata:
-            msg = '更新成功'
-        else:
             msg = '密码验证错误，请在密码验证输入正确的登录密码'
-    user = serivce.find_user(user_id)
+        else:
+            return HttpResponseRedirect(reverse('maneu_users:user_detail'))
     return render(request, 'maneu_users/user_updata.html', {'user': user, 'msg': msg})
 
 
