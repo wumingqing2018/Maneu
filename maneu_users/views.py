@@ -72,11 +72,10 @@ def user_updata(request):
                                      nickname=request.POST['nickname'], password=request.POST['password'],
                                      phone=request.POST['phone'], email=request.POST['email'],
                                      remark=request.POST['remark'])
-        print(updata)
-        if updata == None:
-            msg = '密码验证错误，请在密码验证输入正确的登录密码'
-        else:
+        if updata:
             msg = '更新成功'
+        else:
+            msg = '密码验证错误，请在密码验证输入正确的登录密码'
     user = serivce.find_user(user_id)
     return render(request, 'maneu_users/user_updata.html', {'user': user, 'msg': msg})
 
