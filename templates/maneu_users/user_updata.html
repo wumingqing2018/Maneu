@@ -7,7 +7,7 @@
                 {% csrf_token %}
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">密码验证</span>
-                    <input type="text" name="old_password" id="old_passwor" class="form-control">
+                    <input type="text" name="old_password" id="old_passwor" class="form-control" placeholder="请输入登录密码">
                 </div>
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">商家名称</span>
@@ -30,9 +30,10 @@
                     <input type="text" name="remark" id="remark" value="{{ user.remark }}" class="form-control">
                 </div>
                 <br>
-                <p>{{ msg }}</p>
+                {% if msg %}<p>{{ msg }}</p>{% endif %}
                 <input type="submit" class="col-md-12 btn btn-warning">
             </form>
+            <br>
             <form method='GET' action="{% url 'maneu_order:order_list' %}">
                 <input type="submit" class="col-md-12 btn btn-primary"value='返回'>
             </form>

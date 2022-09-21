@@ -74,7 +74,7 @@ def user_updata(request):
                                      remark=request.POST['remark'])
         print(updata)
         if updata == None:
-            msg = '密码验证错误，请正确输入登录密码'
+            msg = '密码验证错误，请在密码验证输入正确的登录密码'
         else:
             msg = '更新成功'
     user = serivce.find_user(user_id)
