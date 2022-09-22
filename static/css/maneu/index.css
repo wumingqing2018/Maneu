@@ -1,16 +1,12 @@
-#content {
-    margin-top: 3%;
-    text-align: center;
+html {
+    height: 100%;
 }
-
-#header {
-    margin-top: 10%;
+body {
+    height: 100%;
 }
-
-#bodyer {
-    margin-top: 20%;
+.container {
+    height: 100%;
 }
-
-#footer {
-    margin-top: 20%;
+.content {
+    height: 100%;
 }
