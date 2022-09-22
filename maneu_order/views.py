@@ -61,7 +61,7 @@ def order_search_v1(request):
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
-def order_search_v2(request):
+def order_search(request):
     """查找指定订单"""
     try:
         user_id = request.session['id']
