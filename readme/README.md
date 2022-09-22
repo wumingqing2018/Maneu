@@ -39,3 +39,6 @@ python 迁徙模块
 > 
 > 安装该文档里的模块
 > > pip install -r readme/requirements.txt
+
+github 更新
+> git pull git@github.com:wumingqing2018/maneu.git master

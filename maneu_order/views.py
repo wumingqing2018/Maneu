@@ -62,16 +62,19 @@ def order_search_v1(request):
 
 
 def order_search(request):
+    print(request.POST)
     """查找指定订单"""
     try:
         user_id = request.session['id']
-        content = request.POST['content']
+        text = request.POST['text']
+        date = request.POST['date']
     except BaseException as e:
         user_id = None
-        content = None
+        text = None
+        date = None
         print(e)
-    if content and user_id:
-        orderlist = service.find_ManeuOrderV2_search(content=content, user_id=user_id)
+    if text and user_id:
+        orderlist = service.find_ManeuOrderV2_search(date=date, text=text, user_id=user_id)
         return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 

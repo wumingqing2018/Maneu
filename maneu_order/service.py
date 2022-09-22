@@ -209,9 +209,11 @@ def find_users_id(id=''):
         return None
 
 
-def find_ManeuOrderV2_search(content='', user_id=''):
-    return ManeuOrderV2.objects.filter(users_id=user_id).filter(Q(name=content) | Q(phone=content)).order_by(
-        '-time').all()
+def find_ManeuOrderV2_search(date='', text='', user_id=''):
+    if date:
+        return ManeuOrderV2.objects.filter(users_id=user_id).filter(time__gt=date).filter(Q(name=text) | Q(phone=text)).order_by('-time').all()
+    else:
+        return ManeuOrderV2.objects.filter(users_id=user_id).filter(Q(name=text) | Q(phone=text)).order_by('-time').all()
 
 
 def find_ManeuVisionSolutions_id(id=''):
