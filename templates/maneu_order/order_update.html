@@ -1591,59 +1591,67 @@
         <h4>产品信息</h4>
         <table class="table">
             <tr>
-                <td class="col-md-1">
+                <td class="col-1">
                     <span>类别</span>
                 </td>
-                <td class="col-md-1">
+                <td class="col-1">
                     <span>品牌</span>
                 </td>
-                <td class="col-md-1">
+                <td class="col-1">
                     <span>型号</span>
                 </td>
-                <td class="col-md-9" colspan="9"></td>
+                <td class="col-5" colspan="5">
+                    <span>参数</span>
+                </td>
+                <td class="col-md-4" colspan="4"></td>
             </tr>
             <tr>
-                <td class="col-md-3" colspan="3">
-                    <div class="input-group input-group-sm mb-6">
-                        <input type="text" name="arg11" class="form-control" value="{{ store.arg11 }}">
-                        <input type="text" name="arg12" class="form-control" value="{{ store.arg12 }}">
-                        <input type="text" name="arg13" class="form-control" value="{{ store.arg13 }}">
+                <td class="col-sm-8" colspan="6">
+                    <div class="input-group input-group-sm mb-8">
+                        <input autocomplete="off" type="text" name="arg10" class="form-control ">
+                        <input autocomplete="off" type="text" name="arg11" class="form-control ">
+                        <input autocomplete="off" type="text" name="arg12" class="form-control ">
+                        <input autocomplete="off" type="text" name="arg13" class="form-control " style="width:55%">
                     </div>
                 </td>
             </tr>
             <tr>
-                <td class="col-md-3" colspan="3">
-                    <div class="input-group input-group-sm mb-6">
-                        <input type="text" name="arg21" class="form-control" value="{{ store.arg21 }}">
-                        <input type="text" name="arg22" class="form-control" value="{{ store.arg22 }}">
-                        <input type="text" name="arg23" class="form-control" value="{{ store.arg23 }}">
+                <td class="col-sm-8" colspan="6">
+                    <div class="input-group input-group-sm mb-7">
+                        <input autocomplete="off" type="text" name="arg20" class="form-control">
+                        <input autocomplete="off" type="text" name="arg21" class="form-control">
+                        <input autocomplete="off" type="text" name="arg22" class="form-control">
+                        <input autocomplete="off" type="text" name="arg23" class="form-control " style="width:55%">
                     </div>
                 </td>
             </tr>
             <tr>
-                <td class="col-md-3" colspan="3">
-                    <div class="input-group input-group-sm mb-6">
-                        <input type="text" name="arg31" class="form-control" value="{{ store.arg31 }}">
-                        <input type="text" name="arg32" class="form-control" value="{{ store.arg32 }}">
-                        <input type="text" name="arg33" class="form-control" value="{{ store.arg33 }}">
+                <td class="col-sm-8" colspan="8">
+                    <div class="input-group input-group-sm mb-7">
+                        <input autocomplete="off" type="text" name="arg30" class="form-control">
+                        <input autocomplete="off" type="text" name="arg31" class="form-control">
+                        <input autocomplete="off" type="text" name="arg32" class="form-control">
+                        <input autocomplete="off" type="text" name="arg33" class="form-control " style="width:55%">
                     </div>
                 </td>
             </tr>
             <tr>
-                <td class="col-md-3" colspan="3">
-                    <div class="input-group input-group-sm mb-6">
-                        <input type="text" name="arg41" class="form-control" value="{{ store.arg41 }}">
-                        <input type="text" name="arg42" class="form-control" value="{{ store.arg42 }}">
-                        <input type="text" name="arg43" class="form-control" value="{{ store.arg43 }}">
+                <td class="col-sm-8" colspan="8">
+                    <div class="input-group input-group-sm mb-7">
+                        <input autocomplete="off" type="text" name="arg40" class="form-control">
+                        <input autocomplete="off" type="text" name="arg41" class="form-control">
+                        <input autocomplete="off" type="text" name="arg42" class="form-control">
+                        <input autocomplete="off" type="text" name="arg43" class="form-control " style="width:55%">
                     </div>
                 </td>
             </tr>
             <tr>
-                <td class="col-md-3" colspan="3">
-                    <div class="input-group input-group-sm mb-6">
-                        <input type="text" name="arg51" class="form-control" value="{{ store.arg51 }}">
-                        <input type="text" name="arg52" class="form-control" value="{{ store.arg52 }}">
-                        <input type="text" name="arg53" class="form-control" value="{{ store.arg53 }}">
+                <td class="col-sm-8" colspan="8">
+                    <div class="input-group input-group-sm mb-7">
+                        <input autocomplete="off" type="text" name="arg50" class="form-control">
+                        <input autocomplete="off" type="text" name="arg51" class="form-control">
+                        <input autocomplete="off" type="text" name="arg52" class="form-control">
+                        <input autocomplete="off" type="text" name="arg53" class="form-control " style="width:55%">
                     </div>
                 </td>
             </tr>
@@ -1652,7 +1660,7 @@
                     <a type="button" class="btn btn-warning col-sm-12" href="{% url 'maneu_order:order_list' %}">返回</a>
                 </td>
                 <td>
-                    <input class="btn btn-danger" id="insert" type="submit" value="提交订单">
+                    <input autocomplete="off" class="btn btn-danger" id="insert" type="submit" value="提交订单">
                 </td>
                 <td colspan="2"></td>
             </tr>

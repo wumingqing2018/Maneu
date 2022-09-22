@@ -72,8 +72,8 @@ def order_search_v2(request):
         print(e)
     if content and user_id:
         orderlist = service.find_ManeuOrderV2_search(content=content, user_id=user_id)
-        return render(request, 'maneu_order/order_search.html', {'orderlist': orderlist})
-    return render(request, 'maneu_order/order_search.html')
+        return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
+    return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
 def order_insert(request):
