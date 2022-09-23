@@ -8,19 +8,20 @@ from maneu_order import service
 
 def order_list(request):
     """查看今日订单"""
-    orderlist = service.find_order_all(users_id=request.session['id'])  # 查找今日订单
+    orderlist = service.find_order_all(users_id=request.session.get('id'))  # 查找今日订单
     return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
 
 
 def order_delete(request):
     order_id = verify.order_id_method_get(request)
-    if order_id:
-        order = service.find_order_id(order_id=order_id)
+    users_id = request.session.get('id')
+    if order_id and users_id:
+        order = service.find_order_id(order_id=order_id, users_id=request.session.get('id'))
         guess = service.delete_guess_id(id=order.guess_id)
         store = service.delete_store_id(id=order.store_id)
         visionsolutions = service.delete_ManeuVisionSolutions_id(id=order.visionsolutions_id)
         subjectiverefraction = service.delete_subjectiverefraction_id(id=order.subjectiverefraction_id)
-        order = service.delete_order_id(id=order_id)
+        order = service.delete_order_id(users_id=request.session.get('id'), id=order_id)
         print(order, guess, store, visionsolutions, subjectiverefraction)
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
@@ -36,7 +37,7 @@ def order_detail(request):
     """
     order_id = verify.order_id_method_get(request)
     if order_id:
-        order = service.find_order_id(order_id)
+        order = service.find_order_id(order_id=order_id, users_id=request.session.get('id'))
         users = service.find_users_id(id=order.users_id)
         guess = service.find_guess_id(id=order.guess_id)
         store = service.find_store_id(id=order.store_id)
@@ -52,29 +53,10 @@ def order_detail(request):
         return render(request, 'maneu/error.html', {'msg': '参数错误'})
 
 
-def order_search_v1(request):
-    """查找指定订单"""
-    date = verify.date_method_post(request)
-    if date:
-        orders = service.find_order_date(date=date)  # 查找今日订单
-        return render(request, 'maneu_order/order_list.html', {'orderlist': orders})
-    return HttpResponseRedirect(reverse('maneu_order:order_list'))
-
-
 def order_search(request):
-    print(request.POST)
-    """查找指定订单"""
-    try:
-        user_id = request.session['id']
-        text = request.POST['text']
-        date = request.POST['date']
-    except BaseException as e:
-        user_id = None
-        text = None
-        date = None
-        print(e)
-    if text and user_id:
-        orderlist = service.find_ManeuOrderV2_search(date=date, text=text, user_id=user_id)
+    if request.method == 'POST':
+        """查找指定订单"""
+        orderlist = service.find_ManeuOrderV2_search(date=request.POST.get('text'), text=request.POST.get('date'), users_id=request.session.get('id'))
         return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
@@ -130,7 +112,7 @@ def order_insert(request):
                                                   arg52=request.POST['arg52'], arg53=request.POST['arg53'], )
 
         service.ManeuOrderV2_insert(name=request.POST['guess_name'], phone=request.POST['guess_phone'],
-                                    users_id=request.session['id'], store_id=ManeuStore_id.id,
+                                    users_id=request.session.get('id'), store_id=ManeuStore_id.id,
                                     guess_id=ManeuGuess_id.id, visionsolutions_id=ManeuVisionSolutions_id.id,
                                     subjectiverefraction_id=ManeuSubjectiveRefraction_id.id, )
         return HttpResponseRedirect(reverse('maneu_order:order_list'))
@@ -142,7 +124,7 @@ def order_update(request):
     if request.method == 'GET':
         order_id = verify.order_id_method_get(request)
         if order_id:
-            order = service.find_order_id(order_id)
+            order = service.find_order_id(order_id=order_id, users_id=request.session.get('id'))
             users = service.find_users_id(id=order.users_id)
             guess = service.find_guess_id(id=order.guess_id)
             store = service.find_store_id(id=order.store_id)
@@ -157,7 +139,7 @@ def order_update(request):
     if request.method == 'POST':
         order_id = verify.order_id_method_post(request)
         if order_id:
-            order = service.find_order_id(order_id=order_id)
+            order = service.find_order_id(order_id=order_id, users_id=request.session.get('id'))
             ManeuGuess_id = service.ManeuGuess_update(id=order.guess_id,
                                                       name=request.POST['guess_name'],
                                                       phone=request.POST['guess_phone'],

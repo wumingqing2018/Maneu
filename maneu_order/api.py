@@ -24,7 +24,7 @@ def order_list(request):
 
 
 def order_insert(request):
-    """创建订单"""
+    """创建订单
     if request.method == "POST":
         print(request.POST)
         form = OrderInsertForm(request.POST)
@@ -40,6 +40,7 @@ def order_insert(request):
     else:
         res = {'code': 1, 'msg': "请求出错", 'data': []}
     return JsonResponse(res)
+    """
 
 
 def order_delete(request):
