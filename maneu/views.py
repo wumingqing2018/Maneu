@@ -47,7 +47,7 @@ def guess(request):
                 store = service.find_store_id(id=order.store_id)
                 visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
                 subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
-                return render(request, 'maneu/order_detail.html',
+                return render(request, 'maneu/detail.html',
                               {'order': order, 'users': users, 'guess': guess, 'store': json.loads(store.content),
                                'visionsolutions': json.loads(visionsolutions.content),
                                'subjectiverefraction': json.loads(subjectiverefraction.content)})
@@ -56,3 +56,7 @@ def guess(request):
                 return render(request, 'maneu/guess.html', {'msg': '没有您的订单'})
 
     return render(request, 'maneu/guess.html')
+
+
+def test1(request):
+    return render(request, 'maneu/test1.html')

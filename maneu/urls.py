@@ -13,6 +13,7 @@ urlpatterns = [
     path('login/', login, name='login'),
     # 客户页
     path('guess/', guess, name='guess'),
+    path('test1/', test1),
     # 仓库子路由
     path('maneu_store/', include('maneu_store.urls')),
     # 订单子路由
@@ -23,5 +24,6 @@ urlpatterns = [
     path('maneu_batch/', include('maneu_batch.urls')),
     # 商品子路由
     path('maneu_class/', include('maneu_class.urls')),
-    url(r'(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT})
+    url(r'(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}),
+
 ]
