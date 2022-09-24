@@ -4,7 +4,8 @@ from django.shortcuts import render, reverse, HttpResponseRedirect
 
 from common import verify
 from maneu_order import service
-
+import datetime
+import time
 
 def order_list(request):
     """查看今日订单"""
@@ -56,8 +57,7 @@ def order_detail(request):
 def order_search(request):
     if request.method == 'POST':
         """查找指定订单"""
-        orderlist = service.find_ManeuOrderV2_search(date=request.POST.get('text'), text=request.POST.get('date'),
-                                                     users_id=request.session.get('id'))
+        orderlist = service.find_ManeuOrderV2_search(date=request.POST.get('date'), text=request.POST.get('text'), users_id=request.session.get('id'))
         return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
@@ -97,10 +97,7 @@ def order_insert(request):
                                                                                 OS_AL=request.POST['OS_AL'],
                                                                                 OS_AC=request.POST['OS_AC'],
                                                                                 )
-        ManeuGuess_id = service.ManeuGuess_insert(name=request.POST['guess_name'], phone=request.POST['guess_phone'],
-                                                  sex=request.POST['sex'], age=request.POST['age'],
-                                                  OT=request.POST['OT'], EM=request.POST['EM'], DFH=request.POST['DFH'],
-                                                  remark=request.POST['remark'])
+        ManeuGuess_id = service.ManeuGuess_insert(name=request.POST.get('guess_name'), phone=request.POST.get('guess_phone'),sex=request.POST.get('sex'), age=request.POST.get('age'),OT=request.POST.get('OT'), EM=request.POST.get('EM'), DFH=request.POST.get('DFH'),remark=request.POST.get('remark'))
         ManeuStore_content = {'arg50': request.POST.get('arg50'), 'arg51': request.POST.get('arg51'), 'arg52': request.POST.get('arg52'), 'arg53': request.POST.get('arg53'), 'arg54': request.POST.get('arg54'),
                               'arg40': request.POST.get('arg40'), 'arg41': request.POST.get('arg41'), 'arg42': request.POST.get('arg42'), 'arg43': request.POST.get('arg43'), 'arg44': request.POST.get('arg44'),
                               'arg30': request.POST.get('arg30'), 'arg31': request.POST.get('arg31'), 'arg32': request.POST.get('arg32'), 'arg33': request.POST.get('arg33'), 'arg34': request.POST.get('arg34'),
@@ -108,10 +105,12 @@ def order_insert(request):
                               'arg10': request.POST.get('arg10'), 'arg11': request.POST.get('arg11'), 'arg12': request.POST.get('arg12'), 'arg13': request.POST.get('arg13'), 'arg14': request.POST.get('arg14'),
                               }
         ManeuStore_id = service.ManeuStore_insert(content=json.dumps(ManeuStore_content))
+        print(request.POST.get('order_time'))
+        order_time = datetime.datetime.strptime(request.POST.get('order_time'), '%Y-%m-%d')
         service.ManeuOrderV2_insert(name=request.POST['guess_name'], phone=request.POST['guess_phone'],
                                     users_id=request.session.get('id'), store_id=ManeuStore_id.id,
                                     guess_id=ManeuGuess_id.id, visionsolutions_id=ManeuVisionSolutions_id.id,
-                                    subjectiverefraction_id=ManeuSubjectiveRefraction_id.id, )
+                                    subjectiverefraction_id=ManeuSubjectiveRefraction_id.id, order_time=order_time)
         return HttpResponseRedirect(reverse('maneu_order:order_list'))
     return render(request, 'maneu_order/order_insert_v2.html')
 

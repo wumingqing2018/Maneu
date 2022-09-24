@@ -101,15 +101,12 @@ def find_users_id(id=''):
 
 def find_ManeuOrderV2_search(date='', text='', users_id=''):
     if date and text:
-        return ManeuOrderV2.objects.filter(Q(name=text) | Q(phone=text), Q(time__gt=date),
-                                           Q(users_id=users_id)).order_by('-time').all()
-    elif date and text == '':
+        return ManeuOrderV2.objects.filter(Q(name=text) | Q(phone=text), Q(time__gt=date), Q(users_id=users_id)).order_by('-time').all()
+    if date != '' and text == '':
         return ManeuOrderV2.objects.filter(Q(time__gt=date), Q(users_id=users_id)).order_by('-time').all()
-    elif date == '' and text:
-        return ManeuOrderV2.objects.filter(users_id=users_id).filter(Q(name=text) | Q(phone=text)).order_by(
-            '-time').all()
-    else:
-        return None
+    if date == '' and text != '':
+        return ManeuOrderV2.objects.filter(Q(name=text) | Q(phone=text, users_id=users_id)).order_by('-time').all()
+    return None
 
 
 def find_ManeuOrderV2_search_v1(date='', text='', users_id=''):
@@ -275,11 +272,11 @@ def ManeuStore_update(arg10="", arg11="", arg12="", arg13="",
         return None
 
 
-def ManeuOrderV2_insert(name='', phone='', guess_id='', users_id='', store_id='', visionsolutions_id='', subjectiverefraction_id=''):
+def ManeuOrderV2_insert(name='', phone='', guess_id='', users_id='', store_id='', visionsolutions_id='', subjectiverefraction_id='', order_time=''):
     try:
         return ManeuOrderV2.objects.create(name=name, phone=phone, guess_id=guess_id, users_id=users_id,
                                            store_id=store_id, visionsolutions_id=visionsolutions_id,
-                                           subjectiverefraction_id=subjectiverefraction_id)
+                                           subjectiverefraction_id=subjectiverefraction_id, time=order_time)
     except BaseException as msg:
         print(msg)
         return None
