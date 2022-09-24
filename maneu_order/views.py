@@ -56,7 +56,8 @@ def order_detail(request):
 def order_search(request):
     if request.method == 'POST':
         """查找指定订单"""
-        orderlist = service.find_ManeuOrderV2_search(date=request.POST.get('text'), text=request.POST.get('date'), users_id=request.session.get('id'))
+        orderlist = service.find_ManeuOrderV2_search(date=request.POST.get('text'), text=request.POST.get('date'),
+                                                     users_id=request.session.get('id'))
         return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
@@ -100,17 +101,13 @@ def order_insert(request):
                                                   sex=request.POST['sex'], age=request.POST['age'],
                                                   OT=request.POST['OT'], EM=request.POST['EM'], DFH=request.POST['DFH'],
                                                   remark=request.POST['remark'])
-        ManeuStore_id = service.ManeuStore_insert(arg10=request.POST['arg10'], arg11=request.POST['arg11'],
-                                                  arg12=request.POST['arg12'], arg13=request.POST['arg13'],
-                                                  arg20=request.POST['arg20'], arg21=request.POST['arg21'],
-                                                  arg22=request.POST['arg22'], arg23=request.POST['arg23'],
-                                                  arg30=request.POST['arg30'], arg31=request.POST['arg31'],
-                                                  arg32=request.POST['arg32'], arg33=request.POST['arg33'],
-                                                  arg40=request.POST['arg40'], arg41=request.POST['arg41'],
-                                                  arg42=request.POST['arg42'], arg43=request.POST['arg43'],
-                                                  arg50=request.POST['arg50'], arg51=request.POST['arg51'],
-                                                  arg52=request.POST['arg52'], arg53=request.POST['arg53'], )
-
+        ManeuStore_content = {'arg50': request.POST.get('arg50'), 'arg51': request.POST.get('arg51'), 'arg52': request.POST.get('arg52'), 'arg53': request.POST.get('arg53'), 'arg54': request.POST.get('arg54'),
+                              'arg40': request.POST.get('arg40'), 'arg41': request.POST.get('arg41'), 'arg42': request.POST.get('arg42'), 'arg43': request.POST.get('arg43'), 'arg44': request.POST.get('arg44'),
+                              'arg30': request.POST.get('arg30'), 'arg31': request.POST.get('arg31'), 'arg32': request.POST.get('arg32'), 'arg33': request.POST.get('arg33'), 'arg34': request.POST.get('arg34'),
+                              'arg20': request.POST.get('arg20'), 'arg21': request.POST.get('arg21'), 'arg22': request.POST.get('arg22'), 'arg23': request.POST.get('arg23'), 'arg24': request.POST.get('arg24'),
+                              'arg10': request.POST.get('arg10'), 'arg11': request.POST.get('arg11'), 'arg12': request.POST.get('arg12'), 'arg13': request.POST.get('arg13'), 'arg14': request.POST.get('arg14'),
+                              }
+        ManeuStore_id = service.ManeuStore_insert(content=json.dumps(ManeuStore_content))
         service.ManeuOrderV2_insert(name=request.POST['guess_name'], phone=request.POST['guess_phone'],
                                     users_id=request.session.get('id'), store_id=ManeuStore_id.id,
                                     guess_id=ManeuGuess_id.id, visionsolutions_id=ManeuVisionSolutions_id.id,

@@ -249,18 +249,9 @@ def ManeuGuess_update(id='', name='', phone='', sex='', age='', OT='', EM='', DF
         return None
 
 
-def ManeuStore_insert(arg10="", arg11="", arg12="", arg13="",
-                      arg20="", arg21="", arg22="", arg23="",
-                      arg30="", arg31="", arg32="", arg33="",
-                      arg40="", arg41="", arg42="", arg43="",
-                      arg50="", arg51="", arg52="", arg53="", ):
+def ManeuStore_insert(content):
     try:
-        ManeuStore_content = {'arg50': arg50, 'arg51': arg51, 'arg52': arg52, 'arg53': arg53,
-                              'arg40': arg40, 'arg41': arg41, 'arg42': arg42, 'arg43': arg43,
-                              'arg30': arg30, 'arg31': arg31, 'arg32': arg32, 'arg33': arg33,
-                              'arg20': arg20, 'arg21': arg21, 'arg22': arg22, 'arg23': arg23,
-                              'arg10': arg10, 'arg11': arg11, 'arg12': arg12, 'arg13': arg13}
-        return ManeuStore.objects.create(content=json.dumps(ManeuStore_content))
+        return ManeuStore.objects.create(content=content)
     except BaseException as msg:
         print(msg)
         return None
@@ -284,8 +275,7 @@ def ManeuStore_update(arg10="", arg11="", arg12="", arg13="",
         return None
 
 
-def ManeuOrderV2_insert(name='', phone='', guess_id='', users_id='', store_id='', visionsolutions_id='',
-                        subjectiverefraction_id=''):
+def ManeuOrderV2_insert(name='', phone='', guess_id='', users_id='', store_id='', visionsolutions_id='', subjectiverefraction_id=''):
     try:
         return ManeuOrderV2.objects.create(name=name, phone=phone, guess_id=guess_id, users_id=users_id,
                                            store_id=store_id, visionsolutions_id=visionsolutions_id,
