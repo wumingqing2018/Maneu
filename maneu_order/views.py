@@ -147,7 +147,7 @@ def order_insert(request):
         return HttpResponseRedirect(reverse('maneu_order:order_list'))
     ua = request.META.get("HTTP_USER_AGENT")
     mobile = judge_pc_or_mobile(ua)
-    if mobile == False:
+    if mobile:
         return render(request, 'maneu_order/order_insert_v3.html')
     else:
         return render(request, 'maneu_order/order_insert_v2.html')
