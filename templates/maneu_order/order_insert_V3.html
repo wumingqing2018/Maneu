@@ -5,22 +5,22 @@
         <form class="vertical col-md-12" id="order_insert" method="post" action="{% url 'maneu_order:order_insert' %}">
             {% csrf_token %}
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">创建日期</span>
+                <span class="input-group-text col-2">创建日期</span>
                 <input class="form-control" id="order_time" name="order_time" type="date" autocomplete="off">
             </div>
             <h4>客户个人信息</h4>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">电话</span>
+                <span class="input-group-text col-2">电话</span>
                 <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off">
                 <span id="phone_error"></span>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">姓名</span>
+                <span class="input-group-text col-2">姓名</span>
                 <input id="order" name="order" type="hidden" autocomplete="off">
                 <input class="form-control" id="guess_name" name="guess_name" type="text" autocomplete="off">
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">性别</span>
+                <span class="input-group-text col-2">性别</span>
                 <input autocomplete="off" type="text" name="sex" class="form-control" list="sex">
                 <datalist id="sex">
                     <option>男</option>
@@ -28,11 +28,11 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">出生日期</span>
+                <span class="input-group-text col-2">出生日期</span>
                 <input autocomplete="off" type="date" name="age" class="form-control">
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">眼位</span>
+                <span class="input-group-text col-2">眼位</span>
                 <input autocomplete="off" type="text" name="OT" list="OT" class="form-control">
                 <datalist id="OT">
                     <option>正位眼</option>
@@ -40,7 +40,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">主视眼</span>
+                <span class="input-group-text col-2">主视眼</span>
                 <input autocomplete="off" type="text" name="EM" list="EM" class="form-control">
                 <datalist id="EM">
                     <option>右</option>
@@ -48,18 +48,18 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">病族史</span>
+                <span class="input-group-text col-2">病族史</span>
                 <input autocomplete="off" type="text" name="DFH" list="DFH" class="form-control">
                 <datalist id="DFH">
                     <option>有</option>
                     <option>无</option>
                 </datalist>
             </div>
-                                    <div class="input-group input-group-sm">
-                            <span class="input-group-text col-3">备注</span>
-                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control">
-                            <span id="remake_error"></span>
-                        </div>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text col-2">备注</span>
+                <input autocomplete="off" type="text" name="remark" id="remark" class="form-control">
+                <span id="remake_error"></span>
+            </div>
             <h4>屈光检验结果</h4>
             <div class="col-12 row">
                 <span class="col-4"></span>
@@ -67,7 +67,7 @@
                 <span class="col-4">右眼</span>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">裸眼视力</span>
+                <span class="input-group-text col-2">裸眼视力</span>
                 <input autocomplete="off" type="text" name="OS_Nv" list="OS_Nv" class="form-control">
                 <datalist id="OS_Nv">
                     <option>4.0</option>
@@ -102,7 +102,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">球镜</span>
+                <span class="input-group-text col-2">球镜</span>
                 <input autocomplete="off" type="text" name="OS_DS" list="OS_DS" class="form-control">
                 <datalist id="OS_DS">
                     <option>-0.00</option>
@@ -193,7 +193,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">柱镜</span>
+                <span class="input-group-text col-2">柱镜</span>
                 <input autocomplete="off" type="text" name="OS_CYL" list="OS_CYL" class="form-control">
                 <datalist id="OS_CYL">
                     <option>-0.00</option>
@@ -252,7 +252,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">轴位</span>
+                <span class="input-group-text col-2">轴位</span>
                 <input autocomplete="off" type="text" name="OS_AX" list="OS_AX" class="form-control">
                 <datalist id="OS_AX">
                     <option>0</option>
@@ -623,7 +623,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">矫正视力</span>
+                <span class="input-group-text col-2">矫正视力</span>
                 <input autocomplete="off" type="text" name="OS_NA" list="OS_NA" class="form-control">
                 <datalist id="OS_NA">
                     <option>4.0</option>
@@ -658,7 +658,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">眼轴长度</span>
+                <span class="input-group-text col-2">眼轴长度</span>
                 <input autocomplete="off" type="text" name="OS_AL" list="OS_AL" class="form-control">
                 <datalist id="OS_AL">
                     <option>18</option>
@@ -693,7 +693,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">角膜曲率</span>
+                <span class="input-group-text col-2">角膜曲率</span>
                 <input autocomplete="off" type="text" name="OS_AC" list="OS_AC" class="form-control">
                 <datalist id="OS_AC">
                     <option>30</option>
@@ -754,7 +754,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">备注</span>
+                <span class="input-group-text col-2">备注</span>
                 <input autocomplete="off" type="text" name="SR_remark" id="SR_remark" class="form-control">
             </div>
 
@@ -765,7 +765,7 @@
                 <span class="col-4">右眼</span>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">球镜</span>
+                <span class="input-group-text col-2">球镜</span>
                 <input autocomplete="off" type="text" name="OS_BC_DS" list="OS_BC_DS" class="form-control">
                 <datalist id="OS_BC_DS">
                     <option>-0.00</option>
@@ -856,7 +856,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">柱镜</span>
+                <span class="input-group-text col-2">柱镜</span>
                 <input autocomplete="off" type="text" name="OS_BC_CYL" list="OS_BC_CYL" class="form-control">
                 <datalist id="OS_BC_CYL">
                     <option>-0.00</option>
@@ -947,7 +947,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">轴位</span>
+                <span class="input-group-text col-2">轴位</span>
                 <input autocomplete="off" type="text" name="OS_BC_AX" list="OS_BC_AX" class="form-control">
                 <datalist id="OS_BC_AX">
                     <option>0</option>
@@ -1318,17 +1318,17 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">棱镜</span>
+                <span class="input-group-text col-2">棱镜</span>
                 <input autocomplete="off" type="text" name="OS_BC_PR" list="OS_BC_PR" class="form-control">
                 <input autocomplete="off" type="text" name="OD_BC_PR" list="OD_BC_PR" class="form-control">
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">基底取向</span>
+                <span class="input-group-text col-2">基底取向</span>
                 <input autocomplete="off" type="text" name="OS_BC_FR" list="OS_BC_FR" class="form-control">
                 <input autocomplete="off" type="text" name="OD_BC_FR" list="OD_BC_FR" class="form-control">
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">下加光</span>
+                <span class="input-group-text col-2">下加光</span>
                 <input autocomplete="off" type="text" name="OS_BC_ADD" list="OS_BC_ADD" class="form-control">
                 <datalist id="OS_BC_ADD">
                     <option>+0.25</option>
@@ -1377,7 +1377,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-3">矫正视力</span>
+                <span class="input-group-text col-2">矫正视力</span>
                 <input autocomplete="off" type="text" name="OS_BC_NA" list="OS_BC_NA" class="form-control">
                 <datalist id="OS_BC_NA">
                     <option>4.0</option>
@@ -1412,7 +1412,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-md-2">方案类型</span>
+                <span class="input-group-text col-2">方案类型</span>
                 <input autocomplete="off" type="text" class="form-control" name="function" list="function">
                 <datalist id="function">
                     <option>近用解决方案</option>
@@ -1420,7 +1420,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-md-2">瞳距</span>
+                <span class="input-group-text col-2">瞳距</span>
                 <input autocomplete="off" type="text" class="form-control" name="pd" list="pd">
                 <datalist id="pd">
                     <option>42.0</option>
@@ -1508,7 +1508,7 @@
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
-                <span class="input-group-text col-md-1">备注</span>
+                <span class="input-group-text col-2">备注</span>
                 <input autocomplete="off" type="text" name="VS_remark" id="VS_remark" class="form-control">
                 <span id="remake_error"></span>
             </div>
