@@ -31,6 +31,9 @@
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'test1' %}">数据可视化</a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">
                     零售订单
@@ -48,7 +51,16 @@
                     <a class="dropdown-item" href="{% url 'maneu_batch:batch_list' %}">订单列表</a>
                     <a class="dropdown-item" href="{% url 'maneu_batch:batch_insert' %}">添加订单</a>
                 </div>
-            </li>            <!-- Dropdown -->
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">
+                    仓库管理
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'maneu_store:store_list' %}">订单列表</a>
+                    <a class="dropdown-item" href="{% url 'maneu_store:store_insert' %}">添加订单</a>
+                </div>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">
                     个人中心

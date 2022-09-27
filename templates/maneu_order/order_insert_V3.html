@@ -1559,7 +1559,7 @@
                 <div class="col-6">
                     <a type="button" class="btn btn-warning col-12" href="{% url 'maneu_order:order_list' %}">返回</a>
                 </div>
-                <div class="col-6">
+                <div class="col-6 text">
                     <input autocomplete="off" class="btn btn-danger col-12" id="insert" type="submit" value="提交订单">
                 </div>
             </div>
@@ -1574,6 +1574,7 @@
             var month = ("0" + (time.getMonth() + 1)).slice(-2);
             var today = time.getFullYear() + "-" + (month) + "-" + (day);
             $('#order_time').val(today)
+            console.log($('#order_insert').serialize())
         });
     </script>
 {% endblock %}

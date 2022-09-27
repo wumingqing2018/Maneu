@@ -117,3 +117,14 @@ class ManeuVisionSolutions(models.Model):
     class Meta:
         managed = False
         db_table = 'maneu_vision_solutions'
+
+
+class ManeuAfterSales(models.Model):
+    id = models.CharField(max_length=36, primary_key=True, default=uuid.uuid1, editable=False)
+    time = models.DateTimeField()
+    order_id = models.CharField(max_length=36)
+    content = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'maneu_afterSales'

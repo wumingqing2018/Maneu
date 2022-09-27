@@ -64,37 +64,37 @@ def order_search(request):
 def order_insert(request):
     """添加订单"""
     if request.method == 'POST':
-        ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(VS_remark=request.POST['VS_remark'],
-                                                                      OD_BC_DS=request.POST['OD_BC_DS'],
-                                                                      OD_BC_CYL=request.POST['OD_BC_CYL'],
-                                                                      OD_BC_AX=request.POST['OD_BC_AX'],
-                                                                      OD_BC_PR=request.POST['OD_BC_PR'],
-                                                                      OD_BC_FR=request.POST['OD_BC_FR'],
-                                                                      OD_BC_ADD=request.POST['OD_BC_ADD'],
-                                                                      OD_BC_NA=request.POST['OD_BC_NA'],
-                                                                      OS_BC_DS=request.POST['OS_BC_DS'],
-                                                                      OS_BC_CYL=request.POST['OS_BC_CYL'],
-                                                                      OS_BC_AX=request.POST['OS_BC_AX'],
-                                                                      OS_BC_PR=request.POST['OS_BC_PR'],
-                                                                      OS_BC_FR=request.POST['OS_BC_FR'],
-                                                                      OS_BC_ADD=request.POST['OS_BC_ADD'],
-                                                                      OS_BC_NA=request.POST['OS_BC_NA']
+        ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(VS_remark=request.POST.get('VS_remark'),
+                                                                      OD_BC_DS=request.POST.get('OD_BC_DS'),
+                                                                      OD_BC_CYL=request.POST.get('OD_BC_CYL'),
+                                                                      OD_BC_AX=request.POST.get('OD_BC_AX'),
+                                                                      OD_BC_PR=request.POST.get('OD_BC_PR'),
+                                                                      OD_BC_FR=request.POST.get('OD_BC_FR'),
+                                                                      OD_BC_ADD=request.POST.get('OD_BC_ADD'),
+                                                                      OD_BC_NA=request.POST.get('OD_BC_NA'),
+                                                                      OS_BC_DS=request.POST.get('OS_BC_DS'),
+                                                                      OS_BC_CYL=request.POST.get('OS_BC_CYL'),
+                                                                      OS_BC_AX=request.POST.get('OS_BC_AX'),
+                                                                      OS_BC_PR=request.POST.get('OS_BC_PR'),
+                                                                      OS_BC_FR=request.POST.get('OS_BC_FR'),
+                                                                      OS_BC_ADD=request.POST.get('OS_BC_ADD'),
+                                                                      OS_BC_NA=request.POST.get('OS_BC_NA'),
                                                                       )
-        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(SR_remark=request.POST['SR_remark'],
-                                                                                OD_Nv=request.POST['OD_Nv'],
-                                                                                OD_DS=request.POST['OD_DS'],
-                                                                                OD_CYL=request.POST['OD_CYL'],
-                                                                                OD_AX=request.POST['OD_AX'],
-                                                                                OD_NA=request.POST['OD_NA'],
-                                                                                OD_AL=request.POST['OD_AL'],
-                                                                                OD_AC=request.POST['OD_AC'],
-                                                                                OS_Nv=request.POST['OS_Nv'],
-                                                                                OS_DS=request.POST['OS_DS'],
-                                                                                OS_CYL=request.POST['OS_CYL'],
-                                                                                OS_AX=request.POST['OS_AX'],
-                                                                                OS_NA=request.POST['OS_NA'],
-                                                                                OS_AL=request.POST['OS_AL'],
-                                                                                OS_AC=request.POST['OS_AC'],
+        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(SR_remark=request.POST.get('SR_remark'),
+                                                                                OD_Nv=request.POST.get('OD_Nv'),
+                                                                                OD_DS=request.POST.get('OD_DS'),
+                                                                                OD_CYL=request.POST.get('OD_CYL'),
+                                                                                OD_AX=request.POST.get('OD_AX'),
+                                                                                OD_NA=request.POST.get('OD_NA'),
+                                                                                OD_AL=request.POST.get('OD_AL'),
+                                                                                OD_AC=request.POST.get('OD_AC'),
+                                                                                OS_Nv=request.POST.get('OS_Nv'),
+                                                                                OS_DS=request.POST.get('OS_DS'),
+                                                                                OS_CYL=request.POST.get('OS_CYL'),
+                                                                                OS_AX=request.POST.get('OS_AX'),
+                                                                                OS_NA=request.POST.get('OS_NA'),
+                                                                                OS_AL=request.POST.get('OS_AL'),
+                                                                                OS_AC=request.POST.get('OS_AC'),
                                                                                 )
         ManeuGuess_id = service.ManeuGuess_insert(name=request.POST.get('guess_name'),
                                                   phone=request.POST.get('guess_phone'),
@@ -148,9 +148,9 @@ def order_insert(request):
     ua = request.META.get("HTTP_USER_AGENT")
     mobile = judge_pc_or_mobile(ua)
     if mobile:
-        return render(request, 'maneu_order/order_insert_V3.html')
+        return render(request, 'maneu_order/order_insert_V2.html')
     else:
-        return render(request, 'maneu_order/order_insert_v2.html')
+        return render(request, 'maneu_order/order_insert_v3.html')
 
 
 def order_update(request):
@@ -234,3 +234,35 @@ def order_update(request):
             return HttpResponseRedirect(reverse('maneu_order:order_list'))
     else:
         return render(request, 'maneu/error.html', {'msg': '参数错误'})
+
+
+def alterSales_List(request):
+    if request.method == 'POST':
+        order_id = request.POST.get('order_id')
+        return render(request, 'maneu_order/alterSales_list.html', {'order_id': order_id, 'alterSalesList': service.ManeuAfterSales_list(order_id)})
+    else:
+        return HttpResponseRedirect(reverse('maneu_order:order_list'))
+
+
+def alterSales_content(request):
+    if request.method == 'POST':
+        order_id = request.POST.get('order_id')
+        print(order_id)
+        ManeuAfterSales_list = service.ManeuAfterSales_list(order_id)
+        print(ManeuAfterSales_list)
+        return render(request, 'maneu_order/alterSales_content.html', {'alterSalesContent': ManeuAfterSales_list})
+    else:
+        return HttpResponseRedirect(reverse('maneu_order:order_list'))
+
+
+def alterSales_insert(request):
+    if request.method == 'POST':
+        order_id = request.POST.get('order_id')
+        content = request.POST.get('content')
+        insert = service.ManeuAfterSales_insert(content=content, order_id=order_id)
+        return HttpResponseRedirect(reverse('maneu_order:order_list'))
+    elif request.method == 'GET':
+        order_id = request.GET.get('order_id')
+        return render(request, 'maneu_order/alterSales_insert.html', {'order_id': order_id})
+    else:
+        return HttpResponseRedirect(reverse('index'))

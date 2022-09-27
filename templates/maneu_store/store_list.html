@@ -1,24 +1,12 @@
 {% extends 'maneu/base1.html' %}
 {% load static %}
-
 {% block content %}
     <!--内容栏-->
-    <table class="table">
-        <tr class="yellow">
-            <td style="width:90%;">
-                <a href="{% url 'store:glass_list' %}">眼镜仓库</a>
-            </td>
-            <td style="width:90%;">
-                <a href="{% url 'store:glass_insert' %}">添加产品</a>
-            </td>
-        </tr>
-        <tr class="yellow">
-            <td style="width:90%;">
-                <a href="{% url 'store:framework_list' %}">镜框仓库</a>
-            </td>
-            <td style="width:90%;">
-                <a href="{% url 'store:framework_insert' %}">添加产品</a>
-            </td>
-        </tr>
-    </table>
+    <div class="container ">
+        <table class="table table-sm">
+                <tr>
+                    <td>{{ store_list }}</td>
+                </tr>
+        </table>
+    </div>
 {% endblock %}

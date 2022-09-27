@@ -11,7 +11,7 @@ from maneu_order.models import ManeuStore
 from maneu_order.models import ManeuSubjectiveRefraction
 from maneu_order.models import ManeuUsers
 from maneu_order.models import ManeuVisionSolutions
-
+from maneu_order.models import ManeuAfterSales
 
 def find_order_all(users_id=''):
     """
@@ -285,6 +285,30 @@ def ManeuOrderV2_insert(name='', phone='', guess_id='', users_id='', store_id=''
 def ManeuOrderV2_update(order_id='', name='', phone=''):
     try:
         return ManeuOrderV2.objects.filter(id=order_id).update(name=name, phone=phone)
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
+def ManeuAfterSales_list(order_id=''):
+    try:
+        return ManeuAfterSales.objects.filter(order_id=order_id).order_by('-time').all()
+    except BaseException as msg:
+        print(msg)
+        return
+
+
+def ManeuAfterSales_content(order_id=''):
+    try:
+        return ManeuAfterSales.objects.filter(order_id=order_id).first()
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
+def ManeuAfterSales_insert(order_id='', content=''):
+    try:
+        return ManeuAfterSales.objects.create(order_id=order_id, content=content)
     except BaseException as msg:
         print(msg)
         return None
