@@ -10,8 +10,12 @@
                 <td class="blue col-sm-2">
                     <h4>创建时间</h4>
                 </td>
-                <td class="blue col-sm-10">
-                    <form class="col-md-1 offset-md-11" method='get' action="{% url 'maneu_order:alterSalesInsert' %}">
+                                <td class="blue col-sm-9">
+                    <h4>售后内容</h4>
+                </td>
+
+                <td class="blue col-sm-1">
+                    <form class="col-12" method='get' action="{% url 'maneu_order:alterSalesInsert' %}">
                         <div class="input-group input-group-sm">
                             <input type="hidden" name="order_id" value="{{ order_id }}">
                             <input type='submit' class='btn btn-warning' value='添加订单'>
@@ -25,7 +29,7 @@
                         <td class="blue col-sm-2">
                             <p>{{ order.time }}</p>
                         </td>
-                        <td class="blue col-sm-10">
+                        <td class="blue col-sm-10" colspan="2">
                             <p>{{ order.content }}</p>
                         </td>
                     </tr>

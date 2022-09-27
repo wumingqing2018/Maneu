@@ -148,9 +148,9 @@ def order_insert(request):
     ua = request.META.get("HTTP_USER_AGENT")
     mobile = judge_pc_or_mobile(ua)
     if mobile:
-        return render(request, 'maneu_order/order_insert_V2.html')
+        return render(request, 'maneu_order/order_insert_V3.html')
     else:
-        return render(request, 'maneu_order/order_insert_v3.html')
+        return render(request, 'maneu_order/order_insert_v2.html')
 
 
 def order_update(request):
