@@ -48,6 +48,14 @@
                     <b>客户信息（Guess information）</b>
                 </td>
             </tr>
+                        <tr>
+                <td>
+                    <span>录入时间</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ guess.time }}</span>
+                </td>
+            </tr>
             <tr>
                 <td>
                     <span>客户姓名</span>
@@ -120,10 +128,10 @@
             </tr>
             <tr>
                 <td>
-                    <span>报告日期</span>
+                    <span>录入时间</span>
                 </td>
                 <td colspan="2">
-                    <span>{{ order.time }}</span>
+                    <span>{{ subjectiverefraction.time }}</span>
                 </td>
             </tr>
             <tr>
@@ -225,7 +233,7 @@
                     <span>报告日期</span>
                 </td>
                 <td colspan="2">
-                    <span>{{ order.time }}</span>
+                    <span>{{ visionsolutions.time }}</span>
                 </td>
             </tr>
             <tr>
@@ -350,7 +358,7 @@
                     <span>购买日期</span>
                 </td>
                 <td colspan="2">
-                    <span>{{ order.time }}</span>
+                    <span>{{ store.time }}</span>
                 </td>
             </tr>
             <tr>
@@ -574,27 +582,28 @@
                 </td>
             </tr>
         </table>
-        <div class="col-12 row">
-            <div class="col-3">
-                <a class="col-4 btn btn-primary" type="button" href="{% url 'maneu_order:order_list' %}">返回</a>
+        <div class="col-md-12 col-sm-12 row" style="text-align: center;">
+            <div class="col-md-3 col-sm-3
+F">
+                <a class="col-md-4 col-sm-12 btn btn-primary" type="button" href="{% url 'maneu_order:order_list' %}">返回列表</a>
             </div>
-            <div class="col-3">
+            <div class="col-md-3 col-sm-3">
                 <form method="post" action="{% url 'maneu_order:alterSalesList' %}">
                     {% csrf_token %}
                     <input type="hidden" name="order_id" value="{{ order.id }}">
-                    <input type="submit" class="col-4 btn btn-warning" value="维修记录">
+                    <input type="submit" class="col-md-4 col-sm-12 btn btn-warning" value="维修记录">
                 </form>
             </div>
-            <div class="col-3">
+            <div class="col-md-3 col-sm-4">
                 <form method="get" action="{% url 'maneu_order:order_update' %}">
                     <input type="hidden" name="order_id" value="{{ order.id }}">
-                    <input type="submit" class="col-4 btn btn-warning" value="修改订单">
+                    <input type="submit" class="col-md-4 col-sm-12 btn btn-warning" value="修改订单">
                 </form>
             </div>
-            <div class="col-3">
+            <div class="col-md-3 col-sm-4">
                 <form method="get" action="{% url 'maneu_order:order_delete' %}">
                     <input type="hidden" name="order_id" value="{{ order.id }}">
-                    <input type="submit" class="col-4 btn btn-danger" value="删除">
+                    <input type="submit" class="col-md-4 col-sm-12 btn btn-danger" value="删除订单">
                 </form>
             </div>
         </div>

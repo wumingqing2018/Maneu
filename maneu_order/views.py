@@ -64,6 +64,7 @@ def order_search(request):
 def order_insert(request):
     """添加订单"""
     if request.method == 'POST':
+        print(request.POST)
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(VS_remark=request.POST.get('VS_remark'),
                                                                       OD_BC_DS=request.POST.get('OD_BC_DS'),
                                                                       OD_BC_CYL=request.POST.get('OD_BC_CYL'),
@@ -79,6 +80,7 @@ def order_insert(request):
                                                                       OS_BC_FR=request.POST.get('OS_BC_FR'),
                                                                       OS_BC_ADD=request.POST.get('OS_BC_ADD'),
                                                                       OS_BC_NA=request.POST.get('OS_BC_NA'),
+                                                                      time=request.POST.get('vs_time'),
                                                                       )
         ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(SR_remark=request.POST.get('SR_remark'),
                                                                                 OD_Nv=request.POST.get('OD_Nv'),
@@ -95,6 +97,7 @@ def order_insert(request):
                                                                                 OS_NA=request.POST.get('OS_NA'),
                                                                                 OS_AL=request.POST.get('OS_AL'),
                                                                                 OS_AC=request.POST.get('OS_AC'),
+                                                                                time=request.POST.get('sr_time')
                                                                                 )
         ManeuGuess_id = service.ManeuGuess_insert(name=request.POST.get('guess_name'),
                                                   phone=request.POST.get('guess_phone'),
@@ -103,7 +106,8 @@ def order_insert(request):
                                                   OT=request.POST.get('OT'),
                                                   EM=request.POST.get('EM'),
                                                   DFH=request.POST.get('DFH'),
-                                                  remark=request.POST.get('remark')
+                                                  remark=request.POST.get('remark'),
+                                                  time=request.POST.get('guess_time'),
                                                   )
         ManeuStore_content = {'arg50': request.POST.get('arg50'),
                               'arg51': request.POST.get('arg51'),
@@ -135,15 +139,13 @@ def order_insert(request):
                               'arg13': request.POST.get('arg13'),
                               'arg14': request.POST.get('arg14'),
                               }
-        ManeuStore_id = service.ManeuStore_insert(content=json.dumps(ManeuStore_content))
-        order_time = request.POST.get('order_time')
+        ManeuStore_id = service.ManeuStore_insert(content=json.dumps(ManeuStore_content), time=request.POST.get('store_time'))
         service.ManeuOrderV2_insert(name=request.POST.get('guess_name'),
                                     phone=request.POST.get('guess_phone'),
-
                                     users_id=request.session.get('id'),
                                     store_id=ManeuStore_id.id,
                                     guess_id=ManeuGuess_id.id, visionsolutions_id=ManeuVisionSolutions_id.id,
-                                    subjectiverefraction_id=ManeuSubjectiveRefraction_id.id, order_time=order_time)
+                                    subjectiverefraction_id=ManeuSubjectiveRefraction_id.id,)
         return HttpResponseRedirect(reverse('maneu_order:order_list'))
     ua = request.META.get("HTTP_USER_AGENT")
     mobile = judge_pc_or_mobile(ua)

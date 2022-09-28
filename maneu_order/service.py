@@ -158,7 +158,7 @@ def delete_subjectiverefraction_id(id=''):
 
 def ManeuVisionSolutions_insert(VS_remark='', OD_BC_DS='', OD_BC_CYL='', OD_BC_AX='', OD_BC_PR='', OD_BC_FR='',
                                 OD_BC_ADD='', OD_BC_NA='', OS_BC_DS='', OS_BC_CYL='', OS_BC_AX='', OS_BC_PR='',
-                                OS_BC_FR='', OS_BC_ADD='', OS_BC_NA='', pd='', function=''):
+                                OS_BC_FR='', OS_BC_ADD='', OS_BC_NA='', pd='', function='', time=''):
     try:
         ManeuVisionSolutions_content = {'BC_remark': VS_remark, 'pd': pd, 'function': function,
                                         'OD_BC_DS': OD_BC_DS, 'OD_BC_CYL': OD_BC_CYL, 'OD_BC_AX': OD_BC_AX,
@@ -168,7 +168,7 @@ def ManeuVisionSolutions_insert(VS_remark='', OD_BC_DS='', OD_BC_CYL='', OD_BC_A
                                         'OS_BC_PR': OS_BC_PR, 'OS_BC_FR': OS_BC_FR, 'OS_BC_ADD': OS_BC_ADD,
                                         'OS_BC_NA': OS_BC_NA,
                                         }
-        return ManeuVisionSolutions.objects.create(content=json.dumps(ManeuVisionSolutions_content))
+        return ManeuVisionSolutions.objects.create(time=time, content=json.dumps(ManeuVisionSolutions_content))
     except BaseException as msg:
         print(msg)
         return None
@@ -192,7 +192,7 @@ def ManeuVisionSolutions_update(id='', VS_remark='', OD_BC_DS='', OD_BC_CYL='', 
         return None
 
 
-def ManeuSubjectiveRefraction_insert(SR_remark='',
+def ManeuSubjectiveRefraction_insert(SR_remark='', time='',
                                      OD_Nv='', OD_DS='', OD_CYL='', OD_AX='', OD_NA='', OD_AL='', OD_AC='',
                                      OS_Nv='', OS_DS='', OS_CYL='', OS_AX='', OS_NA='', OS_AL='', OS_AC=''):
     try:
@@ -202,7 +202,7 @@ def ManeuSubjectiveRefraction_insert(SR_remark='',
                                              'OS_Nv': OS_Nv, 'OS_DS': OS_DS, 'OS_CYL': OS_CYL, 'OS_AX': OS_AX,
                                              'OS_NA': OS_NA, 'OS_AL': OS_AL, 'OS_AC': OS_AC
                                              }
-        return ManeuSubjectiveRefraction.objects.create(content=json.dumps(ManeuSubjectiveRefraction_content))
+        return ManeuSubjectiveRefraction.objects.create(time=time, content=json.dumps(ManeuSubjectiveRefraction_content))
     except BaseException as msg:
         print(msg)
         return None
@@ -225,11 +225,11 @@ def ManeuSubjectiveRefraction_update(id='', SR_remark='',
         return None
 
 
-def ManeuGuess_insert(name='', phone='', sex='', age='', OT='', EM='', DFH='', remark=''):
+def ManeuGuess_insert(name='', phone='', sex='', age='', OT='', EM='', DFH='', remark='', time=''):
     try:
         if age == '':
             age = datetime.datetime(2022, 1, 1)
-        return ManeuGuess.objects.create(name=name, phone=phone, sex=sex, age=age, ot=OT, em=EM, dfh=DFH, remark=remark)
+        return ManeuGuess.objects.create(name=name, phone=phone, sex=sex, age=age, ot=OT, em=EM, dfh=DFH, remark=remark, time=time)
     except BaseException as msg:
         print(msg)
         return None
@@ -246,9 +246,9 @@ def ManeuGuess_update(id='', name='', phone='', sex='', age='', OT='', EM='', DF
         return None
 
 
-def ManeuStore_insert(content):
+def ManeuStore_insert(content, time=''):
     try:
-        return ManeuStore.objects.create(content=content)
+        return ManeuStore.objects.create(content=content, time=time)
     except BaseException as msg:
         print(msg)
         return None
@@ -272,11 +272,11 @@ def ManeuStore_update(arg10="", arg11="", arg12="", arg13="",
         return None
 
 
-def ManeuOrderV2_insert(name='', phone='', guess_id='', users_id='', store_id='', visionsolutions_id='', subjectiverefraction_id='', order_time=''):
+def ManeuOrderV2_insert(name='', phone='', guess_id='', users_id='', store_id='', visionsolutions_id='', subjectiverefraction_id=''):
     try:
         return ManeuOrderV2.objects.create(name=name, phone=phone, guess_id=guess_id, users_id=users_id,
                                            store_id=store_id, visionsolutions_id=visionsolutions_id,
-                                           subjectiverefraction_id=subjectiverefraction_id, time=order_time)
+                                           subjectiverefraction_id=subjectiverefraction_id)
     except BaseException as msg:
         print(msg)
         return None
