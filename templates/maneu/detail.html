@@ -8,286 +8,291 @@
         <img src="{% static 'img/logo16x9.svg' %}" class="img-responsive col-2" alt="Cinque Terre">
         <h4 class="blue">徕可</h4>
     </div>
-    <table class="table table-bordered table-sm">
-        <tr class="banner">
-            <td colspan="3">
-                <b>验光中心信息（Optometry center information）</b>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>中心名称</span>
-            </td>
-            <td colspan="2">
-                <span>{{ users.nickname }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>联系电话</span>
-            </td>
-            <td colspan="2">
-                <span>{{ users.phone }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>所在地址</span>
-            </td>
-            <td colspan="2">
-                <span>{{ users.add }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>特色服务</span>
-            </td>
-            <td colspan="2">
-                <span>{{ users.remark }}</span>
-            </td>
-        </tr>
-        <tr class="banner">
-            <td colspan="3">
-                <b>屈光检验结果（Subjective refraction）</b>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>报告日期</span>
-            </td>
-            <td colspan="2">
-                <span>{{ order.time }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>参数</span>
-            </td>
-            <td>
-                <span>左眼 OS</span>
-            </td>
-            <td>
-                <span>右眼 OD</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>裸眼视力 VA</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OS_Nv }}</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OD_Nv }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>球镜 Sph</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OS_DS }}</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OD_DS }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>柱镜 Cyl</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OS_CYL }}</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OD_CYL }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>轴位 Axial</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OS_AX }}</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OD_AX }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>角膜曲率 AK</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OS_NA }}</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OD_AX }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>眼轴长度 AL</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OS_AL }}</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OD_AL }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>矫正视力 BCVA</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OS_AC }}</span>
-            </td>
-            <td>
-                <span>{{ subjectiverefraction.OS_AC }}</span>
-            </td>
-        </tr>
-        <tr class="banner">
-            <td colspan="3">
-                <b>视力解决方案（Vision Solutions）</b>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>报告日期</span>
-            </td>
-            <td colspan="2">
-                <span>{{ order.time }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>使用需求</span>
-            </td>
-            <td colspan="2">
-                <span>{{ visionsolutions.function }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>参数</span>
-            </td>
-            <td>
-                <span>左眼 OS</span>
-            </td>
-            <td>
-                <span>右眼 OD</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>球镜 Sph</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OS_BC_DS }}</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OD_BC_DS }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>柱镜 Cyl</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OS_BC_CYL }}</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OD_BC_CYL }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>轴位 Axial</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OS_BC_AX }}</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OD_BC_AX }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>棱镜 Pr</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OS_BC_PR }}</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OD_BC_PR }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>基底取向 Base</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OS_BC_FR }}</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OD_BC_FR }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>下加光 ADD</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OS_BC_ADD }}</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OD_BC_ADD }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>矫正视力 BSCVA</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OS_BC_NA }}</span>
-            </td>
-            <td>
-                <span>{{ visionsolutions.OD_BC_NA }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>瞳距 PD</span>
-            </td>
-            <td colspan="2">
-                <span>{{ visionsolutions.PD }}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span>验光师建议</span>
-            </td>
-            <td colspan="2">
-                <span>{{ visionsolutions.vs_remark }}</span>
-            </td>
-        </tr>
-        <tr class="banner">
-            <td colspan="3">
-                <b>产品订单信息（Product Orders）</b>
-            </td>
-        </tr>
-        {% if store.arg10 %}
+        <table class="table table-bordered table-sm text-left">
+            <tr class="banner">
+                <td colspan="3">
+                    <b>验光中心信息（Optometry center information）</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>中心名称</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ users.nickname }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>联系电话</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ users.phone }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>所在地址</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ users.add }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>特色服务</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ users.remark }}</span>
+                </td>
+            </tr>
+            <tr class="banner">
+                <td colspan="3">
+                    <b>屈光检验结果（Subjective refraction）</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>录入时间</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ subjectiverefraction.time }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>参数</span>
+                </td>
+                <td>
+                    <span>左眼 OS</span>
+                </td>
+                <td>
+                    <span>右眼 OD</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>裸眼视力 VA</span>
+
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OS_VA }}</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OD_VA }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>球镜 SPH</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OS_SPH }}</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OD_SPH }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>柱镜 CYL</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OS_CYL }}</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OD_CYL }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>轴位 Axial</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OS_AX }}</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OD_AX }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>角膜曲率 AK</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OS_AK }}</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OD_AK }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>眼轴长度 AL</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OS_AL }}</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OD_AL }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>矫正视力 BCVA</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OS_BCVA }}</span>
+                </td>
+                <td>
+                    <span>{{ subjectiverefraction.OD_BCVA }}</span>
+                </td>
+            </tr>
+            <tr class="banner">
+                <td colspan="3">
+                    <b>视力解决方案（Vision Solutions）</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>报告日期</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ visionsolutions.time }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>使用需求</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ visionsolutions.function }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>参数</span>
+                </td>
+                <td>
+                    <span>左眼 OS</span>
+                </td>
+                <td>
+                    <span>右眼 OD</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>球镜 Sph</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OS_SPH }}</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OD_SPH }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>柱镜 Cyl</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OS_CYL }}</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OD_CYL }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>轴位 Axial</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OS_AX }}</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OD_AX }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>棱镜 Pr</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OS_PR }}</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OD_PR }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>基底取向 Base</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OS_FR }}</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OD_FR }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>下加光 ADD</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OS_ADD }}</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OD_ADD }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>矫正视力 BSCVA</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OS_BCVA }}</span>
+                </td>
+                <td>
+                    <span>{{ visionsolutions.OD_BCVA }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>瞳距 PD</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ visionsolutions.PD }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>验光师建议</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ visionsolutions.VS_remark }}</span>
+                </td>
+            </tr>
+            <tr class="banner">
+                <td colspan="3">
+                    <b>产品订单信息（Product Orders）</b>
+                </td>
+            </tr>
             <tr>
                 <td>
                     <span>购买日期</span>
                 </td>
                 <td colspan="2">
-                    <span>{{ order.time }}</span>
+                    <span>{{ store.time }}</span>
                 </td>
             </tr>
             <tr>
-                <td colspan="3">{{ store.arg10 }}</td>
+                <td>
+                    <span>类别</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ store.arg10 }}</span>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -313,10 +318,21 @@
                     <span>{{ store.arg13 }}</span>
                 </td>
             </tr>
-        {% endif %}
-        {% if store.arg20 %}
             <tr>
-                <td colspan="3">{{ store.arg20 }}</td>
+                <td>
+                    <span>价格</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ store.arg14 }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>类别</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ store.arg20 }}</span>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -342,10 +358,21 @@
                     <span>{{ store.arg23 }}</span>
                 </td>
             </tr>
-        {% endif %}
-        {% if store.arg30 %}
             <tr>
-                <td colspan="3">{{ store.arg30 }}</td>
+                <td>
+                    <span>价格</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ store.arg24 }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>类别</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ store.arg30 }}</span>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -371,10 +398,21 @@
                     <span>{{ store.arg33 }}</span>
                 </td>
             </tr>
-        {% endif %}
-        {% if store.arg40 %}
             <tr>
-                <td colspan="3">{{ store.arg40 }}</td>
+                <td>
+                    <span>价格</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ store.arg34 }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>类别</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ store.arg40 }}</span>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -400,10 +438,21 @@
                     <span>{{ store.arg43 }}</span>
                 </td>
             </tr>
-        {% endif %}
-        {% if store.arg50 %}
             <tr>
-                <td colspan="3">{{ store.arg50 }}</td>
+                <td>
+                    <span>价格</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ store.arg44 }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>类别</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ store.arg50 }}</span>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -429,26 +478,33 @@
                     <span>{{ store.arg53 }}</span>
                 </td>
             </tr>
-        {% endif %}
-        <tr>
-            <td>
-                <span>配镜师建议</span>
-            </td>
-            <td colspan="2">
-                <span>{{ store.sr_remark }}</span>
-            </td>
-        </tr>
-        <tr class="banner">
-            <td colspan="3">
-                <b>注意事项（matters need attention）</b>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3">
-                <span>处方由眼科专家根据患者屈光不正性质、年龄、用眼需求等综合因素决定。</span>
-                <span>选择镜片、镜架及按眼科专家指导的配戴方法才能确保矫正效果和视觉健康。</span>
-                <span>数据为当时检查状态的结果，检查后如超过六个月配镜，建议复查。</span>
-            </td>
-        </tr>
-    </table>
+            <tr>
+                <td>
+                    <span>价格</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ store.arg54 }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>配镜师建议</span>
+                </td>
+                <td colspan="2">
+                    <span>{{ store.remark }}</span>
+                </td>
+            </tr>
+            <tr class="banner">
+                <td colspan="3">
+                    <b>注意事项（matters need attention）</b>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <span>处方由眼科专家根据患者屈光不正性质、年龄、用眼需求等综合因素决定。</span>
+                    <span>选择镜片、镜架及按眼科专家指导的配戴方法才能确保矫正效果和视觉健康。</span>
+                    <span>数据为当时检查状态的结果，检查后如超过六个月配镜，建议复查。</span>
+                </td>
+            </tr>
+        </table>
 {% endblock %}
