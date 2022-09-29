@@ -164,19 +164,9 @@ def ManeuVisionSolutions_insert(content=''):
         return None
 
 
-def ManeuVisionSolutions_update(id='', VS_remark='', OD_BC_DS='', OD_BC_CYL='', OD_BC_AX='', OD_BC_PR='', OD_BC_FR='',
-                                OD_BC_ADD='', OD_BC_NA='', OS_BC_DS='', OS_BC_CYL='', OS_BC_AX='', OS_BC_PR='',
-                                OS_BC_FR='', OS_BC_ADD='', OS_BC_NA='', pd='', function=''):
+def ManeuVisionSolutions_update(id='', content=''):
     try:
-        ManeuVisionSolutions_content = {'BC_remark': VS_remark, 'pd': pd, 'function': function,
-                                        'OD_BC_DS': OD_BC_DS, 'OD_BC_CYL': OD_BC_CYL, 'OD_BC_AX': OD_BC_AX,
-                                        'OD_BC_PR': OD_BC_PR, 'OD_BC_FR': OD_BC_FR, 'OD_BC_ADD': OD_BC_ADD,
-                                        'OD_BC_NA': OD_BC_NA,
-                                        'OS_BC_DS': OS_BC_DS, 'OS_BC_CYL': OS_BC_CYL, 'OS_BC_AX': OS_BC_AX,
-                                        'OS_BC_PR': OS_BC_PR, 'OS_BC_FR': OS_BC_FR, 'OS_BC_ADD': OS_BC_ADD,
-                                        'OS_BC_NA': OS_BC_NA,
-                                        }
-        return ManeuVisionSolutions.objects.filter(id=id).update(content=json.dumps(ManeuVisionSolutions_content))
+        return ManeuVisionSolutions.objects.filter(id=id).update(content=content)
     except BaseException as msg:
         print(msg)
         return None
@@ -190,18 +180,9 @@ def ManeuSubjectiveRefraction_insert(content=''):
         return None
 
 
-def ManeuSubjectiveRefraction_update(id='', SR_remark='',
-                                     OD_Nv='', OD_DS='', OD_CYL='', OD_AX='', OD_NA='', OD_AL='', OD_AC='',
-                                     OS_Nv='', OS_DS='', OS_CYL='', OS_AX='', OS_NA='', OS_AL='', OS_AC=''):
+def ManeuSubjectiveRefraction_update(id='', content=''):
     try:
-        ManeuSubjectiveRefraction_content = {'SR_remark': SR_remark,
-                                             'OD_Nv': OD_Nv, 'OD_DS': OD_DS, 'OD_CYL': OD_CYL, 'OD_AX': OD_AX,
-                                             'OD_NA': OD_NA, 'OD_AL': OD_AL, 'OD_AC': OD_AC,
-                                             'OS_Nv': OS_Nv, 'OS_DS': OS_DS, 'OS_CYL': OS_CYL, 'OS_AX': OS_AX,
-                                             'OS_NA': OS_NA, 'OS_AL': OS_AL, 'OS_AC': OS_AC
-                                             }
-        return ManeuSubjectiveRefraction.objects.filter(id=id).update(
-            content=json.dumps(ManeuSubjectiveRefraction_content))
+        return ManeuSubjectiveRefraction.objects.filter(id=id).update(content=content)
     except BaseException as msg:
         print(msg)
         return None
@@ -215,12 +196,10 @@ def ManeuGuess_insert(content=''):
         return msg
 
 
-def ManeuGuess_update(id='', name='', phone='', sex='', age='', OT='', EM='', DFH='', remark=''):
+def ManeuGuess_update(id='', content=''):
     try:
-        if age == '':
-            age = datetime.datetime(2022, 1, 1)
-        return ManeuGuess.objects.filter(id=id).update(name=name, phone=phone, sex=sex, age=age, ot=OT, em=EM, dfh=DFH,
-                                                       remark=remark)
+        contents = json.loads(content)
+        return ManeuGuess.objects.filter(id=id).update(name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
     except BaseException as msg:
         print(msg)
         return None
@@ -234,19 +213,9 @@ def ManeuStore_insert(content=''):
         return None
 
 
-def ManeuStore_update(arg10="", arg11="", arg12="", arg13="",
-                      arg20="", arg21="", arg22="", arg23="",
-                      arg30="", arg31="", arg32="", arg33="",
-                      arg40="", arg41="", arg42="", arg43="",
-                      arg50="", arg51="", arg52="", arg53="",
-                      id=''):
+def ManeuStore_update(content='', id=''):
     try:
-        ManeuStore_content = {'arg50': arg50, 'arg51': arg51, 'arg52': arg52, 'arg53': arg53,
-                              'arg40': arg40, 'arg41': arg41, 'arg42': arg42, 'arg43': arg43,
-                              'arg30': arg30, 'arg31': arg31, 'arg32': arg32, 'arg33': arg33,
-                              'arg20': arg20, 'arg21': arg21, 'arg22': arg22, 'arg23': arg23,
-                              'arg10': arg10, 'arg11': arg11, 'arg12': arg12, 'arg13': arg13}
-        return ManeuStore.objects.filter(id=id).update(content=json.dumps(ManeuStore_content))
+        return ManeuStore.objects.filter(id=id).update(content=content)
     except BaseException as msg:
         print(msg)
         return None

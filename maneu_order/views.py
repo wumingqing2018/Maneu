@@ -109,62 +109,15 @@ def order_update(request):
         order_id = verify.order_id_method_post(request)
         if order_id:
             order = service.find_order_id(order_id=order_id, users_id=request.session.get('id'))
-            ManeuGuess_id = service.ManeuGuess_update(id=order.guess_id,
-                                                      name=request.POST['guess_name'],
-                                                      phone=request.POST['guess_phone'],
-                                                      sex=request.POST['sex'], age=request.POST['age'],
-                                                      OT=request.POST['OT'], EM=request.POST['EM'],
-                                                      DFH=request.POST['DFH'],
-                                                      remark=request.POST['remark'])
-            ManeuStore_id = service.ManeuStore_update(arg10=request.POST['arg10'], arg11=request.POST['arg11'],
-                                                      arg12=request.POST['arg12'], arg13=request.POST['arg13'],
-                                                      arg20=request.POST['arg20'], arg21=request.POST['arg21'],
-                                                      arg22=request.POST['arg22'], arg23=request.POST['arg23'],
-                                                      arg30=request.POST['arg30'], arg31=request.POST['arg31'],
-                                                      arg32=request.POST['arg32'], arg33=request.POST['arg33'],
-                                                      arg40=request.POST['arg40'], arg41=request.POST['arg41'],
-                                                      arg42=request.POST['arg42'], arg43=request.POST['arg43'],
-                                                      arg50=request.POST['arg50'], arg51=request.POST['arg51'],
-                                                      arg52=request.POST['arg52'], arg53=request.POST['arg53'],
-                                                      id=order.store_id)
-            ManeuVisionSolutions_id = service.ManeuVisionSolutions_update(id=order.visionsolutions_id,
-                                                                          VS_remark=request.POST['VS_remark'],
-                                                                          OD_BC_DS=request.POST['OD_BC_DS'],
-                                                                          OD_BC_CYL=request.POST['OD_BC_CYL'],
-                                                                          OD_BC_AX=request.POST['OD_BC_AX'],
-                                                                          OD_BC_PR=request.POST['OD_BC_PR'],
-                                                                          OD_BC_FR=request.POST['OD_BC_FR'],
-                                                                          OD_BC_ADD=request.POST['OD_BC_ADD'],
-                                                                          OD_BC_NA=request.POST['OD_BC_NA'],
-                                                                          OS_BC_DS=request.POST['OS_BC_DS'],
-                                                                          OS_BC_CYL=request.POST['OS_BC_CYL'],
-                                                                          OS_BC_AX=request.POST['OS_BC_AX'],
-                                                                          OS_BC_PR=request.POST['OS_BC_PR'],
-                                                                          OS_BC_FR=request.POST['OS_BC_FR'],
-                                                                          OS_BC_ADD=request.POST['OS_BC_ADD'],
-                                                                          OS_BC_NA=request.POST['OS_BC_NA']
-                                                                          )
-            ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_update(id=order.subjectiverefraction_id,
-                                                                                    SR_remark=request.POST['SR_remark'],
-                                                                                    OD_Nv=request.POST['OD_Nv'],
-                                                                                    OD_DS=request.POST['OD_DS'],
-                                                                                    OD_CYL=request.POST['OD_CYL'],
-                                                                                    OD_AX=request.POST['OD_AX'],
-                                                                                    OD_NA=request.POST['OD_NA'],
-                                                                                    OD_AL=request.POST['OD_AL'],
-                                                                                    OD_AC=request.POST['OD_AC'],
-                                                                                    OS_Nv=request.POST['OS_Nv'],
-                                                                                    OS_DS=request.POST['OS_DS'],
-                                                                                    OS_CYL=request.POST['OS_CYL'],
-                                                                                    OS_AX=request.POST['OS_AX'],
-                                                                                    OS_NA=request.POST['OS_NA'],
-                                                                                    OS_AL=request.POST['OS_AL'],
-                                                                                    OS_AC=request.POST['OS_AC'],
-                                                                                    )
+            ManeuGuess_id = service.ManeuGuess_update(id=order.guess_id, content=request.POST.get('Guess_information'))
+            ManeuStore_id = service.ManeuStore_update(content=request.POST.get('Product_Orders'), id=order.store_id)
+            ManeuVisionSolutions_id = service.ManeuVisionSolutions_update(id=order.visionsolutions_id, content=request.POST.get('Vision_Solutions'))
+            ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_update(id=order.subjectiverefraction_id, content=request.POST.get('Subjective_refraction'))
+            guess_content = json.loads(request.POST.get('Guess_information'))
             service.ManeuOrderV2_update(order_id=order.id,
-                                        name=request.POST['guess_name'],
-                                        phone=request.POST['guess_phone'])
-            return HttpResponseRedirect(reverse('maneu_order:order_list'))
+                                        name=guess_content['guess_name'],
+                                        phone=guess_content['guess_phone'],)
+        return HttpResponseRedirect(reverse('maneu_order:order_list'))
     else:
         return render(request, 'maneu/error.html', {'msg': '参数错误'})
 

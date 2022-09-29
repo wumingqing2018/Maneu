@@ -2,20 +2,15 @@
 {% load static %}
 {% block content %}
     <div class="container" style="margin-top: 3%; margin-bottom: 5%">
-        <form id="order_insert" class="vertical col-md-12" action="{% url 'maneu_order:order_update' %}" method="post">
-            <input type="hidden" name="order_id" value="{{ order.id }}">
-            {% csrf_token %}
-            <h4>客户个人信息</h4>
-            <table class="table">
-                <tr>
-                    <td class="col-sm-12" colspan="12"></td>
-                </tr>
+        {% csrf_token %}
+        <h4>客户个人信息</h4>
+        <table class="table">
+            <form class="vertical col-md-12" id="Guess_information">
                 <tr>
                     <td class="col-sm-2" colspan="2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">电话</span>
-                            <input type="text" name="guess_phone" id="guess_phone" class="form-control"
-                                   value="{{ guess.phone }}">
+                            <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off" value="{{ guess.phone }}">
                             <span id="phone_error"></span>
                         </div>
                     </td>
@@ -25,15 +20,14 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">姓名</span>
-                            <input type="hidden" name="order" id="order">
-                            <input type="text" name="guess_name" id="guess_name" class="form-control"
-                                   value="{{ guess.name }}">
+                            <input id="order" name="order" type="hidden" autocomplete="off">
+                            <input class="form-control" id="guess_name" name="guess_name" type="text" autocomplete="off" value="{{ guess.name }}">
                         </div>
                     </td>
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">性别</span>
-                            <input type="text" name="sex" class="form-control" list="sex" value="{{ guess.sex }}">
+                            <input autocomplete="off" type="text" name="sex" class="form-control" list="sex" value="{{ guess.sex }}">
                             <datalist id="sex">
                                 <option>男</option>
                                 <option>女</option>
@@ -42,14 +36,14 @@
                     </td>
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
-                            <span class="input-group-text">出生日期</span>
-                            <input type="date" name="age" class="form-control" value="{{ guess.age }}">
+                            <span class="input-group-text">年龄</span>
+                            <input autocomplete="off" type="date" id="age" name="age" class="form-control date_time" value="{{ guess.age }}">
                         </div>
                     </td>
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">眼位</span>
-                            <input type="text" name="OT" list="OT" class="form-control" value="{{ guess.ot }}">
+                            <input autocomplete="off" type="text" name="OT" list="OT" class="form-control" value="{{ guess.ot }}">
                             <datalist id="OT">
                                 <option>正位眼</option>
                                 <option>斜视</option>
@@ -59,7 +53,7 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">主视眼</span>
-                            <input type="text" name="EM" list="EM" class="form-control" value="{{ guess.em }}">
+                            <input autocomplete="off" type="text" name="EM" list="EM" class="form-control" value="{{ guess.em }}">
                             <datalist id="EM">
                                 <option>右</option>
                                 <option>左</option>
@@ -69,7 +63,7 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">病族史</span>
-                            <input type="text" name="DFH" list="DFH" class="form-control" value="{{ guess.dfh }}">
+                            <input autocomplete="off" type="text" name="DFH" list="DFH" class="form-control" value="{{ guess.dfh }}">
                             <datalist id="DFH">
                                 <option>有</option>
                                 <option>无</option>
@@ -81,14 +75,16 @@
                     <td class="col-sm-12" colspan="12">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">备注</span>
-                            <input type="text" name="remark" id="remark" class="form-control" value="{{ guess.remark }}">
+                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control" value="{{ guess.remark }}">
                             <span id="remake_error"></span>
                         </div>
                     </td>
                 </tr>
-            </table>
-            <h4>屈光检验结果</h4>
-            <table class="table">
+            </form>
+        </table>
+        <h4>屈光检验结果</h4>
+        <table class="table">
+            <form class="vertical col-md-12" id="Subjective_refraction">
                 <tr>
                     <td class="col-sm-1"></td>
                     <td class="col-sm-1"><span>裸眼视力</span></td>
@@ -104,9 +100,8 @@
                     <td class="col-sm-8" colspan="8">
                         <div class="input-group input-group-sm mb-8">
                             <span class="input-group-text col-md-1">右眼OD</span>
-                            <input type="text" name="OD_Nv" list="OD_Nv" class="form-control"
-                                   value="{{ subjectiverefraction.OD_Nv }}">
-                            <datalist id="OD_Nv">
+                            <input autocomplete="off" type="text" name="OD_VA" list="OD_VA" class="form-control" value="{{ subjectiverefraction.OD_VA }}">
+                            <datalist id="OD_VA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -121,9 +116,8 @@
                                 <option>5.1</option>
                                 <option>5.2</option>
                             </datalist>
-                            <input type="text" name="OD_DS" list="OD_DS" class="form-control"
-                                   value="{{ subjectiverefraction.OD_DS }}">
-                            <datalist id="OD_DS">
+                            <input autocomplete="off" type="text" name="OD_SPH" list="OD_SPH" class="form-control" value="{{ subjectiverefraction.OD_SPH }}">
+                            <datalist id="OD_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -166,8 +160,7 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input type="text" name="OD_CYL" list="OD_CYL" class="form-control"
-                                   value="{{ subjectiverefraction.OD_CYL }}">
+                            <input autocomplete="off" type="text" name="OD_CYL" list="OD_CYL" class="form-control" value="{{ subjectiverefraction.OD_CYL }}">
                             <datalist id="OD_CYL">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
@@ -195,8 +188,7 @@
                                 <option>-5.75</option>
                                 <option>-6.00</option>
                             </datalist>
-                            <input type="text" name="OD_AX" list="OD_AX" class="form-control"
-                                   value="{{ subjectiverefraction.OD_AX }}">
+                            <input autocomplete="off" type="text" name="OD_AX" list="OD_AX" class="form-control" value="{{ subjectiverefraction.OD_AX }}">
                             <datalist id="OD_AX">
                                 <option>0</option>
                                 <option>1</option>
@@ -380,9 +372,8 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input type="text" name="OD_NA" list="OD_NA" class="form-control"
-                                   value="{{ subjectiverefraction.OD_NA }}">
-                            <datalist id="OD_NA">
+                            <input autocomplete="off" type="text" name="OD_BCVA" list="OD_BCVA" class="form-control" value="{{ subjectiverefraction.OD_BCVA }}">
+                            <datalist id="OD_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -397,8 +388,7 @@
                                 <option>5.1</option>
                                 <option>5.2</option>
                             </datalist>
-                            <input type="text" name="OD_AL" list="OD_AL" class="form-control"
-                                   value="{{ subjectiverefraction.OD_AL }}">
+                            <input autocomplete="off" type="text" name="OD_AL" list="OD_AL" class="form-control" value="{{ subjectiverefraction.OD_AL }}">
                             <datalist id="OD_AL">
                                 <option>18</option>
                                 <option>19</option>
@@ -414,9 +404,8 @@
                                 <option>29</option>
                                 <option>30</option>
                             </datalist>
-                            <input type="text" name="OD_AC" list="OD_AC" class="form-control"
-                                   value="{{ subjectiverefraction.OD_AC }}">
-                            <datalist id="OD_AC">
+                            <input autocomplete="off" type="text" name="OD_AK" list="OD_AK" class="form-control" value="{{ subjectiverefraction.OD_AK }}">
+                            <datalist id="OD_AK">
                                 <option>30</option>
                                 <option>31</option>
                                 <option>32</option>
@@ -451,9 +440,8 @@
                     <td class="col-sm-8" colspan="8">
                         <div class="input-group input-group-sm mb-7">
                             <span class="input-group-text col-md-1">左眼OS</span>
-                            <input type="text" name="OS_Nv" list="OS_Nv" class="form-control"
-                                   value="{{ subjectiverefraction.OS_Nv }}">
-                            <datalist id="OS_Nv">
+                            <input autocomplete="off" type="text" name="OS_VA" list="OS_VA" class="form-control" value="{{ subjectiverefraction.OS_VA }}">
+                            <datalist id="OS_VA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -468,9 +456,8 @@
                                 <option>5.1</option>
                                 <option>5.2</option>
                             </datalist>
-                            <input type="text" name="OS_DS" list="OS_DS" class="form-control"
-                                   value="{{ subjectiverefraction.OS_DS }}">
-                            <datalist id="OS_DS">
+                            <input autocomplete="off" type="text" name="OS_SPH" list="OS_SPH" class="form-control" value="{{ subjectiverefraction.OS_SPH }}">
+                            <datalist id="OS_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -513,8 +500,7 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input type="text" name="OS_CYL" list="OS_CYL" class="form-control"
-                                   value="{{ subjectiverefraction.OS_CYL }}">
+                            <input autocomplete="off" type="text" name="OS_CYL" list="OS_CYL" class="form-control" value="{{ subjectiverefraction.OS_CYL }}">
                             <datalist id="OS_CYL">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
@@ -542,8 +528,7 @@
                                 <option>-5.75</option>
                                 <option>-6.00</option>
                             </datalist>
-                            <input type="text" name="OS_AX" list="OS_AX" class="form-control"
-                                   value="{{ subjectiverefraction.OS_AX }}">
+                            <input autocomplete="off" type="text" name="OS_AX" list="OS_AX" class="form-control" value="{{ subjectiverefraction.OS_AX }}">
                             <datalist id="OS_AX">
                                 <option>0</option>
                                 <option>1</option>
@@ -727,9 +712,8 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input type="text" name="OS_NA" list="OS_NA" class="form-control"
-                                   value="{{ subjectiverefraction.OS_NA }}">
-                            <datalist id="OS_NA">
+                            <input autocomplete="off" type="text" name="OS_BCVA" list="OS_BCVA" class="form-control" value="{{ subjectiverefraction.OS_BCVA }}">
+                            <datalist id="OS_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -744,8 +728,7 @@
                                 <option>5.1</option>
                                 <option>5.2</option>
                             </datalist>
-                            <input type="text" name="OS_AL" list="OS_AL" class="form-control"
-                                   value="{{ subjectiverefraction.OS_AL }}">
+                            <input autocomplete="off" type="text" name="OS_AL" list="OS_AL" class="form-control" value="{{ subjectiverefraction.OS_AL }}">
                             <datalist id="OS_AL">
                                 <option>18</option>
                                 <option>19</option>
@@ -761,9 +744,8 @@
                                 <option>29</option>
                                 <option>30</option>
                             </datalist>
-                            <input type="text" name="OS_AC" list="OS_AC" class="form-control"
-                                   value="{{ subjectiverefraction.OS_AC }}">
-                            <datalist id="OS_AC">
+                            <input autocomplete="off" type="text" name="OS_AK" list="OS_AK" class="form-control" value="{{ subjectiverefraction.OS_AK }}">
+                            <datalist id="OS_AK">
                                 <option>30</option>
                                 <option>31</option>
                                 <option>32</option>
@@ -798,14 +780,15 @@
                     <td class="col-sm-8" colspan="8">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text col-md-1">备注</span>
-                            <input type="text" name="SR_remark" id="SR_remark" class="form-control"
-                                   value="{{ subjectiverefraction.SR_remark }}">
+                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control" value="{{ subjectiverefraction.remark }}">
                         </div>
                     </td>
                 </tr>
-            </table>
-            <h4>视力解决方案</h4>
-            <table class="table">
+            </form>
+        </table>
+        <h4>视力解决方案</h4>
+        <table class="table">
+            <form class="vertical col-md-12" id="Vision_Solutions">
                 <tr>
                     <td class="col-sm-1"></td>
                     <td class="col-sm-1"><span>球镜</span></td>
@@ -818,12 +801,12 @@
                     <td class="col-sm-4" colspan="4"></td>
                 </tr>
                 <tr>
+                <tr>
                     <td colspan="8" class="col-md-8">
                         <div class="input-group input-group-sm mb-7">
                             <span class="input-group-text col-md-1">右眼OD</span>
-                            <input type="text" name="OD_BC_DS" list="OD_BC_DS" class="form-control"
-                                   value="{{ visionsolutions.OD_BC_DS }}">
-                            <datalist id="OD_BC_DS">
+                            <input autocomplete="off" type="text" name="OD_SPH" list="OD_SPH" class="form-control" value="{{ visionsolutions.OD_SPH }}">
+                            <datalist id="OD_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -866,9 +849,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input type="text" name="OD_BC_CYL" list="OD_BC_CYL" class="form-control"
-                                   value="{{ visionsolutions.OD_BC_CYL }}">
-                            <datalist id="OD_BC_CYL">
+                            <input autocomplete="off" type="text" name="OD_CYL" list="OD_CYL" class="form-control" value="{{ visionsolutions.OD_CYL }}">
+                            <datalist id="OD_CYL">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -911,9 +893,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input type="text" name="OD_BC_AX" list="OD_BC_AX" class="form-control"
-                                   value="{{ visionsolutions.OD_BC_AX }}">
-                            <datalist id="OD_BC_AX">
+                            <input autocomplete="off" type="text" name="OD_AX" list="OD_AX" class="form-control" value="{{ visionsolutions.OD_AX }}">
+                            <datalist id="OD_AX">
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -1096,13 +1077,10 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input type="text" name="OD_BC_PR" list="OD_BC_PR" class="form-control"
-                                   value="{{ visionsolutions.OD_BC_PR }}">
-                            <input type="text" name="OD_BC_FR" list="OD_BC_FR" class="form-control"
-                                   value="{{ visionsolutions.OD_BC_FR }}">
-                            <input type="text" name="OD_BC_ADD" list="OD_BC_ADD" class="form-control"
-                                   value="{{ visionsolutions.OD_BC_ADD }}">
-                            <datalist id="OD_BC_ADD">
+                            <input autocomplete="off" type="text" name="OD_PR" list="OD_PR" class="form-control" value="{{ visionsolutions.OD_PR }}">
+                            <input autocomplete="off" type="text" name="OD_FR" list="OD_FR" class="form-control" value="{{ visionsolutions.OD_FR }}">
+                            <input autocomplete="off" type="text" name="OD_ADD" list="OD_ADD" class="form-control" value="{{ visionsolutions.OD_ADD }}">
+                            <datalist id="OD_ADD">
                                 <option>+0.25</option>
                                 <option>+0.50</option>
                                 <option>+0.75</option>
@@ -1124,9 +1102,8 @@
                                 <option>+4.75</option>
                                 <option>+5.00</option>
                             </datalist>
-                            <input type="text" name="OD_BC_NA" list="OD_BC_NA" class="form-control"
-                                   value="{{ visionsolutions.OD_BC_NA }}">
-                            <datalist id="OD_BC_NA">
+                            <input autocomplete="off" type="text" name="OD_BCVA" list="OD_BCVA" class="form-control" value="{{ visionsolutions.OD_BCVA }}">
+                            <datalist id="OD_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -1148,9 +1125,8 @@
                     <td class="col-sm-8" colspan="8">
                         <div class="input-group input-group-sm mb-7">
                             <span class="input-group-text col-md-1">左眼OS</span>
-                            <input type="text" name="OS_BC_DS" list="OS_BC_DS" class="form-control"
-                                   value="{{ visionsolutions.OS_BC_DS }}">
-                            <datalist id="OS_BC_DS">
+                            <input autocomplete="off" type="text" name="OS_SPH" list="OS_SPH" class="form-control" value="{{ visionsolutions.OS_SPH }}">
+                            <datalist id="OS_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -1193,9 +1169,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input type="text" name="OS_BC_CYL" list="OS_BC_CYL" class="form-control"
-                                   value="{{ visionsolutions.OS_BC_CYL }}">
-                            <datalist id="OS_BC_CYL">
+                            <input autocomplete="off" type="text" name="OS_CYL" list="OS_CYL" class="form-control" value="{{ visionsolutions.OS_CYL }}">
+                            <datalist id="OS_CYL">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -1238,9 +1213,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input type="text" name="OS_BC_AX" list="OS_BC_AX" class="form-control"
-                                   value="{{ visionsolutions.OS_BC_AX }}">
-                            <datalist id="OS_BC_AX">
+                            <input autocomplete="off" type="text" name="OS_AX" list="OS_AX" class="form-control" value="{{ visionsolutions.OS_AX }}">
+                            <datalist id="OS_AX">
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -1423,13 +1397,10 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input type="text" name="OS_BC_PR" list="OS_BC_PR" class="form-control"
-                                   value="{{ visionsolutions.OS_BC_PR }}">
-                            <input type="text" name="OS_BC_FR" list="OS_BC_FR" class="form-control"
-                                   value="{{ visionsolutions.OS_BC_FR }}">
-                            <input type="text" name="OS_BC_ADD" list="OS_BC_ADD" class="form-control"
-                                   value="{{ visionsolutions.OS_BC_ADD }}">
-                            <datalist id="OS_BC_ADD">
+                            <input autocomplete="off" type="text" name="OS_PR" list="OS_PR" class="form-control" value="{{ visionsolutions.OS_PR }}">
+                            <input autocomplete="off" type="text" name="OS_FR" list="OS_FR" class="form-control" value="{{ visionsolutions.OS_FR }}">
+                            <input autocomplete="off" type="text" name="OS_ADD" list="OS_ADD" class="form-control" value="{{ visionsolutions.OS_ADD }}">
+                            <datalist id="OS_ADD">
                                 <option>+0.25</option>
                                 <option>+0.50</option>
                                 <option>+0.75</option>
@@ -1451,9 +1422,8 @@
                                 <option>+4.75</option>
                                 <option>+5.00</option>
                             </datalist>
-                            <input type="text" name="OS_BC_NA" list="OS_BC_NA" class="form-control"
-                                   value="{{ visionsolutions.OS_BC_NA }}">
-                            <datalist id="OS_BC_NA">
+                            <input autocomplete="off" type="text" name="OS_BCVA" list="OS_BCVA" class="form-control" value="{{ visionsolutions.OS_BCVA }}">
+                            <datalist id="OS_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -1471,12 +1441,12 @@
                         </div>
                     </td>
                 </tr>
+
                 <tr>
                     <td class="col-sm-6" colspan="4">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text col-md-2">瞳距</span>
-                            <input type="text" class="form-control" name="pd" list="pd"
-                                   value="{{ visionsolutions.OD_BC_PD }}">
+                            <input autocomplete="off" type="text" class="form-control" name="PD" list="pd" value="{{ visionsolutions.PD }}">
                             <datalist id="pd">
                                 <option>42.0</option>
                                 <option>42.5</option>
@@ -1568,8 +1538,7 @@
                     <td class="col-sm-6" colspan="4">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text col-md-2">方案类型</span>
-                            <input type="text" class="form-control" name="function" list="function"
-                                   value="{{ visionsolutions.function }}">
+                            <input autocomplete="off" type="text" class="form-control" name="function" list="function" value="{{ visionsolutions.function }}">
                             <datalist id="function">
                                 <option>近用解决方案</option>
                                 <option>远用解决方案</option>
@@ -1578,18 +1547,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="col-sm-22" colspan="8">
+                    <td class="col-sm-2" colspan="8">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text col-md-1">备注</span>
-                            <input type="text" name="VS_remark" id="VS_remark" class="form-control"
-                                   value="{{ visionsolutions.VS_remark }}">
+                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control" value="{{ visionsolutions.remark }}">
                             <span id="remake_error"></span>
                         </div>
                     </td>
                 </tr>
-            </table>
-            <h4>产品信息</h4>
-            <table class="table">
+            </form>
+        </table>
+        <h4>产品信息</h4>
+        <table class="table">
+            <form class="vertical col-md-12" id="Product_Orders">
                 <tr>
                     <td class="col-1">
                         <span>类别</span>
@@ -1664,14 +1634,65 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <a type="button" class="btn btn-warning col-sm-12" href="{% url 'maneu_order:order_list' %}">返回</a>
-                    </td>
-                    <td colspan="7">
-                        <input autocomplete="off" class="btn btn-danger" id="insert" type="submit" value="提交订单">
+                    <td class="col-8" colspan="5">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text">备注</span>
+                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control" value="{{ store.remark }}">
+                            <span id="remake_error"></span>
+                        </div>
                     </td>
                 </tr>
-            </table>
-        </form>
+            </form>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <a type="button" class="btn btn-warning col-sm-12" href="{% url 'maneu_order:order_list' %}">返回列表</a>
+                </td>
+                <td>
+                    <form class="vertical col-md-12" id="order_insert" method="post" action="{% url 'maneu_order:order_update' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="order_id" value="{{ order.id }}">
+                        <input type="hidden" name="Guess_information" id="Guess_information_json">
+                        <input type="hidden" name="Subjective_refraction" id="Subjective_refraction_json">
+                        <input type="hidden" name="Vision_Solutions" id="Vision_Solutions_json">
+                        <input type="hidden" name="Product_Orders" id="Product_Orders_json">
+                        <input autocomplete="off" class="btn btn-danger" id="insert" type="submit" value="提交订单">
+                    </form>
+                </td>
+            </tr>
+        </table>
     </div>
+{% endblock %}
+{% block javascript %}
+    <script type="application/javascript">
+        $(document).ready(function () {
+            $.fn.serializeJsonStr = function () {
+                var o = {};
+                var a = this.serializeArray();
+                $.each(a, function () {
+                    if (o[this.name] !== undefined) {
+                        if (!o[this.name].push) {
+                            o[this.name] = [o[this.name]];
+                        }
+                        o[this.name].push(this.value || '');
+                    } else {
+                        o[this.name] = this.value || '';
+                    }
+                });
+                return JSON.stringify(o);
+            }
+
+            $('#insert').click(function () {
+                Product_Orders_json = $('#Product_Orders').serializeJsonStr();
+                $('#Product_Orders_json').val(Product_Orders_json);
+                Vision_Solutions_json = $('#Vision_Solutions').serializeJsonStr();
+                $('#Vision_Solutions_json').val(Vision_Solutions_json);
+                Guess_information_json = $('#Guess_information').serializeJsonStr();
+                $('#Guess_information_json').val(Guess_information_json);
+                Subjective_refraction_json = $('#Subjective_refraction').serializeJsonStr()
+                $('#Subjective_refraction_json').val(Subjective_refraction_json)
+            })
+        });
+    </script>
 {% endblock %}
