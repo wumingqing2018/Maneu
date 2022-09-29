@@ -2,18 +2,15 @@
 {% load static %}
 {% block content %}
     <div class="container" style="margin-top: 3%; margin-bottom: 5%">
-        <form class="vertical col-md-12" id="order_insert" method="post" action="{% url 'maneu_order:order_insert' %}">
-            {% csrf_token %}
-            <h4>客户个人信息</h4>
-            <table class="table">
-                <tr>
-                    <td class="col-sm-12" colspan="12"></td>
-                </tr>
+        {% csrf_token %}
+        <h4>客户个人信息</h4>
+        <table class="table">
+            <form class="vertical col-md-12" id="Guess_information">
                 <tr>
                     <td class="col-sm-2" colspan="2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">创建日期</span>
-                            <input class="form-control date_time" name="guess_time" type="date" autocomplete="off">
+                            <input class="form-control date_time" name="time" type="date" autocomplete="off">
                             <span id="phone_error"></span>
                         </div>
                     </td>
@@ -50,7 +47,7 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">出生日期</span>
-                            <input autocomplete="off" type="date" name="age" class="form-control">
+                            <input autocomplete="off" type="date" name="age" class="form-control date_time">
                         </div>
                     </td>
                     <td class="col-sm-2">
@@ -93,14 +90,16 @@
                         </div>
                     </td>
                 </tr>
-            </table>
-            <h4>屈光检验结果</h4>
-            <table class="table">
+            </form>
+        </table>
+        <h4>屈光检验结果</h4>
+        <table class="table">
+            <form class="vertical col-md-12" id="Subjective_refraction">
                 <tr>
                     <td class="col-sm-2" colspan="4">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">创建日期</span>
-                            <input class="form-control date_time" name="sr_time" type="date" autocomplete="off">
+                            <input class="form-control date_time" name="time" type="date" autocomplete="off">
                             <span id="phone_error"></span>
                         </div>
                     </td>
@@ -121,8 +120,8 @@
                     <td class="col-sm-8" colspan="8">
                         <div class="input-group input-group-sm mb-8">
                             <span class="input-group-text col-md-1">右眼OD</span>
-                            <input autocomplete="off" type="text" name="OD_Nv" list="OD_Nv" class="form-control">
-                            <datalist id="OD_Nv">
+                            <input autocomplete="off" type="text" name="OD_VA" list="OD_VA" class="form-control">
+                            <datalist id="OD_VA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -137,8 +136,8 @@
                                 <option>5.1</option>
                                 <option>5.2</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_DS" list="OD_DS" class="form-control">
-                            <datalist id="OD_DS">
+                            <input autocomplete="off" type="text" name="OD_SPH" list="OD_SPH" class="form-control">
+                            <datalist id="OD_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -393,8 +392,8 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_NA" list="OD_NA" class="form-control">
-                            <datalist id="OD_NA">
+                            <input autocomplete="off" type="text" name="OD_BCVA" list="OD_BCVA" class="form-control">
+                            <datalist id="OD_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -425,8 +424,8 @@
                                 <option>29</option>
                                 <option>30</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_AC" list="OD_AC" class="form-control">
-                            <datalist id="OD_AC">
+                            <input autocomplete="off" type="text" name="OD_AK" list="OD_AK" class="form-control">
+                            <datalist id="OD_AK">
                                 <option>30</option>
                                 <option>31</option>
                                 <option>32</option>
@@ -461,8 +460,8 @@
                     <td class="col-sm-8" colspan="8">
                         <div class="input-group input-group-sm mb-7">
                             <span class="input-group-text col-md-1">左眼OS</span>
-                            <input autocomplete="off" type="text" name="OS_Nv" list="OS_Nv" class="form-control">
-                            <datalist id="OS_Nv">
+                            <input autocomplete="off" type="text" name="OS_VA" list="OS_VA" class="form-control">
+                            <datalist id="OS_VA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -477,8 +476,8 @@
                                 <option>5.1</option>
                                 <option>5.2</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_DS" list="OS_DS" class="form-control">
-                            <datalist id="OS_DS">
+                            <input autocomplete="off" type="text" name="OS_SPH" list="OS_SPH" class="form-control">
+                            <datalist id="OS_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -733,8 +732,8 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_NA" list="OS_NA" class="form-control">
-                            <datalist id="OS_NA">
+                            <input autocomplete="off" type="text" name="OS_BCVA" list="OS_BCVA" class="form-control">
+                            <datalist id="OS_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -765,8 +764,8 @@
                                 <option>29</option>
                                 <option>30</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_AC" list="OS_AC" class="form-control">
-                            <datalist id="OS_AC">
+                            <input autocomplete="off" type="text" name="OS_AK" list="OS_AK" class="form-control">
+                            <datalist id="OS_AK">
                                 <option>30</option>
                                 <option>31</option>
                                 <option>32</option>
@@ -801,18 +800,20 @@
                     <td class="col-sm-8" colspan="8">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text col-md-1">备注</span>
-                            <input autocomplete="off" type="text" name="SR_remark" id="SR_remark" class="form-control">
+                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control">
                         </div>
                     </td>
                 </tr>
-            </table>
-            <h4>视力解决方案</h4>
-            <table class="table">
+            </form>
+        </table>
+        <h4>视力解决方案</h4>
+        <table class="table">
+            <form class="vertical col-md-12" id="Vision_Solutions">
                 <tr>
                     <td class="col-sm-2" colspan="4">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">创建日期</span>
-                            <input class="form-control date_time" name="vs_time" type="date" autocomplete="off">
+                            <input class="form-control date_time" name="time" type="date" autocomplete="off">
                             <span id="phone_error"></span>
                         </div>
                     </td>
@@ -834,8 +835,8 @@
                     <td colspan="8" class="col-md-8">
                         <div class="input-group input-group-sm mb-7">
                             <span class="input-group-text col-md-1">右眼OD</span>
-                            <input autocomplete="off" type="text" name="OD_BC_DS" list="OD_BC_DS" class="form-control">
-                            <datalist id="OD_BC_DS">
+                            <input autocomplete="off" type="text" name="OD_SPH" list="OD_SPH" class="form-control">
+                            <datalist id="OD_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -878,8 +879,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_BC_CYL" list="OD_BC_CYL" class="form-control">
-                            <datalist id="OD_BC_CYL">
+                            <input autocomplete="off" type="text" name="OD_CYL" list="OD_CYL" class="form-control">
+                            <datalist id="OD_CYL">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -922,8 +923,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_BC_AX" list="OD_BC_AX" class="form-control">
-                            <datalist id="OD_BC_AX">
+                            <input autocomplete="off" type="text" name="OD_AX" list="OD_AX" class="form-control">
+                            <datalist id="OD_AX">
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -1106,10 +1107,10 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_BC_PR" list="OD_BC_PR" class="form-control">
-                            <input autocomplete="off" type="text" name="OD_BC_FR" list="OD_BC_FR" class="form-control">
-                            <input autocomplete="off" type="text" name="OD_BC_ADD" list="OD_BC_ADD" class="form-control">
-                            <datalist id="OD_BC_ADD">
+                            <input autocomplete="off" type="text" name="OD_PR" list="OD_PR" class="form-control">
+                            <input autocomplete="off" type="text" name="OD_FR" list="OD_FR" class="form-control">
+                            <input autocomplete="off" type="text" name="OD_ADD" list="OD_ADD" class="form-control">
+                            <datalist id="OD_ADD">
                                 <option>+0.25</option>
                                 <option>+0.50</option>
                                 <option>+0.75</option>
@@ -1131,8 +1132,8 @@
                                 <option>+4.75</option>
                                 <option>+5.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_BC_NA" list="OD_BC_NA" class="form-control">
-                            <datalist id="OD_BC_NA">
+                            <input autocomplete="off" type="text" name="OD_BCVA" list="OD_BCVA" class="form-control">
+                            <datalist id="OD_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -1154,8 +1155,8 @@
                     <td class="col-sm-8" colspan="8">
                         <div class="input-group input-group-sm mb-7">
                             <span class="input-group-text col-md-1">左眼OS</span>
-                            <input autocomplete="off" type="text" name="OS_BC_DS" list="OS_BC_DS" class="form-control">
-                            <datalist id="OS_BC_DS">
+                            <input autocomplete="off" type="text" name="OS_SPH" list="OS_SPH" class="form-control">
+                            <datalist id="OS_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -1198,8 +1199,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_BC_CYL" list="OS_BC_CYL" class="form-control">
-                            <datalist id="OS_BC_CYL">
+                            <input autocomplete="off" type="text" name="OS_CYL" list="OS_CYL" class="form-control">
+                            <datalist id="OS_CYL">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
                                 <option>-0.50</option>
@@ -1242,8 +1243,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_BC_AX" list="OS_BC_AX" class="form-control">
-                            <datalist id="OS_BC_AX">
+                            <input autocomplete="off" type="text" name="OS_AX" list="OS_AX" class="form-control">
+                            <datalist id="OS_AX">
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -1426,10 +1427,10 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_BC_PR" list="OS_BC_PR" class="form-control">
-                            <input autocomplete="off" type="text" name="OS_BC_FR" list="OS_BC_FR" class="form-control">
-                            <input autocomplete="off" type="text" name="OS_BC_ADD" list="OS_BC_ADD" class="form-control">
-                            <datalist id="OS_BC_ADD">
+                            <input autocomplete="off" type="text" name="OS_PR" list="OS_PR" class="form-control">
+                            <input autocomplete="off" type="text" name="OS_FR" list="OS_FR" class="form-control">
+                            <input autocomplete="off" type="text" name="OS_ADD" list="OS_ADD" class="form-control">
+                            <datalist id="OS_ADD">
                                 <option>+0.25</option>
                                 <option>+0.50</option>
                                 <option>+0.75</option>
@@ -1451,8 +1452,8 @@
                                 <option>+4.75</option>
                                 <option>+5.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_BC_NA" list="OS_BC_NA" class="form-control">
-                            <datalist id="OS_BC_NA">
+                            <input autocomplete="off" type="text" name="OS_BCVA" list="OS_BCVA" class="form-control">
+                            <datalist id="OS_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
                                 <option>4.2</option>
@@ -1475,7 +1476,7 @@
                     <td class="col-sm-6" colspan="4">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text col-md-2">瞳距</span>
-                            <input autocomplete="off" type="text" class="form-control" name="pd" list="pd">
+                            <input autocomplete="off" type="text" class="form-control" name="PD" list="pd">
                             <datalist id="pd">
                                 <option>42.0</option>
                                 <option>42.5</option>
@@ -1579,19 +1580,21 @@
                     <td class="col-sm-22" colspan="8">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text col-md-1">备注</span>
-                            <input autocomplete="off" type="text" name="VS_remark" id="VS_remark" class="form-control">
+                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control">
                             <span id="remake_error"></span>
                         </div>
                     </td>
                 </tr>
-            </table>
-            <h4>产品信息</h4>
-            <table class="table">
+            </form>
+        </table>
+        <h4>产品信息</h4>
+        <table class="table">
+            <form class="vertical col-md-12" id="Product_Orders">
                 <tr>
                     <td class="col-sm-2" colspan="3">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">创建日期</span>
-                            <input class="form-control date_time" name="store_time" type="date" autocomplete="off">
+                            <input class="form-control date_time" name="time" type="date" autocomplete="off">
                             <span id="phone_error"></span>
                         </div>
                     </td>
@@ -1670,26 +1673,71 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <a type="button" class="btn btn-warning col-sm-12" href="{% url 'maneu_order:order_list' %}">返回列表</a>
-                    </td>
-                    <td>
-                        <input autocomplete="off" class="btn btn-danger" id="insert" type="submit" value="提交订单">
+                                <tr>
+                    <td class="col-8" colspan="5">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text">备注</span>
+                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control">
+                            <span id="remake_error"></span>
+                        </div>
                     </td>
                 </tr>
-            </table>
-        </form>
+            </form>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <a type="button" class="btn btn-warning col-sm-12" href="{% url 'maneu_order:order_list' %}">返回列表</a>
+                </td>
+                <td>
+                    <form class="vertical col-md-12" id="order_insert" method="post" action="{% url 'maneu_order:order_insert' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="Guess_information" id="Guess_information_json">
+                        <input type="hidden" name="Subjective_refraction" id="Subjective_refraction_json">
+                        <input type="hidden" name="Vision_Solutions" id="Vision_Solutions_json">
+                        <input type="hidden" name="Product_Orders" id="Product_Orders_json">
+                        <input autocomplete="off" class="btn btn-danger" id="insert" type="submit" value="提交订单">
+                    </form>
+                </td>
+            </tr>
+        </table>
     </div>
 {% endblock %}
 {% block javascript %}
-    <script>
+    <script type="application/javascript">
         $(document).ready(function () {
             var time = new Date();
             var day = ("0" + time.getDate()).slice(-2);
             var month = ("0" + (time.getMonth() + 1)).slice(-2);
             var today = time.getFullYear() + "-" + (month) + "-" + (day);
             $('.date_time').val(today)
+
+            $.fn.serializeJsonStr = function () {
+                var o = {};
+                var a = this.serializeArray();
+                $.each(a, function () {
+                    if (o[this.name] !== undefined) {
+                        if (!o[this.name].push) {
+                            o[this.name] = [o[this.name]];
+                        }
+                        o[this.name].push(this.value || '');
+                    } else {
+                        o[this.name] = this.value || '';
+                    }
+                });
+                return JSON.stringify(o);
+            }
+
+            $('#insert').click(function () {
+                Product_Orders_json = $('#Product_Orders').serializeJsonStr();
+                $('#Product_Orders_json').val(Product_Orders_json);
+                Vision_Solutions_json = $('#Vision_Solutions').serializeJsonStr();
+                $('#Vision_Solutions_json').val(Vision_Solutions_json);
+                Guess_information_json = $('#Guess_information').serializeJsonStr();
+                $('#Guess_information_json').val(Guess_information_json);
+                Subjective_refraction_json = $('#Subjective_refraction').serializeJsonStr()
+                $('#Subjective_refraction_json').val(Subjective_refraction_json)
+            })
         });
     </script>
 {% endblock %}

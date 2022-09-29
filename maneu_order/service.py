@@ -156,19 +156,9 @@ def delete_subjectiverefraction_id(id=''):
         return None
 
 
-def ManeuVisionSolutions_insert(VS_remark='', OD_BC_DS='', OD_BC_CYL='', OD_BC_AX='', OD_BC_PR='', OD_BC_FR='',
-                                OD_BC_ADD='', OD_BC_NA='', OS_BC_DS='', OS_BC_CYL='', OS_BC_AX='', OS_BC_PR='',
-                                OS_BC_FR='', OS_BC_ADD='', OS_BC_NA='', pd='', function='', time=''):
+def ManeuVisionSolutions_insert(content=''):
     try:
-        ManeuVisionSolutions_content = {'BC_remark': VS_remark, 'pd': pd, 'function': function,
-                                        'OD_BC_DS': OD_BC_DS, 'OD_BC_CYL': OD_BC_CYL, 'OD_BC_AX': OD_BC_AX,
-                                        'OD_BC_PR': OD_BC_PR, 'OD_BC_FR': OD_BC_FR, 'OD_BC_ADD': OD_BC_ADD,
-                                        'OD_BC_NA': OD_BC_NA,
-                                        'OS_BC_DS': OS_BC_DS, 'OS_BC_CYL': OS_BC_CYL, 'OS_BC_AX': OS_BC_AX,
-                                        'OS_BC_PR': OS_BC_PR, 'OS_BC_FR': OS_BC_FR, 'OS_BC_ADD': OS_BC_ADD,
-                                        'OS_BC_NA': OS_BC_NA,
-                                        }
-        return ManeuVisionSolutions.objects.create(time=time, content=json.dumps(ManeuVisionSolutions_content))
+        return ManeuVisionSolutions.objects.create(content=content)
     except BaseException as msg:
         print(msg)
         return None
@@ -192,17 +182,9 @@ def ManeuVisionSolutions_update(id='', VS_remark='', OD_BC_DS='', OD_BC_CYL='', 
         return None
 
 
-def ManeuSubjectiveRefraction_insert(SR_remark='', time='',
-                                     OD_Nv='', OD_DS='', OD_CYL='', OD_AX='', OD_NA='', OD_AL='', OD_AC='',
-                                     OS_Nv='', OS_DS='', OS_CYL='', OS_AX='', OS_NA='', OS_AL='', OS_AC=''):
+def ManeuSubjectiveRefraction_insert(content=''):
     try:
-        ManeuSubjectiveRefraction_content = {'SR_remark': SR_remark,
-                                             'OD_Nv': OD_Nv, 'OD_DS': OD_DS, 'OD_CYL': OD_CYL, 'OD_AX': OD_AX,
-                                             'OD_NA': OD_NA, 'OD_AL': OD_AL, 'OD_AC': OD_AC,
-                                             'OS_Nv': OS_Nv, 'OS_DS': OS_DS, 'OS_CYL': OS_CYL, 'OS_AX': OS_AX,
-                                             'OS_NA': OS_NA, 'OS_AL': OS_AL, 'OS_AC': OS_AC
-                                             }
-        return ManeuSubjectiveRefraction.objects.create(time=time, content=json.dumps(ManeuSubjectiveRefraction_content))
+        return ManeuSubjectiveRefraction.objects.create(content=content)
     except BaseException as msg:
         print(msg)
         return None
@@ -225,14 +207,12 @@ def ManeuSubjectiveRefraction_update(id='', SR_remark='',
         return None
 
 
-def ManeuGuess_insert(name='', phone='', sex='', age='', OT='', EM='', DFH='', remark='', time=''):
+def ManeuGuess_insert(content=''):
     try:
-        if age == '':
-            age = datetime.datetime(2022, 1, 1)
-        return ManeuGuess.objects.create(name=name, phone=phone, sex=sex, age=age, ot=OT, em=EM, dfh=DFH, remark=remark, time=time)
+        contents = json.loads(content)
+        return ManeuGuess.objects.create(name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'], time=contents['time'])
     except BaseException as msg:
-        print(msg)
-        return None
+        return msg
 
 
 def ManeuGuess_update(id='', name='', phone='', sex='', age='', OT='', EM='', DFH='', remark=''):
@@ -246,9 +226,9 @@ def ManeuGuess_update(id='', name='', phone='', sex='', age='', OT='', EM='', DF
         return None
 
 
-def ManeuStore_insert(content, time=''):
+def ManeuStore_insert(content=''):
     try:
-        return ManeuStore.objects.create(content=content, time=time)
+        return ManeuStore.objects.create(content=content)
     except BaseException as msg:
         print(msg)
         return None

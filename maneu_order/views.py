@@ -1,3 +1,4 @@
+import datetime
 import json
 
 from django.shortcuts import render, reverse, HttpResponseRedirect
@@ -64,87 +65,17 @@ def order_search(request):
 def order_insert(request):
     """添加订单"""
     if request.method == 'POST':
-        print(request.POST)
-        ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(VS_remark=request.POST.get('VS_remark'),
-                                                                      OD_BC_DS=request.POST.get('OD_BC_DS'),
-                                                                      OD_BC_CYL=request.POST.get('OD_BC_CYL'),
-                                                                      OD_BC_AX=request.POST.get('OD_BC_AX'),
-                                                                      OD_BC_PR=request.POST.get('OD_BC_PR'),
-                                                                      OD_BC_FR=request.POST.get('OD_BC_FR'),
-                                                                      OD_BC_ADD=request.POST.get('OD_BC_ADD'),
-                                                                      OD_BC_NA=request.POST.get('OD_BC_NA'),
-                                                                      OS_BC_DS=request.POST.get('OS_BC_DS'),
-                                                                      OS_BC_CYL=request.POST.get('OS_BC_CYL'),
-                                                                      OS_BC_AX=request.POST.get('OS_BC_AX'),
-                                                                      OS_BC_PR=request.POST.get('OS_BC_PR'),
-                                                                      OS_BC_FR=request.POST.get('OS_BC_FR'),
-                                                                      OS_BC_ADD=request.POST.get('OS_BC_ADD'),
-                                                                      OS_BC_NA=request.POST.get('OS_BC_NA'),
-                                                                      time=request.POST.get('vs_time'),
-                                                                      )
-        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(SR_remark=request.POST.get('SR_remark'),
-                                                                                OD_Nv=request.POST.get('OD_Nv'),
-                                                                                OD_DS=request.POST.get('OD_DS'),
-                                                                                OD_CYL=request.POST.get('OD_CYL'),
-                                                                                OD_AX=request.POST.get('OD_AX'),
-                                                                                OD_NA=request.POST.get('OD_NA'),
-                                                                                OD_AL=request.POST.get('OD_AL'),
-                                                                                OD_AC=request.POST.get('OD_AC'),
-                                                                                OS_Nv=request.POST.get('OS_Nv'),
-                                                                                OS_DS=request.POST.get('OS_DS'),
-                                                                                OS_CYL=request.POST.get('OS_CYL'),
-                                                                                OS_AX=request.POST.get('OS_AX'),
-                                                                                OS_NA=request.POST.get('OS_NA'),
-                                                                                OS_AL=request.POST.get('OS_AL'),
-                                                                                OS_AC=request.POST.get('OS_AC'),
-                                                                                time=request.POST.get('sr_time')
-                                                                                )
-        ManeuGuess_id = service.ManeuGuess_insert(name=request.POST.get('guess_name'),
-                                                  phone=request.POST.get('guess_phone'),
-                                                  sex=request.POST.get('sex'),
-                                                  age=request.POST.get('age'),
-                                                  OT=request.POST.get('OT'),
-                                                  EM=request.POST.get('EM'),
-                                                  DFH=request.POST.get('DFH'),
-                                                  remark=request.POST.get('remark'),
-                                                  time=request.POST.get('guess_time'),
-                                                  )
-        ManeuStore_content = {'arg50': request.POST.get('arg50'),
-                              'arg51': request.POST.get('arg51'),
-                              'arg52': request.POST.get('arg52'),
-                              'arg53': request.POST.get('arg53'),
-                              'arg54': request.POST.get('arg54'),
-
-                              'arg40': request.POST.get('arg40'),
-                              'arg41': request.POST.get('arg41'),
-                              'arg42': request.POST.get('arg42'),
-                              'arg43': request.POST.get('arg43'),
-                              'arg44': request.POST.get('arg44'),
-
-                              'arg30': request.POST.get('arg30'),
-                              'arg31': request.POST.get('arg31'),
-                              'arg32': request.POST.get('arg32'),
-                              'arg33': request.POST.get('arg33'),
-                              'arg34': request.POST.get('arg34'),
-
-                              'arg20': request.POST.get('arg20'),
-                              'arg21': request.POST.get('arg21'),
-                              'arg22': request.POST.get('arg22'),
-                              'arg23': request.POST.get('arg23'),
-                              'arg24': request.POST.get('arg24'),
-
-                              'arg10': request.POST.get('arg10'),
-                              'arg11': request.POST.get('arg11'),
-                              'arg12': request.POST.get('arg12'),
-                              'arg13': request.POST.get('arg13'),
-                              'arg14': request.POST.get('arg14'),
-                              }
-        ManeuStore_id = service.ManeuStore_insert(content=json.dumps(ManeuStore_content), time=request.POST.get('store_time'))
-        service.ManeuOrderV2_insert(name=request.POST.get('guess_name'),
-                                    phone=request.POST.get('guess_phone'),
+        guess_content = json.loads(request.POST.get('Guess_information'))
+        ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'))
+        ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
+        ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
+        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
+        service.ManeuOrderV2_insert(name=guess_content['guess_name'],
+                                    phone=guess_content['guess_phone'],
                                     users_id=request.session.get('id'),
                                     store_id=ManeuStore_id.id,
-                                    guess_id=ManeuGuess_id.id, visionsolutions_id=ManeuVisionSolutions_id.id,
+                                    guess_id=ManeuGuess_id.id,
+                                    visionsolutions_id=ManeuVisionSolutions_id.id,
                                     subjectiverefraction_id=ManeuSubjectiveRefraction_id.id,)
         return HttpResponseRedirect(reverse('maneu_order:order_list'))
     ua = request.META.get("HTTP_USER_AGENT")

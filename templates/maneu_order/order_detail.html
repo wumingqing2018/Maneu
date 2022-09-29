@@ -48,7 +48,7 @@
                     <b>客户信息（Guess information）</b>
                 </td>
             </tr>
-                        <tr>
+            <tr>
                 <td>
                     <span>录入时间</span>
                 </td>
@@ -120,7 +120,6 @@
                     <span>{{ guess.remark }}</span>
                 </td>
             </tr>
-
             <tr class="banner">
                 <td colspan="3">
                     <b>屈光检验结果（Subjective refraction）</b>
@@ -260,10 +259,10 @@
                     <span>球镜 Sph</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_BC_DS }}</span>
+                    <span>{{ visionsolutions.OS_SPH }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_BC_DS }}</span>
+                    <span>{{ visionsolutions.OD_SPH }}</span>
                 </td>
             </tr>
             <tr>
@@ -271,10 +270,10 @@
                     <span>柱镜 Cyl</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_BC_CYL }}</span>
+                    <span>{{ visionsolutions.OS_CYL }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_BC_CYL }}</span>
+                    <span>{{ visionsolutions.OD_CYL }}</span>
                 </td>
             </tr>
             <tr>
@@ -282,10 +281,10 @@
                     <span>轴位 Axial</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_BC_AX }}</span>
+                    <span>{{ visionsolutions.OS_AX }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_BC_AX }}</span>
+                    <span>{{ visionsolutions.OD_AX }}</span>
                 </td>
             </tr>
             <tr>
@@ -293,10 +292,10 @@
                     <span>棱镜 Pr</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_BC_PR }}</span>
+                    <span>{{ visionsolutions.OS_PR }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_BC_PR }}</span>
+                    <span>{{ visionsolutions.OD_PR }}</span>
                 </td>
             </tr>
             <tr>
@@ -304,10 +303,10 @@
                     <span>基底取向 Base</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_BC_FR }}</span>
+                    <span>{{ visionsolutions.OS_FR }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_BC_FR }}</span>
+                    <span>{{ visionsolutions.OD_FR }}</span>
                 </td>
             </tr>
             <tr>
@@ -315,10 +314,10 @@
                     <span>下加光 ADD</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_BC_ADD }}</span>
+                    <span>{{ visionsolutions.OS_ADD }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_BC_ADD }}</span>
+                    <span>{{ visionsolutions.OD_ADD }}</span>
                 </td>
             </tr>
             <tr>
@@ -326,10 +325,10 @@
                     <span>矫正视力 BSCVA</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_BC_NA }}</span>
+                    <span>{{ visionsolutions.OS_BCVA }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_BC_NA }}</span>
+                    <span>{{ visionsolutions.OD_BCVA }}</span>
                 </td>
             </tr>
             <tr>
@@ -566,7 +565,7 @@
                     <span>配镜师建议</span>
                 </td>
                 <td colspan="2">
-                    <span>{{ store.vs_remark }}</span>
+                    <span>{{ store.remark }}</span>
                 </td>
             </tr>
             <tr class="banner">
@@ -583,8 +582,7 @@
             </tr>
         </table>
         <div class="col-md-12 col-sm-12 row" style="text-align: center;">
-            <div class="col-md-3 col-sm-3
-F">
+            <div class="col-md-3 col-sm-3">
                 <a class="col-md-4 col-sm-12 btn btn-primary" type="button" href="{% url 'maneu_order:order_list' %}">返回列表</a>
             </div>
             <div class="col-md-3 col-sm-3">
