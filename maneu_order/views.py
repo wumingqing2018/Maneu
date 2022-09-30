@@ -1,7 +1,7 @@
 import datetime
 import json
 
-from django.shortcuts import render, reverse, HttpResponseRedirect
+from django.shortcuts import render, reverse, HttpResponseRedirect, redirect
 
 from common import verify
 from common.checkMobile import judge_pc_or_mobile
@@ -24,7 +24,8 @@ def order_delete(request):
         visionsolutions = service.delete_ManeuVisionSolutions_id(id=order.visionsolutions_id)
         subjectiverefraction = service.delete_subjectiverefraction_id(id=order.subjectiverefraction_id)
         order = service.delete_order_id(users_id=request.session.get('id'), id=order_id)
-        print(order, guess, store, visionsolutions, subjectiverefraction)
+        afterSales = service.ManeuAfterSales_delete(order_id=order_id)
+        print(order, guess, store, visionsolutions, subjectiverefraction, afterSales)
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
@@ -37,8 +38,9 @@ def order_detail(request):
     false
         渲染error页面并传输错误参数
     """
-    order_id = verify.order_id_method_get(request)
+    order_id = verify.order_id_method_post(request)
     if order_id:
+        request.session['order_id'] = order_id
         order = service.find_order_id(order_id=order_id, users_id=request.session.get('id'))
         users = service.find_users_id(id=order.users_id)
         guess = service.find_guess_id(id=order.guess_id)
@@ -50,6 +52,18 @@ def order_detail(request):
                                                                  'visionsolutions': json.loads(visionsolutions.content),
                                                                  'subjectiverefraction': json.loads(subjectiverefraction.content)})
     else:
+        order_id = request.session.get('order_id')
+        if order_id:
+            order = service.find_order_id(order_id=order_id, users_id=request.session.get('id'))
+            users = service.find_users_id(id=order.users_id)
+            guess = service.find_guess_id(id=order.guess_id)
+            store = service.find_store_id(id=order.store_id)
+            visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
+            subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
+            return render(request, 'maneu_order/order_detail.html', {'order': order, 'users': users, 'guess': guess,
+                                                                     'store': json.loads(store.content),
+                                                                     'visionsolutions': json.loads(visionsolutions.content),
+                                                                     'subjectiverefraction': json.loads(subjectiverefraction.content)})
         return render(request, 'maneu/error.html', {'msg': '参数错误'})
 
 
@@ -125,8 +139,11 @@ def order_update(request):
 def alterSales_List(request):
     if request.method == 'POST':
         order_id = request.POST.get('order_id')
-        return render(request, 'maneu_order/alterSales_list.html', {'order_id': order_id, 'alterSalesList': service.ManeuAfterSales_list(order_id)})
+        return render(request, 'maneu_order/alterSales_list.html', {'alterSalesList': service.ManeuAfterSales_list(order_id)})
     else:
+        order_id = request.session.get('order_id')
+        if order_id:
+            return render(request, 'maneu_order/alterSales_list.html', {'alterSalesList': service.ManeuAfterSales_list(order_id)})
         return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
@@ -143,12 +160,18 @@ def alterSales_content(request):
 
 def alterSales_insert(request):
     if request.method == 'POST':
-        order_id = request.POST.get('order_id')
+        order_id = request.session.get('order_id')
         content = request.POST.get('content')
         insert = service.ManeuAfterSales_insert(content=content, order_id=order_id)
-        return HttpResponseRedirect(reverse('maneu_order:order_list'))
+        return redirect(reverse('maneu_order:alterSalesList'))
     elif request.method == 'GET':
-        order_id = request.GET.get('order_id')
+        order_id = request.session.get('order_id')
         return render(request, 'maneu_order/alterSales_insert.html', {'order_id': order_id})
     else:
         return HttpResponseRedirect(reverse('index'))
+
+
+def alterSales_delete(request):
+    if request.method == 'POST':
+        insert = service.ManeuAfterSales_delete_id(id=request.POST.get('order_id'))
+    return HttpResponseRedirect(reverse('maneu_order:alterSalesList'))

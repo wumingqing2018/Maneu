@@ -68,6 +68,7 @@ def user_updata(request):
     user_id = request.session.get('id')
     user = serivce.find_user(user_id)
     msg = ''
+    print(request.POST)
     if request.method == 'POST':
         updata = serivce.user_update(old_password=request.POST['old_password'], user_id=user_id,
                                      nickname=request.POST['nickname'], password=request.POST['password'],

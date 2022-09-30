@@ -16,7 +16,6 @@
                 <td class="blue col-sm-1">
                     <form class="col-12" method='get' action="{% url 'maneu_order:alterSalesInsert' %}">
                         <div class="input-group input-group-sm">
-                            <input type="hidden" name="order_id" value="{{ order_id }}">
                             <input type='submit' class='btn btn-warning' value='添加订单'>
                         </div>
                     </form>
@@ -28,8 +27,17 @@
                         <td class="blue col-sm-2">
                             <p>{{ order.time }}</p>
                         </td>
-                        <td class="blue col-sm-10" colspan="2">
+                        <td class="blue col-sm-9">
                             <p>{{ order.content }}</p>
+                        </td>
+                        <td>
+                            <form method="post" action="{% url 'maneu_order:alterSalesDelete' %}">
+                                <div class="input-group input-group-sm">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="order_id" value="{{ order.id }}">
+                                    <input type="submit" class="btn btn-danger" value="删除记录">
+                                </div>
+                            </form>
                         </td>
                     </tr>
                 {% endfor %}
@@ -38,6 +46,16 @@
                     <td colspan="3" class="blue">没有找到您的订单</td>
                 </tr>
             {% endif %}
+            <tr>
+                <td colspan="2"></td>
+                <td>
+                    <form method="get" action="{% url 'maneu_order:order_detail' %}">
+                        <div class="input-group input-group-sm">
+                            <input type="submit" class="btn btn-warning" value="返回订单">
+                        </div>
+                    </form>
+                </td>
+            </tr>
         </table>
     </div>
 {% endblock %}

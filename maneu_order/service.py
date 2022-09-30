@@ -261,3 +261,20 @@ def ManeuAfterSales_insert(order_id='', content=''):
     except BaseException as msg:
         print(msg)
         return None
+
+
+def ManeuAfterSales_delete(order_id=''):
+    try:
+        return ManeuAfterSales.objects.filter(order_id=order_id).all().delete()
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
+def ManeuAfterSales_delete_id(id=''):
+    try:
+        return ManeuAfterSales.objects.filter(id=id).all().delete()
+    except BaseException as msg:
+        print(msg)
+        return None
+
