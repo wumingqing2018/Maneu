@@ -6,6 +6,7 @@
         <h4>客户个人信息</h4>
         <table class="table">
             <form class="vertical col-md-12" id="Guess_information">
+                <input autocomplete="off" type="hidden" id="age" name="time" class="form-control date_time" value="{{ guess.time }}">
                 <tr>
                     <td class="col-sm-2" colspan="2">
                         <div class="input-group input-group-sm mb-2">
@@ -34,12 +35,7 @@
                             </datalist>
                         </div>
                     </td>
-                    <td class="col-sm-2">
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-text">年龄</span>
-                            <input autocomplete="off" type="date" id="age" name="age" class="form-control date_time" value="{{ guess.age }}">
-                        </div>
-                    </td>
+                    <input autocomplete="off" type="hidden" id="age" name="age" class="form-control date_time" value="{{ guess.age }}">
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">眼位</span>
@@ -85,6 +81,7 @@
         <h4>屈光检验结果</h4>
         <table class="table">
             <form class="vertical col-md-12" id="Subjective_refraction">
+                <input autocomplete="off" type="hidden" id="age" name="time" class="form-control date_time" value="{{ subjectiverefraction.time }}">
                 <tr>
                     <td class="col-sm-1"></td>
                     <td class="col-sm-1"><span>裸眼视力</span></td>
@@ -776,19 +773,20 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-sm-8" colspan="8">
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-text col-md-1">备注</span>
-                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control" value="{{ subjectiverefraction.remark }}">
-                        </div>
-                    </td>
-                </tr>
+{#                <tr>#}
+{#                    <td class="col-sm-8" colspan="8">#}
+{#                        <div class="input-group input-group-sm">#}
+{#                            <span class="input-group-text col-md-1">备注</span>#}
+{#                            <input autocomplete="off" type="hidden" name="remark" id="remark" class="form-control" value="{{ subjectiverefraction.remark }}">#}
+{#                        </div>#}
+{#                    </td>#}
+{#                </tr>#}
             </form>
         </table>
         <h4>视力解决方案</h4>
         <table class="table">
             <form class="vertical col-md-12" id="Vision_Solutions">
+                <input autocomplete="off" type="hidden" id="age" name="time" class="form-control date_time" value="{{ visionsolutions.time }}">
                 <tr>
                     <td class="col-sm-1"></td>
                     <td class="col-sm-1"><span>球镜</span></td>
@@ -1560,6 +1558,7 @@
         <h4>产品信息</h4>
         <table class="table">
             <form class="vertical col-md-12" id="Product_Orders">
+                <input autocomplete="off" type="hidden" id="age" name="time" class="form-control date_time" value="{{ store.time }}">
                 <tr>
                     <td class="col-1">
                         <span>类别</span>
