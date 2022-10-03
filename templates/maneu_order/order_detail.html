@@ -464,21 +464,17 @@
                 <a class="col-md-4 col-sm-12 btn btn-primary" type="button" href="{% url 'maneu_order:order_list' %}">返回列表</a>
             </div>
             <div class="col-md-3 col-sm-3">
-                <form method="post" action="{% url 'maneu_order:alterSalesList' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="order_id" value="{{ order.id }}">
+                <form method="get" action="{% url 'maneu_order:alterSalesList' %}">
                     <input type="submit" class="col-md-4 col-sm-12 btn btn-warning" value="维修记录">
                 </form>
             </div>
             <div class="col-md-3 col-sm-4">
                 <form method="get" action="{% url 'maneu_order:order_update' %}">
-                    <input type="hidden" name="order_id" value="{{ order.id }}">
                     <input type="submit" class="col-md-4 col-sm-12 btn btn-warning" value="修改订单">
                 </form>
             </div>
             <div class="col-md-3 col-sm-4">
                 <form method="get" action="{% url 'maneu_order:order_delete' %}">
-                    <input type="hidden" name="order_id" value="{{ order.id }}">
                     <input type="submit" class="col-md-4 col-sm-12 btn btn-danger" value="删除订单">
                 </form>
             </div>

@@ -6,7 +6,16 @@
         <h4>客户个人信息</h4>
         <table class="table">
             <form class="vertical col-md-12" id="Guess_information">
-                <input autocomplete="off" type="hidden" id="age" name="time" class="form-control date_time" value="{{ guess.time }}">
+                <tr>
+                    <td class="col-sm-2" colspan="2">
+                        <div class="input-group input-group-sm mb-2">
+                            <span class="input-group-text">创建时间</span>
+                            <input autocomplete="off" type="date" id="guess_time" name="time" class="form-control">
+                            <span id="phone_error"></span>
+                        </div>
+                    </td>
+                    <td class="col-sm-4" colspan="4"></td>
+                </tr>
                 <tr>
                     <td class="col-sm-2" colspan="2">
                         <div class="input-group input-group-sm mb-2">
@@ -21,8 +30,13 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">姓名</span>
-                            <input id="order" name="order" type="hidden" autocomplete="off">
                             <input class="form-control" id="guess_name" name="guess_name" type="text" autocomplete="off" value="{{ guess.name }}">
+                        </div>
+                    </td>
+                    <td class="col-sm-2">
+                        <div class="input-group input-group-sm mb-2">
+                            <span class="input-group-text">出生日期</span>
+                            <input autocomplete="off" type="date" id="age" name="age" class="form-control">
                         </div>
                     </td>
                     <td class="col-sm-2">
@@ -35,7 +49,6 @@
                             </datalist>
                         </div>
                     </td>
-                    <input autocomplete="off" type="hidden" id="age" name="age" class="form-control date_time" value="{{ guess.age }}">
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">眼位</span>
@@ -81,7 +94,16 @@
         <h4>屈光检验结果</h4>
         <table class="table">
             <form class="vertical col-md-12" id="Subjective_refraction">
-                <input autocomplete="off" type="hidden" id="age" name="time" class="form-control date_time" value="{{ subjectiverefraction.time }}">
+                <tr>
+                    <td class="col-sm-2" colspan="2">
+                        <div class="input-group input-group-sm mb-2">
+                            <span class="input-group-text">创建时间</span>
+                            <input autocomplete="off" type="date" id="sr_time" name="time" class="form-control">
+                            <span id="phone_error"></span>
+                        </div>
+                    </td>
+                    <td class="col-sm-4" colspan="4"></td>
+                </tr>
                 <tr>
                     <td class="col-sm-1"></td>
                     <td class="col-sm-1"><span>裸眼视力</span></td>
@@ -773,20 +795,29 @@
                         </div>
                     </td>
                 </tr>
-{#                <tr>#}
-{#                    <td class="col-sm-8" colspan="8">#}
-{#                        <div class="input-group input-group-sm">#}
-{#                            <span class="input-group-text col-md-1">备注</span>#}
-{#                            <input autocomplete="off" type="hidden" name="remark" id="remark" class="form-control" value="{{ subjectiverefraction.remark }}">#}
-{#                        </div>#}
-{#                    </td>#}
-{#                </tr>#}
+                {#                <tr>#}
+                {#                    <td class="col-sm-8" colspan="8">#}
+                {#                        <div class="input-group input-group-sm">#}
+                {#                            <span class="input-group-text col-md-1">备注</span>#}
+                {#                            <input autocomplete="off" type="hidden" name="remark" id="remark" class="form-control" value="{{ subjectiverefraction.remark }}">#}
+                {#                        </div>#}
+                {#                    </td>#}
+                {#                </tr>#}
             </form>
         </table>
         <h4>视力解决方案</h4>
         <table class="table">
             <form class="vertical col-md-12" id="Vision_Solutions">
-                <input autocomplete="off" type="hidden" id="age" name="time" class="form-control date_time" value="{{ visionsolutions.time }}">
+                <tr>
+                    <td class="col-sm-2" colspan="2">
+                        <div class="input-group input-group-sm mb-2">
+                            <span class="input-group-text">创建时间</span>
+                            <input autocomplete="off" type="date" id="vs_time" name="time" class="form-control">
+                            <span id="phone_error"></span>
+                        </div>
+                    </td>
+                    <td class="col-sm-4" colspan="4"></td>
+                </tr>
                 <tr>
                     <td class="col-sm-1"></td>
                     <td class="col-sm-1"><span>球镜</span></td>
@@ -1558,7 +1589,16 @@
         <h4>产品信息</h4>
         <table class="table">
             <form class="vertical col-md-12" id="Product_Orders">
-                <input autocomplete="off" type="hidden" id="age" name="time" class="form-control date_time" value="{{ store.time }}">
+                <tr>
+                    <td class="col-sm-2" colspan="2">
+                        <div class="input-group input-group-sm mb-2">
+                            <span class="input-group-text">创建时间</span>
+                            <input autocomplete="off" type="date" id="store_time" name="time" class="form-control">
+                            <span id="phone_error"></span>
+                        </div>
+                    </td>
+                    <td class="col-sm-4" colspan="4"></td>
+                </tr>
                 <tr>
                     <td class="col-1">
                         <span>类别</span>
@@ -1651,7 +1691,6 @@
                 <td>
                     <form class="vertical col-md-12" id="order_insert" method="post" action="{% url 'maneu_order:order_update' %}">
                         {% csrf_token %}
-                        <input type="hidden" name="order_id" value="{{ order.id }}">
                         <input type="hidden" name="Guess_information" id="Guess_information_json">
                         <input type="hidden" name="Subjective_refraction" id="Subjective_refraction_json">
                         <input type="hidden" name="Vision_Solutions" id="Vision_Solutions_json">
@@ -1666,6 +1705,18 @@
 {% block javascript %}
     <script type="application/javascript">
         $(document).ready(function () {
+            function return_date (date) {
+                year = date.substring(0,4)
+                month1 = date.substring(date.indexOf('年')+1, date.indexOf('月'))
+                day = date.substring(date.indexOf('月')+1, date.indexOf('日'))
+                var day = ("0" + '1').slice(-2);
+                var month = ("0" + (month + 1)).slice(-2);
+                var today = year + "-" + month1 + "-" + day;
+                return today;
+
+            }
+
+
             $.fn.serializeJsonStr = function () {
                 var o = {};
                 var a = this.serializeArray();
@@ -1681,7 +1732,12 @@
                 });
                 return JSON.stringify(o);
             }
-
+            console.log("{{ visionsolutions.time }}")
+            $('#guess_time').val(return_date(date="{{ guess.time }}"))
+            $('#age').val(return_date(date="{{ guess.age }}"))
+            $('#store_time').val("{{ store.time }}")
+            $('#vs_time').val("{{ visionsolutions.time }}")
+            $('#sr_time').val("{{ subjectiverefraction.time }}")
             $('#insert').click(function () {
                 Product_Orders_json = $('#Product_Orders').serializeJsonStr();
                 $('#Product_Orders_json').val(Product_Orders_json);

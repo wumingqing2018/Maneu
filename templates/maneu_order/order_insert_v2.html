@@ -20,7 +20,7 @@
                     <td class="col-sm-2" colspan="2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">电话</span>
-                            <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off">
+                            <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off" required="required">
                             <span id="phone_error"></span>
                         </div>
                     </td>
@@ -31,7 +31,7 @@
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">姓名</span>
                             <input id="order" name="order" type="hidden" autocomplete="off">
-                            <input class="form-control" id="guess_name" name="guess_name" type="text" autocomplete="off">
+                            <input class="form-control" id="guess_name" name="guess_name" type="text" autocomplete="off" required>
                         </div>
                     </td>
                     <td class="col-sm-2">
@@ -796,14 +796,14 @@
                         </div>
                     </td>
                 </tr>
-{#                <tr>#}
-{#                    <td class="col-sm-8" colspan="8">#}
-{#                        <div class="input-group input-group-sm">#}
-{#                            <span class="input-group-text col-md-1">备注</span>#}
-{#                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control">#}
-{#                        </div>#}
-{#                    </td>#}
-{#                </tr>#}
+                {#                <tr>#}
+                {#                    <td class="col-sm-8" colspan="8">#}
+                {#                        <div class="input-group input-group-sm">#}
+                {#                            <span class="input-group-text col-md-1">备注</span>#}
+                {#                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control">#}
+                {#                        </div>#}
+                {#                    </td>#}
+                {#                </tr>#}
             </form>
         </table>
         <h4>视力解决方案</h4>
@@ -1673,7 +1673,7 @@
                         </div>
                     </td>
                 </tr>
-                                <tr>
+                <tr>
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">备注</span>
