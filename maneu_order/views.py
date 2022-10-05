@@ -1,4 +1,3 @@
-import datetime
 import json
 
 from django.shortcuts import render, reverse, HttpResponseRedirect
@@ -159,3 +158,25 @@ def alterSales_delete(request):
     if request.method == 'POST':
         insert = service.ManeuAfterSales_delete_id(id=request.POST.get('order_id'))
     return HttpResponseRedirect(reverse('maneu_order:alterSalesList'))
+
+
+def datalogs_test(request):
+    users_list = service.find_users_all()
+    print(users_list)
+    for user in users_list:
+        user_id = user.user_id
+        for i in range(1, 31):
+            S = ['2022-09-'+'%02d'%i+' 00:00', '2022-09-'+'%02d'%i+ ' 23:59']
+            order_log = service.find_order_time(time=S, users_id=user_id)
+            if order_log == None:
+                order_log ='0'
+            print(order_log)
+            service.ManeuDataLogs_insert(user_id=user_id, time='2022-09-'+'%02d'%i, order_log=len(order_log))
+        for i in range(1, 30):
+            S = ['2022-10-'+'%02d'%i+' 00:00', '2022-10-'+'%02d'%i+ ' 23:59']
+            order_log = service.find_order_time(time=S, users_id=user_id)
+            if order_log == None:
+                order_log ='0'
+            print(order_log)
+            service.ManeuDataLogs_insert(user_id=user_id, time='2022-09-'+'%02d'%i, order_log=len(order_log))
+    return HttpResponseRedirect(reverse('maneu_order:order_list'))

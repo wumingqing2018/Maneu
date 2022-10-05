@@ -72,3 +72,8 @@ def get_ip(request):
         return request.META.get("HTTP_X_FORWARDED_FOR")
     else:
         return request.META.get("REMOTE_ADDR")
+
+
+def cur_month():
+    now = datetime.datetime.now()
+    otherStyleTime = now.strftime("%Y-%m")

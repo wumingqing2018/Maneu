@@ -5,6 +5,8 @@
 {% block content %}
     <div class="container">
         <!--内容栏-->
+            <div id="main" class="col-md-12" style="min-width: 80%; min-height: 500px;"></div>
+
         <table class="table">
             <tr>
                 <td colspan=4>
@@ -66,4 +68,66 @@
             {% endif %}
         </table>
     </div>
+{% endblock %}
+{% block javascript %}
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                span: '第一个 ECharts 实例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["1","2","3","4","5","6","7","8","9", "10","11","12","13","14","15","16","17","18","19","30","21","22","23","24","25","26","27","28","29","30"],
+                type: 'category',
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    interval: 0,
+                    show: true,
+                    textStyle: {
+                        color: '#c3dbff',  //更改坐标轴文字颜色
+                        fontSize: 14      //更改坐标轴文字大小
+                    }
+                },
+                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#ccc"
+                    }
+                }
+            },
+            yAxis: {
+                show: true,
+                type: 'time',
+                                axisLine: {
+                    show: true,
+                    lineStyle: {
+                        color: "#ccc"
+                    }
+                }
+            },
+            series: [{
+                name: '销量',
+                type: 'line',
+                data: [5, 20, 36, 10, 10, 20, 20,10]
+            }, {
+                name: '上月销量',
+                type: 'line',
+                data: [15, 25, 35, 20, 30, 10, 10,10]
+            }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
 {% endblock %}
