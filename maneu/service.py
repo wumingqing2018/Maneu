@@ -73,7 +73,7 @@ def ManeuDatalogs_getorcreate(user_id, time, order_log):
 
 def ManeuDatalogs_List(user_id, time):
     try:
-        return ManeuDatalogs.objects.filter(user_id=user_id, time__range=time).first()
+        return ManeuDatalogs.objects.filter(user_id=user_id, time__month=time).first()
     except BaseException as msg:
         print(msg)
         return None

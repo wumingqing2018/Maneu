@@ -59,14 +59,18 @@ def guess(request):
 
 
 def test1(request):
-    orderCountList = {}
     user_id = request.session.get('id')
-    the_month = [common.today()[0:8]+'01', common.today()[0:8]+str(common.daycount()[1])]
-    dataLogs = service.ManeuDatalogs_List(user_id=user_id, time=the_month)
+    dataLogs = service.ManeuDatalogs_List(user_id=user_id, time=common.month()).order_log
     if dataLogs == None:
-        today = common.today()[0:8]
-        for i in range(1, common.daycount()[1]+1):
-            orderCountList['%02d'%i] = service.ManeuOrder_count(time=today+'%02d'%i, user_id=user_id)
+        orderCountList = {}
+        ten = []
+        for i in range(1, 32):
+            ten.append(service.ManeuOrder_count(time='2022-10-'+'%02d'%i, user_id=user_id))
+        nine = []
+        for i in range(1, 31):
+            nine.append(service.ManeuOrder_count(time='2022-09-'+'%02d'%i, user_id=user_id))
+        orderCountList['cur_month'] = ten
+        orderCountList['yest_month'] = nine
+
         service.ManeuDatalogs_getorcreate(user_id=user_id, time=common.today(), order_log=json.dumps(orderCountList))
-        dataLogs = service.ManeuDatalogs_List(user_id=user_id, time=the_month)
-    return render(request, 'maneu/test1.html', {"order_logs": json.loads(dataLogs.order_log)})
+    return render(request, 'maneu/test1.html', {'dataLogs': json.loads(dataLogs)})

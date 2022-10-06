@@ -1,12 +1,10 @@
-{% extends 'maneu/base1.html' %}
+{% extends 'maneu/base2.html' %}
 {% load static %}
 ={% block javascript %}
     <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main'), 'darkmaneu');
-        // customed
-
         var option = {
             title: {
                 text: '本月录入数据统计',
@@ -18,7 +16,7 @@
             },
             tooltip: {},
             legend: {
-                data:['销量']
+                data:['本月销量','上月销量']
             },
             xAxis: {
                 data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31'],
@@ -27,23 +25,23 @@
             yAxis: {
             },
             series: [{
-                name: '销量',
+                name: '上月销量',
                 type: 'line',
-                color: ['#FCDA5E'],
-                data: ["{{order_logs.01}}","{{order_logs.02}}","{{order_logs.03}}","{{order_logs.04}}","{{order_logs.05}}","{{order_logs.06}}","{{order_logs.07}}","{{order_logs.08}}","{{order_logs.09}}","{{order_logs.10}}",
-                    "{{order_logs.11}}","{{order_logs.12}}","{{order_logs.13}}","{{order_logs.14}}","{{order_logs.15}}","{{order_logs.16}}","{{order_logs.17}}","{{order_logs.18}}","{{order_logs.19}}","{{order_logs.20}}",
-                    "{{order_logs.21}}","{{order_logs.22}}","{{order_logs.23}}","{{order_logs.24}}","{{order_logs.25}}","{{order_logs.26}}","{{order_logs.27}}","{{order_logs.28}}","{{order_logs.29}}","{{order_logs.30}}",
-                    "{{order_logs.31}}",]
+                data: {{ dataLogs.yest_month|safe }}
+            },
+            {
+                name: '本月销量',
+                type: 'line',
+                data: {{ dataLogs.cur_month|safe }}
             }]
         };
 
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
-
     </script>
 {% endblock %}
 {% block content %}
-    <div class="container-fluid row">
+    <div class="container-fluid">
         <div id="main" style="width: 100%;height:400px;"></div>
     </div>
 {% endblock %}

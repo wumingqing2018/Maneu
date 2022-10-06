@@ -34,7 +34,7 @@
             "#91ca8c",
             "#f49f42"
         ],
-        // "backgroundColor": "rgba(51,51,51,1)",
+        "backgroundColor": "rgba(51,51,51,1)",
         "textStyle": {},
         "title": {
             "textStyle": {
@@ -398,8 +398,8 @@
             ]
         },
         "dataZoom": {
-            // "backgroundColor": "rgba(47,69,84,0)",
-            // "dataBackgroundColor": "rgba(255,255,255,0.3)",
+            "backgroundColor": "rgba(47,69,84,0)",
+            "dataBackgroundColor": "rgba(255,255,255,0.3)",
             "fillerColor": "rgba(167,183,204,0.4)",
             "handleColor": "#a7b7cc",
             "handleSize": "100%",
