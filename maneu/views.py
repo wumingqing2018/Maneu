@@ -66,7 +66,7 @@ def test1(request):
     if dataLogs == None:
         today = common.today()[0:8]
         for i in range(1, common.daycount()[1]+1):
-            orderCountList[i] = service.ManeuOrder_count(time=today+'%02d'%i, user_id=user_id)
+            orderCountList['%02d'%i] = service.ManeuOrder_count(time=today+'%02d'%i, user_id=user_id)
         service.ManeuDatalogs_getorcreate(user_id=user_id, time=common.today(), order_log=json.dumps(orderCountList))
         dataLogs = service.ManeuDatalogs_List(user_id=user_id, time=the_month)
     return render(request, 'maneu/test1.html', {"order_logs": json.loads(dataLogs.order_log)})

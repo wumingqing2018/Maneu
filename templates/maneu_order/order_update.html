@@ -10,7 +10,7 @@
                     <td class="col-sm-2" colspan="2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">创建时间</span>
-                            <input autocomplete="off" type="date" id="guess_time" name="time" class="form-control">
+                            <input autocomplete="off" type="date" id="guess_time" name="time" class="form-control" value="{{ guess.time | safe }}">
                             <span id="phone_error"></span>
                         </div>
                     </td>
@@ -36,7 +36,7 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">出生日期</span>
-                            <input autocomplete="off" type="date" id="age" name="age" class="form-control">
+                            <input autocomplete="off" type="date" id="age" name="age" class="form-control" value="{{ guess.time | safe }}">
                         </div>
                     </td>
                     <td class="col-sm-2">
@@ -1705,18 +1705,6 @@
 {% block javascript %}
     <script type="application/javascript">
         $(document).ready(function () {
-            function return_date (date) {
-                year = date.substring(0,4)
-                month1 = date.substring(date.indexOf('年')+1, date.indexOf('月'))
-                day = date.substring(date.indexOf('月')+1, date.indexOf('日'))
-                var day = ("0" + '1').slice(-2);
-                var month = ("0" + (month + 1)).slice(-2);
-                var today = year + "-" + month1 + "-" + day;
-                return today;
-
-            }
-
-
             $.fn.serializeJsonStr = function () {
                 var o = {};
                 var a = this.serializeArray();
@@ -1732,12 +1720,6 @@
                 });
                 return JSON.stringify(o);
             }
-            console.log("{{ visionsolutions.time }}")
-            $('#guess_time').val(return_date(date="{{ guess.time }}"))
-            $('#age').val(return_date(date="{{ guess.age }}"))
-            $('#store_time').val("{{ store.time }}")
-            $('#vs_time').val("{{ visionsolutions.time }}")
-            $('#sr_time').val("{{ subjectiverefraction.time }}")
             $('#insert').click(function () {
                 Product_Orders_json = $('#Product_Orders').serializeJsonStr();
                 $('#Product_Orders_json').val(Product_Orders_json);

@@ -22,6 +22,13 @@ def today():
     """
     return time.strftime("%Y-%m-%d", time.localtime())
 
+def day():
+    """
+    返回今天日期
+    格式: Y-M-D
+    """
+    return time.strftime("%d", time.localtime())
+
 def month():
     """
     返回今天日期

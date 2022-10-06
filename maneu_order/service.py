@@ -298,5 +298,9 @@ def ManeuAfterSales_delete_id(id=''):
         return None
 
 
-def Datalogs_update(users_id,):
-    return ManeuDatalogs.objects.filter(user_id=users_id).first()
+def Datalogs_id(users_id, time):
+    return ManeuDatalogs.objects.filter(user_id=users_id, time__month=time).first()
+
+
+def Datalogs_update(users_id, time, order_log):
+    return ManeuDatalogs.objects.filter(user_id=users_id, time__month=time).update(order_log=order_log)
