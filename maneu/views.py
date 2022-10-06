@@ -60,7 +60,7 @@ def guess(request):
 
 def test1(request):
     user_id = request.session.get('id')
-    dataLogs = service.ManeuDatalogs_List(user_id=user_id, time=common.month()).order_log
+    dataLogs = service.ManeuDatalogs_List(user_id=user_id, time=common.month())
     if dataLogs == None:
         orderCountList = {}
         ten = []
@@ -73,4 +73,4 @@ def test1(request):
         orderCountList['yest_month'] = nine
 
         service.ManeuDatalogs_getorcreate(user_id=user_id, time=common.today(), order_log=json.dumps(orderCountList))
-    return render(request, 'maneu/test1.html', {'dataLogs': json.loads(dataLogs)})
+    return render(request, 'maneu/test1.html', {'dataLogs': json.loads(dataLogs.order_log)})
