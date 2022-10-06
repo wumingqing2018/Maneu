@@ -9,7 +9,7 @@ from maneu_order.models import ManeuStore
 from maneu_order.models import ManeuSubjectiveRefraction
 from maneu_order.models import ManeuUsers
 from maneu_order.models import ManeuVisionSolutions
-# from maneu_order.models import ManeuDatalogs
+from maneu_order.models import ManeuDatalogs
 
 
 def find_order_all(users_id=''):
@@ -105,6 +105,14 @@ def delete_store_id(id=''):
 def find_users_all():
     try:
         return ManeuUsers.objects.filter().all()
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
+def find_users_id(id):
+    try:
+        return ManeuUsers.objects.filter(user_id=id).filter()
     except BaseException as msg:
         print(msg)
         return None
@@ -290,9 +298,5 @@ def ManeuAfterSales_delete_id(id=''):
         return None
 
 
-# def ManeuDataLogs_insert(user_id='', time='', order_log='0'):
-#     try:
-#         return ManeuDatalogs.objects.create(time=time, user_id=user_id, order_log=order_log)
-#     except BaseException as msg:
-#         print(msg)
-#         return None
+def Datalogs_update(users_id,):
+    return ManeuDatalogs.objects.filter(user_id=users_id).first()

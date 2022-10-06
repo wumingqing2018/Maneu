@@ -5,6 +5,7 @@ from maneu_order.models import ManeuSubjectiveRefraction
 from maneu_order.models import ManeuUsers
 from maneu_order.models import ManeuVisionSolutions
 from maneu_users.models import ManeuUsers
+from maneu_order.models import ManeuDatalogs
 
 
 def find_user_username(username=''):
@@ -60,3 +61,23 @@ def find_subjectiverefraction_id(id=''):
     except BaseException as msg:
         print(msg)
         return None
+
+
+def ManeuDatalogs_getorcreate(user_id, time, order_log):
+    try:
+        return ManeuDatalogs.objects.get_or_create(time=time, user_id=user_id, defaults={'user_id': user_id, 'order_log': order_log})
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
+def ManeuDatalogs_List(user_id, time):
+    try:
+        return ManeuDatalogs.objects.filter(user_id=user_id, time__range=time).first()
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
+def ManeuOrder_count(user_id,time):
+    return ManeuOrderV2.objects.filter(time__range=[time + ' 00:00', time + ' 23:59'], users_id=user_id).count()

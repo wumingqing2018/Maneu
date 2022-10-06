@@ -2,6 +2,7 @@
 import datetime
 import random
 import time
+import calendar
 
 import qrcode
 
@@ -20,6 +21,20 @@ def today():
     格式: Y-M-D
     """
     return time.strftime("%Y-%m-%d", time.localtime())
+
+def month():
+    """
+    返回今天日期
+    格式: Y-M-D
+    """
+    return time.strftime("%m", time.localtime())
+
+def year():
+    """
+    返回今天日期
+    格式: Y-M-D
+    """
+    return time.strftime("%Y", time.localtime())
 
 
 def yesterday(days):
@@ -74,6 +89,7 @@ def get_ip(request):
         return request.META.get("REMOTE_ADDR")
 
 
-def cur_month():
-    now = datetime.datetime.now()
-    otherStyleTime = now.strftime("%Y-%m")
+def daycount():
+    time.strftime("%Y-%m-", time.localtime())
+    monthRange = calendar.monthrange(year=int(year()), month=int(month()))
+    return monthRange

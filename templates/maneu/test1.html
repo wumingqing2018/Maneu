@@ -1,91 +1,49 @@
-{% extends 'maneu/base0.html' %}
+{% extends 'maneu/base1.html' %}
 {% load static %}
-{% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/maneu/monitor.css' %}"/>
-{% endblock %}
-{% block js %}
-    <script type="text/javascript" src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="https://s3.pstatp.com/cdn/expire-1-M/echarts/2.2.7/echarts-all.js"></script>
-    <script type="text/javascript" src="{% static 'js/maneu/jquery.count.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/maneu/monitor.js' %}"></script>
+={% block javascript %}
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'), 'darkmaneu');
+        // customed
+
+        var option = {
+            title: {
+                text: '本月录入数据统计',
+                textStyle: {
+                    fontSize: 18,
+                    fontWeight: 'bolder',
+                    color: '#FCDA5E'          // 主标题文字颜色
+                },
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31'],
+            },
+
+            yAxis: {
+            },
+            series: [{
+                name: '销量',
+                type: 'line',
+                color: ['#FCDA5E'],
+                data: ["{{order_logs.1}}","{{order_logs.2}}","{{order_logs.3}}","{{order_logs.4}}","{{order_logs.5}}","{{order_logs.6}}","{{order_logs.7}}","{{order_logs.8}}","{{order_logs.9}}","{{order_logs.10}}",
+                    "{{order_logs.11}}","{{order_logs.12}}","{{order_logs.13}}","{{order_logs.14}}","{{order_logs.15}}","{{order_logs.16}}","{{order_logs.17}}","{{order_logs.18}}","{{order_logs.19}}","{{order_logs.20}}",
+                    "{{order_logs.21}}","{{order_logs.22}}","{{order_logs.23}}","{{order_logs.24}}","{{order_logs.25}}","{{order_logs.26}}","{{order_logs.27}}","{{order_logs.28}}","{{order_logs.29}}","{{order_logs.30}}",
+                    "{{order_logs.31}}",]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+    </script>
 {% endblock %}
 {% block content %}
-    <div class="container-fluid">
-        <span id="bugBtn" title="同步过程出现错误数据，请检查" onclick="hideBugBtn('')"></span>
-        <span id="localtime" style=" font-size:14px; position: absolute; z-index: 10; right: 25px; top:5px; "></span>
-        <span class="btn btn-blue btn-big" id="refreshBtn" title="默认 1min 刷新一次">刷新</span>
-        <div style="height: 620px;">
-            <header class="t_header">
-                <span>数据同步实时监控</span>
-            </header>
-            <div style="margin-top: 20px;">
-                <div class="t_left_box">
-                    <img class="t_l_line" src="{% static 'img/test/left_line.png' %}" alt="">
-                    <div class="t_mbox">
-                        <div>今日已同步</div>
-                        <span id="todaySyncSpan">3658742</span>
-                        <i></i>
-                    </div>
-                    <div class="t_mbox">
-                        <div>待同步</div>
-                        <span id="todayNoSyncSpan">152</span>
-                        <i></i>
-                    </div>
-                    <div class="t_mbox">
-                        <div>同步延时(秒)</div>
-                        <span id="syncDelaySpan">0.5</span>
-                        <i></i>
-                    </div>
-                    <div class="t_mbox">
-                        <div>状态</div>
-                        <span id="syncStateSpan">正常</span>
-                    </div>
-                    <img class="t_r_line" src="{% static 'img/test/right_line.png' %}" alt="">
-                </div>
-                <div class="t_top_box">
-                    <img class="t_l_line" src="{% static 'img/test/left_line.png' %}" alt="">
-                    <ul class="t_nav">
-                        <li>
-                            <span>新增</span>
-                            <span id="addTj">3 ms</span>
-                            <i></i>
-                        </li>
-                        <li>
-                            <span>修改</span>
-                            <span id="updateTj">5 ms</span>
-                            <i></i>
-                        </li>
-                        <li>
-                            <span>删除</span>
-                            <span id="deleteTj">4 ms</span>
-                        </li>
-                    </ul>
-                    <img class="t_r_line" src="{% static 'img/test/right_line.png' %}" alt="">
-                </div>
-                <div class="t_top2_box">
-                    <img class="t_l_line" src="{% static 'img/test/left_line.png' %}" alt="">
-                    <div class="t_mbox2">
-                        <span style="color: #00b3ac; float: left; margin-left: 13%;">已运行：</span>
-                        <span id="runTimeTj" style="float: left; margin-left: 5%;"></span>
-                    </div>
-                    <img class="t_r_line" src="{% static 'img/test/right_line.png' %}" alt="">
-                </div>
-                <div class="t_bottom_box">
-                    <img class="t_l_line" src="{% static 'img/test/left_line.png' %}" alt="">
-                    <div class="chart" id="taskSize" style="width: 100%; height:100%;"></div>
-                    <img class="t_r_line" src="{% static 'img/test/right_line.png' %}" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="t_table_box">
-            <img class="t_l_line" src="{% static 'img/test/left_line.png' %}" alt="">
-            <input type="text" id="searchText" value="" placeholder="输入内容筛选"/>
-            <table class="commonTable">
-                <thead>
-                <td title="序号" colspan="8">no monitor data</td>
-                </thead>
-            </table>
-            <img class="t_r_line" src="{% static 'img/test/right_line.png' %}" alt="">
-        </div>
-    </div>>
+    <div class="container-fluid row">
+        <div id="main" style="width: 100%;height:400px;"></div>
+    </div>
 {% endblock %}

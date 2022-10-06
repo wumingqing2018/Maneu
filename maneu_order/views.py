@@ -79,6 +79,8 @@ def order_insert(request):
                                             guess_id=ManeuGuess_id.id,
                                             visionsolutions_id=ManeuVisionSolutions_id.id,
                                             subjectiverefraction_id=ManeuSubjectiveRefraction_id.id,)
+        # if order:
+        #     service.Datalogs_update(users_id=request.session.get('id'),)
         request.session['order_id'] = str(order.id)
         return HttpResponseRedirect(reverse('maneu_order:order_detail'))
     ua = request.META.get("HTTP_USER_AGENT")
