@@ -22,12 +22,12 @@
     }
     echarts.registerTheme('darkmaneu', {
         "color": [
+            "#eedd78",
             "#dd6b66",
-            "#759aa0",
             "#e69d87",
             "#8dc1a9",
             "#ea7e53",
-            "#eedd78",
+            "#dd6b66",
             "#73a373",
             "#73b9bc",
             "#7289ab",
@@ -51,7 +51,7 @@
             "lineStyle": {
                 "width": 2
             },
-            "symbolSize": 4,
+            "symbolSize": "8",
             "symbol": "circle",
             "smooth": true
         },
@@ -62,7 +62,7 @@
             "lineStyle": {
                 "width": 2
             },
-            "symbolSize": 4,
+            "symbolSize": "8",
             "symbol": "circle",
             "smooth": true
         },
@@ -132,16 +132,16 @@
                 "width": 1,
                 "color": "#aaa"
             },
-            "symbolSize": 4,
+            "symbolSize": "8",
             "symbol": "circle",
             "smooth": true,
             "color": [
+                "#eedd78",
                 "#dd6b66",
-                "#759aa0",
                 "#e69d87",
                 "#8dc1a9",
                 "#ea7e53",
-                "#eedd78",
+                "#dd6b66",
                 "#73a373",
                 "#73b9bc",
                 "#7289ab",

@@ -1,7 +1,6 @@
 import json
-import datetime
 
-from django.shortcuts import HttpResponseRedirect, reverse,render
+from django.shortcuts import HttpResponseRedirect, reverse, render
 
 from common import common
 from maneu import service
