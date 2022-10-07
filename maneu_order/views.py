@@ -81,9 +81,9 @@ def order_insert(request):
                                             visionsolutions_id=ManeuVisionSolutions_id.id,
                                             subjectiverefraction_id=ManeuSubjectiveRefraction_id.id,)
         if order:
-            order_logs = json.loads(
-                service.Datalogs_id(users_id=request.session.get('id'), time=common.common.month()).order_log)
-            order_logs[common.common.day()] = order_logs[common.common.day()] + 1
+            order_logs = json.loads(service.Datalogs_id(users_id=request.session.get('id'), time=common.common.month()).order_log)
+            print(order_logs['cur_month'])
+            order_logs['cur_month'] = order_logs['cur_month'][int(common.common.day())-1] + 1
             service.Datalogs_update(users_id=request.session.get('id'), time=common.common.month(),
                                     order_log=json.dumps(order_logs))
 
