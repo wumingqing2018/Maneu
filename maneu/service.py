@@ -65,6 +65,14 @@ def find_subjectiverefraction_id(id=''):
 
 def ManeuDatalogs_getorcreate(user_id, time, order_log):
     try:
+        return ManeuDatalogs.objects.get_or_create(time=time, user_id=user_id, defaults={'user_id': user_id, 'order_log': order_log})
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
+def ManeuDatalogs_update(user_id, time, order_log):
+    try:
         return ManeuDatalogs.objects.filter(time=time, user_id=user_id,).update(order_log=order_log)
     except BaseException as msg:
         print(msg)
