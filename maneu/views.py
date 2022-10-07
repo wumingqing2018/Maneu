@@ -71,7 +71,8 @@ def test1(request):
         orderCountList['cur_month'] = ten
         orderCountList['yest_month'] = nine
 
-        dataLogs = service.ManeuDatalogs_getorcreate(user_id=user_id, time=common.today(), order_log=json.dumps(orderCountList))
+        service.ManeuDatalogs_getorcreate(user_id=user_id, time=common.today(), order_log=json.dumps(orderCountList))
+        dataLogs = service.ManeuDatalogs_List(user_id=user_id, time=common.month())
     return render(request, 'maneu/test1.html', {'dataLogs': json.loads(dataLogs.order_log)})
 
 
