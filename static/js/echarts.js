@@ -213,7 +213,7 @@
                 "show": true,
                 "lineStyle": {
                     "color": [
-                        "#aaaaaa"
+                        "rgba(170,170,170,0.19)"
                     ]
                 }
             },
@@ -247,7 +247,7 @@
                 "show": true,
                 "lineStyle": {
                     "color": [
-                        "#aaaaaa"
+                        "rgba(170,170,170,0.19)"
                     ]
                 }
             },
@@ -281,7 +281,7 @@
                 "show": true,
                 "lineStyle": {
                     "color": [
-                        "#aaaaaa"
+                        "rgba(170,170,170,0.19)"
                     ]
                 }
             },
@@ -315,7 +315,7 @@
                 "show": true,
                 "lineStyle": {
                     "color": [
-                        "#aaaaaa"
+                        "rgba(170,170,170,0.19)"
                     ]
                 }
             },
