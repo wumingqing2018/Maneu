@@ -104,7 +104,7 @@ def order_insert_v2(request):
         ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
         ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
-        order = service.ManeuOrderV2_insert(name=guess_content['guess_name'],
+        order = service.ManeuOrderV2_insert_v2(name=guess_content['guess_name'],
                                             time=guess_content['time'],
                                             phone=guess_content['guess_phone'],
                                             users_id=request.session.get('id'),
