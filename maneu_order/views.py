@@ -5,6 +5,7 @@ from common import common
 from common import verify
 from common.checkMobile import judge_pc_or_mobile
 from maneu_order import service
+from datetime import timedelta
 
 
 def order_list(request):
@@ -73,39 +74,6 @@ def order_insert(request):
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
         ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
         order = service.ManeuOrderV2_insert(name=guess_content['guess_name'],
-                                            phone=guess_content['guess_phone'],
-                                            users_id=request.session.get('id'),
-                                            store_id=ManeuStore_id.id,
-                                            guess_id=ManeuGuess_id.id,
-                                            visionsolutions_id=ManeuVisionSolutions_id.id,
-                                            subjectiverefraction_id=ManeuSubjectiveRefraction_id.id,)
-        if order:
-            order_logs = json.loads(service.Datalogs_id(users_id=request.session.get('id'), time=common.month()).order_log)
-            time = int(common.day())-1
-            order_logs['cur_month'][time] = order_logs['cur_month'][time] + 1
-            service.Datalogs_update(users_id=request.session.get('id'), time=common.month(),
-                                    order_log=json.dumps(order_logs))
-
-        request.session['order_id'] = str(order.id)
-        return HttpResponseRedirect(reverse('maneu_order:order_detail'))
-    ua = request.META.get("HTTP_USER_AGENT")
-    mobile = judge_pc_or_mobile(ua)
-    if mobile:
-        return render(request, 'maneu_order/order_insert_V3.html')
-    else:
-        return render(request, 'maneu_order/order_insert_v2.html')
-
-
-def order_insert_v2(request):
-    """添加订单"""
-    if request.method == 'POST':
-        guess_content = json.loads(request.POST.get('Guess_information'))
-        ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'))
-        ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
-        ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
-        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
-        order = service.ManeuOrderV2_insert_v2(name=guess_content['guess_name'],
-                                            time=guess_content['time'],
                                             phone=guess_content['guess_phone'],
                                             users_id=request.session.get('id'),
                                             store_id=ManeuStore_id.id,

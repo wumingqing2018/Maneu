@@ -73,3 +73,10 @@ def test1(request):
 
         service.ManeuDatalogs_getorcreate(user_id=user_id, time=common.today(), order_log=json.dumps(orderCountList))
     return render(request, 'maneu/test1.html', {'dataLogs': json.loads(dataLogs.order_log)})
+
+
+def test2(request):
+    user_id = request.session.get('id')
+    orderCountList = {"cur_month": [15, 6, 1, 7, 8, 1, 7, 3, 6, 3, 1, 14, 15, 5, 4, 3, 5, 6, 31, 12, 23, 2, 2, 4, 3, 5, 6, 3, 4, 2, 4], "yest_month": [0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 0]}
+    service.ManeuDatalogs_getorcreate(user_id=user_id, time=common.today(), order_log=json.dumps(orderCountList))
+    return HttpResponseRedirect(reverse('test1'))
