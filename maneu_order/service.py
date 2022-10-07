@@ -249,6 +249,16 @@ def ManeuOrderV2_insert(name='', phone='', guess_id='', users_id='', store_id=''
         print(msg)
         return None
 
+def ManeuOrderV2_insert_v2(name='', time='', phone='', guess_id='', users_id='', store_id='', visionsolutions_id='', subjectiverefraction_id=''):
+    try:
+        return ManeuOrderV2.objects.create(name=name, time=time+' 00:00', phone=phone, guess_id=guess_id, users_id=users_id,
+                                           store_id=store_id, visionsolutions_id=visionsolutions_id,
+                                           subjectiverefraction_id=subjectiverefraction_id)
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
 
 def ManeuOrderV2_update(order_id='', name='', phone=''):
     try:
