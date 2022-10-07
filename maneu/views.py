@@ -77,6 +77,6 @@ def test1(request):
 
 def test2(request):
     user_id = request.session.get('id')
-    orderCountList = {"yest_month": [15, 6, 1, 7, 8, 1, 7, 3, 6, 3, 1, 14, 15, 5, 4, 3, 5, 6, 31, 12, 23, 2, 2, 4, 3, 5, 6, 3, 4, 2, 4], "cur_month": [0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1, 0]}
+    orderCountList = {"yest_month": [15, 6, 1, 7, 8, 1, 7, 3, 6, 3, 10, 14, 15, 5, 4, 3, 5, 6, 3, 12, 5, 2, 2, 4, 3, 5, 6, 3, 4, 2, 4], "cur_month": [4, 6, 5, 3, 4, 5, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
     service.ManeuDatalogs_getorcreate(user_id=user_id, time=common.today(), order_log=json.dumps(orderCountList))
     return HttpResponseRedirect(reverse('test1'))
