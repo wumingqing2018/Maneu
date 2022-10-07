@@ -14,7 +14,7 @@ urlpatterns = [
     # 客户页
     path('guess/', guess, name='guess'),
     path('test1/', test1, name='test1'),
-    path('test2/', test1, name='test2'),
+    path('test2/', test2, name='test2'),
 
     # 仓库子路由
     path('maneu_store/', include('maneu_store.urls')),
