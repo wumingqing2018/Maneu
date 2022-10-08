@@ -304,3 +304,19 @@ def Datalogs_id(users_id, time):
 
 def Datalogs_update(users_id, time, order_log):
     return ManeuDatalogs.objects.filter(user_id=users_id, time__month=time).update(order_log=order_log)
+
+
+def Datalogs_time(users_id, time):
+    return ManeuDatalogs.objects.filter(user_id=users_id, time__month=time).first()
+
+
+def Datalogs_create(users_id, time,date,order_logs):
+    return ManeuDatalogs.objects.create(user_id=users_id, time=date, order_log=order_logs)
+
+
+def Datalogs_update(users_id, time,date,order_logs):
+    return ManeuDatalogs.objects.filter(user_id=users_id, time__month=time).update(time=date, order_log=order_logs)
+
+
+def ManeuStore_id(store_id):
+    return ManeuStore.objects.filter(id=store_id).first()

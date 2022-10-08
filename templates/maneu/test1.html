@@ -4,10 +4,11 @@
     <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
     <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('main'), 'darkmaneu');
+        var myChart = echarts.init(document.getElementById('main1'), 'darkmaneu');
         var option = {
             title: {
                 text: '本月录入数据统计',
+                subtext: {{ order_count }} +'单',
                 textStyle: {
                     fontSize: 18,
                     fontWeight: 'bolder',
@@ -16,23 +17,46 @@
             },
             tooltip: {},
             legend: {
-                data:['本月销量','上月销量']
+                data:['本月销量']
             },
             xAxis: {
                 data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31'],
             },
-
-            yAxis: {
-            },
+            yAxis: {},
             series: [{
-                name: '上月销量',
-                type: 'line',
-                data: {{ dataLogs.yest_month|safe }}
-            },
-            {
                 name: '本月销量',
                 type: 'line',
-                data: {{ dataLogs.cur_month|safe }}
+                data: {{ order_log|safe }}
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main2'), 'darkmaneu');
+        var option = {
+            title: {
+                text: '本月销售金额统计',
+                subtext: {{ money_count }} +'元',
+                textStyle: {
+                    fontSize: 18,
+                    fontWeight: 'bolder',
+                    color: '#FCDA5E'          // 主标题文字颜色
+                },
+            },
+            tooltip: {},
+            legend: {
+                data:['金额统计']
+            },
+            xAxis: {
+                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31'],
+            },
+            yAxis: {},
+            series: [{
+                name: '上月销量',
+                type: 'bar',
+                data: {{ money_log|safe }}
             }]
         };
 
@@ -42,6 +66,7 @@
 {% endblock %}
 {% block content %}
     <div class="container-fluid">
-        <div id="main" style="width: 100%;height:400px;"></div>
+        <div id="main1" style="width: 100%;height:400px;"></div>
+        <div id="main2" style="width: 100%;height:400px;"></div>
     </div>
 {% endblock %}
