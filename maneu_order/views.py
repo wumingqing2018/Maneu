@@ -12,41 +12,43 @@ def order_list(request):
     """查看今日订单"""
     users_id = request.session.get('id')
     orderlist = service.find_order_all(users_id=users_id)  # 查找今日订单
-    for order in orderlist:
-        time = order.time
-        month = time.strftime("%m")
-        day = time.strftime("%d")
-        store_count = 0
-        Datalogs = service.Datalogs_time(users_id=users_id, time=month)
-        if Datalogs:
-            order_logs = json.loads(Datalogs.order_log)
-        else:
-            order_logs = {"order_log": {"01": 0, "02": 0, "03": 0, "04": 0, "05": 0, "06": 0, "07": 0, "08": 0, "09": 0, "10": 0,
-                                        "11": 0, "12": 0, "13": 0, "14": 0, "15": 0, "16": 0, "17": 0, "18": 0, "19": 0, "20": 0,
-                                        "21": 0, "22": 0, "23": 0, "24": 0, "25": 0, "26": 0, "27": 0, "28": 0, "29": 0, "30": 0,
-                                        "31": 0},
-                          "order_count": 0,
-                          "money_log": {"01": 0, "02": 0, "03": 0, "04": 0, "05": 0, "06": 0, "07": 0, "08": 0, "09": 0, "10": 0,
-                                        "11": 0, "12": 0, "13": 0, "14": 0, "15": 0, "16": 0, "17": 0, "18": 0, "19": 0, "20": 0,
-                                        "21": 0, "22": 0, "23": 0, "24": 0, "25": 0, "26": 0, "27": 0, "28": 0, "29": 0, "30": 0,
-                                        "31": 0},
-                          "money_count": 0,
-                          }
-        store_list = ['arg14', 'arg24', 'arg34', 'arg44', 'arg54']
-        store_id = order.store_id
-        store = json.loads(service.ManeuStore_id(store_id=store_id).content)
-        for i in store_list:
-            try:
-                store[i] = int(store[i])
-            except:
-                store[i] = 0
-            store_count = store[i]+store_count
-        order_logs["order_log"][day] = order_logs["order_log"][day]+ 1
-        order_logs["money_log"][day] = order_logs["money_log"][day]+store_count
-        if Datalogs:
-            order_logs = service.Datalogs_update(users_id=users_id, time=month,date=time,order_logs=json.dumps(order_logs))
-        else:
-            order_logs = service.Datalogs_create(users_id=users_id, time=month,date=time,order_logs=json.dumps(order_logs))
+    Datalogs = service.Datalogs_time(users_id=users_id, time=common.month())
+    if Datalogs == '':
+        for order in orderlist:
+            time = order.time
+            month = time.strftime("%m")
+            day = time.strftime("%d")
+            store_count = 0
+            Datalogs = service.Datalogs_time(users_id=users_id, time=month)
+            if Datalogs:
+                order_logs = json.loads(Datalogs.order_log)
+            else:
+                order_logs = {"order_log": {"01": 0, "02": 0, "03": 0, "04": 0, "05": 0, "06": 0, "07": 0, "08": 0, "09": 0, "10": 0,
+                                            "11": 0, "12": 0, "13": 0, "14": 0, "15": 0, "16": 0, "17": 0, "18": 0, "19": 0, "20": 0,
+                                            "21": 0, "22": 0, "23": 0, "24": 0, "25": 0, "26": 0, "27": 0, "28": 0, "29": 0, "30": 0,
+                                            "31": 0},
+                              "order_count": 0,
+                              "money_log": {"01": 0, "02": 0, "03": 0, "04": 0, "05": 0, "06": 0, "07": 0, "08": 0, "09": 0, "10": 0,
+                                            "11": 0, "12": 0, "13": 0, "14": 0, "15": 0, "16": 0, "17": 0, "18": 0, "19": 0, "20": 0,
+                                            "21": 0, "22": 0, "23": 0, "24": 0, "25": 0, "26": 0, "27": 0, "28": 0, "29": 0, "30": 0,
+                                            "31": 0},
+                              "money_count": 0,
+                              }
+            store_list = ['arg14', 'arg24', 'arg34', 'arg44', 'arg54']
+            store_id = order.store_id
+            store = json.loads(service.ManeuStore_id(store_id=store_id).content)
+            for i in store_list:
+                try:
+                    store[i] = int(store[i])
+                except:
+                    store[i] = 0
+                store_count = store[i]+store_count
+            order_logs["money_log"][day] = order_logs["money_log"][day]+ store_count
+            order_logs["order_log"][day] = order_logs["order_log"][day] + 1
+            if Datalogs:
+                order_logs = service.Datalogs_update(users_id=users_id, time=month,date=time,order_logs=json.dumps(order_logs))
+            else:
+                order_logs = service.Datalogs_create(users_id=users_id, time=month,date=time,order_logs=json.dumps(order_logs))
     return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
 
 
@@ -117,7 +119,8 @@ def order_insert(request):
                                             store_id=ManeuStore_id.id,
                                             guess_id=ManeuGuess_id.id,
                                             visionsolutions_id=ManeuVisionSolutions_id.id,
-                                            subjectiverefraction_id=ManeuSubjectiveRefraction_id.id, )
+                                            subjectiverefraction_id=ManeuSubjectiveRefraction_id.id,)
+        print(guess_content, ManeuGuess_id,ManeuStore_id,ManeuVisionSolutions_id,ManeuSubjectiveRefraction_id,order)
         request.session['order_id'] = str(order.id)
         return HttpResponseRedirect(reverse('maneu_order:order_detail'))
     ua = request.META.get("HTTP_USER_AGENT")

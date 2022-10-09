@@ -247,7 +247,7 @@ def ManeuOrderV2_insert(name='', phone='', guess_id='', users_id='', store_id=''
                                            subjectiverefraction_id=subjectiverefraction_id)
     except BaseException as msg:
         print(msg)
-        return None
+        return msg
 
 
 def ManeuOrderV2_update(order_id='', name='', phone=''):
