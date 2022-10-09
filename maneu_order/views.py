@@ -13,7 +13,7 @@ def order_list(request):
     users_id = request.session.get('id')
     orderlist = service.find_order_all(users_id=users_id)  # 查找今日订单
     Datalogs = service.Datalogs_time(users_id=users_id, time=common.month())
-    if Datalogs == '':
+    if Datalogs == None:
         for order in orderlist:
             time = order.time
             month = time.strftime("%m")
