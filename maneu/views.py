@@ -1,4 +1,5 @@
 import json
+import random
 
 from django.shortcuts import HttpResponseRedirect, reverse, render
 
@@ -66,23 +67,8 @@ def test1(request):
 
 
 def test2(request):
-    print(int(''))
-    order_log = []
-    money_log = []
-    dataLogs = {'order_log': {"01": 1, "02": 2, "03": 3, "04": 4, "05": 5, "06": 6, "07": 7, "08": 8, "09": 9, "10": 10,
-                              "11": 1, "12": 2, "13": 3, "14": 4, "15": 5, "16": 6, "17": 7, "18": 8, "19": 9, "20": 10,
-                              "21": 1, "22": 2, "23": 3, "24": 4, "25": 5, "26": 6, "27": 7, "28": 8, "29": 9, "30": 10,
-                              "31": 1},
-                'order_count': 0,
-                'money_log': {"01": 1, "02": 2, "03": 3, "04": 4, "05": 5, "06": 6, "07": 7, "08": 8, "09": 9, "10": 10,
-                              "11": 1, "12": 2, "13": 3, "14": 4, "15": 5, "16": 6, "17": 7, "18": 8, "19": 9, "20": 10,
-                              "21": 1, "22": 2, "23": 3, "24": 4, "25": 5, "26": 6, "27": 7, "28": 8, "29": 9, "30": 10,
-                              "31": 1},
-                'money_count': 0,
-                }
-    for i in dataLogs['order_log']:
-        order_log.append(dataLogs['order_log'][i])
-        dataLogs['order_count'] = dataLogs['order_count'] + dataLogs['order_log'][i]
-        money_log.append(dataLogs['order_log'][i])
-        dataLogs['money_count'] = dataLogs['money_count'] + dataLogs['money_log'][i]
-    return render(request, 'maneu/test1.html', {'order_log': order_log, 'money_log': money_log, 'money_count': dataLogs['money_count'], 'order_count': dataLogs['order_count']})
+    test = []
+    for i in range(1,10):
+        test.append(random.randint(0,10))
+    print(test)
+    return render(request, 'maneu/test1.html', )
