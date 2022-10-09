@@ -60,7 +60,7 @@ def test1(request):
     for i in dataLogs['order_log']:
         order_log.append(dataLogs['order_log'][i])
         dataLogs['order_count'] = dataLogs['order_count'] + dataLogs['order_log'][i]
-        money_log.append(dataLogs['order_log'][i])
+        money_log.append(dataLogs['money_log'][i])
         dataLogs['money_count'] = dataLogs['money_count'] + dataLogs['money_log'][i]
     return render(request, 'maneu/test1.html', {'order_log': order_log, 'money_log': money_log, 'money_count': dataLogs['money_count'], 'order_count': dataLogs['order_count']})
 
