@@ -57,7 +57,8 @@ def test1(request):
     user_id = request.session.get('id')
     order_log = []
     money_log = []
-    dataLogs = json.loads(service.ManeuDatalogs_List(user_id=user_id, time=common.month()).order_log)
+    print(service.ManeuDatalogs_List(user_id=user_id))
+    dataLogs = json.loads(service.ManeuDatalogs_List(user_id=user_id).order_log)
     for i in dataLogs['order_log']:
         order_log.append(dataLogs['order_log'][i])
         dataLogs['order_count'] = dataLogs['order_count'] + dataLogs['order_log'][i]

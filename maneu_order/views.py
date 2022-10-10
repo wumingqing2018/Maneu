@@ -13,6 +13,7 @@ def order_list(request):
     users_id = request.session.get('id')
     orderlist = service.find_order_all(users_id=users_id)  # 查找今日订单
     Datalogs = service.Datalogs_time(users_id=users_id, time=common.month())
+    print(Datalogs)
     if Datalogs == None:
         for order in orderlist:
             time = order.time
@@ -107,20 +108,21 @@ def order_search(request):
 def order_insert(request):
     """添加订单"""
     if request.method == 'POST':
-        guess_content = json.loads(request.POST.get('Guess_information'))
+        time = json.loads(request.POST.get('time'))['time']
+        print(time)
         ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'))
         ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
-        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(
-            content=request.POST.get('Subjective_refraction'))
-        order = service.ManeuOrderV2_insert(name=guess_content['guess_name'],
-                                            phone=guess_content['guess_phone'],
+        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
+        order = service.ManeuOrderV2_insert(name=ManeuGuess_id.name,
+                                            phone=ManeuGuess_id.phone,
                                             users_id=request.session.get('id'),
                                             store_id=ManeuStore_id.id,
                                             guess_id=ManeuGuess_id.id,
+                                            time=time,
                                             visionsolutions_id=ManeuVisionSolutions_id.id,
                                             subjectiverefraction_id=ManeuSubjectiveRefraction_id.id,)
-        print(guess_content, ManeuGuess_id,ManeuStore_id,ManeuVisionSolutions_id,ManeuSubjectiveRefraction_id,order)
+        print(ManeuGuess_id,ManeuStore_id,ManeuVisionSolutions_id,ManeuSubjectiveRefraction_id,order)
         request.session['order_id'] = str(order.id)
         return HttpResponseRedirect(reverse('maneu_order:order_detail'))
     ua = request.META.get("HTTP_USER_AGENT")

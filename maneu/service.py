@@ -79,12 +79,11 @@ def ManeuDatalogs_update(user_id, time, order_log):
         return None
 
 
-def ManeuDatalogs_List(user_id, time):
+def ManeuDatalogs_List(user_id):
     try:
-        return ManeuDatalogs.objects.filter(user_id=user_id, time__month=time).first()
+        return ManeuDatalogs.objects.filter(user_id=user_id).first()
     except BaseException as msg:
-        print(msg)
-        return None
+        return msg
 
 
 def ManeuOrder_count(user_id,time):

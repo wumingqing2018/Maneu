@@ -210,7 +210,7 @@ def ManeuSubjectiveRefraction_update(id='', content=''):
 def ManeuGuess_insert(content=''):
     try:
         contents = json.loads(content)
-        return ManeuGuess.objects.create(name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'], time=contents['time'])
+        return ManeuGuess.objects.create(name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
     except BaseException as msg:
         return msg
 
@@ -240,9 +240,9 @@ def ManeuStore_update(content='', id=''):
         return None
 
 
-def ManeuOrderV2_insert(name='', phone='', guess_id='', users_id='', store_id='', visionsolutions_id='', subjectiverefraction_id=''):
+def ManeuOrderV2_insert(name='', time='', phone='', guess_id='', users_id='', store_id='', visionsolutions_id='', subjectiverefraction_id=''):
     try:
-        return ManeuOrderV2.objects.create(name=name, phone=phone, guess_id=guess_id, users_id=users_id,
+        return ManeuOrderV2.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, users_id=users_id,
                                            store_id=store_id, visionsolutions_id=visionsolutions_id,
                                            subjectiverefraction_id=subjectiverefraction_id)
     except BaseException as msg:

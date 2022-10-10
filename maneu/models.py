@@ -123,7 +123,7 @@ class ManeuDatalogs(models.Model):
     id = models.CharField(max_length=36, primary_key=True, default=uuid.uuid1, editable=False)
     user_id = models.CharField(max_length=36)
     time = models.DateField()
-    order_log = models.CharField(max_length=36)
+    order_log = models.TextField()
 
     class Meta:
         managed = False
