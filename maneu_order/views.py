@@ -58,14 +58,12 @@ def order_delete(request):
     users_id = request.session.get('id')
     if order_id and users_id:
         order = service.find_order_id(order_id=order_id, users_id=users_id)
-        print(1,order)
         guess = service.delete_guess_id(id=order.guess_id)
         store = service.delete_store_id(id=order.store_id)
         visionsolutions = service.delete_ManeuVisionSolutions_id(id=order.visionsolutions_id)
         subjectiverefraction = service.delete_subjectiverefraction_id(id=order.subjectiverefraction_id)
         order = service.delete_order_id(users_id=users_id, id=order_id)
         afterSales = service.ManeuAfterSales_delete(order_id=order_id)
-        print(order, guess, store, visionsolutions, subjectiverefraction, afterSales)
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
