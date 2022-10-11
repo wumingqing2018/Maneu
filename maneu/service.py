@@ -15,6 +15,17 @@ def find_user_username(username=''):
     return ManeuUsers.objects.filter(username=username).first()
 
 
+def find_order_all(users_id=''):
+    """
+    全部订单
+    """
+    try:
+        return ManeuOrderV2.objects.filter(users_id=users_id).order_by('-time').all()
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
 def find_order_phone(phone=''):
     try:
         return ManeuOrderV2.objects.filter(phone=phone).order_by('-time').all()

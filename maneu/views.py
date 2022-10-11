@@ -57,19 +57,23 @@ def test1(request):
     user_id = request.session.get('id')
     order_log = []
     money_log = []
-    print(service.ManeuDatalogs_List(user_id=user_id))
-    dataLogs = json.loads(service.ManeuDatalogs_List(user_id=user_id).order_log)
-    for i in dataLogs['order_log']:
-        order_log.append(dataLogs['order_log'][i])
-        dataLogs['order_count'] = dataLogs['order_count'] + dataLogs['order_log'][i]
-        money_log.append(dataLogs['money_log'][i])
-        dataLogs['money_count'] = dataLogs['money_count'] + dataLogs['money_log'][i]
-    return render(request, 'maneu/test1.html', {'order_log': order_log, 'money_log': money_log, 'money_count': dataLogs['money_count'], 'order_count': dataLogs['order_count']})
-
-
-def test2(request):
-    test = []
-    for i in range(1,10):
-        test.append(random.randint(0,10))
-    print(test)
-    return render(request, 'maneu/test1.html', )
+    order_logs = {
+        "order_log": {"01": 0, "02": 0, "03": 0, "04": 0, "05": 0, "06": 0, "07": 0, "08": 0, "09": 0, "10": 0,
+                      "11": 0, "12": 0, "13": 0, "14": 0, "15": 0, "16": 0, "17": 0, "18": 0, "19": 0, "20": 0,
+                      "21": 0, "22": 0, "23": 0, "24": 0, "25": 0, "26": 0, "27": 0, "28": 0, "29": 0, "30": 0,
+                      "31": 0},
+        "order_count": 0,
+        "money_log": {"01": 0, "02": 0, "03": 0, "04": 0, "05": 0, "06": 0, "07": 0, "08": 0, "09": 0, "10": 0,
+                      "11": 0, "12": 0, "13": 0, "14": 0, "15": 0, "16": 0, "17": 0, "18": 0, "19": 0, "20": 0,
+                      "21": 0, "22": 0, "23": 0, "24": 0, "25": 0, "26": 0, "27": 0, "28": 0, "29": 0, "30": 0,
+                      "31": 0},
+        "money_count": 0,
+        }
+    orderlist = service.find_order_all(users_id=user_id)  # 查找今日订单
+    for order in orderlist:
+        time = order.time
+        month = time.strftime("%m")
+        day = time.strftime("%d")
+        store_count = 0
+        Datalogs = service.Datalogs_time(users_id=user_id, time=month)
+    return render(request, 'maneu/test1.html',)
