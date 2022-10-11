@@ -34,7 +34,9 @@ def month():
     返回今天日期
     格式: Y-M-D
     """
-    return time.strftime("%m", time.localtime())
+    now_time = datetime.datetime.now()  # 如果数据库保存的是UTC时间,程序不会蹦但是会提示你这不是本地时间
+
+    return now_time.month
 
 def year():
     """
