@@ -16,8 +16,6 @@ urlpatterns = [
     path('test1/', test1, name='test1'),
     path('test2/', test2, name='test2'),
 
-    # 仓库子路由
-    path('maneu_store/', include('maneu_store.urls')),
     # 订单子路由
     path('maneu_order/', include('maneu_order.urls')),
     # 用户子路由
@@ -26,6 +24,4 @@ urlpatterns = [
     path('maneu_batch/', include('maneu_batch.urls')),
     # 商品子路由
     path('maneu_class/', include('maneu_class.urls')),
-    url(r'(?P<path>.*)', serve, {'document_root': settings.MEDIA_ROOT}),
-
 ]
