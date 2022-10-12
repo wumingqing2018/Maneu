@@ -1,7 +1,7 @@
 {% extends 'maneu/base1.html' %}
 {% load static %}
 ={% block javascript %}
-    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script type="text/javascript" src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <script type="text/javascript" src="{% static 'js/maneu_datalogs/index/echarts.js' %}"></script>
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main1'), 'maneu');
@@ -12,7 +12,6 @@
                 textStyle: {
                     fontSize: 18,
                     fontWeight: 'bolder',
-                    color: '#FCDA5E'          // 主标题文字颜色
                 },
             },
             tooltip: {},
@@ -142,7 +141,7 @@
                 textStyle: {
                     fontSize: 18,
                     fontWeight: 'bolder',
-                    color: '#FCDA5E'          // 主标题文字颜色
+                    // 主标题文字颜色
                 },
             },
             tooltip: {},
@@ -162,7 +161,7 @@
 {% endblock %}
 {% block content %}
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" style="margin-top: 3%; margin-bottom: 5%">
             <h3 class="col-2">徕可数据可视化</h3>
             <div class="col-10">
                 <form class="col-3 offset-9" method="post" action="{% url 'maneu_datalogs:index' %}">

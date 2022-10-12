@@ -22,13 +22,13 @@
     }
     echarts.registerTheme('maneu', {
         "color": [
+            "#ffc048",
             "#eedd78",
-            "#ea7e53",
-            "#e69d87",
+            "#f49f42",
             "#8dc1a9",
+            "#ea7e53",
+            "#eedd78",
             "#73a373",
-            "#7289ab",
-            "#91ca8c",
             "#73b9bc",
             "#7289ab",
             "#91ca8c",
@@ -38,18 +38,18 @@
         "textStyle": {},
         "title": {
             "textStyle": {
-                "color": "#fcda5e"
+                "color": "#ffc048"
             },
             "subtextStyle": {
-                "color": "#fcda5e"
+                "color": "#ffc048"
             }
         },
         "line": {
             "itemStyle": {
-                "borderWidth": 1
+                "borderWidth": "1"
             },
             "lineStyle": {
-                "width": 2
+                "width": "2"
             },
             "symbolSize": "8",
             "symbol": "circle",
@@ -57,10 +57,10 @@
         },
         "radar": {
             "itemStyle": {
-                "borderWidth": 1
+                "borderWidth": "1"
             },
             "lineStyle": {
-                "width": 2
+                "width": "2"
             },
             "symbolSize": "8",
             "symbol": "circle",
@@ -136,20 +136,20 @@
             "symbol": "circle",
             "smooth": true,
             "color": [
+                "#ffc048",
                 "#eedd78",
-                "#ea7e53",
-                "#e69d87",
+                "#f49f42",
                 "#8dc1a9",
+                "#ea7e53",
+                "#eedd78",
                 "#73a373",
-                "#7289ab",
-                "#91ca8c",
                 "#73b9bc",
                 "#7289ab",
                 "#91ca8c",
                 "#f49f42"
             ],
             "label": {
-                "color": "#eeeeee"
+                "color": "#eee"
             }
         },
         "map": {
@@ -409,11 +409,11 @@
         },
         "markPoint": {
             "label": {
-                "color": "#eeeeee"
+                "color": "#eee"
             },
             "emphasis": {
                 "label": {
-                    "color": "#eeeeee"
+                    "color": "#eee"
                 }
             }
         }
