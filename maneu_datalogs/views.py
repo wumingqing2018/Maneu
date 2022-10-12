@@ -11,7 +11,7 @@ def index(request):
     money_log = []
     class_log = []
     store_list = ['arg14', 'arg24', 'arg34', 'arg44', 'arg54']
-    class_list = ['arg10', 'arg20', 'arg30', 'arg40', 'arg50']
+    class_list = ['arg11', 'arg21', 'arg31', 'arg41', 'arg51']
 
     order_logs = {
         "order_log": {"01": 0, "02": 0, "03": 0, "04": 0, "05": 0, "06": 0, "07": 0, "08": 0, "09": 0, "10": 0,
