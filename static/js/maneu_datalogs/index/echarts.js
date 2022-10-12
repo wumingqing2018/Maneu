@@ -20,28 +20,28 @@
         log('ECharts is not Loaded');
         return;
     }
-    echarts.registerTheme('darkmaneu', {
+    echarts.registerTheme('maneu', {
         "color": [
             "#eedd78",
-            "#dd6b66",
+            "#ea7e53",
             "#e69d87",
             "#8dc1a9",
-            "#ea7e53",
-            "#dd6b66",
             "#73a373",
+            "#7289ab",
+            "#91ca8c",
             "#73b9bc",
             "#7289ab",
             "#91ca8c",
             "#f49f42"
         ],
-        "backgroundColor": "rgba(51,51,51,1)",
+        "backgroundColor": "#003153",
         "textStyle": {},
         "title": {
             "textStyle": {
-                "color": "#eeeeee"
+                "color": "#fcda5e"
             },
             "subtextStyle": {
-                "color": "#aaaaaa"
+                "color": "#fcda5e"
             }
         },
         "line": {
@@ -137,19 +137,19 @@
             "smooth": true,
             "color": [
                 "#eedd78",
-                "#dd6b66",
+                "#ea7e53",
                 "#e69d87",
                 "#8dc1a9",
-                "#ea7e53",
-                "#dd6b66",
                 "#73a373",
+                "#7289ab",
+                "#91ca8c",
                 "#73b9bc",
                 "#7289ab",
                 "#91ca8c",
                 "#f49f42"
             ],
             "label": {
-                "color": "#eee"
+                "color": "#eeeeee"
             }
         },
         "map": {
@@ -213,7 +213,7 @@
                 "show": true,
                 "lineStyle": {
                     "color": [
-                        "rgba(170,170,170,0.19)"
+                        "rgba(170,170,170,0.4)"
                     ]
                 }
             },
@@ -247,7 +247,7 @@
                 "show": true,
                 "lineStyle": {
                     "color": [
-                        "rgba(170,170,170,0.19)"
+                        "rgba(170,170,170,0.4)"
                     ]
                 }
             },
@@ -281,7 +281,7 @@
                 "show": true,
                 "lineStyle": {
                     "color": [
-                        "rgba(170,170,170,0.19)"
+                        "rgba(170,170,170,0.4)"
                     ]
                 }
             },
@@ -315,7 +315,7 @@
                 "show": true,
                 "lineStyle": {
                     "color": [
-                        "rgba(170,170,170,0.19)"
+                        "rgba(170,170,170,0.4)"
                     ]
                 }
             },
@@ -409,11 +409,11 @@
         },
         "markPoint": {
             "label": {
-                "color": "#eee"
+                "color": "#eeeeee"
             },
             "emphasis": {
                 "label": {
-                    "color": "#eee"
+                    "color": "#eeeeee"
                 }
             }
         }

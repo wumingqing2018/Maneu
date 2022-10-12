@@ -43,7 +43,7 @@ def guess(request):
                 visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
                 subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
                 return render(request, 'maneu/detail.html',
-                              {'order': order, 'users': users, 'guess': guess, 'store': json.loads(store.content),
+                              {'maneu_order': order, 'users': users, 'guess': guess, 'maneu_store': json.loads(store.content),
                                'visionsolutions': json.loads(visionsolutions.content),
                                'subjectiverefraction': json.loads(subjectiverefraction.content)})
             except BaseException as msg:

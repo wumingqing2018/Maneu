@@ -8,7 +8,7 @@ from maneu_users import serivce
 def user_detail(request):
     user_id = request.session.get('id')
     if user_id:
-        return render(request, 'maneu_users/user_detail.html', {'user': serivce.find_user(user_id)})
+        return render(request, 'maneu_users/user_detail.html', {'maneu_users': serivce.find_user(user_id)})
     else:
         return render(request, 'maneu/error.html', {'msg': "请求出错"})
 
@@ -38,4 +38,4 @@ def user_updata(request):
         else:
             return HttpResponseRedirect(reverse('maneu_users:user_detail'))
     user = serivce.find_user(user_id)
-    return render(request, 'maneu_users/user_updata.html', {'user': user, 'msg': msg})
+    return render(request, 'maneu_users/user_updata.html', {'maneu_users': user, 'msg': msg})

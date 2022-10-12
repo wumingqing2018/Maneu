@@ -20,7 +20,7 @@ def batch_detail(request):
     order_id = verify.order_id_method_get(request)
     if order_id:
         order = service.batch_detail(order_id)
-        return render(request, 'maneu_batch/batch_detail.html', {'order': order})
+        return render(request, 'maneu_batch/batch_detail.html', {'maneu_order': order})
     else:
         return render(request, 'maneu/error.html', {'msg': '参数错误'})
 

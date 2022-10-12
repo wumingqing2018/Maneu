@@ -48,8 +48,8 @@ def order_detail(request):
     store = service.find_store_id(id=order.store_id)
     visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
     subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
-    return render(request, 'maneu_order/order_detail.html', {'order': order, 'users': users, 'guess': guess,
-                                                             'store': json.loads(store.content),
+    return render(request, 'maneu_order/order_detail.html', {'maneu_order': order, 'users': users, 'guess': guess,
+                                                             'maneu_store': json.loads(store.content),
                                                              'visionsolutions': json.loads(visionsolutions.content),
                                                              'subjectiverefraction': json.loads(
                                                                  subjectiverefraction.content)})
@@ -105,10 +105,10 @@ def order_update(request):
             store = service.find_store_id(id=order.store_id)
             visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
             subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
-            return render(request, 'maneu_order/order_update.html', {'order': order,
+            return render(request, 'maneu_order/order_update.html', {'maneu_order': order,
                                                                      'users': users,
                                                                      'guess': guess,
-                                                                     'store': json.loads(store.content),
+                                                                     'maneu_store': json.loads(store.content),
                                                                      'visionsolutions': json.loads(
                                                                          visionsolutions.content),
                                                                      'subjectiverefraction': json.loads(
@@ -169,8 +169,8 @@ def alterSales_delete(request):
 # def datalogs_test(request):
 #     users_list = service.find_users_all()
 #     print(users_list)
-#     for user in users_list:
-#         user_id = user.user_id
+#     for maneu_users in users_list:
+#         user_id = maneu_users.user_id
 #         for i in range(1, 31):
 #             S = ['2022-09-'+'%02d'%i+' 00:00', '2022-09-'+'%02d'%i+ ' 23:59']
 #             order_log = service.find_order_time(time=S, users_id=user_id)

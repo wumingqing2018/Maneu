@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('c_time', models.DateTimeField()),
                 ('c_name', models.CharField(max_length=255)),
                 ('c_phone', models.CharField(max_length=255)),
-                ('order', models.TextField()),
+                ('maneu_order', models.TextField()),
                 ('remark', models.TextField()),
             ],
             options={
@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
                 ('c_time', models.DateTimeField()),
                 ('c_name', models.CharField(max_length=11)),
                 ('c_phone', models.CharField(max_length=11)),
-                ('order', models.TextField(blank=True, null=True)),
+                ('maneu_order', models.TextField(blank=True, null=True)),
                 ('besiness', models.CharField(max_length=16)),
                 ('status', models.IntegerField()),
                 ('remark', models.CharField(max_length=2048)),

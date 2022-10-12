@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <form class="col-md-6 offset-3" method="post" action="{% url 'store:api_framework_insert' %}" id="framework_insert">
+    <form class="col-md-6 offset-3" method="post" action="{% url 'maneu_store:api_framework_insert' %}" id="framework_insert">
         <table class="table">
             <tr class="yellow">
                 <td>
@@ -49,7 +49,7 @@
 
             <tr class="yellow">
                 <td>
-                    <a href="{% url 'store:store' %}" class="btn btn-primary col-md-12  " type="button">返回</a>
+                    <a href="{% url 'maneu_store:maneu_store' %}" class="btn btn-primary col-md-12  " type="button">返回</a>
                 </td>
                 <td>
                     <input class="btn btn-warning col-md-12 " type="submit">

@@ -54,4 +54,5 @@ def index(request):
         class_log.append({'value': order_logs['class_log'][i], 'name': i})
     return render(request, 'maneu_datalogs/index.html', {'order_log': order_log, 'order_count': order_logs['order_count'],
                                                          'money_log': money_log, 'money_count': order_logs['money_count'],
-                                                         'class_log': class_log, 'class_count': order_logs['class_count']})
+                                                         'class_log': class_log, 'class_count': order_logs['class_count'],
+                                                         })
