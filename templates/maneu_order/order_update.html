@@ -9,16 +9,6 @@
                 <tr>
                     <td class="col-sm-2" colspan="2">
                         <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text">创建时间</span>
-                            <input autocomplete="off" type="date" id="guess_time" name="time" class="form-control" value="{{ guess.time | safe }}">
-                            <span id="phone_error"></span>
-                        </div>
-                    </td>
-                    <td class="col-sm-4" colspan="4"></td>
-                </tr>
-                <tr>
-                    <td class="col-sm-2" colspan="2">
-                        <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">电话</span>
                             <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off" value="{{ guess.phone }}">
                             <span id="phone_error"></span>
@@ -36,7 +26,7 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">出生日期</span>
-                            <input autocomplete="off" type="date" id="age" name="age" class="form-control" value="{{ guess.time | safe }}">
+                            <input autocomplete="off" type="date" id="age" name="age" class="form-control" value="{{ guess.age | safe }}">
                         </div>
                     </td>
                     <td class="col-sm-2">
@@ -94,16 +84,6 @@
         <h4>屈光检验结果</h4>
         <table class="table">
             <form class="vertical col-md-12" id="Subjective_refraction">
-                <tr>
-                    <td class="col-sm-2" colspan="2">
-                        <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text">创建时间</span>
-                            <input autocomplete="off" type="date" id="sr_time" name="time" class="form-control">
-                            <span id="phone_error"></span>
-                        </div>
-                    </td>
-                    <td class="col-sm-4" colspan="4"></td>
-                </tr>
                 <tr>
                     <td class="col-sm-1"></td>
                     <td class="col-sm-1"><span>裸眼视力</span></td>
@@ -808,16 +788,6 @@
         <h4>视力解决方案</h4>
         <table class="table">
             <form class="vertical col-md-12" id="Vision_Solutions">
-                <tr>
-                    <td class="col-sm-2" colspan="2">
-                        <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text">创建时间</span>
-                            <input autocomplete="off" type="date" id="vs_time" name="time" class="form-control">
-                            <span id="phone_error"></span>
-                        </div>
-                    </td>
-                    <td class="col-sm-4" colspan="4"></td>
-                </tr>
                 <tr>
                     <td class="col-sm-1"></td>
                     <td class="col-sm-1"><span>球镜</span></td>
@@ -1590,16 +1560,6 @@
         <table class="table">
             <form class="vertical col-md-12" id="Product_Orders">
                 <tr>
-                    <td class="col-sm-2" colspan="2">
-                        <div class="input-group input-group-sm mb-2">
-                            <span class="input-group-text">创建时间</span>
-                            <input autocomplete="off" type="date" id="store_time" name="time" class="form-control">
-                            <span id="phone_error"></span>
-                        </div>
-                    </td>
-                    <td class="col-sm-4" colspan="4"></td>
-                </tr>
-                <tr>
                     <td class="col-1">
                         <span>类别</span>
                     </td>
@@ -1620,55 +1580,55 @@
                 <tr>
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm mb-8">
-                            <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 12%" value="{{ store.arg10 }}">
-                            <input autocomplete="off" type="text" name="arg11" class="form-control" style="width: 12%" value="{{ store.arg11 }}">
-                            <input autocomplete="off" type="text" name="arg12" class="form-control" style="width: 12%" value="{{ store.arg12 }}">
-                            <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 52%" value="{{ store.arg13 }}">
-                            <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 12%" value="{{ store.arg14 }}">
+                            <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 12%" value="{{ maneu_store.arg10 }}">
+                            <input autocomplete="off" type="text" name="arg11" class="form-control" style="width: 12%" value="{{ maneu_store.arg11 }}">
+                            <input autocomplete="off" type="text" name="arg12" class="form-control" style="width: 12%" value="{{ maneu_store.arg12 }}">
+                            <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 52%" value="{{ maneu_store.arg13 }}">
+                            <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 12%" value="{{ maneu_store.arg14 }}">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm mb-8">
-                            <input autocomplete="off" type="text" name="arg20" class="form-control" style="width: 12%" value="{{ store.arg20 }}">
-                            <input autocomplete="off" type="text" name="arg21" class="form-control" style="width: 12%" value="{{ store.arg21 }}">
-                            <input autocomplete="off" type="text" name="arg22" class="form-control" style="width: 12%" value="{{ store.arg22 }}">
-                            <input autocomplete="off" type="text" name="arg23" class="form-control" style="width: 52%" value="{{ store.arg23 }}">
-                            <input autocomplete="off" type="text" name="arg24" class="form-control" style="width: 12%" value="{{ store.arg24 }}">
+                            <input autocomplete="off" type="text" name="arg20" class="form-control" style="width: 12%" value="{{ maneu_store.arg20 }}">
+                            <input autocomplete="off" type="text" name="arg21" class="form-control" style="width: 12%" value="{{ maneu_store.arg21 }}">
+                            <input autocomplete="off" type="text" name="arg22" class="form-control" style="width: 12%" value="{{ maneu_store.arg22 }}">
+                            <input autocomplete="off" type="text" name="arg23" class="form-control" style="width: 52%" value="{{ maneu_store.arg23 }}">
+                            <input autocomplete="off" type="text" name="arg24" class="form-control" style="width: 12%" value="{{ maneu_store.arg24 }}">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm mb-8">
-                            <input autocomplete="off" type="text" name="arg30" class="form-control" style="width: 12%" value="{{ store.arg30 }}">
-                            <input autocomplete="off" type="text" name="arg31" class="form-control" style="width: 12%" value="{{ store.arg31 }}">
-                            <input autocomplete="off" type="text" name="arg32" class="form-control" style="width: 12%" value="{{ store.arg32 }}">
-                            <input autocomplete="off" type="text" name="arg33" class="form-control" style="width: 52%" value="{{ store.arg33 }}">
-                            <input autocomplete="off" type="text" name="arg34" class="form-control" style="width: 12%" value="{{ store.arg34 }}">
+                            <input autocomplete="off" type="text" name="arg30" class="form-control" style="width: 12%" value="{{ maneu_store.arg30 }}">
+                            <input autocomplete="off" type="text" name="arg31" class="form-control" style="width: 12%" value="{{ maneu_store.arg31 }}">
+                            <input autocomplete="off" type="text" name="arg32" class="form-control" style="width: 12%" value="{{ maneu_store.arg32 }}">
+                            <input autocomplete="off" type="text" name="arg33" class="form-control" style="width: 52%" value="{{ maneu_store.arg33 }}">
+                            <input autocomplete="off" type="text" name="arg34" class="form-control" style="width: 12%" value="{{ maneu_store.arg34 }}">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm mb-8">
-                            <input autocomplete="off" type="text" name="arg40" class="form-control" style="width: 12%" value="{{ store.arg40 }}">
-                            <input autocomplete="off" type="text" name="arg41" class="form-control" style="width: 12%" value="{{ store.arg41 }}">
-                            <input autocomplete="off" type="text" name="arg42" class="form-control" style="width: 12%" value="{{ store.arg42 }}">
-                            <input autocomplete="off" type="text" name="arg43" class="form-control" style="width: 52%" value="{{ store.arg43 }}">
-                            <input autocomplete="off" type="text" name="arg44" class="form-control" style="width: 12%" value="{{ store.arg44 }}">
+                            <input autocomplete="off" type="text" name="arg40" class="form-control" style="width: 12%" value="{{ maneu_store.arg40 }}">
+                            <input autocomplete="off" type="text" name="arg41" class="form-control" style="width: 12%" value="{{ maneu_store.arg41 }}">
+                            <input autocomplete="off" type="text" name="arg42" class="form-control" style="width: 12%" value="{{ maneu_store.arg42 }}">
+                            <input autocomplete="off" type="text" name="arg43" class="form-control" style="width: 52%" value="{{ maneu_store.arg43 }}">
+                            <input autocomplete="off" type="text" name="arg44" class="form-control" style="width: 12%" value="{{ maneu_store.arg44 }}">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm mb-8">
-                            <input autocomplete="off" type="text" name="arg50" class="form-control" style="width: 12%" value="{{ store.arg50 }}">
-                            <input autocomplete="off" type="text" name="arg51" class="form-control" style="width: 12%" value="{{ store.arg51 }}">
-                            <input autocomplete="off" type="text" name="arg52" class="form-control" style="width: 12%" value="{{ store.arg52 }}">
-                            <input autocomplete="off" type="text" name="arg53" class="form-control" style="width: 52%" value="{{ store.arg53 }}">
-                            <input autocomplete="off" type="text" name="arg54" class="form-control" style="width: 12%" value="{{ store.arg54 }}">
+                            <input autocomplete="off" type="text" name="arg50" class="form-control" style="width: 12%" value="{{ maneu_store.arg50 }}">
+                            <input autocomplete="off" type="text" name="arg51" class="form-control" style="width: 12%" value="{{ maneu_store.arg51 }}">
+                            <input autocomplete="off" type="text" name="arg52" class="form-control" style="width: 12%" value="{{ maneu_store.arg52 }}">
+                            <input autocomplete="off" type="text" name="arg53" class="form-control" style="width: 52%" value="{{ maneu_store.arg53 }}">
+                            <input autocomplete="off" type="text" name="arg54" class="form-control" style="width: 12%" value="{{ maneu_store.arg54 }}">
                         </div>
                     </td>
                 </tr>
@@ -1676,7 +1636,7 @@
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">备注</span>
-                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control" value="{{ store.remark }}">
+                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control" value="{{ maneu_store.remark }}">
                             <span id="remake_error"></span>
                         </div>
                     </td>

@@ -96,7 +96,6 @@ def order_update(request):
     """更新订单"""
     order_id = request.session.get('order_id')
     users_id = request.session.get('id')
-    print(order_id, users_id)
     if order_id and users_id:
         if request.method == 'GET':
             order = service.find_order_id(order_id=order_id, users_id=users_id)
