@@ -28,7 +28,6 @@ class ManeuGuess(models.Model):
     time = models.DateTimeField()
     name = models.CharField(max_length=32)
     phone = models.CharField(max_length=32)
-    localtion = models.CharField(max_length=128)
     sex = models.CharField(max_length=32)
     age = models.DateField()
     ot = models.CharField(db_column='OT', max_length=32)  # Field name made lowercase.
@@ -99,6 +98,7 @@ class ManeuUsers(models.Model):
     nickname = models.CharField(max_length=36)
     username = models.CharField(unique=True, max_length=36)
     password = models.CharField(max_length=36)
+    localtion = models.CharField(max_length=128)
     email = models.CharField(max_length=36)
     phone = models.CharField(max_length=36)
     level = models.IntegerField()

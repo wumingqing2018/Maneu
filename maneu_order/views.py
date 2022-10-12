@@ -46,6 +46,7 @@ def order_detail(request):
     users = service.find_users_id(id=order.users_id)
     guess = service.find_guess_id(id=order.guess_id)
     store = service.find_store_id(id=order.store_id)
+    print(guess)
     visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
     subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
     return render(request, 'maneu_order/order_detail.html', {'maneu_order': order, 'users': users, 'guess': guess,
