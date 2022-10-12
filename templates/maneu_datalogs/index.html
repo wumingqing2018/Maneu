@@ -62,78 +62,77 @@
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     </script>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main3'), 'maneu');
+        var option = {
+            title: {
+                text: '各品牌销售金额',
+                subtext: {{ money_count }} +'元',
+                textStyle: {
+                    fontSize: 18,
+                    fontWeight: 'bolder',
+                },
+            },
+            tooltip: {},
+            legend: {
+                data:['金额统计']
+            },
+            xAxis: {
+                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31'],
+            },
+            yAxis: {},
+            series: [{
+                name: '蔡司',
+                type: 'bar',
+                data: [8, 8, 7, 0, 4, 6, 6, 2, 8],
+                stack: 'x'
+            }, {
+                name: '依视路',
+                type: 'bar',
+                data: [2, 4, 4, 7, 3, 0, 5, 2, 3],
+                stack: 'x'
+            }, {
+                name: '豪雅',
+                type: 'bar',
+                data: [7, 4, 5, 0, 0, 1, 3, 0, 7],
+                stack: 'x'
+            }, {
+                name: '尼德可',
+                type: 'bar',
+                data: [5, 6, 10, 3, 3, 9, 7, 7, 6],
+                stack: 'x'
+            }, {
+                name: '凯米',
+                type: 'bar',
+                data: [3, 10, 9, 2, 10, 9, 4, 7, 6],
+                stack: 'x'
+            }, {
+                name: '东海',
+                type: 'bar',
+                data: [7, 2, 1, 5, 8, 0, 3, 9, 6],
+                stack: 'x'
+            }, {
+                name: '阿波罗',
+                type: 'bar',
+                data: [8, 4, 10, 8, 3, 1, 4, 0, 8],
+                stack: 'x'
+            }, {
+                name: '明月',
+                type: 'bar',
+                data: [5, 8, 5, 8, 5, 0, 7, 7, 6],
+                stack: 'x'
+            }, {
+                name: '大明',
+                type: 'bar',
+                data: [6, 2, 9, 0, 4, 0, 10, 5, 7],
+                stack: 'x'
+            }
+            ]
+        };
 
-{#    <script type="text/javascript">#}
-{#        var myChart = echarts.init(document.getElementById('main3'), 'maneu');#}
-{#        var option = {#}
-{#            title: {#}
-{#                text: '各品牌销售金额',#}
-                {#subtext: {{ money_count }} +'元',#}
-{#                textStyle: {#}
-{#                    fontSize: 18,#}
-{#                    fontWeight: 'bolder',#}
-{#                },#}
-{#            },#}
-{#            tooltip: {},#}
-{#            legend: {#}
-{#                data:['金额统计']#}
-{#            },#}
-{#            xAxis: {#}
-{#                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31'],#}
-{#            },#}
-{#            yAxis: {},#}
-{#            series: [{#}
-{#                name: '蔡司',#}
-{#                type: 'bar',#}
-{#                data: [8, 8, 7, 0, 4, 6, 6, 2, 8],#}
-{#                stack: 'x'#}
-{#            }, {#}
-{#                name: '依视路',#}
-{#                type: 'bar',#}
-{#                data: [2, 4, 4, 7, 3, 0, 5, 2, 3],#}
-{#                stack: 'x'#}
-{#            }, {#}
-{#                name: '豪雅',#}
-{#                type: 'bar',#}
-{#                data: [7, 4, 5, 0, 0, 1, 3, 0, 7],#}
-{#                stack: 'x'#}
-{#            }, {#}
-{#                name: '尼德可',#}
-{#                type: 'bar',#}
-{#                data: [5, 6, 10, 3, 3, 9, 7, 7, 6],#}
-{#                stack: 'x'#}
-{#            }, {#}
-{#                name: '凯米',#}
-{#                type: 'bar',#}
-{#                data: [3, 10, 9, 2, 10, 9, 4, 7, 6],#}
-{#                stack: 'x'#}
-{#            }, {#}
-{#                name: '东海',#}
-{#                type: 'bar',#}
-{#                data: [7, 2, 1, 5, 8, 0, 3, 9, 6],#}
-{#                stack: 'x'#}
-{#            }, {#}
-{#                name: '阿波罗',#}
-{#                type: 'bar',#}
-{#                data: [8, 4, 10, 8, 3, 1, 4, 0, 8],#}
-{#                stack: 'x'#}
-{#            }, {#}
-{#                name: '明月',#}
-{#                type: 'bar',#}
-{#                data: [5, 8, 5, 8, 5, 0, 7, 7, 6],#}
-{#                stack: 'x'#}
-{#            }, {#}
-{#                name: '大明',#}
-{#                type: 'bar',#}
-{#                data: [6, 2, 9, 0, 4, 0, 10, 5, 7],#}
-{#                stack: 'x'#}
-{#            }#}
-{#            ]#}
-{#        };#}
-{##}
-{#        // 使用刚指定的配置项和数据显示图表。#}
-{#        myChart.setOption(option);#}
-{#    </script>#}
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main4'), 'maneu');
         var option = {
@@ -163,6 +162,19 @@
 {% endblock %}
 {% block content %}
     <div class="container-fluid">
+        <div class="row">
+            <h3 class="col-2">徕可数据可视化</h3>
+            <div class="col-10">
+                <form class="col-3 offset-9" method="post" action="{% url 'maneu_datalogs:index' %}">
+                    {% csrf_token %}
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text">时间</span>
+                        <input class="form-control date_time" name="time" type="date" autocomplete="off" required="required">
+                        <input class="form-control" type="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
         <div id="main1" style="width: 100%;height:400px;"></div>
         <div id="main2" style="width: 100%;height:400px;"></div>
         <div id="main4" style="width: 100%;height:400px;"></div>

@@ -8,7 +8,7 @@
             <form class="vertical col-md-12" id="time">
                 <tr>
                     <td class="col-sm-2" colspan="2">
-                        <div class="input-group input-group-sm mb-2">
+                        <div class="input-group input-group-sm">
                             <span class="input-group-text">时间</span>
                             <input class="form-control date_time" name="time" type="date" autocomplete="off" required="required">
                             <span id="phone_error"></span>
@@ -1711,9 +1711,9 @@
                 $('#Vision_Solutions_json').val(Vision_Solutions_json);
                 Guess_information_json = $('#Guess_information').serializeJsonStr();
                 $('#Guess_information_json').val(Guess_information_json);
-                Subjective_refraction_json = $('#Subjective_refraction').serializeJsonStr()
-                $('#Subjective_refraction_json').val(Subjective_refraction_json)
-                                time_json = $('#time').serializeJsonStr();
+                Subjective_refraction_json = $('#Subjective_refraction').serializeJsonStr();
+                $('#Subjective_refraction_json').val(Subjective_refraction_json);
+                time_json = $('#time').serializeJsonStr();
                 $('#time_json').val(time_json);
 
             })

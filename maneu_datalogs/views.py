@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from common import common
 from maneu_datalogs import service
-import json
+import json, datetime
 # Create your views here.
 
 def index(request):
-    now_month = common.month()
+    if request.method == 'POST':
+        now_month = request.POST.get('time')[5:7]
+        print(now_month)
+    else:
+        now_month = common.month()
     user_id = request.session.get('id')
     order_log = []
     money_log = []

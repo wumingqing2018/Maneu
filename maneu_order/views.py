@@ -67,6 +67,7 @@ def order_search(request):
 def order_insert(request):
     """添加订单"""
     if request.method == 'POST':
+        print(request.POST)
         time = json.loads(request.POST.get('time'))['time']
         ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'))
         ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
