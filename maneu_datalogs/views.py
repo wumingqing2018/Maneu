@@ -24,8 +24,9 @@ def index(request):
                       "21": 0, "22": 0, "23": 0, "24": 0, "25": 0, "26": 0, "27": 0, "28": 0, "29": 0, "30": 0,
                       "31": 0},
         "money_count": 0,
-        "class_log": {}
-        }
+        "class_log": {},
+        "class_count": 0,
+    }
     orderlist = service.find_order_month(users_id=user_id, month=now_month)  # 查找今日订单
     for order in orderlist:
         order_logs['order_count'] = order_logs['order_count'] + 1
@@ -41,6 +42,7 @@ def index(request):
         for i in class_list:
 
             if store[i]:
+                order_logs['class_count'] = order_logs['class_count'] +1
                 if order_logs['class_log'].get(store[i]):
                     order_logs['class_log'][store[i]] = order_logs['class_log'][store[i]] +1
                 else:
@@ -48,8 +50,9 @@ def index(request):
     for i in order_logs['order_log']:
         order_log.append(order_logs['order_log'][i])
         money_log.append(order_logs['money_log'][i])
+
     for i in order_logs['class_log']:
-        class_log.append({'value':order_logs['class_log'][i], 'name':i})
+        class_log.append({'value': order_logs['class_log'][i], 'name': i})
     return render(request, 'maneu_datalogs/index.html', {'order_log': order_log, 'order_count': order_logs['order_count'],
-                                                'money_log': money_log, 'money_count': order_logs['money_count'],
-                                                'class_log': class_log})
+                                                         'money_log': money_log, 'money_count': order_logs['money_count'],
+                                                         'class_log': class_log, 'class_count': order_logs['class_count']})
