@@ -42,7 +42,6 @@ def index(request):
         for i in class_list:
 
             if store[i]:
-                order_logs['class_count'] = order_logs['class_count'] +1
                 if order_logs['class_log'].get(store[i]):
                     order_logs['class_log'][store[i]] = order_logs['class_log'][store[i]] +1
                 else:
