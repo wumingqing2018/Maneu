@@ -2,7 +2,6 @@ import json
 
 from django.shortcuts import render, reverse, HttpResponseRedirect
 
-from common import common
 from common import verify
 from common.checkMobile import judge_pc_or_mobile
 from maneu_order import service
@@ -72,7 +71,8 @@ def order_insert(request):
         ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'))
         ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
-        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
+        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(
+            content=request.POST.get('Subjective_refraction'))
         order = service.ManeuOrderV2_insert(name=ManeuGuess_id.name,
                                             phone=ManeuGuess_id.phone,
                                             users_id=request.session.get('id'),
@@ -80,7 +80,7 @@ def order_insert(request):
                                             guess_id=ManeuGuess_id.id,
                                             time=time,
                                             visionsolutions_id=ManeuVisionSolutions_id.id,
-                                            subjectiverefraction_id=ManeuSubjectiveRefraction_id.id,)
+                                            subjectiverefraction_id=ManeuSubjectiveRefraction_id.id, )
         if order:
             request.session['order_id'] = str(order.id)
             return HttpResponseRedirect(reverse('maneu_order:order_detail'))

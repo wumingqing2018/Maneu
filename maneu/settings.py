@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'maneu_users',
     'maneu_batch',
     'maneu_class',
+    'maneu_datalogs',
 ]
 
 
