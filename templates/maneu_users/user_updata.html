@@ -11,23 +11,23 @@
                 </div>
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">商家名称</span>
-                    <input type="text" name="nickname" id="nickname" class="form-control" value="{{ user.nickname }}">
+                    <input type="text" name="nickname" id="nickname" class="form-control" value="{{ maneu_users.nickname }}">
                 </div>
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">手机号码</span>
-                    <input type="text" name="phone" id="phone" value="{{ user.phone }}" class="form-control">
+                    <input type="text" name="phone" id="phone" value="{{ maneu_users.phone }}" class="form-control">
                 </div>
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">电子邮箱</span>
-                    <input type="text" name="email" id="email" value="{{ user.email }}" class="form-control">
+                    <input type="text" name="email" id="email" value="{{ maneu_users.email }}" class="form-control">
                 </div>
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">修改密码</span>
-                    <input type="password" name="password" id="password" value="{{ user.password }}" class="form-control">
+                    <input type="password" name="password" id="password" value="{{ maneu_users.password }}" class="form-control">
                 </div>
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">特色服务</span>
-                    <input type="text" name="remark" id="remark" value="{{ user.remark }}" class="form-control">
+                    <input type="text" name="remark" id="remark" value="{{ maneu_users.remark }}" class="form-control">
                 </div>
                 <br>
                 {% if msg %}<p>{{ msg }}</p>{% endif %}

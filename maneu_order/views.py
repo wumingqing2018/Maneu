@@ -51,8 +51,7 @@ def order_detail(request):
     return render(request, 'maneu_order/order_detail.html', {'maneu_order': order, 'users': users, 'guess': guess,
                                                              'maneu_store': json.loads(store.content),
                                                              'visionsolutions': json.loads(visionsolutions.content),
-                                                             'subjectiverefraction': json.loads(
-                                                                 subjectiverefraction.content)})
+                                                             'subjectiverefraction': json.loads(subjectiverefraction.content)})
 
 
 def order_search(request):

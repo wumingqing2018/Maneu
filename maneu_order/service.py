@@ -112,7 +112,7 @@ def find_users_all():
 
 def find_users_id(id):
     try:
-        return ManeuUsers.objects.filter(user_id=id).filter()
+        return ManeuUsers.objects.filter(user_id=id).first()
     except BaseException as msg:
         print(msg)
         return None
