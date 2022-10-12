@@ -15,6 +15,7 @@ class ManeuUsers(models.Model):
     nickname = models.CharField(unique=True, max_length=36)
     username = models.CharField(unique=True, max_length=36)
     password = models.CharField(max_length=36)
+    localtion = models.CharField(max_length=128)
     email = models.CharField(max_length=36)
     phone = models.CharField(max_length=36)
     level = models.IntegerField()

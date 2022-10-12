@@ -45,10 +45,11 @@ def user_delete(user_id):
     return ManeuUsers.objects.filter(user_id=user_id).delete()
 
 
-def user_update(old_password='', user_id='', nickname='', password='', email='', phone='', remark=''):
+def user_update(old_password='', localtion='', user_id='', nickname='', password='', email='', phone='', remark=''):
     try:
         ManeuUsers.objects.filter(user_id=user_id, password=old_password).update(nickname=nickname, password=password,
                                                                                  email=email, phone=phone,
+                                                                                 localtion=localtion,
                                                                                  remark=remark)
     except BaseException as msg:
         return str(msg)

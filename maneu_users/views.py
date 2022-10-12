@@ -29,6 +29,7 @@ def user_updata(request):
     msg = ''
     if request.method == 'POST':
         updata = serivce.user_update(old_password=request.POST['old_password'], user_id=user_id,
+                                     localtion=request.POST.get('localtion'),
                                      nickname=request.POST['nickname'], password=request.POST['password'],
                                      phone=request.POST['phone'], email=request.POST['email'],
                                      remark=request.POST['remark'])
