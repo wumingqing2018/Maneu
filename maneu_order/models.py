@@ -28,6 +28,7 @@ class ManeuGuess(models.Model):
     time = models.DateTimeField()
     name = models.CharField(max_length=32)
     phone = models.CharField(max_length=32)
+    localtion = models.CharField(max_length=128)
     sex = models.CharField(max_length=32)
     age = models.DateField()
     ot = models.CharField(db_column='OT', max_length=32)  # Field name made lowercase.
