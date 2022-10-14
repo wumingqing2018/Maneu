@@ -1,5 +1,5 @@
 from common import common
-from maneu_users.models import ManeuUsers
+from common.models import ManeuUsers
 
 
 def find_user(user_id):
@@ -29,7 +29,6 @@ def add_user(post):
     """添加用户"""
     try:
         return ManeuUsers.objects.create(
-            user_id=common.create_id(),
             username=post['username'],
             password=post['password'],
             email=post['email'],

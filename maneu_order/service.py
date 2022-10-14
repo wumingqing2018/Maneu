@@ -2,14 +2,14 @@ import json
 
 from django.db.models import Q
 
-from maneu_order.models import ManeuAfterSales
-from maneu_order.models import ManeuGuess
-from maneu_order.models import ManeuOrderV2
-from maneu_order.models import ManeuStore
-from maneu_order.models import ManeuSubjectiveRefraction
-from maneu_order.models import ManeuUsers
-from maneu_order.models import ManeuVisionSolutions
-from maneu_order.models import ManeuDatalogs
+from common.models import ManeuAftersales
+from common.models import ManeuGuess
+from common.models import ManeuOrderV2
+from common.models import ManeuStore
+from common.models import ManeuSubjectiveRefraction
+from common.models import ManeuUsers
+from common.models import ManeuVisionSolutions
+from common.models import ManeuDatalogs
 
 
 def find_order_all(users_id=''):
@@ -260,7 +260,7 @@ def ManeuOrderV2_update(order_id='', name='', phone=''):
 
 def ManeuAfterSales_list(order_id=''):
     try:
-        return ManeuAfterSales.objects.filter(order_id=order_id).order_by('-time').all()
+        return ManeuAftersales.objects.filter(order_id=order_id).order_by('-time').all()
     except BaseException as msg:
         print(msg)
         return
@@ -268,7 +268,7 @@ def ManeuAfterSales_list(order_id=''):
 
 def ManeuAfterSales_content(order_id=''):
     try:
-        return ManeuAfterSales.objects.filter(order_id=order_id).first()
+        return ManeuAftersales.objects.filter(order_id=order_id).first()
     except BaseException as msg:
         print(msg)
         return None
@@ -276,7 +276,7 @@ def ManeuAfterSales_content(order_id=''):
 
 def ManeuAfterSales_insert(order_id='', content=''):
     try:
-        return ManeuAfterSales.objects.create(order_id=order_id, content=content)
+        return ManeuAftersales.objects.create(order_id=order_id, content=content)
     except BaseException as msg:
         print(msg)
         return None
@@ -284,7 +284,7 @@ def ManeuAfterSales_insert(order_id='', content=''):
 
 def ManeuAfterSales_delete(order_id=''):
     try:
-        return ManeuAfterSales.objects.filter(order_id=order_id).all().delete()
+        return ManeuAftersales.objects.filter(order_id=order_id).all().delete()
     except BaseException as msg:
         print(msg)
         return None
@@ -292,7 +292,7 @@ def ManeuAfterSales_delete(order_id=''):
 
 def ManeuAfterSales_delete_id(id=''):
     try:
-        return ManeuAfterSales.objects.filter(id=id).all().delete()
+        return ManeuAftersales.objects.filter(id=id).all().delete()
     except BaseException as msg:
         print(msg)
         return None

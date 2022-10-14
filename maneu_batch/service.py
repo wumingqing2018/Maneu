@@ -1,4 +1,4 @@
-from maneu_batch.models import Batch
+from common.models import ManeuBatch
 
 
 def batch_list():

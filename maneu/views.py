@@ -48,7 +48,6 @@ def guess(request):
                                'subjectiverefraction': json.loads(subjectiverefraction.content)})
             except BaseException as msg:
                 return render(request, 'maneu/guess.html', {'msg': '没有您的订单'})
-
     return render(request, 'maneu/guess.html')
 
 

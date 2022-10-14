@@ -41,7 +41,6 @@ def batch_insert(request):
         form = BatchInsertForm(request.POST)
         excel = request.FILES.get('excel')
         if form.is_valid() and excel:
-            order_id = common.create_id()
             order = excel_save(excel, order_id)
             service.batch_insert(form.clean(), order, order_id)
             return batch_list(request)

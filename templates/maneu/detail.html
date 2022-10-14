@@ -4,13 +4,14 @@
     <link rel="stylesheet" href="{% static 'css/maneu/order_detail.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="col-12 text-center" id="header">
+    <div class="container" style="margin-top: 3%; margin-bottom: 5%">
+        <div class="col-12 text-center" id="header">
         <img src="{% static 'img/logo16x9.svg' %}" class="img-responsive col-2" alt="Cinque Terre">
         <h4 class="blue">徕可</h4>
     </div>
         <table class="table table-bordered table-sm text-left">
             <tr class="banner">
-                <td colspan="3">
+                <td colspan="5">
                     <b>验光中心信息（Optometry center information）</b>
                 </td>
             </tr>
@@ -18,7 +19,7 @@
                 <td>
                     <span>中心名称</span>
                 </td>
-                <td colspan="2">
+                <td colspan="4">
                     <span>{{ users.nickname }}</span>
                 </td>
             </tr>
@@ -26,7 +27,7 @@
                 <td>
                     <span>联系电话</span>
                 </td>
-                <td colspan="2">
+                <td colspan="4">
                     <span>{{ users.phone }}</span>
                 </td>
             </tr>
@@ -34,51 +35,42 @@
                 <td>
                     <span>所在地址</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ users.add }}</span>
+                <td colspan="4">
+                    <span>{{ users.localtion }}</span>
                 </td>
             </tr>
             <tr>
                 <td>
                     <span>特色服务</span>
                 </td>
-                <td colspan="2">
+                <td colspan="4">
                     <span>{{ users.remark }}</span>
                 </td>
             </tr>
             <tr class="banner">
-                <td colspan="3">
+                <td colspan="5">
                     <b>屈光检验结果（Subjective refraction）</b>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>录入时间</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ subjectiverefraction.time }}</span>
                 </td>
             </tr>
             <tr>
                 <td>
                     <span>参数</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>左眼 OS</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>右眼 OD</span>
                 </td>
             </tr>
             <tr>
                 <td>
                     <span>裸眼视力 VA</span>
-
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OS_VA }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OD_VA }}</span>
                 </td>
             </tr>
@@ -86,10 +78,10 @@
                 <td>
                     <span>球镜 SPH</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OS_SPH }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OD_SPH }}</span>
                 </td>
             </tr>
@@ -97,10 +89,10 @@
                 <td>
                     <span>柱镜 CYL</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OS_CYL }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OD_CYL }}</span>
                 </td>
             </tr>
@@ -108,10 +100,10 @@
                 <td>
                     <span>轴位 Axial</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OS_AX }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OD_AX }}</span>
                 </td>
             </tr>
@@ -119,10 +111,10 @@
                 <td>
                     <span>角膜曲率 AK</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OS_AK }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OD_AK }}</span>
                 </td>
             </tr>
@@ -130,10 +122,10 @@
                 <td>
                     <span>眼轴长度 AL</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OS_AL }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OD_AL }}</span>
                 </td>
             </tr>
@@ -141,31 +133,23 @@
                 <td>
                     <span>矫正视力 BCVA</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OS_BCVA }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ subjectiverefraction.OD_BCVA }}</span>
                 </td>
             </tr>
             <tr class="banner">
-                <td colspan="3">
+                <td colspan="5">
                     <b>视力解决方案（Vision Solutions）</b>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>报告日期</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ visionsolutions.time }}</span>
                 </td>
             </tr>
             <tr>
                 <td>
                     <span>使用需求</span>
                 </td>
-                <td colspan="2">
+                <td colspan="4">
                     <span>{{ visionsolutions.function }}</span>
                 </td>
             </tr>
@@ -173,10 +157,10 @@
                 <td>
                     <span>参数</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>左眼 OS</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>右眼 OD</span>
                 </td>
             </tr>
@@ -184,10 +168,10 @@
                 <td>
                     <span>球镜 Sph</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OS_SPH }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OD_SPH }}</span>
                 </td>
             </tr>
@@ -195,10 +179,10 @@
                 <td>
                     <span>柱镜 Cyl</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OS_CYL }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OD_CYL }}</span>
                 </td>
             </tr>
@@ -206,10 +190,10 @@
                 <td>
                     <span>轴位 Axial</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OS_AX }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OD_AX }}</span>
                 </td>
             </tr>
@@ -217,10 +201,10 @@
                 <td>
                     <span>棱镜 Pr</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OS_PR }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OD_PR }}</span>
                 </td>
             </tr>
@@ -228,10 +212,10 @@
                 <td>
                     <span>基底取向 Base</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OS_FR }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OD_FR }}</span>
                 </td>
             </tr>
@@ -239,10 +223,10 @@
                 <td>
                     <span>下加光 ADD</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OS_ADD }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OD_ADD }}</span>
                 </td>
             </tr>
@@ -250,10 +234,10 @@
                 <td>
                     <span>矫正视力 BSCVA</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OS_BCVA }}</span>
                 </td>
-                <td>
+                <td colspan="2">
                     <span>{{ visionsolutions.OD_BCVA }}</span>
                 </td>
             </tr>
@@ -261,7 +245,7 @@
                 <td>
                     <span>瞳距 PD</span>
                 </td>
-                <td colspan="2">
+                <td colspan="4">
                     <span>{{ visionsolutions.PD }}</span>
                 </td>
             </tr>
@@ -269,242 +253,132 @@
                 <td>
                     <span>验光师建议</span>
                 </td>
-                <td colspan="2">
+                <td colspan="4">
                     <span>{{ visionsolutions.remark }}</span>
                 </td>
             </tr>
             <tr class="banner">
-                <td colspan="3">
+                <td colspan="5">
                     <b>产品订单信息（Product Orders）</b>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>购买日期</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.time }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <span>类别</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ store.arg10 }}</span>
-                </td>
-            </tr>
-            <tr>
                 <td>
                     <span>品牌</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ store.arg11 }}</span>
-                </td>
-            </tr>
-            <tr>
                 <td>
                     <span>型号</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ store.arg12 }}</span>
-                </td>
-            </tr>
-            <tr>
                 <td>
                     <span>参数</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ store.arg13 }}</span>
-                </td>
-            </tr>
-            <tr>
                 <td>
                     <span>价格</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ store.arg14 }}</span>
+            </tr>
+            <tr>
+                <td>
+                    <span>{{ maneu_store.arg10 }}</span>
+                </td>
+                <td>
+                    <span>{{ maneu_store.arg11 }}</span>
+                </td>
+                <td>
+                    <span>{{ maneu_store.arg12 }}</span>
+                </td>
+                <td>
+                    <span>{{ maneu_store.arg13 }}</span>
+                </td>
+                <td>
+                    <span>{{ maneu_store.arg14 }}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>类别</span>
+                    <span>{{ maneu_store.arg20 }}</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ store.arg20 }}</span>
+                <td>
+                    <span>{{ maneu_store.arg21 }}</span>
+                </td>
+                <td>
+                    <span>{{ maneu_store.arg22 }}</span>
+                </td>
+                <td>
+                    <span>{{ maneu_store.arg23 }}</span>
+                </td>
+                <td>
+                    <span>{{ maneu_store.arg24 }}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>品牌</span>
+                    <span>{{ maneu_store.arg30 }}</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ store.arg21 }}</span>
+                <td>
+                    <span>{{ maneu_store.arg31 }}</span>
+                </td>
+                <td>
+                    <span>{{ maneu_store.arg32 }}</span>
+                </td>
+                <td>
+                    <span>{{ maneu_store.arg33 }}</span>
+                </td>
+                <td>
+                    <span>{{ maneu_store.arg34 }}</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span>型号</span>
+                    <span>{{ maneu_store.arg40 }}</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ store.arg22 }}</span>
-                </td>
-            </tr>
-            <tr>
                 <td>
-                    <span>参数</span>
+                    <span>{{ maneu_store.arg41 }}</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ store.arg23 }}</span>
-                </td>
-            </tr>
-            <tr>
                 <td>
-                    <span>价格</span>
+                    <span>{{ maneu_store.arg42 }}</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ store.arg24 }}</span>
-                </td>
-            </tr>
-            <tr>
                 <td>
-                    <span>类别</span>
+                    <span>{{ maneu_store.arg43 }}</span>
                 </td>
-                <td colspan="2">
-                    <span>{{ store.arg30 }}</span>
-                </td>
-            </tr>
-            <tr>
                 <td>
-                    <span>品牌</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg31 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>型号</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg32 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>参数</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg33 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>价格</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg34 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>类别</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg40 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>品牌</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg41 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>型号</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg42 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>参数</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg43 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>价格</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg44 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>类别</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg50 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>品牌</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg51 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>型号</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg52 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>参数</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg53 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>价格</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.arg54 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>配镜师建议</span>
-                </td>
-                <td colspan="2">
-                    <span>{{ store.remark }}</span>
+                    <span>{{ maneu_store.arg44 }}</span>
                 </td>
             </tr>
             <tr class="banner">
-                <td colspan="3">
+                <td colspan="5">
                     <b>注意事项（matters need attention）</b>
                 </td>
             </tr>
             <tr>
-                <td colspan="3">
+                <td colspan="5">
                     <span>处方由眼科专家根据患者屈光不正性质、年龄、用眼需求等综合因素决定。</span>
                     <span>选择镜片、镜架及按眼科专家指导的配戴方法才能确保矫正效果和视觉健康。</span>
                     <span>数据为当时检查状态的结果，检查后如超过六个月配镜，建议复查。</span>
                 </td>
             </tr>
         </table>
+        <div class="col-md-12 col-sm-12 row" style="text-align: center;">
+            <div class="col-md-3 col-sm-3">
+                <a class="col-md-4 col-sm-12 btn btn-primary" type="button" href="{% url 'maneu_order:order_list' %}">返回列表</a>
+            </div>
+            <div class="col-md-3 col-sm-3">
+                <form method="get" action="{% url 'maneu_order:alterSalesList' %}">
+                    <input type="submit" class="col-md-4 col-sm-12 btn btn-warning" value="维修记录">
+                </form>
+            </div>
+            <div class="col-md-3 col-sm-4">
+                <form method="get" action="{% url 'maneu_order:order_update' %}">
+                    <input type="submit" class="col-md-4 col-sm-12 btn btn-warning" value="修改订单">
+                </form>
+            </div>
+            <div class="col-md-3 col-sm-4">
+                <form method="get" action="{% url 'maneu_order:order_delete' %}">
+                    <input type="submit" class="col-md-4 col-sm-12 btn btn-danger" value="删除订单">
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
