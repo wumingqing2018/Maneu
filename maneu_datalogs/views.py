@@ -1,15 +1,19 @@
 from django.shortcuts import render
 from common import common
 from maneu_datalogs import service
-import json, datetime
+import json
+
+
 # Create your views here.
 
 def index(request):
     if request.method == 'POST':
-        now_month = request.POST.get('time')[5:7]
-        print(now_month)
+        year = request.POST.get('time')[0:4]
+        month = request.POST.get('time')[5:7]
     else:
-        now_month = common.month()
+        year = common.year()
+        month = common.month()
+
     user_id = request.session.get('id')
     order_log = []
     money_log = []
@@ -31,7 +35,7 @@ def index(request):
         "class_log": {},
         "class_count": 0,
     }
-    orderlist = service.find_order_month(users_id=user_id, month=now_month)  # 查找今日订单
+    orderlist = service.find_order_month(users_id=user_id, year=year, month=month)  # 查找今日订单
     for order in orderlist:
         order_logs['order_count'] = order_logs['order_count'] + 1
         order_logs['order_log']['%02d'%order.time.day] = order_logs['order_log']['%02d'%order.time.day] +1

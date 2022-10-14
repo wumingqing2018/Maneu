@@ -1,5 +1,4 @@
-from common import common
-from common.models import ManeuUsers
+from maneu_order.models import ManeuUsers
 
 
 def find_user(user_id):

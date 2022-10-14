@@ -1,6 +1,3 @@
-from common.models import ManeuBatch
-
-
 def batch_list():
     return Batch.objects.order_by('-c_time').all()
 

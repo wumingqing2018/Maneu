@@ -1,4 +1,4 @@
-from common.models import ManeuClass
+from maneu_order.models import ManeuClass
 
 
 def class_list(user_id=''):

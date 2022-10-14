@@ -1,4 +1,4 @@
-from common.models import *
+from maneu_order.models import *
 
 
 def find_user_username(username=''):
