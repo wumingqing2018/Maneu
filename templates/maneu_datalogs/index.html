@@ -168,7 +168,7 @@
                     {% csrf_token %}
                     <div class="input-group input-group-sm">
                         <span class="input-group-text">时间</span>
-                        <input class="form-control date_time" name="time" type="date" autocomplete="off" required="required">
+                        <input class="form-control date_time" name="time" type="date" autocomplete="off" required="required" value="{{ day|safe }}">
                         <input class="form-control" type="submit">
                     </div>
                 </form>

@@ -1,16 +1,18 @@
 from django.shortcuts import render
 from common import common
 from maneu_datalogs import service
-import json
+import json,datetime
 
 
 # Create your views here.
 
 def index(request):
     if request.method == 'POST':
+        day = request.POST.get('time')
         year = request.POST.get('time')[0:4]
         month = request.POST.get('time')[5:7]
     else:
+        day = datetime.datetime.now().date()
         year = common.year()
         month = common.month()
 
@@ -63,4 +65,5 @@ def index(request):
     return render(request, 'maneu_datalogs/index.html', {'order_log': order_log, 'order_count': order_logs['order_count'],
                                                          'money_log': money_log, 'money_count': order_logs['money_count'],
                                                          'class_log': class_log, 'class_count': order_logs['class_count'],
+                                                         'day':day
                                                          })
