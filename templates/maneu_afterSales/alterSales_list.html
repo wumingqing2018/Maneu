@@ -16,7 +16,7 @@
                 <td class="blue col-sm-1">
                     <form class="col-12" method='get' action="{% url 'maneu_alterSales:alterSalesInsert' %}">
                         <div class="input-group input-group-sm">
-                            <input type='submit' class='btn btn-warning' value='添加订单'>
+                            <input type='submit' class='btn btn-warning' value='添加记录'>
                         </div>
                     </form>
                 </td>
@@ -43,7 +43,7 @@
                 {% endfor %}
             {% else %}
                 <tr>
-                    <td colspan="3" class="blue">没有找到您的订单</td>
+                    <td colspan="3" class="blue">没有找到您的记录</td>
                 </tr>
             {% endif %}
             <tr>

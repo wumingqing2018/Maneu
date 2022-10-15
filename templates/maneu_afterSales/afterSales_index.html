@@ -10,15 +10,8 @@
                 <td class="blue col-2">
                     <h4>创建时间</h4>
                 </td>
-                <td class="blue col-8">
+                <td class="blue col-10" colspan="2">
                     <h4>售后内容</h4>
-                </td>
-                <td class="blue col-2">
-                    <form class="col-12" method='get' action="{% url 'maneu_alterSales:alterSalesInsert' %}">
-                        <div class="input-group input-group-sm">
-                            <input type='submit' class='btn btn-warning' value='添加订单'>
-                        </div>
-                    </form>
                 </td>
             </tr>
             {% if alterSalesList %}
@@ -37,7 +30,7 @@
                                         <div class="input-group input-group-sm">
                                             {% csrf_token %}
                                             <input type="hidden" name="order_id" value="{{ order.order_id }}">
-                                            <input type="submit" class="btn btn-danger" value="所属订单">
+                                            <input type="submit" class="btn btn-primary" value="所属订单">
                                         </div>
                                     </form>
                                 </div>
@@ -56,19 +49,9 @@
                 {% endfor %}
             {% else %}
                 <tr>
-                    <td colspan="3" class="blue">没有找到您的订单</td>
+                    <td colspan="3" class="blue">没有找到您的记录</td>
                 </tr>
             {% endif %}
-            <tr>
-                <td colspan="2"></td>
-                <td>
-                    <form method="get" action="{% url 'maneu_order:order_detail' %}">
-                        <div class="input-group input-group-sm">
-                            <input type="submit" class="btn btn-warning" value="返回订单">
-                        </div>
-                    </form>
-                </td>
-            </tr>
         </table>
     </div>
 {% endblock %}
