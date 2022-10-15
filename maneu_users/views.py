@@ -5,6 +5,10 @@ from common import verify
 from maneu_users import serivce
 
 
+def user_list(request):
+    return render(request, 'maneu_users/user_list.html', {'user_list': serivce.find_user_all()})
+
+
 def user_detail(request):
     user_id = request.session.get('id')
     if user_id:
