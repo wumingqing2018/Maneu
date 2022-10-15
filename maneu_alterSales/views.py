@@ -39,4 +39,4 @@ def alterSales_insert(request):
 def alterSales_delete(request):
     if request.method == 'POST':
         insert = service.ManeuAfterSales_delete_id(id=request.POST.get('order_id'))
-    return HttpResponseRedirect(reverse('maneu_order:alterSalesList'))
+    return HttpResponseRedirect(reverse('maneu_alterSales:alterSalesList'))
