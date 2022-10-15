@@ -46,7 +46,7 @@ class ManeuSubjectiveRefraction(models.Model):
 
 
 class ManeuUsers(models.Model):
-    user_id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
     nickname = models.CharField(max_length=36)
     username = models.CharField(unique=True, max_length=36)
     password = models.CharField(max_length=36)

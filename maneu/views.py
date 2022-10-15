@@ -1,12 +1,11 @@
 import json
 
 from django.shortcuts import HttpResponseRedirect, reverse, render
-
+from common import sms
 from common import common
 from maneu import service
 from maneu.forms.guessForm import GuessForm
 from maneu.forms.loginForm import LoginForm
-
 
 def index(request):
     """
@@ -25,7 +24,7 @@ def login(request):
         if form.is_valid():
             user_content = service.find_user_username(username=request.POST['username'])
             request.session['ip'] = common.get_ip(request)
-            request.session['id'] = user_content.user_id
+            request.session['id'] = user_content.id
             request.session['nickname'] = user_content.nickname
             return HttpResponseRedirect(reverse('maneu_order:order_list'))
     return render(request, 'maneu/login.html', {'form': LoginForm()})

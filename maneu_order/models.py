@@ -162,7 +162,6 @@ class ManeuClass(models.Model):
     time = models.DateField()
     series = models.CharField(max_length=36)
     color = models.CharField(max_length=36)
-    class_field = models.CharField(db_column='class', max_length=36)  # Field renamed because it was a Python reserved word.
     count = models.CharField(max_length=36)
     price = models.CharField(max_length=36)
     remark = models.CharField(max_length=255)
@@ -253,7 +252,7 @@ class ManeuSubjectiveRefraction(models.Model):
 
 
 class ManeuUsers(models.Model):
-    user_id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
     nickname = models.CharField(max_length=36)
     username = models.CharField(unique=True, max_length=36)
     password = models.CharField(max_length=36)
