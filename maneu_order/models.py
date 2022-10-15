@@ -139,7 +139,7 @@ class ManeuAftersales(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'maneu_aftersales'
+        db_table = 'maneu_afterSales'
 
 
 class ManeuBatch(models.Model):
