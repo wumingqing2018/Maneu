@@ -14,7 +14,7 @@
                     <h4>售后内容</h4>
                 </td>
                 <td class="blue col-sm-1">
-                    <form class="col-12" method='get' action="{% url 'maneu_order:alterSalesInsert' %}">
+                    <form class="col-12" method='get' action="{% url 'maneu_alterSales:alterSalesInsert' %}">
                         <div class="input-group input-group-sm">
                             <input type='submit' class='btn btn-warning' value='添加订单'>
                         </div>
@@ -31,7 +31,7 @@
                             <p>{{ order.content }}</p>
                         </td>
                         <td>
-                            <form method="post" action="{% url 'maneu_order:alterSalesDelete' %}">
+                            <form method="post" action="{% url 'maneu_alterSales:alterSalesDelete' %}">
                                 <div class="input-group input-group-sm">
                                     {% csrf_token %}
                                     <input type="hidden" name="order_id" value="{{ order.id }}">

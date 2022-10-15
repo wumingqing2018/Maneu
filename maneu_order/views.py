@@ -36,7 +36,8 @@ def order_detail(request):
     false
         渲染error页面并传输错误参数
     """
-    order_id = verify.order_id_method_post(request)
+    order_id = request.POST.get('order_id')
+    print(order_id)
     if order_id == None:
         order_id = request.session.get('order_id')
         if order_id == None:
@@ -133,8 +134,13 @@ def order_update(request):
 def alterSales_List(request):
     order_id = request.session.get('order_id')
     if order_id:
-        return render(request, 'maneu_order/alterSales_list.html',
+        return render(request, 'maneu_order/../templates/maneu_afterSales/alterSales_list.html',
                       {'alterSalesList': service.ManeuAfterSales_list(order_id=order_id)})
+    return HttpResponseRedirect(reverse('maneu_order:order_list'))
+
+
+def order_alterSalesindex(request):
+    print(service.test())
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
@@ -142,7 +148,7 @@ def alterSales_content(request):
     if request.method == 'POST':
         order_id = request.POST.get('order_id')
         ManeuAfterSales_list = service.ManeuAfterSales_list(order_id)
-        return render(request, 'maneu_order/alterSales_content.html', {'alterSalesContent': ManeuAfterSales_list})
+        return render(request, 'maneu_order/../templates/maneu_afterSales/alterSales_content.html', {'alterSalesContent': ManeuAfterSales_list})
     else:
         return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
@@ -155,7 +161,7 @@ def alterSales_insert(request):
         return HttpResponseRedirect(reverse('maneu_order:alterSalesList'))
     elif request.method == 'GET':
         order_id = request.session.get('order_id')
-        return render(request, 'maneu_order/alterSales_insert.html', {'order_id': order_id})
+        return render(request, 'maneu_order/../templates/maneu_afterSales/alterSales_insert.html', {'order_id': order_id})
     else:
         return HttpResponseRedirect(reverse('index'))
 

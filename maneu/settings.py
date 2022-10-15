@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'maneu_batch',
     'maneu_class',
     'maneu_datalogs',
+    'maneu_alterSales',
 ]
 
 

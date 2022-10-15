@@ -24,5 +24,6 @@ urlpatterns = [
     path('maneu_class/', include('maneu_class.urls')),
     # 商品子路由
     path('maneu_datalogs/', include('maneu_datalogs.urls')),
+    path('maneu_alterSales/', include('maneu_alterSales.urls')),
 
 ]

@@ -7,6 +7,7 @@ from maneu import service
 from maneu.forms.guessForm import GuessForm
 from maneu.forms.loginForm import LoginForm
 
+
 def index(request):
     """
     首页
@@ -48,5 +49,3 @@ def guess(request):
             except BaseException as msg:
                 return render(request, 'maneu/guess.html', {'msg': '没有您的订单'})
     return render(request, 'maneu/guess.html')
-
-

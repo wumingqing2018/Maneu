@@ -320,3 +320,7 @@ def Datalogs_update(users_id, time,date,order_logs):
 
 def ManeuStore_id(store_id):
     return ManeuStore.objects.filter(id=store_id).first()
+
+
+def test():
+    return ManeuAftersales.objects.values('order_id').distinct()
