@@ -8,6 +8,13 @@ def find_user(user_id):
     return ManeuUsers.objects.filter(user_id=user_id).first()
 
 
+def find_user_all():
+    """
+    通过user_id查找用户
+    """
+    return ManeuUsers.objects.filter().all()
+
+
 def find_user_username(username=''):
     """
     通过username查找用户
@@ -17,11 +24,6 @@ def find_user_username(username=''):
 
 def find_username_password(username, password):
     return ManeuUsers.objects.filter(username=username, password=password).first()
-
-
-def find_user_all():
-    """查找所有用户"""
-    return ManeuUsers.objects.filter(level='1').order_by('-create_time')
 
 
 def add_user(post):
