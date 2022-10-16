@@ -36,7 +36,7 @@ def guess(request):
         form = GuessForm(request.POST)
         if form.is_valid():
             try:
-                order = service.find_order_phone(phone=request.POST['phone'])[0]
+                order = service.find_order_phone(phone=request.POST.get('phone'))
                 users = service.find_users_id(id=order.users_id)
                 guess = service.find_guess_id(id=order.guess_id)
                 store = service.find_store_id(id=order.store_id)
@@ -47,5 +47,6 @@ def guess(request):
                                'visionsolutions': json.loads(visionsolutions.content),
                                'subjectiverefraction': json.loads(subjectiverefraction.content)})
             except BaseException as msg:
+                print(msg)
                 return render(request, 'maneu/guess.html', {'msg': '没有您的订单'})
     return render(request, 'maneu/guess.html')

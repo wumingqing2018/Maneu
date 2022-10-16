@@ -1,4 +1,10 @@
-from maneu_order.models import *
+from maneu.models import ManeuUsers
+from maneu.models import ManeuOrderV2
+from maneu.models import ManeuGuess
+from maneu.models import ManeuStore
+from maneu.models import ManeuVisionSolutions
+from maneu.models import ManeuSubjectiveRefraction
+
 
 
 def find_user_username(username=''):
@@ -10,15 +16,15 @@ def find_user_username(username=''):
 
 def find_order_phone(phone=''):
     try:
-        return ManeuOrderV2.objects.filter(phone=phone).order_by('-time').all()
+        return ManeuOrderV2.objects.filter(phone=phone).order_by('-time').first()
     except BaseException as msg:
         print(msg)
-        return None
+        return msg
 
 
 def find_users_id(id=''):
     try:
-        return ManeuUsers.objects.filter(user_id=id).first()
+        return ManeuUsers.objects.filter(id=id).first()
     except BaseException as msg:
         print(msg)
         return None
