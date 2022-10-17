@@ -1,7 +1,7 @@
 import json
 
 from django.shortcuts import HttpResponseRedirect, reverse, render
-from common import sms
+
 from common import common
 from maneu import service
 from maneu.forms.guessForm import GuessForm
