@@ -35,7 +35,7 @@
                                 <div class="input-group input-group-sm">
                                     {% csrf_token %}
                                     <input type="hidden" name="order_id" value="{{ order.id }}">
-                                    <input type="submit" class="btn btn-danger" value="删除记录">
+                                    <input type="submit" class="btn btn-danger" id="delete" value="删除记录">
                                 </div>
                             </form>
                         </td>
@@ -58,4 +58,7 @@
             </tr>
         </table>
     </div>
+{% endblock %}
+{% block javascript %}
+    <script type="application/javascript" src="{% static 'js/common/delete.js' %}"></script>
 {% endblock %}
