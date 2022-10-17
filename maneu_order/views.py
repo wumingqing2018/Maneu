@@ -8,6 +8,8 @@ from maneu_order import service
 
 
 def order_list(request):
+    for i in range(1,99):
+        print('<option>', i,'</option>')
     """查看今日订单"""
     orderlist = service.find_order_all(users_id=request.session.get('id'))  # 查找今日订单
     return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
@@ -37,7 +39,6 @@ def order_detail(request):
         渲染error页面并传输错误参数
     """
     order_id = request.POST.get('order_id')
-    print(order_id)
     if order_id == None:
         order_id = request.session.get('order_id')
         if order_id == None:
@@ -67,7 +68,6 @@ def order_search(request):
 def order_insert(request):
     """添加订单"""
     if request.method == 'POST':
-        print(request.POST)
         time = json.loads(request.POST.get('time'))['time']
         ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'))
         ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
@@ -129,44 +129,3 @@ def order_update(request):
             return HttpResponseRedirect(reverse('maneu_order:order_detail'))
 
     return render(request, 'maneu/error.html', {'msg': '参数错误'})
-
-
-def alterSales_List(request):
-    order_id = request.session.get('order_id')
-    if order_id:
-        return render(request, 'maneu_order/../templates/maneu_afterSales/alterSales_list.html',
-                      {'alterSalesList': service.ManeuAfterSales_list(order_id=order_id)})
-    return HttpResponseRedirect(reverse('maneu_order:order_list'))
-
-
-def order_alterSalesindex(request):
-    print(service.test())
-    return HttpResponseRedirect(reverse('maneu_order:order_list'))
-
-
-def alterSales_content(request):
-    if request.method == 'POST':
-        order_id = request.POST.get('order_id')
-        ManeuAfterSales_list = service.ManeuAfterSales_list(order_id)
-        return render(request, 'maneu_order/../templates/maneu_afterSales/alterSales_content.html', {'alterSalesContent': ManeuAfterSales_list})
-    else:
-        return HttpResponseRedirect(reverse('maneu_order:order_list'))
-
-
-def alterSales_insert(request):
-    if request.method == 'POST':
-        order_id = request.POST.get('order_id')
-        content = request.POST.get('content')
-        insert = service.ManeuAfterSales_insert(content=content, order_id=order_id)
-        return HttpResponseRedirect(reverse('maneu_order:alterSalesList'))
-    elif request.method == 'GET':
-        order_id = request.session.get('order_id')
-        return render(request, 'maneu_order/../templates/maneu_afterSales/alterSales_insert.html', {'order_id': order_id})
-    else:
-        return HttpResponseRedirect(reverse('index'))
-
-
-def alterSales_delete(request):
-    if request.method == 'POST':
-        insert = service.ManeuAfterSales_delete_id(id=request.POST.get('order_id'))
-    return HttpResponseRedirect(reverse('maneu_order:alterSalesList'))
