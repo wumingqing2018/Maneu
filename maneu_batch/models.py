@@ -185,14 +185,14 @@ class ManeuDatalogs(models.Model):
 
 class ManeuGuess(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    time = models.DateTimeField()
-    name = models.CharField(max_length=32)
-    phone = models.CharField(max_length=32)
-    sex = models.CharField(max_length=32)
-    age = models.DateField()
-    ot = models.CharField(db_column='OT', max_length=32)  # Field name made lowercase.
-    em = models.CharField(db_column='EM', max_length=32)  # Field name made lowercase.
-    dfh = models.CharField(db_column='DFH', max_length=32)  # Field name made lowercase.
+    time = models.CharField(max_length=36)
+    name = models.CharField(max_length=36)
+    phone = models.CharField(max_length=36)
+    sex = models.CharField(max_length=36)
+    age = models.CharField(max_length=36)
+    ot = models.CharField(db_column='OT', max_length=36)  # Field name made lowercase.
+    em = models.CharField(db_column='EM', max_length=36)  # Field name made lowercase.
+    dfh = models.CharField(db_column='DFH', max_length=36)  # Field name made lowercase.
     remark = models.TextField()
 
     class Meta:

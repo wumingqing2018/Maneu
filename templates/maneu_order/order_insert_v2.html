@@ -52,7 +52,7 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">出生日期</span>
-                            <input autocomplete="off" list="age" type="text" name="age" class="form-control date_time">
+                            <input autocomplete="off" list="age" type="text" name="age" class="form-control">
                             <datalist id="age">
                                 <option> 1 </option>
                                 <option> 2 </option>
@@ -1781,11 +1781,11 @@
 {% block javascript %}
     <script type="application/javascript">
         $(document).ready(function () {
-            {#var time = new Date();#}
-            {#var day = ("0" + time.getDate()).slice(-2);#}
-            {#var month = ("0" + (time.getMonth() + 1)).slice(-2);#}
-            {#var today = time.getFullYear() + "-" + (month) + "-" + (day);#}
-            {#$('.date_time').val(today)#}
+            var time = new Date();
+            var day = ("0" + time.getDate()).slice(-2);
+            var month = ("0" + (time.getMonth() + 1)).slice(-2);
+            var today = time.getFullYear() + "-" + (month) + "-" + (day);
+            $('.date_time').val(today)
 
             $.fn.serializeJsonStr = function () {
                 var o = {};

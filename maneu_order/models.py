@@ -77,8 +77,8 @@ class AuthUserUserPermissions(models.Model):
 
 
 class CaptchaCaptchastore(models.Model):
-    challenge = models.CharField(max_length=32)
-    response = models.CharField(max_length=32)
+    challenge = models.CharField(max_length=36)
+    response = models.CharField(max_length=36)
     hashkey = models.CharField(unique=True, max_length=40)
     expiration = models.DateTimeField()
 
@@ -184,14 +184,14 @@ class ManeuDatalogs(models.Model):
 
 class ManeuGuess(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    time = models.DateTimeField()
-    name = models.CharField(max_length=32)
-    phone = models.CharField(max_length=32)
-    sex = models.CharField(max_length=32)
-    age = models.DateField()
-    ot = models.CharField(db_column='OT', max_length=32)  # Field name made lowercase.
-    em = models.CharField(db_column='EM', max_length=32)  # Field name made lowercase.
-    dfh = models.CharField(db_column='DFH', max_length=32)  # Field name made lowercase.
+    time = models.CharField(max_length=36)
+    name = models.CharField(max_length=36)
+    phone = models.CharField(max_length=36)
+    sex = models.CharField(max_length=36)
+    age = models.CharField(max_length=36)
+    ot = models.CharField(db_column='OT', max_length=36)  # Field name made lowercase.
+    em = models.CharField(db_column='EM', max_length=36)  # Field name made lowercase.
+    dfh = models.CharField(db_column='DFH', max_length=36)  # Field name made lowercase.
     remark = models.TextField()
 
     class Meta:
@@ -200,8 +200,8 @@ class ManeuGuess(models.Model):
 
 
 class ManeuOrder(models.Model):
-    order_id = models.CharField(primary_key=True, max_length=32)
-    order_token = models.CharField(max_length=32, blank=True, null=True)
+    order_id = models.CharField(primary_key=True, max_length=36)
+    order_token = models.CharField(max_length=36, blank=True, null=True)
     c_time = models.DateTimeField()
     c_name = models.CharField(max_length=11)
     c_phone = models.CharField(max_length=11)

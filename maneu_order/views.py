@@ -8,8 +8,6 @@ from maneu_order import service
 
 
 def order_list(request):
-    for i in range(1,99):
-        print('<option>', i,'</option>')
     """查看今日订单"""
     orderlist = service.find_order_all(users_id=request.session.get('id'))  # 查找今日订单
     return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
@@ -72,8 +70,7 @@ def order_insert(request):
         ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'))
         ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
-        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(
-            content=request.POST.get('Subjective_refraction'))
+        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
         order = service.ManeuOrderV2_insert(name=ManeuGuess_id.name,
                                             phone=ManeuGuess_id.phone,
                                             users_id=request.session.get('id'),
