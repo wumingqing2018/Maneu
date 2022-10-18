@@ -9,7 +9,6 @@ from django.db import models
 import uuid
 
 
-
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 
@@ -77,8 +76,8 @@ class AuthUserUserPermissions(models.Model):
 
 
 class CaptchaCaptchastore(models.Model):
-    challenge = models.CharField(max_length=36)
-    response = models.CharField(max_length=36)
+    challenge = models.CharField(max_length=32)
+    response = models.CharField(max_length=32)
     hashkey = models.CharField(unique=True, max_length=40)
     expiration = models.DateTimeField()
 
@@ -139,11 +138,11 @@ class ManeuAftersales(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'maneu_afterSales'
+        db_table = 'maneu_aftersales'
 
 
 class ManeuBatch(models.Model):
-    order_id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    order_id = models.CharField(primary_key=True, max_length=255)
     c_time = models.DateTimeField()
     c_name = models.CharField(max_length=255)
     c_phone = models.CharField(max_length=255)
@@ -162,6 +161,7 @@ class ManeuClass(models.Model):
     time = models.DateField()
     series = models.CharField(max_length=36)
     color = models.CharField(max_length=36)
+    class_field = models.CharField(db_column='class', max_length=36)  # Field renamed because it was a Python reserved word.
     count = models.CharField(max_length=36)
     price = models.CharField(max_length=36)
     remark = models.CharField(max_length=255)
@@ -184,7 +184,7 @@ class ManeuDatalogs(models.Model):
 
 class ManeuGuess(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    time = models.CharField(max_length=36)
+    time = models.DateTimeField()
     name = models.CharField(max_length=36)
     phone = models.CharField(max_length=36)
     sex = models.CharField(max_length=36)
@@ -200,8 +200,8 @@ class ManeuGuess(models.Model):
 
 
 class ManeuOrder(models.Model):
-    order_id = models.CharField(primary_key=True, max_length=36)
-    order_token = models.CharField(max_length=36, blank=True, null=True)
+    order_id = models.CharField(primary_key=True, max_length=32)
+    order_token = models.CharField(max_length=32, blank=True, null=True)
     c_time = models.DateTimeField()
     c_name = models.CharField(max_length=11)
     c_phone = models.CharField(max_length=11)

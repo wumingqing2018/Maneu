@@ -68,6 +68,7 @@ def order_insert(request):
     if request.method == 'POST':
         time = json.loads(request.POST.get('time'))['time']
         ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'))
+        print(ManeuGuess_id)
         ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
         ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
