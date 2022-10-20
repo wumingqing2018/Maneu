@@ -22,8 +22,8 @@ def order_delete(request):
         store = service.delete_store_id(id=order.store_id)
         visionsolutions = service.delete_ManeuVisionSolutions_id(id=order.visionsolutions_id)
         subjectiverefraction = service.delete_subjectiverefraction_id(id=order.subjectiverefraction_id)
-        order = service.delete_order_id(users_id=users_id, id=order_id)
         afterSales = service.ManeuAfterSales_delete(order_id=order_id)
+        order = service.delete_order_id(users_id=users_id, id=order_id)
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
