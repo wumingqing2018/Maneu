@@ -5,7 +5,7 @@ def find_user(user_id):
     """
     通过user_id查找用户
     """
-    return ManeuUsers.objects.filter(user_id=user_id).first()
+    return ManeuUsers.objects.filter(id=user_id).first()
 
 
 def find_user_all():
