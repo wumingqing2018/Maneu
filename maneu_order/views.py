@@ -41,17 +41,20 @@ def order_detail(request):
         order_id = request.session.get('order_id')
         if order_id == None:
             return render(request, 'maneu/error.html', {'msg': '参数错误'})
-    request.session['order_id'] = order_id
     order = service.find_order_id(order_id=order_id, users_id=request.session.get('id'))
-    users = service.find_users_id(id=order.users_id)
-    guess = service.find_guess_id(id=order.guess_id)
-    store = service.find_store_id(id=order.store_id)
-    visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
-    subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
-    return render(request, 'maneu_order/order_detail.html', {'maneu_order': order, 'users': users, 'guess': guess,
-                                                             'maneu_store': json.loads(store.content),
-                                                             'visionsolutions': json.loads(visionsolutions.content),
-                                                             'subjectiverefraction': json.loads(subjectiverefraction.content)})
+    if order:
+        users = service.find_users_id(id=order.users_id)
+        guess = service.find_guess_id(id=order.guess_id)
+        store = service.find_store_id(id=order.store_id)
+        visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
+        subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
+        request.session['order_id'] = order_id
+        return render(request, 'maneu_order/order_detail.html', {'maneu_order': order, 'users': users, 'guess': guess,
+                                                                 'maneu_store': json.loads(store.content),
+                                                                 'visionsolutions': json.loads(visionsolutions.content),
+                                                                 'subjectiverefraction': json.loads(subjectiverefraction.content)})
+    else:
+        return render(request, 'maneu/error.html', {'msg': order})
 
 
 def order_search(request):
