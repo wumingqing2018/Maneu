@@ -38,12 +38,11 @@ def guess(request):
             try:
                 order = service.find_order_phone(phone=request.POST.get('phone'))
                 users = service.find_users_id(id=order.users_id)
-                guess = service.find_guess_id(id=order.guess_id)
                 store = service.find_store_id(id=order.store_id)
                 visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
                 subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
                 return render(request, 'maneu/detail.html',
-                              {'maneu_order': order, 'users': users, 'guess': guess, 'maneu_store': json.loads(store.content),
+                              {'maneu_order': order, 'users': users, 'maneu_store': json.loads(store.content),
                                'visionsolutions': json.loads(visionsolutions.content),
                                'subjectiverefraction': json.loads(subjectiverefraction.content)})
             except BaseException as msg:
