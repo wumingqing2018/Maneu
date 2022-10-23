@@ -1,10 +1,12 @@
 import json
 
-from django.shortcuts import render, reverse, HttpResponseRedirect
+from django.shortcuts import render, reverse, HttpResponseRedirect, HttpResponse
 
 from common.checkMobile import judge_pc_or_mobile
 from maneu_alterSales import service as alter_server
 from maneu_order import service
+import qrcode
+from io import BytesIO
 
 
 def order_list(request):
@@ -52,15 +54,16 @@ def order_detail(request):
         ua = request.META.get("HTTP_USER_AGENT")
         mobile = judge_pc_or_mobile(ua)
         if mobile:
+
             return render(request, 'maneu_order/order_detail_V2.html', {'maneu_order': order, 'users': users, 'guess': guess,
-                                                                     'maneu_store': json.loads(store.content),
-                                                                     'visionsolutions': json.loads(visionsolutions.content),
-                                                                     'subjectiverefraction': json.loads(subjectiverefraction.content)})
+                                                                        'maneu_store': json.loads(store.content),
+                                                                        'visionsolutions': json.loads(visionsolutions.content),
+                                                                        'subjectiverefraction': json.loads(subjectiverefraction.content)})
         else:
             return render(request, 'maneu_order/order_detail_V3.html', {'maneu_order': order, 'users': users, 'guess': guess,
-                                                                     'maneu_store': json.loads(store.content),
-                                                                     'visionsolutions': json.loads(visionsolutions.content),
-                                                                     'subjectiverefraction': json.loads(subjectiverefraction.content)})
+                                                                        'maneu_store': json.loads(store.content),
+                                                                        'visionsolutions': json.loads(visionsolutions.content),
+                                                                        'subjectiverefraction': json.loads(subjectiverefraction.content)})
     else:
         alter_server.ManeuAfterSales_delete_order_id(order_id=order_id)
         return render(request, 'maneu/error.html', {'msg': order})
@@ -84,13 +87,13 @@ def order_insert(request):
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
         ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
         order = service.ManeuOrderV2_insert(name=ManeuGuess_id.name,
-                                                phone=ManeuGuess_id.phone,
-                                                users_id=request.session.get('id'),
-                                                store_id=ManeuStore_id.id,
-                                                guess_id=ManeuGuess_id.id,
-                                                time=time,
-                                                visionsolutions_id=ManeuVisionSolutions_id.id,
-                                                subjectiverefraction_id=ManeuSubjectiveRefraction_id.id, )
+                                            phone=ManeuGuess_id.phone,
+                                            users_id=request.session.get('id'),
+                                            store_id=ManeuStore_id.id,
+                                            guess_id=ManeuGuess_id.id,
+                                            time=time,
+                                            visionsolutions_id=ManeuVisionSolutions_id.id,
+                                            subjectiverefraction_id=ManeuSubjectiveRefraction_id.id, )
         if order:
             request.session['order_id'] = str(order.id)
             return HttpResponseRedirect(reverse('maneu_order:order_detail'))
@@ -138,3 +141,15 @@ def order_update(request):
             return HttpResponseRedirect(reverse('maneu_order:order_detail'))
 
     return render(request, 'maneu/error.html', {'msg': '参数错误'})
+
+
+def generate_qrcode(request, order_id=''):
+    data = 'http://maneu.online/guess/'+order_id
+    img = qrcode.make(data)
+
+    buf = BytesIO()		# BytesIO实现了在内存中读写bytes
+    img.save(buf)
+    image_stream = buf.getvalue()
+
+    response = HttpResponse(image_stream, content_type="image/png")
+    return response

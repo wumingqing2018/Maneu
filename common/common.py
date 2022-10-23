@@ -1,6 +1,9 @@
 # 依赖包
 import datetime
 import time
+import qrcode
+from io import BytesIO
+
 
 
 def current_time():
@@ -64,3 +67,12 @@ def get_ip(request):
         return request.META.get("HTTP_X_FORWARDED_FOR")
     else:
         return request.META.get("REMOTE_ADDR")
+
+
+def generate_qrcode():
+    data = '我爱python'
+    img = qrcode.make(data)
+
+    buf = BytesIO()		# BytesIO实现了在内存中读写bytes
+    img.save(buf)
+    return buf.getvalue()
