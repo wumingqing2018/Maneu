@@ -2,25 +2,20 @@ import json
 
 from django.db.models import Q
 
-from maneu_order.models import ManeuAftersales
 from maneu_order.models import ManeuGuess
 from maneu_order.models import ManeuOrderV2
 from maneu_order.models import ManeuStore
 from maneu_order.models import ManeuSubjectiveRefraction
 from maneu_order.models import ManeuUsers
 from maneu_order.models import ManeuVisionSolutions
-from maneu_order.models import ManeuDatalogs
+from maneu_order.models import ManeuAftersales
 
 
 def find_order_all(users_id=''):
     """
     全部订单
     """
-    try:
-        return ManeuOrderV2.objects.filter(users_id=users_id).order_by('-time').all()
-    except BaseException as msg:
-        print(msg)
-        return None
+    return ManeuOrderV2.objects.filter(users_id=users_id).order_by('-time').all()
 
 
 def find_order_id(order_id='', users_id=''):
@@ -28,11 +23,7 @@ def find_order_id(order_id='', users_id=''):
     查找指定订单
     根据时间排序
     """
-    try:
-        return ManeuOrderV2.objects.filter(id=order_id, users_id=users_id).first()
-    except BaseException as msg:
-        print(msg)
-        return None
+    return ManeuOrderV2.objects.filter(id=order_id, users_id=users_id).first()
 
 
 def find_order_time(time='', users_id=''):
@@ -40,57 +31,31 @@ def find_order_time(time='', users_id=''):
     查找指定订单
     根据时间排序
     """
-    try:
-        return ManeuOrderV2.objects.filter(time__range=time, users_id=users_id).all()
-    except BaseException as msg:
-        print(msg)
-        return None
+    return ManeuOrderV2.objects.filter(time__range=time, users_id=users_id).all()
 
 
 def delete_order_id(users_id='', id=''):
     """
-    查找指定订单
+    查找指定订单a
     根据时间排序
     """
-    try:
-        order = ManeuOrderV2.objects.filter(users_id=users_id, id=id).all()
-        return order.delete()
-    except BaseException as msg:
-        print(msg)
-        return None
+    return ManeuOrderV2.objects.filter(users_id=users_id, id=id).delete()
 
 
 def find_order_phone(phone=''):
-    try:
-        return ManeuOrderV2.objects.filter(phone=phone).order_by('-time').all()
-    except BaseException as msg:
-        print(msg)
-        return None
+    return ManeuOrderV2.objects.filter(phone=phone).order_by('-time').all()
 
 
 def find_guess_id(id=''):
-    try:
-        return ManeuGuess.objects.filter(id=id).first()
-    except BaseException as msg:
-        print(msg)
-        return None
+    return ManeuGuess.objects.filter(id=id).first()
 
 
 def delete_guess_id(id=''):
-    try:
-        guess = ManeuGuess.objects.filter(id=id).all()
-        return guess.delete()
-    except BaseException as msg:
-        print(msg)
-        return None
+    return ManeuGuess.objects.filter(id=id).delete()
 
 
 def find_store_id(id=''):
-    try:
-        return ManeuStore.objects.filter(id=id).first()
-    except BaseException as msg:
-        print(msg)
-        return None
+    return ManeuStore.objects.filter(id=id).first()
 
 
 def delete_store_id(id=''):
@@ -242,11 +207,16 @@ def ManeuStore_update(content='', id=''):
 
 def ManeuOrderV2_insert(name='', time='', phone='', guess_id='', users_id='', store_id='', visionsolutions_id='', subjectiverefraction_id=''):
     try:
-        return ManeuOrderV2.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, users_id=users_id,
-                                           store_id=store_id, visionsolutions_id=visionsolutions_id,
-                                           subjectiverefraction_id=subjectiverefraction_id)
+        if time:
+            return ManeuOrderV2.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, users_id=users_id,
+                                               store_id=store_id, visionsolutions_id=visionsolutions_id,
+                                               subjectiverefraction_id=subjectiverefraction_id)
+        else:
+            return ManeuOrderV2.objects.create(name=name, phone=phone, guess_id=guess_id, users_id=users_id,
+                                               store_id=store_id, visionsolutions_id=visionsolutions_id,
+                                               subjectiverefraction_id=subjectiverefraction_id)
+
     except BaseException as msg:
-        print(msg)
         return msg
 
 
@@ -258,69 +228,9 @@ def ManeuOrderV2_update(order_id='', name='', phone=''):
         return None
 
 
-def ManeuAfterSales_list(order_id=''):
-    try:
-        return ManeuAftersales.objects.filter(order_id=order_id).order_by('-time').all()
-    except BaseException as msg:
-        print(msg)
-        return
-
-
-def ManeuAfterSales_content(order_id=''):
-    try:
-        return ManeuAftersales.objects.filter(order_id=order_id).first()
-    except BaseException as msg:
-        print(msg)
-        return None
-
-
-def ManeuAfterSales_insert(order_id='', content=''):
-    try:
-        return ManeuAftersales.objects.create(order_id=order_id, content=content)
-    except BaseException as msg:
-        print(msg)
-        return None
-
-
-def ManeuAfterSales_delete(order_id=''):
+def ManeuAfterSales_delete_id(order_id=''):
     try:
         return ManeuAftersales.objects.filter(order_id=order_id).delete()
     except BaseException as msg:
         print(msg)
         return None
-
-
-def ManeuAfterSales_delete_id(id=''):
-    try:
-        return ManeuAftersales.objects.filter(id=id).all().delete()
-    except BaseException as msg:
-        print(msg)
-        return None
-
-
-def Datalogs_id(users_id, time):
-    return ManeuDatalogs.objects.filter(user_id=users_id, time__month=time).first()
-
-
-def Datalogs_update(users_id, time, order_log):
-    return ManeuDatalogs.objects.filter(user_id=users_id, time__month=time).update(order_log=order_log)
-
-
-def Datalogs_time(users_id, time):
-    return ManeuDatalogs.objects.filter(user_id=users_id, time__month=time).first()
-
-
-def Datalogs_create(users_id, time,date,order_logs):
-    return ManeuDatalogs.objects.create(user_id=users_id, time=date, order_log=order_logs)
-
-
-def Datalogs_update(users_id, time,date,order_logs):
-    return ManeuDatalogs.objects.filter(user_id=users_id, time__month=time).update(time=date, order_log=order_logs)
-
-
-def ManeuStore_id(store_id):
-    return ManeuStore.objects.filter(id=store_id).first()
-
-
-def test():
-    return ManeuAftersales.objects.values('order_id').distinct()

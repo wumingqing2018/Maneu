@@ -61,7 +61,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'middleware.UserMiddleware.UserMiddleware',  # 用户登录校验中间件
-    'middleware.FileMiddleware.FileMiddleware',  # 文件读取校验中间件
+    # 'middleware.FileMiddleware.FileMiddleware',  # 文件读取校验中间件
 ]
 
 

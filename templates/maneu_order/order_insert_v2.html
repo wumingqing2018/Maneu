@@ -5,12 +5,12 @@
         {% csrf_token %}
         <h4>订单录入时间</h4>
         <table class="table">
-            <form class="vertical2" id="time">
+            <form class="vertical2">
                 <tr>
                     <td class="col-sm-2" colspan="2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">时间</span>
-                            <input class="form-control date_time" name="time" type="date" autocomplete="off" required="required">
+                            <input class="form-control date_time" id="time" name="time" type="date" autocomplete="off" required="required">
                             <span id="phone_error"></span>
                         </div>
                     </td>
@@ -1781,11 +1781,11 @@
 {% block javascript %}
     <script type="application/javascript">
         $(document).ready(function () {
-            var time = new Date();
-            var day = ("0" + time.getDate()).slice(-2);
-            var month = ("0" + (time.getMonth() + 1)).slice(-2);
-            var today = time.getFullYear() + "-" + (month) + "-" + (day);
-            $('.date_time').val(today)
+            {#var time = new Date();#}
+            {#var day = ("0" + time.getDate()).slice(-2);#}
+            {#var month = ("0" + (time.getMonth() + 1)).slice(-2);#}
+            {#var today = time.getFullYear() + "-" + (month) + "-" + (day);#}
+            {#$('.date_time').val(today)#}
 
             $.fn.serializeJsonStr = function () {
                 var o = {};
@@ -1812,9 +1812,8 @@
                 $('#Guess_information_json').val(Guess_information_json);
                 Subjective_refraction_json = $('#Subjective_refraction').serializeJsonStr();
                 $('#Subjective_refraction_json').val(Subjective_refraction_json);
-                time_json = $('#time').serializeJsonStr();
-                $('#time_json').val(time_json);
-
+                time = $('#time').val();
+                $('#time_json').val(time);
             })
         });
     </script>

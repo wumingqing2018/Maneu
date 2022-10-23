@@ -19,7 +19,6 @@ class UserMiddleware(MiddlewareMixin):
         request_url = request.path  # method:string, demo:/login/,
         session_key = request.session.get('ip')
         session_id = request.session.get('id')
-        print(session_id, session_key)
         #   判断是否需要校验字段
         if request_url.startswith('/maneu'):
             if session_id and session_key:

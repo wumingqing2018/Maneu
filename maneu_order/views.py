@@ -2,8 +2,8 @@ import json
 
 from django.shortcuts import render, reverse, HttpResponseRedirect
 
-from common import verify
 from common.checkMobile import judge_pc_or_mobile
+from maneu_alterSales import service as alter_server
 from maneu_order import service
 
 
@@ -22,7 +22,7 @@ def order_delete(request):
         store = service.delete_store_id(id=order.store_id)
         visionsolutions = service.delete_ManeuVisionSolutions_id(id=order.visionsolutions_id)
         subjectiverefraction = service.delete_subjectiverefraction_id(id=order.subjectiverefraction_id)
-        afterSales = service.ManeuAfterSales_delete(order_id=order_id)
+        afterSales = service.ManeuAfterSales_delete_id(order_id=order_id)
         order = service.delete_order_id(users_id=users_id, id=order_id)
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
@@ -49,11 +49,20 @@ def order_detail(request):
         visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
         subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
         request.session['order_id'] = order_id
-        return render(request, 'maneu_order/order_detail.html', {'maneu_order': order, 'users': users, 'guess': guess,
-                                                                 'maneu_store': json.loads(store.content),
-                                                                 'visionsolutions': json.loads(visionsolutions.content),
-                                                                 'subjectiverefraction': json.loads(subjectiverefraction.content)})
+        ua = request.META.get("HTTP_USER_AGENT")
+        mobile = judge_pc_or_mobile(ua)
+        if mobile:
+            return render(request, 'maneu_order/order_detail_V2.html', {'maneu_order': order, 'users': users, 'guess': guess,
+                                                                     'maneu_store': json.loads(store.content),
+                                                                     'visionsolutions': json.loads(visionsolutions.content),
+                                                                     'subjectiverefraction': json.loads(subjectiverefraction.content)})
+        else:
+            return render(request, 'maneu_order/order_detail_V3.html', {'maneu_order': order, 'users': users, 'guess': guess,
+                                                                     'maneu_store': json.loads(store.content),
+                                                                     'visionsolutions': json.loads(visionsolutions.content),
+                                                                     'subjectiverefraction': json.loads(subjectiverefraction.content)})
     else:
+        alter_server.ManeuAfterSales_delete_order_id(order_id=order_id)
         return render(request, 'maneu/error.html', {'msg': order})
 
 
@@ -69,20 +78,19 @@ def order_search(request):
 def order_insert(request):
     """添加订单"""
     if request.method == 'POST':
-        time = json.loads(request.POST.get('time'))['time']
+        time = request.POST.get('time')
         ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'))
-        print(ManeuGuess_id)
         ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
         ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
         order = service.ManeuOrderV2_insert(name=ManeuGuess_id.name,
-                                            phone=ManeuGuess_id.phone,
-                                            users_id=request.session.get('id'),
-                                            store_id=ManeuStore_id.id,
-                                            guess_id=ManeuGuess_id.id,
-                                            time=time,
-                                            visionsolutions_id=ManeuVisionSolutions_id.id,
-                                            subjectiverefraction_id=ManeuSubjectiveRefraction_id.id, )
+                                                phone=ManeuGuess_id.phone,
+                                                users_id=request.session.get('id'),
+                                                store_id=ManeuStore_id.id,
+                                                guess_id=ManeuGuess_id.id,
+                                                time=time,
+                                                visionsolutions_id=ManeuVisionSolutions_id.id,
+                                                subjectiverefraction_id=ManeuSubjectiveRefraction_id.id, )
         if order:
             request.session['order_id'] = str(order.id)
             return HttpResponseRedirect(reverse('maneu_order:order_detail'))
