@@ -93,7 +93,10 @@
                     <td class="col-sm-1"><span>矫正视力</span></td>
                     <td class="col-sm-1"><span>眼轴长度</span></td>
                     <td class="col-sm-1"><span>角膜曲率</span></td>
-                    <td class="col-sm-4" colspan="4"></td>
+                    <td class="col-sm-1"><span>前房深度AD</span></td>
+                    <td class="col-sm-1"><span>角膜厚度CCT</span></td>
+                    <td class="col-sm-1"><span>晶体厚度LT</span></td>
+                    <td class="col-sm-1"><span>玻璃体厚度VT</span></td>
                 </tr>
                 <tr>
                     <td class="col-sm-8" colspan="8">
@@ -432,6 +435,10 @@
                                 <option>54</option>
                                 <option>55</option>
                             </datalist>
+                            <input autocomplete="off" type="text" name="OD_AD" list="OD_AD" class="form-control" value="{{ subjectiverefraction.OD_AD }}">
+                            <input autocomplete="off" type="text" name="OD_CCT" list="OD_CCT" class="form-control" value="{{ subjectiverefraction.OD_CCT }}">
+                            <input autocomplete="off" type="text" name="OD_LT" list="OD_LT" class="form-control" value="{{ subjectiverefraction.OD_LT }}">
+                            <input autocomplete="off" type="text" name="OD_VT" list="OD_VT" class="form-control" value="{{ subjectiverefraction.OD_VT }}">
                         </div>
                     </td>
                 </tr>
@@ -772,6 +779,10 @@
                                 <option>54</option>
                                 <option>55</option>
                             </datalist>
+                            <input autocomplete="off" type="text" name="OD_AD" list="OD_AD" class="form-control" value="{{ subjectiverefraction.OS_AD }}">
+                            <input autocomplete="off" type="text" name="OD_CCT" list="OD_CCT" class="form-control" value="{{ subjectiverefraction.OS_CCT }}">
+                            <input autocomplete="off" type="text" name="OD_LT" list="OD_LT" class="form-control" value="{{ subjectiverefraction.OS_LT }}">
+                            <input autocomplete="off" type="text" name="OD_VT" list="OD_VT" class="form-control" value="{{ subjectiverefraction.OS_VT }}">
                         </div>
                     </td>
                 </tr>

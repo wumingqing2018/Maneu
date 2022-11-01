@@ -43,15 +43,15 @@
                     <a class="dropdown-item" href="{% url 'maneu_order:order_insert' %}">添加订单</a>
                 </div>
             </li>
-{#            <li class="nav-item dropdown">#}
-{#                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">#}
-{#                    批发订单#}
-{#                </a>#}
-{#                <div class="dropdown-menu">#}
-{#                    <a class="dropdown-item" href="{% url 'maneu_batch:batch_list' %}">订单列表</a>#}
-{#                    <a class="dropdown-item" href="{% url 'maneu_batch:batch_insert' %}">添加订单</a>#}
-{#                </div>#}
-{#            </li>#}
+            {#            <li class="nav-item dropdown">#}
+            {#                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">#}
+            {#                    批发订单#}
+            {#                </a>#}
+            {#                <div class="dropdown-menu">#}
+            {#                    <a class="dropdown-item" href="{% url 'maneu_batch:batch_list' %}">订单列表</a>#}
+            {#                    <a class="dropdown-item" href="{% url 'maneu_batch:batch_insert' %}">添加订单</a>#}
+            {#                </div>#}
+            {#            </li>#}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">
                     仓库管理
@@ -61,14 +61,18 @@
                     <a class="dropdown-item" href="{% url 'maneu_class:class_insert' %}">添加订单</a>
                 </div>
             </li>
-                        <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="{% url 'maneu_alterSales:alterSalesindex' %}">维修记录</a>
             </li>
-
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">
-                    个人中心
-                </a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">客户信息</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'maneu_client:index' %}">客户列表</a>
+                    <a class="dropdown-item" href="{% url 'maneu_client:insert' %}">添加资料</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">个人中心</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{% url 'maneu_users:user_detail' %}">查看资料</a>
                     <a class="dropdown-item" href="{% url 'maneu_users:user_updata' %}">修改资料</a>

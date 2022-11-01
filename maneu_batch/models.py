@@ -197,7 +197,7 @@ class ManeuGuess(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'maneu_guess'
+        db_table = 'maneu_client'
 
 
 class ManeuOrder(models.Model):

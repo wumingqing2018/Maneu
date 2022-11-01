@@ -3,7 +3,7 @@ from maneu_class import service
 
 
 def class_list(request):
-    return render(request, 'maneu_class/list.html', {'classList': service.class_list(user_id=request.session.get('id'))})
+    return render(request, 'maneu_class/index.html', {'classList': service.class_list(user_id=request.session.get('id'))})
 
 
 def class_insert(request):

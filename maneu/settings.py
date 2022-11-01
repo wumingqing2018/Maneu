@@ -40,12 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'maneu',
-    'maneu_order',
-    'maneu_users',
+    'maneu_alterSales',
     'maneu_batch',
     'maneu_class',
+    'maneu_client',
     'maneu_datalogs',
-    'maneu_alterSales',
+    'maneu_order',
+    'maneu_users',
+
 ]
 
 

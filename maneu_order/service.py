@@ -74,7 +74,6 @@ def find_users_all():
         print(msg)
         return None
 
-
 def find_users_id(id):
     try:
         return ManeuUsers.objects.filter(id=id).first()
