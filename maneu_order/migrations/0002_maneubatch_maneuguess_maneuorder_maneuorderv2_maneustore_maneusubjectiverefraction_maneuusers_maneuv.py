@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('remark', models.TextField()),
             ],
             options={
-                'db_table': 'maneu_guess',
+                'db_table': 'maneu_client',
                 'managed': False,
             },
         ),

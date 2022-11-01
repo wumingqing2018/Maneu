@@ -35,4 +35,11 @@ def insert(request):
 
 
 def search(request):
-    return render(request, 'maneu_client/index.html')
+    if request.method =='POST':
+        """查找指定订单"""
+        orderlist = service.find_ManeuGuess_search(date=request.POST.get('date'),
+                                                   text=request.POST.get('text'),
+                                                   users_id=request.session.get('id'))
+        return render(request, 'maneu_client/index.html', {'orderlist': orderlist})
+    else:
+        return HttpResponseRedirect(reverse('maneu_client:index'))
