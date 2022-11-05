@@ -30,7 +30,7 @@
                     <td class="blue col-sm-1">
                         <form method='get' action="{% url 'maneu_client:insert' %}">
                             <div class="input-group input-group-sm">
-                                <input type='submit' class='btn btn-warning col-sm-12' value='添加订单'>
+                                <input type='submit' class='btn btn-warning col-sm-12' value='添加客户'>
                             </div>
                         </form>
                     </td>
@@ -51,7 +51,7 @@
                                 {% csrf_token %}
                                 <div class="input-group input-group-sm">
                                     <input type="hidden" name="id" value="{{ order.id }}">
-                                    <input type="submit" class="btn btn-primary col-sm-12" value="查看订单">
+                                    <input type="submit" class="btn btn-primary col-sm-12" value="详细信息">
                                 </div>
                             </form>
                         </td>

@@ -6,7 +6,6 @@ import json
 from django.db.models import Q
 
 
-
 def find_subjectiverefraction_id(id=''):
     return ManeuSubjectiveRefraction.objects.filter(id=id).first()
 

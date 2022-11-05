@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect, reverse
 from maneu_client import service
 import json
 
+
 def index(request):
     list = service.find_guess_list(user_id=request.session.get('id'))
     if list:
@@ -15,6 +16,9 @@ def index(request):
         list = service.find_guess_list(user_id=request.session.get('id'))
         return render(request, 'maneu_client/index.html', {'orderlist':list})
 
+
+def detail_list(request):
+    return
 
 def detail(request):
     guess = service.find_guess_id(id=request.POST.get('id'))
