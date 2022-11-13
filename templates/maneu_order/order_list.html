@@ -6,7 +6,9 @@
         <table class="table">
             <tr>
                 <td colspan=4>
-                    <form class="col-md-5 offset-md-3 col-sm-12" method="post" action="{% url 'maneu_order:order_search' %}">
+                    <div class="row">
+                    <h5 class="col-md-6 col-sm-12">零售订单列表</h5>
+                    <form class="col-md-6 col-sm-12" method="post" action="{% url 'maneu_order:order_search' %}">
                         <div class="input-group input-group-sm">
                             {% csrf_token %}
                             <input type="date" name="date" class="form-control">
