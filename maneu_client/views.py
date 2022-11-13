@@ -63,6 +63,15 @@ def delete(request):
     return HttpResponseRedirect(reverse('maneu_client:index'))
 
 
+def update(request):
+    if request.method == 'GET':
+        ManeuSubjectiveRefraction = service.ManeuSubjectiveRefraction_insert(content=request.GET.get('Subjective_refraction'))
+        ManeuGuess_id = service.ManeuGuess_insert(content=request.GET.get('Guess_information'),
+                                                  subjective_id=ManeuSubjectiveRefraction.id,
+                                                  user_id=request.session.get('id'))
+        return HttpResponseRedirect(reverse('maneu_client:index'))
+    return render(request, 'maneu_client/insert.html')
+
 
 def search(request):
     if request.method =='POST':
