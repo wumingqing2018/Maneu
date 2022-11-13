@@ -57,6 +57,13 @@ def insert(request):
     return render(request, 'maneu_client/insert.html')
 
 
+def delete(request):
+    if request.method == 'POST':
+        service.guess_delete(id=request.POST.get('id'))
+    return HttpResponseRedirect(reverse('maneu_client:index'))
+
+
+
 def search(request):
     if request.method =='POST':
         """查找指定订单"""

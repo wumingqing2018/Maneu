@@ -18,6 +18,9 @@ def find_users_search(id=''):
     return ManeuUsers.objects.filter(id=id).first()
 
 
+def guess_delete(id=''):
+    return ManeuGuess.objects.filter(id=id).delete()
+
 
 def find_guess_list(user_id=''):
     return ManeuGuess.objects.filter(user_id=user_id).order_by('-time').all()
