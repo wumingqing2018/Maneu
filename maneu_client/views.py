@@ -25,7 +25,26 @@ def detail(request):
     users = service.find_users_id(id=request.session.get('id'))
     Subjective = service.find_subjectiverefraction_id(id=guess.subjective_id)
     subjectiverefraction = json.loads(Subjective.content)
-    return render(request, 'maneu_client/detail.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction})
+    try:
+        clientAge = int(guess.age)
+    except:
+        clientAge = 20
+    if clientAge >20:
+        list_l = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', ]
+        list_r = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', ]
+        list_r[20] = subjectiverefraction['OD_AL']
+        list_l[20] = subjectiverefraction['OS_AL']
+    else:
+        list_l = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', ]
+        list_r = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+                '0', ]
+        list_r[clientAge] = subjectiverefraction['OD_AL']
+        list_l[clientAge] = subjectiverefraction['OS_AL']
+
+    return render(request, 'maneu_client/detail.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction, 'list_r': list_r, 'list_l': list_l})
 
 
 def insert(request):

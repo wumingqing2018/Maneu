@@ -20,7 +20,7 @@
         var myChart = echarts.init(document.getElementById('main0'), 'maneu');
         var option = {
             title: {
-                text: '左眼视力',
+                text: '视力',
                 textStyle: {
                     fontSize: 18,
                     fontWeight: 'bolder',
@@ -31,7 +31,7 @@
                 data:['右眼']
             },
             xAxis: {
-                data: ['标准数据', '客户数据'],
+                data: ['标准数据', '左眼视力', '右眼视力'],
             },
             yAxis: {
                 interval:0.1,
@@ -40,7 +40,7 @@
                 name: '本月销量',
                 type: 'bar',
                 barWidth: 20,
-                data: ['5.0', {{ subjectiverefraction.OS_VA|safe }}]
+                data: ['1.0', {{ subjectiverefraction.OS_VA|safe }}, {{ subjectiverefraction.OD_VA|safe }}]
             }]
         };
         // 使用刚指定的配置项和数据显示图表。
@@ -50,7 +50,7 @@
         var myChart = echarts.init(document.getElementById('main1'), 'maneu');
         var option = {
             title: {
-                text: '右眼视力',
+                text: '眼轴',
                 textStyle: {
                     fontSize: 18,
                     fontWeight: 'bolder',
@@ -58,77 +58,36 @@
             },
             tooltip: {},
             legend: {
-                data:['右眼']
+                data:['标准', '左眼', '右眼']
             },
             xAxis: {
-                data: ['标准数据', '客户数据'],
+                name: '年龄',
+                data: ['0岁','1岁','2岁', '3岁', '4岁','5岁', '6岁','7岁','8岁', '9岁','10岁','11岁','12岁','13岁','14岁','15岁','16岁','17岁','18岁','19岁','20岁','20岁以上'],
             },
             yAxis: {
-                interval:0.1,
+                name: 'mm'
             },
             series: [{
-                name: '本月销量',
-                type: 'bar',
-                barWidth: 20,
-                data: ['5.0', {{ subjectiverefraction.OD_VA|safe }}]
-            }]
+                name: '标准',
+                type: 'line',
+                data: ['16.2', '16.2', '16.2', '17.7', '17.7', '18.7', '18.7', '19.6', '19.6', '20.3', '20.3', '21.1', '21.6', '22.0', '22.4', '22.7', '23.0', '23.3', '23.5', '23.7', '23.8', '24.0',]
+            }, {
+                name: '左眼',
+                type: 'line',
+                data: {{ list_l|safe }}
+            }, {
+                name: '右眼',
+                type: 'line',
+                data: {{ list_r|safe }}
+            },
+            ]
         };
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     </script>
-
-    <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('main4'), 'maneu');
-        var option = {
-            title: {
-                text: '各货类销售份额',
-                {#subtext: '共计'{{ class_count }},#}
-                textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                    // 主标题文字颜色
-                },
-            },
-            tooltip: {},
-            legend: {
-                data:['金额统计']
-            },
-            series: [{
-                name: '销售份额',
-                type: 'pie',
-                data: {{ class_log | safe }},
-            }]
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
-    <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('main4'), 'maneu');
-        var option = {
-            title: {
-                text: '各货类销售份额',
-                {#subtext: '共计'{{ class_count }},#}
-                textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                    // 主标题文字颜色
-                },
-            },
-            tooltip: {},
-            legend: {
-                data:['金额统计']
-            },
-            series: [{
-                name: '销售份额',
-                type: 'pie',
-                data: {{ class_log | safe }},
-            }]
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
+<script>
+console.log({{ list_l|safe }})
+</script>
 
 {% endblock %}
 {% block content %}
@@ -356,10 +315,8 @@
             </tr>
         </table>
         <div class="row">
-            <div class="col-6" id="main0" style="width: 25%;height:400px;"></div>
-            <div class="col-6" id="main1" style="width: 25%;height:400px;"></div>
-                        <div class="col-6" id="main2" style="width: 25%;height:400px;"></div>
-                        <div class="col-6" id="main3" style="width: 25%;height:400px;"></div>
+            <div class="col-3" id="main0" style="width: 25%;height:400px;"></div>
+            <div class="col-9" id="main1" style="width: 75%;height:400px;"></div>
 
         </div>
         <div class="col-12 row" style="text-align: center;">
