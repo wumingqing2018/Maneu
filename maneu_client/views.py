@@ -17,8 +17,6 @@ def index(request):
         return render(request, 'maneu_client/index.html', {'orderlist':list})
 
 
-def detail_list(request):
-    return
 
 def detail(request):
     guess = service.find_guess_id(id=request.POST.get('id'))
@@ -65,12 +63,16 @@ def delete(request):
 
 def update(request):
     if request.method == 'GET':
-        ManeuSubjectiveRefraction = service.ManeuSubjectiveRefraction_insert(content=request.GET.get('Subjective_refraction'))
-        ManeuGuess_id = service.ManeuGuess_insert(content=request.GET.get('Guess_information'),
-                                                  subjective_id=ManeuSubjectiveRefraction.id,
-                                                  user_id=request.session.get('id'))
-        return HttpResponseRedirect(reverse('maneu_client:index'))
-    return render(request, 'maneu_client/insert.html')
+        guess = service.find_guess_id(id=request.GET.get('id'))
+        Subjective = service.find_subjectiverefraction_id(id=guess.subjective_id)
+        subjectiverefraction = json.loads(Subjective.content)
+        return render(request, 'maneu_client/update.html', {'guess': guess, 'Subjective': subjectiverefraction})
+    if request.method == 'POST':
+        id = service.find_guess_id(id=request.POST.get('id')).subjective_id
+        guess = service.update_guess_id(id=request.POST.get('id'), content=request.POST.get('Guess_information'))
+        Subjective = service.update_subjective_id(id=id, content=request.POST.get('Subjective_refraction'))
+    return HttpResponseRedirect(reverse('maneu_client:index'))
+
 
 
 def search(request):

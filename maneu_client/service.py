@@ -67,3 +67,15 @@ def find_ManeuGuess_search(date='', text='', users_id=''):
     if date == '' and text != '':
         return ManeuGuess.objects.filter(Q(name=text) | Q(phone=text, user_id=users_id)).order_by('-time').all()
     return None
+
+
+def update_guess_id(id='', content=''):
+    contents = json.loads(content)
+    return ManeuGuess.objects.filter(id=id).update(name=contents['guess_name'],
+                                     phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'],
+                                     ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'],
+                                     remark=contents['remark'])
+
+
+def update_subjective_id(id='', content=''):
+    return ManeuSubjectiveRefraction.objects.filter(id=id).update(content=content)

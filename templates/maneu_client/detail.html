@@ -65,6 +65,7 @@
             },
             yAxis: {
                 name: 'mm',
+                min: 15,
                 max: 30,
             },
             series: [{
@@ -341,6 +342,12 @@
                     {% csrf_token %}
                     <input name="id" type="hidden" value="{{ guess.id }}">
                     <input type="submit" class="btn btn-danger" value="删除信息">
+                </form>
+            </div>
+            <div class="col-2">
+                <form action="{% url 'maneu_client:update' %}" method="get">
+                    <input name="id" type="hidden" value="{{ guess.id }}">
+                    <input type="submit" class="btn btn-warning" value="更新信息">
                 </form>
             </div>
 
