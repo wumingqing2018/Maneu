@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
 from maneu_client import service
 import json
+from common.checkMobile import judge_pc_or_mobile
 
 
 def index(request):
@@ -41,8 +42,12 @@ def detail(request):
                 '', ]
         list_r[clientAge] = subjectiverefraction['OD_AL']
         list_l[clientAge] = subjectiverefraction['OS_AL']
-
-    return render(request, 'maneu_client/detail.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction, 'list_r': list_r, 'list_l': list_l})
+    ua = request.META.get("HTTP_USER_AGENT")
+    mobile = judge_pc_or_mobile(ua)
+    if mobile:
+        return render(request, 'maneu_client/detail_phone.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction, 'list_r': list_r, 'list_l': list_l})
+    else:
+        return render(request, 'maneu_client/detail_pc.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction, 'list_r': list_r, 'list_l': list_l})
 
 
 def insert(request):
