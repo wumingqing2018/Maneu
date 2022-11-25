@@ -31,16 +31,32 @@
                 data:['右眼']
             },
             xAxis: {
-                data: ['标准数据', '左眼视力', '右眼视力'],
+                data: ['左眼视力', '右眼视力'],
             },
             yAxis: {
                 min: 0.2,
                 max: 1.2,
+                axisLabel:{
+                    formatter: function (value,index) {
+                        return value.toFixed(1)
+                    }
+                }
             },
             series: [{
                 type: 'bar',
                 barWidth: 20,
-                data: ['1.0', {{ subjectiverefraction.OS_VA|safe }}, {{ subjectiverefraction.OD_VA|safe }}]
+                data: [{{ subjectiverefraction.OS_VA|safe }}, {{ subjectiverefraction.OD_VA|safe }}],
+                markLine: {
+                    data: [{
+                        label: {
+                            formatter: "标准视力",
+                            fontSize: "10",
+                        },
+                        yAxis: 1.0,
+                    }],
+                    silent: true,
+                    color: ["#99CC33"], // 折线的颜色
+                },
             }]
         };
         // 使用刚指定的配置项和数据显示图表。
@@ -72,17 +88,19 @@
             series: [{
                 name: '标准',
                 type: 'line',
+                label: { show: true, position: 'top' },
                 data: ['16.2', '17.0', '17.7', '18.2', '18.7', '19.1', '19.6', '20.0', '20.3', '20.7', '21.1', '21.6', '22.0', '22.4', '22.7', '23.0', '23.3', '23.5', '23.7', '23.8', '24.0', '24.0',]
             }, {
                 name: '左眼',
                 type: 'line',
+                label: { show: true, position: 'top' },
                 data: {{ list_l|safe }}
             }, {
                 name: '右眼',
                 type: 'line',
+                label: { show: true, position: 'top' },
                 data: {{ list_r|safe }}
-            },
-            ]
+            }]
         };
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
