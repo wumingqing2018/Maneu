@@ -74,32 +74,36 @@
             },
             tooltip: {},
             legend: {
-                data:['标准', '左眼', '右眼']
+                data:['左眼眼轴', '右眼眼轴']
             },
             xAxis: {
-                name: '年龄',
-                data: ['0岁','1岁','2岁', '3岁', '4岁','5岁', '6岁','7岁','8岁', '9岁','10岁','11岁','12岁','13岁','14岁','15岁','16岁','17岁','18岁','19岁','20岁','20岁以上'],
+                data: ['左眼眼轴', '右眼眼轴'],
             },
             yAxis: {
                 name: 'mm',
                 min: 15,
                 max: 30,
+                axisLabel:{
+                    formatter: function (value,index) {
+                        return value.toFixed(1)
+                    }
+                }
             },
             series: [{
-                name: '标准',
-                type: 'line',
-                label: { show: true, position: 'top' },
-                data: ['16.2', '17.0', '17.7', '18.2', '18.7', '19.1', '19.6', '20.0', '20.3', '20.7', '21.1', '21.6', '22.0', '22.4', '22.7', '23.0', '23.3', '23.5', '23.7', '23.8', '24.0', '24.0',]
-            }, {
-                name: '左眼',
-                type: 'line',
-                label: { show: true, position: 'top' },
-                data: {{ list_l|safe }}
-            }, {
-                name: '右眼',
-                type: 'line',
-                label: { show: true, position: 'top' },
-                data: {{ list_r|safe }}
+                type: 'bar',
+                barWidth: 20,
+                data: [{{ list_r|safe }}, {{ list_l|safe }}],
+                markLine: {
+                    data: [{
+                        label: {
+                            formatter: "标准值",
+                            fontSize: "10",
+                        },
+                        yAxis: {{ stand_ax|safe }},
+                    }],
+                    silent: true,
+                    color: ["#99CC33"], // 折线的颜色
+                },
             }]
         };
         // 使用刚指定的配置项和数据显示图表。
