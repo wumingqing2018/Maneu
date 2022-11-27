@@ -6,108 +6,17 @@
 {% block javascript %}
     <script type="application/javascript"  src="{% static 'js/common/delete.js' %}"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#print_btn").click(function () {
-                    $("#textArea").print();
-                }
-            )
-        })
-    </script>
+    <script type="text/javascript" src="{% static 'js/common/print.js' %}"></script>
     <script type="text/javascript" src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <script type="text/javascript" src="{% static 'js/maneu_datalogs/echarts.js' %}"></script>
-    <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('main0'), 'maneu');
-        var option = {
-            title: {
-                text: '视力',
-                textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                },
-            },
-            tooltip: {},
-            legend: {
-                data:['右眼']
-            },
-            xAxis: {
-                data: ['左眼视力', '右眼视力'],
-            },
-            yAxis: {
-                min: 0.2,
-                max: 1.2,
-                axisLabel:{
-                    formatter: function (value,index) {
-                        return value.toFixed(1)
-                    }
-                }
-            },
-            series: [{
-                type: 'bar',
-                barWidth: 20,
-                data: [{{ subjectiverefraction.OS_VA|safe }}, {{ subjectiverefraction.OD_VA|safe }}],
-                markLine: {
-                    data: [{
-                        label: {
-                            formatter: "标准视力",
-                            fontSize: "10",
-                        },
-                        yAxis: 1.0,
-                    }],
-                    silent: true,
-                    color: ["#99CC33"], // 折线的颜色
-                },
-            }]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+    <script type="text/javascript" src="{% static 'js/maneu_client/echarts_va.js' %}">
+        var OS_VA = {{ subjectiverefraction.OS_VA|safe }}
+        var OD_VA = {{ subjectiverefraction.OD_VA|safe }}
     </script>
-    <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('main1'), 'maneu');
-        var option = {
-            title: {
-                text: '眼轴',
-                textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                },
-            },
-            tooltip: {},
-            legend: {
-                data:['左眼眼轴', '右眼眼轴']
-            },
-            xAxis: {
-                data: ['左眼眼轴', '右眼眼轴'],
-            },
-            yAxis: {
-                name: 'mm',
-                min: 15,
-                max: 30,
-                axisLabel:{
-                    formatter: function (value,index) {
-                        return value.toFixed(1)
-                    }
-                }
-            },
-            series: [{
-                type: 'bar',
-                barWidth: 20,
-                data: [{{ list_r|safe }}, {{ list_l|safe }}],
-                markLine: {
-                    data: [{
-                        label: {
-                            formatter: "标准值",
-                            fontSize: "10",
-                        },
-                        yAxis: {{ stand_ax|safe }},
-                    }],
-                    silent: true,
-                    color: ["#99CC33"], // 折线的颜色
-                },
-            }]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+    <script type="text/javascript" src="{% static 'js/maneu_client/echarts_ax.js' %}">
+        var list_r = {{ list_r|safe }}
+        var list_l = {{ list_l|safe }}
+        var stand_ax = {{ stand_ax|safe }}
     </script>
 {% endblock %}
 
