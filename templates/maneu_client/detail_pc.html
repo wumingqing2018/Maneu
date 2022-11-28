@@ -6,14 +6,7 @@
 {% block javascript %}
     <script type="application/javascript"  src="{% static 'js/common/delete.js' %}"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#print_btn").click(function () {
-                    $("#textArea").print();
-                }
-            )
-        })
-    </script>
+    <script type="text/javascript" src="{% static 'js/common/print.js' %}"></script>
     <script type="text/javascript" src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <script type="text/javascript" src="{% static 'js/maneu_datalogs/echarts.js' %}"></script>
     <script type="text/javascript">
@@ -26,7 +19,11 @@
                     fontWeight: 'bolder',
                 },
             },
-            tooltip: {},
+            tooltip: {
+                formatter:function(datas) {
+                    return datas.value.toFixed(1);
+                }
+            },
             legend: {
                 data:['左眼视力', '右眼视力']
             },
@@ -81,8 +78,8 @@
             },
             yAxis: {
                 name: 'mm',
-                min: 15,
-                max: 30,
+                min: 16,
+                max: 28,
                 axisLabel:{
                     formatter: function (value,index) {
                         return value.toFixed(1)
