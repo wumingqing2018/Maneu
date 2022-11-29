@@ -7,7 +7,7 @@
             <tr>
                 <td colspan=4>
                     <div class="row">
-                    <h5 class="col-md-6 col-sm-12">零售订单列表</h5>
+                    <h5 class="col-md-6 col-sm-12">零售订单管理系统</h5>
                     <form class="col-md-6 col-sm-12" method="post" action="{% url 'maneu_order:order_search' %}">
                         <div class="input-group input-group-sm">
                             {% csrf_token %}
@@ -16,6 +16,7 @@
                             <input type="submit" class="btn btn-primary" value="查询">
                         </div>
                     </form>
+                    </div>
                 </td>
             </tr>
             {% if orderlist %}

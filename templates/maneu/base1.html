@@ -36,7 +36,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">
-                    零售订单
+                    零售管理
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{% url 'maneu_order:order_list' %}">订单列表</a>
@@ -62,10 +62,10 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'maneu_alterSales:alterSalesindex' %}">维修记录</a>
+                <a class="nav-link" href="{% url 'maneu_alterSales:alterSalesindex' %}">售后管理</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">客户信息</a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">客户管理</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{% url 'maneu_client:index' %}">客户列表</a>
                     <a class="dropdown-item" href="{% url 'maneu_client:insert' %}">添加资料</a>
