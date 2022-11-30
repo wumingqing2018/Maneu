@@ -44,11 +44,12 @@
                 barWidth: 20,
                 data: [{{ subjectiverefraction.OS_VA|safe }}, {{ subjectiverefraction.OD_VA|safe }}],
                 markLine: {
+                                    symbol: "none",
                     data: [{
                         label: {
                             position: "middle",
                             formatter: "标准值：1.0",
-                            fontSize: "10",
+                            fontSize: "16",
                         },
                         yAxis: 1.0,
                     }],
@@ -88,6 +89,7 @@
                 }
             },
             series: [{
+                symbol: "none",
                 type: 'bar',
                 barWidth: 20,
                 data: [{{ list_r|safe }}, {{ list_l|safe }}],
@@ -96,7 +98,7 @@
                         label: {
                             position: "middle",
                             formatter: "标准值: "+ {{ stand_ax|safe }} +"mm",
-                            fontSize: "10",
+                            fontSize: "16",
                         },
                         yAxis: {{ stand_ax|safe }},
                     }],
