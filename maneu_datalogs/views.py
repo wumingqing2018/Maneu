@@ -1,7 +1,10 @@
+import datetime
+import json
+
 from django.shortcuts import render
+
 from common import common
 from maneu_datalogs import service
-import json,datetime
 
 
 # Create your views here.

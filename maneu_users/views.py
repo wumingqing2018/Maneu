@@ -1,7 +1,6 @@
 from django.shortcuts import HttpResponseRedirect, reverse
 from django.shortcuts import render
 
-from common import verify
 from maneu_users import serivce
 
 

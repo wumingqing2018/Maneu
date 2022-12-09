@@ -1,7 +1,9 @@
-from django.shortcuts import render, HttpResponseRedirect, reverse
-from maneu_client import service
 import json
+
+from django.shortcuts import render, HttpResponseRedirect, reverse
+
 from common.checkMobile import judge_pc_or_mobile
+from maneu_client import service
 
 
 def index(request):

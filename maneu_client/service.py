@@ -1,9 +1,11 @@
+import json
+
+from django.db.models import Q
+
+from maneu_client.models import ManeuGuess
 from maneu_client.models import ManeuOrderV2
 from maneu_client.models import ManeuSubjectiveRefraction
-from maneu_client.models import ManeuGuess
 from maneu_order.models import ManeuUsers
-import json
-from django.db.models import Q
 
 
 def find_subjectiverefraction_id(id=''):

@@ -1,9 +1,9 @@
-from django.shortcuts import render
 from django.shortcuts import HttpResponseRedirect
+from django.shortcuts import render
 from django.shortcuts import reverse
 
-from common.excel import excel_save
 from common import verify
+from common.excel import excel_save
 from maneu_batch import service
 from maneu_batch.forms.BatchInsertForm import BatchInsertForm
 

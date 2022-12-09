@@ -1,12 +1,12 @@
 import json
+from io import BytesIO
 
+import qrcode
 from django.shortcuts import render, reverse, HttpResponseRedirect, HttpResponse
 
 from common.checkMobile import judge_pc_or_mobile
 from maneu_alterSales import service as alter_server
 from maneu_order import service
-import qrcode
-from io import BytesIO
 
 
 def order_list(request):

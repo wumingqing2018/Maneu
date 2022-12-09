@@ -2,13 +2,13 @@ import json
 
 from django.db.models import Q
 
+from maneu_order.models import ManeuAftersales
 from maneu_order.models import ManeuGuess
 from maneu_order.models import ManeuOrderV2
 from maneu_order.models import ManeuStore
 from maneu_order.models import ManeuSubjectiveRefraction
 from maneu_order.models import ManeuUsers
 from maneu_order.models import ManeuVisionSolutions
-from maneu_order.models import ManeuAftersales
 
 
 def find_order_all(users_id=''):

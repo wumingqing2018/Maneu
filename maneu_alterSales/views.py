@@ -1,6 +1,8 @@
-from django.shortcuts import render
 from django.shortcuts import HttpResponseRedirect, reverse
+from django.shortcuts import render
+
 from maneu_alterSales import service
+
 
 # Create your views here.
 def alterSales_List(request):

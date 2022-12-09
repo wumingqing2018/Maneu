@@ -7,7 +7,6 @@ from django.http import JsonResponse
 
 from common import verify
 from maneu_order import service
-from maneu_order.forms.orderInsertForm import OrderInsertForm
 from maneu_order.forms.orderUpdateForm import OrderUpdateForm
 
 

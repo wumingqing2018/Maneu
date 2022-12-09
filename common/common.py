@@ -1,9 +1,9 @@
 # 依赖包
 import datetime
 import time
-import qrcode
 from io import BytesIO
 
+import qrcode
 
 
 def current_time():
