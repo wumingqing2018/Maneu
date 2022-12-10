@@ -10,7 +10,8 @@
                     <td class="col-sm-2" colspan="2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">电话</span>
-                            <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off" value="{{ guess.phone }}">
+                            <input class="form-control" id="guess_phone" name="guess_phone" type="text"
+                                   autocomplete="off" value="{{ guess.phone }}">
                             <span id="phone_error"></span>
                         </div>
                     </td>
@@ -20,19 +21,22 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">姓名</span>
-                            <input class="form-control" id="guess_name" name="guess_name" type="text" autocomplete="off" value="{{ guess.name }}">
+                            <input class="form-control" id="guess_name" name="guess_name" type="text" autocomplete="off"
+                                   value="{{ guess.name }}">
                         </div>
                     </td>
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">出生日期</span>
-                            <input autocomplete="off" type="date" id="age" name="age" class="form-control" value="{{ guess.age | safe }}">
+                            <input autocomplete="off" type="date" id="age" name="age" class="form-control"
+                                   value="{{ guess.age | safe }}">
                         </div>
                     </td>
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">性别</span>
-                            <input autocomplete="off" type="text" name="sex" class="form-control" list="sex" value="{{ guess.sex }}">
+                            <input autocomplete="off" type="text" name="sex" class="form-control" list="sex"
+                                   value="{{ guess.sex }}">
                             <datalist id="sex">
                                 <option>男</option>
                                 <option>女</option>
@@ -42,7 +46,8 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">眼位</span>
-                            <input autocomplete="off" type="text" name="OT" list="OT" class="form-control" value="{{ guess.ot }}">
+                            <input autocomplete="off" type="text" name="OT" list="OT" class="form-control"
+                                   value="{{ guess.ot }}">
                             <datalist id="OT">
                                 <option>正位眼</option>
                                 <option>斜视</option>
@@ -52,7 +57,8 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">主视眼</span>
-                            <input autocomplete="off" type="text" name="EM" list="EM" class="form-control" value="{{ guess.em }}">
+                            <input autocomplete="off" type="text" name="EM" list="EM" class="form-control"
+                                   value="{{ guess.em }}">
                             <datalist id="EM">
                                 <option>右</option>
                                 <option>左</option>
@@ -62,7 +68,8 @@
                     <td class="col-sm-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">病族史</span>
-                            <input autocomplete="off" type="text" name="DFH" list="DFH" class="form-control" value="{{ guess.dfh }}">
+                            <input autocomplete="off" type="text" name="DFH" list="DFH" class="form-control"
+                                   value="{{ guess.dfh }}">
                             <datalist id="DFH">
                                 <option>有</option>
                                 <option>无</option>
@@ -74,7 +81,8 @@
                     <td class="col-sm-12" colspan="12">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">备注</span>
-                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control" value="{{ guess.remark }}">
+                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control"
+                                   value="{{ guess.remark }}">
                             <span id="remake_error"></span>
                         </div>
                     </td>
@@ -102,7 +110,8 @@
                     <td class="col-sm-8" colspan="8">
                         <div class="input-group input-group-sm mb-8">
                             <span class="input-group-text col-md-1">右眼OD</span>
-                            <input autocomplete="off" type="text" name="OD_VA" list="OD_VA" class="form-control" value="{{ subjectiverefraction.OD_VA }}">
+                            <input autocomplete="off" type="text" name="OD_VA" list="OD_VA" class="form-control"
+                                   value="{{ subjectiverefraction.OD_VA }}">
                             <datalist id="OD_VA">
                                 <option>4.0</option>
                                 <option>4.1</option>
@@ -118,7 +127,8 @@
                                 <option>5.1</option>
                                 <option>5.2</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_SPH" list="OD_SPH" class="form-control" value="{{ subjectiverefraction.OD_SPH }}">
+                            <input autocomplete="off" type="text" name="OD_SPH" list="OD_SPH" class="form-control"
+                                   value="{{ subjectiverefraction.OD_SPH }}">
                             <datalist id="OD_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
@@ -162,7 +172,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_CYL" list="OD_CYL" class="form-control" value="{{ subjectiverefraction.OD_CYL }}">
+                            <input autocomplete="off" type="text" name="OD_CYL" list="OD_CYL" class="form-control"
+                                   value="{{ subjectiverefraction.OD_CYL }}">
                             <datalist id="OD_CYL">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
@@ -190,7 +201,8 @@
                                 <option>-5.75</option>
                                 <option>-6.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_AX" list="OD_AX" class="form-control" value="{{ subjectiverefraction.OD_AX }}">
+                            <input autocomplete="off" type="text" name="OD_AX" list="OD_AX" class="form-control"
+                                   value="{{ subjectiverefraction.OD_AX }}">
                             <datalist id="OD_AX">
                                 <option>0</option>
                                 <option>1</option>
@@ -374,7 +386,8 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_BCVA" list="OD_BCVA" class="form-control" value="{{ subjectiverefraction.OD_BCVA }}">
+                            <input autocomplete="off" type="text" name="OD_BCVA" list="OD_BCVA" class="form-control"
+                                   value="{{ subjectiverefraction.OD_BCVA }}">
                             <datalist id="OD_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
@@ -390,7 +403,8 @@
                                 <option>5.1</option>
                                 <option>5.2</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_AL" list="OD_AL" class="form-control" value="{{ subjectiverefraction.OD_AL }}">
+                            <input autocomplete="off" type="text" name="OD_AL" list="OD_AL" class="form-control"
+                                   value="{{ subjectiverefraction.OD_AL }}">
                             <datalist id="OD_AL">
                                 <option>18</option>
                                 <option>19</option>
@@ -406,7 +420,8 @@
                                 <option>29</option>
                                 <option>30</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_AK" list="OD_AK" class="form-control" value="{{ subjectiverefraction.OD_AK }}">
+                            <input autocomplete="off" type="text" name="OD_AK" list="OD_AK" class="form-control"
+                                   value="{{ subjectiverefraction.OD_AK }}">
                             <datalist id="OD_AK">
                                 <option>30</option>
                                 <option>31</option>
@@ -435,10 +450,14 @@
                                 <option>54</option>
                                 <option>55</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_AD" list="OD_AD" class="form-control" value="{{ subjectiverefraction.OD_AD }}">
-                            <input autocomplete="off" type="text" name="OD_CCT" list="OD_CCT" class="form-control" value="{{ subjectiverefraction.OD_CCT }}">
-                            <input autocomplete="off" type="text" name="OD_LT" list="OD_LT" class="form-control" value="{{ subjectiverefraction.OD_LT }}">
-                            <input autocomplete="off" type="text" name="OD_VT" list="OD_VT" class="form-control" value="{{ subjectiverefraction.OD_VT }}">
+                            <input autocomplete="off" type="text" name="OD_AD" list="OD_AD" class="form-control"
+                                   value="{{ subjectiverefraction.OD_AD }}">
+                            <input autocomplete="off" type="text" name="OD_CCT" list="OD_CCT" class="form-control"
+                                   value="{{ subjectiverefraction.OD_CCT }}">
+                            <input autocomplete="off" type="text" name="OD_LT" list="OD_LT" class="form-control"
+                                   value="{{ subjectiverefraction.OD_LT }}">
+                            <input autocomplete="off" type="text" name="OD_VT" list="OD_VT" class="form-control"
+                                   value="{{ subjectiverefraction.OD_VT }}">
                         </div>
                     </td>
                 </tr>
@@ -446,7 +465,8 @@
                     <td class="col-sm-8" colspan="8">
                         <div class="input-group input-group-sm mb-7">
                             <span class="input-group-text col-md-1">左眼OS</span>
-                            <input autocomplete="off" type="text" name="OS_VA" list="OS_VA" class="form-control" value="{{ subjectiverefraction.OS_VA }}">
+                            <input autocomplete="off" type="text" name="OS_VA" list="OS_VA" class="form-control"
+                                   value="{{ subjectiverefraction.OS_VA }}">
                             <datalist id="OS_VA">
                                 <option>4.0</option>
                                 <option>4.1</option>
@@ -462,7 +482,8 @@
                                 <option>5.1</option>
                                 <option>5.2</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_SPH" list="OS_SPH" class="form-control" value="{{ subjectiverefraction.OS_SPH }}">
+                            <input autocomplete="off" type="text" name="OS_SPH" list="OS_SPH" class="form-control"
+                                   value="{{ subjectiverefraction.OS_SPH }}">
                             <datalist id="OS_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
@@ -506,7 +527,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_CYL" list="OS_CYL" class="form-control" value="{{ subjectiverefraction.OS_CYL }}">
+                            <input autocomplete="off" type="text" name="OS_CYL" list="OS_CYL" class="form-control"
+                                   value="{{ subjectiverefraction.OS_CYL }}">
                             <datalist id="OS_CYL">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
@@ -534,7 +556,8 @@
                                 <option>-5.75</option>
                                 <option>-6.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_AX" list="OS_AX" class="form-control" value="{{ subjectiverefraction.OS_AX }}">
+                            <input autocomplete="off" type="text" name="OS_AX" list="OS_AX" class="form-control"
+                                   value="{{ subjectiverefraction.OS_AX }}">
                             <datalist id="OS_AX">
                                 <option>0</option>
                                 <option>1</option>
@@ -718,7 +741,8 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_BCVA" list="OS_BCVA" class="form-control" value="{{ subjectiverefraction.OS_BCVA }}">
+                            <input autocomplete="off" type="text" name="OS_BCVA" list="OS_BCVA" class="form-control"
+                                   value="{{ subjectiverefraction.OS_BCVA }}">
                             <datalist id="OS_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
@@ -734,7 +758,8 @@
                                 <option>5.1</option>
                                 <option>5.2</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_AL" list="OS_AL" class="form-control" value="{{ subjectiverefraction.OS_AL }}">
+                            <input autocomplete="off" type="text" name="OS_AL" list="OS_AL" class="form-control"
+                                   value="{{ subjectiverefraction.OS_AL }}">
                             <datalist id="OS_AL">
                                 <option>18</option>
                                 <option>19</option>
@@ -750,7 +775,8 @@
                                 <option>29</option>
                                 <option>30</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_AK" list="OS_AK" class="form-control" value="{{ subjectiverefraction.OS_AK }}">
+                            <input autocomplete="off" type="text" name="OS_AK" list="OS_AK" class="form-control"
+                                   value="{{ subjectiverefraction.OS_AK }}">
                             <datalist id="OS_AK">
                                 <option>30</option>
                                 <option>31</option>
@@ -779,10 +805,14 @@
                                 <option>54</option>
                                 <option>55</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_AD" list="OD_AD" class="form-control" value="{{ subjectiverefraction.OS_AD }}">
-                            <input autocomplete="off" type="text" name="OD_CCT" list="OD_CCT" class="form-control" value="{{ subjectiverefraction.OS_CCT }}">
-                            <input autocomplete="off" type="text" name="OD_LT" list="OD_LT" class="form-control" value="{{ subjectiverefraction.OS_LT }}">
-                            <input autocomplete="off" type="text" name="OD_VT" list="OD_VT" class="form-control" value="{{ subjectiverefraction.OS_VT }}">
+                            <input autocomplete="off" type="text" name="OD_AD" list="OD_AD" class="form-control"
+                                   value="{{ subjectiverefraction.OS_AD }}">
+                            <input autocomplete="off" type="text" name="OD_CCT" list="OD_CCT" class="form-control"
+                                   value="{{ subjectiverefraction.OS_CCT }}">
+                            <input autocomplete="off" type="text" name="OD_LT" list="OD_LT" class="form-control"
+                                   value="{{ subjectiverefraction.OS_LT }}">
+                            <input autocomplete="off" type="text" name="OD_VT" list="OD_VT" class="form-control"
+                                   value="{{ subjectiverefraction.OS_VT }}">
                         </div>
                     </td>
                 </tr>
@@ -815,7 +845,8 @@
                     <td colspan="8" class="col-md-8">
                         <div class="input-group input-group-sm mb-7">
                             <span class="input-group-text col-md-1">右眼OD</span>
-                            <input autocomplete="off" type="text" name="OD_SPH" list="OD_SPH" class="form-control" value="{{ visionsolutions.OD_SPH }}">
+                            <input autocomplete="off" type="text" name="OD_SPH" list="OD_SPH" class="form-control"
+                                   value="{{ visionsolutions.OD_SPH }}">
                             <datalist id="OD_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
@@ -859,7 +890,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_CYL" list="OD_CYL" class="form-control" value="{{ visionsolutions.OD_CYL }}">
+                            <input autocomplete="off" type="text" name="OD_CYL" list="OD_CYL" class="form-control"
+                                   value="{{ visionsolutions.OD_CYL }}">
                             <datalist id="OD_CYL">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
@@ -903,7 +935,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_AX" list="OD_AX" class="form-control" value="{{ visionsolutions.OD_AX }}">
+                            <input autocomplete="off" type="text" name="OD_AX" list="OD_AX" class="form-control"
+                                   value="{{ visionsolutions.OD_AX }}">
                             <datalist id="OD_AX">
                                 <option>0</option>
                                 <option>1</option>
@@ -1087,9 +1120,12 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_PR" list="OD_PR" class="form-control" value="{{ visionsolutions.OD_PR }}">
-                            <input autocomplete="off" type="text" name="OD_FR" list="OD_FR" class="form-control" value="{{ visionsolutions.OD_FR }}">
-                            <input autocomplete="off" type="text" name="OD_ADD" list="OD_ADD" class="form-control" value="{{ visionsolutions.OD_ADD }}">
+                            <input autocomplete="off" type="text" name="OD_PR" list="OD_PR" class="form-control"
+                                   value="{{ visionsolutions.OD_PR }}">
+                            <input autocomplete="off" type="text" name="OD_FR" list="OD_FR" class="form-control"
+                                   value="{{ visionsolutions.OD_FR }}">
+                            <input autocomplete="off" type="text" name="OD_ADD" list="OD_ADD" class="form-control"
+                                   value="{{ visionsolutions.OD_ADD }}">
                             <datalist id="OD_ADD">
                                 <option>+0.25</option>
                                 <option>+0.50</option>
@@ -1112,7 +1148,8 @@
                                 <option>+4.75</option>
                                 <option>+5.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OD_BCVA" list="OD_BCVA" class="form-control" value="{{ visionsolutions.OD_BCVA }}">
+                            <input autocomplete="off" type="text" name="OD_BCVA" list="OD_BCVA" class="form-control"
+                                   value="{{ visionsolutions.OD_BCVA }}">
                             <datalist id="OD_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
@@ -1135,7 +1172,8 @@
                     <td class="col-sm-8" colspan="8">
                         <div class="input-group input-group-sm mb-7">
                             <span class="input-group-text col-md-1">左眼OS</span>
-                            <input autocomplete="off" type="text" name="OS_SPH" list="OS_SPH" class="form-control" value="{{ visionsolutions.OS_SPH }}">
+                            <input autocomplete="off" type="text" name="OS_SPH" list="OS_SPH" class="form-control"
+                                   value="{{ visionsolutions.OS_SPH }}">
                             <datalist id="OS_SPH">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
@@ -1179,7 +1217,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_CYL" list="OS_CYL" class="form-control" value="{{ visionsolutions.OS_CYL }}">
+                            <input autocomplete="off" type="text" name="OS_CYL" list="OS_CYL" class="form-control"
+                                   value="{{ visionsolutions.OS_CYL }}">
                             <datalist id="OS_CYL">
                                 <option>-0.00</option>
                                 <option>-0.25</option>
@@ -1223,7 +1262,8 @@
                                 <option>-9.75</option>
                                 <option>-10.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_AX" list="OS_AX" class="form-control" value="{{ visionsolutions.OS_AX }}">
+                            <input autocomplete="off" type="text" name="OS_AX" list="OS_AX" class="form-control"
+                                   value="{{ visionsolutions.OS_AX }}">
                             <datalist id="OS_AX">
                                 <option>0</option>
                                 <option>1</option>
@@ -1407,9 +1447,12 @@
                                 <option>179</option>
                                 <option>180</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_PR" list="OS_PR" class="form-control" value="{{ visionsolutions.OS_PR }}">
-                            <input autocomplete="off" type="text" name="OS_FR" list="OS_FR" class="form-control" value="{{ visionsolutions.OS_FR }}">
-                            <input autocomplete="off" type="text" name="OS_ADD" list="OS_ADD" class="form-control" value="{{ visionsolutions.OS_ADD }}">
+                            <input autocomplete="off" type="text" name="OS_PR" list="OS_PR" class="form-control"
+                                   value="{{ visionsolutions.OS_PR }}">
+                            <input autocomplete="off" type="text" name="OS_FR" list="OS_FR" class="form-control"
+                                   value="{{ visionsolutions.OS_FR }}">
+                            <input autocomplete="off" type="text" name="OS_ADD" list="OS_ADD" class="form-control"
+                                   value="{{ visionsolutions.OS_ADD }}">
                             <datalist id="OS_ADD">
                                 <option>+0.25</option>
                                 <option>+0.50</option>
@@ -1432,7 +1475,8 @@
                                 <option>+4.75</option>
                                 <option>+5.00</option>
                             </datalist>
-                            <input autocomplete="off" type="text" name="OS_BCVA" list="OS_BCVA" class="form-control" value="{{ visionsolutions.OS_BCVA }}">
+                            <input autocomplete="off" type="text" name="OS_BCVA" list="OS_BCVA" class="form-control"
+                                   value="{{ visionsolutions.OS_BCVA }}">
                             <datalist id="OS_BCVA">
                                 <option>4.0</option>
                                 <option>4.1</option>
@@ -1456,7 +1500,8 @@
                     <td class="col-sm-6" colspan="4">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text col-md-2">瞳距</span>
-                            <input autocomplete="off" type="text" class="form-control" name="PD" list="pd" value="{{ visionsolutions.PD }}">
+                            <input autocomplete="off" type="text" class="form-control" name="PD" list="pd"
+                                   value="{{ visionsolutions.PD }}">
                             <datalist id="pd">
                                 <option>42.0</option>
                                 <option>42.5</option>
@@ -1548,7 +1593,8 @@
                     <td class="col-sm-6" colspan="4">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text col-md-2">方案类型</span>
-                            <input autocomplete="off" type="text" class="form-control" name="function" list="function" value="{{ visionsolutions.function }}">
+                            <input autocomplete="off" type="text" class="form-control" name="function" list="function"
+                                   value="{{ visionsolutions.function }}">
                             <datalist id="function">
                                 <option>近用解决方案</option>
                                 <option>远用解决方案</option>
@@ -1560,7 +1606,8 @@
                     <td class="col-sm-2" colspan="8">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text col-md-1">备注</span>
-                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control" value="{{ visionsolutions.remark }}">
+                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control"
+                                   value="{{ visionsolutions.remark }}">
                             <span id="remake_error"></span>
                         </div>
                     </td>
@@ -1591,55 +1638,80 @@
                 <tr>
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm mb-8">
-                            <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 12%" value="{{ maneu_store.arg10 }}">
-                            <input autocomplete="off" type="text" name="arg11" class="form-control" style="width: 12%" value="{{ maneu_store.arg11 }}">
-                            <input autocomplete="off" type="text" name="arg12" class="form-control" style="width: 12%" value="{{ maneu_store.arg12 }}">
-                            <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 52%" value="{{ maneu_store.arg13 }}">
-                            <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 12%" value="{{ maneu_store.arg14 }}">
+                            <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg10 }}">
+                            <input autocomplete="off" type="text" name="arg11" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg11 }}">
+                            <input autocomplete="off" type="text" name="arg12" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg12 }}">
+                            <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 52%"
+                                   value="{{ maneu_store.arg13 }}">
+                            <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg14 }}">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm mb-8">
-                            <input autocomplete="off" type="text" name="arg20" class="form-control" style="width: 12%" value="{{ maneu_store.arg20 }}">
-                            <input autocomplete="off" type="text" name="arg21" class="form-control" style="width: 12%" value="{{ maneu_store.arg21 }}">
-                            <input autocomplete="off" type="text" name="arg22" class="form-control" style="width: 12%" value="{{ maneu_store.arg22 }}">
-                            <input autocomplete="off" type="text" name="arg23" class="form-control" style="width: 52%" value="{{ maneu_store.arg23 }}">
-                            <input autocomplete="off" type="text" name="arg24" class="form-control" style="width: 12%" value="{{ maneu_store.arg24 }}">
+                            <input autocomplete="off" type="text" name="arg20" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg20 }}">
+                            <input autocomplete="off" type="text" name="arg21" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg21 }}">
+                            <input autocomplete="off" type="text" name="arg22" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg22 }}">
+                            <input autocomplete="off" type="text" name="arg23" class="form-control" style="width: 52%"
+                                   value="{{ maneu_store.arg23 }}">
+                            <input autocomplete="off" type="text" name="arg24" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg24 }}">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm mb-8">
-                            <input autocomplete="off" type="text" name="arg30" class="form-control" style="width: 12%" value="{{ maneu_store.arg30 }}">
-                            <input autocomplete="off" type="text" name="arg31" class="form-control" style="width: 12%" value="{{ maneu_store.arg31 }}">
-                            <input autocomplete="off" type="text" name="arg32" class="form-control" style="width: 12%" value="{{ maneu_store.arg32 }}">
-                            <input autocomplete="off" type="text" name="arg33" class="form-control" style="width: 52%" value="{{ maneu_store.arg33 }}">
-                            <input autocomplete="off" type="text" name="arg34" class="form-control" style="width: 12%" value="{{ maneu_store.arg34 }}">
+                            <input autocomplete="off" type="text" name="arg30" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg30 }}">
+                            <input autocomplete="off" type="text" name="arg31" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg31 }}">
+                            <input autocomplete="off" type="text" name="arg32" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg32 }}">
+                            <input autocomplete="off" type="text" name="arg33" class="form-control" style="width: 52%"
+                                   value="{{ maneu_store.arg33 }}">
+                            <input autocomplete="off" type="text" name="arg34" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg34 }}">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm mb-8">
-                            <input autocomplete="off" type="text" name="arg40" class="form-control" style="width: 12%" value="{{ maneu_store.arg40 }}">
-                            <input autocomplete="off" type="text" name="arg41" class="form-control" style="width: 12%" value="{{ maneu_store.arg41 }}">
-                            <input autocomplete="off" type="text" name="arg42" class="form-control" style="width: 12%" value="{{ maneu_store.arg42 }}">
-                            <input autocomplete="off" type="text" name="arg43" class="form-control" style="width: 52%" value="{{ maneu_store.arg43 }}">
-                            <input autocomplete="off" type="text" name="arg44" class="form-control" style="width: 12%" value="{{ maneu_store.arg44 }}">
+                            <input autocomplete="off" type="text" name="arg40" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg40 }}">
+                            <input autocomplete="off" type="text" name="arg41" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg41 }}">
+                            <input autocomplete="off" type="text" name="arg42" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg42 }}">
+                            <input autocomplete="off" type="text" name="arg43" class="form-control" style="width: 52%"
+                                   value="{{ maneu_store.arg43 }}">
+                            <input autocomplete="off" type="text" name="arg44" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg44 }}">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm mb-8">
-                            <input autocomplete="off" type="text" name="arg50" class="form-control" style="width: 12%" value="{{ maneu_store.arg50 }}">
-                            <input autocomplete="off" type="text" name="arg51" class="form-control" style="width: 12%" value="{{ maneu_store.arg51 }}">
-                            <input autocomplete="off" type="text" name="arg52" class="form-control" style="width: 12%" value="{{ maneu_store.arg52 }}">
-                            <input autocomplete="off" type="text" name="arg53" class="form-control" style="width: 52%" value="{{ maneu_store.arg53 }}">
-                            <input autocomplete="off" type="text" name="arg54" class="form-control" style="width: 12%" value="{{ maneu_store.arg54 }}">
+                            <input autocomplete="off" type="text" name="arg50" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg50 }}">
+                            <input autocomplete="off" type="text" name="arg51" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg51 }}">
+                            <input autocomplete="off" type="text" name="arg52" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg52 }}">
+                            <input autocomplete="off" type="text" name="arg53" class="form-control" style="width: 52%"
+                                   value="{{ maneu_store.arg53 }}">
+                            <input autocomplete="off" type="text" name="arg54" class="form-control" style="width: 12%"
+                                   value="{{ maneu_store.arg54 }}">
                         </div>
                     </td>
                 </tr>
@@ -1647,7 +1719,8 @@
                     <td class="col-8" colspan="5">
                         <div class="input-group input-group-sm">
                             <span class="input-group-text">备注</span>
-                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control" value="{{ maneu_store.remark }}">
+                            <input autocomplete="off" type="text" name="remark" id="remark" class="form-control"
+                                   value="{{ maneu_store.remark }}">
                             <span id="remake_error"></span>
                         </div>
                     </td>
@@ -1657,10 +1730,12 @@
         <table>
             <tr>
                 <td>
-                    <a type="button" class="btn btn-warning col-sm-12" href="{% url 'maneu_order:order_list' %}">返回列表</a>
+                    <a type="button" class="btn btn-warning col-sm-12"
+                       href="{% url 'maneu_order:order_list' %}">返回列表</a>
                 </td>
                 <td>
-                    <form class="vertical col-md-12" id="order_insert" method="post" action="{% url 'maneu_order:order_update' %}">
+                    <form class="vertical col-md-12" id="order_insert" method="post"
+                          action="{% url 'maneu_order:order_update' %}">
                         {% csrf_token %}
                         <input type="hidden" name="Guess_information" id="Guess_information_json">
                         <input type="hidden" name="Subjective_refraction" id="Subjective_refraction_json">

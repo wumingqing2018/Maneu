@@ -12,8 +12,8 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="text/javascript" src="{% static 'js/common/print.js' %}"></script>
     {# echarts model #}
+        <script type="text/javascript" src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <script type="text/javascript" src="{% static 'js/maneu_datalogs/echarts.js' %}"></script>
-    <script type="text/javascript" src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     {# 视力标准 echarts start #}
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main0'), 'maneu');
@@ -60,7 +60,6 @@
                         yAxis: 1.0,
                     }],
                     silent: true,
-                    color: ["#99CC33"], // 折线的颜色
                 },
             }]
         };

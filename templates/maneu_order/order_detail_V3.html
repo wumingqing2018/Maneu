@@ -449,10 +449,10 @@
     </div>
 {% endblock %}
 {% block javascript %}
-    <script type="application/javascript"  src="{% static 'js/common/delete.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/common/delete.js' %}"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {
             $("#print_btn").click(function () {
                     $("#textArea").print();
                 }

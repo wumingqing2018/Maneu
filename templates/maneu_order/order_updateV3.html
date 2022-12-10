@@ -6,17 +6,20 @@
             <h4>客户个人信息</h4>
             <div class="input-group input-group-sm mb-2">
                 <span class="input-group-text col-2">电话</span>
-                <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off" value="{{ guess.phone }}">
+                <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off"
+                       value="{{ guess.phone }}">
                 <span id="phone_error"></span>
             </div>
             <div class="input-group input-group-sm mb-2">
                 <span class="input-group-text col-2">姓名</span>
                 <input id="order" name="order" type="hidden" autocomplete="off">
-                <input class="form-control" id="guess_name" name="guess_name" type="text" autocomplete="off" value="{{ guess.guess_name }}">
+                <input class="form-control" id="guess_name" name="guess_name" type="text" autocomplete="off"
+                       value="{{ guess.guess_name }}">
             </div>
             <div class="input-group input-group-sm mb-2">
                 <span class="input-group-text col-2">性别</span>
-                <input autocomplete="off" type="text" name="sex" class="form-control" list="sex" value="{{ guess.sex }}">
+                <input autocomplete="off" type="text" name="sex" class="form-control" list="sex"
+                       value="{{ guess.sex }}">
                 <datalist id="sex">
                     <option>男</option>
                     <option>女</option>
