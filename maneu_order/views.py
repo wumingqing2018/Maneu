@@ -58,12 +58,14 @@ def order_detail(request):
             return render(request, 'maneu_order/order_detail_V2.html', {'maneu_order': order, 'users': users, 'guess': guess,
                                                                         'maneu_store': json.loads(store.content),
                                                                         'visionsolutions': json.loads(visionsolutions.content),
-                                                                        'subjectiverefraction': json.loads(subjectiverefraction.content)})
+                                                                        # 'subjectiverefraction': json.loads(subjectiverefraction.content)
+                                                                        })
         else:
             return render(request, 'maneu_order/order_detail_V3.html', {'maneu_order': order, 'users': users, 'guess': guess,
                                                                         'maneu_store': json.loads(store.content),
                                                                         'visionsolutions': json.loads(visionsolutions.content),
-                                                                        'subjectiverefraction': json.loads(subjectiverefraction.content)})
+                                                                        # 'subjectiverefraction': json.loads(subjectiverefraction.content)
+                                                                        })
     else:
         alter_server.ManeuAfterSales_delete_order_id(order_id=order_id)
         return render(request, 'maneu/error.html', {'msg': order})
@@ -82,10 +84,10 @@ def order_insert(request):
     """添加订单"""
     if request.method == 'POST':
         time = request.POST.get('time')
-        ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'))
+        ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'), user_id=request.session.get('id'))
         ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
-        ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
+        print(ManeuGuess_id)
         order = service.ManeuOrderV2_insert(name=ManeuGuess_id.name,
                                             phone=ManeuGuess_id.phone,
                                             users_id=request.session.get('id'),
@@ -93,7 +95,7 @@ def order_insert(request):
                                             guess_id=ManeuGuess_id.id,
                                             time=time,
                                             visionsolutions_id=ManeuVisionSolutions_id.id,
-                                            subjectiverefraction_id=ManeuSubjectiveRefraction_id.id, )
+                                            )
         if order:
             request.session['order_id'] = str(order.id)
             return HttpResponseRedirect(reverse('maneu_order:order_detail'))

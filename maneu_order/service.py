@@ -171,10 +171,10 @@ def ManeuSubjectiveRefraction_update(id='', content=''):
         return None
 
 
-def ManeuGuess_insert(content=''):
+def ManeuGuess_insert(content='', user_id=''):
     try:
         contents = json.loads(content)
-        return ManeuGuess.objects.create(name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
+        return ManeuGuess.objects.create(user_id=user_id, name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
     except BaseException as msg:
         return msg
 

@@ -185,6 +185,8 @@ class ManeuDatalogs(models.Model):
 
 class ManeuGuess(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    user_id = models.CharField(max_length=36, default=uuid.uuid1, editable=False)
+    subjective_id = models.CharField(max_length=36, default=uuid.uuid1, editable=False)
     time = models.DateTimeField()
     name = models.CharField(max_length=36)
     phone = models.CharField(max_length=36)
