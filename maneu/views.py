@@ -40,11 +40,13 @@ def guess(request):
                 users = service.find_users_id(id=order.users_id)
                 store = service.find_store_id(id=order.store_id)
                 visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
-                subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
-                return render(request, 'maneu/detail.html',
-                              {'maneu_order': order, 'users': users, 'maneu_store': json.loads(store.content),
-                               'visionsolutions': json.loads(visionsolutions.content),
-                               'subjectiverefraction': json.loads(subjectiverefraction.content)})
+                # subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
+                return render(request, 'maneu/detail.html', {'maneu_order': order,
+                                                             'users': users,
+                                                             'maneu_store': json.loads(store.content),
+                                                             'visionsolutions': json.loads(visionsolutions.content),
+                                                             # 'subjectiverefraction': json.loads(subjectiverefraction.content)
+                                                             })
             except BaseException as msg:
                 print(msg)
                 return render(request, 'maneu/guess.html', {'msg': '没有您的订单'})
