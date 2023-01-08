@@ -2,11 +2,11 @@ from django.shortcuts import redirect
 from django.utils.deprecation import MiddlewareMixin
 
 
-class UserMiddleware(MiddlewareMixin):
+class GuessMiddleware(MiddlewareMixin):
 
     def __init__(self, get_response):
         self.get_response = get_response
-        print("--用户登录校验中间件启动--")
+        print("--客户登录校验中间件启动--")
 
     def process_request(self, request):
         """
@@ -20,14 +20,8 @@ class UserMiddleware(MiddlewareMixin):
         session_ip = request.session.get('ip')
         session_id = request.session.get('id')
         #   判断是否需要校验字段
-        if request_url.startswith('/maneu'):
+        if request_url.startswith('/guess'):
             if session_id and session_ip:
-                #   判断用户是否登录
-                return None
-            else:
-                return redirect('login')
-        if request_url.startswith('/guess-admin'):
-            if session_id:
                 #   判断用户是否登录
                 return None
             else:

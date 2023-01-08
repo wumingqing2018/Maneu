@@ -10,7 +10,7 @@ urlpatterns = [
     path('login/', login, name='login'),
     # 客户页
     path('guess/', guess, name='guess'),
-
+    path('guess-admin/', include('guess.urls')),
     # 订单子路由
     path('maneu_order/', include('maneu_order.urls')),
     # 用户子路由

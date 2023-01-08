@@ -1,5 +1,3 @@
-import json
-
 from django.shortcuts import HttpResponseRedirect, reverse, render
 
 from common import common
@@ -28,26 +26,17 @@ def login(request):
             request.session['id'] = user_content.id
             request.session['nickname'] = user_content.nickname
             return HttpResponseRedirect(reverse('maneu_order:order_list'))
-    return render(request, 'maneu/login.html', {'form': LoginForm()})
+    return render(request, 'maneu/admin.html', {'form': LoginForm()})
 
 
 def guess(request):
     if request.method == 'POST':
         form = GuessForm(request.POST)
         if form.is_valid():
-            try:
-                order = service.find_order_phone(phone=request.POST.get('phone'))
-                users = service.find_users_id(id=order.users_id)
-                store = service.find_store_id(id=order.store_id)
-                visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
-                # subjectiverefraction = service.find_subjectiverefraction_id(id=order.subjectiverefraction_id)
-                return render(request, 'maneu/detail.html', {'maneu_order': order,
-                                                             'users': users,
-                                                             'maneu_store': json.loads(store.content),
-                                                             'visionsolutions': json.loads(visionsolutions.content),
-                                                             # 'subjectiverefraction': json.loads(subjectiverefraction.content)
-                                                             })
-            except BaseException as msg:
-                print(msg)
+                guess = service.find_guess_phone(phone=request.POST.get('phone'))
+                if guess != None:
+                    request.session['id'] = guess.id
+                    return HttpResponseRedirect(reverse('guess_admin:order_list'))
                 return render(request, 'maneu/guess.html', {'msg': '没有您的订单'})
+
     return render(request, 'maneu/guess.html')

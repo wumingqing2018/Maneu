@@ -37,6 +37,14 @@ def find_guess_id(id=''):
         return None
 
 
+def find_guess_phone(phone=''):
+    try:
+        return ManeuGuess.objects.filter(phone=phone).first()
+    except BaseException as msg:
+        print(msg)
+        return None
+
+
 def find_store_id(id=''):
     try:
         return ManeuStore.objects.filter(id=id).first()
