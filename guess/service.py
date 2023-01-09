@@ -34,5 +34,5 @@ def find_users_id(id):
     return ManeuUsers.objects.filter(id=id).first()
 
 
-def find_users_id(id):
-    return ManeuUsers.objects.filter(id=id).first()
+def find_subject_id(id):
+    return ManeuSubjectiveRefraction.objects.filter(id=id).first()

@@ -19,8 +19,12 @@ def order_detail(request):
             store = service.find_store_id(id=order.store_id)
             visionsolutions = service.find_ManeuVisionSolutions_id(id=order.visionsolutions_id)
             return render(request, 'guess/orderDetail.html', {'users': users,
-                                                               'guess': guess,
-                                                               'store': json.loads(store.content),
-                                                               'visionsolutions': json.loads(visionsolutions.content),
-                                                               })
+                                                              'guess': guess,
+                                                              'store': json.loads(store.content),
+                                                              'visionsolutions': json.loads(visionsolutions.content)})
     return HttpResponseRedirect(reverse('guess_admin:order_list'))
+
+
+def subject_list(request):
+    subjectID = service.find_order_GuessId(subjectID=request.session.get('subjectID'))
+    return render(request, 'guess/orderList.html', {'orderlist': orderList})

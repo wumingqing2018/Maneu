@@ -10,7 +10,10 @@ from maneu_order import service
 
 
 def order_list(request):
-    """查看今日订单"""
+    """
+    订单列表功能
+    在session获取商家id 通过商家id查找订单列表
+    """
     orderlist = service.find_order_all(users_id=request.session.get('id'))  # 查找今日订单
     return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
 
@@ -18,9 +21,9 @@ def order_list(request):
 def order_delete(request):
     order_id = request.session.get('order_id')
     users_id = request.session.get('id')
-    if order_id and users_id:
-        order = service.find_order_id(order_id=order_id, users_id=users_id)
-        guess = service.delete_guess_id(id=order.guess_id)
+    order = service.find_order_id(order_id=order_id, users_id=users_id)
+    if order:
+        # guess = service.delete_guess_id(id=order.guess_id)
         store = service.delete_store_id(id=order.store_id)
         visionsolutions = service.delete_ManeuVisionSolutions_id(id=order.visionsolutions_id)
         subjectiverefraction = service.delete_subjectiverefraction_id(id=order.subjectiverefraction_id)
@@ -87,7 +90,6 @@ def order_insert(request):
         ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'), user_id=request.session.get('id'))
         ManeuStore_id = service.ManeuStore_insert(content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(content=request.POST.get('Vision_Solutions'))
-        print(ManeuGuess_id)
         order = service.ManeuOrderV2_insert(name=ManeuGuess_id.name,
                                             phone=ManeuGuess_id.phone,
                                             users_id=request.session.get('id'),
@@ -143,15 +145,3 @@ def order_update(request):
             return HttpResponseRedirect(reverse('maneu_order:order_detail'))
 
     return render(request, 'maneu/error.html', {'msg': '参数错误'})
-
-
-def generate_qrcode(request, order_id=''):
-    data = 'http://maneu.online/guess/'+order_id
-    img = qrcode.make(data)
-
-    buf = BytesIO()		# BytesIO实现了在内存中读写bytes
-    img.save(buf)
-    image_stream = buf.getvalue()
-
-    response = HttpResponse(image_stream, content_type="image/png")
-    return response
