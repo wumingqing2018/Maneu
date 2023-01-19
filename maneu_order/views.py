@@ -60,12 +60,12 @@ def order_detail(request):
         mobile = judge_pc_or_mobile(ua)
         if mobile:
 
-            return render(request, 'maneu_order/order_detail_V2.html', {'maneu_order': order, 'users': users, 'guess': guess,
+            return render(request, 'maneu_order/order_detail_phone.html', {'maneu_order': order, 'users': users, 'guess': guess,
                                                                         'maneu_store': json.loads(store.content),
                                                                         'visionsolutions': json.loads(visionsolutions.content),
-                                                                        })
+                                                                           })
         else:
-            return render(request, 'maneu_order/order_detail_V3.html', {'maneu_order': order, 'users': users, 'guess': guess,
+            return render(request, 'maneu_order/order_detail_pc.html', {'maneu_order': order, 'users': users, 'guess': guess,
                                                                         'maneu_store': json.loads(store.content),
                                                                         'visionsolutions': json.loads(visionsolutions.content),
                                                                         # 'subjectiverefraction': json.loads(subjectiverefraction.content)

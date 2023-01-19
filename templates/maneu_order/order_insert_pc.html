@@ -862,22 +862,6 @@
 {% endblock %}
 {% block javascript %}
     <script type="application/javascript" src="{% static 'js/maneu/serialize_moudels.js' %}"></script>
-    <script type="application/javascript">
-        $(document).ready(function () {
-            var time = new Date();
-            var day = ("0" + time.getDate()).slice(-2);
-            var month = ("0" + (time.getMonth() + 1)).slice(-2);
-            var today = time.getFullYear() + "-" + (month) + "-" + (day);
-            $('.date_time').val(today)
-
-            $('#insert').click(function () {
-                Product_Orders_json = $('#Product_Orders').serializeJsonStr();
-                $('#Product_Orders_json').val(Product_Orders_json);
-                Vision_Solutions_json = $('#Vision_Solutions').serializeJsonStr();
-                $('#Vision_Solutions_json').val(Vision_Solutions_json);
-                order_json = $('#order').serializeJsonStr();
-                $('#order_json').val(order_json);
-            })
-        });
-    </script>
+    <script type="application/javascript" src="{% static 'js/maneu/time.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/maneu_order/order_insert_pc.js' %}"></script>
 {% endblock %}

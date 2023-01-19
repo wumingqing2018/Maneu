@@ -1586,6 +1586,7 @@
     </div>
 {% endblock %}
 {% block javascript %}
+        <script type="application/javascript" src="{% static 'js/maneu/serialize_moudels.js' %}"></script>
     <script type="application/javascript">
         $(document).ready(function () {
             var time = new Date();
@@ -1593,22 +1594,6 @@
             var month = ("0" + (time.getMonth() + 1)).slice(-2);
             var today = time.getFullYear() + "-" + (month) + "-" + (day);
             $('.date_time').val(today)
-
-            $.fn.serializeJsonStr = function () {
-                var o = {};
-                var a = this.serializeArray();
-                $.each(a, function () {
-                    if (o[this.name] !== undefined) {
-                        if (!o[this.name].push) {
-                            o[this.name] = [o[this.name]];
-                        }
-                        o[this.name].push(this.value || '');
-                    } else {
-                        o[this.name] = this.value || '';
-                    }
-                });
-                return JSON.stringify(o);
-            }
 
             $('#insert').click(function () {
                 Product_Orders_json = $('#Product_Orders').serializeJsonStr();
