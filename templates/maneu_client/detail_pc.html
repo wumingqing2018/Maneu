@@ -7,11 +7,12 @@
 
 {% block javascript %}
     {# delete model #}
-    <script type="application/javascript"  src="{% static 'js/common/../../static/js/maneu/delete.js' %}"></script>
+    <script type="application/javascript"  src="{% static 'js/maneu/delete.js' %}"></script>
     {# print model #}
     <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
-    <script type="text/javascript" src="{% static 'js/common/../../static/js/maneu/print.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/maneu/print.js' %}"></script>
     {# echarts model #}
+        <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <script type="text/javascript" src="{% static 'js/maneu_datalogs/echarts.js' %}"></script>
     {# 视力标准 echarts start #}
     <script type="text/javascript">
@@ -355,16 +356,6 @@
             <div class="col-md-2 col-sm-6">
                 <a class="btn btn-primary" type="button" href="{% url 'maneu_client:index' %}">返回</a>
             </div>
-            {#            <div class="col-2">#}
-            {#                <form method="get" action="{% url 'maneu_order:order_update' %}">#}
-            {#                    <input type="submit" class="btn btn-warning" value="修改订单">#}
-            {#                </form>#}
-            {#            </div>#}
-            {#            <div class="col-2">#}
-            {#                <form method="get" action="{% url 'maneu_order:order_delete' %}">#}
-            {#                    <input type="submit" class="btn btn-danger" id="delete" value="删除订单">#}
-            {#                </form>#}
-            {#            </div>#}
             <div class="col-md-2 col-sm-6">
                 <button class="btn btn-primary" id="print_btn">打印</button>
             </div>
@@ -372,7 +363,7 @@
                 <form action="{% url 'maneu_client:delete' %}" method="post">
                     {% csrf_token %}
                     <input name="id" type="hidden" value="{{ guess.id }}">
-                    <input type="submit" class="btn btn-danger" value="删除">
+                    <input type="submit" id="delete" class="btn btn-danger" value="删除">
                 </form>
             </div>
             <div class="col-md-2 col-sm-6">
