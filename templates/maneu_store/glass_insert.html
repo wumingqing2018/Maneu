@@ -1,4 +1,4 @@
-{% extends 'maneu/base1.html' %}
+{% extends 'maneu/base_uesrs.html' %}
 {% load static %}
 
 {% block content %}
@@ -86,6 +86,6 @@
     <script>
         api_glass_insert = "{% url 'maneu_store:api_glass_insert' %}"
     </script>
-    <script src="{% static 'js/common/input_range.js' %}"></script>
+    <script src="{% static 'js/common/../../static/js/maneu/input_range.js' %}"></script>
     <script src="{% static 'js/maneu_store/glass_install.js' %}"></script>
 {% endblock %}

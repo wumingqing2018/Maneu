@@ -1,4 +1,4 @@
-{% extends 'maneu/base1.html' %}
+{% extends 'maneu/base_uesrs.html' %}
 {% load static %}
 
 {% block css %}
@@ -7,10 +7,10 @@
 
 {% block javascript %}
     {# delete model #}
-    <script type="application/javascript"  src="{% static 'js/common/delete.js' %}"></script>
+    <script type="application/javascript"  src="{% static 'js/common/../../static/js/maneu/delete.js' %}"></script>
     {# print model #}
     <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
-    <script type="text/javascript" src="{% static 'js/common/print.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/common/../../static/js/maneu/print.js' %}"></script>
     {# echarts model #}
     <script type="text/javascript" src="{% static 'js/maneu_datalogs/echarts.js' %}"></script>
     {# 视力标准 echarts start #}

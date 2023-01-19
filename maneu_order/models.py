@@ -236,6 +236,7 @@ class ManeuOrderV2(models.Model):
 
 class ManeuStore(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    orderID = models.CharField(max_length=36, default=uuid.uuid1, editable=False)
     time = models.DateTimeField()
     content = models.TextField()
 
@@ -274,6 +275,7 @@ class ManeuUsers(models.Model):
 
 class ManeuVisionSolutions(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    orderID = models.CharField(max_length=36, default=uuid.uuid1, editable=False)
     time = models.DateTimeField()
     content = models.TextField()
 

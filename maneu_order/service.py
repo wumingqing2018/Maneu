@@ -11,14 +11,14 @@ from maneu_order.models import ManeuUsers
 from maneu_order.models import ManeuVisionSolutions
 
 
-def find_order_all(users_id=''):
+def ManeuOrderV2_all(users_id=''):
     """
     全部订单
     """
     return ManeuOrderV2.objects.filter(users_id=users_id).order_by('-time').all()
 
 
-def find_order_id(order_id='', users_id=''):
+def ManeuOrderV2_id(order_id='', users_id=''):
     """
     查找指定订单
     根据时间排序
@@ -34,7 +34,7 @@ def find_order_time(time='', users_id=''):
     return ManeuOrderV2.objects.filter(time__range=time, users_id=users_id).all()
 
 
-def delete_order_id(users_id='', id=''):
+def ManeuOrderV2_delete(users_id='', id=''):
     """
     查找指定订单a
     根据时间排序
@@ -50,6 +50,10 @@ def find_guess_id(id=''):
     return ManeuGuess.objects.filter(id=id).first()
 
 
+def ManeuGuess_id(id=''):
+    return ManeuGuess.objects.filter(id=id).first()
+
+
 def delete_guess_id(id=''):
     return ManeuGuess.objects.filter(id=id).delete()
 
@@ -58,13 +62,16 @@ def find_store_id(id=''):
     return ManeuStore.objects.filter(id=id).first()
 
 
-def delete_store_id(id=''):
-    try:
-        store = ManeuStore.objects.filter(id=id).first()
-        return store.delete()
-    except BaseException as msg:
-        print(msg)
-        return None
+def ManeuStore_id(id=''):
+    return ManeuStore.objects.filter(id=id).first()
+
+
+def ManeuStore_OrderID(OrderID=''):
+    return ManeuStore.objects.filter(orderID=OrderID).first()
+
+
+def ManeuStore_delete(id=''):
+    return ManeuStore.objects.filter(id=id).delete()
 
 
 def find_users_all():
@@ -74,6 +81,7 @@ def find_users_all():
         print(msg)
         return None
 
+
 def find_users_id(id):
     try:
         return ManeuUsers.objects.filter(id=id).first()
@@ -82,9 +90,14 @@ def find_users_id(id):
         return None
 
 
+def ManeuUsers_id(id=''):
+    return ManeuUsers.objects.filter(id=id).first()
+
+
 def find_ManeuOrderV2_search(date='', text='', users_id=''):
     if date and text:
-        return ManeuOrderV2.objects.filter(Q(name=text) | Q(phone=text), Q(time__gt=date), Q(users_id=users_id)).order_by('-time').all()
+        return ManeuOrderV2.objects.filter(Q(name=text) | Q(phone=text), Q(time__gt=date),
+                                           Q(users_id=users_id)).order_by('-time').all()
     if date != '' and text == '':
         return ManeuOrderV2.objects.filter(Q(time__gt=date), Q(users_id=users_id)).order_by('-time').all()
     if date == '' and text != '':
@@ -105,54 +118,32 @@ def find_ManeuOrderV2_search_v3(text='', users_id=''):
     return ManeuOrderV2.objects.filter(users_id=users_id).filter(Q(name=text) | Q(phone=text)).order_by('-time').all()
 
 
-def find_ManeuVisionSolutions_id(id=''):
-    try:
-        return ManeuVisionSolutions.objects.filter(id=id).first()
-    except BaseException as msg:
-        print(msg)
-        return None
+def ManeuVisionSolutions_orderID(order_id=''):
+    return ManeuVisionSolutions.objects.filter(orderID=order_id).first()
 
 
-def delete_ManeuVisionSolutions_id(id=''):
-    try:
-        VisionSolutions = ManeuVisionSolutions.objects.filter(id=id).first()
-        return VisionSolutions.delete()
-    except BaseException as msg:
-        print(msg)
-        return None
+def ManeuVisionSolutions_delete(id=''):
+    return ManeuVisionSolutions.objects.filter(id=id).delete()
 
 
-def find_subjectiverefraction_id(id=''):
-    try:
-        return ManeuSubjectiveRefraction.objects.filter(id=id).first()
-    except BaseException as msg:
-        print(msg)
-        return None
-
-
-def delete_subjectiverefraction_id(id=''):
-    try:
-        subjectiverefraction = ManeuSubjectiveRefraction.objects.filter(id=id).first()
-        return subjectiverefraction.delete()
-    except BaseException as msg:
-        print(msg)
-        return None
-
-
-def ManeuVisionSolutions_insert(content=''):
-    try:
-        return ManeuVisionSolutions.objects.create(content=content)
-    except BaseException as msg:
-        print(msg)
-        return None
+def ManeuVisionSolutions_insert(order_id='', content=''):
+    return ManeuVisionSolutions.objects.create(orderID=order_id, content=content)
 
 
 def ManeuVisionSolutions_update(id='', content=''):
-    try:
-        return ManeuVisionSolutions.objects.filter(id=id).update(content=content)
-    except BaseException as msg:
-        print(msg)
-        return None
+    return ManeuVisionSolutions.objects.filter(id=id).update(content=content)
+
+
+def ManeuVisionSolutions_update_orderID(id='', orderID=''):
+    return ManeuVisionSolutions.objects.filter(id=id).update(orderID=orderID)
+
+
+def subjectiverefraction_orderID(order_id=''):
+    return ManeuSubjectiveRefraction.objects.filter(orderID=order_id).first()
+
+
+def ManeuSubjectiveRefraction_delete(id=''):
+    return ManeuSubjectiveRefraction.objects.filter(id=id).first()
 
 
 def ManeuSubjectiveRefraction_insert(content=''):
@@ -174,7 +165,9 @@ def ManeuSubjectiveRefraction_update(id='', content=''):
 def ManeuGuess_insert(content='', user_id=''):
     try:
         contents = json.loads(content)
-        return ManeuGuess.objects.create(user_id=user_id, name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
+        return ManeuGuess.objects.create(user_id=user_id, name=contents['guess_name'], phone=contents['guess_phone'],
+                                         sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'],
+                                         dfh=contents['DFH'], remark=contents['remark'])
     except BaseException as msg:
         return msg
 
@@ -182,18 +175,16 @@ def ManeuGuess_insert(content='', user_id=''):
 def ManeuGuess_update(id='', content=''):
     try:
         contents = json.loads(content)
-        return ManeuGuess.objects.filter(id=id).update(name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
+        return ManeuGuess.objects.filter(id=id).update(name=contents['guess_name'], phone=contents['guess_phone'],
+                                                       sex=contents['sex'], ot=contents['OT'], em=contents['EM'],
+                                                       dfh=contents['DFH'], remark=contents['remark'])
     except BaseException as msg:
         print(msg)
         return None
 
 
-def ManeuStore_insert(content=''):
-    try:
-        return ManeuStore.objects.create(content=content)
-    except BaseException as msg:
-        print(msg)
-        return None
+def ManeuStore_insert(order_id='', content=''):
+    return ManeuStore.objects.create(orderID=order_id, content=content)
 
 
 def ManeuStore_update(content='', id=''):
@@ -204,19 +195,19 @@ def ManeuStore_update(content='', id=''):
         return None
 
 
-def ManeuOrderV2_insert(name='', time='', phone='', guess_id='', users_id='', store_id='', visionsolutions_id='', subjectiverefraction_id=''):
+def ManeuStore_update_orderID(orderID='', id=''):
     try:
-        if time:
-            return ManeuOrderV2.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, users_id=users_id,
-                                               store_id=store_id, visionsolutions_id=visionsolutions_id,
-                                               subjectiverefraction_id=subjectiverefraction_id)
-        else:
-            return ManeuOrderV2.objects.create(name=name, phone=phone, guess_id=guess_id, users_id=users_id,
-                                               store_id=store_id, visionsolutions_id=visionsolutions_id,
-                                               subjectiverefraction_id=subjectiverefraction_id)
-
+        return ManeuStore.objects.filter(id=id).update(orderID=orderID)
     except BaseException as msg:
-        return msg
+        print(msg)
+        return None
+
+
+def ManeuOrderV2_insert(name='', time='', phone='', guess_id='', users_id=''):
+    if time:
+        return ManeuOrderV2.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, users_id=users_id)
+    else:
+        return ManeuOrderV2.objects.create(name=name, phone=phone, guess_id=guess_id, users_id=users_id)
 
 
 def ManeuOrderV2_update(order_id='', name='', phone=''):
@@ -227,9 +218,9 @@ def ManeuOrderV2_update(order_id='', name='', phone=''):
         return None
 
 
-def ManeuAfterSales_delete_id(order_id=''):
-    try:
-        return ManeuAftersales.objects.filter(order_id=order_id).delete()
-    except BaseException as msg:
-        print(msg)
-        return None
+def ManeuAfterSales_delete(order_id=''):
+    return ManeuAftersales.objects.filter(order_id=order_id).delete()
+
+
+def find_ManeuGuess_byPhone(phone):
+    return ManeuGuess.objects.filter(phone=phone).first()

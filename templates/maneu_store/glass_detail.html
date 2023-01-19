@@ -1,4 +1,4 @@
-{% extends 'maneu/base1.html' %}
+{% extends 'maneu/base_uesrs.html' %}
 {% load static %}
 
 {% block content %}
@@ -68,7 +68,7 @@
     </table>
 {% endblock %}
 {% block js %}
-    <script src="{% static 'js/common/input_range.js' %}"></script>
+    <script src="{% static 'js/common/../../static/js/maneu/input_range.js' %}"></script>
     <script>
         $(document).ready(function () {
             $('#update_show').click(function () {
