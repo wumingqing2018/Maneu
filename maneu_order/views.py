@@ -123,16 +123,13 @@ def order_update(request):
             users = service.find_users_id(id=order.users_id)
             guess = service.find_guess_id(id=order.guess_id)
             store = service.find_store_id(id=order.store_id)
-            visionsolutions = service.ManeuVisionSolutions_id(id=order.visionsolutions_id)
-            subjectiverefraction = service.ManeuVisionSolutions_orderID(id=order.subjectiverefraction_id)
+            # visionsolutions = service.ManeuVisionSolutions_id(id=order.visionsolutions_id)
+            # subjectiverefraction = service.ManeuVisionSolutions_orderID(id=order.subjectiverefraction_id)
             return render(request, 'maneu_order/order_update.html', {'maneu_order': order,
                                                                      'users': users,
                                                                      'guess': guess,
-                                                                     'maneu_store': json.loads(store.content),
-                                                                     'visionsolutions': json.loads(
-                                                                         visionsolutions.content),
-                                                                     'subjectiverefraction': json.loads(
-                                                                         subjectiverefraction.content)})
+                                                                     # 'maneu_store': json.loads(store.content),
+                                                                     })
         if request.method == 'POST':
             order = service.ManeuOrderV2_id(order_id=order_id, users_id=users_id)
             ManeuGuess_id = service.ManeuGuess_update(id=order.guess_id, content=request.POST.get('Guess_information'))
@@ -143,9 +140,7 @@ def order_update(request):
                                                                                     content=request.POST.get(
                                                                                         'Subjective_refraction'))
             guess_content = json.loads(request.POST.get('Guess_information'))
-            service.ManeuOrderV2_update(order_id=order.id,
-                                        name=guess_content['guess_name'],
-                                        phone=guess_content['guess_phone'], )
+            service.ManeuOrderV2_update(order_id=order.id,name=guess_content['guess_name'],phone=guess_content['guess_phone'], )
             return HttpResponseRedirect(reverse('maneu_order:order_detail'))
 
     return render(request, 'maneu/error.html', {'msg': '参数错误'})
