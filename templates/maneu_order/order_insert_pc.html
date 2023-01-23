@@ -836,23 +836,23 @@
             </form>
         </div>
         <div class="col-md-8 row">
-                <div class="col-2">
-                    <div class="input-group input-group-sm mb-2">
-                        <a type="button" class="btn btn-warning col-12" href="{% url 'maneu_order:order_list' %}">返回列表</a>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="input-group input-group-sm mb-2">
-                        <form class="vertical2" id="order_insert" method="post" action="{% url 'maneu_order:order_insert' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="order_json" id="order_json">
-                            <input type="hidden" name="Vision_Solutions" id="Vision_Solutions_json">
-                            <input type="hidden" name="Product_Orders" id="Product_Orders_json">
-                            <input autocomplete="off" class="btn btn-small btn-danger" id="insert" type="submit" value="提交订单">
-                        </form>
-                    </div>
+            <div class="col-2">
+                <div class="input-group input-group-sm mb-2">
+                    <a type="button" class="btn btn-warning col-12" href="{% url 'maneu_order:order_list' %}">返回列表</a>
                 </div>
             </div>
+            <div class="col-2">
+                <div class="input-group input-group-sm mb-2">
+                    <form class="vertical2" id="order_insert" method="post" action="{% url 'maneu_order:order_insert' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="order_json" id="order_json">
+                        <input type="hidden" name="Vision_Solutions" id="Vision_Solutions_json">
+                        <input type="hidden" name="Product_Orders" id="Product_Orders_json">
+                        <input autocomplete="off" class="btn btn-small btn-danger" id="insert" type="submit" value="提交订单">
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     </div>
 {% endblock %}
