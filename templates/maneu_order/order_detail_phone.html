@@ -259,74 +259,7 @@
                     <span>价格</span>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <span>{{ maneu_store.arg10 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg11 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg12 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg13 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg14 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>{{ maneu_store.arg20 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg21 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg22 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg23 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg24 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>{{ maneu_store.arg30 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg31 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg32 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg33 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg34 }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>{{ maneu_store.arg40 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg41 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg42 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg43 }}</span>
-                </td>
-                <td>
-                    <span>{{ maneu_store.arg44 }}</span>
-                </td>
-            </tr>
+            <tbody id="store_table"></tbody>
             <tr class="banner">
                 <td colspan="5">
                     <b>注意事项（matters need attention）</b>
@@ -363,5 +296,9 @@
     </div>
 {% endblock %}
 {% block javascript %}
+    <script type="application/javascript">
+        maneu_store = {{ maneu_store|safe }};
+    </script>
     <script type="application/javascript" src="{% static 'js/maneu/delete.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/maneu_order/order_detail.js' %}"></script>
 {% endblock %}
