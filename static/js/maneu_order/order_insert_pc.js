@@ -23,4 +23,18 @@ $(document).ready(function () {
         order_json = $('#order').serializeJsonStr();
         $('#order_json').val(order_json);
     })
+    $('#Vision_Solutions_showbutton').click(function () {
+            $('#Vision_Solutions_showbutton').attr('style', 'display: none')
+            $('#Vision_Solutions_hidebutton').attr('style', 'display: block')
+            $(".Vision_Solutions").attr('style', 'display: block')
+        }
+    )
+    $('#Vision_Solutions_hidebutton').click(function () {
+            $('#Vision_Solutions_hidebutton').attr('style', 'display: none');
+            $('#Vision_Solutions_showbutton').attr('style', 'display: block');
+            $(".Vision_Solutions").attr('style', 'display: none');
+            $("#Vision_Solutions")[0].reset();
+        }
+    )
+
 });
