@@ -6,19 +6,21 @@
         <h4>订单基本信息</h4>
         <form class="vertical2" id="order">
             <div class="col-12 row">
+                <div class="col-md-3 col-xs-12">
                     <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text col-1">时间</span>
+                        <span class="input-group-text col-3">时间</span>
                         <input class="form-control date_time" id="time" name="time" type="date" autocomplete="off" required="required">
                     </div>
-                <div class="col-2">
+                </div>
+                <div class="col-md-3 col-xs-12">
                     <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text col-1">姓名</span>
+                        <span class="input-group-text col-3">姓名</span>
                         <input class="form-control" id="name" name="name" type="text" autocomplete="off" required>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-3 col-xs-12">
                     <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text col-1">电话</span>
+                        <span class="input-group-text col-3">电话</span>
                         <input class="form-control" id="phone" name="phone" type="text" autocomplete="off" required="required">
                     </div>
                 </div>
@@ -28,12 +30,8 @@
         <form class="vertical2" id="Vision_Solutions">
             <div class="col-12 row">
                 <div class="col-1"></div>
-                <div class="col-1">
-                    <span>球镜</span>
-                </div>
-                <div class="col-1">
-                    <span>柱镜</span>
-                </div>
+                <div class="col-1"><span>球镜</span></div>
+                <div class="col-1"><span>柱镜</span></div>
                 <div class="col-1"><span>轴位</span></div>
                 <div class="col-1"><span>棱镜</span></div>
                 <div class="col-1"><span>基地取向</span></div>
@@ -793,7 +791,7 @@
         <h4>产品信息</h4>
         <div class="col-md-12">
             <form class="vertical2" id="Product_Orders">
-                <div class="col-8 row">
+                <div class="col-md-8 col-xs-12 row">
                     <div style="width: 12%">
                         <span>类别</span>
                     </div>
@@ -811,26 +809,26 @@
                     </div>
                 </div>
                 <div class="col-8 row" id="Product_Orders_TABLE">
-                    <div class="input-group input-group-sm mb-2">
-                        <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 12%">
-                        <input autocomplete="off" type="text" name="arg11" class="form-control" style="width: 12%">
-                        <input autocomplete="off" type="text" name="arg12" class="form-control" style="width: 12%">
-                        <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 52%">
-                        <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 12%">
+                        <div class="input-group input-group-sm mb-2">
+                            <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 12%">
+                            <input autocomplete="off" type="text" name="arg11" class="form-control" style="width: 12%">
+                            <input autocomplete="off" type="text" name="arg12" class="form-control" style="width: 12%">
+                            <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 52%">
+                            <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 12%">
                     </div>
                 </div>
-                <div class="col-8 row">
-                    <div class="col-2">
+                                <div class="col-8 row">
+                    <div class="col-md-1 col-xs-1">
                         <div class="input-group input-group-sm mb-2">
-                            <button type="button" class="col-12 btn btn-warning"  id="DeleteTextBox" >删除输入框</button>
+                            <button type="button" class="btn btn-warning" id="DeleteTextBox">删除</button>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-md-1 col-xs-1">
                         <div class="input-group input-group-sm mb-2">
-                            <button type="button" class="btn btn-primary" id="AddMoreTextBox" >添加输入框</button>
+                            <button type="button" class="btn btn-primary" id="AddMoreTextBox">添加</button>
                         </div>
                     </div>
-                </div>
+                                </div>
             </form>
         </div>
         <div class="col-md-8 row">

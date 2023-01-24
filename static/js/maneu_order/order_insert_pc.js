@@ -12,8 +12,8 @@ $(document).ready(function () {
             '    </div>\n' +
             '</div>\n');
     });
-    $('#deleteTextBox').click(function (e) {
-        $("#Product_Orders_TABLE").removeChild(div)
+    $('#DeleteTextBox').click(function (e) {
+        $("#Product_Orders_TABLE>div").last().remove()
     })
     $('#insert').click(function () {
         Product_Orders_json = $('#Product_Orders').serializeJsonStr();
