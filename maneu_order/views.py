@@ -1,10 +1,11 @@
 import json
-
+from common import common
 from django.shortcuts import render, reverse, HttpResponseRedirect
 
 from common.checkMobile import judge_pc_or_mobile
 from maneu_alterSales import service as alter_server
 from maneu_order import service
+import datetime
 
 
 def order_list(request):
@@ -12,8 +13,19 @@ def order_list(request):
     订单列表功能
     在session获取商家id 通过商家id查找订单列表
     """
-    orderlist = service.ManeuOrderV2_all(users_id=request.session.get('id'))  # 查找今日订单
-    return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
+    if request.POST:
+        time = request.POST.get('time')
+        date = datetime.datetime.strptime(time, '%Y-%m-%d')
+        down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
+        up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+
+    else:
+        time = common.today()
+        date = datetime.datetime.strptime(time, '%Y-%m-%d')
+        down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
+        up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+    orderlist = service.ManeuOrderV2_today(users_id=request.session.get('id'), time=time)  # 查找今日订单
+    return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist, 'time': time, 'up_day': up_day, 'down_day': down_day})
 
 
 def order_delete(request):
@@ -38,11 +50,10 @@ def order_detail(request):
     false
         渲染error页面并传输错误参数
     """
-    order_id = request.POST.get('order_id')
-    if order_id == None:
+    try:
+        order_id = request.POST['order_id']
+    except:
         order_id = request.session.get('order_id')
-        if order_id == None:
-            return render(request, 'maneu/error.html', {'msg': '参数错误'})
     order = service.ManeuOrderV2_id(order_id=order_id, users_id=request.session.get('id'))
     if order:
         users = service.ManeuUsers_id(id=order.users_id)
@@ -59,7 +70,6 @@ def order_detail(request):
         ua = request.META.get("HTTP_USER_AGENT")
         mobile = judge_pc_or_mobile(ua)
         if mobile:
-
             return render(request, 'maneu_order/order_detail_phone.html', {'maneu_order': order, 'users': users, 'guess': guess,
                                                                         'maneu_store': json.loads(store.content),
                                                                         'visionsolutions': json.loads(visionsolutions.content),
@@ -78,10 +88,8 @@ def order_detail(request):
 def order_search(request):
     if request.method == 'POST':
         """查找指定订单"""
-        orderlist = service.find_ManeuOrderV2_search(date=request.POST.get('date'),
-                                                     text=request.POST.get('text'),
-                                                     users_id=request.session.get('id'))
-        return render(request, 'maneu_order/order_list.html', {'orderlist': orderlist})
+        orderlist = service.ManeuOrderV2_Search(text=request.POST.get('text'), users_id=request.session.get('id'))
+        return render(request, 'maneu_order/order_search.html', {'orderlist': orderlist})
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
@@ -100,7 +108,6 @@ def order_insert(request):
                                             guess_id=ManeuGuess_id)
         ManeuStore_id = service.ManeuStore_insert(order_id=order.id, content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(order_id=order.id, content=request.POST.get('Vision_Solutions'))
-
         if order:
             request.session['order_id'] = str(order.id)
             return HttpResponseRedirect(reverse('maneu_order:order_detail'))
@@ -125,9 +132,7 @@ def order_update(request):
             store = service.find_store_id(id=order.store_id)
             # visionsolutions = service.ManeuVisionSolutions_id(id=order.visionsolutions_id)
             # subjectiverefraction = service.ManeuVisionSolutions_orderID(id=order.subjectiverefraction_id)
-            return render(request, 'maneu_order/order_update.html', {'maneu_order': order,
-                                                                     'users': users,
-                                                                     'guess': guess,
+            return render(request, 'maneu_order/order_update.html', {'maneu_order': order, 'users': users, 'guess': guess,
                                                                      # 'maneu_store': json.loads(store.content),
                                                                      })
         if request.method == 'POST':
@@ -142,5 +147,4 @@ def order_update(request):
             guess_content = json.loads(request.POST.get('Guess_information'))
             service.ManeuOrderV2_update(order_id=order.id,name=guess_content['guess_name'],phone=guess_content['guess_phone'], )
             return HttpResponseRedirect(reverse('maneu_order:order_detail'))
-
     return render(request, 'maneu/error.html', {'msg': '参数错误'})

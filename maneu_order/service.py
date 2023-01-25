@@ -18,6 +18,14 @@ def ManeuOrderV2_all(users_id=''):
     return ManeuOrderV2.objects.filter(users_id=users_id).order_by('-time').all()
 
 
+def ManeuOrderV2_today(users_id='', time=''):
+    """
+    全部订单
+    """
+    return ManeuOrderV2.objects.filter(users_id=users_id, time=time).order_by('-time').all()
+
+
+
 def ManeuOrderV2_id(order_id='', users_id=''):
     """
     查找指定订单
@@ -94,15 +102,8 @@ def ManeuUsers_id(id=''):
     return ManeuUsers.objects.filter(id=id).first()
 
 
-def find_ManeuOrderV2_search(date='', text='', users_id=''):
-    if date and text:
-        return ManeuOrderV2.objects.filter(Q(name=text) | Q(phone=text), Q(time__gt=date),
-                                           Q(users_id=users_id)).order_by('-time').all()
-    if date != '' and text == '':
-        return ManeuOrderV2.objects.filter(Q(time__gt=date), Q(users_id=users_id)).order_by('-time').all()
-    if date == '' and text != '':
+def ManeuOrderV2_Search(text='', users_id=''):
         return ManeuOrderV2.objects.filter(Q(name=text) | Q(phone=text, users_id=users_id)).order_by('-time').all()
-    return None
 
 
 def find_ManeuOrderV2_search_v1(date='', text='', users_id=''):
