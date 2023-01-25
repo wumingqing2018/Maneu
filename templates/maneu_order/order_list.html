@@ -3,86 +3,90 @@
 {% block content %}
     <div class="container">
         <!--内容栏-->
-        <div class="col-12 row">
-            <h5 class="col-md-6 col-sm-12">零售订单管理系统</h5>
-            <form class="col-md-6 col-sm-12" method="post" action="{% url 'maneu_order:order_search' %}">
-                <div class="input-group input-group-sm">
-                    {% csrf_token %}
-                    <input type="text" name="text" class="form-control" placeholder="使用手机或姓名查询">
-                    <input type="submit" class="btn btn-primary" value="查询">
-                </div>
-            </form>
-            {% if orderlist %}
-                <div class="col-12 row">
-                    <div class="blue col-sm-3">
-                        <span>客户姓名</span>
-                    </div>
-                    <div class="blue col-sm-4">
-                        <span>客户电话</span>
-                    </div>
-                    <div class="blue col-sm-4">
-                        <span>录入时间</span>
-                    </div>
-                    <div class="blue col-sm-1">
-                        <form method='get' action="{% url 'maneu_order:order_insert' %}">
+        <table class="table">
+            <tr>
+                <td colspan="3" class="col-9">
+                    <h5>零售订单管理系统</h5>
+                </td>
+                <td class="col-3">
+                    <form method="post" action="{% url 'maneu_order:order_search' %}">
+                        <div class="input-group input-group-sm">
+                            {% csrf_token %}
+                            <input type="text" name="text" class="form-control" placeholder="使用手机或姓名查询">
+                            <input type="submit" class="btn btn-primary" value="查询">
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>客户姓名</span>
+                </td>
+                <td>
+                    <span>客户电话</span>
+                </td>
+                <td>
+                    <span>录入时间</span>
+                </td>
+               <td align="right">
+                    <form class="col-3" method='get' action="{% url 'maneu_order:order_insert' %}">
+                        <div class="input-group input-group-sm">
+                            <input type='submit' class='btn btn-warning col-sm-12' value='添加订单'>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            {% for order in orderlist %}
+                <tr>
+                    <td>
+                        <span>{{ order.name }}</span>
+                    </td>
+                    <td>
+                        <span>{{ order.phone }}</span>
+                    </td>
+                    <td>
+                        <span>{{ order.time }}</span>
+                    </td>
+                    <td align="right">
+                        <form class="col-3" method="post" action="{% url 'maneu_order:order_detail' %}">
+                            {% csrf_token %}
                             <div class="input-group input-group-sm">
-                                <input type='submit' class='btn btn-warning col-sm-12' value='添加订单'>
+                                <input type="hidden" name="order_id" value="{{ order.id }}">
+                                <input type="submit" class="btn btn-primary col-sm-12" value="查看订单">
                             </div>
                         </form>
-                    </div>
-                </div>
-                <hr>
-                {% for order in orderlist %}
-                    <div class="col-12 row">
-                        <div class="blue col-sm-3">
-                            <span class="col-12">{{ order.name }}</span>
-                        </div>
-                        <div class="blue col-sm-4">
-                            <span class="col-12">{{ order.phone }}</span>
-                        </div>
-                        <div class="blue col-sm-4">
-                            <span class="col-12">{{ order.time }}</span>
-                        </div>
-                        <div class="blue col-sm-1">
-                            <form method="post" action="{% url 'maneu_order:order_detail' %}">
-                                {% csrf_token %}
-                                <div class="input-group input-group-sm">
-                                    <input type="hidden" name="order_id" value="{{ order.id }}">
-                                    <input type="submit" class="btn btn-primary col-sm-12" value="查看订单">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <hr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <div class="blue">没有找到您的订单</div>
+                    </td>
                 </tr>
-            {% endif %}
-        </>
-        <div class="col-md-12 row">
-            <form class="col-md-1 col-sm-12" method="post" action="{% url 'maneu_order:order_list' %}">
-                <div class="input-group input-group-sm">
-                    {% csrf_token %}
-                    <input type="hidden" name="time" class="form-control" value="{{ down_day|safe }}">
-                    <input type="submit" class="btn btn-primary col-12" value="后一天">
-                </div>
-            </form>
-            <form class="col-md-10 col-sm-12" method="post" action="{% url 'maneu_order:order_list' %}">
-                <div class="input-group input-group-sm">
-                    {% csrf_token %}
-                    <input type="date" name="time" class="form-control" value="{{ time|safe }}">
-                    <input type="submit" class="btn btn-primary" value="查询">
-                </div>
-            </form>
-            <form class="col-md-1 col-sm-12" method="post" action="{% url 'maneu_order:order_list' %}">
-                <div class="input-group input-group-sm">
-                    {% csrf_token %}
-                    <input type="hidden" name="time" class="form-control" value="{{ up_day|safe }}">
-                    <input type="submit" class="btn btn-primary col-12" value="前一天">
-                </div>
-            </form>
-        </div>
+            {% endfor %}
+            <tr>
+                <td align="left">
+                    <form class="col-3" method="post" action="{% url 'maneu_order:order_list' %}">
+                        <div class="input-group input-group-sm">
+                            {% csrf_token %}
+                            <input type="hidden" name="time" class="form-control" value="{{ down_day|safe }}">
+                            <input type="submit" class="btn btn-primary col-12" value="后一天">
+                        </div>
+                    </form>
+                </td>
+                <td colspan="2" align="center">
+                    <form class="col-6" method="post" action="{% url 'maneu_order:order_list' %}">
+                        <div class="input-group input-group-sm">
+                            {% csrf_token %}
+                            <input type="date" name="time" class="form-control" value="{{ time|safe }}">
+                            <input type="submit" class="btn btn-primary" value="查询">
+                        </div>
+                    </form>
+                </td>
+                <td align="right">
+                    <form class="col-3" method="post" action="{% url 'maneu_order:order_list' %}">
+                        <div class="input-group input-group-sm">
+                            {% csrf_token %}
+                            <input type="hidden" name="time" class="form-control" value="{{ up_day|safe }}">
+                            <input type="submit" class="btn btn-primary col-12" value="前一天">
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        </table>
     </div>
 {% endblock %}

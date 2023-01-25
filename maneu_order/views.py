@@ -1,11 +1,12 @@
+import datetime
 import json
-from common import common
+
 from django.shortcuts import render, reverse, HttpResponseRedirect
 
+from common import common
 from common.checkMobile import judge_pc_or_mobile
 from maneu_alterSales import service as alter_server
 from maneu_order import service
-import datetime
 
 
 def order_list(request):
@@ -18,7 +19,6 @@ def order_list(request):
         date = datetime.datetime.strptime(time, '%Y-%m-%d')
         down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
         up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-
     else:
         time = common.today()
         date = datetime.datetime.strptime(time, '%Y-%m-%d')
