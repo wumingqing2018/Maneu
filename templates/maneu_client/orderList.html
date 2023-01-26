@@ -64,15 +64,19 @@
                     <td colspan="4" class="blue">没有找到您的订单</td>
                 </tr>
             {% endif %}
-        <tr>
-            <td colspan="4" align="right">
-                <form method="POST" action="{% url 'maneu_client:index' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="guess_id" value="{{ guess_id }}">
-                    <input type="submit" class="btn btn-small btn-primary" value="客户信息">
-                </form>
-            </td>
-        </tr>
+            <tr>
+                                <td colspan="3" align="right">
+                                </td>
+                <td colspan="1" align="right">
+                    <form method="post" action="{% url 'maneu_client:detail' %}">
+                        {% csrf_token %}
+                        <div class="input-group input-group-sm">
+                            <input type="hidden" name="id" value="{{ guess_id }}">
+                            <input type="submit" class="btn btn-primary col-sm-12" value="客户信息">
+                        </div>
+                    </form>
+                </td>
+            </tr>
         </table>
     </div>
 {% endblock %}
