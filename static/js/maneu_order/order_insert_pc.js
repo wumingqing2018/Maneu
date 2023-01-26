@@ -13,7 +13,10 @@ $(document).ready(function () {
             '</div>\n');
     });
     $('#DeleteTextBox').click(function (e) {
-        $("#Product_Orders_TABLE>div").last().remove()
+        if (InputCount >1){
+            InputCount = InputCount-1;
+            $("#Product_Orders_TABLE>div").last().remove()
+        }
     })
     $('#insert').click(function () {
         Product_Orders_json = $('#Product_Orders').serializeJsonStr();

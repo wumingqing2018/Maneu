@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container">
         <!--内容栏-->
-        <table class="table">
+        <table class="table col-12">
             <tr>
                 <td colspan="3" class="col-9">
                     <h5>零售订单管理系统</h5>
@@ -28,10 +28,10 @@
                 <td>
                     <span>录入时间</span>
                 </td>
-               <td align="right">
-                    <form class="col-3" method='get' action="{% url 'maneu_order:order_insert' %}">
+                <td align="right">
+                    <form class="col-3" method="get" action="{% url 'maneu_order:order_insert' %}">
                         <div class="input-group input-group-sm">
-                            <input type='submit' class='btn btn-warning col-sm-12' value='添加订单'>
+                            <input type='submit' class='btn btn-warning' value='添加订单'>
                         </div>
                     </form>
                 </td>
@@ -48,7 +48,7 @@
                         <span>{{ order.time }}</span>
                     </td>
                     <td align="right">
-                        <form class="col-3" method="post" action="{% url 'maneu_order:order_detail' %}">
+                        <form class="col-4" method="post" action="{% url 'maneu_order:order_detail' %}">
                             {% csrf_token %}
                             <div class="input-group input-group-sm">
                                 <input type="hidden" name="order_id" value="{{ order.id }}">
@@ -64,12 +64,12 @@
                         <div class="input-group input-group-sm">
                             {% csrf_token %}
                             <input type="hidden" name="time" class="form-control" value="{{ down_day|safe }}">
-                            <input type="submit" class="btn btn-primary col-12" value="后一天">
+                            <input type="submit" class="btn btn-primary" value="{{ down_day|safe }}">
                         </div>
                     </form>
                 </td>
                 <td colspan="2" align="center">
-                    <form class="col-6" method="post" action="{% url 'maneu_order:order_list' %}">
+                    <form class="col-md-6 col-xs-12" method="post" action="{% url 'maneu_order:order_list' %}">
                         <div class="input-group input-group-sm">
                             {% csrf_token %}
                             <input type="date" name="time" class="form-control" value="{{ time|safe }}">
@@ -78,11 +78,11 @@
                     </form>
                 </td>
                 <td align="right">
-                    <form class="col-3" method="post" action="{% url 'maneu_order:order_list' %}">
+                    <form class="col-4" method="post" action="{% url 'maneu_order:order_list' %}">
                         <div class="input-group input-group-sm">
                             {% csrf_token %}
                             <input type="hidden" name="time" class="form-control" value="{{ up_day|safe }}">
-                            <input type="submit" class="btn btn-primary col-12" value="前一天">
+                            <input type="submit" class="btn btn-primary" value="{{ up_day|safe }}">
                         </div>
                     </form>
                 </td>
