@@ -21,14 +21,56 @@
         </form>
         <hr>
         <div class="col-md-12">
-            <button type="button" class="col-12 btn btn-small btn-primary" id="Vision_Solutions_showbutton">显示视力解决方案</button>
-            <button type="button" class="col-12 btn btn-small btn-primary" id="Vision_Solutions_hidebutton" style="display: none">隐藏视力解决方案</button>
+            <button type="button" class="col-12 btn btn-small btn-warning" id="Vision_Solutions_showbutton">显示视力解决方案</button>
+            <button type="button" class="col-12 btn btn-small btn-warning" id="Vision_Solutions_hidebutton" style="display: none">隐藏视力解决方案</button>
         </div>
         <form class="vertical2 Vision_Solutions" id="Vision_Solutions" style="display: none">
+            <hr>
             <div class="col-12 row">
                 <span class="col-3"></span>
                 <span class="col-5" style="text-align: center">左眼</span>
                 <span class="col-4" style="text-align: center">右眼</span>
+            </div>
+            <div class="input-group input-group-sm mb-2">
+                <span class="input-group-text col-3">裸眼视力</span>
+                <input autocomplete="off" type="text" name="OD_VA" list="OD_VA" class="form-control">
+                <datalist id="OD_VA">
+                    <option>0.0</option>
+                    <option>0.1</option>
+                    <option>0.2</option>
+                    <option>0.3</option>
+                    <option>0.4</option>
+                    <option>0.5</option>
+                    <option>0.6</option>
+                    <option>0.7</option>
+                    <option>0.8</option>
+                    <option>0.9</option>
+                    <option>1.0</option>
+                    <option>1.1</option>
+                    <option>1.2</option>
+                    <option>1.3</option>
+                    <option>1.4</option>
+                    <option>1.5</option>
+                </datalist>
+                <input autocomplete="off" type="text" name="OS_VA" list="OS_VA" class="form-control">
+                <datalist id="OS_VA">
+                    <option>0.0</option>
+                    <option>0.1</option>
+                    <option>0.2</option>
+                    <option>0.3</option>
+                    <option>0.4</option>
+                    <option>0.5</option>
+                    <option>0.6</option>
+                    <option>0.7</option>
+                    <option>0.8</option>
+                    <option>0.9</option>
+                    <option>1.0</option>
+                    <option>1.1</option>
+                    <option>1.2</option>
+                    <option>1.3</option>
+                    <option>1.4</option>
+                    <option>1.5</option>
+                </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
                 <span class="input-group-text col-3">球镜</span>
@@ -646,35 +688,41 @@
                 <span class="input-group-text col-3">矫正视力</span>
                 <input autocomplete="off" type="text" name="OD_BCVA" list="OD_BCVA" class="form-control">
                 <datalist id="OD_BCVA">
-                    <option>4.0</option>
-                    <option>4.1</option>
-                    <option>4.2</option>
-                    <option>4.3</option>
-                    <option>4.4</option>
-                    <option>4.5</option>
-                    <option>4.6</option>
-                    <option>4.7</option>
-                    <option>4.8</option>
-                    <option>4.9</option>
-                    <option>5.0</option>
-                    <option>5.1</option>
-                    <option>5.2</option>
+                    <option>0.0</option>
+                    <option>0.1</option>
+                    <option>0.2</option>
+                    <option>0.3</option>
+                    <option>0.4</option>
+                    <option>0.5</option>
+                    <option>0.6</option>
+                    <option>0.7</option>
+                    <option>0.8</option>
+                    <option>0.9</option>
+                    <option>1.0</option>
+                    <option>1.1</option>
+                    <option>1.2</option>
+                    <option>1.3</option>
+                    <option>1.4</option>
+                    <option>1.5</option>
                 </datalist>
                 <input autocomplete="off" type="text" name="OS_BCVA" list="OS_BCVA" class="form-control">
                 <datalist id="OS_BCVA">
-                    <option>4.0</option>
-                    <option>4.1</option>
-                    <option>4.2</option>
-                    <option>4.3</option>
-                    <option>4.4</option>
-                    <option>4.5</option>
-                    <option>4.6</option>
-                    <option>4.7</option>
-                    <option>4.8</option>
-                    <option>4.9</option>
-                    <option>5.0</option>
-                    <option>5.1</option>
-                    <option>5.2</option>
+                    <option>0.0</option>
+                    <option>0.1</option>
+                    <option>0.2</option>
+                    <option>0.3</option>
+                    <option>0.4</option>
+                    <option>0.5</option>
+                    <option>0.6</option>
+                    <option>0.7</option>
+                    <option>0.8</option>
+                    <option>0.9</option>
+                    <option>1.0</option>
+                    <option>1.1</option>
+                    <option>1.2</option>
+                    <option>1.3</option>
+                    <option>1.4</option>
+                    <option>1.5</option>
                 </datalist>
             </div>
             <div class="input-group input-group-sm mb-2">
@@ -780,19 +828,23 @@
             </div>
         </form>
         <hr>
-                    <div class="col-md-1">
-                <div class="input-group input-group-sm mb-2">
-                    <button type="button" class="btn btn-primary col-md-12" id="AddMoreTextBox">添加产品信息</button>
-                </div>
+        <div class="col-12 row">
+            <div class="col-6 input-group input-group-sm mb-2">
+                <button type="button" class="btn btn-primary col-md-12" id="AddMoreTextBox">添加产品信息</button>
             </div>
-
-        <form class="vertical col-12" id="Product_Orders">
-            <div class="input-group input-group-sm mb-2">
-                <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 12%" placeholder="类别">
-                <input autocomplete="off" type="text" name="arg11" class="form-control" style="width: 12%" placeholder="品牌">
-                <input autocomplete="off" type="text" name="arg12" class="form-control" style="width: 12%" placeholder="型号">
-                <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 52%" placeholder="参数">
-                <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 12%" placeholder="价格">
+            <div class="col-6 input-group input-group-sm mb-2">
+                <button type="button" class="btn btn-warning col-md-12" id="DeleteTextBox">删除产品信息</button>
+            </div>
+        </div>
+        <form class="vertical col-12" id="Product_Orders ">
+            <div class="col-md-9 row" id="Product_Orders_TABLE">
+                <div class="input-group input-group-sm mb-2">
+                    <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 12%" placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg11" class="form-control" style="width: 12%" placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg12" class="form-control" style="width: 12%" placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 52%" placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 12%" placeholder="价格">
+                </div>
             </div>
             <div class="input-group input-group-sm mb-2">
                 <span class="input-group-text col-3">备注</span>
