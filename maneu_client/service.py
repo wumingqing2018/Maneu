@@ -32,6 +32,10 @@ def find_guess_id(id=''):
     return ManeuGuess.objects.filter(id=id).first()
 
 
+def ManeuGuess_phone(phone=''):
+    return ManeuGuess.objects.filter(phone=phone).first()
+
+
 def ManeuGuess_insert(content='', subjective_id='', user_id=''):
     try:
         contents = json.loads(content)

@@ -44,6 +44,36 @@ def detail(request):
         return render(request, 'maneu_client/detail_pc.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction, 'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'], 'list_l': subjectiverefraction['OS_AL']})
 
 
+def detail_phone(request):
+    guess = service.ManeuGuess_phone(phone=request.POST.get('phone'))
+    users = service.find_users_id(id=request.session.get('id'))
+    Subjective = service.find_subjectiverefraction_id(id=guess.subjective_id)
+    if Subjective:
+        subjectiverefraction = json.loads(Subjective.content)
+    else:
+        subjectiverefraction={}
+        subjectiverefraction['OD_AL'] = ''
+        subjectiverefraction['OS_AL'] = ''
+
+    try:
+        clientAge = int(guess.age)
+        if clientAge > 20:
+            stand_ax = '24.0'
+        else:
+            data = ['16.2', '17.0', '17.7', '18.2', '18.7', '19.1', '19.6', '20.0', '20.3', '20.7', '21.1', '21.6',
+                   '22.0', '22.4', '22.7', '23.0', '23.3', '23.5', '23.7', '23.8', '24.0', '24.0', ]
+            stand_ax = data[clientAge-1]
+    except:
+        stand_ax = '24.0'
+
+    ua = request.META.get("HTTP_USER_AGENT")
+    mobile = judge_pc_or_mobile(ua)
+    if mobile:
+        return render(request, 'maneu_client/detail_phone.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction, 'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'], 'list_l': subjectiverefraction['OS_AL']})
+    else:
+        return render(request, 'maneu_client/detail_pc.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction, 'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'], 'list_l': subjectiverefraction['OS_AL']})
+
+
 def insert(request):
     if request.method == 'POST':
         ManeuSubjectiveRefraction = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
