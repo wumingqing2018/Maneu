@@ -17,8 +17,7 @@ def index(request):
             print(service.guess_update_subjective_id(subjective_id=order.subjectiverefraction_id, id=order.guess_id))
 
         list = service.find_guess_list(user_id=request.session.get('id'))
-        return render(request, 'maneu_client/index.html', {'orderlist':list})
-
+        return render(request, 'maneu_client/index.html', {'orderlist': list})
 
 
 def detail(request):
@@ -74,7 +73,6 @@ def update(request):
     return HttpResponseRedirect(reverse('maneu_client:index'))
 
 
-
 def search(request):
     if request.method =='POST':
         """查找指定订单"""
@@ -84,3 +82,12 @@ def search(request):
         return render(request, 'maneu_client/index.html', {'orderlist': orderlist})
     else:
         return HttpResponseRedirect(reverse('maneu_client:index'))
+
+
+def order_list(request):
+    if request.method == 'POST':
+        guess_id = request.POST.get('id')
+        guess_phone = request.POST.get('phone')
+        orderlist = service.ManeuOrderV2_phone(phone=guess_phone)
+        return render(request, 'maneu_client/orderList.html', {'orderlist': orderlist, 'guess_id': guess_id})
+    return HttpResponseRedirect(reverse('maneu_client:index'))

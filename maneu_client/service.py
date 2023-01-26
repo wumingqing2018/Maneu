@@ -81,3 +81,7 @@ def update_guess_id(id='', content=''):
 
 def update_subjective_id(id='', content=''):
     return ManeuSubjectiveRefraction.objects.filter(id=id).update(content=content)
+
+
+def ManeuOrderV2_phone(phone=''):
+    return ManeuOrderV2.objects.filter(phone=phone).all()
