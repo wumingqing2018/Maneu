@@ -31,7 +31,7 @@
                 <td align="right">
                     <form class="col-5" method="get" action="{% url 'maneu_order:order_insert' %}">
                         <div class="input-group input-group-sm">
-                           <input type="submit" class="btn btn-warning col-sm-12" value='添加订单'>
+                           <input type="submit" class="btn btn-warning col-md-12" value='添加订单'>
                         </div>
                     </form>
                 </td>
@@ -52,7 +52,7 @@
                             {% csrf_token %}
                             <div class="input-group input-group-sm">
                                 <input type="hidden" name="order_id" value="{{ order.id }}">
-                                <input type="submit" class="btn btn-primary col-sm-12" value="查看订单">
+                                <input type="submit" class="btn btn-primary col-md-12" value="查看订单">
                             </div>
                         </form>
                     </td>
@@ -64,12 +64,12 @@
                         <div class="input-group input-group-sm">
                             {% csrf_token %}
                             <input type="hidden" name="time" class="form-control" value="{{ down_day|safe }}">
-                            <input type="submit" class="btn btn-primary col-sm-12" value="{{ down_day|safe }}">
+                            <input type="submit" class="btn btn-primary col-md-12" value="{{ down_day|safe }}">
                         </div>
                     </form>
                 </td>
                 <td colspan="2" align="center">
-                    <form class="col-md-6 col-xs-12" method="post" action="{% url 'maneu_order:order_list' %}">
+                    <form class="col-md-6" method="post" action="{% url 'maneu_order:order_list' %}">
                         <div class="input-group input-group-sm">
                             {% csrf_token %}
                             <input type="date" name="time" class="form-control" value="{{ time|safe }}">
@@ -82,7 +82,7 @@
                         <div class="input-group input-group-sm">
                             {% csrf_token %}
                             <input type="hidden" name="time" class="form-control" value="{{ up_day|safe }}">
-                            <input type="submit" class="btn btn-primary col-sm-12" value="{{ up_day|safe }}">
+                            <input type="submit" class="btn btn-primary col-md-12" value="{{ up_day|safe }}">
                         </div>
                     </form>
                 </td>
