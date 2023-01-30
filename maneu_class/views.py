@@ -4,7 +4,8 @@ from maneu_class import service
 
 
 def class_list(request):
-    return render(request, 'maneu_class/index.html', {'classList': service.class_list(user_id=request.session.get('id'))})
+    class_List = service.class_list(user_id=request.session.get('id'))
+    return render(request, 'maneu_class/index.html', {'classList': class_List})
 
 
 def class_insert(request):

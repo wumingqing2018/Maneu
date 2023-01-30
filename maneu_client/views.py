@@ -1,4 +1,6 @@
 import json
+import datetime
+from common import common
 
 from django.shortcuts import render, HttpResponseRedirect, reverse
 
@@ -7,23 +9,36 @@ from maneu_client import service
 
 
 def index(request):
-    list = service.find_guess_list(user_id=request.session.get('id'))
+    time = request.GET.get('time')
+    if time == None:
+        time = common.today()
+    list = service.guess_time(time=time, user_id=request.session.get('id'))
+    date = datetime.datetime.strptime(time, '%Y-%m-%d')
+    down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
+    up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+    return render(request, 'maneu_client/index.html', {'orderlist': list, 'time': time, 'down_day': down_day, 'up_day': up_day})
+
+    list = service.guess_all(user_id=request.session.get('id'))
     if list:
-        return render(request, 'maneu_client/index.html', {'orderlist': list})
+        time = common.today()
+        date = datetime.datetime.strptime(time, '%Y-%m-%d')
+        down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
+        up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+        return render(request, 'maneu_client/index.html', {'orderlist': list, 'time': time, 'down_day': down_day, 'up_day': up_day})
     else:
-        orderlist = service.find_order_all(users_id=request.session.get('id'))  # 查找今日订单
+        orderlist = service.order_all(users_id=request.session.get('id'))  # 查找今日订单
         for order in orderlist:
-            print(service.guess_update_userIdandId(user_id=order.users_id, id=order.guess_id))
+            print(service.guess_update_user_id(user_id=order.users_id, id=order.guess_id))
             print(service.guess_update_subjective_id(subjective_id=order.subjectiverefraction_id, id=order.guess_id))
 
-        list = service.find_guess_list(user_id=request.session.get('id'))
+        list = service.guess_all(user_id=request.session.get('id'))
         return render(request, 'maneu_client/index.html', {'orderlist': list})
 
 
 def detail(request):
-    guess = service.find_guess_id(id=request.POST.get('id'))
-    users = service.find_users_id(id=request.session.get('id'))
-    Subjective = service.find_subjectiverefraction_id(id=guess.subjective_id)
+    guess = service.guess_id(id=request.POST.get('id'))
+    users = service.users_id(id=request.session.get('id'))
+    Subjective = service.subjectiverefraction_id(id=guess.subjective_id)
     subjectiverefraction = json.loads(Subjective.content)
     try:
         clientAge = int(guess.age)
@@ -31,7 +46,7 @@ def detail(request):
             stand_ax = '24.0'
         else:
             data = ['16.2', '17.0', '17.7', '18.2', '18.7', '19.1', '19.6', '20.0', '20.3', '20.7', '21.1', '21.6',
-                   '22.0', '22.4', '22.7', '23.0', '23.3', '23.5', '23.7', '23.8', '24.0', '24.0', ]
+                    '22.0', '22.4', '22.7', '23.0', '23.3', '23.5', '23.7', '23.8', '24.0', '24.0', ]
             stand_ax = data[clientAge-1]
     except:
         stand_ax = '24.0'
@@ -45,9 +60,9 @@ def detail(request):
 
 
 def detail_phone(request):
-    guess = service.ManeuGuess_phone(phone=request.POST.get('phone'))
-    users = service.find_users_id(id=request.session.get('id'))
-    Subjective = service.find_subjectiverefraction_id(id=guess.subjective_id)
+    guess = service.guess_phone(phone=request.POST.get('phone'))
+    users = service.users_id(id=request.session.get('id'))
+    Subjective = service.subjectiverefraction_id(id=guess.subjective_id)
     if Subjective:
         subjectiverefraction = json.loads(Subjective.content)
     else:
@@ -61,7 +76,7 @@ def detail_phone(request):
             stand_ax = '24.0'
         else:
             data = ['16.2', '17.0', '17.7', '18.2', '18.7', '19.1', '19.6', '20.0', '20.3', '20.7', '21.1', '21.6',
-                   '22.0', '22.4', '22.7', '23.0', '23.3', '23.5', '23.7', '23.8', '24.0', '24.0', ]
+                    '22.0', '22.4', '22.7', '23.0', '23.3', '23.5', '23.7', '23.8', '24.0', '24.0', ]
             stand_ax = data[clientAge-1]
     except:
         stand_ax = '24.0'
@@ -76,10 +91,10 @@ def detail_phone(request):
 
 def insert(request):
     if request.method == 'POST':
-        ManeuSubjectiveRefraction = service.ManeuSubjectiveRefraction_insert(content=request.POST.get('Subjective_refraction'))
-        ManeuGuess_id = service.ManeuGuess_insert(content=request.POST.get('Guess_information'),
-                                                  subjective_id=ManeuSubjectiveRefraction.id,
-                                                  user_id=request.session.get('id'))
+        ManeuSubjectiveRefraction = service.subjectiverefraction_insert(content=request.POST.get('Subjective_refraction'))
+        ManeuGuess_id = service.guess_insert(content=request.POST.get('Guess_information'),
+                                             subjective_id=ManeuSubjectiveRefraction.id,
+                                             user_id=request.session.get('id'))
         return HttpResponseRedirect(reverse('maneu_client:index'))
     return render(request, 'maneu_client/insert.html')
 
@@ -92,24 +107,23 @@ def delete(request):
 
 def update(request):
     if request.method == 'GET':
-        guess = service.find_guess_id(id=request.GET.get('id'))
-        Subjective = service.find_subjectiverefraction_id(id=guess.subjective_id)
+        guess = service.guess_id(id=request.GET.get('id'))
+        Subjective = service.subjectiverefraction_id(id=guess.subjective_id)
         subjectiverefraction = json.loads(Subjective.content)
         return render(request, 'maneu_client/update.html', {'guess': guess, 'Subjective': subjectiverefraction})
     if request.method == 'POST':
-        id = service.find_guess_id(id=request.POST.get('id')).subjective_id
-        guess = service.update_guess_id(id=request.POST.get('id'), content=request.POST.get('Guess_information'))
-        Subjective = service.update_subjective_id(id=id, content=request.POST.get('Subjective_refraction'))
+        id = service.guess_id(id=request.POST.get('id')).subjective_id
+        guess = service.guess_update(id=request.POST.get('id'), content=request.POST.get('Guess_information'))
+        Subjective = service.subjective_update(id=id, content=request.POST.get('Subjective_refraction'))
     return HttpResponseRedirect(reverse('maneu_client:index'))
 
 
 def search(request):
-    if request.method =='POST':
-        """查找指定订单"""
-        orderlist = service.find_ManeuGuess_search(date=request.POST.get('date'),
-                                                   text=request.POST.get('text'),
-                                                   users_id=request.session.get('id'))
-        return render(request, 'maneu_client/index.html', {'orderlist': orderlist})
+    """查找指定订单"""
+    if request.method == 'POST':
+        orderlist = service.guess_search(text=request.POST.get('text'), users_id=request.session.get('id'))
+        print(orderlist)
+        return render(request, 'maneu_client/search.html', {'orderlist': orderlist})
     else:
         return HttpResponseRedirect(reverse('maneu_client:index'))
 
@@ -118,6 +132,6 @@ def order_list(request):
     if request.method == 'POST':
         guess_id = request.POST.get('id')
         guess_phone = request.POST.get('phone')
-        orderlist = service.ManeuOrderV2_phone(phone=guess_phone)
+        orderlist = service.order_phone(phone=guess_phone)
         return render(request, 'maneu_client/orderList.html', {'orderlist': orderlist, 'guess_id': guess_id})
     return HttpResponseRedirect(reverse('maneu_client:index'))
