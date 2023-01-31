@@ -5,13 +5,13 @@ from maneu_users import serivce
 
 
 def user_list(request):
-    return render(request, 'maneu_users/user_list.html', {'user_list': serivce.find_user_all()})
+    return render(request, 'maneu_users/index.html', {'user_list': serivce.find_user_all()})
 
 
 def user_detail(request):
     user_id = request.session.get('id')
     if user_id:
-        return render(request, 'maneu_users/user_detail.html', {'maneu_users': serivce.find_user(user_id)})
+        return render(request, 'maneu_users/detail.html', {'maneu_users': serivce.find_user(user_id)})
     else:
         return render(request, 'maneu/error.html', {'msg': "请求出错"})
 
@@ -24,7 +24,7 @@ def user_insert(request):
                                          phone=request.POST['phone'], email=request.POST['email'],
                                          remark=request.POST['remark'])
             return HttpResponseRedirect(reverse('login'))
-    return render(request, 'maneu_users/user_insert.html')
+    return render(request, 'maneu_users/insert.html')
 
 
 def user_updata(request):
@@ -36,10 +36,9 @@ def user_updata(request):
                                      nickname=request.POST['nickname'], password=request.POST['password'],
                                      phone=request.POST['phone'], email=request.POST['email'],
                                      remark=request.POST['remark'])
-        print(updata)
         if updata:
             msg = '密码验证错误，请在密码验证输入正确的登录密码'
         else:
             return HttpResponseRedirect(reverse('maneu_users:user_detail'))
     user = serivce.find_user(user_id)
-    return render(request, 'maneu_users/user_updata.html', {'maneu_users': user, 'msg': msg})
+    return render(request, 'maneu_users/updata.html', {'maneu_users': user, 'msg': msg})

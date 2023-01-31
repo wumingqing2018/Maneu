@@ -36,12 +36,8 @@ def guess_phone(phone=''):
     return ManeuGuess.objects.filter(phone=phone).first()
 
 
-def guess_insert(content='', subjective_id='', user_id=''):
-    try:
-        contents = json.loads(content)
-        return ManeuGuess.objects.create(user_id=user_id, subjective_id=subjective_id, name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
-    except BaseException as msg:
-        return msg
+def guess_insert(contents='', subjective_id='', user_id=''):
+    return ManeuGuess.objects.create(user_id=user_id, subjective_id=subjective_id, name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
 
 
 def subjectiverefraction_insert(content=''):
@@ -70,9 +66,9 @@ def guess_search(text='', users_id=''):
 def guess_update(id='', content=''):
     contents = json.loads(content)
     return ManeuGuess.objects.filter(id=id).update(name=contents['guess_name'],
-                                     phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'],
-                                     ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'],
-                                     remark=contents['remark'])
+                                                   phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'],
+                                                   ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'],
+                                                   remark=contents['remark'])
 
 
 def subjective_update(id='', content=''):

@@ -1,38 +1,24 @@
-import json
 import datetime
-from common import common
+import json
 
 from django.shortcuts import render, HttpResponseRedirect, reverse
 
+from common import common
 from common.checkMobile import judge_pc_or_mobile
 from maneu_client import service
 
 
 def index(request):
-    time = request.GET.get('time')
-    if time == None:
+    if request.GET.get('time'):
+        time = request.GET.get('time')
+    else:
         time = common.today()
     list = service.guess_time(time=time, user_id=request.session.get('id'))
     date = datetime.datetime.strptime(time, '%Y-%m-%d')
     down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
     up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-    return render(request, 'maneu_client/index.html', {'orderlist': list, 'time': time, 'down_day': down_day, 'up_day': up_day})
-
-    list = service.guess_all(user_id=request.session.get('id'))
-    if list:
-        time = common.today()
-        date = datetime.datetime.strptime(time, '%Y-%m-%d')
-        down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
-        up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-        return render(request, 'maneu_client/index.html', {'orderlist': list, 'time': time, 'down_day': down_day, 'up_day': up_day})
-    else:
-        orderlist = service.order_all(users_id=request.session.get('id'))  # 查找今日订单
-        for order in orderlist:
-            print(service.guess_update_user_id(user_id=order.users_id, id=order.guess_id))
-            print(service.guess_update_subjective_id(subjective_id=order.subjectiverefraction_id, id=order.guess_id))
-
-        list = service.guess_all(user_id=request.session.get('id'))
-        return render(request, 'maneu_client/index.html', {'orderlist': list})
+    return render(request, 'maneu_client/index.html',
+                  {'orderlist': list, 'time': time, 'down_day': down_day, 'up_day': up_day})
 
 
 def detail(request):
@@ -47,16 +33,22 @@ def detail(request):
         else:
             data = ['16.2', '17.0', '17.7', '18.2', '18.7', '19.1', '19.6', '20.0', '20.3', '20.7', '21.1', '21.6',
                     '22.0', '22.4', '22.7', '23.0', '23.3', '23.5', '23.7', '23.8', '24.0', '24.0', ]
-            stand_ax = data[clientAge-1]
+            stand_ax = data[clientAge - 1]
     except:
         stand_ax = '24.0'
 
     ua = request.META.get("HTTP_USER_AGENT")
     mobile = judge_pc_or_mobile(ua)
     if mobile:
-        return render(request, 'maneu_client/detail_phone.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction, 'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'], 'list_l': subjectiverefraction['OS_AL']})
+        return render(request, 'maneu_client/detail_phone.html',
+                      {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction,
+                       'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'],
+                       'list_l': subjectiverefraction['OS_AL']})
     else:
-        return render(request, 'maneu_client/detail_pc.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction, 'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'], 'list_l': subjectiverefraction['OS_AL']})
+        return render(request, 'maneu_client/detail_pc.html',
+                      {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction,
+                       'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'],
+                       'list_l': subjectiverefraction['OS_AL']})
 
 
 def detail_phone(request):
@@ -66,7 +58,7 @@ def detail_phone(request):
     if Subjective:
         subjectiverefraction = json.loads(Subjective.content)
     else:
-        subjectiverefraction={}
+        subjectiverefraction = {}
         subjectiverefraction['OD_AL'] = ''
         subjectiverefraction['OS_AL'] = ''
 
@@ -77,22 +69,29 @@ def detail_phone(request):
         else:
             data = ['16.2', '17.0', '17.7', '18.2', '18.7', '19.1', '19.6', '20.0', '20.3', '20.7', '21.1', '21.6',
                     '22.0', '22.4', '22.7', '23.0', '23.3', '23.5', '23.7', '23.8', '24.0', '24.0', ]
-            stand_ax = data[clientAge-1]
+            stand_ax = data[clientAge - 1]
     except:
         stand_ax = '24.0'
 
     ua = request.META.get("HTTP_USER_AGENT")
     mobile = judge_pc_or_mobile(ua)
     if mobile:
-        return render(request, 'maneu_client/detail_phone.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction, 'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'], 'list_l': subjectiverefraction['OS_AL']})
+        return render(request, 'maneu_client/detail_phone.html',
+                      {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction,
+                       'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'],
+                       'list_l': subjectiverefraction['OS_AL']})
     else:
-        return render(request, 'maneu_client/detail_pc.html', {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction, 'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'], 'list_l': subjectiverefraction['OS_AL']})
+        return render(request, 'maneu_client/detail_pc.html',
+                      {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction,
+                       'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'],
+                       'list_l': subjectiverefraction['OS_AL']})
 
 
 def insert(request):
     if request.method == 'POST':
-        ManeuSubjectiveRefraction = service.subjectiverefraction_insert(content=request.POST.get('Subjective_refraction'))
-        ManeuGuess_id = service.guess_insert(content=request.POST.get('Guess_information'),
+        ManeuSubjectiveRefraction = service.subjectiverefraction_insert(
+            content=request.POST.get('Subjective_refraction'))
+        ManeuGuess_id = service.guess_insert(content=json.loads(request.POST.get('Guess_information')),
                                              subjective_id=ManeuSubjectiveRefraction.id,
                                              user_id=request.session.get('id'))
         return HttpResponseRedirect(reverse('maneu_client:index'))
