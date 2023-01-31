@@ -5,18 +5,18 @@ from maneu_alterSales import service
 
 
 # Create your views here.
-def alterSales_List(request):
+def list(request):
     order_id = request.session.get('order_id')
     if order_id:
         return render(request, 'maneu_afterSales/list.html', {'alterSalesList': service.ManeuAfterSales_list(order_id=order_id)})
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
-def alterSales_index(request):
+def index(request):
     return render(request, 'maneu_afterSales/index.html', {'alterSalesList': service.ManeuAfterSales_index()})
 
 
-def alterSales_content(request):
+def content(request):
     if request.method == 'POST':
         order_id = request.POST.get('order_id')
         ManeuAfterSales_list = service.ManeuAfterSales_list(order_id)
@@ -25,7 +25,7 @@ def alterSales_content(request):
         return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
-def alterSales_insert(request):
+def insert(request):
     if request.method == 'POST':
         order_id = request.POST.get('order_id')
         content = request.POST.get('content')
@@ -38,7 +38,7 @@ def alterSales_insert(request):
         return HttpResponseRedirect(reverse('index'))
 
 
-def alterSales_delete(request):
+def delete(request):
     if request.method == 'POST':
         insert = service.ManeuAfterSales_delete_id(id=request.POST.get('order_id'))
     return HttpResponseRedirect(reverse('maneu_alterSales:alterSalesList'))

@@ -58,8 +58,9 @@
                 </tr>
             {% endfor %}
             <tr>
-                <td colspan=4 align="right">
-                    <form CLASS="col-1" method="post" action="{% url 'maneu_client:index' %}">
+                <td colspan="3"></td>
+                <td colspan=1 align="right">
+                    <form CLASS="col-4" method="post" action="{% url 'maneu_client:index' %}">
                         {% csrf_token %}
                         <div class="input-group input-group-sm">
                             <input type="submit" class="btn btn-primary col-sm-12" value="返回列表">

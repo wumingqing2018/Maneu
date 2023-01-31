@@ -55,11 +55,11 @@ def order_detail(request):
     if order:
         users = service.ManeuUsers_id(id=order.users_id)
         guess = service.ManeuGuess_id(id=order.guess_id)
-        store = service.ManeuStore_OrderID(OrderID=order.id)
+        store = service.store_OrderID(OrderID=order.id)
         visionsolutions = service.ManeuVisionSolutions_orderID(order_id=order.id)
         if store==None:
             service.ManeuStore_update_orderID(orderID=order.id, id=order.store_id)
-            store = service.ManeuStore_OrderID(OrderID=order.id)
+            store = service.store_OrderID(OrderID=order.id)
         if visionsolutions==None:
             service.ManeuVisionSolutions_update_orderID(orderID=order.id, id=order.visionsolutions_id)
             visionsolutions = service.ManeuVisionSolutions_orderID(order_id=order.id)
@@ -95,7 +95,7 @@ def order_insert(request):
     if request.method == 'POST':
         order = json.loads(request.POST.get('order_json'))
         try:
-            ManeuGuess_id = service.find_ManeuGuess_byPhone(phone=order['phone']).id
+            ManeuGuess_id = service.guess_phone(phone=order['phone']).id
         except:
             ManeuGuess_id = ''
         order = service.ManeuOrderV2_insert(time=order['time'],
@@ -124,9 +124,9 @@ def order_update(request):
     if order_id and users_id:
         if request.method == 'GET':
             order = service.ManeuOrderV2_id(order_id=order_id, users_id=users_id)
-            users = service.find_users_id(id=order.users_id)
-            guess = service.find_guess_id(id=order.guess_id)
-            store = service.find_store_id(id=order.store_id)
+            users = service.users_id(id=order.users_id)
+            guess = service.guess_id(id=order.guess_id)
+            store = service.store_id(id=order.store_id)
             # visionsolutions = service.ManeuVisionSolutions_id(id=order.visionsolutions_id)
             # subjectiverefraction = service.ManeuVisionSolutions_orderID(id=order.subjectiverefraction_id)
             return render(request, 'maneu_order/update.html', {'maneu_order': order, 'users': users, 'guess': guess,
