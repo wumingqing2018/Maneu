@@ -35,27 +35,21 @@
                 <a class="nav-link" href="{% url 'maneu_datalogs:index' %}">数据可视化(开发中)</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">
-                    零售管理
-                </a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">零售管理</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{% url 'maneu_order:order_list' %}">订单列表</a>
                     <a class="dropdown-item" href="{% url 'maneu_order:order_insert' %}">添加订单</a>
                 </div>
             </li>
-            {#            <li class="nav-item dropdown">#}
-            {#                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">#}
-            {#                    批发订单#}
-            {#                </a>#}
-            {#                <div class="dropdown-menu">#}
-            {#                    <a class="dropdown-item" href="{% url 'maneu_batch:batch_list' %}">订单列表</a>#}
-            {#                    <a class="dropdown-item" href="{% url 'maneu_batch:batch_insert' %}">添加订单</a>#}
-            {#                </div>#}
-            {#            </li>#}
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">
-                    仓库管理
-                </a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">批发管理</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'maneu_batch:batch_list' %}">订单列表</a>
+                    <a class="dropdown-item" href="{% url 'maneu_batch:batch_insert' %}">添加订单</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">仓库管理</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{% url 'maneu_class:class_list' %}">订单列表</a>
                     <a class="dropdown-item" href="{% url 'maneu_class:class_insert' %}">添加订单</a>
