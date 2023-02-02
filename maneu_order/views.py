@@ -26,8 +26,27 @@ def order_list(request):
     return render(request, 'maneu_order/index.html', {'orderlist': orderlist, 'time': time, 'up_day': up_day, 'down_day': down_day})
 
 
+def order_delete_list(request):
+    """
+    订单列表功能
+    在session获取商家id 通过商家id查找订单列表
+    """
+    if request.GET.get('time'):
+        time = request.GET.get('time')
+    else:
+        time = common.today()
+    date = datetime.datetime.strptime(time, '%Y-%m-%d')
+    down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
+    up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+    orderlist = service.ManeuOrderV2_today(users_id=request.session.get('id'), time=time)  # 查找今日订单
+    return render(request, 'maneu_order/order_delete_list.html', {'orderlist': orderlist, 'time': time, 'up_day': up_day, 'down_day': down_day})
+
+
 def order_delete(request):
-    order_id = request.session.get('order_id')
+    try:
+        order_id = request.POST['order_id']
+    except:
+        order_id = request.session.get('order_id')
     users_id = request.session.get('id')
     order = service.ManeuOrderV2_id(order_id=order_id, users_id=users_id)
     if order:
@@ -69,14 +88,13 @@ def order_detail(request):
         mobile = judge_pc_or_mobile(ua)
         if mobile:
             return render(request, 'maneu_order/detail_phone.html', {'maneu_order': order, 'users': users, 'guess': guess,
-                                                                           'maneu_store': json.loads(store.content),
-                                                                           'visionsolutions': json.loads(visionsolutions.content),
+                                                                     'maneu_store': json.loads(store.content),
+                                                                     'visionsolutions': json.loads(visionsolutions.content),
                                                                      })
         else:
             return render(request, 'maneu_order/detail_pc.html', {'maneu_order': order, 'users': users, 'guess': guess,
-                                                                        'maneu_store': json.loads(store.content),
-                                                                        'visionsolutions': json.loads(visionsolutions.content),
-                                                                  # 'subjectiverefraction': json.loads(subjectiverefraction.content)
+                                                                  'maneu_store': json.loads(store.content),
+                                                                  'visionsolutions': json.loads(visionsolutions.content),
                                                                   })
     else:
         alter_server.ManeuAfterSales_delete_order_id(order_id=order_id)
@@ -99,11 +117,7 @@ def order_insert(request):
             ManeuGuess_id = service.guess_phone(phone=order['phone']).id
         except:
             ManeuGuess_id = ''
-        order = service.ManeuOrderV2_insert(time=order['time'],
-                                            name=order['name'],
-                                            phone=order['phone'],
-                                            users_id=request.session.get('id'),
-                                            guess_id=ManeuGuess_id)
+        order = service.ManeuOrderV2_insert(time=order['time'], name=order['name'], phone=order['phone'], users_id=request.session.get('id'), guess_id=ManeuGuess_id)
         ManeuStore_id = service.ManeuStore_insert(order_id=order.id, content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(order_id=order.id, content=request.POST.get('Vision_Solutions'))
         if order:

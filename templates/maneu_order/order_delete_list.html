@@ -48,11 +48,11 @@
                         <span>{{ order.time }}</span>
                     </td>
                     <td align="right">
-                        <form class="col-5" method="post" action="{% url 'maneu_order:order_detail' %}">
+                        <form class="col-5" method="post" action="{% url 'maneu_order:order_delete' %}">
                             {% csrf_token %}
                             <div class="input-group input-group-sm">
                                 <input type="hidden" name="order_id" value="{{ order.id }}">
-                                <input type="submit" class="btn btn-primary col-md-12" value="查看订单">
+                                <input type="submit" class="btn btn-danger col-md-12" value="删除订单">
                             </div>
                         </form>
                     </td>

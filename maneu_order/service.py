@@ -21,8 +21,7 @@ def ManeuOrderV2_today(users_id='', time=''):
     """
     全部订单
     """
-    return ManeuOrderV2.objects.filter(users_id=users_id, time=time).order_by('-time').all()
-
+    return ManeuOrderV2.objects.filter(users_id=users_id, time=time).order_by('time').all()
 
 
 def ManeuOrderV2_id(order_id='', users_id=''):
