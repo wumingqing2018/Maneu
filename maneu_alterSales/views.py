@@ -8,7 +8,7 @@ from maneu_alterSales import service
 def list(request):
     order_id = request.session.get('order_id')
     if order_id:
-        return render(request, 'maneu_afterSales/list.html', {'alterSalesList': service.ManeuAfterSales_list(order_id=order_id)})
+        return render(request, 'maneu_afterSales/list.html', {'alterSalesList': service.ManeuAfterSales_orderID(order_id=order_id)})
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 
 
@@ -19,7 +19,7 @@ def index(request):
 def content(request):
     if request.method == 'POST':
         order_id = request.POST.get('order_id')
-        ManeuAfterSales_list = service.ManeuAfterSales_list(order_id)
+        ManeuAfterSales_list = service.ManeuAfterSales_orderID(order_id)
         return render(request, 'maneu_afterSales/detail.html', {'alterSalesContent': ManeuAfterSales_list})
     else:
         return HttpResponseRedirect(reverse('maneu_order:order_list'))

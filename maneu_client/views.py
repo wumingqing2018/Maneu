@@ -6,6 +6,8 @@ from django.shortcuts import render, HttpResponseRedirect, reverse
 from common import common
 from common.checkMobile import judge_pc_or_mobile
 from maneu_client import service
+from maneu_order import service as orderService
+from maneu_users import serivce as usersService
 
 
 def index(request):
@@ -23,7 +25,7 @@ def index(request):
 
 def detail(request):
     guess = service.guess_id(id=request.POST.get('id'))
-    users = service.users_id(id=request.session.get('id'))
+    users = usersService.find_user(user_id=request.session.get('id'))
     Subjective = service.subjectiverefraction_id(id=guess.subjective_id)
     subjectiverefraction = json.loads(Subjective.content)
     try:
@@ -53,7 +55,7 @@ def detail(request):
 
 def detail_phone(request):
     guess = service.guess_phone(phone=request.POST.get('phone'))
-    users = service.users_id(id=request.session.get('id'))
+    users = usersService.find_user(user_id=request.session.get('id'))
     Subjective = service.subjectiverefraction_id(id=guess.subjective_id)
     if Subjective:
         subjectiverefraction = json.loads(Subjective.content)
@@ -131,6 +133,6 @@ def order_list(request):
     if request.method == 'POST':
         guess_id = request.POST.get('id')
         guess_phone = request.POST.get('phone')
-        orderlist = service.order_phone(phone=guess_phone)
+        orderlist = orderService.find_order_phone(phone=guess_phone)
         return render(request, 'maneu_client/orderList.html', {'orderlist': orderlist, 'guess_id': guess_id})
     return HttpResponseRedirect(reverse('maneu_client:index'))

@@ -7,6 +7,7 @@ from common import common
 from common.checkMobile import judge_pc_or_mobile
 from maneu_alterSales import service as alter_server
 from maneu_order import service
+from maneu_alterSales import service as alterSalesServivce
 
 
 def order_list(request):
@@ -33,7 +34,7 @@ def order_delete(request):
         store = service.ManeuStore_delete(id=order.store_id)
         visionsolutions = service.ManeuVisionSolutions_delete(id=order.visionsolutions_id)
         subjectiverefraction = service.ManeuSubjectiveRefraction_delete(id=order.subjectiverefraction_id)
-        afterSales = service.ManeuAfterSales_delete(order_id=order_id)
+        afterSales = alterSalesServivce.ManeuAfterSales_delete_order_id(order_id=order_id)
         order = service.ManeuOrderV2_delete(users_id=users_id, id=order_id)
     return HttpResponseRedirect(reverse('maneu_order:order_list'))
 

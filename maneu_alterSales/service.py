@@ -1,44 +1,20 @@
-from .models import ManeuAftersales
+from maneu_alterSales.models import ManeuAftersales
 
 
-def ManeuAfterSales_list(order_id=''):
-    try:
-        return ManeuAftersales.objects.filter(order_id=order_id).order_by('-time').all()
-    except BaseException as msg:
-        print(msg)
-        return
-
-
-def ManeuAfterSales_content(order_id=''):
-    try:
-        return ManeuAftersales.objects.filter(order_id=order_id).first()
-    except BaseException as msg:
-        print(msg)
-        return None
+def ManeuAfterSales_orderID(order_id=''):
+    return ManeuAftersales.objects.filter(order_id=order_id).order_by('-time').all()
 
 
 def ManeuAfterSales_insert(order_id='', content=''):
-    try:
-        return ManeuAftersales.objects.create(order_id=order_id, content=content)
-    except BaseException as msg:
-        print(msg)
-        return None
+    return ManeuAftersales.objects.create(order_id=order_id, content=content)
 
 
 def ManeuAfterSales_delete_order_id(order_id=''):
-    try:
         return ManeuAftersales.objects.filter(order_id=order_id).all().delete()
-    except BaseException as msg:
-        print(msg)
-        return None
 
 
 def ManeuAfterSales_delete_id(id=''):
-    try:
-        return ManeuAftersales.objects.filter(id=id).all().delete()
-    except BaseException as msg:
-        print(msg)
-        return None
+    return ManeuAftersales.objects.filter(id=id).all().delete()
 
 
 def ManeuAfterSales_index():

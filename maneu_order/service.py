@@ -2,7 +2,6 @@ import json
 
 from django.db.models import Q
 
-from maneu_order.models import ManeuAftersales
 from maneu_order.models import ManeuGuess
 from maneu_order.models import ManeuOrderV2
 from maneu_order.models import ManeuStore
@@ -153,10 +152,6 @@ def ManeuOrderV2_insert(name='', time='', phone='', guess_id='', users_id=''):
 
 def ManeuOrderV2_update(order_id='', name='', phone=''):
     return ManeuOrderV2.objects.filter(id=order_id).update(name=name, phone=phone)
-
-
-def ManeuAfterSales_delete(order_id=''):
-    return ManeuAftersales.objects.filter(order_id=order_id).delete()
 
 
 def guess_phone(phone):
