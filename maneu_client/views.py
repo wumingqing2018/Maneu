@@ -39,7 +39,7 @@ def delete_list(request):
 def detail(request):
     guess = service.guess_id(id=request.POST.get('id'))
     users = usersService.find_user(user_id=request.session.get('id'))
-    Subjective = service.subjectiverefraction_id(id=guess.subjective_id)
+    Subjective = service.subjectiverefraction_guessID(guessID=guess.id)
     subjectiverefraction = json.loads(Subjective.content)
     try:
         clientAge = int(guess.age)
@@ -103,11 +103,12 @@ def detail_phone(request):
 
 
 def insert(request):
+    today = common.today()
     if request.method == 'POST':
-        ManeuGuess = service.guess_insert(contents=request.POST.get('Guess_information'), user_id=request.session.get('id'))
+        ManeuGuess = service.guess_insert(time=today, contents=request.POST.get('Guess_information'), user_id=request.session.get('id'))
         ManeuSubjectiveRefraction = service.subjectiverefraction_insert(guess_id=ManeuGuess.id, content=request.POST.get('Subjective_refraction'))
         return HttpResponseRedirect(reverse('maneu_client:index'))
-    return render(request, 'maneu_client/insert.html')
+    return render(request, 'maneu_client/insert.html', {'today': today})
 
 
 def delete(request):
@@ -133,7 +134,6 @@ def search(request):
     """查找指定订单"""
     if request.method == 'POST':
         orderlist = service.guess_search(text=request.POST.get('text'), users_id=request.session.get('id'))
-        print(orderlist)
         return render(request, 'maneu_client/search.html', {'orderlist': orderlist})
     else:
         return HttpResponseRedirect(reverse('maneu_client:index'))

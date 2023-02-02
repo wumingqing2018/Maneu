@@ -11,10 +11,15 @@
                         <div class="input-group input-group-sm mb-2">
                             <span class="input-group-text">电话</span>
                             <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off" required="required">
-                            <span id="phone_error"></span>
                         </div>
                     </td>
-                    <td class="col-4" colspan="4"></td>
+                    <td class="col-2" colspan="2">
+                        <div class="input-group input-group-sm mb-2">
+                            <span class="input-group-text">时间</span>
+                            <input class="form-control" id="time" name="time" type="date" autocomplete="off" required="required" value="{{ today|safe }}">
+                        </div>
+                    </td>
+                    <td class="col-2" colspan="2"></td>
                 </tr>
                 <tr>
                     <td class="col-2">
