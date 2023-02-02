@@ -7,7 +7,7 @@ class ManeuGuess(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
     user_id = models.CharField(max_length=36)
     subjective_id = models.CharField(max_length=36)
-    time = models.DateTimeField()
+    time = models.DateField()
     name = models.CharField(max_length=36)
     phone = models.CharField(max_length=36)
     sex = models.CharField(max_length=36)
@@ -24,6 +24,7 @@ class ManeuGuess(models.Model):
 
 class ManeuSubjectiveRefraction(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    guessID = models.CharField(max_length=36, default=uuid.uuid1, editable=False)
     time = models.DateTimeField()
     content = models.TextField()
 

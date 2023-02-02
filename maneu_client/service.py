@@ -30,12 +30,13 @@ def guess_phone(phone=''):
     return ManeuGuess.objects.filter(phone=phone).first()
 
 
-def guess_insert(contents='', subjective_id='', user_id=''):
-    return ManeuGuess.objects.create(user_id=user_id, subjective_id=subjective_id, name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
+def guess_insert(contents='', user_id=''):
+    contents = json.loads(contents)
+    return ManeuGuess.objects.create(user_id=user_id, name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
 
 
-def subjectiverefraction_insert(content=''):
-    return ManeuSubjectiveRefraction.objects.create(content=content)
+def subjectiverefraction_insert(guess_id='', content=''):
+    return ManeuSubjectiveRefraction.objects.create(guessID=guess_id, content=content)
 
 
 def guess_update_user_id(id='', user_id=''):

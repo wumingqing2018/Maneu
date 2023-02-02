@@ -23,6 +23,19 @@ def index(request):
                   {'orderlist': list, 'time': time, 'down_day': down_day, 'up_day': up_day})
 
 
+def delete_list(request):
+    if request.GET.get('time'):
+        time = request.GET.get('time')
+    else:
+        time = common.today()
+    list = service.guess_time(time=time, user_id=request.session.get('id'))
+    date = datetime.datetime.strptime(time, '%Y-%m-%d')
+    down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
+    up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+    return render(request, 'maneu_client/delete_list.html',
+                  {'orderlist': list, 'time': time, 'down_day': down_day, 'up_day': up_day})
+
+
 def detail(request):
     guess = service.guess_id(id=request.POST.get('id'))
     users = usersService.find_user(user_id=request.session.get('id'))
@@ -91,11 +104,8 @@ def detail_phone(request):
 
 def insert(request):
     if request.method == 'POST':
-        ManeuSubjectiveRefraction = service.subjectiverefraction_insert(
-            content=request.POST.get('Subjective_refraction'))
-        ManeuGuess_id = service.guess_insert(content=json.loads(request.POST.get('Guess_information')),
-                                             subjective_id=ManeuSubjectiveRefraction.id,
-                                             user_id=request.session.get('id'))
+        ManeuGuess = service.guess_insert(contents=request.POST.get('Guess_information'), user_id=request.session.get('id'))
+        ManeuSubjectiveRefraction = service.subjectiverefraction_insert(guess_id=ManeuGuess.id, content=request.POST.get('Subjective_refraction'))
         return HttpResponseRedirect(reverse('maneu_client:index'))
     return render(request, 'maneu_client/insert.html')
 
