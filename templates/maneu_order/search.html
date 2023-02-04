@@ -18,7 +18,7 @@
                     </div>
                 </td>
             </tr>
-            {% if orderlist %}
+            {% if list %}
                 <tr>
                     <td class="blue col-sm-3">
                         <span>客户姓名</span>
@@ -37,7 +37,7 @@
                         </form>
                     </td>
                 </tr>
-                {% for order in orderlist %}
+                {% for order in list %}
                     <tr>
                         <td class="blue col-sm-1">
                             <span onchange="f()">{{ order.name }}</span>

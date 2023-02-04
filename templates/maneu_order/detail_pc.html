@@ -16,19 +16,19 @@
                     <span>创建时间</span>
                 </td>
                 <td colspan="2">
-                    <span>{{ maneu_order.time }}</span>
+                    <span>{{ order.time }}</span>
                 </td>
                 <td>
                     <span>姓名</span>
                 </td>
                 <td colspan="2">
-                    <span>{{ maneu_order.name }}</span>
+                    <span>{{ order.name }}</span>
                 </td>
                 <td>
                     <span>电话</span>
                 </td>
                 <td colspan="2">
-                    <span>{{ maneu_order.phone }}</span>
+                    <span>{{ order.phone }}</span>
                 </td>
             </tr>
             <tr class="banner">
@@ -208,21 +208,21 @@
             <div class="col-2">
                 <form method="post" action="{% url 'maneu_alterSales:alterSalesList' %}">
                     {% csrf_token %}
-                    <input type="hidden" name="id" value="{{ maneu_order.id }}">
+                    <input type="hidden" name="id" value="{{ order.id }}">
                     <input type="submit" class="btn btn-warning" value="维修记录">
                 </form>
             </div>
             <div class="col-2">
                 <form method="post" action="{% url 'maneu_order:update' %}">
                     {% csrf_token %}
-                    <input type="hidden" name="id" value="{{ maneu_order.id }}">
+                    <input type="hidden" name="id" value="{{ order.id }}">
                     <input type="submit" class="btn btn-warning" value="修改订单">
                 </form>
             </div>
             <div class="col-2">
                 <form method="post" action="{% url 'maneu_order:delete' %}">
                     {% csrf_token %}
-                    <input type="hidden" name="id" value="{{ maneu_order.id }}">
+                    <input type="hidden" name="id" value="{{ order.id }}">
                     <input type="submit" class="btn btn-danger" id="delete" value="删除订单">
                 </form>
             </div>
