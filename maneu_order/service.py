@@ -2,12 +2,12 @@ import json
 
 from django.db.models import Q
 
-from maneu_order.models import ManeuGuess
-from maneu_order.models import ManeuOrderV2
-from maneu_order.models import ManeuStore
-from maneu_order.models import ManeuSubjectiveRefraction
-from maneu_order.models import ManeuUsers
-from maneu_order.models import ManeuVisionSolutions
+from maneu.models import ManeuGuess
+from maneu.models import ManeuOrderV2
+from maneu.models import ManeuStore
+from maneu.models import ManeuSubjectiveRefraction
+from maneu.models import ManeuUsers
+from maneu.models import ManeuVisionSolutions
 
 
 def ManeuOrderV2_all(users_id=''):
@@ -60,8 +60,8 @@ def store_id(id=''):
     return ManeuStore.objects.filter(id=id).first()
 
 
-def store_OrderID(OrderID=''):
-    return ManeuStore.objects.filter(orderID=OrderID).first()
+def store_OrderID(orderid=''):
+    return ManeuStore.objects.filter(orderid=orderid).first()
 
 
 def ManeuStore_delete(id=''):
@@ -80,16 +80,16 @@ def ManeuOrderV2_Search(text='', users_id=''):
     return ManeuOrderV2.objects.filter(Q(name=text) | Q(phone=text, users_id=users_id)).order_by('-time').all()
 
 
-def ManeuVisionSolutions_orderID(order_id=''):
-    return ManeuVisionSolutions.objects.filter(orderID=order_id).first()
+def ManeuVisionSolutions_orderID(orderid=''):
+    return ManeuVisionSolutions.objects.filter(orderid=orderid).first()
 
 
 def ManeuVisionSolutions_delete(id=''):
     return ManeuVisionSolutions.objects.filter(id=id).delete()
 
 
-def ManeuVisionSolutions_insert(order_id='', content=''):
-    return ManeuVisionSolutions.objects.create(orderID=order_id, content=content)
+def ManeuVisionSolutions_insert(time='', order_id='', content=''):
+    return ManeuVisionSolutions.objects.create(time=time, orderid=order_id, content=content)
 
 
 def ManeuVisionSolutions_update(id='', content=''):
@@ -130,8 +130,8 @@ def ManeuGuess_update(id='', content=''):
                                                    dfh=contents['DFH'], remark=contents['remark'])
 
 
-def ManeuStore_insert(order_id='', content=''):
-    return ManeuStore.objects.create(orderID=order_id, content=content)
+def ManeuStore_insert(time='', order_id='', content=''):
+    return ManeuStore.objects.create(time=time, orderid=order_id, content=content)
 
 
 def ManeuStore_update(content='', id=''):
@@ -143,10 +143,7 @@ def ManeuStore_update_orderID(orderID='', id=''):
 
 
 def ManeuOrderV2_insert(name='', time='', phone='', guess_id='', users_id=''):
-    if time:
-        return ManeuOrderV2.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, users_id=users_id)
-    else:
-        return ManeuOrderV2.objects.create(name=name, phone=phone, guess_id=guess_id, users_id=users_id)
+    return ManeuOrderV2.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, users_id=users_id)
 
 
 def ManeuOrderV2_update(order_id='', name='', phone=''):

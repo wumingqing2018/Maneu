@@ -50,22 +50,17 @@ def detail(request):
         渲染error页面并传输错误参数
     """
     try:
-        order_id = request.POST.get('id')
+        order_id = request.POST['id']
+        request.session['order_id'] = order_id
     except:
         order_id = request.session.get('order_id')
     order = service.ManeuOrderV2_id(order_id=order_id, users_id=request.session.get('id'))
     if order:
         users = service.ManeuUsers_id(id=order.users_id)
         guess = service.ManeuGuess_id(id=order.guess_id)
-        store = service.store_OrderID(OrderID=order.id)
-        visionsolutions = service.ManeuVisionSolutions_orderID(order_id=order.id)
-        if store==None:
-            service.ManeuStore_update_orderID(orderID=order.id, id=order.store_id)
-            store = service.store_OrderID(OrderID=order.id)
-        if visionsolutions==None:
-            service.ManeuVisionSolutions_update_orderID(orderID=order.id, id=order.visionsolutions_id)
-            visionsolutions = service.ManeuVisionSolutions_orderID(order_id=order.id)
-        request.session['order_id'] = order_id
+        store = service.store_OrderID(orderid=order.id)
+        visionsolutions = service.ManeuVisionSolutions_orderID(orderid=order.id)
+
         ua = request.META.get("HTTP_USER_AGENT")
         mobile = judge_pc_or_mobile(ua)
         if mobile:
@@ -82,9 +77,7 @@ def detail(request):
                                                                   'maneu_store': json.loads(store.content),
                                                                   'visionsolutions': json.loads(visionsolutions.content),
                                                                   })
-    else:
-        alter_server.ManeuAfterSales_delete_order_id(order_id=order_id)
-        return render(request, 'maneu/error.html', {'msg': order})
+    return HttpResponseRedirect(reverse('maneu_order:index'))
 
 
 def search(request):
@@ -104,11 +97,13 @@ def insert(request):
         except:
             ManeuGuess_id = ''
         order = service.ManeuOrderV2_insert(time=order['time'], name=order['name'], phone=order['phone'], users_id=request.session.get('id'), guess_id=ManeuGuess_id)
-        ManeuStore_id = service.ManeuStore_insert(order_id=order.id, content=request.POST.get('Product_Orders'))
-        ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(order_id=order.id, content=request.POST.get('Vision_Solutions'))
+        ManeuStore_id = service.ManeuStore_insert(time=order.time, order_id=order.id, content=request.POST.get('Product_Orders'))
+        ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(time=order.time, order_id=order.id, content=request.POST.get('Vision_Solutions'))
         if order:
             request.session['order_id'] = str(order.id)
-            return HttpResponseRedirect(reverse('maneu_order:order_detail'))
+            return HttpResponseRedirect(reverse('maneu_order:detail'))
+
+
 
     ua = request.META.get("HTTP_USER_AGENT")
     mobile = judge_pc_or_mobile(ua)
@@ -128,8 +123,6 @@ def update(request):
             users = service.users_id(id=order.users_id)
             guess = service.guess_id(id=order.guess_id)
             store = service.store_id(id=order.store_id)
-            # visionsolutions = service.ManeuVisionSolutions_id(id=order.visionsolutions_id)
-            # subjectiverefraction = service.ManeuVisionSolutions_orderID(id=order.subjectiverefraction_id)
             return render(request, 'maneu_order/update.html', {'maneu_order': order, 'users': users, 'guess': guess,
                                                                # 'maneu_store': json.loads(store.content),
                                                                })
@@ -140,9 +133,8 @@ def update(request):
             ManeuVisionSolutions_id = service.ManeuVisionSolutions_update(id=order.visionsolutions_id,
                                                                           content=request.POST.get('Vision_Solutions'))
             ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_update(id=order.subjectiverefraction_id,
-                                                                                    content=request.POST.get(
-                                                                                        'Subjective_refraction'))
+                                                                                    content=request.POST.get('Subjective_refraction'))
             guess_content = json.loads(request.POST.get('Guess_information'))
             service.ManeuOrderV2_update(order_id=order.id,name=guess_content['guess_name'],phone=guess_content['guess_phone'], )
-            return HttpResponseRedirect(reverse('maneu_order:order_detail'))
+            return HttpResponseRedirect(reverse('maneu_order:detail'))
     return render(request, 'maneu/error.html', {'msg': '参数错误'})

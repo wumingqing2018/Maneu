@@ -2,8 +2,8 @@ import json
 
 from django.db.models import Q
 
-from maneu_client.models import ManeuGuess
-from maneu_client.models import ManeuSubjectiveRefraction
+from maneu.models import ManeuGuess
+from maneu.models import ManeuSubjectiveRefraction
 
 
 def subjectiverefraction_id(id=''):

@@ -1,4 +1,4 @@
-from maneu_alterSales.models import ManeuAftersales
+from maneu.models import ManeuAftersales
 
 
 def ManeuAfterSales_orderID(order_id=''):

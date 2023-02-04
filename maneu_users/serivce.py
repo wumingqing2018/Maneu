@@ -1,4 +1,4 @@
-from maneu_order.models import ManeuUsers
+from maneu.models import ManeuUsers
 
 
 def find_user(user_id):

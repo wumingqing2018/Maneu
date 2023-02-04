@@ -25,7 +25,7 @@ def login(request):
             request.session['ip'] = common.get_ip(request)
             request.session['id'] = user_content.id
             request.session['nickname'] = user_content.nickname
-            return HttpResponseRedirect(reverse('maneu_order:order_list'))
+            return HttpResponseRedirect(reverse('maneu_order:index'))
     return render(request, 'maneu/admin.html', {'form': LoginForm()})
 
 

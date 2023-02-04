@@ -10,30 +10,25 @@ from maneu_batch.forms.BatchInsertForm import BatchInsertForm
 
 # Create your views here.
 def index(request):
-    orderlist = service.batch_list()
-    return render(request, 'maneu_batch/index.html', {'orderlist': orderlist})
+    list = service.batch_list()
+    return render(request, 'maneu_batch/index.html', {'list': list})
 
 
-def batch_detail(request):
-    order_id = verify.order_id_method_get(request)
-    if order_id:
-        order = service.batch_detail(order_id)
-        return render(request, 'maneu_batch/detail.html', {'maneu_order': order})
+def detail(request):
+    if request.GET.get('id'):
+        order = service.batch_detail(id=request.GET.get('id'))
+        return render(request, 'maneu_batch/detail.html', {'order': order})
     else:
-        return render(request, 'maneu/error.html', {'msg': '参数错误'})
+        return HttpResponseRedirect(reverse('maneu_batch:index'))
 
 
-def batch_delete(request):
-    order_id = verify.order_id_method_get(request)
-    if order_id:
-        print(service.batch_delete(order_id))
-        # excel_remove(order_id)
-        return index(request)
-    else:
-        return render(request, 'maneu/error.html')
+def delete(request):
+    if request.GET.get('id'):
+        service.batch_delete(id=request.GET.get('id'))
+    return HttpResponseRedirect(reverse('maneu_batch:index'))
 
 
-def batch_insert(request):
+def insert(request):
     msg = None
     if request.method == 'POST':
         form = BatchInsertForm(request.POST)
@@ -46,7 +41,7 @@ def batch_insert(request):
     return render(request, 'maneu_batch/insert.html', {'msg': msg})
 
 
-def batch_search(request):
+def search(request):
     """查找指定订单"""
     date = verify.date_method_post(request)
     if date:

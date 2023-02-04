@@ -53,7 +53,7 @@
                                 {% csrf_token %}
                                 <div class="input-group input-group-sm">
                                     <input type="hidden" name="id" value="{{ foo.id }}">
-                                    <input type="submit" class="btn btn-primary col-12" value="删除">
+                                    <input type="submit" class="btn btn-danger col-12" id="delete" value="删除">
                                 </div>
                             </form>
                             <form class="col-3" method="post" action="{% url 'maneu_order:detail' %}">
@@ -95,4 +95,7 @@
             </tr>
         </table>
     </div>
+{% endblock %}
+{% block javascript %}
+<script type="application/javascript" src="{% static 'js/maneu/delete.js' %}"></script>
 {% endblock %}

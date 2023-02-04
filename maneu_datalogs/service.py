@@ -1,5 +1,5 @@
-from maneu_order.models import ManeuOrderV2
-from maneu_order.models import ManeuStore
+from maneu.models import ManeuOrderV2
+from maneu.models import ManeuStore
 
 
 def find_order_month(users_id='', month='', year=''):

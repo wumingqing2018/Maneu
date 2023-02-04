@@ -19,8 +19,10 @@ def index(request):
     date = datetime.datetime.strptime(time, '%Y-%m-%d')
     down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
     up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-    return render(request, 'maneu_client/index.html',
-                  {'list': list, 'time': time, 'down_day': down_day, 'up_day': up_day})
+    return render(request, 'maneu_client/index.html', {'list': list,
+                                                       'time': time,
+                                                       'down_day': down_day,
+                                                       'up_day': up_day})
 
 
 def detail(request):
