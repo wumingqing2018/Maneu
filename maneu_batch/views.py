@@ -9,7 +9,7 @@ from maneu_batch.forms.BatchInsertForm import BatchInsertForm
 
 
 # Create your views here.
-def batch_list(request):
+def index(request):
     orderlist = service.batch_list()
     return render(request, 'maneu_batch/index.html', {'orderlist': orderlist})
 
@@ -28,7 +28,7 @@ def batch_delete(request):
     if order_id:
         print(service.batch_delete(order_id))
         # excel_remove(order_id)
-        return batch_list(request)
+        return index(request)
     else:
         return render(request, 'maneu/error.html')
 
@@ -41,7 +41,7 @@ def batch_insert(request):
         if form.is_valid() and excel:
             order = excel_save(excel, order_id)
             service.batch_insert(form.clean(), order, order_id)
-            return batch_list(request)
+            return index(request)
         msg = '参数错误'
     return render(request, 'maneu_batch/insert.html', {'msg': msg})
 

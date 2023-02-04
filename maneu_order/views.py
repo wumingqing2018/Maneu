@@ -23,7 +23,10 @@ def index(request):
     down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
     up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
     list = service.ManeuOrderV2_today(users_id=request.session.get('id'), time=time)  # 查找今日订单
-    return render(request, 'maneu_order/index.html', {'list': list, 'time': time, 'up_day': up_day, 'down_day': down_day})
+    return render(request, 'maneu_order/index.html', {'list': list,
+                                                      'time': time,
+                                                      'up_day': up_day,
+                                                      'down_day': down_day})
 
 
 def delete(request):
