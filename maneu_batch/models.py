@@ -12,9 +12,9 @@ from django.db import models
 
 class ManeuBatch(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    c_time = models.DateField()
-    c_name = models.CharField(max_length=255)
-    c_phone = models.CharField(max_length=255)
+    time = models.DateTimeField()
+    name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255)
     order = models.TextField()
     remark = models.TextField()
 

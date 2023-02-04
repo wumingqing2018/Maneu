@@ -9,7 +9,7 @@ def list(request):
     order_id = request.session.get('order_id')
     if order_id:
         return render(request, 'maneu_afterSales/list.html', {'alterSalesList': service.ManeuAfterSales_orderID(order_id=order_id)})
-    return HttpResponseRedirect(reverse('maneu_order:order_list'))
+    return HttpResponseRedirect(reverse('maneu_order:index'))
 
 
 def index(request):
@@ -22,7 +22,7 @@ def content(request):
         ManeuAfterSales_list = service.ManeuAfterSales_orderID(order_id)
         return render(request, 'maneu_afterSales/detail.html', {'alterSalesContent': ManeuAfterSales_list})
     else:
-        return HttpResponseRedirect(reverse('maneu_order:order_list'))
+        return HttpResponseRedirect(reverse('maneu_order:index'))
 
 
 def insert(request):

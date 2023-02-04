@@ -191,7 +191,9 @@
         </table>
         <div class="col-12 row" style="text-align: center;">
             <div class="col-2">
-                <a class="btn btn-primary" type="button" href="{% url 'maneu_order:order_list' %}">返回列表</a>
+                <form method="get" action="{% url 'maneu_order:index' %}">
+                    <input type="submit" class="btn btn-primary" value="返回列表">
+                </form>
             </div>
             <div class="col-2">
                 <form method="post" action="{% url 'maneu_client:detail_phone' %}">
@@ -204,17 +206,23 @@
                 <button class="btn btn-primary" id="print_btn">打印订单</button>
             </div>
             <div class="col-2">
-                <form method="get" action="{% url 'maneu_alterSales:alterSalesList' %}">
+                <form method="post" action="{% url 'maneu_alterSales:alterSalesList' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ maneu_order.id }}">
                     <input type="submit" class="btn btn-warning" value="维修记录">
                 </form>
             </div>
             <div class="col-2">
-                <form method="get" action="{% url 'maneu_order:order_update' %}">
+                <form method="post" action="{% url 'maneu_order:update' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ maneu_order.id }}">
                     <input type="submit" class="btn btn-warning" value="修改订单">
                 </form>
             </div>
             <div class="col-2">
-                <form method="get" action="{% url 'maneu_order:order_delete' %}">
+                <form method="post" action="{% url 'maneu_order:delete' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ maneu_order.id }}">
                     <input type="submit" class="btn btn-danger" id="delete" value="删除订单">
                 </form>
             </div>

@@ -6,13 +6,12 @@ from maneu_order import views
 app_name = 'maneu_order'
 urlpatterns = [
     # views
-    path('order_list/', views.order_list, name='order_list'),
-    path('order_delete/', views.order_delete, name='order_delete'),
-    path('order_delete_list/', views.order_delete_list, name='order_delete_list'),
-    path('order_detail/', views.order_detail, name='order_detail'),
-    path('order_search/', views.order_search, name='order_search'),
-    path('order_insert/', views.order_insert, name='order_insert'),
-    path('order_update/', views.order_update, name='order_update'),
+    path('index/', views.index, name='index'),
+    path('delete/', views.delete, name='delete'),
+    path('detail/', views.detail, name='detail'),
+    path('search/', views.search, name='search'),
+    path('insert/', views.insert, name='insert'),
+    path('update/', views.update, name='update'),
 
     # api
     path('api_order_list/', api.order_list, name='api_order_list'),

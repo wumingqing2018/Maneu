@@ -31,7 +31,7 @@
                             <span>{{ order.content }}</span>
                         </td>
                         <td>
-                            <form method="post" action="{% url 'maneu_order:order_detail' %}">
+                            <form method="post" action="{% url 'maneu_order:detail' %}">
                                 <div class="input-group input-group-sm">
                                     {% csrf_token %}
                                     <input type="hidden" name="order_id" value="{{ order.order_id }}">

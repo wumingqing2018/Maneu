@@ -10,7 +10,7 @@ from maneu_order import service
 from maneu_alterSales import service as alterSalesServivce
 
 
-def order_list(request):
+def index(request):
     """
     订单列表功能
     在session获取商家id 通过商家id查找订单列表
@@ -22,43 +22,22 @@ def order_list(request):
     date = datetime.datetime.strptime(time, '%Y-%m-%d')
     down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
     up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-    orderlist = service.ManeuOrderV2_today(users_id=request.session.get('id'), time=time)  # 查找今日订单
-    return render(request, 'maneu_order/index.html', {'orderlist': orderlist, 'time': time, 'up_day': up_day, 'down_day': down_day})
+    list = service.ManeuOrderV2_today(users_id=request.session.get('id'), time=time)  # 查找今日订单
+    return render(request, 'maneu_order/index.html', {'list': list, 'time': time, 'up_day': up_day, 'down_day': down_day})
 
 
-def order_delete_list(request):
-    """
-    订单列表功能
-    在session获取商家id 通过商家id查找订单列表
-    """
-    if request.GET.get('time'):
-        time = request.GET.get('time')
-    else:
-        time = common.today()
-    date = datetime.datetime.strptime(time, '%Y-%m-%d')
-    down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
-    up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-    orderlist = service.ManeuOrderV2_today(users_id=request.session.get('id'), time=time)  # 查找今日订单
-    return render(request, 'maneu_order/order_delete_list.html', {'orderlist': orderlist, 'time': time, 'up_day': up_day, 'down_day': down_day})
-
-
-def order_delete(request):
-    try:
-        order_id = request.POST['order_id']
-    except:
-        order_id = request.session.get('order_id')
-    users_id = request.session.get('id')
-    order = service.ManeuOrderV2_id(order_id=order_id, users_id=users_id)
+def delete(request):
+    order = service.ManeuOrderV2_id(order_id=request.POST.get('id'), users_id=request.session.get('id'))
     if order:
         store = service.ManeuStore_delete(id=order.store_id)
         visionsolutions = service.ManeuVisionSolutions_delete(id=order.visionsolutions_id)
         subjectiverefraction = service.ManeuSubjectiveRefraction_delete(id=order.subjectiverefraction_id)
         afterSales = alterSalesServivce.ManeuAfterSales_delete_order_id(order_id=order_id)
         order = service.ManeuOrderV2_delete(users_id=users_id, id=order_id)
-    return HttpResponseRedirect(reverse('maneu_order:order_list'))
+    return HttpResponseRedirect(reverse('maneu_order:index'))
 
 
-def order_detail(request):
+def detail(request):
     """
     查看订单详情
     校验请求模式 GET 校验order_id是否符合
@@ -68,7 +47,7 @@ def order_detail(request):
         渲染error页面并传输错误参数
     """
     try:
-        order_id = request.POST['order_id']
+        order_id = request.POST.get('id')
     except:
         order_id = request.session.get('order_id')
     order = service.ManeuOrderV2_id(order_id=order_id, users_id=request.session.get('id'))
@@ -101,15 +80,15 @@ def order_detail(request):
         return render(request, 'maneu/error.html', {'msg': order})
 
 
-def order_search(request):
+def search(request):
     if request.method == 'POST':
         """查找指定订单"""
         orderlist = service.ManeuOrderV2_Search(text=request.POST.get('text'), users_id=request.session.get('id'))
         return render(request, 'maneu_order/search.html', {'orderlist': orderlist})
-    return HttpResponseRedirect(reverse('maneu_order:order_list'))
+    return HttpResponseRedirect(reverse('maneu_order:index'))
 
 
-def order_insert(request):
+def insert(request):
     """添加订单"""
     if request.method == 'POST':
         order = json.loads(request.POST.get('order_json'))
@@ -132,7 +111,7 @@ def order_insert(request):
         return render(request, 'maneu_order/insert_pc.html')
 
 
-def order_update(request):
+def update(request):
     """更新订单"""
     order_id = request.session.get('order_id')
     users_id = request.session.get('id')

@@ -855,9 +855,9 @@
         <hr>
         <div class="row">
             <div class="input-group input-group-sm mb-2">
-                <a type="button" class="col-12 btn btn-warning" href="{% url 'maneu_order:order_list' %}">返回列表</a>
+                <a type="button" class="col-12 btn btn-warning" href="{% url 'maneu_order:index' %}">返回列表</a>
             </div>
-            <form class="vertical" id="order_insert" method="post" action="{% url 'maneu_order:order_insert' %}">
+            <form class="vertical" id="order_insert" method="post" action="{% url 'maneu_order:insert' %}">
                 {% csrf_token %}
                 <div class="input-group input-group-sm mb-2">
                     <input type="hidden" name="time" id="time_json">

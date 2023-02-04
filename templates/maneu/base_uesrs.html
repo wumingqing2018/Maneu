@@ -34,13 +34,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'maneu_datalogs:index' %}">数据可视化(开发中)</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">零售管理</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{% url 'maneu_order:order_list' %}">订单列表</a>
-                    <a class="dropdown-item" href="{% url 'maneu_order:order_insert' %}">添加订单</a>
-                    <a class="dropdown-item" href="{% url 'maneu_order:order_delete_list' %}">删除订单</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'maneu_order:index' %}">零售管理</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">批发管理</a>
@@ -59,13 +54,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'maneu_alterSales:alterSalesindex' %}">售后管理</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">客户管理</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{% url 'maneu_client:index' %}">客户列表</a>
-                    <a class="dropdown-item" href="{% url 'maneu_client:insert' %}">添加资料</a>
-                    <a class="dropdown-item" href="{% url 'maneu_client:delete_list' %}">删除订单</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'maneu_client:index' %}">客户管理</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">个人中心</a>

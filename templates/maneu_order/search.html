@@ -8,7 +8,7 @@
                 <td colspan=4>
                     <div class="row">
                         <h5 class="col-md-6 col-sm-12">零售订单管理系统</h5>
-                        <form class="col-md-6 col-sm-12" method="post" action="{% url 'maneu_order:order_search' %}">
+                        <form class="col-md-6 col-sm-12" method="post" action="{% url 'maneu_order:search' %}">
                             <div class="input-group input-group-sm">
                                 {% csrf_token %}
                                 <input type="text" name="text" class="form-control" placeholder="使用手机或姓名查询">
@@ -30,7 +30,7 @@
                         <span>录入时间</span>
                     </td>
                     <td class="blue col-sm-1">
-                        <form method='get' action="{% url 'maneu_order:order_insert' %}">
+                        <form method='get' action="{% url 'maneu_order:insert' %}">
                             <div class="input-group input-group-sm">
                                 <input type='submit' class='btn btn-warning col-sm-12' value='添加订单'>
                             </div>
@@ -49,7 +49,7 @@
                             <span>{{ order.time }}</span>
                         </td>
                         <td class="blue col-sm-1">
-                            <form method="post" action="{% url 'maneu_order:order_detail' %}">
+                            <form method="post" action="{% url 'maneu_order:detail' %}">
                                 {% csrf_token %}
                                 <div class="input-group input-group-sm">
                                     <input type="hidden" name="order_id" value="{{ order.id }}">
@@ -66,7 +66,7 @@
             {% endif %}
         <tr>
             <td colspan="4" align="right">
-                <a type="button" class="btn btn-small btn-primary" href="{% url 'maneu_order:order_list' %}">返回列表</a>
+                <a type="button" class="btn btn-small btn-primary" href="{% url 'maneu_order:index' %}">返回列表</a>
             </td>
         </tr>
         </table>

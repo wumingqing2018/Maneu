@@ -1576,7 +1576,9 @@
             </div>
             <div class="col-12 row">
                 <div class="col-6">
-                    <a type="button" class="btn btn-warning col-12" href="{% url 'maneu_order:order_list' %}">返回</a>
+                <form method="get" action="{% url 'maneu_order:index' %}">
+                    <input type="submit" class="btn btn-primary" value="返回列表">
+                </form>
                 </div>
                 <div class="col-6 text">
                     <input autocomplete="off" class="btn btn-danger col-12" id="insert" type="submit" value="提交订单">

@@ -20,20 +20,7 @@ def index(request):
     down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
     up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
     return render(request, 'maneu_client/index.html',
-                  {'orderlist': list, 'time': time, 'down_day': down_day, 'up_day': up_day})
-
-
-def delete_list(request):
-    if request.GET.get('time'):
-        time = request.GET.get('time')
-    else:
-        time = common.today()
-    list = service.guess_time(time=time, user_id=request.session.get('id'))
-    date = datetime.datetime.strptime(time, '%Y-%m-%d')
-    down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
-    up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-    return render(request, 'maneu_client/delete_list.html',
-                  {'orderlist': list, 'time': time, 'down_day': down_day, 'up_day': up_day})
+                  {'list': list, 'time': time, 'down_day': down_day, 'up_day': up_day})
 
 
 def detail(request):
@@ -55,16 +42,19 @@ def detail(request):
     ua = request.META.get("HTTP_USER_AGENT")
     mobile = judge_pc_or_mobile(ua)
     if mobile:
-        return render(request, 'maneu_client/detail_phone.html',
-                      {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction,
-                       'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'],
-                       'list_l': subjectiverefraction['OS_AL']})
+        return render(request, 'maneu_client/detail_phone.html', {'guess': guess,
+                                                                  'users': users,
+                                                                  'subjectiverefraction': subjectiverefraction,
+                                                                  'stand_ax': stand_ax,
+                                                                  'list_r': subjectiverefraction['OD_AL'],
+                                                                  'list_l': subjectiverefraction['OS_AL']})
     else:
-        return render(request, 'maneu_client/detail_pc.html',
-                      {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction,
-                       'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'],
-                       'list_l': subjectiverefraction['OS_AL']})
-
+        return render(request, 'maneu_client/detail_pc.html', {'guess': guess,
+                                                               'users': users,
+                                                               'subjectiverefraction': subjectiverefraction,
+                                                               'stand_ax': stand_ax,
+                                                               'list_r': subjectiverefraction['OD_AL'],
+                                                               'list_l': subjectiverefraction['OS_AL']})
 
 def detail_phone(request):
     guess = service.guess_phone(phone=request.POST.get('phone'))
@@ -91,15 +81,19 @@ def detail_phone(request):
     ua = request.META.get("HTTP_USER_AGENT")
     mobile = judge_pc_or_mobile(ua)
     if mobile:
-        return render(request, 'maneu_client/detail_phone.html',
-                      {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction,
-                       'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'],
-                       'list_l': subjectiverefraction['OS_AL']})
+        return render(request, 'maneu_client/detail_phone.html', {'guess': guess,
+                                                                  'users': users,
+                                                                  'subjectiverefraction': subjectiverefraction,
+                                                                  'stand_ax': stand_ax,
+                                                                  'list_r': subjectiverefraction['OD_AL'],
+                                                                  'list_l': subjectiverefraction['OS_AL']})
     else:
-        return render(request, 'maneu_client/detail_pc.html',
-                      {'guess': guess, 'users': users, 'subjectiverefraction': subjectiverefraction,
-                       'stand_ax': stand_ax, 'list_r': subjectiverefraction['OD_AL'],
-                       'list_l': subjectiverefraction['OS_AL']})
+        return render(request, 'maneu_client/detail_pc.html', {'guess': guess,
+                                                               'users': users,
+                                                               'subjectiverefraction': subjectiverefraction,
+                                                               'stand_ax': stand_ax,
+                                                               'list_r': subjectiverefraction['OD_AL'],
+                                                               'list_l': subjectiverefraction['OS_AL']})
 
 
 def insert(request):

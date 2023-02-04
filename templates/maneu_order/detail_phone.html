@@ -275,7 +275,9 @@
         </table>
         <div class="col-12 row" style="text-align: center;">
             <div class="col-3">
-                <a class="btn btn-primary" type="button" href="{% url 'maneu_order:order_list' %}">返回列表</a>
+                <form method="get" action="{% url 'maneu_order:index' %}">
+                    <input type="submit" class="btn btn-primary" value="返回列表">
+                </form>
             </div>
             <div class="col-3">
                 <form method="get" action="{% url 'maneu_alterSales:alterSalesList' %}">
@@ -283,12 +285,12 @@
                 </form>
             </div>
             <div class="col-3">
-                <form method="get" action="{% url 'maneu_order:order_update' %}">
+                <form method="get" action="{% url 'maneu_order:update' %}">
                     <input type="submit" class="btn btn-warning" value="修改订单">
                 </form>
             </div>
             <div class="col-3">
-                <form method="get" action="{% url 'maneu_order:order_delete' %}">
+                <form method="get" action="{% url 'maneu_order:delete' %}">
                     <input type="submit" class="btn btn-danger" id="delete" value="删除订单">
                 </form>
             </div>
