@@ -15,8 +15,7 @@ class ManeuBatch(models.Model):
     time = models.DateTimeField()
     name = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
-    order = models.TextField()
-    remark = models.TextField()
+    contents = models.TextField()
 
     class Meta:
         managed = False
