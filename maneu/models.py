@@ -132,7 +132,7 @@ class DjangoSession(models.Model):
 class ManeuAftersales(models.Model):
     id = models.CharField(primary_key=True, max_length=36)
     time = models.DateTimeField()
-    order_id = models.CharField(max_length=36, blank=True, null=True)
+    orderID = models.CharField(max_length=36, blank=True, null=True)
     content = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
