@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponseRedirect, reverse, render
-
+from common import common
 from maneu_alterSales import service
-
+import datetime
 
 # Create your views here.
 def list(request):
@@ -12,7 +12,18 @@ def list(request):
 
 
 def index(request):
-    return render(request, 'maneu_afterSales/index.html', {'list': service.ManeuAfterSales_index()})
+    if request.GET.get('time'):
+        time = request.GET.get('time')
+    else:
+        time = common.today()
+    date = datetime.datetime.strptime(time, '%Y-%m-%d')
+    down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
+    up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+    list = service.ManeuAfterSales_index(time=time)  # 查找今日订单
+    return render(request, 'maneu_afterSales/index.html', {'list': list,
+                                                      'time': time,
+                                                      'up_day': up_day,
+                                                      'down_day': down_day})
 
 
 def content(request):

@@ -17,5 +17,5 @@ def ManeuAfterSales_delete_id(id=''):
     return ManeuAftersales.objects.filter(id=id).all().delete()
 
 
-def ManeuAfterSales_index():
-    return ManeuAftersales.objects.all().order_by('-time').all()
+def ManeuAfterSales_index(time=''):
+    return ManeuAftersales.objects.filter(time=time).order_by('-time').all()

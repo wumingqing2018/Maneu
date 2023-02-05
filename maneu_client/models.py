@@ -31,19 +31,3 @@ class ManeuSubjectiveRefraction(models.Model):
     class Meta:
         managed = False
         db_table = 'maneu_subjective_refraction'
-
-
-class ManeuOrderV2(models.Model):
-    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    time = models.DateTimeField()
-    name = models.CharField(max_length=36)
-    phone = models.CharField(max_length=36)
-    guess_id = models.CharField(max_length=36)
-    users_id = models.CharField(max_length=36)
-    store_id = models.CharField(max_length=36)
-    visionsolutions_id = models.CharField(db_column='visionSolutions_id', max_length=36)  # Field name made lowercase.
-    subjectiverefraction_id = models.CharField(db_column='subjectiveRefraction_id', max_length=36)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'maneu_order_v2'
