@@ -20,27 +20,20 @@
             </tr>
             <tr>
                 <td>
-                    <span>姓名</span>
-                </td>
-                <td>
-                    <span>电话</span>
-                </td>
-                <td>
                     <span>时间</span>
                 </td>
-                <td align="right">
+                <td colspan="2">
+                    <span>内容</span>
                 </td>
+                <td align="right"></td>
             </tr>
             {% for foo in list %}
                 <tr>
                     <td>
-                        <span>{{ foo.name }}</span>
-                    </td>
-                    <td>
-                        <span>{{ foo.phone }}</span>
-                    </td>
-                    <td>
                         <span>{{ foo.time }}</span>
+                    </td>
+                    <td colspan="2">
+                        <span>{{ foo.content }}</span>
                     </td>
                     <td align="right">
                         <div class="col-12 row">
