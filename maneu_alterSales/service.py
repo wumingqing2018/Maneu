@@ -10,7 +10,7 @@ def ManeuAfterSales_insert(order_id='', content=''):
 
 
 def ManeuAfterSales_delete_order_id(order_id=''):
-        return ManeuAftersales.objects.filter(order_id=order_id).all().delete()
+    return ManeuAftersales.objects.filter(order_id=order_id).all().delete()
 
 
 def ManeuAfterSales_delete_id(id=''):
@@ -18,4 +18,4 @@ def ManeuAfterSales_delete_id(id=''):
 
 
 def ManeuAfterSales_index():
-    return ManeuAftersales.objects.all().order_by('-time')
+    return ManeuAftersales.objects.all().order_by('-time').all()

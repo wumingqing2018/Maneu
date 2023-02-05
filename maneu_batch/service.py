@@ -1,6 +1,10 @@
 from maneu.models import ManeuBatch
 
 
+def batch_userid(userid='', time=''):
+    return ManeuBatch.objects.filter(userid=userid, time=time).order_by('-time').all()
+
+
 def batch_list():
     return ManeuBatch.objects.order_by('-time').all()
 

@@ -3,15 +3,26 @@ from django.shortcuts import render
 from django.shortcuts import reverse
 
 from common import verify
+from common import common
 from common.excel import excel_save
 from maneu_batch import service
 from maneu_batch.forms.BatchInsertForm import BatchInsertForm
+import datetime
 
 
-# Create your views here.
 def index(request):
-    list = service.batch_list()
-    return render(request, 'maneu_batch/index.html', {'list': list})
+    if request.GET.get('time'):
+        time = request.GET.get('time')
+    else:
+        time = common.today()
+    date = datetime.datetime.strptime(time, '%Y-%m-%d')
+    down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
+    up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+    list = service.batch_userid(userid=request.session.get('id'), time=time)  # 查找今日订单
+    return render(request, 'maneu_batch/index.html', {'list': list,
+                                                      'time': time,
+                                                      'up_day': up_day,
+                                                      'down_day': down_day})
 
 
 def detail(request):

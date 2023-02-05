@@ -1,5 +1,4 @@
-from django.shortcuts import HttpResponseRedirect, reverse
-from django.shortcuts import render
+from django.shortcuts import HttpResponseRedirect, reverse, render
 
 from maneu_alterSales import service
 
@@ -13,7 +12,7 @@ def list(request):
 
 
 def index(request):
-    return render(request, 'maneu_afterSales/index.html', {'alterSalesList': service.ManeuAfterSales_index()})
+    return render(request, 'maneu_afterSales/index.html', {'list': service.ManeuAfterSales_index()})
 
 
 def content(request):
@@ -42,7 +41,3 @@ def delete(request):
     if request.method == 'POST':
         insert = service.ManeuAfterSales_delete_id(id=request.POST.get('order_id'))
     return HttpResponseRedirect(reverse('maneu_alterSales:alterSalesList'))
-
-
-def error(request, message=''):
-    return render(request, 'maneu_afterSales/error.html', {'message': message})

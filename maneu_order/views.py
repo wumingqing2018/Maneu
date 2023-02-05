@@ -5,9 +5,8 @@ from django.shortcuts import render, reverse, HttpResponseRedirect
 
 from common import common
 from common.checkMobile import judge_pc_or_mobile
-from maneu_alterSales import service as alter_server
-from maneu_order import service
 from maneu_alterSales import service as alterSalesServivce
+from maneu_order import service
 
 
 def index(request):

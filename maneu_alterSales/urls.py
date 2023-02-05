@@ -5,10 +5,9 @@ from maneu_alterSales import views
 app_name = 'maneu_alterSales'
 urlpatterns = [
     # views
+    path('list/', views.list, name='list'),
     path('index/', views.index, name='index'),
-    path('alterSalesList/', views.list, name='alterSalesList'),
-    path('alterSalesInsert/', views.insert, name='alterSalesInsert'),
-    path('alterSalesDelete/', views.delete, name='alterSalesDelete'),
-    path('alterSalesContent/', views.content, name='alterSalesContent'),
-    path('error/', views.error, name='error')
+    path('insert/', views.insert, name='alterSalesInsert'),
+    path('delete/', views.delete, name='alterSalesDelete'),
+    path('content/', views.content, name='alterSalesContent'),
 ]
