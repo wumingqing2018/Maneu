@@ -6,7 +6,7 @@
         <table class="table">
             <tr>
                 <td class="col-9" colspan="3">
-                    <h5>订单售后管理系统</h5>
+                    <h5>售后订单管理系统</h5>
                 </td>
                 <td class="col-3" colspan="1">
                     <form method="post" action="{% url 'maneu_batch:search' %}">
@@ -27,41 +27,49 @@
                 </td>
                 <td align="right"></td>
             </tr>
-            {% for foo in list %}
+            {% if list %}
+                {% for foo in list %}
+                    <tr>
+                        <td>
+                            <span>{{ foo.time }}</span>
+                        </td>
+                        <td colspan="2">
+                            <span>{{ foo.content }}</span>
+                        </td>
+                        <td align="right">
+                            <div class="col-12 row">
+                                <form class="col-4" method="post" action="{% url 'maneu_order:delete' %}">
+                                    {% csrf_token %}
+                                    <div class="input-group input-group-sm">
+                                        <input type="hidden" name="id" value="{{ foo.id }}">
+                                        <input type="submit" class="btn btn-danger col-12" id="delete" value="删除记录">
+                                    </div>
+                                </form>
+                                <form class="col-4" method="POST" action="{% url 'maneu_alterSales:list' %}">
+                                    {% csrf_token %}
+                                    <div class="input-group input-group-sm">
+                                        <input type="hidden" name="id" value="{{ foo.order_id }}">
+                                        <input type="submit" class="btn btn-warning col-12" value="相关记录">
+                                    </div>
+                                </form>
+                                <form class="col-4" method="POST" action="{% url 'maneu_order:detail' %}">
+                                    {% csrf_token %}
+                                    <div class="input-group input-group-sm">
+                                        <input type="hidden" name="id" value="{{ foo.order_id }}">
+                                        <input type="submit" class="btn btn-primary col-12" value="所属订单">
+                                    </div>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
                 <tr>
-                    <td>
-                        <span>{{ foo.time }}</span>
-                    </td>
-                    <td colspan="2">
-                        <span>{{ foo.content }}</span>
-                    </td>
-                    <td align="right">
-                        <div class="col-12 row">
-                            <form class="col-4" method="post" action="{% url 'maneu_order:delete' %}">
-                                {% csrf_token %}
-                                <div class="input-group input-group-sm">
-                                    <input type="hidden" name="id" value="{{ foo.id }}">
-                                    <input type="submit" class="btn btn-danger col-12" id="delete" value="删除记录">
-                                </div>
-                            </form>
-                            <form class="col-4" method="POST" action="{% url 'maneu_alterSales:list' %}">
-                                {% csrf_token %}
-                                <div class="input-group input-group-sm">
-                                    <input type="hidden" name="id" value="{{ foo.order_id }}">
-                                    <input type="submit" class="btn btn-warning col-12" value="相关记录">
-                                </div>
-                            </form>
-                            <form class="col-4" method="POST" action="{% url 'maneu_order:detail' %}">
-                                {% csrf_token %}
-                                <div class="input-group input-group-sm">
-                                    <input type="hidden" name="id" value="{{ foo.order_id }}">
-                                    <input type="submit" class="btn btn-primary col-12" value="所属订单">
-                                </div>
-                            </form>
-                        </div>
+                    <td colspan="4" align="center">
+                        <span>没有订单</span>
                     </td>
                 </tr>
-            {% endfor %}
+            {% endif %}
             <tr>
                 <td align="left">
                     <form class="col-5" method="get" action="{% url 'maneu_alterSales:index' %}">

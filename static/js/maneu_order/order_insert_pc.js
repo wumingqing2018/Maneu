@@ -52,5 +52,4 @@ $(document).ready(function () {
             $("#Store")[0].reset();
         }
     )
-
 });

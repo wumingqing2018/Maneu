@@ -20,13 +20,13 @@
             </tr>
             <tr>
                 <td class="col-3">
-                    <span>姓名</span>
+                    <span>客户姓名</span>
                 </td>
                 <td class="col-3">
-                    <span>电话</span>
+                    <span>客户电话</span>
                 </td>
                 <td class="col-3">
-                    <span>时间</span>
+                    <span>录入时间</span>
                 </td>
                 <td class="col-3" align="right">
                     <form class="col-5" method='get' action="{% url 'maneu_batch:insert' %}">
@@ -36,27 +36,35 @@
                     </form>
                 </td>
             </tr>
-            {% for foo in list %}
+            {% if list %}
+                {% for foo in list %}
+                    <tr>
+                        <td class="col-1">
+                            <span>{{ foo.name }}</span>
+                        </td>
+                        <td class="col-3">
+                            <span>{{ foo.phone }}</span>
+                        </td>
+                        <td class="col-3">
+                            <span>{{ foo.time }}</span>
+                        </td>
+                        <td class="col-3" align="right">
+                            <form class="col-4" method="GET" action="{% url 'maneu_batch:detail' %}">
+                                <div class="input-group input-group-sm">
+                                    <input type="hidden" name="id" value="{{ foo.id }}">
+                                    <input type="submit" class="btn btn-primary col-12" value="查看订单">
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
                 <tr>
-                    <td class="col-1">
-                        <span>{{ foo.name }}</span>
-                    </td>
-                    <td class="col-3">
-                        <span>{{ foo.phone }}</span>
-                    </td>
-                    <td class="col-3">
-                        <span>{{ foo.time }}</span>
-                    </td>
-                    <td class="col-3" align="right">
-                        <form class="col-4" method="GET" action="{% url 'maneu_batch:detail' %}">
-                            <div class="input-group input-group-sm">
-                                <input type="hidden" name="id" value="{{ foo.id }}">
-                                <input type="submit" class="btn btn-primary col-12" value="查看订单">
-                            </div>
-                        </form>
+                    <td colspan="4" align="center">
+                        <span>没有订单</span>
                     </td>
                 </tr>
-            {% endfor %}
+            {% endif %}
             <tr>
                 <td align="left">
                     <form class="col-5" method="get" action="{% url 'maneu_order:index' %}">
