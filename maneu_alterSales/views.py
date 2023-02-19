@@ -2,13 +2,7 @@ from django.shortcuts import HttpResponseRedirect, reverse, render
 from common import common
 from maneu_alterSales import service
 import datetime
-
 # Create your views here.
-def list(request):
-    order_id = request.session.get('order_id')
-    if order_id:
-        return render(request, 'maneu_afterSales/list.html', {'alterSalesList': service.ManeuAfterSales_orderID(order_id=order_id)})
-    return HttpResponseRedirect(reverse('maneu_order:index'))
 
 
 def index(request):
@@ -21,9 +15,16 @@ def index(request):
     up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
     list = service.ManeuAfterSales_index(time=time)  # 查找今日订单
     return render(request, 'maneu_afterSales/index.html', {'list': list,
-                                                      'time': time,
-                                                      'up_day': up_day,
-                                                      'down_day': down_day})
+                                                           'time': time,
+                                                           'up_day': up_day,
+                                                           'down_day': down_day})
+
+
+def list(request):
+    order_id = request.session.get('order_id')
+    if order_id:
+        return render(request, 'maneu_afterSales/list.html', {'alterSalesList': service.ManeuAfterSales_orderID(order_id=order_id)})
+    return HttpResponseRedirect(reverse('maneu_order:index'))
 
 
 def content(request):

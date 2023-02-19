@@ -206,7 +206,7 @@
                 <button class="btn btn-primary" id="print_btn">打印订单</button>
             </div>
             <div class="col-2">
-                <form method="post" action="{% url 'maneu_alterSales:alterSalesList' %}">
+                <form method="post" action="{% url 'maneu_alterSales:list' %}">
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{ order.id }}">
                     <input type="submit" class="btn btn-warning" value="维修记录">
@@ -231,7 +231,7 @@
 {% endblock %}
 {% block javascript %}
     <script type="application/javascript">
-        maneu_store = {{ maneu_store|safe }};
+        maneu_store = {{ store|safe }};
     </script>
     <script type="application/javascript" src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="application/javascript" src="{% static 'js/maneu/delete.js' %}"></script>

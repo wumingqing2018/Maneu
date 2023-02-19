@@ -39,5 +39,18 @@ $(document).ready(function () {
             $("#Vision_Solutions")[0].reset();
         }
     )
+    $('#Store_showbutton').click(function () {
+            $('#Store_showbutton').attr('style', 'display: none')
+            $('#Store_hidebutton').attr('style', 'display: block')
+            $(".Store").attr('style', 'display: block')
+        }
+    )
+    $('#Store_hidebutton').click(function () {
+            $('#Store_hidebutton').attr('style', 'display: none');
+            $('#Store_showbutton').attr('style', 'display: block');
+            $(".Store").attr('style', 'display: none');
+            $("#Store")[0].reset();
+        }
+    )
 
 });

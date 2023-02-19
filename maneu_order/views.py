@@ -55,34 +55,27 @@ def detail(request):
         order_id = request.session.get('order_id')
     order = service.ManeuOrderV2_id(order_id=order_id, users_id=request.session.get('id'))
     if order:
-        users = service.ManeuUsers_id(id=order.users_id)
-        guess = service.ManeuGuess_id(id=order.guess_id)
+        content = {}
+        content['order'] = order
+        content['users'] = service.ManeuUsers_id(id=order.users_id)
+        content['guess'] = service.ManeuGuess_id(id=order.guess_id)
         store = service.store_OrderID(orderid=order.id)
+        content['store'] = json.loads(store.content)
         visionsolutions = service.ManeuVisionSolutions_orderID(orderid=order.id)
-
-        ua = request.META.get("HTTP_USER_AGENT")
-        mobile = judge_pc_or_mobile(ua)
-        if mobile:
-            return render(request, 'maneu_order/detail_phone.html', {'order': order,
-                                                                     'users': users,
-                                                                     'guess': guess,
-                                                                     'maneu_store': json.loads(store.content),
-                                                                     'visionsolutions': json.loads(visionsolutions.content),
-                                                                     })
+        content['visionsolutions'] = json.loads(visionsolutions.content)
+        if judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
+            return render(request, 'maneu_order/detail_phone.html', content)
         else:
-            return render(request, 'maneu_order/detail_pc.html', {'order': order,
-                                                                  'users': users,
-                                                                  'guess': guess,
-                                                                  'maneu_store': json.loads(store.content),
-                                                                  'visionsolutions': json.loads(visionsolutions.content),
-                                                                  })
+            return render(request, 'maneu_order/detail_pc.html', content)
     return HttpResponseRedirect(reverse('maneu_order:index'))
 
 
 def search(request):
-    if request.method == 'POST':
+    text = request.GET.get('text')
+    users_id = request.session.get('id')
+    if text and users_id:
         """查找指定订单"""
-        orderlist = service.ManeuOrderV2_Search(text=request.POST.get('text'), users_id=request.session.get('id'))
+        orderlist = service.ManeuOrderV2_Search(text=text, users_id=users_id)
         return render(request, 'maneu_order/search.html', {'list': orderlist})
     return HttpResponseRedirect(reverse('maneu_order:index'))
 
@@ -101,12 +94,7 @@ def insert(request):
         if order:
             request.session['order_id'] = str(order.id)
             return HttpResponseRedirect(reverse('maneu_order:detail'))
-
-
-
-    ua = request.META.get("HTTP_USER_AGENT")
-    mobile = judge_pc_or_mobile(ua)
-    if mobile:
+    if judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
         return render(request, 'maneu_order/insert_phone.html')
     else:
         return render(request, 'maneu_order/insert_pc.html')

@@ -76,3 +76,14 @@ def generate_qrcode():
     buf = BytesIO()		# BytesIO实现了在内存中读写bytes
     img.save(buf)
     return buf.getvalue()
+
+
+def index_time(request):
+    if request.GET.get('time'):
+        time = request.GET.get('time')
+    else:
+        time = today()
+    date = datetime.datetime.strptime(time, '%Y-%m-%d')
+    down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
+    up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
+    return {'list': '', 'time': time, 'up_day': up_day, 'down_day': down_day}
