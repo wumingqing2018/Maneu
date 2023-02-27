@@ -10,8 +10,8 @@ def subjectiverefraction_id(id=''):
     return ManeuSubjectiveRefraction.objects.filter(id=id).first()
 
 
-def subjectiverefraction_guessID(guessID=''):
-    return ManeuSubjectiveRefraction.objects.filter(guessID=guessID).first()
+def subjectiverefraction_guessID(guessid=''):
+    return ManeuSubjectiveRefraction.objects.filter(guessid=guessid).first()
 
 
 def guess_time(time, user_id):
@@ -40,8 +40,7 @@ def guess_insert(contents='', user_id='', time=''):
 
 
 def subjectiverefraction_insert(guess_id='', content=''):
-    return ManeuSubjectiveRefraction.objects.create(guessID=guess_id, content=content)
-
+        return ManeuSubjectiveRefraction.objects.create(guessid=guess_id, content=content)
 
 def guess_update_user_id(id='', user_id=''):
     return ManeuGuess.objects.filter(id=id).update(user_id=user_id)

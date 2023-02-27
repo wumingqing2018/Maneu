@@ -28,7 +28,7 @@ def index(request):
 def detail(request):
     guess = service.guess_id(id=request.POST.get('id'))
     users = usersService.find_user(user_id=request.session.get('id'))
-    Subjective = service.subjectiverefraction_guessID(guessID=guess.id)
+    Subjective = service.subjectiverefraction_guessID(guessid=guess.id)
     subjectiverefraction = json.loads(Subjective.content)
     try:
         clientAge = int(guess.age)
