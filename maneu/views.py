@@ -1,4 +1,5 @@
 from django.shortcuts import HttpResponseRedirect, reverse, render
+from django.http import JsonResponse
 
 from common import common
 from maneu import service
@@ -40,3 +41,7 @@ def guess(request):
                 return render(request, 'maneu/guess.html', {'msg': '没有您的订单'})
 
     return render(request, 'maneu/guess.html')
+
+
+def test(request):
+    return JsonResponse({'code': 0, 'msg': '', 'data': []})

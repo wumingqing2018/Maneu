@@ -1,5 +1,6 @@
 import re
 import time
+from uuid import UUID
 
 """
 通用校验工具
@@ -22,38 +23,6 @@ def is_int(string):
     except BaseException as msg:
         print("error", msg)
     return 0
-
-
-def user_id_method_get(user_id=''):
-    """
-    判断请求是否为 GET
-    判断user_id 是否存在
-    判断user_id 是否为16位纯数字
-    """
-    try:
-        re_match = re.match(r"^\d{32}$", user_id, flags=0)
-        if re_match:
-            return user_id
-    except BaseException as msg:
-        print(msg)
-    return None
-
-
-def store_id_method_get(request):
-    """
-    判断请求是否为 GET
-    判断user_id 是否存在
-    判断user_id 是否为16位纯数字
-    """
-    if request.method == 'GET':
-        try:
-            user_id = request.GET['store_id']
-            re_match = re.match(r"^\d{32}$", user_id, flags=0)
-            if re_match:
-                return user_id
-        except BaseException as msg:
-            print(msg)
-    return None
 
 
 def order_id_method_get(request):
@@ -129,3 +98,11 @@ def date_method_post(request):
     except BaseException as e:
         print(e)
         return None
+
+
+def verifyUUid(str=''):
+    try:
+        UUID(str).version
+        return True
+    except:
+        return False

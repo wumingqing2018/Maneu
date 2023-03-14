@@ -10,13 +10,13 @@ urlpatterns = [
     path('login/', login, name='login'),
     # 客户页
     path('guess/', guess, name='guess'),
+    path('test/', test, name='test'),
     # 订单子路由
     path('maneu_order/', include('maneu_order.urls')),
     # 用户子路由
     path('maneu_users/', include('maneu_users.urls')),
     # 用户子路由
     path('maneu_client/', include('maneu_client.urls')),
-
     # 批发子路由
     path('maneu_batch/', include('maneu_batch.urls')),
     # 商品子路由
