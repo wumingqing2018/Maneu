@@ -44,4 +44,5 @@ def guess(request):
 
 
 def test(request):
-    return JsonResponse({'code': 0, 'msg': '打烂胖次', 'data': []})
+
+    return JsonResponse({'code': 0, 'msg': request.GET.get('code'), 'data': []})
