@@ -28,21 +28,3 @@ def login(request):
             request.session['nickname'] = user_content.nickname
             return HttpResponseRedirect(reverse('maneu_order:index'))
     return render(request, 'maneu/admin.html', {'form': LoginForm()})
-
-
-def guess(request):
-    if request.method == 'POST':
-        form = GuessForm(request.POST)
-        if form.is_valid():
-                guess = service.find_guess_phone(phone=request.POST.get('phone'))
-                if guess != None:
-                    request.session['id'] = guess.id
-                    return HttpResponseRedirect(reverse('guess_admin:order_list'))
-                return render(request, 'maneu/guess.html', {'msg': '没有您的订单'})
-
-    return render(request, 'maneu/guess.html')
-
-
-def test(request):
-
-    return JsonResponse({'code': 0, 'msg': request.GET.get('code'), 'data': []})
