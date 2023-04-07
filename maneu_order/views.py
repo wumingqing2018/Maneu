@@ -125,4 +125,4 @@ def update(request):
             guess_content = json.loads(request.POST.get('Guess_information'))
             service.ManeuOrderV2_update(order_id=order.id,name=guess_content['guess_name'],phone=guess_content['guess_phone'], )
             return HttpResponseRedirect(reverse('maneu_order:detail'))
-    return render(request, 'maneu/error.html', {'msg': '参数错误'})
+    return HttpResponseRedirect(reverse('maneu_order:update'))

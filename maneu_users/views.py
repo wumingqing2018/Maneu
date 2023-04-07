@@ -13,7 +13,7 @@ def user_detail(request):
     if user_id:
         return render(request, 'maneu_users/detail.html', {'maneu_users': serivce.find_user(user_id)})
     else:
-        return render(request, 'maneu/error.html', {'msg': "请求出错"})
+        return HttpResponseRedirect(reverse('index'))
 
 
 def user_insert(request):
