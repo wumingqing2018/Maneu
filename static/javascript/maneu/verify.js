@@ -238,7 +238,7 @@
             var tmpHtml = '';
 
             if (this.options.type != 1) {		//图片滑动
-                panelHtml += '<div class="verify-img-panel"><div  class="verify-refresh"><i class="iconfont icon-refresh"></i></div><div class="verify-gap"></div></div>';
+                panelHtml += '<div class="verify-images-panel"><div  class="verify-refresh"><i class="iconfont icon-refresh"></i></div><div class="verify-gap"></div></div>';
                 tmpHtml = '<div  class="verify-sub-block"></div>';
             }
 
@@ -248,7 +248,7 @@
             this.htmlDoms = {
                 gap: this.$element.find('.verify-gap'),
                 sub_block: this.$element.find('.verify-sub-block'),
-                img_panel: this.$element.find('.verify-img-panel'),
+                img_panel: this.$element.find('.verify-images-panel'),
                 bar_area: this.$element.find('.verify-bar-area'),
                 move_block: this.$element.find('.verify-move-block'),
                 left_bar: this.$element.find('.verify-left-bar'),
@@ -460,7 +460,7 @@
             var top = rand1 * parseInt(this.setSize.img_height) / 15 + parseInt(this.setSize.img_height) * 0.1;
             var left = rand2 * parseInt(this.setSize.img_width) / 15 + parseInt(this.setSize.img_width) * 0.1;
 
-            this.$element.find('.verify-img-panel').css('margin-bottom', this.options.vSpace + 'px');
+            this.$element.find('.verify-images-panel').css('margin-bottom', this.options.vSpace + 'px');
             this.$element.find('.verify-gap').css({'top': top, 'left': left});
             this.$element.find('.verify-sub-block').css({
                 'top': '-' + (parseInt(this.setSize.img_height) - top + this.options.vSpace + 2) + 'px',
@@ -475,7 +475,7 @@
         refresh: function () {
             this.randSet();
             this.img_rand = Math.floor(Math.random() * this.options.imgName.length);			//随机的背景图片
-            this.$element.find('.verify-img-panel').css({
+            this.$element.find('.verify-images-panel').css({
                 'background': 'url(images/' + this.options.imgName[this.img_rand] + ')',
                 'background-size': this.setSize.img_width + ' ' + this.setSize.img_height
             });
@@ -542,7 +542,7 @@
             };
 
             //点击事件比对
-            _this.$element.find('.verify-img-panel canvas').on('click', function (e) {
+            _this.$element.find('.verify-images-panel canvas').on('click', function (e) {
 
                 _this.checkPosArr.push(_this.getMousePos(this, e));
 
@@ -573,7 +573,7 @@
                             });
                             _this.$element.find('.verify-msg').text('验证成功');
                             _this.$element.find('.verify-refresh').hide();
-                            _this.$element.find('.verify-img-panel').unbind('click');
+                            _this.$element.find('.verify-images-panel').unbind('click');
                             _this.options.success();
                         }
                     }, 400);
@@ -607,13 +607,13 @@
 
             this.setSize = Slide.prototype.resetSize(this);	//重新设置宽度高度
 
-            panelHtml += '<div class="verify-img-panel"><div  class="verify-refresh" style="z-index:9999"><i class="iconfont icon-refresh"></i></div><canvas width="' + this.setSize.img_width + '" height="' + this.setSize.img_height + '"></canvas></div><div class="verify-bar-area"><span  class="verify-msg"></span></div>';
+            panelHtml += '<div class="verify-images-panel"><div  class="verify-refresh" style="z-index:9999"><i class="iconfont icon-refresh"></i></div><canvas width="' + this.setSize.img_width + '" height="' + this.setSize.img_height + '"></canvas></div><div class="verify-bar-area"><span  class="verify-msg"></span></div>';
 
             this.$element.append(panelHtml);
 
 
             this.htmlDoms = {
-                img_panel: this.$element.find('.verify-img-panel'),
+                img_panel: this.$element.find('.verify-images-panel'),
                 bar_area: this.$element.find('.verify-bar-area'),
                 msg: this.$element.find('.verify-msg'),
             };
