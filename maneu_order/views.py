@@ -4,7 +4,7 @@ import json
 from django.shortcuts import render, reverse, HttpResponseRedirect
 
 from common import common
-from common.checkMobile import judge_pc_or_mobile
+from common import verify
 from maneu_alterSales import service as alterSalesServivce
 from maneu_order import service
 
@@ -63,7 +63,7 @@ def detail(request):
         content['store'] = json.loads(store.content)
         visionsolutions = service.ManeuVisionSolutions_orderID(orderid=order.id)
         content['visionsolutions'] = json.loads(visionsolutions.content)
-        if judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
+        if verify.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
             return render(request, 'maneu_order/detail_phone.html', content)
         else:
             return render(request, 'maneu_order/detail_pc.html', content)
@@ -94,7 +94,7 @@ def insert(request):
         if order:
             request.session['order_id'] = str(order.id)
             return HttpResponseRedirect(reverse('maneu_order:detail'))
-    if judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
+    if verify.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
         return render(request, 'maneu_order/insert_phone.html')
     else:
         return render(request, 'maneu_order/insert_pc.html')

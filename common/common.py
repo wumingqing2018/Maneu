@@ -6,13 +6,6 @@ from io import BytesIO
 import qrcode
 
 
-def current_time():
-    """
-    返回当前时间
-    格式: Y-M-D H:M:S
-    """
-    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-
 
 def today():
     """

@@ -4,7 +4,7 @@ import json
 from django.shortcuts import render, HttpResponseRedirect, reverse
 
 from common import common
-from common.checkMobile import judge_pc_or_mobile
+from common import verify
 from maneu_client import service
 from maneu_order import service as orderService
 from maneu_users import serivce as usersService
@@ -42,7 +42,7 @@ def detail(request):
         stand_ax = '24.0'
 
     ua = request.META.get("HTTP_USER_AGENT")
-    mobile = judge_pc_or_mobile(ua)
+    mobile = verify.judge_pc_or_mobile(ua)
     if mobile:
         return render(request, 'maneu_client/detail_phone.html', {'guess': guess,
                                                                   'users': users,
@@ -81,7 +81,7 @@ def detail_phone(request):
         stand_ax = '24.0'
 
     ua = request.META.get("HTTP_USER_AGENT")
-    mobile = judge_pc_or_mobile(ua)
+    mobile = verify.judge_pc_or_mobile(ua)
     if mobile:
         return render(request, 'maneu_client/detail_phone.html', {'guess': guess,
                                                                   'users': users,
