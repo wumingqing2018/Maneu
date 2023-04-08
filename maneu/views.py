@@ -1,9 +1,7 @@
 from django.shortcuts import HttpResponseRedirect, reverse, render
-from django.http import JsonResponse
 
 from common import common
 from maneu import service
-from maneu.forms.guessForm import GuessForm
 from maneu.forms.loginForm import LoginForm
 
 

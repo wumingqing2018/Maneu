@@ -11,8 +11,8 @@ import uuid
 
 class ManeuAftersales(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    orderid = models.CharField(db_column='orderID', max_length=36, blank=True, null=True)  # Field name made lowercase.
     time = models.DateTimeField()
-    orderID = models.CharField(max_length=36, blank=True, null=True)
     content = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
@@ -79,6 +79,22 @@ class ManeuGuess(models.Model):
     class Meta:
         managed = False
         db_table = 'maneu_guess'
+
+
+class ManeuOrder(models.Model):
+    order_id = models.CharField(primary_key=True, max_length=32)
+    order_token = models.CharField(max_length=32, blank=True, null=True)
+    c_time = models.DateTimeField()
+    c_name = models.CharField(max_length=11)
+    c_phone = models.CharField(max_length=11)
+    order = models.TextField(blank=True, null=True)
+    besiness = models.CharField(max_length=16)
+    status = models.IntegerField()
+    remark = models.CharField(max_length=2048)
+
+    class Meta:
+        managed = False
+        db_table = 'maneu_order'
 
 
 class ManeuOrderV2(models.Model):
