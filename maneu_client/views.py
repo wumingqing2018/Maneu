@@ -41,9 +41,7 @@ def detail(request):
     except:
         stand_ax = '24.0'
 
-    ua = request.META.get("HTTP_USER_AGENT")
-    mobile = verify.judge_pc_or_mobile(ua)
-    if mobile:
+    if verify.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
         return render(request, 'maneu_client/detail_phone.html', {'guess': guess,
                                                                   'users': users,
                                                                   'subjectiverefraction': subjectiverefraction,
@@ -80,9 +78,7 @@ def detail_phone(request):
     except:
         stand_ax = '24.0'
 
-    ua = request.META.get("HTTP_USER_AGENT")
-    mobile = verify.judge_pc_or_mobile(ua)
-    if mobile:
+    if verify.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
         return render(request, 'maneu_client/detail_phone.html', {'guess': guess,
                                                                   'users': users,
                                                                   'subjectiverefraction': subjectiverefraction,
