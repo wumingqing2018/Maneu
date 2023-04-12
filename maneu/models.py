@@ -31,7 +31,7 @@ class ManeuBatch(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'maneu_batch'
+        db_table = 'maneu_order_v1'
 
 
 class ManeuClass(models.Model):
@@ -59,7 +59,7 @@ class ManeuDatalogs(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'maneu_datalogs'
+        db_table = 'maneu_index'
 
 
 class ManeuGuess(models.Model):
@@ -79,22 +79,6 @@ class ManeuGuess(models.Model):
     class Meta:
         managed = False
         db_table = 'maneu_guess'
-
-
-class ManeuOrder(models.Model):
-    order_id = models.CharField(primary_key=True, max_length=32)
-    order_token = models.CharField(max_length=32, blank=True, null=True)
-    c_time = models.DateTimeField()
-    c_name = models.CharField(max_length=11)
-    c_phone = models.CharField(max_length=11)
-    order = models.TextField(blank=True, null=True)
-    besiness = models.CharField(max_length=16)
-    status = models.IntegerField()
-    remark = models.CharField(max_length=2048)
-
-    class Meta:
-        managed = False
-        db_table = 'maneu_order'
 
 
 class ManeuOrderV2(models.Model):

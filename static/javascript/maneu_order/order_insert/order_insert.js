@@ -42,7 +42,7 @@ $(document).ready(function () {
         }
     });
     $('#insert').click(function () {
-        $("#maneu_order").val('[' + order + ']');
+        $("#maneu_order_v2").val('[' + order + ']');
         $.ajax({
             url: api_order_insert,
             type: 'POST',

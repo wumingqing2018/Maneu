@@ -32,28 +32,25 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'maneu_datalogs:index' %}">数据可视化(开发中)</a>
+                <a class="nav-link" href="{% url 'maneu_index:index' %}">数据可视化(开发中)</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'maneu_order:index' %}">零售管理</a>
+                <a class="nav-link" href="{% url 'maneu_order_v2:index' %}">零售管理</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'maneu_batch:index' %}">批发管理</a>
+                <a class="nav-link" href="{% url 'maneu_order_v1:index' %}">批发管理</a>
             </li>
-{#            <li class="nav-item">#}
-{#                <a class="nav-link" href="{% url 'maneu_class:index' %}">商品管理</a>#}
-{#            </li>#}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'maneu_alterSales:index' %}">售后管理</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'maneu_client:index' %}">客户管理</a>
+                <a class="nav-link" href="{% url 'maneu_guest:index' %}">客户管理</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-bs-toggle="dropdown">个人中心</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{% url 'maneu_users:user_detail' %}">查看资料</a>
-                    <a class="dropdown-item" href="{% url 'maneu_users:user_updata' %}">修改资料</a>
+                    <a class="dropdown-item" href="{% url 'maneu_admin:user_detail' %}">查看资料</a>
+                    <a class="dropdown-item" href="{% url 'maneu_admin:user_updata' %}">修改资料</a>
                     <a class="dropdown-item" href="{% url 'login' %}">退出登录</a>
                 </div>
             </li>

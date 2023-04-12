@@ -9,16 +9,16 @@ urlpatterns = [
     # 登录页
     path('login/', login, name='login'),
     # 订单子路由
-    path('maneu_order/', include('maneu_order.urls')),
+    path('maneu_order_v2/', include('maneu_order_v2.urls')),
     # 用户子路由
-    path('maneu_users/', include('maneu_users.urls')),
+    path('maneu_admin/', include('maneu_admin.urls')),
     # 用户子路由
-    path('maneu_client/', include('maneu_client.urls')),
+    path('maneu_guest/', include('maneu_guest.urls')),
     # 批发子路由
-    path('maneu_batch/', include('maneu_batch.urls')),
+    path('maneu_order_v1/', include('maneu_order_v1.urls')),
     # 商品子路由
     path('maneu_class/', include('maneu_class.urls')),
     # 商品子路由
-    path('maneu_datalogs/', include('maneu_datalogs.urls')),
+    path('maneu_index/', include('maneu_index.urls')),
     path('maneu_alterSales/', include('maneu_alterSales.urls')),
 ]

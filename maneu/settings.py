@@ -24,7 +24,7 @@ See https:#docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 SECURITY WARNING: don't run with debug turned on in production!
 SECURITY WARNING: keep the secret key used in production secret!
 """
-DEBUG = False
+DEBUG = True
 SECRET_KEY = 'd&@vq_f^z79&w=nqqcm2vu#+gj8)_qdvy1t&agfxhmi74fwpr!'
 ALLOWED_HOSTS = ['*']
 
@@ -41,12 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'maneu',
     'maneu_alterSales',
-    'maneu_batch',
+    'maneu_order_v1',
     'maneu_class',
-    'maneu_client',
-    'maneu_datalogs',
-    'maneu_order',
-    'maneu_users',
+    'maneu_guest',
+    'maneu_index',
+    'maneu_order_v2',
+    'maneu_admin',
 
 ]
 
@@ -104,6 +104,14 @@ https:#docs.djangoproject.com/en/3.0/ref/settings/#databases
 """
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'maneu',
+        'HOST': 'localhost',
+        'PORT': 3306,
+        'USER': 'root',
+        'PASSWORD': '',
+    },
+    'testserver': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'maneu',
         'HOST': 'localhost',
