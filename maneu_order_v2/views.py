@@ -5,7 +5,7 @@ from django.shortcuts import render, reverse, HttpResponseRedirect
 
 from common import common
 from common import verify
-from maneu_alterSales import service as alterSalesServivce
+from maneu_service import service as alterSalesServivce
 from maneu_order_v2 import service
 
 

@@ -1,8 +1,8 @@
 from django.urls import path
 
-from maneu_alterSales import views
+from maneu_service import views
 
-app_name = 'maneu_alterSales'
+app_name = 'maneu_service'
 urlpatterns = [
     # views
     path('list/', views.list, name='list'),

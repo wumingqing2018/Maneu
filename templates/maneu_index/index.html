@@ -1,8 +1,8 @@
-{% extends 'maneu/base_uesrs.html' %}
+{% extends 'maneu/base_admin.html' %}
 {% load static %}
 ={% block javascript %}
     <script type="text/javascript" src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
-    <script type="text/javascript" src="{% static 'javascript/maneu_datalogs/echarts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascript/maneu_index/echarts.js' %}"></script>
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main1'), 'maneu');
         var option = {

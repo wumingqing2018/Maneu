@@ -9,29 +9,22 @@ from django.db import models
 import uuid
 
 
-class ManeuAftersales(models.Model):
+class ManeuAdmin(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    orderid = models.CharField(db_column='orderID', max_length=36, blank=True, null=True)  # Field name made lowercase.
-    time = models.DateTimeField()
-    content = models.CharField(max_length=300, blank=True, null=True)
+    nickname = models.CharField(max_length=36)
+    username = models.CharField(unique=True, max_length=36)
+    password = models.CharField(max_length=36)
+    email = models.CharField(max_length=36)
+    phone = models.CharField(max_length=36)
+    level = models.IntegerField()
+    state = models.IntegerField()
+    create_time = models.DateTimeField()
+    remark = models.CharField(max_length=255, blank=True, null=True)
+    localtion = models.CharField(max_length=128, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'maneu_aftersales'
-
-
-class ManeuBatch(models.Model):
-    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    userid = models.CharField(db_column='userID', max_length=36)  # Field name made lowercase.
-    guessid = models.CharField(db_column='guessID', max_length=36)  # Field name made lowercase.
-    time = models.DateTimeField()
-    name = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
-    contents = models.TextField()
-
-    class Meta:
-        managed = False
-        db_table = 'maneu_order_v1'
+        db_table = 'maneu_admin'
 
 
 class ManeuClass(models.Model):
@@ -59,7 +52,7 @@ class ManeuDatalogs(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'maneu_index'
+        db_table = 'maneu_datalogs'
 
 
 class ManeuGuess(models.Model):
@@ -73,7 +66,7 @@ class ManeuGuess(models.Model):
     em = models.CharField(db_column='EM', max_length=36, blank=True, null=True)  # Field name made lowercase.
     dfh = models.CharField(db_column='DFH', max_length=36, blank=True, null=True)  # Field name made lowercase.
     remark = models.TextField()
-    user_id = models.CharField(max_length=36, blank=True, null=True)
+    users_id = models.CharField(max_length=36, blank=True, null=True)
     subjective_id = models.CharField(max_length=36, blank=True, null=True)
 
     class Meta:
@@ -81,7 +74,21 @@ class ManeuGuess(models.Model):
         db_table = 'maneu_guess'
 
 
-class ManeuOrderV2(models.Model):
+class ManeuOrderv1(models.Model):
+    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    time = models.DateTimeField()
+    name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255)
+    users_id = models.CharField(max_length=36)  # Field name made lowercase.
+    guess_id = models.CharField(max_length=36)  # Field name made lowercase.
+    contents = models.TextField()
+
+    class Meta:
+        managed = False
+        db_table = 'maneu_orderv1'
+
+
+class ManeuOrderv2(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
     time = models.DateTimeField()
     name = models.CharField(max_length=36)
@@ -94,7 +101,20 @@ class ManeuOrderV2(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'maneu_order_v2'
+        db_table = 'maneu_orderv2'
+
+
+class ManeuService(models.Model):
+    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    time = models.DateTimeField()
+    guess_id = models.CharField(max_length=36)
+    users_id = models.CharField(max_length=36)
+    orderid = models.CharField(db_column='orderID', max_length=36, blank=True, null=True)  # Field name made lowercase.
+    content = models.CharField(max_length=300, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'maneu_service'
 
 
 class ManeuStore(models.Model):
@@ -117,24 +137,6 @@ class ManeuSubjectiveRefraction(models.Model):
     class Meta:
         managed = False
         db_table = 'maneu_subjective_refraction'
-
-
-class ManeuUsers(models.Model):
-    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    nickname = models.CharField(max_length=36)
-    username = models.CharField(unique=True, max_length=36)
-    password = models.CharField(max_length=36)
-    email = models.CharField(max_length=36)
-    phone = models.CharField(max_length=36)
-    level = models.IntegerField()
-    state = models.IntegerField()
-    create_time = models.DateTimeField()
-    remark = models.CharField(max_length=255, blank=True, null=True)
-    localtion = models.CharField(max_length=128, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'maneu_users'
 
 
 class ManeuVisionSolutions(models.Model):

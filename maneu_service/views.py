@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponseRedirect, reverse, render
 from common import common
-from maneu_alterSales import service
+from maneu_service import service
 import datetime
 # Create your views here.
 
@@ -38,7 +38,7 @@ def insert(request):
         order_id = request.POST.get('order_id')
         content = request.POST.get('content')
         insert = service.ManeuAfterSales_insert(content=content, order_id=order_id)
-        return HttpResponseRedirect(reverse('maneu_alterSales:alterSalesList'))
+        return HttpResponseRedirect(reverse('maneu_service:alterSalesList'))
     elif request.method == 'GET':
         order_id = request.session.get('order_id')
         return render(request, 'maneu_afterSales/insert.html', {'order_id': order_id})
@@ -49,4 +49,4 @@ def insert(request):
 def delete(request):
     if request.method == 'POST':
         insert = service.ManeuAfterSales_delete_id(id=request.POST.get('order_id'))
-    return HttpResponseRedirect(reverse('maneu_alterSales:alterSalesList'))
+    return HttpResponseRedirect(reverse('maneu_service:alterSalesList'))

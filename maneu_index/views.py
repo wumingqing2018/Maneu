@@ -10,16 +10,15 @@ from maneu_index import service
 # Create your views here.
 
 def index(request):
-    if request.method == 'POST':
-        day = request.POST.get('time')
-        year = request.POST.get('time')[0:4]
-        month = request.POST.get('time')[5:7]
-    else:
-        day = datetime.datetime.now().date()
-        year = common.year()
-        month = common.month()
-
+    year = common.year()
+    month = common.month()
     user_id = request.session.get('id')
+
+    print(service.find_guess_month(users_id=user_id, month=month, year=year).count())
+    print(service.find_orderV1_month(users_id=user_id, month=month, year=year).count())
+    print(service.find_orderV2_month(users_id=user_id, month=month, year=year).count())
+    print(service.find_service_month(users_id=user_id, month=month, year=year).count())
+
     order_log = []
     money_log = []
     class_log = []
@@ -46,7 +45,7 @@ def index(request):
         "brand_count": 0,
 
     }
-    orderlist = service.find_order_month(users_id=user_id, year=year, month=month)  # 查找今日订单
+    orderlist = service.find_orderV2_month(users_id=user_id, year=year, month=month)  # 查找今日订单
     for order in orderlist:
         order_logs['order_count'] = order_logs['order_count'] + 1
         order_logs['order_log']['%02d'%order.time.day] = order_logs['order_log']['%02d'%order.time.day] +1
@@ -79,10 +78,8 @@ def index(request):
 
     for i in order_logs['class_log']:
         class_log.append({'value': order_logs['class_log'][i], 'name': i})
-
     return render(request, 'maneu_index/index.html', {'order_log': order_log, 'order_count': order_logs['order_count'],
-                                                         'money_log': money_log, 'money_count': order_logs['money_count'],
-                                                         'class_log': class_log, 'class_count': order_logs['class_count'],
-                                                         'brand_log': brand_log, 'brand_count': order_logs['brand_count'],
-                                                         'day': day
-                                                         })
+                                                      'money_log': money_log, 'money_count': order_logs['money_count'],
+                                                      'class_log': class_log, 'class_count': order_logs['class_count'],
+                                                      'brand_log': brand_log, 'brand_count': order_logs['brand_count'],
+                                                      })

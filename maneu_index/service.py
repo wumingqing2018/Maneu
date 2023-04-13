@@ -1,9 +1,4 @@
-from maneu.models import ManeuOrderV2
-from maneu.models import ManeuStore
-
-
-def find_order_month(users_id='', month='', year=''):
-    return ManeuOrderV2.objects.filter(time__year=year, time__month=month, users_id=users_id).all()
+from maneu.models import *
 
 
 def find_store_id(id=''):
@@ -12,3 +7,19 @@ def find_store_id(id=''):
     except BaseException as msg:
         print(msg)
         return None
+
+
+def find_guess_month(users_id='', month='', year=''):
+    return ManeuGuess.objects.filter(time__year=year, time__month=month, users_id=users_id).all()
+
+
+def find_orderV1_month(users_id='', month='', year=''):
+    return ManeuOrderv1.objects.filter(time__year=year, time__month=month, users_id=users_id).all()
+
+
+def find_orderV2_month(users_id='', month='', year=''):
+    return ManeuOrderv2.objects.filter(time__year=year, time__month=month, users_id=users_id).all()
+
+
+def find_service_month(users_id='', month='', year=''):
+    return ManeuService.objects.filter(time__year=year, time__month=month, users_id=users_id).all()

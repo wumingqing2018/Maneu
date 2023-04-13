@@ -3,10 +3,10 @@ import json
 from django.db.models import Q
 
 from maneu.models import ManeuGuess
-from maneu.models import ManeuOrderV2
+from maneu.models import ManeuOrderv2
 from maneu.models import ManeuStore
 from maneu.models import ManeuSubjectiveRefraction
-from maneu.models import ManeuUsers
+from maneu.models import ManeuAdmin
 from maneu.models import ManeuVisionSolutions
 
 
@@ -14,14 +14,14 @@ def ManeuOrderV2_all(users_id=''):
     """
     全部订单
     """
-    return ManeuOrderV2.objects.filter(users_id=users_id).order_by('-time').all()
+    return ManeuOrderv2.objects.filter(users_id=users_id).order_by('-time').all()
 
 
 def ManeuOrderV2_today(users_id='', time=''):
     """
     全部订单
     """
-    return ManeuOrderV2.objects.filter(users_id=users_id, time=time).order_by('time').all()
+    return ManeuOrderv2.objects.filter(users_id=users_id, time=time).order_by('time').all()
 
 
 def ManeuOrderV2_id(order_id='', users_id=''):
@@ -29,7 +29,7 @@ def ManeuOrderV2_id(order_id='', users_id=''):
     查找指定订单
     根据时间排序
     """
-    return ManeuOrderV2.objects.filter(id=order_id, users_id=users_id).first()
+    return ManeuOrderv2.objects.filter(id=order_id, users_id=users_id).first()
 
 
 def ManeuOrderV2_delete(users_id='', id=''):
@@ -37,11 +37,11 @@ def ManeuOrderV2_delete(users_id='', id=''):
     查找指定订单a
     根据时间排序
     """
-    return ManeuOrderV2.objects.filter(users_id=users_id, id=id).delete()
+    return ManeuOrderv2.objects.filter(users_id=users_id, id=id).delete()
 
 
 def find_order_phone(phone=''):
-    return ManeuOrderV2.objects.filter(phone=phone).order_by('-time').all()
+    return ManeuOrderv2.objects.filter(phone=phone).order_by('-time').all()
 
 
 def guess_id(id=''):
@@ -69,15 +69,15 @@ def ManeuStore_delete(id=''):
 
 
 def users_id(id):
-    return ManeuUsers.objects.filter(id=id).first()
+    return ManeuAdmin.objects.filter(id=id).first()
 
 
-def ManeuUsers_id(id=''):
-    return ManeuUsers.objects.filter(id=id).first()
+def ManeuAdmin_id(id=''):
+    return ManeuAdmin.objects.filter(id=id).first()
 
 
 def ManeuOrderV2_Search(text='', users_id=''):
-    return ManeuOrderV2.objects.filter(Q(name=text) | Q(phone=text, users_id=users_id)).order_by('-time').all()
+    return ManeuOrderv2.objects.filter(Q(name=text) | Q(phone=text, users_id=users_id)).order_by('-time').all()
 
 
 def ManeuVisionSolutions_orderID(orderid=''):
@@ -143,11 +143,11 @@ def ManeuStore_update_orderID(orderID='', id=''):
 
 
 def ManeuOrderV2_insert(name='', time='', phone='', guess_id='', users_id=''):
-    return ManeuOrderV2.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, users_id=users_id)
+    return ManeuOrderv2.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, users_id=users_id)
 
 
 def ManeuOrderV2_update(order_id='', name='', phone=''):
-    return ManeuOrderV2.objects.filter(id=order_id).update(name=name, phone=phone)
+    return ManeuOrderv2.objects.filter(id=order_id).update(name=name, phone=phone)
 
 
 def guess_phone(phone):
