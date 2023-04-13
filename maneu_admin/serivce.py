@@ -1,16 +1,16 @@
 from maneu.models import ManeuAdmin
 
 
-def find_user(user_id):
+def find_user(admin_id):
     """
-    通过user_id查找用户
+    通过admin_id查找用户
     """
-    return ManeuAdmin.objects.filter(id=user_id).first()
+    return ManeuAdmin.objects.filter(id=admin_id).first()
 
 
 def find_user_all():
     """
-    通过user_id查找用户
+    通过admin_id查找用户
     """
     return ManeuAdmin.objects.filter().all()
 
@@ -41,16 +41,16 @@ def add_user(post):
         return str(msg)
 
 
-def user_delete(user_id):
-    return ManeuAdmin.objects.filter(user_id=user_id).delete()
+def user_delete(admin_id):
+    return ManeuAdmin.objects.filter(admin_id=admin_id).delete()
 
 
-def user_update(old_password='', localtion='', user_id='', nickname='', password='', email='', phone='', remark=''):
+def user_update(old_password='', localtion='', admin_id='', nickname='', password='', email='', phone='', remark=''):
     try:
-        ManeuAdmin.objects.filter(user_id=user_id, password=old_password).update(nickname=nickname, password=password,
-                                                                                 email=email, phone=phone,
-                                                                                 localtion=localtion,
-                                                                                 remark=remark)
+        ManeuAdmin.objects.filter(admin_id=admin_id, password=old_password).update(nickname=nickname, password=password,
+                                                                                   email=email, phone=phone,
+                                                                                   localtion=localtion,
+                                                                                   remark=remark)
     except BaseException as msg:
         return str(msg)
 

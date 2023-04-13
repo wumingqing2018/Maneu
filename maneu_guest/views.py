@@ -15,7 +15,7 @@ def index(request):
         time = request.GET.get('time')
     else:
         time = common.today()
-    list = service.guess_time(time=time, user_id=request.session.get('id'))
+    list = service.guess_time(time=time, admin_id=request.session.get('id'))
     date = datetime.datetime.strptime(time, '%Y-%m-%d')
     down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
     up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
@@ -27,7 +27,7 @@ def index(request):
 
 def detail(request):
     guess = service.guess_id(id=request.POST.get('id'))
-    users = usersService.find_user(user_id=request.session.get('id'))
+    users = usersService.find_user(admin_id=request.session.get('id'))
     Subjective = service.subjectiverefraction_guessID(guessid=guess.id)
     subjectiverefraction = json.loads(Subjective.content)
     try:
@@ -58,7 +58,7 @@ def detail(request):
 
 def detail_phone(request):
     guess = service.guess_phone(phone=request.POST.get('phone'))
-    users = usersService.find_user(user_id=request.session.get('id'))
+    users = usersService.find_user(admin_id=request.session.get('id'))
     Subjective = service.subjectiverefraction_id(id=guess.subjective_id)
     if Subjective:
         subjectiverefraction = json.loads(Subjective.content)
@@ -97,7 +97,7 @@ def detail_phone(request):
 def insert(request):
     today = common.today()
     if request.method == 'POST':
-        ManeuGuess = service.guess_insert(time=today, contents=request.POST.get('Guess_information'), user_id=request.session.get('id'))
+        ManeuGuess = service.guess_insert(time=today, contents=request.POST.get('Guess_information'), admin_id=request.session.get('id'))
         ManeuSubjectiveRefraction = service.subjectiverefraction_insert(guess_id=ManeuGuess.id, content=request.POST.get('Subjective_refraction'))
         return HttpResponseRedirect(reverse('maneu_guest:index'))
     return render(request, 'maneu_guest/insert.html', {'today': today})
@@ -125,7 +125,7 @@ def update(request):
 def search(request):
     """查找指定订单"""
     if request.method == 'POST':
-        orderlist = service.guess_search(text=request.POST.get('text'), users_id=request.session.get('id'))
+        orderlist = service.guess_search(text=request.POST.get('text'), admin_id=request.session.get('id'))
         return render(request, 'maneu_guest/search.html', {'orderlist': orderlist})
     else:
         return HttpResponseRedirect(reverse('maneu_guest:index'))
