@@ -1,29 +1,29 @@
 {% extends 'maneu/base_admin.html' %}
 {% load static %}
-={% block javascript %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/maneu_index.css' %}">
+{% endblock %}
+{% block javascript %}
     <script type="text/javascript" src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <script type="text/javascript" src="{% static 'javascript/maneu_index/echarts.js' %}"></script>
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main1'), 'maneu');
         var option = {
-            title: {
-                text: '本月录入数据统计',
-                subtext: {{ order_count }} +'单',
-                textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                },
-            },
+            title: {},
             tooltip: {},
             legend: {
-                data:['本月销量']
+                data:['本月数据', '对比数据']
             },
             xAxis: {
-                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31'],
+                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31日'],
             },
             yAxis: {},
             series: [{
-                name: '本月销量',
+                name: '本月数据',
+                type: 'line',
+                data: {{ order_log|safe }}
+            },{
+                name: '对比数据',
                 type: 'line',
                 data: {{ order_log|safe }}
             }]
@@ -35,26 +35,23 @@
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main2'), 'maneu');
         var option = {
-            title: {
-                text: '本月销售金额统计',
-                subtext: {{ money_count }} +'元',
-                textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                },
-            },
+            title: {},
             tooltip: {},
             legend: {
-                data:['金额统计']
+                data:['本月数据', '对比数据']
             },
             xAxis: {
-                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31'],
+                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31日'],
             },
             yAxis: {},
             series: [{
-                name: '当日销售金额',
-                type: 'bar',
-                data: {{ money_log|safe }}
+                name: '本月数据',
+                type: 'line',
+                data: {{ order_log|safe }}
+            },{
+                name: '对比数据',
+                type: 'line',
+                data: {{ order_log|safe }}
             }]
         };
 
@@ -64,23 +61,23 @@
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main3'), 'maneu');
         var option = {
-            title: {
-                text: '各品牌销售份额',
-                {#subtext: '共计'{{ class_count }},#}
-                textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                    // 主标题文字颜色
-                },
-            },
+            title: {},
             tooltip: {},
             legend: {
-                data:['金额统计']
+                data:['本月数据', '对比数据']
             },
+            xAxis: {
+                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31日'],
+            },
+            yAxis: {},
             series: [{
-                name: '销售份额',
-                type: 'pie',
-                data: {{ brand_log | safe }},
+                name: '本月数据',
+                type: 'line',
+                data: {{ order_log|safe }}
+            },{
+                name: '对比数据',
+                type: 'line',
+                data: {{ order_log|safe }}
             }]
         };
 
@@ -90,23 +87,23 @@
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main4'), 'maneu');
         var option = {
-            title: {
-                text: '各货类销售份额',
-                {#subtext: '共计'{{ class_count }},#}
-                textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                    // 主标题文字颜色
-                },
-            },
+            title: {},
             tooltip: {},
             legend: {
-                data:['金额统计']
+                data:['本月数据', '对比数据']
             },
+            xAxis: {
+                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31日'],
+            },
+            yAxis: {},
             series: [{
-                name: '销售份额',
-                type: 'pie',
-                data: {{ class_log | safe }},
+                name: '本月数据',
+                type: 'line',
+                data: {{ order_log|safe }}
+            },{
+                name: '对比数据',
+                type: 'line',
+                data: {{ order_log|safe }}
             }]
         };
 
@@ -116,21 +113,48 @@
 {% endblock %}
 {% block content %}
     <div class="container-fluid row">
-            <h3 class="col-2">徕可数据可视化</h3>
-            <div class="col-10">
-                <form class="col-3 offset-9" method="post" action="{% url 'maneu_index:index' %}">
+        <div class="col-12 row" style="margin-top: 2%;margin-bottom: 2%">
+            <div class="col-10 offset-1 row" style="margin-bottom: 1%">
+                <h3 class="col-9">本月数据统计</h3>
+                <form class="col-3" method="post" action="{% url 'maneu_index:index' %}">
                     {% csrf_token %}
                     <div class="input-group input-group-sm">
-                        <span class="input-group-text">时间</span>
+                        <span class="input-group-text">选择对比时间</span>
                         <input class="form-control date_time" name="time" type="date" autocomplete="off" required="required" value="{{ day|safe }}">
                         <input class="form-control" type="submit">
                     </div>
                 </form>
             </div>
-        <div id="main1" style="width: 100%;height:400px;"></div>
-        <div id="main2" style="width: 100%;height:400px;"></div>
-        <div id="main3" style="width: 50%;height:400px;"></div>
-        <div id="main4" style="width: 50%;height:400px;"></div>
-
+            <div class="col-10 offset-1 row" style="margin-bottom: 1%">
+                <div class="col-3">
+                    <div style="height: 150px; width: 300px; border: #FFC048 solid 1px; border-radius: 30px">
+                        <h5 style="text-align: left; margin: 5%">本月零售订单</h5>
+                        <h1 style="text-align: center; margin: 5%;">{{ brand_count }}</h1>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div style="height: 150px; width: 300px; border: #FFC048 solid 1px; border-radius: 30px">
+                        <h5 style="text-align: left; margin: 5%">本月批发订单</h5>
+                        <h1 style="text-align: center; margin: 5%;">{{ brand_count }}</h1>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div style="height: 150px; width: 300px; border: #FFC048 solid 1px; border-radius: 30px">
+                        <h5 style="text-align: left; margin: 5%">本月售后订单</h5>
+                        <h1 style="text-align: center; margin: 5%;">{{ brand_count }}</h1>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div style="height: 150px; width: 300px; border: #FFC048 solid 1px; border-radius: 30px">
+                        <h5 style="text-align: left; margin: 5%">本月新增客户</h5>
+                        <h1 style="text-align: center; margin: 5%;">{{ brand_count }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main1" class="main"></div>
+        <div id="main2" class="main"></div>
+        <div id="main3" class="main"></div>
+        <div id="main4" class="main"></div>
     </div>
 {% endblock %}
