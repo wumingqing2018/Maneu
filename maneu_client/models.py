@@ -1,0 +1,33 @@
+import uuid
+
+from django.db import models
+
+
+class ManeuGuess(models.Model):
+    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    user_id = models.CharField(max_length=36)
+    subjective_id = models.CharField(max_length=36)
+    time = models.DateField()
+    name = models.CharField(max_length=36)
+    phone = models.CharField(max_length=36)
+    sex = models.CharField(max_length=36)
+    age = models.CharField(max_length=36)
+    ot = models.CharField(db_column='OT', max_length=36)  # Field name made lowercase.
+    em = models.CharField(db_column='EM', max_length=36)  # Field name made lowercase.
+    dfh = models.CharField(db_column='DFH', max_length=36)  # Field name made lowercase.
+    remark = models.TextField()
+
+    class Meta:
+        managed = False
+        db_table = 'maneu_guess'
+
+
+class ManeuSubjectiveRefraction(models.Model):
+    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    guessID = models.CharField(max_length=36, default=uuid.uuid1, editable=False)
+    time = models.DateTimeField()
+    content = models.TextField()
+
+    class Meta:
+        managed = False
+        db_table = 'maneu_subjective_refraction'
