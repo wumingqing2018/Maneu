@@ -1,29 +1,29 @@
-from maneu.models import ManeuBatch
+from maneu.models import ManeuOrderV1
 
 
-def batch_userid(userid='', time=''):
-    return ManeuBatch.objects.filter(userid=userid, time=time).order_by('-time').all()
+def batch_admin_id(admin_id='', time=''):
+    return ManeuOrderV1.objects.filter(admin_id=admin_id, time=time).order_by('-time').all()
 
 
 def batch_list():
-    return ManeuBatch.objects.order_by('-time').all()
+    return ManeuOrderV1.objects.order_by('-time').all()
 
 
 def batch_list_ByName(arg):
-    return ManeuBatch.objects.filter(name=arg).order_by('-time').all()
+    return ManeuOrderV1.objects.filter(name=arg).order_by('-time').all()
 
 
 def batch_list_ByPhone(arg):
-    return ManeuBatch.objects.filter(phone=arg).order_by('-time').all()
+    return ManeuOrderV1.objects.filter(phone=arg).order_by('-time').all()
 
 
 def batch_detail(id=''):
-    return ManeuBatch.objects.filter(id=id).first()
+    return ManeuOrderV1.objects.filter(id=id).first()
 
 
 def batch_insert(form, order, order_id):
     try:
-        ManeuBatch.objects.create(
+        ManeuOrderV1.objects.create(
             order_id=order_id,
             name=form['name'],
             phone=form['phone'],
@@ -37,12 +37,12 @@ def batch_insert(form, order, order_id):
 
 
 def batch_delete(id=''):
-    return ManeuBatch.objects.filter(id=id).all().delete()
+    return ManeuOrderV1.objects.filter(id=id).all().delete()
 
 
 def find_batch_date(date=''):
     try:
-        return ManeuBatch.objects.filter(time__gt=date).all()
+        return ManeuOrderV1.objects.filter(time__gt=date).all()
     except BaseException as msg:
         print(msg)
         return None

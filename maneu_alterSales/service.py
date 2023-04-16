@@ -1,21 +1,21 @@
-from maneu.models import ManeuAftersales
+from maneu.models import ManeuService
 
 
-def ManeuAfterSales_orderID(order_id=''):
-    return ManeuAftersales.objects.filter(order_id=order_id).order_by('-time').all()
+def ManeuService_orderID(order_id=''):
+    return ManeuService.objects.filter(order_id=order_id).order_by('-time').all()
 
 
-def ManeuAfterSales_insert(order_id='', content=''):
-    return ManeuAftersales.objects.create(order_id=order_id, content=content)
+def ManeuService_insert(order_id='', content=''):
+    return ManeuService.objects.create(order_id=order_id, content=content)
 
 
-def ManeuAfterSales_delete_order_id(order_id=''):
-    return ManeuAftersales.objects.filter(order_id=order_id).all().delete()
+def ManeuService_delete_order_id(order_id=''):
+    return ManeuService.objects.filter(order_id=order_id).all().delete()
 
 
-def ManeuAfterSales_delete_id(id=''):
-    return ManeuAftersales.objects.filter(id=id).all().delete()
+def ManeuService_delete_id(id=''):
+    return ManeuService.objects.filter(id=id).all().delete()
 
 
-def ManeuAfterSales_index(time=''):
-    return ManeuAftersales.objects.filter(time=time).order_by('-time').all()
+def ManeuService_index(time=''):
+    return ManeuService.objects.filter(time=time).order_by('-time').all()

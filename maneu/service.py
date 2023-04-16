@@ -2,7 +2,7 @@ from maneu.models import ManeuGuess
 from maneu.models import ManeuOrderV2
 from maneu.models import ManeuStore
 from maneu.models import ManeuSubjectiveRefraction
-from maneu.models import ManeuUsers
+from maneu.models import ManeuAdmin
 from maneu.models import ManeuVisionSolutions
 
 
@@ -10,7 +10,7 @@ def find_user_username(username=''):
     """
     通过username查找用户
     """
-    return ManeuUsers.objects.filter(username=username).first()
+    return ManeuAdmin.objects.filter(username=username).first()
 
 
 def find_order_phone(phone=''):
@@ -23,7 +23,7 @@ def find_order_phone(phone=''):
 
 def find_users_id(id=''):
     try:
-        return ManeuUsers.objects.filter(id=id).first()
+        return ManeuAdmin.objects.filter(id=id).first()
     except BaseException as msg:
         print(msg)
         return None

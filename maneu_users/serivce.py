@@ -1,35 +1,35 @@
-from maneu.models import ManeuUsers
+from maneu.models import ManeuAdmin
 
 
-def find_user(user_id):
+def find_user(admin_id):
     """
-    通过user_id查找用户
+    通过admin_id查找用户
     """
-    return ManeuUsers.objects.filter(id=user_id).first()
+    return ManeuAdmin.objects.filter(id=admin_id).first()
 
 
 def find_user_all():
     """
-    通过user_id查找用户
+    通过admin_id查找用户
     """
-    return ManeuUsers.objects.filter().all()
+    return ManeuAdmin.objects.filter().all()
 
 
 def find_user_username(username=''):
     """
     通过username查找用户
     """
-    return ManeuUsers.objects.filter(username=username).first()
+    return ManeuAdmin.objects.filter(username=username).first()
 
 
 def find_username_password(username, password):
-    return ManeuUsers.objects.filter(username=username, password=password).first()
+    return ManeuAdmin.objects.filter(username=username, password=password).first()
 
 
 def add_user(post):
     """添加用户"""
     try:
-        return ManeuUsers.objects.create(
+        return ManeuAdmin.objects.create(
             username=post['username'],
             password=post['password'],
             email=post['email'],
@@ -41,13 +41,13 @@ def add_user(post):
         return str(msg)
 
 
-def user_delete(user_id):
-    return ManeuUsers.objects.filter(user_id=user_id).delete()
+def user_delete(admin_id):
+    return ManeuAdmin.objects.filter(admin_id=admin_id).delete()
 
 
-def user_update(old_password='', localtion='', user_id='', nickname='', password='', email='', phone='', remark=''):
+def user_update(old_password='', localtion='', admin_id='', nickname='', password='', email='', phone='', remark=''):
     try:
-        ManeuUsers.objects.filter(user_id=user_id, password=old_password).update(nickname=nickname, password=password,
+        ManeuAdmin.objects.filter(admin_id=admin_id, password=old_password).update(nickname=nickname, password=password,
                                                                                  email=email, phone=phone,
                                                                                  localtion=localtion,
                                                                                  remark=remark)
@@ -57,14 +57,14 @@ def user_update(old_password='', localtion='', user_id='', nickname='', password
 
 def user_updata(username, password):
     try:
-        ManeuUsers.objects.filter(username=username).update(password=password)
+        ManeuAdmin.objects.filter(username=username).update(password=password)
     except BaseException as msg:
         return str(msg)
 
 
 def user_insert(username='', nickname='', password='', email='', phone='', remark=''):
     try:
-        return ManeuUsers.objects.create(username=username, password=password, nickname=nickname, email=email,
+        return ManeuAdmin.objects.create(username=username, password=password, nickname=nickname, email=email,
                                          phone=phone, level=0, state=0, remark=remark)
     except BaseException as msg:
         return str(msg)

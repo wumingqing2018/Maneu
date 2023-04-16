@@ -18,7 +18,7 @@ def index(request):
     date = datetime.datetime.strptime(time, '%Y-%m-%d')
     down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
     up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-    list = service.batch_userid(userid=request.session.get('id'), time=time)  # 查找今日订单
+    list = service.batch_admin_id(admin_id=request.session.get('id'), time=time)  # 查找今日订单
     return render(request, 'maneu_batch/index.html', {'list': list,
                                                       'time': time,
                                                       'up_day': up_day,
