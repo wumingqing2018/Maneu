@@ -14,13 +14,13 @@ def index(request):
     down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
     up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
     list = service.ManeuAfterSales_index(time=time)  # 查找今日订单
-    return render(request, 'maneu_afterSales/index.html', {'list': list,'time': time,'up_day': up_day, 'down_day': down_day})
+    return render(request, 'maneu_service/index.html', {'list': list, 'time': time, 'up_day': up_day, 'down_day': down_day})
 
 
 def list(request):
     order_id = request.session.get('order_id')
     if order_id:
-        return render(request, 'maneu_afterSales/list.html', {'alterSalesList': service.ManeuAfterSales_orderID(order_id=order_id)})
+        return render(request, 'maneu_service/list.html', {'alterSalesList': service.ManeuAfterSales_orderID(order_id=order_id)})
     return HttpResponseRedirect(reverse('maneu_order_v2:index'))
 
 
@@ -28,7 +28,7 @@ def content(request):
     if request.method == 'POST':
         order_id = request.POST.get('order_id')
         ManeuAfterSales_list = service.ManeuAfterSales_orderID(order_id)
-        return render(request, 'maneu_afterSales/detail.html', {'alterSalesContent': ManeuAfterSales_list})
+        return render(request, 'maneu_service/detail.html', {'alterSalesContent': ManeuAfterSales_list})
     else:
         return HttpResponseRedirect(reverse('maneu_order_v2:index'))
 
@@ -41,7 +41,7 @@ def insert(request):
         return HttpResponseRedirect(reverse('maneu_service:alterSalesList'))
     elif request.method == 'GET':
         order_id = request.session.get('order_id')
-        return render(request, 'maneu_afterSales/insert.html', {'order_id': order_id})
+        return render(request, 'maneu_service/insert.html', {'order_id': order_id})
     else:
         return HttpResponseRedirect(reverse('index'))
 
