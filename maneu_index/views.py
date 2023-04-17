@@ -1,4 +1,3 @@
-import datetime
 import json
 
 from django.shortcuts import render
@@ -14,10 +13,10 @@ def index(request):
     month = common.month()
     user_id = request.session.get('id')
 
-    print(service.find_guess_month(users_id=user_id, month=month, year=year).count())
-    print(service.find_orderV1_month(users_id=user_id, month=month, year=year).count())
-    print(service.find_orderV2_month(users_id=user_id, month=month, year=year).count())
-    print(service.find_service_month(users_id=user_id, month=month, year=year).count())
+    print(service.find_guess_month(admin_id=user_id, month=month, year=year).count())
+    print(service.find_orderV1_month(admin_id=user_id, month=month, year=year).count())
+    print(service.find_orderV2_month(admin_id=user_id, month=month, year=year).count())
+    print(service.find_service_month(admin_id=user_id, month=month, year=year).count())
 
     order_log = []
     money_log = []
@@ -45,7 +44,7 @@ def index(request):
         "brand_count": 0,
 
     }
-    orderlist = service.find_orderV2_month(users_id=user_id, year=year, month=month)  # 查找今日订单
+    orderlist = service.find_orderV2_month(admin_id=user_id, year=year, month=month)  # 查找今日订单
     for order in orderlist:
         order_logs['order_count'] = order_logs['order_count'] + 1
         order_logs['order_log']['%02d'%order.time.day] = order_logs['order_log']['%02d'%order.time.day] +1

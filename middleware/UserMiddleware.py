@@ -26,10 +26,4 @@ class UserMiddleware(MiddlewareMixin):
                 return None
             else:
                 return redirect('login')
-        if request_url.startswith('/guess-admin'):
-            if session_id:
-                #   判断用户是否登录
-                return None
-            else:
-                return redirect('login')
         return None
