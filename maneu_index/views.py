@@ -14,7 +14,6 @@ def index(request):
     content = {}
     admin_id = request.session.get('id')
     demo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
     content['guess_count'] = service.find_guess_month(admin_id=admin_id, month=month, year=year).count()
     content['orderv1_count'] = service.find_orderV1_month(admin_id=admin_id, month=month, year=year).count()
     content['orderv2_count'] = service.find_orderV2_month(admin_id=admin_id, month=month, year=year).count()

@@ -187,8 +187,7 @@
         <div class="col-12 row" style="margin-top: 2%;margin-bottom: 2%">
             <div class="col-10 offset-1 row" style="margin-bottom: 1%">
                 <h3 class="col-9">本月数据统计</h3>
-                <form class="col-3" method="post" action="{% url 'maneu_index:index' %}">
-                    {% csrf_token %}
+                <form class="col-3" method="get" action="{% url 'maneu_index:index' %}">
                     <div class="input-group input-group-sm">
                         <span class="input-group-text">选择对比时间</span>
                         <input class="form-control date_time" name="time" type="date" autocomplete="off" required="required" value="{{ day|safe }}">
