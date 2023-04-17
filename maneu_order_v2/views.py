@@ -3,9 +3,7 @@ import json
 
 from django.shortcuts import render, reverse, HttpResponseRedirect
 
-from common import common
-from common import verify
-from maneu_service import service as alterSalesServivce
+from common import common, checkMobile
 from maneu_order_v2 import service
 
 
@@ -21,7 +19,7 @@ def index(request):
     date = datetime.datetime.strptime(time, '%Y-%m-%d')
     down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
     up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-    list = service.ManeuOrderV2_today(users_id=request.session.get('id'), time=time)  # 查找今日订单
+    list = service.ManeuOrderV2_today(admin_id=request.session.get('id'), time=time)  # 查找今日订单
     return render(request, 'maneu_order_v2/index.html', {'list': list,
                                                       'time': time,
                                                       'up_day': up_day,
@@ -29,13 +27,13 @@ def index(request):
 
 
 def delete(request):
-    order = service.ManeuOrderV2_id(order_id=request.POST.get('id'), users_id=request.session.get('id'))
+    order = service.ManeuOrderV2_id(order_id=request.POST.get('id'), admin_id=request.session.get('id'))
     if order:
         store = service.ManeuStore_delete(id=order.store_id)
         visionsolutions = service.ManeuVisionSolutions_delete(id=order.visionsolutions_id)
         subjectiverefraction = service.ManeuSubjectiveRefraction_delete(id=order.subjectiverefraction_id)
-        afterSales = alterSalesServivce.ManeuAfterSales_delete_order_id(order_id=request.POST.get('id'))
-        order = service.ManeuOrderV2_delete(users_id=request.session.get('id'), id=request.POST.get('id'))
+        afterSales = service.ManeuService_delete_order_id(order_id=request.POST.get('id'))
+        order = service.ManeuOrderV2_delete(admin_id=request.session.get('id'), id=request.POST.get('id'))
     return HttpResponseRedirect(reverse('maneu_order_v2:index'))
 
 
@@ -53,17 +51,17 @@ def detail(request):
         request.session['order_id'] = order_id
     except:
         order_id = request.session.get('order_id')
-    order = service.ManeuOrderV2_id(order_id=order_id, users_id=request.session.get('id'))
+    order = service.ManeuOrderV2_id(order_id=order_id, admin_id=request.session.get('id'))
     if order:
         content = {}
         content['order'] = order
-        content['users'] = service.ManeuUsers_id(id=order.users_id)
+        content['users'] = service.ManeuAdmin_id(id=order.admin_id)
         content['guess'] = service.ManeuGuess_id(id=order.guess_id)
         store = service.store_OrderID(orderid=order.id)
         content['store'] = json.loads(store.content)
         visionsolutions = service.ManeuVisionSolutions_orderID(orderid=order.id)
         content['visionsolutions'] = json.loads(visionsolutions.content)
-        if verify.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
+        if checkMobile.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
             return render(request, 'maneu_order_v2/detail_phone.html', content)
         else:
             return render(request, 'maneu_order_v2/detail_pc.html', content)
@@ -72,10 +70,10 @@ def detail(request):
 
 def search(request):
     text = request.GET.get('text')
-    users_id = request.session.get('id')
-    if text and users_id:
+    admin_id = request.session.get('id')
+    if text and admin_id:
         """查找指定订单"""
-        orderlist = service.ManeuOrderV2_Search(text=text, users_id=users_id)
+        orderlist = service.ManeuOrderV2_Search(text=text, admin_id=admin_id)
         return render(request, 'maneu_order_v2/search.html', {'list': orderlist})
     return HttpResponseRedirect(reverse('maneu_order_v2:index'))
 
@@ -88,13 +86,13 @@ def insert(request):
             ManeuGuess_id = service.guess_phone(phone=order['phone']).id
         except:
             ManeuGuess_id = ''
-        order = service.ManeuOrderV2_insert(time=order['time'], name=order['name'], phone=order['phone'], users_id=request.session.get('id'), guess_id=ManeuGuess_id)
+        order = service.ManeuOrderV2_insert(time=order['time'], name=order['name'], phone=order['phone'], admin_id=request.session.get('id'), guess_id=ManeuGuess_id)
         ManeuStore_id = service.ManeuStore_insert(time=order.time, order_id=order.id, content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(time=order.time, order_id=order.id, content=request.POST.get('Vision_Solutions'))
         if order:
             request.session['order_id'] = str(order.id)
             return HttpResponseRedirect(reverse('maneu_order_v2:detail'))
-    if verify.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
+    if checkMobile.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
         return render(request, 'maneu_order_v2/insert_phone.html')
     else:
         return render(request, 'maneu_order_v2/insert_pc.html')
@@ -103,18 +101,18 @@ def insert(request):
 def update(request):
     """更新订单"""
     order_id = request.session.get('order_id')
-    users_id = request.session.get('id')
-    if order_id and users_id:
+    admin_id = request.session.get('id')
+    if order_id and admin_id:
         if request.method == 'GET':
-            order = service.ManeuOrderV2_id(order_id=order_id, users_id=users_id)
-            users = service.users_id(id=order.users_id)
+            order = service.ManeuOrderV2_id(order_id=order_id, admin_id=admin_id)
+            users = service.admin_id(id=order.admin_id)
             guess = service.guess_id(id=order.guess_id)
             store = service.store_id(id=order.store_id)
             return render(request, 'maneu_order_v2/update.html', {'maneu_order_v2': order, 'users': users, 'guess': guess,
                                                                   # 'maneu_store': json.loads(store.content),
                                                                   })
         if request.method == 'POST':
-            order = service.ManeuOrderV2_id(order_id=order_id, users_id=users_id)
+            order = service.ManeuOrderV2_id(order_id=order_id, admin_id=admin_id)
             ManeuGuess_id = service.ManeuGuess_update(id=order.guess_id, content=request.POST.get('Guess_information'))
             ManeuStore_id = service.ManeuStore_update(content=request.POST.get('Product_Orders'), id=order.store_id)
             ManeuVisionSolutions_id = service.ManeuVisionSolutions_update(id=order.visionsolutions_id,

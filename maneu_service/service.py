@@ -19,3 +19,4 @@ def ManeuService_delete_id(id=''):
 
 def ManeuService_index(time=''):
     return ManeuService.objects.filter(time=time).order_by('-time').all()
+
