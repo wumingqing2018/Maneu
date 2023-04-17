@@ -1,4 +1,3 @@
-import datetime
 import json
 
 from django.shortcuts import render, HttpResponseRedirect, reverse
@@ -32,18 +31,11 @@ def detail(request):
     except:
         stand_ax = '24.0'
 
-    if checkMobile.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
-        return render(request, 'maneu_guest/detail_phone.html', {'guess': guess,
-                                                                 'subjectiverefraction': subjectiverefraction,
-                                                                 'stand_ax': stand_ax,
-                                                                 'list_r': subjectiverefraction['OD_AL'],
-                                                                 'list_l': subjectiverefraction['OS_AL']})
-    else:
-        return render(request, 'maneu_guest/detail_pc.html', {'guess': guess,
-                                                              'subjectiverefraction': subjectiverefraction,
-                                                              'stand_ax': stand_ax,
-                                                              'list_r': subjectiverefraction['OD_AL'],
-                                                              'list_l': subjectiverefraction['OS_AL']})
+    return render(request, 'maneu_guest/detail_pc.html', {'guess': guess,
+                                                          'subjectiverefraction': subjectiverefraction,
+                                                          'stand_ax': stand_ax,
+                                                          'list_r': subjectiverefraction['OD_AL'],
+                                                          'list_l': subjectiverefraction['OS_AL']})
 
 # def detail_phone(request):
 #     guess = service.guess_phone(phone=request.POST.get('phone'))

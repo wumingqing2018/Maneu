@@ -46,7 +46,7 @@ def guess_update_subjective_id(id='', subjective_id=''):
 
 
 def guess_search(text='', admin_id=''):
-    return ManeuGuess.objects.filter(Q(name=text) | Q(phone=text, admin_id=admin_id)).order_by('-time').all()
+    return ManeuGuess.objects.filter(Q(name=text, admin_id=admin_id) | Q(phone=text, admin_id=admin_id)).order_by('-time').all()
 
 
 def guess_update(id='', content=''):
