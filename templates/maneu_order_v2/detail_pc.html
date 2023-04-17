@@ -178,14 +178,10 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="8">
+                <td colspan="9">
                     <span>处方由眼科专家根据患者屈光不正性质、年龄、用眼需求等综合因素决定。</span>
                     <span>选择镜片、镜架及按眼科专家指导的配戴方法才能确保矫正效果和视觉健康。</span>
                     <span>数据为当时检查状态的结果，检查后如超过六个月配镜，建议复查。</span>
-                </td>
-                <td class="blue" style="text-align: center">
-                    <img style="width: 100px" src="{% static 'images/qrcode.png' %}" alt="2">
-                    <span>扫码查看电子订单</span>
                 </td>
             </tr>
         </table>
@@ -196,7 +192,7 @@
                 </form>
             </div>
             <div class="col-2">
-                <form method="post" action="{% url 'maneu_guest:detail_phone' %}">
+                <form method="post" action="">
                     {% csrf_token %}
                     <input type="hidden" name="phone" value="{{ phone }}">
                     <input type="submit" class="btn btn-primary" value="客户详情">
@@ -206,7 +202,7 @@
                 <button class="btn btn-primary" id="print_btn">打印订单</button>
             </div>
             <div class="col-2">
-                <form method="post" action="{% url 'maneu_alterSales:list' %}">
+                <form method="post" action="">
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{ order.id }}">
                     <input type="submit" class="btn btn-warning" value="维修记录">

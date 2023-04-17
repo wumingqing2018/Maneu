@@ -2,7 +2,7 @@ import json
 
 from django.shortcuts import render, HttpResponseRedirect, reverse
 
-from common import common, checkMobile
+from common import common
 from maneu_guest import service
 
 
@@ -37,43 +37,6 @@ def detail(request):
                                                           'list_r': subjectiverefraction['OD_AL'],
                                                           'list_l': subjectiverefraction['OS_AL']})
 
-# def detail_phone(request):
-#     guess = service.guess_phone(phone=request.POST.get('phone'))
-#     users = usersService.find_user(admin_id=request.session.get('id'))
-#     Subjective = service.subjectiverefraction_id(id=guess.subjective_id)
-#     if Subjective:
-#         subjectiverefraction = json.loads(Subjective.content)
-#     else:
-#         subjectiverefraction = {}
-#         subjectiverefraction['OD_AL'] = ''
-#         subjectiverefraction['OS_AL'] = ''
-# 
-#     try:
-#         clientAge = int(guess.age)
-#         if clientAge > 20:
-#             stand_ax = '24.0'
-#         else:
-#             data = ['16.2', '17.0', '17.7', '18.2', '18.7', '19.1', '19.6', '20.0', '20.3', '20.7', '21.1', '21.6',
-#                     '22.0', '22.4', '22.7', '23.0', '23.3', '23.5', '23.7', '23.8', '24.0', '24.0', ]
-#             stand_ax = data[clientAge - 1]
-#     except:
-#         stand_ax = '24.0'
-# 
-#     if checkMobile.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
-#         return render(request, 'maneu_guest/detail_phone.html', {'guess': guess,
-#                                                                  'users': users,
-#                                                                  'subjectiverefraction': subjectiverefraction,
-#                                                                  'stand_ax': stand_ax,
-#                                                                  'list_r': subjectiverefraction['OD_AL'],
-#                                                                  'list_l': subjectiverefraction['OS_AL']})
-#     else:
-#         return render(request, 'maneu_guest/detail_pc.html', {'guess': guess,
-#                                                               'users': users,
-#                                                               'subjectiverefraction': subjectiverefraction,
-#                                                               'stand_ax': stand_ax,
-#                                                               'list_r': subjectiverefraction['OD_AL'],
-#                                                               'list_l': subjectiverefraction['OS_AL']})
-
 
 def insert(request):
     today = common.today()
@@ -105,9 +68,15 @@ def update(request):
 
 def search(request):
     """查找指定订单"""
-    if request.method == 'POST':
-        orderlist = service.guess_search(text=request.POST.get('text'), admin_id=request.session.get('id'))
-        return render(request, 'maneu_guest/search.html', {'orderlist': orderlist})
+    admin_id = request.session.get('id')
+    text = request.GET.get('text')
+    time = request.GET.get('time')
+    if text:
+        list = service.find_Guess_search(text=text, admin_id=admin_id)
+        return render(request, 'maneu_guest/index.html', {'list': list})
+    if time:
+        list = service.find_Guess_time(time=time, admin_id=admin_id)
+        return render(request, 'maneu_guest/index.html', {'list': list})
     else:
         return HttpResponseRedirect(reverse('maneu_guest:index'))
 

@@ -25,10 +25,6 @@ def guess_id(id=''):
     return ManeuGuess.objects.filter(id=id).first()
 
 
-def guess_phone(phone=''):
-    return ManeuGuess.objects.filter(phone=phone).first()
-
-
 def guess_insert(contents='', admin_id='', time=''):
     contents = json.loads(contents)
     return ManeuGuess.objects.create(time=time, admin_id=admin_id, name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
@@ -37,16 +33,13 @@ def guess_insert(contents='', admin_id='', time=''):
 def subjectiverefraction_insert(guess_id='', content=''):
     return ManeuSubjectiveRefraction.objects.create(guessid=guess_id, content=content)
 
-def guess_update_admin_id(id='', admin_id=''):
-    return ManeuGuess.objects.filter(id=id).update(admin_id=admin_id)
 
-
-def guess_update_subjective_id(id='', subjective_id=''):
-    return ManeuGuess.objects.filter(id=id).update(subjective_id=subjective_id)
-
-
-def guess_search(text='', admin_id=''):
+def find_Guess_search(text='', admin_id=''):
     return ManeuGuess.objects.filter(Q(name=text, admin_id=admin_id) | Q(phone=text, admin_id=admin_id)).order_by('-time').all()
+
+
+def find_Guess_time(admin_id='', time=''):
+    return ManeuGuess.objects.filter(admin_id=admin_id, time__day=time).all()
 
 
 def guess_update(id='', content=''):

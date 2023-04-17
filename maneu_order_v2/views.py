@@ -12,18 +12,8 @@ def index(request):
     订单列表功能
     在session获取商家id 通过商家id查找订单列表
     """
-    if request.GET.get('time'):
-        time = request.GET.get('time')
-    else:
-        time = common.today()
-    date = datetime.datetime.strptime(time, '%Y-%m-%d')
-    down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
-    up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
     list = service.ManeuOrderV2_all(admin_id=request.session.get('id'))  # 查找今日订单
-    return render(request, 'maneu_order_v2/index.html', {'list': list,
-                                                         'time': time,
-                                                         'up_day': up_day,
-                                                         'down_day': down_day})
+    return render(request, 'maneu_order_v2/index.html', {'list': list})
 
 
 def delete(request):
@@ -58,23 +48,30 @@ def detail(request):
         content['users'] = service.ManeuAdmin_id(id=order.admin_id)
         content['guess'] = service.ManeuGuess_id(id=order.guess_id)
         store = service.store_OrderID(orderid=order.id)
-        content['store'] = json.loads(store.content)
-        visionsolutions = service.ManeuVisionSolutions_orderID(orderid=order.id)
-        content['visionsolutions'] = json.loads(visionsolutions.content)
-        if checkMobile.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
-            return render(request, 'maneu_order_v2/detail_phone.html', content)
+        if store:
+            content['store'] = json.loads(store.content)
         else:
-            return render(request, 'maneu_order_v2/detail_pc.html', content)
+            content['store'] = {}
+        visionsolutions = service.ManeuVisionSolutions_orderID(orderid=order.id)
+        if visionsolutions:
+            content['visionsolutions'] = json.loads(visionsolutions.content)
+        else:
+            content['visionsolutions'] = {}
+        return render(request, 'maneu_order_v2/detail_pc.html', content)
     return HttpResponseRedirect(reverse('maneu_order_v2:index'))
 
 
 def search(request):
+    time = request.GET.get('time')
     text = request.GET.get('text')
     admin_id = request.session.get('id')
-    if text and admin_id:
+    if text:
         """查找指定订单"""
-        orderlist = service.ManeuOrderV2_Search(text=text, admin_id=admin_id)
-        return render(request, 'maneu_order_v2/search.html', {'list': orderlist})
+        list = service.ManeuOrderV2_Search(text=text, admin_id=admin_id)
+        return render(request, 'maneu_order_v2/index.html', {'list': list})
+    elif time:
+        list = service.ManeuOrderV2_time(time=time, admin_id=admin_id)
+        return render(request, 'maneu_order_v2/index.html', {'list': list})
     return HttpResponseRedirect(reverse('maneu_order_v2:index'))
 
 
@@ -83,9 +80,9 @@ def insert(request):
     if request.method == 'POST':
         order = json.loads(request.POST.get('order_json'))
         try:
-            ManeuGuess_id = service.guess_phone(phone=order['phone']).id
+            ManeuGuess_id = service.ManeuGuess_search(admin_id=request.session.get('id'), name=order['name'], phone=order['phone']).id
         except:
-            ManeuGuess_id = ''
+            ManeuGuess_id = service.ManeuGuess_insert(admin_id=request.session.get('id'), name=order['name'], phone=order['phone']).id
         order = service.ManeuOrderV2_insert(time=order['time'], name=order['name'], phone=order['phone'], admin_id=request.session.get('id'), guess_id=ManeuGuess_id)
         ManeuStore_id = service.ManeuStore_insert(time=order.time, order_id=order.id, content=request.POST.get('Product_Orders'))
         ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(time=order.time, order_id=order.id, content=request.POST.get('Vision_Solutions'))
