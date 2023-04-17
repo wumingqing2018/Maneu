@@ -11,53 +11,48 @@ from maneu_index import service
 def index(request):
     year = common.year()
     month = common.month()
-    content = {}
+    content = {'thisMonth_guess': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                   0, 0, 0],
+               'otherMonth_guess': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                    0, 0, 0],
+               'thisMonth_service': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                     0, 0, 0],
+               'otherMonth_service': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                      0, 0, 0],
+               'thisMonth_orderv1': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                     0, 0, 0],
+               'otherMonth_orderv1': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                      0, 0, 0],
+               'thisMonth_orderv2': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                     0, 0, 0],
+               'otherMonth_orderv2': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                      0, 0, 0],
+               }
     admin_id = request.session.get('id')
-    demo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     content['guess_count'] = service.find_guess_month(admin_id=admin_id, month=month, year=year).count()
     content['orderv1_count'] = service.find_orderV1_month(admin_id=admin_id, month=month, year=year).count()
     content['orderv2_count'] = service.find_orderV2_month(admin_id=admin_id, month=month, year=year).count()
     content['service_count'] = service.find_service_month(admin_id=admin_id, month=month, year=year).count()
 
-    if content['guess_count'] == 0:
-        content['thisMonth_guess'] = demo
-        content['otherMonth_guess'] = demo
-    else:
-        content['thisMonth_guess'] = []
-        content['otherMonth_guess'] = []
+    if content['guess_count'] != 0:
         for i in range(1, 32):
-            content['thisMonth_guess'].append(service.find_guess_day(admin_id=admin_id, day=i, month=month, year=year).count())
-            content['otherMonth_guess'].append(service.find_guess_day(admin_id=admin_id, day=i, month=month-1, year=year).count())
+            content['thisMonth_guess'][i-1] = service.find_guess_day(admin_id=admin_id, day=i, month=month, year=year).count()
+            content['otherMonth_guess'][i-1] = service.find_guess_day(admin_id=admin_id, day=i, month=month-1, year=year).count()
 
-    if content['orderv1_count'] == 0:
-        content['thisMonth_orderv1'] = demo
-        content['otherMonth_orderv1'] = demo
-    else:
-        content['thisMonth_orderv1'] = []
-        content['otherMonth_orderv1'] = []
+    if content['orderv1_count'] != 0:
         for i in range(1, 32):
-            content['thisMonth_orderv1'].append(service.find_orderV1_day(admin_id=admin_id, day=i, month=month, year=year).count())
-            content['otherMonth_orderv1'].append(service.find_orderV1_day(admin_id=admin_id, day=i, month=month-1, year=year).count())
+            content['thisMonth_orderv1'][i-1] = service.find_orderV1_day(admin_id=admin_id, day=i, month=month, year=year).count()
+            content['otherMonth_orderv1'][i-1] = service.find_orderV1_day(admin_id=admin_id, day=i, month=month-1, year=year).count()
 
-    if content['orderv2_count'] == 0:
-        content['thisMonth_orderv2'] = demo
-        content['otherMonth_orderv2'] = demo
-    else:
-        content['thisMonth_orderv2'] = []
-        content['otherMonth_orderv2'] = []
+    if content['orderv2_count'] != 0:
         for i in range(1, 32):
-            content['thisMonth_orderv2'].append(service.find_orderV2_day(admin_id=admin_id, day=i, month=month, year=year).count())
-            content['otherMonth_orderv2'].append(service.find_orderV2_day(admin_id=admin_id, day=i, month=month-1, year=year).count())
+            content['thisMonth_orderv2'][i-1] = service.find_orderV2_day(admin_id=admin_id, day=i, month=month, year=year).count()
+            content['otherMonth_orderv2'][i-1] = service.find_orderV2_day(admin_id=admin_id, day=i, month=month-1, year=year).count()
 
 
-    if content['service_count'] == 0:
-        content['thisMonth_service'] = demo
-        content['otherMonth_service'] = demo
-    else:
-        content['thisMonth_service'] = []
-        content['otherMonth_service'] = []
+    if content['service_count'] != 0:
         for i in range(1, 32):
-            content['thisMonth_service'].append(service.find_service_day(admin_id=admin_id, day=i, month=month, year=year).count())
-            content['otherMonth_service'].append(service.find_service_day(admin_id=admin_id, day=i, month=month-1, year=year).count())
+            content['thisMonth_service'][i-1] = service.find_service_day(admin_id=admin_id, day=i, month=month, year=year).count()
+            content['otherMonth_service'][i-1] = service.find_service_day(admin_id=admin_id, day=i, month=month-1, year=year).count()
     print(content)
     return render(request, 'maneu_index/index.html', content)
