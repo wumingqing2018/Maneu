@@ -9,27 +9,149 @@ from django.db import models
 import uuid
 
 
+class AuthGroup(models.Model):
+    name = models.CharField(unique=True, max_length=150)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_group'
+
+
+class AuthGroupPermissions(models.Model):
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_group_permissions'
+        unique_together = (('group', 'permission'),)
+
+
+class AuthPermission(models.Model):
+    name = models.CharField(max_length=255)
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
+    codename = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_permission'
+        unique_together = (('content_type', 'codename'),)
+
+
+class AuthUser(models.Model):
+    password = models.CharField(max_length=128)
+    last_login = models.DateTimeField(blank=True, null=True)
+    is_superuser = models.IntegerField()
+    username = models.CharField(unique=True, max_length=150)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=150)
+    email = models.CharField(max_length=254)
+    is_staff = models.IntegerField()
+    is_active = models.IntegerField()
+    date_joined = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user'
+
+
+class AuthUserGroups(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_groups'
+        unique_together = (('user', 'group'),)
+
+
+class AuthUserUserPermissions(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_user_permissions'
+        unique_together = (('user', 'permission'),)
+
+
+class CaptchaCaptchastore(models.Model):
+    challenge = models.CharField(max_length=32)
+    response = models.CharField(max_length=32)
+    hashkey = models.CharField(unique=True, max_length=40)
+    expiration = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'captcha_captchastore'
+
+
+class DjangoAdminLog(models.Model):
+    action_time = models.DateTimeField()
+    object_id = models.TextField(blank=True, null=True)
+    object_repr = models.CharField(max_length=200)
+    action_flag = models.PositiveSmallIntegerField()
+    change_message = models.TextField()
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'django_admin_log'
+
+
+class DjangoContentType(models.Model):
+    app_label = models.CharField(max_length=100)
+    model = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'django_content_type'
+        unique_together = (('app_label', 'model'),)
+
+
+class DjangoMigrations(models.Model):
+    app = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    applied = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_migrations'
+
+
+class DjangoSession(models.Model):
+    session_key = models.CharField(primary_key=True, max_length=40)
+    session_data = models.TextField()
+    expire_date = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_session'
+
+
 class ManeuAdmin(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    nickname = models.CharField(max_length=36)
-    username = models.CharField(unique=True, max_length=36)
+    username = models.CharField(max_length=36)
     password = models.CharField(max_length=36)
+    nickname = models.CharField(max_length=36)
     email = models.CharField(max_length=36)
     phone = models.CharField(max_length=36)
-    level = models.IntegerField()
-    state = models.IntegerField()
-    create_time = models.DateTimeField()
-    remark = models.CharField(max_length=255, blank=True, null=True)
-    localtion = models.CharField(max_length=128, blank=True, null=True)
+    level = models.CharField(max_length=36)
+    state = models.CharField(max_length=36)
+    time = models.DateTimeField(blank=True, null=True)
+    content = models.CharField(max_length=512, blank=True, null=True)
+    location = models.CharField(max_length=512, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'maneu_admin'
+        unique_together = (('id', 'username'),)
 
 
 class ManeuClass(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    user_id = models.CharField(max_length=36)
+    admin_id = models.CharField(max_length=36)
     name = models.CharField(max_length=36)
     time = models.DateTimeField()
     series = models.CharField(max_length=36)
@@ -44,17 +166,6 @@ class ManeuClass(models.Model):
         db_table = 'maneu_class'
 
 
-class ManeuDatalogs(models.Model):
-    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    user_id = models.CharField(max_length=36, blank=True, null=True)
-    time = models.DateTimeField(blank=True, null=True)
-    order_log = models.CharField(max_length=1024, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'maneu_datalogs'
-
-
 class ManeuGuess(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
     time = models.DateTimeField()
@@ -66,7 +177,7 @@ class ManeuGuess(models.Model):
     em = models.CharField(db_column='EM', max_length=36, blank=True, null=True)  # Field name made lowercase.
     dfh = models.CharField(db_column='DFH', max_length=36, blank=True, null=True)  # Field name made lowercase.
     remark = models.TextField()
-    users_id = models.CharField(max_length=36, blank=True, null=True)
+    admin_id = models.CharField(max_length=36, blank=True, null=True)
     subjective_id = models.CharField(max_length=36, blank=True, null=True)
 
     class Meta:
@@ -74,41 +185,55 @@ class ManeuGuess(models.Model):
         db_table = 'maneu_guess'
 
 
-class ManeuOrderv1(models.Model):
+class ManeuIndex(models.Model):
+    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    admin_id = models.CharField(max_length=36, blank=True, null=True)
+    time = models.DateTimeField(blank=True, null=True)
+    guess_log = models.CharField(max_length=1024)
+    service_log = models.CharField(max_length=1024)
+    orderv1_log = models.CharField(max_length=1024)
+    orderv2_log = models.CharField(max_length=1024)
+
+    class Meta:
+        managed = False
+        db_table = 'maneu_index'
+
+
+class ManeuOrderV1(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
     time = models.DateTimeField()
     name = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
-    users_id = models.CharField(max_length=36)  # Field name made lowercase.
-    guess_id = models.CharField(max_length=36)  # Field name made lowercase.
+    admin_id = models.CharField(max_length=36)
+    guess_id = models.CharField(max_length=36)
     contents = models.TextField()
 
     class Meta:
         managed = False
-        db_table = 'maneu_orderv1'
+        db_table = 'maneu_order_v1'
 
 
-class ManeuOrderv2(models.Model):
+class ManeuOrderV2(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
     time = models.DateTimeField()
     name = models.CharField(max_length=36)
     phone = models.CharField(max_length=36)
     guess_id = models.CharField(max_length=36)
-    users_id = models.CharField(max_length=36)
+    admin_id = models.CharField(max_length=36)
     store_id = models.CharField(max_length=36)
     visionsolutions_id = models.CharField(db_column='visionSolutions_id', max_length=36)  # Field name made lowercase.
     subjectiverefraction_id = models.CharField(db_column='subjectiveRefraction_id', max_length=36)  # Field name made lowercase.
 
     class Meta:
         managed = False
-        db_table = 'maneu_orderv2'
+        db_table = 'maneu_order_v2'
 
 
 class ManeuService(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
     time = models.DateTimeField()
+    admin_id = models.CharField(max_length=36)
     guess_id = models.CharField(max_length=36)
-    users_id = models.CharField(max_length=36)
     orderid = models.CharField(db_column='orderID', max_length=36, blank=True, null=True)  # Field name made lowercase.
     content = models.CharField(max_length=300, blank=True, null=True)
 

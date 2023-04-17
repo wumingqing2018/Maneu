@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'maneu',
     'maneu_service',
     'maneu_order_v1',
-    'maneu_class',
     'maneu_guest',
     'maneu_index',
     'maneu_order_v2',
