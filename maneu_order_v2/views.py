@@ -20,7 +20,6 @@ def delete(request):
     if order:
         store = service.ManeuStore_delete(id=order.store_id)
         visionsolutions = service.ManeuVisionSolutions_delete(id=order.visionsolutions_id)
-        subjectiverefraction = service.ManeuSubjectiveRefraction_delete(id=order.subjectiverefraction_id)
         afterSales = service.ManeuService_delete_order_id(order_id=request.POST.get('id'))
         order = service.ManeuOrderV2_delete(admin_id=request.session.get('id'), id=request.POST.get('id'))
     return HttpResponseRedirect(reverse('maneu_order_v2:index'))
@@ -44,7 +43,6 @@ def detail(request):
     if order:
         content = {}
         content['order'] = order
-        content['users'] = service.ManeuAdmin_id(id=order.admin_id)
         content['guess'] = service.ManeuGuess_id(id=order.guess_id)
         content['store'] = service.ManeuStore_id(id=order.store_id)
         content['vision'] = service.ManeuVisionSolutions_id(id=order.visionsolutions_id)
@@ -101,10 +99,6 @@ def update(request):
             order = service.ManeuOrderV2_id(order_id=order_id, admin_id=admin_id)
             ManeuGuess_id = service.ManeuGuess_update(id=order.guess_id, content=request.POST.get('Guess_information'))
             ManeuStore_id = service.ManeuStore_update(content=request.POST.get('Product_Orders'), id=order.ManeuStore_id)
-            ManeuVisionSolutions_id = service.ManeuVisionSolutions_update(id=order.visionsolutions_id,
-                                                                          content=request.POST.get('Vision_Solutions'))
-            ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_update(id=order.subjectiverefraction_id,
-                                                                                    content=request.POST.get('Subjective_refraction'))
             guess_content = json.loads(request.POST.get('Guess_information'))
             service.ManeuOrderV2_update(order_id=order.id,name=guess_content['guess_name'],phone=guess_content['guess_phone'], )
             return HttpResponseRedirect(reverse('maneu_order_v2:detail'))

@@ -20,6 +20,10 @@ def ManeuOrderV2_id(id='', admin_id=''):
     return ManeuOrderV2.objects.filter(id=id, admin_id=admin_id).first()
 
 
+def ManeuOrderV2_time(admin_id='', time=''):
+    return ManeuOrderV2.objects.filter(admin_id=admin_id, time__day=time).order_by('-time').all()
+
+
 def ManeuOrderV2_delete(admin_id='', id=''):
     """
     查找指定订单a
@@ -40,32 +44,28 @@ def ManeuOrderV2_update(order_id='', name='', phone=''):
     return ManeuOrderV2.objects.filter(id=order_id).update(name=name, phone=phone)
 
 
-def ManeuOrderV2_time(admin_id='', time=''):
-    return ManeuOrderV2.objects.filter(admin_id=admin_id, time__day=time).order_by('-time').all()
 
 
 def ManeuStore_id(id=''):
     return ManeuStore.objects.filter(id=id).first()
 
 
-def store_OrderID(orderid=''):
-    return ManeuStore.objects.filter(orderid=orderid).first()
-
-
 def ManeuStore_delete(id=''):
     return ManeuStore.objects.filter(id=id).delete()
 
 
-def ManeuAdmin_id(id=''):
-    return ManeuAdmin.objects.filter(id=id).first()
+def ManeuStore_insert(time='', content=''):
+    return ManeuStore.objects.create(time=time, content=content)
+
+
+def ManeuStore_update(content='', id=''):
+    return ManeuStore.objects.filter(id=id).update(content=content)
+
+
 
 
 def ManeuVisionSolutions_id(id=''):
     return ManeuVisionSolutions.objects.filter(id=id).first()
-
-
-def ManeuVisionSolutions_orderID(orderid=''):
-    return ManeuVisionSolutions.objects.filter(orderid=orderid).first()
 
 
 def ManeuVisionSolutions_delete(id=''):
@@ -80,36 +80,15 @@ def ManeuVisionSolutions_update(id='', content=''):
     return ManeuVisionSolutions.objects.filter(id=id).update(content=content)
 
 
-def ManeuSubjectiveRefraction_delete(id=''):
-    return ManeuSubjectiveRefraction.objects.filter(id=id).first()
 
-
-def ManeuSubjectiveRefraction_update(id='', content=''):
-    return ManeuSubjectiveRefraction.objects.filter(id=id).update(content=content)
-
-
-def ManeuStore_insert(time='', content=''):
-    return ManeuStore.objects.create(time=time, content=content)
-
-
-def ManeuStore_update(content='', id=''):
-    return ManeuStore.objects.filter(id=id).update(content=content)
-
-
-def guess_phone(phone):
-    return ManeuGuess.objects.filter(phone=phone).first()
-
-
-def ManeuGuess_search(admin_id='', name='', phone=''):
-    return ManeuGuess.objects.filter(admin_id=admin_id, name=name, phone=phone).first()
 
 
 def ManeuGuess_id(id=''):
     return ManeuGuess.objects.filter(id=id).first()
 
 
-def delete_guess_id(id=''):
-    return ManeuGuess.objects.filter(id=id).delete()
+def ManeuGuess_search(admin_id='', name='', phone=''):
+    return ManeuGuess.objects.filter(admin_id=admin_id, name=name, phone=phone).first()
 
 
 def ManeuGuess_insert(admin_id='', name='', phone=''):
