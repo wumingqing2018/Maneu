@@ -4,11 +4,12 @@ from django.shortcuts import reverse
 
 from common import verify
 from common import common
-from common.excel import excel_save
+from common import excel
 from maneu_order_v1 import service
 from maneu_order_v1.forms.BatchInsertForm import BatchInsertForm
 import datetime
 import uuid
+
 
 def index(request):
     list = service.batch_all(admin_id=request.session.get('id'))  # 查找今日订单
@@ -25,7 +26,8 @@ def detail(request):
 
 def delete(request):
     if request.GET.get('id'):
-        service.batch_delete(id=request.GET.get('id'))
+        excel.excel_remove(order_id='新建 XLSX 工作表.xlsx')
+        # service.batch_delete(id=request.GET.get('id'))
     return HttpResponseRedirect(reverse('maneu_order_v1:index'))
 
 
@@ -35,10 +37,8 @@ def insert(request):
         form = BatchInsertForm(request.POST)
         excel = request.FILES.get('excel')
         if form.is_valid() and excel:
-            uuid1 = uuid.uuid1()
-            order = excel_save(excel, uuid1)
-            print(order)
-            print(service.batch_insert(form.clean(), admin_id=request.session.get('id'), contents=order).id)
+            order = excel.excel_save(excel, order_id=uuid.uuid1())
+            print(service.batch_insert(form.clean(), admin_id=request.session.get('id'), contents=order))
             return index(request)
         msg = '参数错误'
     return render(request, 'maneu_order_v1/insert.html', {'msg': msg})

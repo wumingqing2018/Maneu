@@ -26,19 +26,19 @@ def execl_to_json(execl):
 def excel_save(excel, order_id):
     try:
         load_workbook(excel)
-        with open(f'static/excel/{excel}', 'wb+') as f:
+        with open(f'static/excel/{order_id}.xlsx', 'wb+') as f:
             for chunk in excel.chunks():
                 f.write(chunk)
             f.close()
-        return f'{order_id}.xlsx'
+        return f.name
     except BaseException as msg:
         return msg
 
 
 def excel_remove(order_id):
     try:
-        excel_path = os.getcwd() + f'excel\\{order_id}.xlsx'
-        os.remove(excel_path)
+        # excel_path = os.getcwd() + f'static/excel/{order_id}.xlsx'
+        os.remove(f'static/excel/{order_id}.xlsx')
     except BaseException as msg:
         print(msg)
         return None
