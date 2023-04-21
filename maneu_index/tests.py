@@ -48,7 +48,7 @@ def index(request):
     for order in orderlist:
         order_logs['order_count'] = order_logs['order_count'] + 1
         order_logs['order_log']['%02d'%order.time.day] = order_logs['order_log']['%02d'%order.time.day] +1
-        store = json.loads(service.find_store_id(id=order.store_id).content)
+        store = json.loads(service.find_store_id(id=order.ManeuStore_id).content)
         for i in store_list:
             try:
                 store[i] = int(store[i])
