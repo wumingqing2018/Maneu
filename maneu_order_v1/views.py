@@ -37,7 +37,8 @@ def insert(request):
         if form.is_valid() and excel:
             uuid1 = uuid.uuid1()
             order = excel_save(excel, uuid1)
-            print(service.batch_insert(form.clean(), order, uuid1))
+            print(order)
+            print(service.batch_insert(form.clean(), admin_id=request.session.get('id'), contents=order).id)
             return index(request)
         msg = '参数错误'
     return render(request, 'maneu_order_v1/insert.html', {'msg': msg})

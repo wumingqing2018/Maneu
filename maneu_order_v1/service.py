@@ -17,19 +17,8 @@ def batch_detail(id=''):
     return ManeuOrderV1.objects.filter(id=id).first()
 
 
-def batch_insert(form, order, order_id):
-    try:
-        ManeuOrderV1.objects.create(
-            order_id=order_id,
-            name=form['name'],
-            phone=form['phone'],
-            order=order,
-            remark=form['remark'],
-        )
-        return True
-    except BaseException as msg:
-        print(msg)
-        return False
+def batch_insert(form, admin_id='', contents=''):
+    ManeuOrderV1.objects.create(name=form['name'], phone=form['phone'], admin_id=admin_id, contents=contents)
 
 
 def batch_delete(id=''):

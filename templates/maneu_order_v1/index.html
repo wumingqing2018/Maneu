@@ -37,7 +37,7 @@
                     <span>录入时间</span>
                 </td>
                 <td class="col-3" align="right">
-                    <form class="col-5" method='get' action="{% url 'maneu_order_v1:insert' %}">
+                    <form class="col-4" method='get' action="{% url 'maneu_order_v1:insert' %}">
                         <div class="input-group input-group-sm">
                             <input type='submit' class='btn btn-warning col-12' value='添加订单'>
                         </div>
@@ -46,7 +46,7 @@
             </tr>
             {% for foo in list %}
                 <tr>
-                    <td class="col-1">
+                    <td class="col-3">
                         <span>{{ foo.name }}</span>
                     </td>
                     <td class="col-3">
@@ -55,11 +55,11 @@
                     <td class="col-3">
                         <span>{{ foo.time }}</span>
                     </td>
-                    <td class="col-3 row" align="right">
-                        <form class="col-4" method="GET" action="{% url 'maneu_order_v1:detail' %}">
+                    <td class="row">
+                        <form class="col-4 offset-4" method="GET" action="{% url 'maneu_order_v1:delete' %}">
                             <div class="input-group input-group-sm">
                                 <input type="hidden" name="id" value="{{ foo.id }}">
-                                <input type="submit" class="btn btn-primary col-12" value="查看订单">
+                                <input type="submit" class="btn btn-danger col-12" value="删除订单">
                             </div>
                         </form>
                         <form class="col-4" method="GET" action="{% url 'maneu_order_v1:detail' %}">
