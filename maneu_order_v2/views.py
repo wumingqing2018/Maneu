@@ -19,8 +19,8 @@ def delete(request):
     order = service.ManeuOrderV2_id(id=request.POST.get('id'), admin_id=request.session.get('id'))
     if order:
         store = service.ManeuStore_delete(id=order.store_id)
-        visionsolutions = service.ManeuVisionSolutions_delete(id=order.visionsolutions_id)
-        afterSales = service.ManeuService_delete_order_id(order_id=request.POST.get('id'))
+        vision = service.ManeuVisionSolutions_delete(id=order.visionsolutions_id)
+        server = service.ManeuService_delete_order_id(order_id=request.POST.get('id'))
         order = service.ManeuOrderV2_delete(admin_id=request.session.get('id'), id=request.POST.get('id'))
     return HttpResponseRedirect(reverse('maneu_order_v2:index'))
 
