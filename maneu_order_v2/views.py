@@ -44,8 +44,8 @@ def detail(request):
         content = {}
         content['order'] = order
         content['guess'] = service.ManeuGuess_id(id=order.guess_id)
-        content['store'] = service.ManeuStore_id(id=order.store_id)
-        content['vision'] = service.ManeuVisionSolutions_id(id=order.visionsolutions_id)
+        content['store'] = json.loads(service.ManeuStore_id(id=order.store_id).content)
+        content['vision'] = json.loads(service.ManeuVisionSolutions_id(id=order.visionsolutions_id).content)
         return render(request, 'maneu_order_v2/detail_pc.html', content)
     return HttpResponseRedirect(reverse('maneu_order_v2:index'))
 
