@@ -26,8 +26,8 @@ def detail(request):
 
 def delete(request):
     if request.GET.get('id'):
-        excel.excel_remove(order_id='新建 XLSX 工作表.xlsx')
-        # service.batch_delete(id=request.GET.get('id'))
+        # excel.excel_remove(order_id='新建 XLSX 工作表.xlsx')
+        service.batch_delete(id=request.GET.get('id'))
     return HttpResponseRedirect(reverse('maneu_order_v1:index'))
 
 
