@@ -8,21 +8,11 @@ from common.excel import excel_save
 from maneu_order_v1 import service
 from maneu_order_v1.forms.BatchInsertForm import BatchInsertForm
 import datetime
-
+import uuid
 
 def index(request):
-    if request.GET.get('time'):
-        time = request.GET.get('time')
-    else:
-        time = common.today()
-    date = datetime.datetime.strptime(time, '%Y-%m-%d')
-    down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
-    up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-    list = service.batch_userid(userid=request.session.get('id'), time=time)  # 查找今日订单
-    return render(request, 'maneu_order_v1/index.html', {'list': list,
-                                                      'time': time,
-                                                      'up_day': up_day,
-                                                      'down_day': down_day})
+    list = service.batch_all(admin_id=request.session.get('id'))  # 查找今日订单
+    return render(request, 'maneu_order_v1/index.html', {'list': list})
 
 
 def detail(request):
@@ -45,8 +35,9 @@ def insert(request):
         form = BatchInsertForm(request.POST)
         excel = request.FILES.get('excel')
         if form.is_valid() and excel:
-            order = excel_save(excel, order_id)
-            service.batch_insert(form.clean(), order, order_id)
+            uuid1 = uuid.uuid1()
+            order = excel_save(excel, uuid1)
+            print(service.batch_insert(form.clean(), order, uuid1))
             return index(request)
         msg = '参数错误'
     return render(request, 'maneu_order_v1/insert.html', {'msg': msg})

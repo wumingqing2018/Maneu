@@ -38,50 +38,42 @@
                 <td align="right">
                     <form class="col-5" method="get" action="{% url 'maneu_guest:insert' %}">
                         <div class="input-group input-group-sm">
-                            <input type="submit" class="btn btn-warning col-12" value='添加订单'>
+                            <input type="submit" class="btn btn-warning col-12" value='添加客户'>
                         </div>
                     </form>
                 </td>
             </tr>
-            {% if list %}
-                {% for foo in list %}
-                    <tr>
-                        <td>
-                            <span>{{ foo.name }}</span>
-                        </td>
-                        <td>
-                            <span>{{ foo.phone }}</span>
-                        </td>
-                        <td>
-                            <span>{{ foo.time }}</span>
-                        </td>
-                        <td align="right">
-                            <div class="col-12 row">
-                                <form class="col-3 offset-6" method="post" action="{% url 'maneu_guest:delete' %}">
-                                    {% csrf_token %}
-                                    <div class="input-group input-group-sm">
-                                        <input type="hidden" name="id" value="{{ foo.id }}">
-                                        <input type="submit" class="btn btn-danger col-12" id="delete" value="删除">
-                                    </div>
-                                </form>
-                                <form class="col-3" method="post" action="{% url 'maneu_guest:detail' %}">
-                                    {% csrf_token %}
-                                    <div class="input-group input-group-sm">
-                                        <input type="hidden" name="id" value="{{ foo.id }}">
-                                        <input type="submit" class="btn btn-primary col-12" value="查看">
-                                    </div>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% else %}
+            {% for foo in list %}
                 <tr>
-                    <td colspan="4" align="center">
-                        <span>没有订单</span>
+                    <td>
+                        <span>{{ foo.name }}</span>
+                    </td>
+                    <td>
+                        <span>{{ foo.phone }}</span>
+                    </td>
+                    <td>
+                        <span>{{ foo.time }}</span>
+                    </td>
+                    <td align="right">
+                        <div class="col-12 row">
+                            <form class="col-3 offset-6" method="post" action="{% url 'maneu_guest:delete' %}">
+                                {% csrf_token %}
+                                <div class="input-group input-group-sm">
+                                    <input type="hidden" name="id" value="{{ foo.id }}">
+                                    <input type="submit" class="btn btn-danger col-12" id="delete" value="删除">
+                                </div>
+                            </form>
+                            <form class="col-3" method="post" action="{% url 'maneu_guest:detail' %}">
+                                {% csrf_token %}
+                                <div class="input-group input-group-sm">
+                                    <input type="hidden" name="id" value="{{ foo.id }}">
+                                    <input type="submit" class="btn btn-primary col-12" value="查看">
+                                </div>
+                            </form>
+                        </div>
                     </td>
                 </tr>
-            {% endif %}
+            {% endfor %}
         </table>
     </div>
 {% endblock %}

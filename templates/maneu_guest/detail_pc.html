@@ -328,7 +328,6 @@
                 <form action="{% url 'maneu_guest:orderList' %}" method="post">
                     {% csrf_token %}
                     <input name="id" type="hidden" value="{{ guess.id }}">
-                    <input name="phone" type="hidden" value="{{ guess.phone }}">
                     <input type="submit" class="btn btn-primary" value="订单列表">
                 </form>
             </div>

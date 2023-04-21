@@ -82,8 +82,5 @@ def search(request):
 
 
 def order_list(request):
-    if request.method == 'POST':
-        guess_id = request.POST.get('id')
-        orderlist = service.find_ManeuOrderV2_guess_id(guess_id=guess_id)
-        return render(request, 'maneu_guest/orderList.html', {'orderlist': orderlist, 'guess_id': guess_id})
-    return HttpResponseRedirect(reverse('maneu_guest:index'))
+    list = service.find_ManeuOrderV2_guess_id(guess_id=request.POST.get('id'))
+    return render(request, 'maneu_order_v2/index.html', {'list': list})

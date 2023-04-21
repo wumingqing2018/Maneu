@@ -53,5 +53,6 @@ def guess_update(id='', content=''):
 def subjective_update(id='', content=''):
     return ManeuSubjectiveRefraction.objects.filter(id=id).update(content=content)
 
+
 def find_ManeuOrderV2_guess_id(guess_id=''):
     return ManeuOrderV2.objects.filter(guess_id=guess_id).order_by('-time').all()

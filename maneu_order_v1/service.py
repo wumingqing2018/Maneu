@@ -1,12 +1,8 @@
 from maneu.models import ManeuOrderV1
 
 
-def batch_userid(userid='', time=''):
-    return ManeuOrderV1.objects.filter(userid=userid, time=time).order_by('-time').all()
-
-
-def batch_list():
-    return ManeuOrderV1.objects.order_by('-time').all()
+def batch_all(admin_id=''):
+    return ManeuOrderV1.objects.filter(admin_id=admin_id).order_by('-time').all()
 
 
 def batch_list_ByName(arg):
