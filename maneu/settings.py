@@ -103,7 +103,7 @@ https:#docs.djangoproject.com/en/3.0/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'maneu',
+        'NAME': 'maneu1',
         'HOST': 'localhost',
         'PORT': 3306,
         'USER': 'root',
