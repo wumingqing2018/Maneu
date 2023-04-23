@@ -35,9 +35,9 @@ def insert(request):
     msg = None
     if request.method == 'POST':
         form = BatchInsertForm(request.POST)
-        excel = request.FILES.get('excel')
+        xlsx = request.FILES.get('excel')
         if form.is_valid() and excel:
-            order = excel.excel_save(excel, order_id=uuid.uuid1())
+            order = excel.excel_save(excel=xlsx, order_id=uuid.uuid1())
             print(service.batch_insert(form.clean(), admin_id=request.session.get('id'), contents=order))
             return index(request)
         msg = '参数错误'
