@@ -30,7 +30,7 @@ def excel_save(excel, order_id):
             for chunk in excel.chunks():
                 f.write(chunk)
             f.close()
-        return f.name
+        return f.name[13:]
     except BaseException as msg:
         return msg
 
