@@ -234,7 +234,7 @@ class ManeuService(models.Model):
     time = models.DateTimeField()
     admin_id = models.CharField(max_length=36)
     guess_id = models.CharField(max_length=36)
-    orderid = models.CharField(db_column='orderID', max_length=36, blank=True, null=True)  # Field name made lowercase.
+    order_id = models.CharField(db_column='order_id', max_length=36, blank=True, null=True)  # Field name made lowercase.
     content = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
@@ -244,8 +244,10 @@ class ManeuService(models.Model):
 
 class ManeuStore(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    orderid = models.CharField(db_column='orderID', max_length=36)  # Field name made lowercase.
     time = models.DateTimeField()
+    orderid = models.CharField(db_column='orderID', max_length=36)  # Field name made lowercase.
+    admin_id = models.CharField(max_length=36)
+    guess_id = models.CharField(db_column='guess_id', max_length=36)  # Field name made lowercase.
     content = models.TextField()
 
     class Meta:
@@ -255,7 +257,8 @@ class ManeuStore(models.Model):
 
 class ManeuSubjectiveRefraction(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    guessid = models.CharField(db_column='guessID', max_length=36)  # Field name made lowercase.
+    admin_id = models.CharField(max_length=36)
+    guess_id = models.CharField(db_column='guess_id', max_length=36)  # Field name made lowercase.
     time = models.DateTimeField()
     content = models.TextField()
 
@@ -266,7 +269,8 @@ class ManeuSubjectiveRefraction(models.Model):
 
 class ManeuVisionSolutions(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
-    orderid = models.CharField(db_column='orderID', max_length=36)  # Field name made lowercase.
+    admin_id = models.CharField(max_length=36)
+    guess_id = models.CharField(db_column='guess_id', max_length=36)  # Field name made lowercase.
     time = models.DateTimeField()
     content = models.TextField()
 

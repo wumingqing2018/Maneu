@@ -88,17 +88,16 @@ def update(request):
     admin_id = request.session.get('id')
     if order_id and admin_id:
         if request.method == 'GET':
-            order = service.ManeuOrderV2_id(order_id=order_id, admin_id=admin_id)
-            users = service.admin_id(id=order.admin_id)
-            guess = service.guess_id(id=order.guess_id)
-            store = service.ManeuStore_id(id=order.ManeuStore_id)
-            return render(request, 'maneu_order_v2/update.html', {'maneu_order_v2': order, 'users': users, 'guess': guess,
-                                                                  # 'maneu_store': json.loads(store.content),
+            order = service.ManeuOrderV2_id(id=order_id, admin_id=admin_id)
+            guess = service.ManeuGuess_id(id=order.guess_id)
+            store = service.ManeuStore_id(id=order.store_id)
+            return render(request, 'maneu_order_v2/update.html', {'maneu_order_v2': order, 'guess': guess,
+                                                                  'maneu_store': json.loads(store.content),
                                                                   })
         if request.method == 'POST':
-            order = service.ManeuOrderV2_id(order_id=order_id, admin_id=admin_id)
+            order = service.ManeuOrderV2_id(id=order_id, admin_id=admin_id)
             ManeuGuess_id = service.ManeuGuess_update(id=order.guess_id, content=request.POST.get('Guess_information'))
-            ManeuStore_id = service.ManeuStore_update(content=request.POST.get('Product_Orders'), id=order.ManeuStore_id)
+            ManeuStore_id = service.ManeuStore_update(content=request.POST.get('Product_Orders'), id=order.store_id)
             guess_content = json.loads(request.POST.get('Guess_information'))
             service.ManeuOrderV2_update(order_id=order.id,name=guess_content['guess_name'],phone=guess_content['guess_phone'], )
             return HttpResponseRedirect(reverse('maneu_order_v2:detail'))
@@ -106,19 +105,26 @@ def update(request):
 
 
 def test1(request):
-    store_list = service.ManeuStore.objects.exclude(orderid='').all()
+    order_list = service.ManeuOrderV2.objects.filter().all()
+    for order in order_list:
+        guess_list = list(service.ManeuGuess.objects.filter(name=order.name, phone=order.phone).all())
+        if len(guess_list) == 0:
+            guess_id = service.ManeuGuess.objects.create(name=order.name, phone=order.phone, time=order.time)
+            print(service.ManeuOrderV2.objects.filter(name=order.name, phone=order.phone).update(guess_id=guess_id,))
+        elif len(guess_list) == 1:
+            print(service.ManeuOrderV2.objects.filter(name=order.name, phone=order.phone).update(guess_id=guess_list[0].id))
+        else:
+            guess_list.pop()
+            for guess in guess_list:
+                print(service.ManeuGuess.objects.filter(id=guess.id).delete())
 
-    for store in store_list:
-        try:
-            print(service.ManeuOrderV2.objects.filter(id=store.orderid).update(store_id=store.id))
-        except Exception as e:
-            print(e)
+    guess_list = service.ManeuGuess.objects.exclude(subjective_id='').all()
+    for guess in guess_list:
+        service.ManeuSubjectiveRefraction.objects.filter(id=guess.subjective_id).update(guess_id=guess.id)
 
+    order_list = service.ManeuOrderV2.objects.filter().all()
+    for order in order_list:
+        print(service.ManeuVisionSolutions.objects.filter(id=order.visionsolutions_id).update(guess_id=order.guess_id, admin_id=order.admin_id),
+              service.ManeuSubjectiveRefraction.objects.filter(id=order.subjectiverefraction_id).update(guess_id=order.guess_id, admin_id=order.admin_id),
+              service.ManeuStore.objects.filter(id=order.store_id).update(guess_id=order.guess_id, admin_id=order.admin_id))
 
-def test2(request):
-    store_list = service.ManeuVisionSolutions.objects.exclude(orderid='').all()
-    for store in store_list:
-        try:
-            print(service.ManeuOrderV2.objects.filter(id=store.orderid).update(visionsolutions_id=store.id))
-        except Exception as e:
-            print(e)

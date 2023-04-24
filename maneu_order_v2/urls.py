@@ -12,5 +12,4 @@ urlpatterns = [
     path('insert/', views.insert, name='insert'),
     path('update/', views.update, name='update'),
     path('test1/', views.test1, name='test'),
-    path('test2/', views.test2, name='test'),
 ]

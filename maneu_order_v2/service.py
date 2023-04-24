@@ -95,6 +95,10 @@ def ManeuGuess_insert(admin_id='', name='', phone=''):
     return ManeuGuess.objects.create(admin_id=admin_id, name=name, phone=phone)
 
 
+def ManeuGuess_insert_v2(id='', admin_id='', name='', phone=''):
+    return ManeuGuess.objects.create(id=id, admin_id=admin_id, name=name, phone=phone)
+
+
 def ManeuGuess_update(id='', content=''):
     contents = json.loads(content)
     return ManeuGuess.objects.filter(id=id).update(name=contents['guess_name'], phone=contents['guess_phone'],

@@ -209,8 +209,7 @@
                 </form>
             </div>
             <div class="col-2">
-                <form method="post" action="{% url 'maneu_order_v2:update' %}">
-                    {% csrf_token %}
+                <form method="get" action="{% url 'maneu_order_v2:update' %}">
                     <input type="hidden" name="id" value="{{ order.id }}">
                     <input type="submit" class="btn btn-warning" value="修改订单">
                 </form>

@@ -13,7 +13,7 @@ def index(request):
 
 def detail(request):
     guess = service.guess_id(id=request.POST.get('id'))
-    Subjective = service.subjectiverefraction_guessID(guessid=guess.id)
+    Subjective = service.subjectiverefraction_guessID(guess_id=guess.id)
     if Subjective:
         subjectiverefraction = json.loads(Subjective.content)
     else:
@@ -56,9 +56,8 @@ def delete(request):
 def update(request):
     if request.method == 'GET':
         guess = service.guess_id(id=request.GET.get('id'))
-        Subjective = service.subjectiverefraction_id(id=guess.subjective_id)
-        subjectiverefraction = json.loads(Subjective.content)
-        return render(request, 'maneu_guest/update.html', {'guess': guess, 'Subjective': subjectiverefraction})
+        Subjective = service.subjectiverefraction_guessID(guess_id=guess.id)
+        return render(request, 'maneu_guest/update.html', {'guess': guess, 'Subjective': json.loads(Subjective.content)})
     if request.method == 'POST':
         id = service.guess_id(id=request.POST.get('id')).subjective_id
         guess = service.guess_update(id=request.POST.get('id'), content=request.POST.get('Guess_information'))
