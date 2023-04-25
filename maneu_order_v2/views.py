@@ -125,6 +125,6 @@ def test1(request):
     order_list = service.ManeuOrderV2.objects.filter().all()
     for order in order_list:
         print(service.ManeuVisionSolutions.objects.filter(id=order.visionsolutions_id).update(guess_id=order.guess_id, admin_id=order.admin_id),
-              service.ManeuSubjectiveRefraction.objects.filter(id=order.subjectiverefraction_id).update(guess_id=order.guess_id, admin_id=order.admin_id),
+              service.ManeuSubjectiveRefraction.objects.filter(id=order.ManeuSubjectiveRefraction_id).update(guess_id=order.guess_id, admin_id=order.admin_id),
               service.ManeuStore.objects.filter(id=order.store_id).update(guess_id=order.guess_id, admin_id=order.admin_id))
 

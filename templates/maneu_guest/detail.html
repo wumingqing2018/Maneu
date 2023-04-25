@@ -1,0 +1,288 @@
+{% extends 'maneu/base_admin.html' %}
+{% load static %}
+{% block css %}
+    <style>
+        p {
+            color: #FFC048;
+        }
+        .table {
+            margin-bottom: 5%;
+        }
+        .container {
+            margin-bottom: 5%
+        }
+        #main0 {
+            width: 100%;
+            height:400px;
+        }
+        #main1 {
+            width: 100%;
+            height:400px;
+        }
+
+    </style>
+{% endblock %}
+{% block javascript %}
+    {# delete model #}
+    <script type="application/javascript"  src="{% static 'javascript/maneu/delete.js' %}"></script>
+    {# print model #}
+    <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
+    <script type="text/javascript" src="{% static 'javascript/maneu/print.js' %}"></script>
+    {# echarts model #}
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script type="text/javascript" src="{% static 'javascript/maneu_index/echarts.js' %}"></script>
+    {# 视力标准 echarts start #}
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main0'), 'maneu');
+        var option = {
+            title: {
+                text: '视力',
+                textStyle: {
+                    fontSize: 18,
+                    fontWeight: 'bolder',
+                },
+            },
+            tooltip: {
+                formatter:function(datas) {
+                    return datas.value.toFixed(1);
+                }
+            },
+            legend: {
+                data:['左眼视力', '右眼视力']
+            },
+            xAxis: {
+                data: ['左眼视力', '右眼视力'],
+            },
+            yAxis: {
+                min: 0.2,
+                max: 1.2,
+                axisLabel:{
+                    formatter: function (value,index) {
+                        return value.toFixed(1)
+                    }
+                }
+            },
+            series: [{
+                type: 'bar',
+                barWidth: 20,
+                data: [{{ subjectiverefraction.OS_VA|safe }}, {{ subjectiverefraction.OD_VA|safe }}],
+                markLine: {
+                    symbol: "none",
+                    data: [{
+                        label: {
+                            position: "middle",
+                            formatter: "标准值：1.0",
+                            fontSize: "10",
+                        },
+                        yAxis: 1.0,
+                    }],
+                    silent: true,
+                },
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    {# 眼轴长度 echarts start #}
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main1'), 'maneu');
+        var option = {
+            title: {
+                text: '眼轴长度',
+                textStyle: {
+                    fontSize: 18,
+                    fontWeight: 'bolder',
+                },
+            },
+            tooltip: {},
+            legend: {
+                data:['左眼眼轴', '右眼眼轴']
+            },
+            xAxis: {
+                data: ['左眼眼轴', '右眼眼轴'],
+            },
+            yAxis: {
+                name: 'mm',
+                min: 16,
+                max: 28,
+                axisLabel:{
+                    formatter: function (value,index) {
+                        return value.toFixed(1)
+                    }
+                }
+            },
+            series: [{
+                type: 'bar',
+                barWidth: 20,
+                data: [{{ list_r|safe }}, {{ list_l|safe }}],
+                markLine: {
+                    symbol: "none",
+                    data: [{
+                        label: {
+                            position: "middle",
+                            formatter: "标准值: "+ {{ stand_ax|safe }} +"mm",
+                            fontSize: "10",
+                        },
+                        yAxis: {{ stand_ax|safe }},
+                    }],
+                    silent: true,
+                    color: ["#99CC33"], // 折线的颜色
+                },
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <table class="table text-left" id="textArea">
+            <tr>
+                <td colspan="12">
+                    <h5>客户信息（Guess information）</h5>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-2">
+                    <p>姓名：{{ guess.name }}</p>
+                </td>
+                <td class="col-2">
+                    <p>电话：{{ guess.phone }}</p>
+                </td>
+                <td class="col-2">
+                    <p>性别：{{ guess.sex }}</p>
+                </td>
+                <td class="col-2">
+                    <p>年龄：{{ guess.age }}</p>
+                </td>
+                <td class="col-2">
+                    <p>眼位：{{ guess.ot }}</p>
+                </td>
+                <td class="col-2">
+                    <p>主视眼：{{ guess.em }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="12">
+                    <p>病族史：{{ guess.dfh }}</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="12">
+                    <p>备注：{{ guess.remark }}</p>
+                </td>
+            </tr>
+        </table>
+        <table class="table text-left" id="textArea">
+            <tr>
+                <td>
+                    <h5>屈光检验报告</h5>
+                </td>
+                <td align="right">
+                    <form class="col-2" method="get" action="{% url 'maneu_guest:Subjective_insert' %}">
+                        {% csrf_token %}
+                        <div class="input-group input-group-sm">
+                            <input type="hidden" name="guess_id" value="{{ guess_id }}">
+                            <input type="submit" class="btn btn-primary" value="添加">
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            {% if Subjective %}
+                {% for foo in Subjective %}
+                    <tr>
+                        <td>
+                            <p>{{ foo.time }}</p>
+                        </td>
+                        <td align="right">
+                            <form class="col-2" method="post" action="{% url 'maneu_guest:Subjective_detail' %}">
+                                {% csrf_token %}
+                                <div class="input-group input-group-sm">
+                                    <input type="hidden" name="id" value="{{ foo.id }}">
+                                    <input type="hidden" name="guess_id" value="{{ guess.id }}">
+                                    <input type="submit" class="btn btn-primary" value="查看">
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="2" align="center">
+                        <p>暂无记录</p>
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+        <table class="table text-left" id="textArea">
+            <tr>
+                <td>
+                    <h5>视力解决方案</h5>
+                </td>
+                <td align="right">
+                    <form class="col-2" method="get" action="{% url 'maneu_order_v2:insert' %}">
+                        {% csrf_token %}
+                        <div class="input-group input-group-sm">
+                            <input type="hidden" name="order_id" value="{{ foo.id }}">
+                            <input type="submit" class="btn btn-primary" value="添加">
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            {% if vision %}
+                {% for foo in vision %}
+                    <tr>
+                        <td>
+                            <p>{{ foo.time }}</p>
+                        </td>
+                        <td align="right">
+                            <form class="col-2" method="post" action="{% url 'maneu_order_v2:detail' %}">
+                                {% csrf_token %}
+                                <div class="input-group input-group-sm">
+                                    <input type="hidden" name="order_id" value="{{ foo.id }}">
+                                    <input type="submit" class="btn btn-primary" value="查看">
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="2" align="center">
+                        <p>暂无记录</p>
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+        <div id="echarts" class="col-12 row">
+            <div class="col-md-5 col-sm-12">
+                <div id="main0"></div>
+            </div>
+            <div class="col-md-5 col-sm-12">
+                <div id="main1"></div>
+            </div>
+        </div>
+        <div class="col-12 row" style="text-align: center;">
+            <div class="col-md-2 col-sm-6">
+                <a class="btn btn-primary" type="button" href="{% url 'maneu_guest:index' %}">返回列表</a>
+            </div>
+            <div class="col-md-2 col-sm-6">
+                <button class="btn btn-primary" id="print_btn">打印信息</button>
+            </div>
+            <div class="col-md-2 col-sm-6">
+                <form action="{% url 'maneu_guest:delete' %}" method="post">
+                    {% csrf_token %}
+                    <input name="id" type="hidden" value="{{ guess.id }}">
+                    <input type="submit" id="delete" class="btn btn-danger" value="删除信息">
+                </form>
+            </div>
+            <div class="col-md-2 col-sm-6">
+                <form action="{% url 'maneu_guest:update' %}" method="get">
+                    <input name="id" type="hidden" value="{{ guess.id }}">
+                    <input type="submit" class="btn btn-warning" value="修改信息">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

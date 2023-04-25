@@ -11,7 +11,7 @@ urlpatterns = [
     path('delete/', views.delete, name='delete'),
     path('update/', views.update, name='update'),
     path('search/', views.search, name='search'),
-    path('orderList/', views.order_list, name='orderList'),
-    # path('detailPhone/', views.detail_phone, name='detail_phone'),
-
+    path('Subjective_insert/', views.Subjective_insert, name='Subjective_insert'),
+    path('Subjective_detail/', views.Subjective_detail, name='Subjective_detail'),
+    path('Subjective_update/', views.Subjective_update, name='Subjective_update')
 ]
