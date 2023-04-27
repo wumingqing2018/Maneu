@@ -4,8 +4,9 @@
     <div class="container" style="margin-top: 5%;">
         <div class="row">
             <div class="col-5">
-                <form method="get" action="{% url 'maneu_guest:detail' %}">
-                    <input type="hidden" name="id" value="{{ guess.id }}">
+                <form method="post" action="{% url 'maneu_guest:detail' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="guess_id" value="{{ guess.id }}">
                     <div class="input-group input-group-sm mb-2">
                         <input type="submit" class="btn btn-primary" value="返回">
                     </div>
@@ -195,7 +196,9 @@
             </div>
             <hr>
             <input type="hidden" name="guess_id" value="{{ guess.id }}">
+                            <div class="input-group input-group-sm">
             <input type="submit" class="btn btn-primary" value="提交">
+                            </div>
         </form>
     </div>
 {% endblock %}

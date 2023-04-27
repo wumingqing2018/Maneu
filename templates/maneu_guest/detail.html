@@ -136,6 +136,11 @@
 {% endblock %}
 {% block content %}
     <div class="container">
+        <div class="col-md-2 col-sm-6">
+            <div class="input-group input-group-sm">
+                <a class="btn btn-primary" type="button" href="{% url 'maneu_guest:index' %}">返回列表</a>
+            </div>
+        </div>
         <table class="table text-left" id="textArea">
             <tr>
                 <td colspan="12">
@@ -174,6 +179,29 @@
                 </td>
             </tr>
         </table>
+        <div class="col-12 row" style="text-align: center;">
+            <div class="col-md-2 col-sm-6">
+                <div class="input-group input-group-sm">
+                    <button class="btn btn-primary" id="print_btn">打印信息</button>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-6">
+                <form action="{% url 'maneu_guest:delete' %}" method="get">
+                    <input name="id" type="hidden" value="{{ guess.id }}">
+                    <div class="input-group input-group-sm">
+                        <input type="submit" id="delete" class="btn btn-danger" value="删除信息">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2 col-sm-6">
+                <form action="{% url 'maneu_guest:update' %}" method="get">
+                    <input name="guess_id" type="hidden" value="{{ guess.id }}">
+                    <div class="input-group input-group-sm">
+                        <input type="submit" class="btn btn-warning" value="修改信息">
+                    </div>
+                </form>
+            </div>
+        </div>
         <table class="table text-left" id="textArea">
             <tr>
                 <td>
@@ -259,26 +287,6 @@
             </div>
             <div class="col-md-5 col-sm-12">
                 <div id="main1"></div>
-            </div>
-        </div>
-        <div class="col-12 row" style="text-align: center;">
-            <div class="col-md-2 col-sm-6">
-                <a class="btn btn-primary" type="button" href="{% url 'maneu_guest:index' %}">返回列表</a>
-            </div>
-            <div class="col-md-2 col-sm-6">
-                <button class="btn btn-primary" id="print_btn">打印信息</button>
-            </div>
-            <div class="col-md-2 col-sm-6">
-                <form action="{% url 'maneu_guest:delete' %}" method="get">
-                    <input name="id" type="hidden" value="{{ guess.id }}">
-                    <input type="submit" id="delete" class="btn btn-danger" value="删除信息">
-                </form>
-            </div>
-            <div class="col-md-2 col-sm-6">
-                <form action="{% url 'maneu_guest:update' %}" method="get">
-                    <input name="guess_id" type="hidden" value="{{ guess.id }}">
-                    <input type="submit" class="btn btn-warning" value="修改信息">
-                </form>
             </div>
         </div>
     </div>
