@@ -13,5 +13,6 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('Subjective_insert/', views.Subjective_insert, name='Subjective_insert'),
     path('Subjective_detail/', views.Subjective_detail, name='Subjective_detail'),
+    path('Subjective_delete/', views.Subjective_delete, name='Subjective_delete'),
     path('Subjective_update/', views.Subjective_update, name='Subjective_update')
 ]

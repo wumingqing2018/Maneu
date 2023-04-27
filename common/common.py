@@ -69,15 +69,6 @@ def get_ip(request):
         return request.META.get("REMOTE_ADDR")
 
 
-def generate_qrcode():
-    data = '我爱python'
-    img = qrcode.make(data)
-
-    buf = BytesIO()		# BytesIO实现了在内存中读写bytes
-    img.save(buf)
-    return buf.getvalue()
-
-
 def index_time(request):
     if request.GET.get('time'):
         time = request.GET.get('time')
@@ -87,3 +78,15 @@ def index_time(request):
     down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
     up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
     return {'list': '', 'time': time, 'up_day': up_day, 'down_day': down_day}
+
+
+def subjective_content(request):
+    content = {'OD_VA': request.POST['OD_VA'], 'OD_SPH': request.POST['OD_SPH'], 'OD_CYL': request.POST['OD_CYL'],
+               'OD_AX': request.POST['OD_AX'], 'OD_ADD': request.POST['OD_ADD'], 'OD_BCVA': request.POST['OD_BCVA'],
+               'OD_AL': request.POST['OD_AL'], 'OD_AK': request.POST['OD_AK'], 'OD_AD': request.POST['OD_AD'],
+               'OD_CCT': request.POST['OD_CCT'], 'OD_LT': request.POST['OD_LT'], 'OD_VT': request.POST['OD_VT'],
+               'OS_VA': request.POST['OS_VA'], 'OS_SPH': request.POST['OS_SPH'], 'OS_CYL': request.POST['OS_CYL'],
+               'OS_AX': request.POST['OS_AX'], 'OS_ADD': request.POST['OS_ADD'], 'OS_BCVA': request.POST['OS_BCVA'],
+               'OS_AL': request.POST['OS_AL'], 'OS_AK': request.POST['OS_AK'], 'OS_AD': request.POST['OS_AD'],
+               'OS_CCT': request.POST['OS_CCT'], 'OS_LT': request.POST['OS_LT'], 'OS_VT': request.POST['OS_VT']}
+    return content

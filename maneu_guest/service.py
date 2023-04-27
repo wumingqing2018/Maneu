@@ -1,39 +1,34 @@
-import json
 from django.db.models import Q
+
 from maneu.models import *
 
 
-def guess_delete(id=''):
-    return ManeuGuess.objects.filter(id=id).delete()
+def ManeuGuess_id(admin_id='', id=''):
+    return ManeuGuess.objects.filter(admin_id=admin_id, id=id).first()
 
 
-def guess_all(admin_id=''):
+def ManeuGuess_all(admin_id=''):
     return ManeuGuess.objects.filter(admin_id=admin_id).order_by('-time').all()
 
 
-def guess_id(id=''):
-    return ManeuGuess.objects.filter(id=id).first()
+def ManeuGuess_time(admin_id='', time=''):
+    return ManeuGuess.objects.filter(admin_id=admin_id, time__in=time).all()
 
 
-def guess_insert(contents='', admin_id='', time=''):
-    contents = json.loads(contents)
-    return ManeuGuess.objects.create(time=time, admin_id=admin_id, name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
+def ManeuGuess_insert(admin_id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):
+    return ManeuGuess.objects.create(time=time, admin_id=admin_id, name=name, phone=phone, sex=sex, age=age, ot=ot, em=em, dfh=dfh, remark=remark)
 
 
-def find_Guess_search(text='', admin_id=''):
-    return ManeuGuess.objects.filter(Q(name=text, admin_id=admin_id) | Q(phone=text, admin_id=admin_id)).order_by('-time').all()
+def ManeuGuess_update(id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):
+    return ManeuGuess.objects.filter(id=id).update(time=time, name=name, phone=phone, sex=sex, age=age, ot=ot, em=em, dfh=dfh, remark=remark)
 
 
-def find_Guess_time(admin_id='', time=''):
-    return ManeuGuess.objects.filter(admin_id=admin_id, time__day=time).all()
+def ManeuGuess_search(text='', admin_id=''):
+    return ManeuGuess.objects.filter(Q(name__contains=text, admin_id=admin_id) | Q(phone__contains=text, admin_id=admin_id)).order_by('-time').all()
 
 
-def guess_update(id='', content=''):
-    contents = json.loads(content)
-    return ManeuGuess.objects.filter(id=id).update(name=contents['guess_name'],
-                                                   phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'],
-                                                   ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'],
-                                                   remark=contents['remark'])
+def ManeuGuess_delete(id=''):
+    return ManeuGuess.objects.filter(id=id).delete()
 
 
 def ManeuSubjectiveRefraction_id(id=''):
@@ -41,19 +36,23 @@ def ManeuSubjectiveRefraction_id(id=''):
 
 
 def ManeuSubjectiveRefraction_all(guess_id=''):
-    return ManeuSubjectiveRefraction.objects.filter(guess_id=guess_id).all()
+    return ManeuSubjectiveRefraction.objects.filter(guess_id=guess_id).order_by('-time').all()
 
 
-def ManeuSubjectiveRefraction_insert(guess_id='', content=''):
-    return ManeuSubjectiveRefraction.objects.create(guess_id=guess_id, content=content)
+def ManeuSubjectiveRefraction_insert(admin_id='', guess_id='', content=''):
+    return ManeuSubjectiveRefraction.objects.create(admin_id=admin_id, guess_id=guess_id, content=content)
 
 
-def ManeuSubjectiveRefraction_update(id='', content=''):
-    return ManeuSubjectiveRefraction.objects.filter(id=id).update(content=content)
+def ManeuSubjectiveRefraction_update(id='', admin_id='', content=''):
+    return ManeuSubjectiveRefraction.objects.filter(id=id, admin_id=admin_id).update(content=content)
+
+
+def ManeuSubjectiveRefraction_delete(id='', admin_id=''):
+    return ManeuSubjectiveRefraction.objects.filter(id=id, admin_id=admin_id).delete()
 
 
 def ManeuVisionSolutions_all(guess_id=''):
-    return ManeuVisionSolutions.objects.filter(guess_id=guess_id).all()
+    return ManeuVisionSolutions.objects.filter(guess_id=guess_id).order_by('-time').all()
 
 
 def find_ManeuOrderV2_all(guess_id=''):

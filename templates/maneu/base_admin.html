@@ -18,10 +18,7 @@
 <body class="blue">
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="{% url 'index' %}">
-        <img style="height: 30px" src="{% static 'images/logo.svg' %}">
-    </a>
-
+    <img style="height: 30px" src="{% static 'images/logo.svg' %}">
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -31,14 +28,14 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'maneu_index:index' %}">数据可视化(开发中)</a>
+                <a class="nav-link" href="{% url 'maneu_index:index' %}">数据可视化</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'maneu_order_v2:index' %}">零售管理</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'maneu_order_v1:index' %}">批发管理</a>
-            </li>
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="{% url 'maneu_order_v1:index' %}">批发管理</a>#}
+{#            </li>#}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'maneu_service:index1' %}">售后管理</a>
             </li>

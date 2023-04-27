@@ -8,7 +8,7 @@
                 <td class="col-6" colspan="2">
                     <h5>客户信息管理系统</h5>
                 </td>
-                <td CLASS="col-3">
+                <td class="col-3">
                     <form method="get" action="{% url 'maneu_guest:search' %}">
                         <div class="input-group input-group-sm">
                             <input type="date" name="time" class="form-control" value="{{ time|safe }}">
@@ -56,17 +56,16 @@
                     </td>
                     <td align="right">
                         <div class="col-12 row">
-                            <form class="col-3 offset-6" method="post" action="{% url 'maneu_guest:delete' %}">
-                                {% csrf_token %}
+                            <form class="col-3 offset-6" method="get" action="{% url 'maneu_guest:delete' %}">
                                 <div class="input-group input-group-sm">
-                                    <input type="hidden" name="id" value="{{ foo.id }}">
+                                    <input type="hidden" name="guess_id" value="{{ foo.id }}">
                                     <input type="submit" class="btn btn-danger col-12" id="delete" value="删除">
                                 </div>
                             </form>
                             <form class="col-3" method="post" action="{% url 'maneu_guest:detail' %}">
                                 {% csrf_token %}
                                 <div class="input-group input-group-sm">
-                                    <input type="hidden" name="id" value="{{ foo.id }}">
+                                    <input type="hidden" name="guess_id" value="{{ foo.id }}">
                                     <input type="submit" class="btn btn-primary col-12" value="查看">
                                 </div>
                             </form>

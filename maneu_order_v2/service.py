@@ -33,7 +33,7 @@ def ManeuOrderV2_delete(admin_id='', id=''):
 
 
 def ManeuOrderV2_Search(text='', admin_id=''):
-    return ManeuOrderV2.objects.filter(Q(name=text, admin_id=admin_id) | Q(phone=text, admin_id=admin_id)).all()
+    return ManeuOrderV2.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
 
 
 def ManeuOrderV2_insert(name='', time='', phone='', guess_id='', admin_id='', store_id='', visionsolutions_id=''):

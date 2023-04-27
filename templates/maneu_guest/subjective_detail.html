@@ -1,6 +1,5 @@
 {% extends 'maneu/base_admin.html' %}
 {% load static %}
-
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/maneu_order_v2/order_detail.css' %}">
 {% endblock %}
@@ -47,7 +46,7 @@
             series: [{
                 type: 'bar',
                 barWidth: 20,
-                data: [{{ subjectiverefraction.OS_VA|safe }}, {{ subjectiverefraction.OD_VA|safe }}],
+                data: [{{ subjective.content.OS_VA|safe }}, {{ subjective.content.OD_VA|safe }}],
                 markLine: {
                     symbol: "none",
                     data: [{
@@ -168,37 +167,37 @@
                     <span>右眼</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OD_VA }}</span>
+                    <span>{{ content.OD_VA }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OD_SPH }}</span>
+                    <span>{{ content.OD_SPH }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OD_CYL }}</span>
+                    <span>{{ content.OD_CYL }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OD_AX }}</span>
+                    <span>{{ content.OD_AX }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OD_AK }}</span>
+                    <span>{{ content.OD_AK }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OD_AL }}</span>
+                    <span>{{ content.OD_AL }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OD_BCVA }}</span>
+                    <span>{{ content.OD_BCVA }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OD_AD }}</span>
+                    <span>{{ content.OD_AD }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OD_CCT }}</span>
+                    <span>{{ content.OD_CCT }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OD_LT }}</span>
+                    <span>{{ content.OD_LT }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OD_VT }}</span>
+                    <span>{{ content.OD_VT }}</span>
                 </td>
             </tr>
             <tr>
@@ -206,37 +205,37 @@
                     <span>左眼</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OS_VA }}</span>
+                    <span>{{ content.OS_VA }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OS_SPH }}</span>
+                    <span>{{ content.OS_SPH }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OS_CYL }}</span>
+                    <span>{{ content.OS_CYL }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OS_AX }}</span>
+                    <span>{{ content.OS_AX }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OS_AK }}</span>
+                    <span>{{ content.OS_AK }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OS_AL }}</span>
+                    <span>{{ content.OS_AL }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OS_BCVA }}</span>
+                    <span>{{ content.OS_BCVA }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OS_AD }}</span>
+                    <span>{{ content.OS_AD }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OS_CCT }}</span>
+                    <span>{{ content.OS_CCT }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OS_LT }}</span>
+                    <span>{{ content.OS_LT }}</span>
                 </td>
                 <td>
-                    <span>{{ subjectiverefraction.OS_VT }}</span>
+                    <span>{{ content.OS_VT }}</span>
                 </td>
             </tr>
             <tr>
@@ -244,7 +243,7 @@
                     <span>验光师建议</span>
                 </td>
                 <td colspan="11">
-                    <span>{{ subjectiverefraction.remark }}</span>
+                    <span>{{ content.remark }}</span>
                 </td>
             </tr>
         </table>
@@ -260,21 +259,20 @@
             <div class="col-2">
                 <form action="{% url 'maneu_guest:detail' %}" method="post">
                     {% csrf_token %}
-                    <input name="id" type="hidden" value="{{ guess_id }}">
+                    <input type="hidden" name="guess_id" value="{{ subjective.guess_id }}">
                     <input type="submit" class="btn btn-primary" value="返回列表">
                 </form>
             </div>
             <div class="col-2">
-                <form action="{% url 'maneu_guest:detail' %}" method="post">
-                    {% csrf_token %}
-                    <input name="id" type="hidden" value="{{ guess_id }}">
+                <form action="{% url 'maneu_guest:Subjective_delete' %}" method="get">
+                    <input type="hidden" name="subjective_id" value="{{ subjective.id }}">
+                    <input type="hidden" name="guess_id" value="{{ subjective.guess_id }}">
                     <input type="submit" id="delete" class="btn btn-danger" value="删除信息">
                 </form>
             </div>
             <div class="col-2">
                 <form action="{% url 'maneu_guest:Subjective_update' %}" method="get">
-                    <input name="id" type="hidden" value="{{ subjectiverefraction.id }}">
-                    <input name="guess_id" type="hidden" value="{{ guess.id }}">
+                    <input type="hidden" name="subjective_id" value="{{ subjective.id }}">
                     <input type="submit" class="btn btn-warning" value="修改信息">
                 </form>
             </div>
