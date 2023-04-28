@@ -106,4 +106,4 @@ def ManeuGuess_update(id='', content=''):
                                                    dfh=contents['DFH'], remark=contents['remark'])
 
 def ManeuService_delete_order_id(order_id=''):
-    return ManeuService.objects.filter(orderid=order_id).all().delete()
+    return ManeuService.objects.filter(order_id=order_id).all().delete()

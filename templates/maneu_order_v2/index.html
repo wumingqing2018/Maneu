@@ -59,15 +59,15 @@
                             <div class="col-12 row">
                                 <form class="col-3 offset-6" method="post" action="{% url 'maneu_order_v2:delete' %}">
                                     {% csrf_token %}
+                                    <input type="hidden" name="order_id" value="{{ foo.id }}">
                                     <div class="input-group input-group-sm">
-                                        <input type="hidden" name="id" value="{{ foo.id }}">
                                         <input type="submit" class="btn btn-danger col-12 delete" value="删除">
                                     </div>
                                 </form>
                                 <form class="col-3" method="post" action="{% url 'maneu_order_v2:detail' %}">
                                     {% csrf_token %}
+                                    <input type="hidden" name="order_id" value="{{ foo.id }}">
                                     <div class="input-group input-group-sm">
-                                        <input type="hidden" name="id" value="{{ foo.id }}">
                                         <input type="submit" class="btn btn-primary col-12" value="查看">
                                     </div>
                                 </form>

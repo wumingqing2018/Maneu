@@ -6,7 +6,7 @@ def ManeuService_index1(admin_id=''):
 
 
 def ManeuService_index2(order_id=''):
-    return ManeuService.objects.filter(orderid=order_id).all()
+    return ManeuService.objects.filter(order_id=order_id).all()
 
 
 def ManeuService_index3(guess_id=''):

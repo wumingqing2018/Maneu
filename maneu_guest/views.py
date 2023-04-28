@@ -62,7 +62,7 @@ def insert(request):
 
 
 def delete(request):
-    service.ManeuGuess_delete(id=request.GET.get('id'))
+    service.ManeuGuess_delete(id=request.GET.get('guess_id'))
     return index(request)
 
 
@@ -78,9 +78,6 @@ def update(request):
                                                em=request.POST['EM'],
                                                dfh=request.POST['DFH'],
                                                remark=request.POST['remark'])
-        request.POST._mutable = True
-        request.POST['guess_id'] = ManeuGuess.id
-        request.POST._mutable = False
         return detail(request)
     guess = service.ManeuGuess_id(admin_id=request.session.get('id'), id=request.GET.get('guess_id'))
     return render(request, 'maneu_guest/update.html', {'guess': guess})

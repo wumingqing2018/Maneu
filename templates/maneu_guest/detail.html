@@ -5,8 +5,9 @@
         span {
             color: #FFC048;
         }
-        .table {
-            margin-bottom: 5%;
+        .test {
+            margin-top: 2%;
+            margin-bottom: 2%;
         }
         .container {
             margin-bottom: 5%
@@ -136,7 +137,7 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        <div class="col-md-2 col-sm-6">
+        <div class="col-2 test">
             <div class="input-group input-group-sm">
                 <a class="btn btn-primary" type="button" href="{% url 'maneu_guest:index' %}">返回列表</a>
             </div>
@@ -179,7 +180,7 @@
                 </td>
             </tr>
         </table>
-        <div class="col-12 row" style="text-align: center;">
+        <div class="col-12 test row">
             <div class="col-md-2 col-sm-6">
                 <div class="input-group input-group-sm">
                     <button class="btn btn-primary" id="print_btn">打印信息</button>
@@ -187,7 +188,7 @@
             </div>
             <div class="col-md-2 col-sm-6">
                 <form action="{% url 'maneu_guest:delete' %}" method="get">
-                    <input name="id" type="hidden" value="{{ guess.id }}">
+                    <input name="guess_id" type="hidden" value="{{ guess.id }}">
                     <div class="input-group input-group-sm">
                         <input type="submit" id="delete" class="btn btn-danger" value="删除信息">
                     </div>
@@ -202,7 +203,7 @@
                 </form>
             </div>
         </div>
-        <table class="table text-left" id="textArea">
+        <table class="table test text-left" id="textArea">
             <tr>
                 <td>
                     <h5>屈光检验报告</h5>
@@ -241,7 +242,7 @@
                 </tr>
             {% endif %}
         </table>
-        <table class="table text-left" id="textArea">
+        <table class="table test text-left" id="textArea">
             <tr>
                 <td>
                     <h5>视力解决方案</h5>
@@ -281,7 +282,7 @@
                 </tr>
             {% endif %}
         </table>
-        <div id="echarts" class="col-12 row">
+        <div id="echarts" class="col-12 test row">
             <div class="col-md-5 col-sm-12">
                 <div id="main0"></div>
             </div>

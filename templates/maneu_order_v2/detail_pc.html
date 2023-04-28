@@ -70,30 +70,29 @@
                     <span>右眼</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_VA }}</span>
+                    <span>{{ vision.OD_VA }}</span>
                 </td>
 
                 <td>
-                    <span>{{ visionsolutions.OD_SPH }}</span>
+                    <span>{{ vision.OD_SPH }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_CYL }}</span>
+                    <span>{{ vision.OD_CYL }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_AX }}</span>
+                    <span>{{ vision.OD_AX }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_PR }}</span>
+                    <span>{{ vision.OD_PR }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_FR }}</span>
-                </td>
-
-                <td>
-                    <span>{{ visionsolutions.OD_ADD }}</span>
+                    <span>{{ vision.OD_FR }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_BCVA }}</span>
+                    <span>{{ vision.OD_ADD }}</span>
+                </td>
+                <td>
+                    <span>{{ vision.OD_BCVA }}</span>
                 </td>
             </tr>
             <tr>
@@ -101,28 +100,28 @@
                     <span>左眼</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_VA }}</span>
+                    <span>{{ vision.OD_VA }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_SPH }}</span>
+                    <span>{{ vision.OS_SPH }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_CYL }}</span>
+                    <span>{{ vision.OS_CYL }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_AX }}</span>
+                    <span>{{ vision.OS_AX }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_PR }}</span>
+                    <span>{{ vision.OS_PR }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OD_FR }}</span>
+                    <span>{{ vision.OD_FR }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_ADD }}</span>
+                    <span>{{ vision.OS_ADD }}</span>
                 </td>
                 <td>
-                    <span>{{ visionsolutions.OS_BCVA }}</span>
+                    <span>{{ vision.OS_BCVA }}</span>
                 </td>
             </tr>
             <tr>
@@ -130,7 +129,7 @@
                     <span>使用需求</span>
                 </td>
                 <td colspan="8">
-                    <span>{{ visionsolutions.function }}</span>
+                    <span>{{ vision.function }}</span>
                 </td>
             </tr>
             <tr>
@@ -138,7 +137,7 @@
                     <span>瞳距</span>
                 </td>
                 <td colspan="8">
-                    <span>{{ visionsolutions.PD }}</span>
+                    <span>{{ vision.PD }}</span>
                 </td>
             </tr>
             <tr>
@@ -146,7 +145,7 @@
                     <span>验光师建议</span>
                 </td>
                 <td colspan="8">
-                    <span>{{ visionsolutions.remark }}</span>
+                    <span>{{ vision.remark }}</span>
                 </td>
             </tr>
             <tr class="banner">
@@ -192,9 +191,9 @@
                 </form>
             </div>
             <div class="col-2">
-                <form method="post" action="">
+                <form method="post" action="{% url 'maneu_guest:detail' %}">
                     {% csrf_token %}
-                    <input type="hidden" name="phone" value="{{ phone }}">
+                    <input type="hidden" name="guess_id" value="{{ order.guess_id }}">
                     <input type="submit" class="btn btn-primary" value="客户详情">
                 </form>
             </div>
@@ -210,14 +209,14 @@
             </div>
             <div class="col-2">
                 <form method="get" action="{% url 'maneu_order_v2:update' %}">
-                    <input type="hidden" name="id" value="{{ order.id }}">
+                    <input type="hidden" name="order_id" value="{{ order.id }}">
                     <input type="submit" class="btn btn-warning" value="修改订单">
                 </form>
             </div>
             <div class="col-2">
                 <form method="post" action="{% url 'maneu_order_v2:delete' %}">
                     {% csrf_token %}
-                    <input type="hidden" name="id" value="{{ order.id }}">
+                    <input type="hidden" name="order_id" value="{{ order.id }}">
                     <input type="submit" class="btn btn-danger" id="delete" value="删除订单">
                 </form>
             </div>

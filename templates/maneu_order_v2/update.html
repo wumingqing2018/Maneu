@@ -803,23 +803,23 @@
         </div>
         <div class="col-md-12">
             <form class="vertical2" id="Product_Orders">
-{#                <div class="col-md-9 col-xs-12 row">#}
-{#                    <div style="width: 12%">#}
-{#                        <span>类别</span>#}
-{#                    </div>#}
-{#                    <div style="width: 12%">#}
-{#                        <span>品牌</span>#}
-{#                    </div>#}
-{#                    <div style="width: 12%">#}
-{#                        <span>型号</span>#}
-{#                    </div>#}
-{#                    <div style="width:50%">#}
-{#                        <span>参数</span>#}
-{#                    </div>#}
-{#                    <div style="width: 12%">#}
-{#                        <span>价格</span>#}
-{#                    </div>#}
-{#                </div>#}
+                {#                <div class="col-md-9 col-xs-12 row">#}
+                {#                    <div style="width: 12%">#}
+                {#                        <span>类别</span>#}
+                {#                    </div>#}
+                {#                    <div style="width: 12%">#}
+                {#                        <span>品牌</span>#}
+                {#                    </div>#}
+                {#                    <div style="width: 12%">#}
+                {#                        <span>型号</span>#}
+                {#                    </div>#}
+                {#                    <div style="width:50%">#}
+                {#                        <span>参数</span>#}
+                {#                    </div>#}
+                {#                    <div style="width: 12%">#}
+                {#                        <span>价格</span>#}
+                {#                    </div>#}
+                {#                </div>#}
                 <div class="col-md-9 row" id="Product_Orders_TABLE">
                     <div class="input-group input-group-sm mb-2">
                         <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 12%" placeholder="类别">
@@ -833,19 +833,26 @@
         </div>
         <hr style="color: white">
         <div class="col-md-12 row">
-            <div class="col-2">
-                <div class="input-group input-group-sm mb-2">
-                    <a type="button" class="btn btn-warning" href="{% url 'maneu_order_v2:index' %}">返回列表</a>
-                </div>
+            <div class="col-1">
+                <form action="{% url 'maneu_order_v2:detail' %}" method="post" class="vertical2">
+                    {% csrf_token %}
+                    <input type="hidden" name="order_id" value="{{ order.id }}">
+                    <div class="input-group input-group-sm mb-2">
+                        <input type="submit" class="btn btn-primary" value="返回列表">
+                    </div>
+                </form>
             </div>
-            <div class="col-2">
+            <div class="col-1">
                 <div class="input-group input-group-sm mb-2">
-                    <form class="vertical2" id="order_insert" method="post" action="{% url 'maneu_order_v2:insert' %}">
+                    <form class="vertical2" id="order_insert" method="post" action="{% url 'maneu_order_v2:update' %}">
                         {% csrf_token %}
+                        <input type="hidden" name="order_id" value="{{ order.id }}">
                         <input type="hidden" name="order_json" id="order_json">
                         <input type="hidden" name="Vision_Solutions" id="Vision_Solutions_json">
                         <input type="hidden" name="Product_Orders" id="Product_Orders_json">
-                        <input autocomplete="off" class="btn btn-danger" id="insert" type="submit" value="提交订单">
+                        <div class="input-group input-group-sm mb-2">
+                            <input autocomplete="off" class="btn btn-danger" id="insert" type="submit" value="提交订单">
+                        </div>
                     </form>
                 </div>
             </div>

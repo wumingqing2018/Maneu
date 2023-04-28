@@ -7,7 +7,7 @@
             <form class="col-5" action="{% url 'maneu_guest:Subjective_detail' %}" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="subjective_id" value="{{ subjective_id }}">
-                <div class="input-group input-group-sm">
+                <div class="input-group input-group-sm mb-2">
                     <input type="submit" class="btn btn-warning" value="返回">
                 </div>
             </form>

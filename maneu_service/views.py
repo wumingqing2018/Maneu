@@ -11,7 +11,7 @@ def index1(request):
 
 
 def index2(request):
-    list = service.ManeuService_index2(order_id=request.POST.get('id'))  # 查找今日订单
+    list = service.ManeuService_index2(order_id=request.POST.get('order_id'))  # 查找今日订单
     return render(request, 'maneu_service/index.html', {'list': list})
 
 
