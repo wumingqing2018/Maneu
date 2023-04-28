@@ -12,7 +12,7 @@ def ManeuGuess_all(admin_id=''):
 
 
 def ManeuGuess_time(admin_id='', time=''):
-    return ManeuGuess.objects.filter(admin_id=admin_id, time__in=time).all()
+    return ManeuGuess.objects.filter(admin_id=admin_id, time=time).all()
 
 
 def ManeuGuess_insert(admin_id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):

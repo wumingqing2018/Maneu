@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 from common import checkMobile
 from maneu_order_v2 import service
+from datetime import datetime
 
 
 def index(request):
@@ -60,7 +61,7 @@ def search(request):
         list = service.ManeuOrderV2_Search(text=text, admin_id=admin_id)
         return render(request, 'maneu_order_v2/index.html', {'list': list})
     elif time:
-        list = service.ManeuOrderV2_time(time=time, admin_id=admin_id)
+        list = service.ManeuOrderV2_time(time=datetime.strptime(time, "%Y-%m-%d"), admin_id=admin_id)
         return render(request, 'maneu_order_v2/index.html', {'list': list})
     return index(request)
 

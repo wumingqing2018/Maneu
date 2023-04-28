@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
-
+from datetime import datetime
 from common import common
 from maneu_guest import service
 import json
@@ -13,7 +13,8 @@ def search(request):
         list = service.ManeuGuess_search(admin_id=request.session.get('id'), text=text)
         return render(request, 'maneu_guest/index.html', {'list': list})
     if time:
-        list = service.ManeuGuess_time(admin_id=request.session.get('id'), time=time)
+        print(datetime.strptime(time, "%Y-%m-%d"))
+        list = service.ManeuGuess_time(admin_id=request.session.get('id'), time=datetime.strptime(time, "%Y-%m-%d"))
         return render(request, 'maneu_guest/index.html', {'list': list})
     else:
         return HttpResponseRedirect(reverse('maneu_guest:index'))
