@@ -200,13 +200,7 @@
             <div class="col-2">
                 <button class="btn btn-primary" id="print_btn">打印订单</button>
             </div>
-            <div class="col-2">
-                <form method="post" action="{% url 'maneu_service:index2' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="order_id" value="{{ order.id }}">
-                    <input type="submit" class="btn btn-warning" value="维修记录">
-                </form>
-            </div>
+            {{ content.server }}
             <div class="col-2">
                 <form method="get" action="{% url 'maneu_order_v2:update' %}">
                     <input type="hidden" name="order_id" value="{{ order.id }}">

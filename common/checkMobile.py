@@ -9,7 +9,7 @@ def judge_pc_or_mobile(ua):
     demo:   if checkMobile.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
                 return render(request, 'maneu_order_v2/insert_phone.html')
             else:
-                return render(request, 'maneu_order_v2/insert_pc.html')
+                return render(request, 'maneu_order_v2/insert.html')
     """
 
     factor = ua
