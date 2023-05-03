@@ -41,25 +41,27 @@
                 <div class="col-9">
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text col-1">右眼OD</span>
-                        <input autocomplete="off" type="text" class="form-control" name="OD_SPH" list="OD_SPH" placeholder="球镜" value="{{ vision.content.OD_CYL|safe }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OD_CYL" list="OD_CYL" placeholder="柱镜" value="{{ vision.OD_CYL }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OD_AX" list="OD_AX" placeholder="轴位" value="{{ vision.content.OD_AX|safe }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OD_PR" list="OD_PR" placeholder="凌镜" value="{{ vision.OD_FR }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OD_FR" list="OD_FR" placeholder="基地取向" value="{{ vision.OD_FR }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OD_ADD" list="OD_ADD" placeholder="下加光" value="{{ vision.OD_ADD }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OD_BCVA" list="OD_BCVA" placeholder="纠正视力" value="{{ vision.OD_BCVA }}">
+                        <input autocomplete="off" type="text" class="form-control" name="OD_VA" list="OD_VA" placeholder="裸眼视力" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OD_SPH" list="OD_SPH" placeholder="球镜" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OD_CYL" list="OD_CYL" placeholder="柱镜" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OD_AX" list="OD_AX" placeholder="轴位" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OD_PR" list="OD_PR" placeholder="凌镜" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OD_FR" list="OD_FR" placeholder="基地取向" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OD_ADD" list="OD_ADD" placeholder="下加光" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OD_BCVA" list="OD_BCVA" placeholder="纠正视力" value="">
                     </div>
                 </div>
                 <div class="col-9">
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text col-1">左眼OS</span>
-                        <input autocomplete="off" type="text" class="form-control" name="OS_SPH" list="OS_SPH" placeholder="球镜" value="{{ vision.OS_SPH }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OS_CYL" list="OS_CYL" placeholder="柱镜" value="{{ vision.OS_CYL }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OS_AX" list="OS_AX" placeholder="轴位" value="{{ vision.OS_AX }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OS_PR" list="OS_PR" placeholder="凌镜" value="{{ vision.OS_FR }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OS_FR" list="OS_FR" placeholder="基地取向" value="{{ vision.OS_FR }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OS_ADD" list="OS_ADD" placeholder="下加光" value="{{ vision.OS_ADD }}">
-                        <input autocomplete="off" type="text" class="form-control" name="OS_BCVA" list="OS_BCVA" placeholder="纠正视力" value="{{ vision.OS_BCVA }}">
+                        <input autocomplete="off" type="text" class="form-control" name="OS_VA" list="OS_VA" placeholder="裸眼视力" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OS_SPH" list="OS_SPH" placeholder="球镜" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OS_CYL" list="OS_CYL" placeholder="柱镜" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OS_AX" list="OS_AX" placeholder="轴位" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OS_PR" list="OS_PR" placeholder="凌镜" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OS_FR" list="OS_FR" placeholder="基地取向" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OS_ADD" list="OS_ADD" placeholder="下加光" value="">
+                        <input autocomplete="off" type="text" class="form-control" name="OS_BCVA" list="OS_BCVA" placeholder="纠正视力" value="">
                     </div>
                 </div>
                 <div class="col-9">
@@ -132,26 +134,9 @@
     </div>
 {% endblock %}
 {% block javascript %}
-    <script type="application/javascript" src="{% static 'javascript/maneu/serialize_moudels.js' %}"></script>
-    <script type="application/javascript" src="{% static 'javascript/maneu_order/order_insert_pc.js' %}"></script>
     <script type="application/javascript">
         vision = {{ vision.content|safe }};
-        $("input[name='OD_SPH']").val(vision.OD_SPH)
-        $("input[name='OD_CYL']").val(vision.OD_CYL)
-        $("input[name='OD_AX']").val(vision.OD_AX)
-        $("input[name='OD_PR']").val(vision.OD_PR)
-        $("input[name='OD_FR']").val(vision.OD_FR)
-        $("input[name='OD_ADD']").val(vision.OD_ADD)
-        $("input[name='OD_BCVA']").val(vision.OD_BCVA)
-        $("input[name='OS_SPH']").val(vision.OS_SPH)
-        $("input[name='OS_CYL']").val(vision.OS_CYL)
-        $("input[name='OS_AX']").val(vision.OS_AX)
-        $("input[name='OS_PR']").val(vision.OS_PR)
-        $("input[name='OS_FR']").val(vision.OS_FR)
-        $("input[name='OS_ADD']").val(vision.OS_ADD)
-        $("input[name='OS_BCVA']").val(vision.OS_BCVA)
-        $("input[name='PD']").val(vision.PD)
-        $("input[name='remark']").val(vision.remark)
-        $("input[name='function']").val(vision.function)
     </script>
+    <script type="application/javascript" src="{% static 'javascript/maneu/serialize_moudels.js' %}"></script>
+    <script type="application/javascript" src="{% static 'javascript/maneu_order/order_update.js' %}"></script>
 {% endblock %}

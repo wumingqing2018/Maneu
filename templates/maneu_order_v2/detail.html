@@ -70,29 +70,29 @@
                     <span>右眼</span>
                 </td>
                 <td>
-                    <span>{{ vision.OD_VA }}</span>
+                    <span id="OD_VA"></span>
                 </td>
 
                 <td>
-                    <span>{{ vision.OD_SPH }}</span>
+                    <span id="OD_SPH"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OD_CYL }}</span>
+                    <span id="OD_CYL"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OD_AX }}</span>
+                    <span id="OD_AX"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OD_PR }}</span>
+                    <span id="OD_PR"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OD_FR }}</span>
+                    <span id="OD_FR"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OD_ADD }}</span>
+                    <span id="OD_ADD"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OD_BCVA }}</span>
+                    <span id="OD_BCVA"></span>
                 </td>
             </tr>
             <tr>
@@ -100,28 +100,28 @@
                     <span>左眼</span>
                 </td>
                 <td>
-                    <span>{{ vision.OD_VA }}</span>
+                    <span id="OD_VA"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OS_SPH }}</span>
+                    <span id="OS_SPH"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OS_CYL }}</span>
+                    <span id="OS_CYL"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OS_AX }}</span>
+                    <span id="OS_AX"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OS_PR }}</span>
+                    <span id="OS_PR"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OD_FR }}</span>
+                    <span id="OD_FR"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OS_ADD }}</span>
+                    <span id="OS_ADD"></span>
                 </td>
                 <td>
-                    <span>{{ vision.OS_BCVA }}</span>
+                    <span id="OS_BCVA"></span>
                 </td>
             </tr>
             <tr>
@@ -129,7 +129,7 @@
                     <span>使用需求</span>
                 </td>
                 <td colspan="8">
-                    <span>{{ vision.function }}</span>
+                    <span id="function"></span>
                 </td>
             </tr>
             <tr>
@@ -137,7 +137,7 @@
                     <span>瞳距</span>
                 </td>
                 <td colspan="8">
-                    <span>{{ vision.PD }}</span>
+                    <span id="PD"></span>
                 </td>
             </tr>
             <tr>
@@ -145,7 +145,7 @@
                     <span>验光师建议</span>
                 </td>
                 <td colspan="8">
-                    <span>{{ vision.remark }}</span>
+                    <span id="remark"></span>
                 </td>
             </tr>
             <tr class="banner">
@@ -220,6 +220,7 @@
 {% block javascript %}
     <script type="application/javascript">
         maneu_store = {{ store|safe }};
+        maneu_vision = {{ vision|safe }};
     </script>
     <script type="application/javascript" src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu/delete.js' %}"></script>
