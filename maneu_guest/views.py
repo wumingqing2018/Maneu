@@ -13,7 +13,6 @@ def search(request):
         list = service.ManeuGuess_search(admin_id=request.session.get('id'), text=text)
         return render(request, 'maneu_guest/index.html', {'list': list})
     if time:
-        print(datetime.strptime(time, "%Y-%m-%d"))
         list = service.ManeuGuess_time(admin_id=request.session.get('id'), time=datetime.strptime(time, "%Y-%m-%d"))
         return render(request, 'maneu_guest/index.html', {'list': list})
     else:

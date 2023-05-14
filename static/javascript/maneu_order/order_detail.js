@@ -18,7 +18,7 @@ $(document).ready(function () {
     $("#remark").text(maneu_vision.remark);
     $("#function").text(maneu_vision.function);
     upline = Object.keys(maneu_store).length/5
-    for (i = 0; i < upline; i++) {
+    for (i = 1; i <= upline; i++) {
         $('#store_table').append(
             "            <tr>\n" +
             "                <td colspan='2'>\n" +

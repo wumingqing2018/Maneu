@@ -54,8 +54,8 @@ def ManeuStore_delete(id=''):
     return ManeuStore.objects.filter(id=id).delete()
 
 
-def ManeuStore_insert(time='', content=''):
-    return ManeuStore.objects.create(time=time, content=content)
+def ManeuStore_insert(admin_id='', guess_id='', time='', content=''):
+    return ManeuStore.objects.create(admin_id=admin_id, guess_id=guess_id, time=time, content=content)
 
 
 def ManeuStore_update(content='', id=''):
@@ -70,8 +70,8 @@ def ManeuVisionSolutions_delete(id=''):
     return ManeuVisionSolutions.objects.filter(id=id).delete()
 
 
-def ManeuVisionSolutions_insert(time='', content=''):
-    return ManeuVisionSolutions.objects.create(time=time, content=content)
+def ManeuVisionSolutions_insert(admin_id='', guess_id='', time='', content=''):
+    return ManeuVisionSolutions.objects.create(admin_id=admin_id, guess_id=guess_id, time=time, content=content)
 
 
 def ManeuVisionSolutions_update(id='', content=''):

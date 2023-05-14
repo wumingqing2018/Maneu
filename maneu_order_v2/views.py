@@ -49,15 +49,12 @@ def detail(request):
     false
         渲染error页面并传输错误参数
     """
-    order = service.ManeuOrderV2_id(id=request.POST.get('order_id'), admin_id=request.session.get('id'))
-    if order:
-        content = {}
-        content['order'] = order
-        content['store'] = service.ManeuStore_id(id=order.store_id).content
-        content['vision'] = service.ManeuVisionSolutions_id(id=order.visionsolutions_id).content
-        content['server'] = service.ManeuService_orderID(order_id=order.id)
-        return render(request, 'maneu_order_v2/detail.html', content)
-    return index(request)
+    content = {}
+    content['order'] = service.ManeuOrderV2_id(id=request.POST.get('order_id'), admin_id=request.session.get('id'))
+    content['store'] = service.ManeuStore_id(id=content['order'].store_id).content
+    content['vision'] = service.ManeuVisionSolutions_id(id=content['order'].visionsolutions_id).content
+    content['server'] = service.ManeuService_orderID(order_id=content['order'].id)
+    return render(request, 'maneu_order_v2/detail.html', content)
 
 
 def insert(request):
@@ -68,8 +65,8 @@ def insert(request):
             ManeuGuess_id = service.ManeuGuess_search(admin_id=request.session.get('id'), name=order['name'], phone=order['phone']).id
         except:
             ManeuGuess_id = service.ManeuGuess_insert(admin_id=request.session.get('id'), name=order['name'], phone=order['phone']).id
-        store_id = service.ManeuStore_insert(time=order['time'], content=request.POST.get('Product_Orders')).id
-        vision_id = service.ManeuVisionSolutions_insert(time=order['time'], content=request.POST.get('Vision_Solutions')).id
+        vision_id = service.ManeuVisionSolutions_insert(admin_id=request.session.get('id'), guess_id=ManeuGuess_id, time=order['time'], content=request.POST.get('Vision_Solutions')).id
+        store_id = service.ManeuStore_insert(admin_id=request.session.get('id'), guess_id=ManeuGuess_id, time=order['time'], content=request.POST.get('Product_Orders')).id
         order_id = service.ManeuOrderV2_insert(time=order['time'], name=order['name'], phone=order['phone'],
                                                admin_id=request.session.get('id'),
                                                guess_id=ManeuGuess_id,
@@ -85,12 +82,10 @@ def insert(request):
 def update(request):
     """更新订单"""
     if request.method == 'GET':
-        order = service.ManeuOrderV2_id(id=request.GET.get('order_id'), admin_id=request.session.get('id'))
-        content = {}
-        content['order'] = order
-        content['store'] = service.ManeuStore_id(id=order.store_id)
-        content['vision'] = service.ManeuVisionSolutions_id(id=order.visionsolutions_id)
-        print(content['store'].content)
+        content= {}
+        content['order'] = service.ManeuOrderV2_id(id=request.GET.get('order_id'), admin_id=request.session.get('id'))
+        content['store'] = service.ManeuStore_id(id=content['order'].store_id)
+        content['vision'] = service.ManeuVisionSolutions_id(id=content['order'].visionsolutions_id)
         return render(request, 'maneu_order_v2/update.html', content)
     if request.method == 'POST':
         order = json.loads(request.POST.get('order_json'))
