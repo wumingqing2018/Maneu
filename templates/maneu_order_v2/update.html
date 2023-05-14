@@ -131,8 +131,7 @@
     <script type="application/javascript">
         store = {{ store.content|safe }};
         vision = {{ vision.content|safe }};
-        StoreCount= Object.keys(store).length /5;
-        InputCount= StoreCount+1;
+        InputCount= Object.keys(store).length /5;
     </script>
     <script type="application/javascript" src="{% static 'javascript/maneu/serialize_moudels.js' %}"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu_order/order_update.js' %}"></script>

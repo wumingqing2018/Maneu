@@ -19,7 +19,7 @@ $(document).ready(function () {
     $("input[name='remark']").val(vision.remark)
     $("input[name='function']").val(vision.function)
 
-    for (StoreInput= 0; StoreInput < StoreCount; StoreInput++){
+    for (StoreInput= 0; StoreInput < InputCount; StoreInput++){
         console.log('arg'+StoreInput.toString()+'0', store['arg'+StoreInput.toString()+'0'])
         $("#Product_Orders_TABLE").append(
             '    <div class="input-group input-group-sm mb-2">\n' +
@@ -33,7 +33,6 @@ $(document).ready(function () {
     }
 
     $("#AddMoreTextBox").click(function (e) {
-        InputCount++;
         $("#Product_Orders_TABLE").append(
             '    <div class="input-group input-group-sm mb-2">\n' +
             '        <input autocomplete="off" type="text" name="arg'+InputCount+'0" class="form-control" style="width: 12%" placeholder="类别">\n' +
@@ -43,6 +42,7 @@ $(document).ready(function () {
             '        <input autocomplete="off" type="text" name="arg'+InputCount+'4" class="form-control" style="width: 12%" placeholder="价格">\n' +
             '    </div>\n' +
             '</div>\n');
+        InputCount++;
     });
     $('#DeleteTextBox').click(function (e) {
         if (InputCount >1){
