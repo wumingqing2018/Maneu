@@ -26,7 +26,8 @@ def index(request):
 def detail(request):
     id = request.POST.get('guess_id')
     guess = service.ManeuGuess_id(admin_id=request.session.get('id'), id=id)
-    vision = service.find_ManeuOrderV2_all(guess_id=guess.id)
+    vision = service.ManeuOrderV2_all(guess_id=guess.id)
+    server = service.ManeuService_all(guess_id=guess.id)
     subjective = service.ManeuSubjectiveRefraction_all(guess_id=guess.id)
     stand_ax = '24.0'
     subjective_refraction = {'OS_VA': 0.2, 'OS_SPH': 0, 'OS_CYL': 0, 'OS_AX': 0, 'OS_AK': 0, 'OS_AL': 16, 'OS_BCVA': 0,
@@ -37,6 +38,7 @@ def detail(request):
 
     return render(request, 'maneu_guest/detail.html', {'guess': guess,
                                                        'vision': vision,
+                                                       'server': server,
                                                        'subjective': subjective,
                                                        'subjectiverefraction': subjective_refraction,
                                                        'stand_ax': stand_ax})

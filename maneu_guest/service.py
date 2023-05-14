@@ -55,5 +55,9 @@ def ManeuVisionSolutions_all(guess_id=''):
     return ManeuVisionSolutions.objects.filter(guess_id=guess_id).order_by('-time').all()
 
 
-def find_ManeuOrderV2_all(guess_id=''):
+def ManeuOrderV2_all(guess_id=''):
     return ManeuOrderV2.objects.filter(guess_id=guess_id).order_by('-time').all()
+
+
+def ManeuService_all(guess_id=''):
+    return ManeuService.objects.filter(guess_id=guess_id).order_by('-time').all()
