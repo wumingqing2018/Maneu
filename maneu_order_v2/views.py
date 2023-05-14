@@ -90,10 +90,12 @@ def update(request):
         content['order'] = order
         content['store'] = service.ManeuStore_id(id=order.store_id)
         content['vision'] = service.ManeuVisionSolutions_id(id=order.visionsolutions_id)
+        print(content['store'].content)
         return render(request, 'maneu_order_v2/update.html', content)
     if request.method == 'POST':
         order = json.loads(request.POST.get('order_json'))
         service.ManeuVisionSolutions_update(id=request.POST.get('vision_id'), content=request.POST.get('Vision_Solutions'))
+        service.ManeuStore_update(id=request.POST.get('store_id'), content=request.POST.get('Product_Orders'))
         service.ManeuOrderV2_update(order_id=request.POST.get('order_id'), name=order['name'], phone=order['phone'])
         return detail(request)
     return index(request)
