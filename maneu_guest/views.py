@@ -20,7 +20,9 @@ def search(request):
 
 
 def index(request):
-    return render(request, 'maneu_guest/index.html', {'list': service.ManeuGuess_all(admin_id=request.session.get('id'))})
+    content = {}
+    content['list'] = service.ManeuGuess_all(admin_id=request.session.get('id'))
+    return render(request, 'maneu_guest/index.html', content)
 
 
 def detail(request):

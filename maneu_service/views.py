@@ -1,13 +1,10 @@
-from django.shortcuts import HttpResponseRedirect, reverse, render
+from django.shortcuts import HttpResponseRedirect, reverse, render, HttpResponse
 from maneu_service import service
-
-
 # Create your views here.
 
 
 def index(request):
-    list = service.ManeuService_index(admin_id=request.session.get('id'))
-    return render(request, 'maneu_service/index.html', {'list': list})
+    return render(request, 'maneu_service/index.html', {"list":service.ManeuService_index(admin_id=request.session.get('id'))})
 
 
 def insert(request):
@@ -23,14 +20,12 @@ def insert(request):
 
 
 def delete(request):
-    service.ManeuService_delete(admin_id=request.session.get('id'), id=request.GET.get('server_id'))
-    return HttpResponseRedirect(reverse('maneu_service:index'))
+    return HttpResponse(service.ManeuService_delete(admin_id=request.session.get('id'), id=request.GET.get('server_id')))
 
 
 def content(request):
     if request.method == 'POST':
-        order_id = request.POST.get('order_id')
-        ManeuService_list = service.ManeuService_orderID(order_id)
+        ManeuService_list = service.ManeuService_orderID(request.POST.get('order_id'))
         return render(request, 'maneu_service/detail.html', {'alterSalesContent': ManeuService_list})
     else:
         return HttpResponseRedirect(reverse('maneu_order_v2:index'))

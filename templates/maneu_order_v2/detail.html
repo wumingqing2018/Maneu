@@ -14,7 +14,7 @@
                 </form>
             </div>
         </div>
-    <br>
+        <br>
         <table class="table table-bordered table-sm text-left" id="textArea">
             <tr class="banner">
                 <td colspan="9">
@@ -194,57 +194,6 @@
                 </td>
             </tr>
         </table>
-        <table class="table">
-            <tr>
-                <td class="col-2">
-                    <h5>售后记录</h5>
-                </td>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td class="col-2">
-                    <span>时间</span>
-                </td>
-                <td class="col-8">
-                    <span>内容</span>
-                </td>
-                <td class="col-2">
-                    <form class="col-3 offset-9" method="get" action="{% url 'maneu_service:insert' %}">
-                        <input type="hidden" name="guess_id" value="{{ order.guess_id }}">
-                        <input type="hidden" name="order_id" value="{{ order.id }}">
-                        <div class="input-group input-group-sm">
-                            <input type="submit" class="btn btn-primary" value="添加">
-                        </div>
-                    </form>
-                </td>
-            </tr>
-            {% if server %}
-                {% for foo in server %}
-                    <tr>
-                        <td class="col-2">
-                            <span>{{ foo.time }}</span>
-                        </td>
-                        <td class="col-8">
-                            <span>{{ foo.content }}</span>
-                        </td>
-                        <td class="col-2">
-                            <form class="col-3 offset-9" method="get" action="{% url 'maneu_service:delete' %}">
-                                <input type="hidden" name="server_id" value="{{ foo.id }}">
-                                <div class="input-group input-group-sm">
-                                    <input type="submit" class="btn btn-danger" value="删除">
-                                </div>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td align="center" colspan="3">
-                        <span>没有记录</span>
-                    </td>
-                </tr>
-            {% endif %}
-        </table>
         <div class="col-12 row">
             <div class="col-2">
                 <form method="post" action="{% url 'maneu_guest:detail' %}">
@@ -278,12 +227,73 @@
                 </form>
             </div>
         </div>
+        <br>
+        <table class="table">
+            <tr>
+                <td class="col-2">
+                    <h5>售后记录</h5>
+                </td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="col-2">
+                    <span>时间</span>
+                </td>
+                <td class="col-8">
+                    <span>内容</span>
+                </td>
+                <td class="col-2">
+                    <form class="col-3 offset-9" method="get" action="{% url 'maneu_service:insert' %}">
+                        <input type="hidden" name="guess_id" value="{{ order.guess_id }}">
+                        <input type="hidden" name="order_id" value="{{ order.id }}">
+                        <div class="input-group input-group-sm">
+                            <input type="submit" class="btn btn-primary" value="添加">
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='3'>
+                    <div class="input-group input-group-sm">
+                        <input class="btn btn-primary" type="button" value="取消">
+                        <input class="col-11 form-control" type="text">
+                        <input class=" btn btn-primary" type="button" value="提交">
+                    </div>
+                </td>
+            </tr>
+            {% if server %}
+                {% for foo in server %}
+                    <tr>
+                        <td class="col-2">
+                            <span>{{ foo.time }}</span>
+                        </td>
+                        <td class="col-8">
+                            <span>{{ foo.content }}</span>
+                        </td>
+                        <td class="col-2">
+                            <div class="col-3 offset-9">
+                                <div class="input-group input-group-sm">
+                                    <input type="button" class="btn btn-danger submit" value="删除" rel="{{ foo.id }}">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td align="center" colspan="3">
+                        <span>没有记录</span>
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
     </div>
 {% endblock %}
 {% block javascript %}
     <script type="application/javascript">
         maneu_store = {{ store|safe }};
         maneu_vision = {{ vision|safe }};
+        service_delete = "{% url 'maneu_service:delete' %}"
     </script>
     <script type="application/javascript" src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu/delete.js' %}"></script>

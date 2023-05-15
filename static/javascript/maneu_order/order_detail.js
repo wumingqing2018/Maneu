@@ -38,4 +38,15 @@ $(document).ready(function () {
             "                </td>\n" +
             "            </tr>\n")
     }
+    $('.submit').click(function () {
+        $(this).parent().parent().parent().parent().hide()
+        $.ajax({
+            url: service_delete,
+            type: 'GET',
+            data: {'server_id': $(this).attr('rel')},
+            success: function (res) {
+                $(this).parent().parent().parent().parent().hide()
+            }
+        })
+    })
 })
