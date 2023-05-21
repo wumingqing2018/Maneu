@@ -102,7 +102,7 @@ def ManeuGuess_update(id='', content=''):
 
 
 def ManeuService_orderID(order_id=''):
-    return ManeuService.objects.filter(order_id=order_id).all()
+    return ManeuService.objects.filter(order_id=order_id).order_by('-time').all()
 
 
 def ManeuService_delete_order_id(order_id=''):

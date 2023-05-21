@@ -9,8 +9,8 @@ def ManeuService_orderID(order_id=''):
     return ManeuService.objects.filter(order_id=order_id).order_by('-time').all()
 
 
-def ManeuService_insert(order_id='', guess_id='', admin_id='', content=''):
-    return ManeuService.objects.create(guess_id=guess_id, admin_id=admin_id, order_id=order_id, content=content)
+def ManeuService_insert(order_id='', guess_id='', admin_id='', content='', time=''):
+    return ManeuService.objects.create(guess_id=guess_id, admin_id=admin_id, order_id=order_id, content=content, time=time)
 
 
 def ManeuService_delete_order_id(order_id=''):

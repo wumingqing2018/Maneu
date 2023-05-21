@@ -239,42 +239,41 @@
                 <td class="col-2">
                     <span>时间</span>
                 </td>
-                <td class="col-8">
+                <td class="col-9">
                     <span>内容</span>
                 </td>
-                <td class="col-2">
-                    <form class="col-3 offset-9" method="get" action="{% url 'maneu_service:insert' %}">
-                        <input type="hidden" name="guess_id" value="{{ order.guess_id }}">
-                        <input type="hidden" name="order_id" value="{{ order.id }}">
+                <td class="col-1">
+                    <div class="col-6 offset-6 input-group input-group-sm">
+                        <input type="submit" class="btn btn-primary" value="添加">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-11" colspan='3'>
+                    <form id="serverInsert">
+                        {% csrf_token %}
                         <div class="input-group input-group-sm">
-                            <input type="submit" class="btn btn-primary" value="添加">
+                            <input type="text" name="content" class="form-control">
+                            <input type="hidden" name="order_id" value="{{ order.id }}">
+                            <input type="hidden" name="guess_id" value="{{ order.guess_id }}">
+                            <input class="btn btn-primary" type="button" value="提交" id="serverInsertButton">
                         </div>
                     </form>
                 </td>
             </tr>
-            <tr>
-                <td colspan='3'>
-                    <div class="input-group input-group-sm">
-                        <input class="btn btn-primary" type="button" value="取消">
-                        <input class="col-11 form-control" type="text">
-                        <input class=" btn btn-primary" type="button" value="提交">
-                    </div>
-                </td>
-            </tr>
+            <tbody id="serverTable">
             {% if server %}
                 {% for foo in server %}
                     <tr>
                         <td class="col-2">
                             <span>{{ foo.time }}</span>
                         </td>
-                        <td class="col-8">
+                        <td class="col-9">
                             <span>{{ foo.content }}</span>
                         </td>
-                        <td class="col-2">
-                            <div class="col-3 offset-9">
-                                <div class="input-group input-group-sm">
-                                    <input type="button" class="btn btn-danger submit" value="删除" rel="{{ foo.id }}">
-                                </div>
+                        <td class="col-1">
+                            <div class="col-6 offset-6 input-group input-group-sm">
+                                <input type="button" class="btn btn-danger delete submit" value="删除" rel="{{ foo.id }}">
                             </div>
                         </td>
                     </tr>
@@ -286,6 +285,7 @@
                     </td>
                 </tr>
             {% endif %}
+            </tbody>
         </table>
     </div>
 {% endblock %}
@@ -294,9 +294,11 @@
         maneu_store = {{ store|safe }};
         maneu_vision = {{ vision|safe }};
         service_delete = "{% url 'maneu_service:delete' %}"
+        serverInsertUrl = "{% url 'maneu_service:testsInsert' %}"
     </script>
     <script type="application/javascript" src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu/delete.js' %}"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu/print.js' %}"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu_order/order_detail.js' %}"></script>
+    <script type="application/javascript" src="{% static 'javascript/maneu/serialize_moudels.js' %}"></script>
 {% endblock %}
