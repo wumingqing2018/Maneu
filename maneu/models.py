@@ -139,7 +139,7 @@ class ManeuAdmin(models.Model):
     phone = models.CharField(max_length=36)
     level = models.IntegerField()
     state = models.IntegerField()
-    create_time = models.DateTimeField()
+    time = models.DateTimeField()
     remark = models.CharField(max_length=255, blank=True, null=True)
     localtion = models.CharField(max_length=128, blank=True, null=True)
 
