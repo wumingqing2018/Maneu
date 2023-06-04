@@ -141,7 +141,7 @@ class ManeuAdmin(models.Model):
     state = models.IntegerField()
     create_time = models.DateTimeField()
     remark = models.CharField(max_length=255, blank=True, null=True)
-    location = models.CharField(max_length=128, blank=True, null=True)
+    localtion = models.CharField(max_length=128, blank=True, null=True)
 
     class Meta:
         managed = False
