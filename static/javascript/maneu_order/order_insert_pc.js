@@ -3,14 +3,15 @@ function remove(e) {
 }
 $(document).ready(function () {
     $("#AddMoreTextBox").click(function (e) {
+                    var POLEN = $(".Product_Orders").length+1;
         $("#Product_Orders_TABLE").append(
             '<form class="col-9 row vertical2 Product_Orders">\n' +
             '    <div class="input-group input-group-sm">\n' +
-            '        <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 11%" placeholder="类别">\n' +
-            '        <input autocomplete="off" type="text" name="arg11" class="form-control" style="width: 11%" placeholder="品牌">\n' +
-            '        <input autocomplete="off" type="text" name="arg12" class="form-control" style="width: 11%" placeholder="型号">\n' +
-            '        <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 51%" placeholder="参数">\n' +
-            '        <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 11%" placeholder="价格">\n' +
+            '        <input autocomplete="off" type="text" name="arg'+POLEN+'0" class="form-control" style="width: 11%" placeholder="类别">\n' +
+            '        <input autocomplete="off" type="text" name="arg'+POLEN+'1" class="form-control" style="width: 11%" placeholder="品牌">\n' +
+            '        <input autocomplete="off" type="text" name="arg'+POLEN+'2" class="form-control" style="width: 11%" placeholder="型号">\n' +
+            '        <input autocomplete="off" type="text" name="arg'+POLEN+'3" class="form-control" style="width: 51%" placeholder="参数">\n' +
+            '        <input autocomplete="off" type="text" name="arg'+POLEN+'4" class="form-control" style="width: 11%" placeholder="价格">\n' +
             '        <input class="form-control" onclick="remove(this)"  type="button" style="width: 5%" value="删除">\n' +
             '    </div>\n' +
             '</form>\n'

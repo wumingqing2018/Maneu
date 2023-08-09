@@ -54,7 +54,6 @@ def detail(request):
     content['store'] = service.ManeuStore_id(id=content['order'].store_id).content
     content['vision'] = service.ManeuVisionSolutions_id(id=content['order'].visionsolutions_id).content
     content['server'] = service.ManeuService_orderID(order_id=content['order'].id)
-    print(content)
     return render(request, 'maneu_order_v2/detail.html', content)
 
 
@@ -67,6 +66,7 @@ def insert(request):
         except:
             ManeuGuess_id = service.ManeuGuess_insert(admin_id=request.session.get('id'), name=order['name'], phone=order['phone'], time=order['time']).id
         vision_id = service.ManeuVisionSolutions_insert(admin_id=request.session.get('id'), guess_id=ManeuGuess_id, time=order['time'], content=request.POST.get('Vision_Solutions')).id
+        print(request.POST.get('Product_Orders'))
         store_id = service.ManeuStore_insert(admin_id=request.session.get('id'), guess_id=ManeuGuess_id, time=order['time'], content=request.POST.get('Product_Orders')).id
         order_id = service.ManeuOrderV2_insert(time=order['time'], name=order['name'], phone=order['phone'],
                                                admin_id=request.session.get('id'),
