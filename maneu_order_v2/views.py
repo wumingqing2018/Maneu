@@ -66,7 +66,6 @@ def insert(request):
         except:
             ManeuGuess_id = service.ManeuGuess_insert(admin_id=request.session.get('id'), name=order['name'], phone=order['phone'], time=order['time']).id
         vision_id = service.ManeuVisionSolutions_insert(admin_id=request.session.get('id'), guess_id=ManeuGuess_id, time=order['time'], content=request.POST.get('Vision_Solutions')).id
-        print(request.POST.get('Product_Orders'))
         store_id = service.ManeuStore_insert(admin_id=request.session.get('id'), guess_id=ManeuGuess_id, time=order['time'], content=request.POST.get('Product_Orders')).id
         order_id = service.ManeuOrderV2_insert(time=order['time'], name=order['name'], phone=order['phone'],
                                                admin_id=request.session.get('id'),
