@@ -63,19 +63,19 @@ def ManeuStore_update(content='', id=''):
 
 
 def ManeuVisionSolutions_id(id=''):
-    return ManeuVisionSolutions.objects.filter(id=id).first()
+    return ManeuVision.objects.filter(id=id).first()
 
 
 def ManeuVisionSolutions_delete(id=''):
-    return ManeuVisionSolutions.objects.filter(id=id).delete()
+    return ManeuVision.objects.filter(id=id).delete()
 
 
 def ManeuVisionSolutions_insert(admin_id='', guess_id='', time='', content=''):
-    return ManeuVisionSolutions.objects.create(admin_id=admin_id, guess_id=guess_id, time=time, content=content)
+    return ManeuVision.objects.create(admin_id=admin_id, guess_id=guess_id, time=time, content=content)
 
 
 def ManeuVisionSolutions_update(id='', content=''):
-    return ManeuVisionSolutions.objects.filter(id=id).update(content=content)
+    return ManeuVision.objects.filter(id=id).update(content=content)
 
 
 def ManeuGuess_id(id=''):
@@ -86,8 +86,8 @@ def ManeuGuess_search(admin_id='', name='', phone=''):
     return ManeuGuess.objects.filter(admin_id=admin_id, name=name, phone=phone).first()
 
 
-def ManeuGuess_insert(admin_id='', name='', phone=''):
-    return ManeuGuess.objects.create(admin_id=admin_id, name=name, phone=phone)
+def ManeuGuess_insert(admin_id='', name='', phone='', time=''):
+    return ManeuGuess.objects.create(admin_id=admin_id, name=name, phone=phone, time=time)
 
 
 def ManeuGuess_insert_v2(id='', admin_id='', name='', phone=''):

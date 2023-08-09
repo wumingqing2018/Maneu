@@ -1,9 +1,9 @@
 import json
+from datetime import datetime
 
 from django.shortcuts import render
 
 from maneu_order_v2 import service
-from datetime import datetime
 
 
 def search(request):
@@ -54,6 +54,7 @@ def detail(request):
     content['store'] = service.ManeuStore_id(id=content['order'].store_id).content
     content['vision'] = service.ManeuVisionSolutions_id(id=content['order'].visionsolutions_id).content
     content['server'] = service.ManeuService_orderID(order_id=content['order'].id)
+    print(content)
     return render(request, 'maneu_order_v2/detail.html', content)
 
 
@@ -64,7 +65,7 @@ def insert(request):
         try:
             ManeuGuess_id = service.ManeuGuess_search(admin_id=request.session.get('id'), name=order['name'], phone=order['phone']).id
         except:
-            ManeuGuess_id = service.ManeuGuess_insert(admin_id=request.session.get('id'), name=order['name'], phone=order['phone']).id
+            ManeuGuess_id = service.ManeuGuess_insert(admin_id=request.session.get('id'), name=order['name'], phone=order['phone'], time=order['time']).id
         vision_id = service.ManeuVisionSolutions_insert(admin_id=request.session.get('id'), guess_id=ManeuGuess_id, time=order['time'], content=request.POST.get('Vision_Solutions')).id
         store_id = service.ManeuStore_insert(admin_id=request.session.get('id'), guess_id=ManeuGuess_id, time=order['time'], content=request.POST.get('Product_Orders')).id
         order_id = service.ManeuOrderV2_insert(time=order['time'], name=order['name'], phone=order['phone'],
@@ -97,26 +98,14 @@ def update(request):
 
 
 def test1(request):
-    order_list = service.ManeuOrderV2.objects.filter().all()
-    for order in order_list:
-        guess_list = list(service.ManeuGuess.objects.filter(name=order.name, phone=order.phone).all())
-        if len(guess_list) == 0:
-            guess_id = service.ManeuGuess.objects.create(name=order.name, phone=order.phone, time=order.time)
-            print(service.ManeuOrderV2.objects.filter(name=order.name, phone=order.phone).update(guess_id=guess_id,))
-        elif len(guess_list) == 1:
-            print(service.ManeuOrderV2.objects.filter(name=order.name, phone=order.phone).update(guess_id=guess_list[0].id))
-        else:
-            guess_list.pop()
-            for guess in guess_list:
-                print(service.ManeuGuess.objects.filter(id=guess.id).delete())
-
-    guess_list = service.ManeuGuess.objects.exclude(subjective_id='').all()
-    for guess in guess_list:
-        service.ManeuSubjectiveRefraction.objects.filter(id=guess.subjective_id).update(guess_id=guess.id)
-
-    order_list = service.ManeuOrderV2.objects.filter().all()
-    for order in order_list:
-        print(service.ManeuVisionSolutions.objects.filter(id=order.visionsolutions_id).update(guess_id=order.guess_id, admin_id=order.admin_id),
-              service.ManeuSubjectiveRefraction.objects.filter(id=order.ManeuSubjectiveRefraction_id).update(guess_id=order.guess_id, admin_id=order.admin_id),
-              service.ManeuStore.objects.filter(id=order.store_id).update(guess_id=order.guess_id, admin_id=order.admin_id))
+    # orderList = service.ManeuOrderV2.objects.all()
+    # for order in orderList:
+    #     print(service.ManeuStore.objects.filter(order_id=order.id).update(order_id=order.id, guess_id=order.guess_id, admin_id=order.admin_id))
+    list = service.ManeuStore.objects.all()
+    for store1 in list:
+        order = service.ManeuOrderV2.objects.filter(id=store1.order_id).first()
+        if order:
+            store_id = store1.id
+            print(service.ManeuStore.objects.filter(id=store_id).update(order_id=order.id, admin_id=order.admin_id, guess_id=order.guess_id))
+    return index(request)
 

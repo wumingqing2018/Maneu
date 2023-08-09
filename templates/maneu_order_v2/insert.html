@@ -125,7 +125,7 @@
                 <form class="vertical2" id="order_insert" method="post" action="{% url 'maneu_order_v2:insert' %}">
                     {% csrf_token %}
                     <input type="hidden" name="order_json" id="order_json">
-                    <input type="hidden" name="Vision_Solutions" id="Vision_Solutions_json">
+                    <input type="hidden" name="Vision_Solutions" id="VisionSolutions_json">
                     <input type="hidden" name="Product_Orders" id="Product_Orders_json">
                     <input autocomplete="off" class="btn btn-danger" id="insert" type="submit" value="提交订单">
                 </form>

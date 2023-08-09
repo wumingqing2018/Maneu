@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+    $("#OD_VA").text(maneu_vision.OD_VA);
     $("#OD_SPH").text(maneu_vision.OD_SPH);
     $("#OD_CYL").text(maneu_vision.OD_CYL);
     $("#OD_AX").text(maneu_vision.OD_AX);
@@ -7,6 +8,7 @@ $(document).ready(function () {
     $("#OD_FR").text(maneu_vision.OD_FR);
     $("#OD_ADD").text(maneu_vision.OD_ADD);
     $("#OD_BCVA").text(maneu_vision.OD_BCVA);
+    $("#OS_VA").text(maneu_vision.OS_VA);
     $("#OS_SPH").text(maneu_vision.OS_SPH);
     $("#OS_CYL").text(maneu_vision.OS_CYL);
     $("#OS_AX").text(maneu_vision.OS_AX);
