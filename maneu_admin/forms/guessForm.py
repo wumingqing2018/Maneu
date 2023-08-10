@@ -2,7 +2,7 @@ from django import forms
 from django.core.validators import RegexValidator
 from django.forms import widgets
 
-from maneu_order_v2.service import find_order_phone
+from maneu_order.service import find_order_phone
 
 
 class GuessForm(forms.Form):

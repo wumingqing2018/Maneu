@@ -19,6 +19,10 @@ def today():
     return time.strftime("%Y-%m-%d", time.localtime())
 
 
+def time_zhuan(time):
+    return time.strftime("%Y-%m-%d", time)
+
+
 def day():
     """
     返回今天日期
@@ -67,17 +71,6 @@ def get_ip(request):
         return request.META.get("HTTP_X_FORWARDED_FOR")
     else:
         return request.META.get("REMOTE_ADDR")
-
-
-def index_time(request):
-    if request.GET.get('time'):
-        time = request.GET.get('time')
-    else:
-        time = today()
-    date = datetime.datetime.strptime(time, '%Y-%m-%d')
-    down_day = (date + datetime.timedelta(days=+1)).strftime("%Y-%m-%d")
-    up_day = (date + datetime.timedelta(days=-1)).strftime("%Y-%m-%d")
-    return {'list': '', 'time': time, 'up_day': up_day, 'down_day': down_day}
 
 
 def subjective_content(request):

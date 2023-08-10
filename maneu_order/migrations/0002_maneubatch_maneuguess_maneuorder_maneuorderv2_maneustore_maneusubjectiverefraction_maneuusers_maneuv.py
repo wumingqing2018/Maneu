@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('maneu_order_v2', '0001_initial'),
+        ('maneu_order', '0001_initial'),
     ]
 
     operations = [
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('c_time', models.DateTimeField()),
                 ('c_name', models.CharField(max_length=255)),
                 ('c_phone', models.CharField(max_length=255)),
-                ('maneu_order_v2', models.TextField()),
+                ('maneu_order', models.TextField()),
                 ('remark', models.TextField()),
             ],
             options={
@@ -57,13 +57,13 @@ class Migration(migrations.Migration):
                 ('c_time', models.DateTimeField()),
                 ('c_name', models.CharField(max_length=11)),
                 ('c_phone', models.CharField(max_length=11)),
-                ('maneu_order_v2', models.TextField(blank=True, null=True)),
+                ('maneu_order', models.TextField(blank=True, null=True)),
                 ('besiness', models.CharField(max_length=16)),
                 ('status', models.IntegerField()),
                 ('remark', models.CharField(max_length=2048)),
             ],
             options={
-                'db_table': 'maneu_order_v2',
+                'db_table': 'maneu_order',
                 'managed': False,
             },
         ),
@@ -79,7 +79,7 @@ class Migration(migrations.Migration):
                 ('subjectiverefraction_id', models.TextField(db_column='subjectiveRefraction_id', max_length=36)),
             ],
             options={
-                'db_table': 'maneu_order_v2',
+                'db_table': 'maneu_order',
                 'managed': False,
             },
         ),

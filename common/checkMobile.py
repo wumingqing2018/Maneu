@@ -7,9 +7,9 @@ def judge_pc_or_mobile(ua):
     :param ua: 访问来源头信息中的User-Agent字段内容
     :return:
     demo:   if checkMobile.judge_pc_or_mobile(ua=request.META.get("HTTP_USER_AGENT")):
-                return render(request, 'maneu_order_v2/insert_phone.html')
+                return render(request, 'maneu_order/insert_phone.html')
             else:
-                return render(request, 'maneu_order_v2/insert.html')
+                return render(request, 'maneu_order/insert.html')
     """
 
     factor = ua

@@ -1,8 +1,8 @@
 from django.urls import path
 
-from maneu_order_v2 import views
+from maneu_order import views
 
-app_name = 'maneu_order_v2'
+app_name = 'maneu_order'
 urlpatterns = [
     # views
     path('index/', views.index, name='index'),

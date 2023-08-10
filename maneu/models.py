@@ -30,6 +30,7 @@ class ManeuAdmin(models.Model):
 
 class ManeuGuess(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
+    admin_id = models.CharField(max_length=36, blank=True, null=True)
     time = models.DateTimeField()
     name = models.CharField(max_length=36, blank=True, null=True)
     phone = models.CharField(max_length=36, blank=True, null=True)
@@ -39,26 +40,25 @@ class ManeuGuess(models.Model):
     em = models.CharField(db_column='EM', max_length=36, blank=True, null=True)  # Field name made lowercase.
     dfh = models.CharField(db_column='DFH', max_length=36, blank=True, null=True)  # Field name made lowercase.
     remark = models.TextField()
-    admin_id = models.CharField(max_length=36, blank=True, null=True)
-    subjective_id = models.CharField(max_length=36, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'maneu_guess'
 
 
-class ManeuOrderV1(models.Model):
+class ManeuOrder(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1, editable=False)
     time = models.DateTimeField()
-    name = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
-    admin_id = models.CharField(max_length=36)
+    name = models.CharField(max_length=36)
+    phone = models.CharField(max_length=36)
     guess_id = models.CharField(max_length=36)
-    contents = models.TextField()
+    admin_id = models.CharField(max_length=36)
+    store_id = models.CharField(max_length=36)
+    vision_id = models.CharField(max_length=36)  # Field name made lowercase.
 
     class Meta:
         managed = False
-        db_table = 'maneu_order_v1'
+        db_table = 'maneu_order'
 
 
 class ManeuOrderV2(models.Model):
@@ -74,7 +74,7 @@ class ManeuOrderV2(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'maneu_order_v2'
+        db_table = 'maneu_order'
 
 
 class ManeuService(models.Model):
@@ -112,7 +112,7 @@ class ManeuRefraction(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'maneu_subjective_refraction'
+        db_table = 'maneu_refraction'
 
 
 class ManeuVision(models.Model):
@@ -124,4 +124,4 @@ class ManeuVision(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'maneu_vision_solutions'
+        db_table = 'maneu_vision'

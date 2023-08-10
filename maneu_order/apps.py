@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class ManagementConfig(AppConfig):
-    name = 'maneu_order_v2'
+    name = 'maneu_order'
