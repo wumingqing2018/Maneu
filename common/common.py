@@ -88,5 +88,6 @@ def subjective_content(request):
                'OS_VA': request.POST['OS_VA'], 'OS_SPH': request.POST['OS_SPH'], 'OS_CYL': request.POST['OS_CYL'],
                'OS_AX': request.POST['OS_AX'], 'OS_ADD': request.POST['OS_ADD'], 'OS_BCVA': request.POST['OS_BCVA'],
                'OS_AL': request.POST['OS_AL'], 'OS_AK': request.POST['OS_AK'], 'OS_AD': request.POST['OS_AD'],
-               'OS_CCT': request.POST['OS_CCT'], 'OS_LT': request.POST['OS_LT'], 'OS_VT': request.POST['OS_VT']}
+               'OS_CCT': request.POST['OS_CCT'], 'OS_LT': request.POST['OS_LT'], 'OS_VT': request.POST['OS_VT'],
+               'remark': request.POST['remark']}
     return content

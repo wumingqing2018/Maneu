@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'maneu_admin',
     'maneu_guest',
     'maneu_index',
-    'maneu_order_v1',
     'maneu_order_v2',
     'maneu_service',
 ]
@@ -103,7 +102,7 @@ https:#docs.djangoproject.com/en/3.0/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'maneu1',
+        'NAME': 'maneu',
         'HOST': 'localhost',
         'PORT': 3306,
         'USER': 'root',

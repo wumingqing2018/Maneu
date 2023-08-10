@@ -97,14 +97,4 @@ def update(request):
 
 
 def test1(request):
-    # orderList = service.ManeuOrderV2.objects.all()
-    # for order in orderList:
-    #     print(service.ManeuStore.objects.filter(order_id=order.id).update(order_id=order.id, guess_id=order.guess_id, admin_id=order.admin_id))
-    list = service.ManeuStore.objects.all()
-    for store1 in list:
-        order = service.ManeuOrderV2.objects.filter(id=store1.order_id).first()
-        if order:
-            store_id = store1.id
-            print(service.ManeuStore.objects.filter(id=store_id).update(order_id=order.id, admin_id=order.admin_id, guess_id=order.guess_id))
-    return index(request)
-
+    print()

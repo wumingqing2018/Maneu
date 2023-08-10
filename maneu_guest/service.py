@@ -39,8 +39,8 @@ def ManeuSubjectiveRefraction_all(guess_id=''):
     return ManeuRefraction.objects.filter(guess_id=guess_id).order_by('-time').all()
 
 
-def ManeuSubjectiveRefraction_insert(admin_id='', guess_id='', content=''):
-    return ManeuRefraction.objects.create(admin_id=admin_id, guess_id=guess_id, content=content)
+def ManeuSubjectiveRefraction_insert(admin_id='', guess_id='', time='', content=''):
+    return ManeuRefraction.objects.create(time=time, admin_id=admin_id, guess_id=guess_id, content=content)
 
 
 def ManeuSubjectiveRefraction_update(id='', admin_id='', content=''):

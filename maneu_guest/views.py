@@ -103,7 +103,7 @@ def Subjective_delete(request):
 def Subjective_insert(request):
     if request.method == 'POST':
         content = json.dumps(common.subjective_content(request))
-        subjective_id = service.ManeuSubjectiveRefraction_insert(admin_id=request.session.get('id'), guess_id=request.POST.get('guess_id'), content=content).id
+        subjective_id = service.ManeuSubjectiveRefraction_insert(admin_id=request.session.get('id'), guess_id=request.POST.get('guess_id'), time=common.today(), content=content).id
         request.POST._mutable = True
         request.POST['subjective_id'] = subjective_id
         request.POST._mutable = False
