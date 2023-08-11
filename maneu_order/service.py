@@ -21,7 +21,7 @@ def ManeuOrder_id(id='', admin_id=''):
 
 
 def ManeuOrder_time(admin_id='', time=''):
-    return ManeuOrder.objects.filter(admin_id=admin_id, time__day=time).order_by('-time').all()
+    return ManeuOrder.objects.filter(admin_id=admin_id, time=time).order_by('-time').all()
 
 
 def ManeuOrder_delete(admin_id='', id=''):
@@ -39,7 +39,7 @@ def ManeuOrder_Search(text='', admin_id=''):
 
 def ManeuOrder_insert(name='', time='', phone='', guess_id='', admin_id='', store_id='', vision_id=''):
     return ManeuOrder.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, admin_id=admin_id,
-                                       store_id=store_id, vision_id=vision_id)
+                                     store_id=store_id, vision_id=vision_id)
 
 
 def ManeuOrder_update(order_id='', name='', phone=''):
@@ -74,7 +74,7 @@ def ManeuVision_insert(admin_id='', guess_id='', time='', content=''):
     return ManeuVision.objects.create(admin_id=admin_id, guess_id=guess_id, time=time, content=content)
 
 
-def ManeuVisionSolutions_update(id='', content=''):
+def ManeuVision_update(id='', content=''):
     return ManeuVision.objects.filter(id=id).update(content=content)
 
 

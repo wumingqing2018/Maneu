@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     $("#OD_VA").text(maneu_vision.OD_VA);
     $("#OD_SPH").text(maneu_vision.OD_SPH);
@@ -19,24 +18,24 @@ $(document).ready(function () {
     $("#PD").text(maneu_vision.PD);
     $("#remark").text(maneu_vision.remark);
     $("#function").text(maneu_vision.function);
-    upline = Object.keys(maneu_store).length/5
+    upline = Object.keys(maneu_store).length / 5
     for (i = 1; i <= upline; i++) {
         $('#store_table').append(
             "<tr>\n" +
             "    <td colspan='2'>\n" +
-            "        <span>"+ maneu_store['arg'+i+'0']+"</span>\n" +
+            "        <span>" + maneu_store['arg' + i + '0'] + "</span>\n" +
             "    </td>\n" +
             "    <td colspan='2'>\n" +
-            "        <span>"+ maneu_store['arg'+i+'1']+"</span>\n" +
+            "        <span>" + maneu_store['arg' + i + '1'] + "</span>\n" +
             "    </td>\n" +
             "    <td colspan='2'>\n" +
-            "        <span>"+ maneu_store['arg'+i+'2']+"</span>\n" +
+            "        <span>" + maneu_store['arg' + i + '2'] + "</span>\n" +
             "    </td>\n" +
             "    <td colspan='2'>\n" +
-            "        <span>"+ maneu_store['arg'+i+'3']+"</span>\n" +
+            "        <span>" + maneu_store['arg' + i + '3'] + "</span>\n" +
             "    </td>\n" +
             "    <td>\n" +
-            "        <span>"+ maneu_store['arg'+i+'4']+"</span>\n" +
+            "        <span>" + maneu_store['arg' + i + '4'] + "</span>\n" +
             "    </td>\n" +
             "</tr>\n")
     }
@@ -65,14 +64,14 @@ $(document).ready(function () {
                 $('#serverTable').prepend(
                     "<tr>\n" +
                     "    <td>\n" +
-                    "        <span>"+ res.data.time +"</span>\n" +
+                    "        <span>" + res.data.time + "</span>\n" +
                     "    </td>\n" +
                     "    <td>\n" +
-                    "        <span>"+ res.data.content +"</span>\n" +
+                    "        <span>" + res.data.content + "</span>\n" +
                     "    </td>\n" +
                     "    <td>\n" +
                     "        <div class='col-6 offset-6 input-group input-group-sm'>\n" +
-                    "            <input type='button' class='btn btn-danger delete submit' value='删除' rel="+ res.data.id +">\n" +
+                    "            <input type='button' class='btn btn-danger delete submit' value='删除' rel=" + res.data.id + ">\n" +
                     "        </div>" +
                     "    </td>\n" +
                     "</tr>\n"

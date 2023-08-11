@@ -1,5 +1,5 @@
 import time
-from uuid import UUID
+
 """
 通用校验工具
 """
@@ -17,11 +17,3 @@ def date_method_post(request):
     except BaseException as e:
         print(e)
         return None
-
-
-def verifyUUid(str=''):
-    try:
-        UUID(str).version
-        return True
-    except:
-        return False

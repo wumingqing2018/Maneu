@@ -1,8 +1,10 @@
-from django.shortcuts import render, HttpResponseRedirect, reverse
+import json
 from datetime import datetime
+
+from django.shortcuts import render, HttpResponseRedirect, reverse
+
 from common import common
 from maneu_guest import service
-import json
 
 
 def search(request):
@@ -30,11 +32,11 @@ def detail(request):
     guess = service.ManeuGuess_id(admin_id=request.session.get('id'), id=id)
     vision = service.ManeuOrderV2_all(guess_id=guess.id)
     server = service.ManeuService_all(guess_id=guess.id)
-    subjective = service.ManeuSubjectiveRefraction_all(guess_id=guess.id)
+    subjective = service.ManeuRefraction_all(guess_id=guess.id)
     stand_ax = '24.0'
     subjective_refraction = {'OS_VA': 0.2, 'OS_SPH': 0, 'OS_CYL': 0, 'OS_AX': 0, 'OS_AK': 0, 'OS_AL': 16, 'OS_BCVA': 0,
                              'OS_AD': 0, 'OS_CCT': 0, 'OS_LT': 0, 'OS_VT': 0,
-                             'OD_VA': 0.2, 'OD_SPH': 0, 'OD_CYL':  0, 'OD_AX': 0, 'OD_AK': 0, 'OD_AL': 16, 'OD_BCVA': 0,
+                             'OD_VA': 0.2, 'OD_SPH': 0, 'OD_CYL': 0, 'OD_AX': 0, 'OD_AK': 0, 'OD_AL': 16, 'OD_BCVA': 0,
                              'OD_AD': 0, 'OD_CCT': 0, 'OD_LT': 0, 'OD_VT': 0,
                              'remark': ''}
 
@@ -89,7 +91,8 @@ def update(request):
 
 def Subjective_detail(request):
     subjective = service.ManeuSubjectiveRefraction_id(id=request.POST.get('subjective_id'))
-    return render(request, 'maneu_guest/subjective_detail.html', {'subjective': subjective, 'content': json.loads(subjective.content)})
+    return render(request, 'maneu_guest/subjective_detail.html',
+                  {'subjective': subjective, 'content': json.loads(subjective.content)})
 
 
 def Subjective_delete(request):
@@ -103,7 +106,9 @@ def Subjective_delete(request):
 def Subjective_insert(request):
     if request.method == 'POST':
         content = json.dumps(common.subjective_content(request))
-        subjective_id = service.ManeuSubjectiveRefraction_insert(admin_id=request.session.get('id'), guess_id=request.POST.get('guess_id'), time=common.today(), content=content).id
+        subjective_id = service.ManeuSubjectiveRefraction_insert(admin_id=request.session.get('id'),
+                                                                 guess_id=request.POST.get('guess_id'),
+                                                                 time=common.today(), content=content).id
         request.POST._mutable = True
         request.POST['subjective_id'] = subjective_id
         request.POST._mutable = False
@@ -115,8 +120,10 @@ def Subjective_insert(request):
 def Subjective_update(request):
     if request.method == 'POST':
         content = json.dumps(common.subjective_content(request))
-        service.ManeuSubjectiveRefraction_update(id=request.POST['subjective_id'], admin_id=request.session.get('id'), content=content)
+        service.ManeuSubjectiveRefraction_update(id=request.POST['subjective_id'], admin_id=request.session.get('id'),
+                                                 content=content)
         return Subjective_detail(request)
     else:
         subjective = service.ManeuSubjectiveRefraction_id(id=request.GET.get('subjective_id'))
-        return render(request, 'maneu_guest/subjective_update.html', {'subjective_id': subjective.id, 'content': json.loads(subjective.content)})
+        return render(request, 'maneu_guest/subjective_update.html',
+                      {'subjective_id': subjective.id, 'content': json.loads(subjective.content)})

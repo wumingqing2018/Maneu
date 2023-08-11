@@ -9,7 +9,7 @@
                     <h5>零售订单管理系统</h5>
                 </td>
                 <td class="col-8">
-                    <form method="get" action="{% url 'maneu_order_v2:search' %}">
+                    <form method="get" action="{% url 'maneu_order:search' %}">
                         <div class="input-group input-group-sm">
                             <input type="date" name="time" class="form-control" value="{{ time|safe }}">
                             <input type="submit" class="btn btn-primary" value="查询">
@@ -17,7 +17,7 @@
                     </form>
                 </td>
                 <td class="col-2">
-                    <form method="get" action="{% url 'maneu_order_v2:search' %}">
+                    <form method="get" action="{% url 'maneu_order:search' %}">
                         <div class="input-group input-group-sm">
                             <input type="text" name="text" class="form-control" placeholder="使用手机或姓名查询">
                             <input type="submit" class="btn btn-primary" value="查询">
@@ -53,7 +53,7 @@
                                     <input type="submit" class="btn btn-danger col-12" id="delete" value="删除记录">
                                 </div>
                             </form>
-                            <form class="col-6" method="POST" action="{% url 'maneu_order_v2:detail' %}">
+                            <form class="col-6" method="POST" action="{% url 'maneu_order:detail' %}">
                                 {% csrf_token %}
                                 <div class="input-group input-group-sm">
                                     <input type="hidden" name="order_id" value="{{ foo.order_id }}">

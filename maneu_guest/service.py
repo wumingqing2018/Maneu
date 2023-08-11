@@ -16,15 +16,18 @@ def ManeuGuess_time(admin_id='', time=''):
 
 
 def ManeuGuess_insert(admin_id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):
-    return ManeuGuess.objects.create(time=time, admin_id=admin_id, name=name, phone=phone, sex=sex, age=age, ot=ot, em=em, dfh=dfh, remark=remark)
+    return ManeuGuess.objects.create(time=time, admin_id=admin_id, name=name, phone=phone, sex=sex, age=age, ot=ot,
+                                     em=em, dfh=dfh, remark=remark)
 
 
 def ManeuGuess_update(id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):
-    return ManeuGuess.objects.filter(id=id).update(time=time, name=name, phone=phone, sex=sex, age=age, ot=ot, em=em, dfh=dfh, remark=remark)
+    return ManeuGuess.objects.filter(id=id).update(time=time, name=name, phone=phone, sex=sex, age=age, ot=ot, em=em,
+                                                   dfh=dfh, remark=remark)
 
 
 def ManeuGuess_search(text='', admin_id=''):
-    return ManeuGuess.objects.filter(Q(name__contains=text, admin_id=admin_id) | Q(phone__contains=text, admin_id=admin_id)).order_by('-time').all()
+    return ManeuGuess.objects.filter(
+        Q(name__contains=text, admin_id=admin_id) | Q(phone__contains=text, admin_id=admin_id)).order_by('-time').all()
 
 
 def ManeuGuess_delete(id=''):
@@ -35,7 +38,7 @@ def ManeuSubjectiveRefraction_id(id=''):
     return ManeuRefraction.objects.filter(id=id).first()
 
 
-def ManeuSubjectiveRefraction_all(guess_id=''):
+def ManeuRefraction_all(guess_id=''):
     return ManeuRefraction.objects.filter(guess_id=guess_id).order_by('-time').all()
 
 

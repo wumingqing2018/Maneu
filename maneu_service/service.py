@@ -10,7 +10,8 @@ def ManeuService_orderID(order_id=''):
 
 
 def ManeuService_insert(order_id='', guess_id='', admin_id='', content='', time=''):
-    return ManeuService.objects.create(guess_id=guess_id, admin_id=admin_id, order_id=order_id, content=content, time=time)
+    return ManeuService.objects.create(guess_id=guess_id, admin_id=admin_id, order_id=order_id, content=content,
+                                       time=time)
 
 
 def ManeuService_delete_order_id(order_id=''):

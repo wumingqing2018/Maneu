@@ -12,7 +12,8 @@
             </div>
             <div class="input-group input-group-sm mb-2">
                 <span class="input-group-text col-3">电话</span>
-                <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off" required="required">
+                <input class="form-control" id="guess_phone" name="guess_phone" type="text" autocomplete="off"
+                       required="required">
             </div>
             <div class="input-group input-group-sm mb-2">
                 <span class="input-group-text col-3">姓名</span>
@@ -21,8 +22,11 @@
         </form>
         <hr>
         <div class="col-md-12">
-            <button type="button" class="col-12 btn btn-small btn-warning" id="Vision_Solutions_showbutton">显示视力解决方案</button>
-            <button type="button" class="col-12 btn btn-small btn-warning" id="Vision_Solutions_hidebutton" style="display: none">隐藏视力解决方案</button>
+            <button type="button" class="col-12 btn btn-small btn-warning" id="Vision_Solutions_showbutton">显示视力解决方案
+            </button>
+            <button type="button" class="col-12 btn btn-small btn-warning" id="Vision_Solutions_hidebutton"
+                    style="display: none">隐藏视力解决方案
+            </button>
         </div>
         <form class="vertical2 Vision_Solutions" id="Vision_Solutions" style="display: none">
             <hr>
@@ -839,11 +843,16 @@
         <form class="vertical col-12" id="Product_Orders ">
             <div class="col-md-9 row" id="Product_Orders_TABLE">
                 <div class="input-group input-group-sm mb-2">
-                    <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 12%" placeholder="类别">
-                    <input autocomplete="off" type="text" name="arg11" class="form-control" style="width: 12%" placeholder="品牌">
-                    <input autocomplete="off" type="text" name="arg12" class="form-control" style="width: 12%" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 52%" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 12%" placeholder="价格">
+                    <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 12%"
+                           placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg11" class="form-control" style="width: 12%"
+                           placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg12" class="form-control" style="width: 12%"
+                           placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 52%"
+                           placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 12%"
+                           placeholder="价格">
                 </div>
             </div>
             <div class="input-group input-group-sm mb-2">
@@ -855,9 +864,9 @@
         <hr>
         <div class="row">
             <div class="input-group input-group-sm mb-2">
-                <a type="button" class="col-12 btn btn-warning" href="{% url 'maneu_order_v2:index' %}">返回列表</a>
+                <a type="button" class="col-12 btn btn-warning" href="{% url 'maneu_order:index' %}">返回列表</a>
             </div>
-            <form class="vertical" id="order_insert" method="post" action="{% url 'maneu_order_v2:insert' %}">
+            <form class="vertical" id="order_insert" method="post" action="{% url 'maneu_order:insert' %}">
                 {% csrf_token %}
                 <div class="input-group input-group-sm mb-2">
                     <input type="hidden" name="time" id="time_json">

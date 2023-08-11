@@ -2,16 +2,20 @@
     margin: 0;
     padding: 0;
 }
+
 html {
     height: 100%;
 }
+
 body {
     height: 100%;
 }
+
 .container-fluid {
     height: 100%;
     background-image: linear-gradient(to right, #003153, #FCDA5E);
 }
+
 .login-wrapper {
     background-color: #fff;
     width: 358px;
@@ -23,6 +27,7 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
 .header {
     color: black;
     font-size: 38px;
@@ -30,6 +35,7 @@ body {
     text-align: center;
     line-height: 200px;
 }
+
 .input-item {
     display: block;
     width: 100%;
@@ -40,9 +46,11 @@ body {
     font-size: 15px;
     outline: none;
 }
+
 .input-item::placeholder {
     text-transform: uppercase;
 }
+
 .btn {
     text-align: center;
     padding: 10px;
@@ -52,7 +60,7 @@ body {
     color: #fff;
 }
 
-label{
+label {
     color: black;
 }
 
@@ -60,7 +68,8 @@ a {
     text-decoration-line: none;
     color: #abc1ee;
 }
-.msg{
+
+.msg {
     font-size: 10px;
     margin-left: 10px;
     color: red;

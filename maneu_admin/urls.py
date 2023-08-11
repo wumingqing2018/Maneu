@@ -1,4 +1,5 @@
 from django.urls import path
+
 from maneu_admin import views
 
 app_name = 'maneu_admin'

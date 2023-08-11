@@ -16,7 +16,6 @@ Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 """
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 """
 secret config
 Quick-start development settings - unsuitable for production
@@ -27,7 +26,6 @@ SECURITY WARNING: keep the secret key used in production secret!
 DEBUG = True
 SECRET_KEY = 'd&@vq_f^z79&w=nqqcm2vu#+gj8)_qdvy1t&agfxhmi74fwpr!'
 ALLOWED_HOSTS = ['*']
-
 
 """
 注册应用程序
@@ -47,7 +45,6 @@ INSTALLED_APPS = [
     'maneu_service',
 ]
 
-
 """
 注册中间件
 """
@@ -62,12 +59,10 @@ MIDDLEWARE = [
     'middleware.UserMiddleware.UserMiddleware',  # 用户登录校验中间件
 ]
 
-
 """
 根路由
 """
 ROOT_URLCONF = 'maneu.urls'
-
 
 """
 注册模板
@@ -75,7 +70,7 @@ ROOT_URLCONF = 'maneu.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR+"/templates"],
+        'DIRS': [BASE_DIR + "/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,12 +83,10 @@ TEMPLATES = [
     },
 ]
 
-
 """
 WSGI_应用程序
 """
 WSGI_APPLICATION = 'maneu.wsgi.application'
-
 
 """
 配置数据库
@@ -109,7 +102,6 @@ DATABASES = {
         'PASSWORD': '',
     }
 }
-
 
 """
 密码验证
@@ -131,7 +123,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 """
 国际化配置
 Internationalization
@@ -143,7 +134,6 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = False
 
-
 """
 Static files config
 https:#docs.djangoproject.com/en/3.0/howto/static-files/
@@ -151,7 +141,6 @@ https:#docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-
 
 """
 session config

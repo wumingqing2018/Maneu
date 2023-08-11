@@ -16,7 +16,7 @@
                 <td style="width: 10%">账号</td>
                 <td style="width: 90%">{{ maneu_users.username }}</td>
             </tr>
-                        <tr class="blue">
+            <tr class="blue">
                 <td style="width: 10%">地址</td>
                 <td style="width: 90%">{{ maneu_users.localtion }}</td>
             </tr>
@@ -40,12 +40,12 @@
             <tr class="blue">
                 <td style="width: 10%">账户操作</td>
                 <td style="width: 90%">
-                            <button class="btn btn-warning">
-            <a style="color: black" href="{% url 'maneu_admin:user_updata' %}">修改资料</a>
-        </button>
-        <button class="btn btn-warning">
-            <a style="color: black" href="{% url 'login' %}">退出登录</a>
-        </button>
+                    <button class="btn btn-warning">
+                        <a style="color: black" href="{% url 'maneu_admin:user_updata' %}">修改资料</a>
+                    </button>
+                    <button class="btn btn-warning">
+                        <a style="color: black" href="{% url 'login' %}">退出登录</a>
+                    </button>
                 </td>
             </tr>
         </table>

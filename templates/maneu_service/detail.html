@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <form method="post" action="{% url 'maneu_order_v2:detail' %}">
+                    <form method="post" action="{% url 'maneu_order:detail' %}">
                         {% csrf_token %}
                         <input type="hidden" name="id" value="{{ content.order_id }}">
                         <input type="submit" class="btn btn-primary" value="返回列表">

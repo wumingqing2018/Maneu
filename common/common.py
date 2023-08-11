@@ -19,10 +19,6 @@ def today():
     return time.strftime("%Y-%m-%d", time.localtime())
 
 
-def time_zhuan(time):
-    return time.strftime("%Y-%m-%d", time)
-
-
 def day():
     """
     返回今天日期

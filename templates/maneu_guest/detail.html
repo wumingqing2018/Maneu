@@ -5,27 +5,31 @@
         span {
             color: #FFC048;
         }
+
         .test {
             margin-top: 2%;
             margin-bottom: 2%;
         }
+
         .container {
             margin-bottom: 5%
         }
+
         #main0 {
             width: 100%;
-            height:400px;
+            height: 400px;
         }
+
         #main1 {
             width: 100%;
-            height:400px;
+            height: 400px;
         }
 
     </style>
 {% endblock %}
 {% block javascript %}
     {# delete model #}
-    <script type="application/javascript"  src="{% static 'javascript/maneu/delete.js' %}"></script>
+    <script type="application/javascript" src="{% static 'javascript/maneu/delete.js' %}"></script>
     {# print model #}
     <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="text/javascript" src="{% static 'javascript/maneu/print.js' %}"></script>
@@ -44,12 +48,12 @@
                 },
             },
             tooltip: {
-                formatter:function(datas) {
+                formatter: function (datas) {
                     return datas.value.toFixed(1);
                 }
             },
             legend: {
-                data:['左眼视力', '右眼视力']
+                data: ['左眼视力', '右眼视力']
             },
             xAxis: {
                 data: ['左眼视力', '右眼视力'],
@@ -57,8 +61,8 @@
             yAxis: {
                 min: 0.2,
                 max: 1.2,
-                axisLabel:{
-                    formatter: function (value,index) {
+                axisLabel: {
+                    formatter: function (value, index) {
                         return value.toFixed(1)
                     }
                 }
@@ -97,7 +101,7 @@
             },
             tooltip: {},
             legend: {
-                data:['左眼眼轴', '右眼眼轴']
+                data: ['左眼眼轴', '右眼眼轴']
             },
             xAxis: {
                 data: ['左眼眼轴', '右眼眼轴'],
@@ -106,8 +110,8 @@
                 name: 'mm',
                 min: 16,
                 max: 28,
-                axisLabel:{
-                    formatter: function (value,index) {
+                axisLabel: {
+                    formatter: function (value, index) {
                         return value.toFixed(1)
                     }
                 }
@@ -121,7 +125,7 @@
                     data: [{
                         label: {
                             position: "middle",
-                            formatter: "标准值: "+ {{ stand_ax|safe }} +"mm",
+                            formatter: "标准值: " + {{ stand_ax|safe }} +"mm",
                             fontSize: "10",
                         },
                         yAxis: {{ stand_ax|safe }},
@@ -248,7 +252,7 @@
                     <h5>视力解决方案</h5>
                 </td>
                 <td align="right">
-                    <form class="col-2" method="get" action="{% url 'maneu_order_v2:insert' %}">
+                    <form class="col-2" method="get" action="{% url 'maneu_order:insert' %}">
                         {% csrf_token %}
                         <input type="hidden" name="order_id" value="{{ foo.id }}">
                         <div class="input-group input-group-sm">
@@ -264,7 +268,7 @@
                             <span>{{ foo.time }}</span>
                         </td>
                         <td align="right">
-                            <form class="col-2" method="post" action="{% url 'maneu_order_v2:detail' %}">
+                            <form class="col-2" method="post" action="{% url 'maneu_order:detail' %}">
                                 {% csrf_token %}
                                 <input type="hidden" name="order_id" value="{{ foo.id }}">
                                 <div class="input-group input-group-sm">

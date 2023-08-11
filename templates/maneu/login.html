@@ -14,7 +14,7 @@
                     <input type="text" name="username" class="input-item" placeholder="username" autocomplete="off">
                     <label for="password">密码:</label>
                     <input type="password" name="password" class="input-item" placeholder="password" autocomplete="off"><br>
-                    {% if msg %}<span class="msg">{{msg}}</span>{% endif %}
+                    {% if msg %}<span class="msg">{{ msg }}</span>{% endif %}
                     <input type="submit" class="btn" value="登录">
                 </form>
                 <a style="color: white" href="{% url 'index' %}">
