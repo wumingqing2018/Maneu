@@ -26,7 +26,7 @@ def index(request):
                }
     admin_id = request.session.get('id')
     content['guess_count'] = service.ManeuGuess_month(admin_id=admin_id, month=month, year=year).count()
-    content['orderv2_count'] = service.find_orderV2_month(admin_id=admin_id, month=month, year=year).count()
+    content['orderv2_count'] = service.ManeuOrder_month(admin_id=admin_id, month=month, year=year).count()
     content['service_count'] = service.ManeuService_month(admin_id=admin_id, month=month, year=year).count()
 
     if content['guess_count'] != 0:
@@ -38,10 +38,10 @@ def index(request):
 
     if content['orderv2_count'] != 0:
         for i in range(1, 32):
-            content['thisMonth_orderv2'][i - 1] = service.find_orderV2_day(admin_id=admin_id, day=i, month=month,
-                                                                           year=year).count()
-            content['otherMonth_orderv2'][i - 1] = service.find_orderV2_day(admin_id=admin_id, day=i, month=month - 1,
-                                                                            year=year).count()
+            content['thisMonth_orderv2'][i - 1] = service.ManeuOrder_day(admin_id=admin_id, day=i, month=month,
+                                                                         year=year).count()
+            content['otherMonth_orderv2'][i - 1] = service.ManeuOrder_day(admin_id=admin_id, day=i, month=month - 1,
+                                                                          year=year).count()
 
     if content['service_count'] != 0:
         for i in range(1, 32):
@@ -49,5 +49,4 @@ def index(request):
                                                                            year=year).count()
             content['otherMonth_service'][i - 1] = service.ManeuService_day(admin_id=admin_id, day=i, month=month - 1,
                                                                             year=year).count()
-    print(content)
     return render(request, 'maneu_index/index.html', content)

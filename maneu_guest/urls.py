@@ -5,7 +5,7 @@ from maneu_guest import views
 app_name = 'maneu_guest'
 
 urlpatterns = [
-    path('index/', views.index, name='index'),
+    path('', views.index, name='index'),
     path('insert/', views.insert, name='insert'),
     path('detail/', views.detail, name='detail'),
     path('delete/', views.delete, name='delete'),
