@@ -62,9 +62,6 @@ def user_updata(username, password):
         return str(msg)
 
 
-def user_insert(username='', nickname='', password='', email='', phone='', remark=''):
-    try:
-        return ManeuAdmin.objects.create(username=username, password=password, nickname=nickname, email=email,
-                                         phone=phone, level=0, state=0, remark=remark)
-    except BaseException as msg:
-        return str(msg)
+def user_insert(username='', nickname='', password='', email='', phone=''):
+    return ManeuAdmin.objects.create(username=username, password=password, nickname=nickname, email=email,
+                                     phone=phone, level=0, state=0)

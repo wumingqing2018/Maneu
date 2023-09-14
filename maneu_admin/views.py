@@ -20,8 +20,7 @@ def user_insert(request):
         if request.POST['gift_password'] == '214772680':
             updata = serivce.user_insert(username=request.POST['username'],
                                          nickname=request.POST['nickname'], password=request.POST['password'],
-                                         phone=request.POST['phone'], email=request.POST['email'],
-                                         remark=request.POST['remark'])
+                                         phone=request.POST['phone'], email=request.POST['email'])
             return HttpResponseRedirect(reverse('login'))
     return render(request, 'maneu_admin/insert.html')
 
