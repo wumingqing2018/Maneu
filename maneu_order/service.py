@@ -33,8 +33,7 @@ def ManeuOrder_delete(admin_id='', id=''):
 
 
 def ManeuOrder_Search(text='', admin_id=''):
-    return ManeuOrder.objects.filter(
-        Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
+    return ManeuOrder.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
 
 
 def ManeuOrder_insert(name='', time='', phone='', guess_id='', admin_id='', store_id='', vision_id=''):
@@ -82,16 +81,12 @@ def ManeuGuess_id(id=''):
     return ManeuGuess.objects.filter(id=id).first()
 
 
-def ManeuGuess_search(admin_id='', name='', phone=''):
-    return ManeuGuess.objects.filter(admin_id=admin_id, name=name, phone=phone).first()
+def ManeuGuess_phone(phone=''):
+    return ManeuGuess.objects.filter(phone=phone).first()
 
 
-def ManeuGuess_insert(admin_id='', name='', phone='', time=''):
-    return ManeuGuess.objects.create(admin_id=admin_id, name=name, phone=phone, time=time)
-
-
-def ManeuGuess_insert_v2(id='', admin_id='', name='', phone=''):
-    return ManeuGuess.objects.create(id=id, admin_id=admin_id, name=name, phone=phone)
+def ManeuGuess_search(admin_id='', name='', time='', phone='', sex='', age='', ot='', em='', dfh=''):
+    return ManeuGuess.objects.get_or_create(admin_id=admin_id, name=name, phone=phone, defaults={'sex': sex, 'age': age, 'ot': ot, 'em': em, 'dfh': dfh, 'time': time})
 
 
 def ManeuGuess_update(id='', content=''):
@@ -107,3 +102,7 @@ def ManeuService_orderID(order_id=''):
 
 def ManeuService_delete_order_id(order_id=''):
     return ManeuService.objects.filter(order_id=order_id).all().delete()
+
+
+def ManeuRefraction_id(guess_id=''):
+    return ManeuRefraction.objects.filter(guess_id=guess_id).order_by('-time').first()

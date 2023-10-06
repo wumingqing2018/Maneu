@@ -9,128 +9,129 @@
                 </form>
             </div>
         </div>
-        <hr>
-        {# 订单基本信息 #}
-        <h4>订单基本信息</h4>
-        <form class="vertical2" id="order">
-            <div class="col-12 row">
-                <div class="col-9">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text col-1">时间</span>
-                        <input class="form-control date_time" id="time" name="time" type="date" autocomplete="off"
-                               required>
-                        <span class="input-group-text col-1">姓名</span>
-                        <input class="form-control" id="name" name="name" type="text" autocomplete="off" required>
-                        <span class="input-group-text col-1">电话</span>
-                        <input class="form-control" id="phone" name="phone" type="text" autocomplete="off" required>
-                    </div>
+        <hr style="color:#ffffff;">
+
+        {# 客户基础数据 #}
+        <form class="vertical2" id="order" style="margin-top: 3%; margin-bottom: 5%">
+            <h5>客户基础数据</h5>
+            <div class="col-3" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-3">时间</span>
+                    <input class="form-control date_time" id="time" name="time" type="date" autocomplete="off" required>
+                </div>
+            </div>
+            <div class="col-3" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-3">电话</span>
+                    <input class="form-control" id="phone" name="phone" type="text">
+                </div>
+            </div>
+            <div class="col-3" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-3">姓名</span>
+                    <input class="form-control" id="name" name="name" type="text">
+                </div>
+            </div>
+            <div class="col-9" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-1">年龄</span>
+                    <input class="form-control" type="text" name="age" list="age">
+                    <span class="input-group-text col-1">性别</span>
+                    <input class="form-control" type="text" name="sex" list="sex">
+                    <span class="input-group-text col-1">眼位</span>
+                    <input class="form-control" type="text" name="OT" list="OT">
+                    <span class="input-group-text col-1">主视眼</span>
+                    <input class="form-control" type="text" name="EM" list="EM">
+                </div>
+            </div>
+            <div class="col-9" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-1">病族史</span>
+                    <input class="form-control" type="text" name="DFH" list="DFH">
+                </div>
+            </div>
+
+            <div class="col-9" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-1">备注</span>
+                    <input class="form-control" type="text" id="remark" name="remark">
                 </div>
             </div>
         </form>
-        <hr style="color: white">
+        <hr style="color:#ffffff;">
+
+
         {# 视力解决方案 #}
-        <div class="col-12 row">
-            <div class="col-7">
+        <form class="vertical2" id="VisionSolutions" style="margin-top: 3%; margin-bottom: 5%">
+            <h5>视力解决方案</h5>
+            <div class="col-9" style="margin-bottom: 5px">
                 <div class="input-group input-group-sm">
-                    <button type="button" class="btn btn-small btn-warning col-12" id="VisionSolutionsShowButton">
-                        显示视力解决方案
-                    </button>
-                </div>
-                <div class="input-group input-group-sm">
-                    <button type="button" class="btn btn-small btn-warning col-12" id="VisionSolutionsHideButton"
-                            style="display: none">隐藏视力解决方案
-                    </button>
+                    <span class="input-group-text col-1">右眼OD</span>
+                    <input autocomplete="off" type="text" name="OD_VA" list="VA" class="form-control" placeholder="裸眼视力">
+                    <input autocomplete="off" type="text" name="OD_SPH" list="CYL&SPH" class="form-control"
+                           placeholder="球镜">
+                    <input autocomplete="off" type="text" name="OD_CYL" list="CYL&SPH" class="form-control"
+                           placeholder="柱镜">
+                    <input autocomplete="off" type="text" name="OD_AX" list="AX" class="form-control"
+                           placeholder="轴位">
+                    <input autocomplete="off" type="text" name="OD_PR" list="PR" class="form-control"
+                           placeholder="棱镜">
+                    <input autocomplete="off" type="text" name="OD_FR" list="FR" class="form-control"
+                           placeholder="基地取向">
+                    <input autocomplete="off" type="text" name="OD_ADD" list="ADD" class="form-control"
+                           placeholder="下加光">
+                    <input autocomplete="off" type="text" name="OD_BCVA" list="VA" class="form-control"
+                           placeholder="矫正视力">
                 </div>
             </div>
-            <div class="col-2">
-                <div class="col-6 offset-6 input-group input-group-sm">
-                    <button type="button" class="btn btn-small btn-warning" id="VisionHistory" style="display: none">
-                        引用历史记录
-                    </button>
+            <div class="col-9" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-1">左眼OS</span>
+                    <input autocomplete="off" type="text" name="OS_VA" list="VA" class="form-control"
+                           placeholder="裸眼视力">
+                    <input autocomplete="off" type="text" name="OS_SPH" list="CYL&SPH" class="form-control"
+                           placeholder="球镜">
+                    <input autocomplete="off" type="text" name="OS_CYL" list="CYL&SPH" class="form-control"
+                           placeholder="柱镜">
+                    <input autocomplete="off" type="text" name="OS_AX" list="AX" class="form-control"
+                           placeholder="轴位">
+                    <input autocomplete="off" type="text" name="OS_PR" list="PR" class="form-control"
+                           placeholder="棱镜">
+                    <input autocomplete="off" type="text" name="OS_FR" list="FR" class="form-control"
+                           placeholder="基地取向">
+                    <input autocomplete="off" type="text" name="OS_ADD" list="ADD" class="form-control"
+                           placeholder="下加光">
+                    <input autocomplete="off" type="text" name="OS_BCVA" list="VA" class="form-control"
+                           placeholder="矫正视力">
                 </div>
             </div>
-        </div>
-        <div class="col-12 row">
-            <form class="vertical2" id="VisionSolutions" style="display: none">
-                <hr style="color: white">
-                <div class="col-9">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text col-1">右眼OD</span>
-                        <input autocomplete="off" type="text" name="OD_VA" list="VA" class="form-control"
-                               placeholder="裸眼视力">
-                        <input autocomplete="off" type="text" name="OD_SPH" list="CYL&SPH" class="form-control"
-                               placeholder="球镜">
-                        <input autocomplete="off" type="text" name="OD_CYL" list="CYL&SPH" class="form-control"
-                               placeholder="柱镜">
-                        <input autocomplete="off" type="text" name="OD_AX" list="AX" class="form-control"
-                               placeholder="轴位">
-                        <input autocomplete="off" type="text" name="OD_PR" list="PR" class="form-control"
-                               placeholder="棱镜">
-                        <input autocomplete="off" type="text" name="OD_FR" list="FR" class="form-control"
-                               placeholder="基地取向">
-                        <input autocomplete="off" type="text" name="OD_ADD" list="ADD" class="form-control"
-                               placeholder="下加光">
-                        <input autocomplete="off" type="text" name="OD_BCVA" list="VA" class="form-control"
-                               placeholder="矫正视力">
-                    </div>
+            <div class="col-3" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-3">方案类型</span>
+                    <input autocomplete="off" type="text" class="form-control col-4" name="function"
+                           list="function">
                 </div>
-                <div class="col-9">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text col-1">左眼OS</span>
-                        <input autocomplete="off" type="text" name="OS_VA" list="VA" class="form-control"
-                               placeholder="裸眼视力">
-                        <input autocomplete="off" type="text" name="OS_SPH" list="CYL&SPH" class="form-control"
-                               placeholder="球镜">
-                        <input autocomplete="off" type="text" name="OS_CYL" list="CYL&SPH" class="form-control"
-                               placeholder="柱镜">
-                        <input autocomplete="off" type="text" name="OS_AX" list="AX" class="form-control"
-                               placeholder="轴位">
-                        <input autocomplete="off" type="text" name="OS_PR" list="PR" class="form-control"
-                               placeholder="棱镜">
-                        <input autocomplete="off" type="text" name="OS_FR" list="FR" class="form-control"
-                               placeholder="基地取向">
-                        <input autocomplete="off" type="text" name="OS_ADD" list="ADD" class="form-control"
-                               placeholder="下加光">
-                        <input autocomplete="off" type="text" name="OS_BCVA" list="VA" class="form-control"
-                               placeholder="矫正视力">
-                    </div>
+            </div>
+            <div class="col-3" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-3">瞳距</span>
+                    <input autocomplete="off" type="text" class="form-control" name="PD" list="PD">
                 </div>
-                <div class="col-9">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text col-1">方案类型</span>
-                        <input autocomplete="off" type="text" class="form-control col-4" name="function"
-                               list="function">
-                    </div>
+            </div>
+            <div class="col-9" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-1">备注</span>
+                    <input autocomplete="off" type="text" name="remark" id="remark" class="form-control">
                 </div>
-                <div class="col-9">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text col-1">瞳距</span>
-                        <input autocomplete="off" type="text" class="form-control" name="PD" list="pd">
-                    </div>
-                </div>
-                <div class="col-9">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text col-1">配镜师建议</span>
-                        <input autocomplete="off" type="text" name="remark" id="remark" class="form-control">
-                    </div>
-                </div>
-            </form>
-        </div>
-        {# 视力解决方案 #}
-        <hr style="color: white">
+            </div>
+        </form>
+        <hr style="color:#ffffff;">
+
+
         {# 产品信息 #}
-        <div id="Product_Orders_TABLE">
-            <div class="col-9 row">
-                <div class="col-11">
-                    <h5>产品订单</h5>
-                </div>
-                <div class="col-1">
-                    <div class="col-6 offset-2  input-group input-group-sm">
-                        <button type="button" class="btn btn-primary Store" id="AddMoreTextBox">添加</button>
-                    </div>
-                </div>
-            </div>
-            <form class="col-9 row vertical2 Product_Orders">
+        <form class="vertical2 Product_Orders" style="margin-top: 3%; margin-bottom: 5%">
+            <h5>产品订单</h5>
+            <div class="col-9" style="margin-bottom: 5px">
                 <div class="input-group input-group-sm">
                     <input autocomplete="off" type="text" name="arg10" class="form-control" style="width: 11%"
                            placeholder="类别">
@@ -140,14 +141,71 @@
                            placeholder="型号">
                     <input autocomplete="off" type="text" name="arg13" class="form-control" style="width: 51%"
                            placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg14" class="form-control" style="width: 11%"
-                           placeholder="价格">
-                    <input class="form-control" onclick="remove(this)" type="button" style="width: 5%" value="删除">
+                    <input autocomplete="off" type="text" name="arg14" class="form-control price" style="width: 11%"
+                           value="0">
                 </div>
-            </form>
-        </div>
-        {# 产品信息 #}
-        <hr style="color: white">
+            </div>
+            <div class="col-9" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <input autocomplete="off" type="text" name="arg20" class="form-control" style="width: 11%"
+                           placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg21" class="form-control" style="width: 11%"
+                           placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg22" class="form-control" style="width: 11%"
+                           placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg23" class="form-control" style="width: 51%"
+                           placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg24" class="form-control price" style="width: 11%"
+                           value="0">
+                </div>
+            </div>
+            <div class="col-9" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <input autocomplete="off" type="text" name="arg30" class="form-control" style="width: 11%"
+                           placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg31" class="form-control" style="width: 11%"
+                           placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg32" class="form-control" style="width: 11%"
+                           placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg33" class="form-control" style="width: 51%"
+                           placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg34" class="form-control price" style="width: 11%"
+                           value="0">
+                </div>
+            </div>
+            <div class="col-9" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <input autocomplete="off" type="text" name="arg40" class="form-control" style="width: 11%"
+                           placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg41" class="form-control" style="width: 11%"
+                           placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg42" class="form-control" style="width: 11%"
+                           placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg43" class="form-control" style="width: 51%"
+                           placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg44" class="form-control price" style="width: 11%"
+                           value="0">
+                </div>
+            </div>
+            <div class="col-9" style="margin-bottom: 5px">
+                <div class="input-group input-group-sm">
+                    <input autocomplete="off" type="text" name="arg50" class="form-control" style="width: 11%"
+                           placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg51" class="form-control" style="width: 11%"
+                           placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg52" class="form-control" style="width: 11%"
+                           placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg53" class="form-control" style="width: 51%"
+                           placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg54" class="form-control price" style="width: 11%"
+                           value="0">
+                </div>
+            </div>
+
+        </form>
+        <hr style="color:#ffffff;">
+
+
         {# 提交或返回按钮 #}
         <div class="col-12 row">
             <div class="input-group input-group-sm">
@@ -160,8 +218,25 @@
                 </form>
             </div>
         </div>
-        {# 提交或返回按钮 #}
     </div>
+
+
+    <datalist id="DFH">
+        <option>有</option>
+        <option>无</option>
+    </datalist>
+    <datalist id="EM">
+        <option>右</option>
+        <option>左</option>
+    </datalist>
+    <datalist id="OT">
+        <option>正位眼</option>
+        <option>斜视</option>
+    </datalist>
+    <datalist id="sex">
+        <option>男</option>
+        <option>女</option>
+    </datalist>
     <datalist id="VA">
         <option>0.0</option>
         <option>0.1</option>
@@ -264,26 +339,26 @@
         <option>37</option>
         <option>38</option>
         <option>39</option>
-         <option>40</option>
-         <option>41</option>
-         <option>42</option>
-         <option>43</option>
-         <option>44</option>
-         <option>45</option>
-         <option>46</option>
-         <option>47</option>
-         <option>48</option>
-         <option>49</option>
-         <option>50</option>
-         <option>51</option>
-         <option>52</option>
-         <option>53</option>
-         <option>54</option>
-         <option>55</option>
-         <option>56</option>
-         <option>57</option>
-         <option>58</option>
-         <option>59</option>
+        <option>40</option>
+        <option>41</option>
+        <option>42</option>
+        <option>43</option>
+        <option>44</option>
+        <option>45</option>
+        <option>46</option>
+        <option>47</option>
+        <option>48</option>
+        <option>49</option>
+        <option>50</option>
+        <option>51</option>
+        <option>52</option>
+        <option>53</option>
+        <option>54</option>
+        <option>55</option>
+        <option>56</option>
+        <option>57</option>
+        <option>58</option>
+        <option>59</option>
         <option>60</option>
         <option>61</option>
         <option>62</option>
@@ -433,7 +508,7 @@
         <option>近用解决方案</option>
         <option>远用解决方案</option>
     </datalist>
-    <datalist id="pd">
+    <datalist id="PD">
         <option>42.0</option>
         <option>42.5</option>
         <option>43.0</option>
@@ -517,7 +592,6 @@
         <option>82.0</option>
         <option>82.5</option>
     </datalist>
-
 {% endblock %}
 {% block javascript %}
     <script type="application/javascript" src="{% static 'javascript/maneu/time.js' %}"></script>

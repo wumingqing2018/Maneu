@@ -8,13 +8,12 @@ from maneu_order import service
 def search(request):
     time = request.GET.get('time')
     text = request.GET.get('text')
-    admin_id = request.session.get('id')
     if text:
         """查找指定订单"""
-        list = service.ManeuOrder_Search(text=text, admin_id=admin_id).values('id', 'name', 'phone', 'time')
+        list = service.ManeuOrder_Search(text=text, admin_id=request.session.get('id')).values('id', 'name', 'phone', 'time')
         return render(request, 'maneu_order/index.html', {'list': list})
     elif time:
-        list = service.ManeuOrder_time(admin_id=admin_id, time=time).values('id', 'name', 'phone', 'time')
+        list = service.ManeuOrder_time(time=time, admin_id=request.session.get('id')).values('id', 'name', 'phone', 'time')
         return render(request, 'maneu_order/index.html', {'list': list})
     return index(request)
 
@@ -24,7 +23,7 @@ def index(request):
     订单列表功能
     在session获取商家id 通过商家id查找订单列表
     """
-    list = service.ManeuOrder_all(admin_id=request.session.get('id')).values('id', 'name', 'phone', 'time')  # 查找今日订单
+    list = service.ManeuOrder_all(admin_id=request.session.get('id'))
     return render(request, 'maneu_order/index.html', {'list': list})
 
 
@@ -35,7 +34,6 @@ def delete(request):
         vision = service.ManeuVision_delete(id=order.vision_id)
         server = service.ManeuService_delete_order_id(order_id=request.POST.get('order_id'))
         order = service.ManeuOrder_delete(admin_id=request.session.get('id'), id=request.POST.get('order_id'))
-        print(server, store, vision, order)
     return index(request)
 
 
@@ -48,24 +46,28 @@ def detail(request):
     false
         渲染error页面并传输错误参数
     """
-    content = {}
-    content['order'] = service.ManeuOrder_id(id=request.POST.get('order_id'), admin_id=request.session.get('id'))
-    content['store'] = service.ManeuStore_id(id=content['order'].store_id).content
-    content['vision'] = service.ManeuVision_id(id=content['order'].vision_id).content
-    content['server'] = service.ManeuService_orderID(order_id=content['order'].id)
-    return render(request, 'maneu_order/detail.html', content)
+    order = service.ManeuOrder_id(id=request.POST.get('order_id'), admin_id=request.session.get('id'))
+    guess = service.ManeuGuess_id(id=order.guess_id)
+    store = service.ManeuStore_id(id=order.store_id).content
+    vision = service.ManeuVision_id(id=order.vision_id).content
+    server = service.ManeuService_orderID(order_id=order.id)
+    return render(request, 'maneu_order/detail.html', {'order': order, 'store': store, 'vision': vision, 'server': server, 'guess': guess})
 
 
 def insert(request):
     """添加订单"""
     if request.method == 'POST':
         order = json.loads(request.POST.get('order_json'))
-        try:
-            ManeuGuess_id = service.ManeuGuess_search(admin_id=request.session.get('id'), name=order['name'],
-                                                      phone=order['phone']).id
-        except:
-            ManeuGuess_id = service.ManeuGuess_insert(admin_id=request.session.get('id'), name=order['name'],
-                                                      phone=order['phone'], time=order['time']).id
+        ManeuGuess_id = service.ManeuGuess_search(admin_id=request.session.get('id'),
+                                                  time=order['time'],
+                                                  name=order['name'],
+                                                  phone=order['phone'],
+                                                  sex=order['sex'],
+                                                  age=order['age'],
+                                                  ot=order['OT'],
+                                                  em=order['EM'],
+                                                  dfh=order['DFH'])[0].id
+
         vision_id = service.ManeuVision_insert(admin_id=request.session.get('id'), guess_id=ManeuGuess_id,
                                                time=order['time'], content=request.POST.get('Vision_Solutions')).id
         store_id = service.ManeuStore_insert(admin_id=request.session.get('id'), guess_id=ManeuGuess_id,
@@ -100,6 +102,3 @@ def update(request):
     return index(request)
 
 
-def test1(request):
-    print(service.ManeuRefraction.objects.filter(content__contains='SR_remark').update(
-        content='{"OS_VA":"","OS_SPH":"","OS_CYL":"","OS_AX":"","OS_BCVA":"","OS_AL":"","OS_AK":"","OS_AD":"","OS_CCT":"","OS_LT":"","OS_VT":"","OD_VA":"","OD_SPH":"","OD_CYL":"","OD_AX":"","OD_BCVA":"","OD_AL":"","OD_AK":"","OD_AD":"","OD_CCT":"","OD_LT":"","OD_VT":""}'))
