@@ -12,6 +12,13 @@ def ManeuOrder_all(admin_id=''):
     return ManeuOrder.objects.filter(admin_id=admin_id).order_by('-time').all()
 
 
+def ManeuOrder_index(admin_id='', star='', end=''):
+    """
+    全部订单
+    """
+    return ManeuOrder.objects.filter(admin_id=admin_id, time__gte=star, time__lte=end).order_by('-time').all()
+
+
 def ManeuOrder_id(id='', admin_id=''):
     """
     查找指定订单

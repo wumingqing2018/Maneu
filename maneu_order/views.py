@@ -28,12 +28,12 @@ def index(request):
 
 
 def delete(request):
-    order = service.ManeuOrder_id(id=request.POST.get('order_id'), admin_id=request.session.get('id'))
+    order = service.ManeuOrder_id(id=request.GET.get('order_id'), admin_id=request.session.get('id'))
     if order:
         store = service.ManeuStore_delete(id=order.store_id)
         vision = service.ManeuVision_delete(id=order.vision_id)
-        server = service.ManeuService_delete_order_id(order_id=request.POST.get('order_id'))
-        order = service.ManeuOrder_delete(admin_id=request.session.get('id'), id=request.POST.get('order_id'))
+        server = service.ManeuService_delete_order_id(order_id=request.GET.get('order_id'))
+        order = service.ManeuOrder_delete(admin_id=request.session.get('id'), id=request.GET.get('order_id'))
     return index(request)
 
 
@@ -46,7 +46,11 @@ def detail(request):
     false
         渲染error页面并传输错误参数
     """
-    order = service.ManeuOrder_id(id=request.POST.get('order_id'), admin_id=request.session.get('id'))
+    try:
+        order_id = request.POST('order_id')
+    except:
+        order_id = request.GET.get('order_id')
+    order = service.ManeuOrder_id(id=order_id, admin_id=request.session.get('id'))
     guess = service.ManeuGuess_id(id=order.guess_id)
     store = service.ManeuStore_id(id=order.store_id).content
     vision = service.ManeuVision_id(id=order.vision_id).content
