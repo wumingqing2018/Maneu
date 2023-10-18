@@ -5,19 +5,6 @@ from django.shortcuts import render
 from maneu_order import service
 
 
-def search(request):
-    time = request.GET.get('time')
-    text = request.GET.get('text')
-    if text:
-        """查找指定订单"""
-        list = service.ManeuOrder_Search(text=text, admin_id=request.session.get('id')).values('id', 'name', 'phone', 'time')
-        return render(request, 'maneu_order/index.html', {'list': list})
-    elif time:
-        list = service.ManeuOrder_time(time=time, admin_id=request.session.get('id')).values('id', 'name', 'phone', 'time')
-        return render(request, 'maneu_order/index.html', {'list': list})
-    return index(request)
-
-
 def index(request):
     """
     订单列表功能
@@ -25,16 +12,6 @@ def index(request):
     """
     list = service.ManeuOrder_all(admin_id=request.session.get('id'))
     return render(request, 'maneu_order/index.html', {'list': list})
-
-
-def delete(request):
-    order = service.ManeuOrder_id(id=request.GET.get('order_id'), admin_id=request.session.get('id'))
-    if order:
-        store = service.ManeuStore_delete(id=order.store_id)
-        vision = service.ManeuVision_delete(id=order.vision_id)
-        server = service.ManeuService_delete_order_id(order_id=request.GET.get('order_id'))
-        order = service.ManeuOrder_delete(admin_id=request.session.get('id'), id=request.GET.get('order_id'))
-    return index(request)
 
 
 def detail(request):
@@ -47,9 +24,10 @@ def detail(request):
         渲染error页面并传输错误参数
     """
     try:
-        order_id = request.POST('order_id')
+        order_id = request.POST.get('order_id')
     except:
         order_id = request.GET.get('order_id')
+    print(order_id)
     order = service.ManeuOrder_id(id=order_id, admin_id=request.session.get('id'))
     guess = service.ManeuGuess_id(id=order.guess_id)
     store = service.ManeuStore_id(id=order.store_id).content

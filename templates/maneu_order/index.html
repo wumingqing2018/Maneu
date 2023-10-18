@@ -8,15 +8,28 @@
     <script type="text/javascript" src="https://cdn.staticfile.org/moment.js/2.29.4/locale/zh-cn.js"></script>
     <script type="text/javascript" src="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.js"></script>
     {#https://www.datetimepicker.cn/daterangepicker/#}
-    <script type="application/javascript" src="{% static 'javascript/maneu/delete.js' %}"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu/time.js' %}"></script>
-
     <script type="application/javascript">
-        api_index = "{% url 'maneu_order:api_index' %}"
-        api_search = "{% url 'maneu_order:search' %}"
         api_detail = "{% url 'maneu_order:detail' %}"
-        api_delete = "{% url 'maneu_order:delete' %}"
-
+        api_index = "{% url 'maneu_order:api_index' %}"
+        api_search = "{% url 'maneu_order:api_search' %}"
+        api_delete = "{% url 'maneu_order:api_delete' %}"
+        function deleteBtn(obj){
+            if (confirm("您确定要删除吗？")) {
+                $.ajax({
+                    url: api_delete,
+                    type: 'GET',
+                    data: {
+                        order_id :obj.alt,
+                    },
+                    success: function (res) {
+                        obj.hide();
+                    }
+                })
+            } else {
+                return false;
+            }
+        }
         $(function() {
             $.ajax({
                 url: api_index,
@@ -65,7 +78,7 @@
                 opens:'center',
                 locale:{format:'YYYY-MM-DD'}
             }, function(start, end, label) {
-                                            $('#body').empty()
+                $('#body').empty()
                 $.ajax({
                     url: api_index,
                     data: {
@@ -110,6 +123,51 @@
                     }
                 })
             });
+            $('input[name="search-value"]').keyup(function () {
+                $('#body').empty()
+                $.ajax({
+                    url: api_search,
+                    data: {
+                        text: $('input[name="search-value"]').val()
+                    },
+                    success: function (res) {
+                        for (i in res){
+                            $('#body').append(
+                                "                <tr>\n" +
+                                "                    <td valign='middle'>\n" +
+                                "                        <span>"+ res[i]['time'] +"</span>\n" +
+                                "                    </td>\n" +
+                                "                    <td valign='middle'>\n" +
+                                "                        <span>"+ res[i]['name'] +"</span>\n" +
+                                "                    </td>\n" +
+                                "                    <td valign='middle'>\n" +
+                                "                        <span>"+ res[i]['phone'] +"</span>\n" +
+                                "                    </td>\n" +
+                                "                    <td valign='middle'>\n" +
+                                "                        <span>999</span>\n" +
+                                "                    </td>\n" +
+                                "                    <td valign='middle' align='right'>\n" +
+                                "                        <div class='col-6 row'>\n" +
+                                "                            <form class='col-6' method='get' action="+ api_delete +" >\n" +
+                                "                                <input type='hidden' name='order_id' value="+ res[i]['id'] +">\n" +
+                                "                                <div class='input-group input-group-sm'>\n" +
+                                "                                    <input type='button' class='btn btn-primary col-12' onclick='deleteBtn(this)' ' alt='"+ res[i]['id'] +"' value='删除'>\n" +
+                                "                                </div>\n" +
+                                "                            </form>\n" +
+                                "                            <form class='col-6' method='get' action="+ api_detail +" >\n" +
+                                "                                <input type='hidden' name='order_id' value="+ res[i]['id'] +">\n" +
+                                "                                <div class='input-group input-group-sm'>\n" +
+                                "                                    <input type='submit' class='btn btn-primary col-12' value='查看'>\n" +
+                                "                                </div>\n" +
+                                "                            </form>\n" +
+                                "                        </div>\n" +
+                                "                    </td>\n" +
+                                "                </tr>\n"
+                            )
+                        }
+                    }
+                })
+            })
         });
     </script>
 {% endblock %}
@@ -123,14 +181,12 @@
                 </td>
                 <td class="col-3">
                     <div class="input-group input-group-sm">
-                        <input class="col-12 form-control" name="daterange" type="text" >
+                        <input type="text" class="form-control" name="daterange">
                     </div>
                 </td>
                 <td class="col-3">
                     <div class="input-group input-group-sm">
-                        <input type="button" class="btn btn-primary" id="reset-btn" value="重置">
-                        <input type="text" class="form-control" id="search-value" placeholder="使用手机或姓名查询">
-                        <input type="button" class="btn btn-primary" id="search-btn" value="提交">
+                        <input type="text" class="form-control" name="search-value" placeholder="使用手机或姓名查询">
                     </div>
                 </td>
             </tr>
@@ -158,8 +214,7 @@
                 </td>
             </tr>
             </thead>
-            <tbody id="body">
-            </tbody>
+            <tbody id="body"></tbody>
         </table>
     </div>
 {% endblock %}

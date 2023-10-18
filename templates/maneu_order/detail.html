@@ -256,15 +256,6 @@
                     </div>
                 </form>
             </div>
-            <div class="col-1">
-                <form method="post" action="{% url 'maneu_order:delete' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="order_id" value="{{ order.id }}">
-                    <div class="input-group input-group-sm">
-                        <input type="submit" class="btn btn-danger" id="delete" value="删除">
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 {% endblock %}
