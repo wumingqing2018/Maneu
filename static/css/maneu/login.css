@@ -9,6 +9,7 @@ html {
 
 body {
     height: 100%;
+        background: #003153;
 }
 
 .container-fluid {
@@ -73,4 +74,10 @@ a {
     font-size: 10px;
     margin-left: 10px;
     color: red;
+}
+
+span {
+    font-size: 10px;
+    color: #FFC048;
+    display: block;
 }

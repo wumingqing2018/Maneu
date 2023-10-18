@@ -1,13 +1,14 @@
-{% extends 'maneu/base_admin.html' %}
+{% extends 'maneu/base.html' %}
 {% load static %}
 {% block css %}
     <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.css"/>
 {% endblock %}
 {% block javascript %}
-    <script type="text/javascript" src="https://cdn.staticfile.org/moment.js/2.29.4/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.staticfile.org/moment.js/2.29.4/locale/zh-cn.js"></script>
-    <script type="text/javascript" src="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.js"></script>
+    <script type="application/javascript" src="https://cdn.staticfile.org/moment.js/2.29.4/moment.min.js"></script>
+    <script type="application/javascript" src="https://cdn.staticfile.org/moment.js/2.29.4/locale/zh-cn.js"></script>
+    <script type="application/javascript" src="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.js"></script>
     {#https://www.datetimepicker.cn/daterangepicker/#}
+    <script type="application/javascript" src="{% static 'javascript/maneu/time.js' %}"></script>
     <script type="application/javascript">
         api_detail = "{% url 'maneu_order:detail' %}"
         api_index = "{% url 'maneu_order:api_index' %}"
