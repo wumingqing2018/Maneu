@@ -15,21 +15,21 @@
         <h4>订单基本信息</h4>
         <form class="vertical2" id="order">
             <div class="col-12 row">
-                <div class="col-md-3 col-xs-12">
+                <div class="col-3 col-xs-12">
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text col-3">时间</span>
                         <input class="form-control" id="time" name="time" type="date" autocomplete="off"
                                value="{{ order.time|safe }}">
                     </div>
                 </div>
-                <div class="col-md-3 col-xs-12">
+                <div class="col-3 col-xs-12">
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text col-3">姓名</span>
                         <input class="form-control" id="name" name="name" type="text" autocomplete="off"
                                value="{{ order.name }}">
                     </div>
                 </div>
-                <div class="col-md-3 col-xs-12">
+                <div class="col-3 col-xs-12">
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text col-3">电话</span>
                         <input class="form-control" id="phone" name="phone" type="text" autocomplete="off"
@@ -85,13 +85,13 @@
                 </div>
                 <div class="col-9">
                     <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text col-md-1">瞳距</span>
+                        <span class="input-group-text col-1">瞳距</span>
                         <input autocomplete="off" type="text" class="form-control" name="PD" list="pd">
                     </div>
                 </div>
                 <div class="col-9">
                     <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text col-md-1">方案类型</span>
+                        <span class="input-group-text col-1">方案类型</span>
                         <input autocomplete="off" type="text" class="form-control col-4" name="function"
                                list="function">
                     </div>
@@ -105,29 +105,29 @@
             </div>
         </form>
         <hr style="color: white">
-        <div class="col-md-12 row">
-            <div class="col-md-7">
+        <div class="col-12 row">
+            <div class="col-7">
                 <h4>产品信息</h4>
             </div>
-            <div class="col-md-1">
+            <div class="col-1">
                 <div class="input-group input-group-sm mb-2">
-                    <button type="button" class="btn btn-warning col-md-12" id="DeleteTextBox">删除</button>
+                    <button type="button" class="btn btn-warning col-12" id="DeleteTextBox">删除</button>
                 </div>
             </div>
-            <div class="col-md-1">
+            <div class="col-1">
                 <div class="input-group input-group-sm mb-2">
-                    <button type="button" class="btn btn-primary col-md-12" id="AddMoreTextBox">添加</button>
+                    <button type="button" class="btn btn-primary col-12" id="AddMoreTextBox">添加</button>
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-12">
             <form class="vertical2" id="Product_Orders">
-                <div class="col-md-9 row" id="Product_Orders_TABLE">
+                <div class="col-9 row" id="Product_Orders_TABLE">
                 </div>
             </form>
         </div>
         <hr style="color: white">
-        <div class="col-md-12 row">
+        <div class="col-12 row">
             <div class="col-1">
                 <div class="input-group input-group-sm mb-2">
                     <form class="vertical2" id="order_insert" method="post" action="{% url 'maneu_order:update' %}">
