@@ -17,7 +17,7 @@
             <div class="col-3" style="margin-bottom: 5px">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">时间</span>
-                    <input class="form-control date_time" id="time" name="time" type="date" autocomplete="off" required>
+                    <input class="form-control" name="time" type="date" value="{{ time }}" autocomplete="off">
                 </div>
             </div>
             <div class="col-3" style="margin-bottom: 5px">
@@ -592,9 +592,9 @@
         <option>82.0</option>
         <option>82.5</option>
     </datalist>
+
 {% endblock %}
 {% block javascript %}
-    <script type="application/javascript" src="{% static 'javascript/maneu/time.js' %}"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu/serialize_moudels.js' %}"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu_order/order_insert_pc.js' %}"></script>
 {% endblock %}

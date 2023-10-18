@@ -1,4 +1,5 @@
 import json
+from common import common
 
 from django.shortcuts import render
 
@@ -10,8 +11,7 @@ def index(request):
     订单列表功能
     在session获取商家id 通过商家id查找订单列表
     """
-    list = service.ManeuOrder_all(admin_id=request.session.get('id'))
-    return render(request, 'maneu_order/index.html', {'list': list})
+    return render(request, 'maneu_order/index.html')
 
 
 def detail(request):
@@ -23,11 +23,9 @@ def detail(request):
     false
         渲染error页面并传输错误参数
     """
-    try:
-        order_id = request.POST.get('order_id')
-    except:
+    order_id = request.POST.get('order_id')
+    if order_id == None:
         order_id = request.GET.get('order_id')
-    print(order_id)
     order = service.ManeuOrder_id(id=order_id, admin_id=request.session.get('id'))
     guess = service.ManeuGuess_id(id=order.guess_id)
     store = service.ManeuStore_id(id=order.store_id).content
@@ -63,7 +61,8 @@ def insert(request):
         request.POST['order_id'] = order_id
         request.POST._mutable = False
         return detail(request)
-    return render(request, 'maneu_order/insert.html')
+    time = common.today()
+    return render(request, 'maneu_order/insert.html', {'time': time})
 
 
 def update(request):
