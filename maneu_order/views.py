@@ -61,8 +61,7 @@ def insert(request):
         request.POST['order_id'] = order_id
         request.POST._mutable = False
         return detail(request)
-    time = common.today()
-    return render(request, 'maneu_order/insert.html', {'time': time})
+    return render(request, 'maneu_order/insert.html', {'time': common.today()})
 
 
 def update(request):
