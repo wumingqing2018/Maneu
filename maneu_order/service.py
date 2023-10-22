@@ -47,8 +47,8 @@ def ManeuOrder_insert(name='', time='', phone='', guess_id='', admin_id='', stor
     return ManeuOrder.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, admin_id=admin_id, store_id=store_id, vision_id=vision_id, remark=remark)
 
 
-def ManeuOrder_update(order_id='', name='', phone='', time="", remark=""):
-    return ManeuOrder.objects.filter(id=order_id).update(name=name, phone=phone, time=time, remark=remark)
+def ManeuOrder_update(id='', name='', phone='', time="", remark=""):
+    return ManeuOrder.objects.filter(id=id).update(name=name, phone=phone, time=time, remark=remark)
 
 
 def ManeuStore_id(id=''):

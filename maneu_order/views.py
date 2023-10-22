@@ -66,6 +66,6 @@ def update(request):
         service.ManeuVision_update(id=request.POST.get('vision_id'), content=request.POST.get('vision_form'))
         service.ManeuStore_update(id=request.POST.get('store_id'), content=request.POST.get('product_form'))
         service.ManeuGuess_update(id=request.POST.get('guess_id'), content=request.POST.get('guess_form'))
-        service.ManeuOrder_update(order_id=request.POST.get('order_id'), name=request.POST.get('order_name'), phone=request.POST.get('order_phone'), time=request.POST.get('order_time'), remark=request.POST.get('order_remark'))
+        service.ManeuOrder_update(id=request.POST.get('order_id'), name=request.POST.get('order_name'), phone=request.POST.get('order_phone'), time=request.POST.get('order_time'), remark=request.POST.get('order_remark'))
         return detail(request)
     return index(request)
