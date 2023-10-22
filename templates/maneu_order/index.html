@@ -12,31 +12,31 @@
     </script>
 
 
-    <script type="application/javascript" src='{% static "javascript/maneu_order/index/delete.js" %}'></script>
-    <script type="application/javascript" src='{% static "javascript/maneu_order/index/auto_index.js" %}'></script>
-    <script type="application/javascript" src='{% static "javascript/maneu_order/index/time_index.js" %}'></script>
-    <script type="application/javascript" src='{% static "javascript/maneu_order/index/name_index.js" %}'></script>
-
-
     <script type="application/javascript" src="https://cdn.staticfile.org/moment.js/2.29.4/moment.min.js"></script>
     <script type="application/javascript" src="https://cdn.staticfile.org/moment.js/2.29.4/locale/zh-cn.js"></script>
     <script type="application/javascript" src="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.js"></script>
     {#https://www.datetimepicker.cn/daterangepicker/#}
+
+
+    <script type="application/javascript" src='{% static "javascript/maneu_order/index/delete.js" %}'></script>
+{#    <script type="application/javascript" src='{% static "javascript/maneu_order/index/auto_index.js" %}'></script>#}
+    <script type="application/javascript" src='{% static "javascript/maneu_order/index/time_index.js" %}'></script>
+    <script type="application/javascript" src='{% static "javascript/maneu_order/index/name_index.js" %}'></script>
 {% endblock %}
 {% block content %}
     <div class="container">
         <table class="table col-12">
             <thead>
             <tr>
-                <td class="col-6" colspan="3" valign="middle">
+                <td colspan="4" valign="middle">
                     <h5>零售订单管理系统</h5>
                 </td>
-                <td class="col-3">
+                <td>
                     <div class="input-group input-group-sm">
                         <input type="text" id="reportrange" class="form-control">
                     </div>
                 </td>
-                <td class="col-3">
+                <td>
                     <div class="input-group input-group-sm">
                         <input type="text" class="form-control" name="search-value" placeholder="使用手机或姓名查询">
                     </div>
@@ -54,6 +54,9 @@
                 </td>
                 <td valign='middle'>
                     <span>购买价格</span>
+                </td>
+                <td valign='middle'>
+                    <span>订单备注</span>
                 </td>
                 <td valign='middle' align="right">
                     <div class="col-6 row">

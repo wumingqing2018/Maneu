@@ -25,6 +25,9 @@ $(function() {
                     "                    <td valign='middle'>\n" +
                     "                        <span>999</span>\n" +
                     "                    </td>\n" +
+                                        "                    <td valign='middle'>\n" +
+                    "                        <span>" + res[i]['remark'] + "</span>\n" +
+                    "                    </td>\n" +
                     "                    <td valign='middle' align='right'>\n" +
                     "                        <div class='col-6 row'>\n" +
                     "                            <form class='col-6'>\n" +

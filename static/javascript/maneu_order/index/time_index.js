@@ -7,8 +7,8 @@ $(function() {
         $.ajax({
             url: api_index,
             data: {
-                star: start.format('YYYY-MM-DD'),
-                end: end.format('YYYY-MM-DD')
+                star: start.format('YYYY-MM-DD 00:00:00'),
+                end: end.format('YYYY-MM-DD 23:59:59')
             },
             success: function (res) {
                 for (i in res) {
@@ -25,6 +25,9 @@ $(function() {
                         "                    </td>\n" +
                         "                    <td valign='middle'>\n" +
                         "                        <span>999</span>\n" +
+                        "                    </td>\n" +
+                        "                    <td valign='middle'>\n" +
+                        "                        <span>" + res[i]['remark'] + "</span>\n" +
                         "                    </td>\n" +
                         "                    <td valign='middle' align='right'>\n" +
                         "                        <div class='col-6 row'>\n" +

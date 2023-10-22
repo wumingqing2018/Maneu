@@ -297,39 +297,15 @@
 {% endblock %}
 {% block javascript %}
     <script type="application/javascript">
-        guess_id = "{{ guess.id }}"
-        order_id = "{{ order.id }}"
-        service_insert="{% url 'maneu_service:insert' %}"
+        maneu_store = {{ store|safe }};
+        maneu_vision = {{ vision|safe }};
+        guess_id = "{{ guess.id }}";
+        order_id = "{{ order.id }}";
+        service_insert="{% url 'maneu_service:insert' %}";
         csrf_token = $("[name='csrfmiddlewaretoken']").val();
-        $(document).ready(function () {
-            $("#server_button").click(function () {
-                $.ajax({
-                    url: service_insert,
-                    type: 'POST',
-                    data: {
-                        "order_id": order_id,
-                        "guess_id": guess_id,
-                        "content": $("#server_value").val(),
-                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
-                    },
-                    success: function (res) {
-                        alert('添加成功');
-                        $('#server_list').prepend(
-                            "<tr>\n"+
-                            "    <td width='10%'>\n"+
-                            "        <span>"+ res['data']['time'] +"</span>\n"+
-                            "    </>\n"+
-                            "    <td width='90%'>\n"+
-                            "        <span>"+ res['data']['content'] +"</span>\n"+
-                            "    </>\n"+
-                            "</tr>\n"
-                        )
-                    }
-                })
-            })
-        })
     </script>
     <script type="application/javascript" src="{% static 'javascript/maneu/print.js' %}"></script>
     <script type="application/javascript" src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu/delete.js' %}"></script>
+    <script type="application/javascript" src="{% static 'javascript/maneu_order/detail.js' %}"></script>
 {% endblock %}

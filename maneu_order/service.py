@@ -43,9 +43,8 @@ def ManeuOrder_Search(text='', admin_id=''):
     return ManeuOrder.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
 
 
-def ManeuOrder_insert(name='', time='', phone='', guess_id='', admin_id='', store_id='', vision_id=''):
-    return ManeuOrder.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, admin_id=admin_id,
-                                     store_id=store_id, vision_id=vision_id)
+def ManeuOrder_insert(name='', time='', phone='', guess_id='', admin_id='', store_id='', vision_id='', remark=''):
+    return ManeuOrder.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, admin_id=admin_id, store_id=store_id, vision_id=vision_id, remark=remark)
 
 
 def ManeuOrder_update(order_id='', name='', phone=''):

@@ -56,6 +56,7 @@ class ManeuOrder(models.Model):
     admin_id = models.CharField(max_length=36)
     store_id = models.CharField(max_length=36)
     vision_id = models.CharField(max_length=36)  # Field name made lowercase.
+    remark = models.CharField(max_length=512)  # Field name made lowercase.
 
     class Meta:
         managed = False
