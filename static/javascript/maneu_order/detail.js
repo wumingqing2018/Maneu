@@ -1,25 +1,25 @@
 $(document).ready(function () {
-    $("#function").val(maneu_vision.function);
-    $("#PD").val(maneu_vision.PD);
-    $("#remark").val(maneu_vision.remark);
+    $("#function").text(maneu_vision.function);
+    $("#PD").text(maneu_vision.PD);
+    $("#remark").text(maneu_vision.remark);
 
-    $("#OD_VA").val(maneu_vision.OD_VA);
-    $("#OD_SPH").val(maneu_vision.OD_SPH);
-    $("#OD_CYL").val(maneu_vision.OD_CYL);
-    $("#OD_AX").val(maneu_vision.OD_AX);
-    $("#OD_PR").val(maneu_vision.OD_PR);
-    $("#OD_FR").val(maneu_vision.OD_FR);
-    $("#OD_ADD").val(maneu_vision.OD_ADD);
-    $("#OD_BCVA").val(maneu_vision.OD_BCVA);
+    $("#OD_VA").text(maneu_vision.OD_VA);
+    $("#OD_SPH").text(maneu_vision.OD_SPH);
+    $("#OD_CYL").text(maneu_vision.OD_CYL);
+    $("#OD_AX").text(maneu_vision.OD_AX);
+    $("#OD_PR").text(maneu_vision.OD_PR);
+    $("#OD_FR").text(maneu_vision.OD_FR);
+    $("#OD_ADD").text(maneu_vision.OD_ADD);
+    $("#OD_BCVA").text(maneu_vision.OD_BCVA);
 
-    $("#OS_VA").val(maneu_vision.OD_VA);
-    $("#OS_SPH").val(maneu_vision.OD_SPH);
-    $("#OS_CYL").val(maneu_vision.OD_CYL);
-    $("#OS_AX").val(maneu_vision.OD_AX);
-    $("#OS_PR").val(maneu_vision.OD_PR);
-    $("#OS_FR").val(maneu_vision.OD_FR);
-    $("#OS_ADD").val(maneu_vision.OD_ADD);
-    $("#OS_BCVA").val(maneu_vision.OD_BCVA);
+    $("#OS_VA").text(maneu_vision.OD_VA);
+    $("#OS_SPH").text(maneu_vision.OD_SPH);
+    $("#OS_CYL").text(maneu_vision.OD_CYL);
+    $("#OS_AX").text(maneu_vision.OD_AX);
+    $("#OS_PR").text(maneu_vision.OD_PR);
+    $("#OS_FR").text(maneu_vision.OD_FR);
+    $("#OS_ADD").text(maneu_vision.OD_ADD);
+    $("#OS_BCVA").text(maneu_vision.OD_BCVA);
 
     upline = Object.keys(maneu_store).length / 5
     for (i = 1; i <= upline; i++) {

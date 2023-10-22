@@ -53,17 +53,19 @@ def update(request):
     """更新订单"""
     if request.method == 'GET':
         order = service.ManeuOrder_id(id=request.GET.get('order_id'), admin_id=request.session.get('id'))
-        content = {"id": order.id,
+        content = {"order_id": order.id,
+                   "guess_id": order.guess_id,
+                   "store_id": order.store_id,
+                   "vision_id": order.vision_id,
                    "remark": order.remark,
                    "guess": service.ManeuGuess_id(id=order.guess_id),
                    "store": json.loads(service.ManeuStore_id(id=order.store_id).content),
-                   "vision": json.loads(service.ManeuVision_id(id=order.vision_id).content)}
+                   "vision": service.ManeuVision_id(id=order.vision_id).content}
         return render(request, 'maneu_order/update.html', content)
     if request.method == 'POST':
-        order = json.loads(request.POST.get('order_json'))
-        service.ManeuVision_update(id=request.POST.get('vision_id'),
-                                   content=request.POST.get('Vision_Solutions'))
-        service.ManeuStore_update(id=request.POST.get('store_id'), content=request.POST.get('Product_Orders'))
-        service.ManeuOrder_update(order_id=request.POST.get('order_id'), name=order['name'], phone=order['phone'])
+        service.ManeuVision_update(id=request.POST.get('vision_id'), content=request.POST.get('vision_form'))
+        service.ManeuStore_update(id=request.POST.get('store_id'), content=request.POST.get('product_form'))
+        service.ManeuGuess_update(id=request.POST.get('guess_id'), content=request.POST.get('guess_form'))
+        service.ManeuOrder_update(order_id=request.POST.get('order_id'), name=request.POST.get('order_name'), phone=request.POST.get('order_phone'), time=request.POST.get('order_time'), remark=request.POST.get('order_remark'))
         return detail(request)
     return index(request)

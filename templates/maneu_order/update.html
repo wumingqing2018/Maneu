@@ -46,14 +46,13 @@
         </form >
         <hr>
 
-
         {# 视力解决方案 #}
         <form class="vertical2" style="margin-top: 2%; margin-bottom: 4%" id="vision">
             <h5>视力解决方案</h5>
             <div class="col-9" style="margin-bottom: 6px">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-1">右眼OD</span>
-                    <input autocomplete="off" type="text" name="OD_VA" list="VA" class="form-control" placeholder="裸眼视力" value="{{ vision.VA }}">
+                    <input autocomplete="off" type="text" name="OD_VA" list="VA" class="form-control" placeholder="裸眼视力">
                     <input autocomplete="off" type="text" name="OD_SPH" list="CYL&SPH" class="form-control"
                            placeholder="球镜">
                     <input autocomplete="off" type="text" name="OD_CYL" list="CYL&SPH" class="form-control"
@@ -199,18 +198,25 @@
 
 
         {# 提交或返回按钮 #}
-        <form class="vertical2" style="margin-top: 2%; margin-bottom: 4%" method="post" action="{% url 'maneu_order:insert' %}">
+        <form class="vertical2" style="margin-top: 2%; margin-bottom: 4%" method="post" action="{% url 'maneu_order:update' %}">
             {% csrf_token %}
             <input type="hidden" name="order_name" id="order_name">
             <input type="hidden" name="order_time" id="order_time">
             <input type="hidden" name="order_phone" id="order_phone">
             <input type="hidden" name="order_remark" id="order_remark">
 
+
+            <input type="hidden" name="order_id" value="{{ order_id }}">
+            <input type="hidden" name="guess_id" value="{{ guess_id }}">
+            <input type="hidden" name="store_id" value="{{ store_id }}">
+            <input type="hidden" name="vision_id" value="{{ vision_id }}">
+
+
             <input type="hidden" name="guess_form" id="guess_form">
             <input type="hidden" name="vision_form" id="vision_form">
-            <input type="hidden" name="product_form" id="Product_form">
+            <input type="hidden" name="product_form" id="product_form">
             <div class="input-group input-group-sm">
-                <input type="submit" class="btn btn-danger" id="insert" value="提交订单" autocomplete="off">
+                <input type="submit" class="btn btn-danger" id="insert" value="修改订单" autocomplete="off">
             </div>
         </form>
     </div>
@@ -591,13 +597,18 @@
 
 {% endblock %}
 {% block javascript %}
+    <script type="application/javascript">
+        vision = {{ vision|safe }};
+        store = {{ store|safe }};
+    </script>
+
     <script type="application/javascript" src="{% static 'javascript/maneu/serialize_moudels.js' %}"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu_order/update.js' %}"></script>
 {% endblock %}
 {% block css %}
-<style>
-hr {
-    border: 1px solid #ffffff;
-}
-</style>
+    <style>
+        hr {
+            border: 1px solid #ffffff;
+        }
+    </style>
 {% endblock %}

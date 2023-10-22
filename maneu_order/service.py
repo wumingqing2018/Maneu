@@ -47,8 +47,8 @@ def ManeuOrder_insert(name='', time='', phone='', guess_id='', admin_id='', stor
     return ManeuOrder.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, admin_id=admin_id, store_id=store_id, vision_id=vision_id, remark=remark)
 
 
-def ManeuOrder_update(order_id='', name='', phone=''):
-    return ManeuOrder.objects.filter(id=order_id).update(name=name, phone=phone)
+def ManeuOrder_update(order_id='', name='', phone='', time="", remark=""):
+    return ManeuOrder.objects.filter(id=order_id).update(name=name, phone=phone, time=time, remark=remark)
 
 
 def ManeuStore_id(id=''):
@@ -97,9 +97,9 @@ def ManeuGuess_search(admin_id='', name='', time='', phone='', sex='', age='', o
 
 def ManeuGuess_update(id='', content=''):
     contents = json.loads(content)
-    return ManeuGuess.objects.filter(id=id).update(name=contents['guess_name'], phone=contents['guess_phone'],
+    return ManeuGuess.objects.filter(id=id).update(name=contents['name'], phone=contents['phone'],
                                                    sex=contents['sex'], ot=contents['OT'], em=contents['EM'],
-                                                   dfh=contents['DFH'], remark=contents['remark'])
+                                                   dfh=contents['DFH'])
 
 
 def ManeuService_orderID(order_id=''):
