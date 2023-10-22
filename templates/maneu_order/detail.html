@@ -232,6 +232,50 @@
             </tr>
             <tbody id="store_table"></tbody>
         </table>
+        <table class="table table-bordered table-sm text-left" style="margin-top: 2%; margin-bottom: 4%">
+            <tr class="banner">
+                <td colspan="2">
+                    <b>产品售后记录（Product Orders）</b>
+                </td>
+            </tr>
+            <tr>
+                <td width="10%">
+                    <span>时间</span>
+                </td>
+                <td width="90%">
+                    <span>内容</span>
+                </td>
+            </tr>
+            <tbody id="server_list">
+            {% if server.count == 0 %}
+                <tr>
+                    <td colspan="2">
+                        <span>暂无记录</span>
+                    </td>
+                </tr>
+            {% else %}
+                {% for foo in server %}
+                    <tr>
+                        <td width="10%">
+                            <span>{{ foo.time }}</span>
+                        </td>
+                        <td width="90%">
+                            <span>{{ foo.content }}</span>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+
+
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control" id="server_value" placeholder="添加售后记录">
+            {% csrf_token %}
+            <input type="button" class="btn btn-primary" id="server_button" value="提交">
+        </div>
+
+
         <table class="table-sm text-left" style="margin-top: 2%; margin-bottom: 4%">
             <tr>
                 <td>
@@ -253,13 +297,39 @@
 {% endblock %}
 {% block javascript %}
     <script type="application/javascript">
-        maneu_store = {{ store|safe }};
-        maneu_vision = {{ vision|safe }};
-        service_delete = "{% url 'maneu_service:delete' %}"
+        guess_id = "{{ guess.id }}"
+        order_id = "{{ order.id }}"
+        service_insert="{% url 'maneu_service:insert' %}"
+        csrf_token = $("[name='csrfmiddlewaretoken']").val();
+        $(document).ready(function () {
+            $("#server_button").click(function () {
+                $.ajax({
+                    url: service_insert,
+                    type: 'POST',
+                    data: {
+                        "order_id": order_id,
+                        "guess_id": guess_id,
+                        "content": $("#server_value").val(),
+                        "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+                    },
+                    success: function (res) {
+                        alert('添加成功');
+                        $('#server_list').prepend(
+                            "<tr>\n"+
+                            "    <td width='10%'>\n"+
+                            "        <span>"+ res['data']['time'] +"</span>\n"+
+                            "    </>\n"+
+                            "    <td width='90%'>\n"+
+                            "        <span>"+ res['data']['content'] +"</span>\n"+
+                            "    </>\n"+
+                            "</tr>\n"
+                        )
+                    }
+                })
+            })
+        })
     </script>
+    <script type="application/javascript" src="{% static 'javascript/maneu/print.js' %}"></script>
     <script type="application/javascript" src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu/delete.js' %}"></script>
-    <script type="application/javascript" src="{% static 'javascript/maneu/print.js' %}"></script>
-    <script type="application/javascript" src="{% static 'javascript/maneu_order/order_detail.js' %}"></script>
-    <script type="application/javascript" src="{% static 'javascript/maneu/serialize_moudels.js' %}"></script>
 {% endblock %}

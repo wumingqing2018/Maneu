@@ -1,8 +1,8 @@
 import json
-from common import common
 
 from django.shortcuts import render
 
+from common import common
 from maneu_order import service
 
 
@@ -80,5 +80,3 @@ def update(request):
         service.ManeuOrder_update(order_id=request.POST.get('order_id'), name=order['name'], phone=order['phone'])
         return detail(request)
     return index(request)
-
-
