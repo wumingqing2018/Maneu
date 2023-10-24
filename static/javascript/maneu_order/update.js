@@ -32,5 +32,4 @@ $(document).ready(function () {
         product = $('#product').serializeJsonStr();
         $('#product_form').val(product);
     });
-
 });
