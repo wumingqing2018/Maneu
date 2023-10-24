@@ -233,7 +233,7 @@
             <tr>
                 <td>
                     {% if order.remark %}
-                        <span>{{ order.remark }}</span>
+                        <span>{{ order.remark|safe }}</span>
                     {% else %}
                         <span>暂无备注</span>
                     {% endif %}

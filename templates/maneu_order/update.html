@@ -165,7 +165,7 @@
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-1">备注</span>
-                    <input class="form-control" id="remark" name="remark" type="text" value="remark">
+                    <input class="form-control" id="remark" name="remark" type="text" value="{{ order.remark }}">
                 </div>
             </div>
         </form>
@@ -181,10 +181,10 @@
             <input type="hidden" name="order_remark" id="order_remark">
 
 
-            <input type="hidden" name="order_id" value="{{ order_id }}">
-            <input type="hidden" name="guess_id" value="{{ guess_id }}">
-            <input type="hidden" name="store_id" value="{{ store_id }}">
-            <input type="hidden" name="vision_id" value="{{ vision_id }}">
+            <input type="hidden" name="order_id" value="{{ order.id }}">
+            <input type="hidden" name="guess_id" value="{{ order.order_id }}">
+            <input type="hidden" name="store_id" value="{{ order.store_id }}">
+            <input type="hidden" name="vision_id" value="{{ order.vision_id }}">
 
 
             <input type="hidden" name="guess_form" id="guess_form">

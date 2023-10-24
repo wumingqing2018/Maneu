@@ -53,14 +53,10 @@ def update(request):
     """更新订单"""
     if request.method == 'GET':
         order = service.ManeuOrder_id(id=request.GET.get('order_id'), admin_id=request.session.get('id'))
-        content = {"order_id": order.id,
-                   "guess_id": order.guess_id,
-                   "store_id": order.store_id,
-                   "vision_id": order.vision_id,
-                   "remark": order.remark,
+        content = {"order": order,
                    "guess": service.ManeuGuess_id(id=order.guess_id),
                    "store": json.loads(service.ManeuStore_id(id=order.store_id).content),
-                   "vision": service.ManeuVision_id(id=order.vision_id).content}
+                   "vision": json.loads(service.ManeuVision_id(id=order.vision_id).content)}
         return render(request, 'maneu_order/update.html', content)
     if request.method == 'POST':
         service.ManeuVision_update(id=request.POST.get('vision_id'), content=request.POST.get('vision_form'))
