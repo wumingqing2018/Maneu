@@ -1,186 +1,32 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/maneu_index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/maneu_index.css' %}">、
+    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.css"/>
 {% endblock %}
 {% block javascript %}
+    <script type="application/javascript" src="https://cdn.staticfile.org/moment.js/2.29.4/moment.min.js"></script>
+    <script type="application/javascript" src="https://cdn.staticfile.org/moment.js/2.29.4/locale/zh-cn.js"></script>
+    <script type="application/javascript" src="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.js"></script>
+    {#https://www.datetimepicker.cn/daterangepicker/#}
+
+
     <script type="text/javascript" src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
     <script type="text/javascript" src="{% static 'javascript/maneu_index/echarts.js' %}"></script>
-    <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('main1'), 'maneu');
-        var option = {
-            title: {
-                show: true, //显示策略，默认值true,可选为：true（显示） | false（隐藏）
-                text: '零售数据对比', //主标题文本，'\n'指定换行
-                link: '', //主标题文本超链接,默认值true
-                target: null, //指定窗口打开主标题超链接，支持'self' | 'blank'，不指定等同为'blank'（新窗口）
-                x: '160', //水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
-                y: 'top', //垂直安放位置，默认为top，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
-                textAlign: null,//水平对齐方式，默认根据x设置自动调整，可选为： left' | 'right' | 'center
-                backgroundColor: 'rgba(0,0,0,0)', //标题背景颜色，默认'rgba(0,0,0,0)'透明
-                borderColor: '#ccc', //标题边框颜色,默认'#ccc'
-                borderWidth: 0, //标题边框线宽，单位px，默认为0（无边框）
-                padding: 5, //标题内边距，单位px，默认各方向内边距为5，接受数组分别设定上右下左边距
-                itemGap: 10, //主副标题纵向间隔，单位px，默认为10
-                textStyle: { //主标题文本样式{"fontSize": 18,"fontWeight": "bolder","color": "#333"}
-                    fontSize: 20,
-                    fontStyle: 'normal',
-                    fontWeight: 'normal',
-                },
-            },
-            tooltip: {},
-            legend: {
-                data: ['本月数据', '对比数据']
-            },
-            xAxis: {
-                data: ['01日', '02日', '03日', '04日', '05日', '06日', '07日', '08日', '09日', '10日', '11日', '12日', '13日', '14日', '15日', '16日', '17日', '18日', '19日', '20日', '21日', '22日', '23日', '24日', '25日', '26日', '27日', '28日', '29日', '30日', '31日'],
-            },
-            yAxis: {},
-            series: [{
-                name: '本月数据',
-                type: 'line',
-                data: {{ thisMonth_orderv2|safe }}
-            }, {
-                name: '对比数据',
-                type: 'line',
-                data: {{ otherMonth_orderv2|safe }}
-            }]
-        };
 
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
-    <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('main3'), 'maneu');
-        var option = {
-            title: {
-                show: true, //显示策略，默认值true,可选为：true（显示） | false（隐藏）
-                text: '服务数据对比', //主标题文本，'\n'指定换行
-                link: '', //主标题文本超链接,默认值true
-                target: null, //指定窗口打开主标题超链接，支持'self' | 'blank'，不指定等同为'blank'（新窗口）
-                x: '160', //水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
-                y: 'top', //垂直安放位置，默认为top，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
-                textAlign: null,//水平对齐方式，默认根据x设置自动调整，可选为： left' | 'right' | 'center
-                backgroundColor: 'rgba(0,0,0,0)', //标题背景颜色，默认'rgba(0,0,0,0)'透明
-                borderColor: '#ccc', //标题边框颜色,默认'#ccc'
-                borderWidth: 0, //标题边框线宽，单位px，默认为0（无边框）
-                padding: 5, //标题内边距，单位px，默认各方向内边距为5，接受数组分别设定上右下左边距
-                itemGap: 10, //主副标题纵向间隔，单位px，默认为10
-                textStyle: { //主标题文本样式{"fontSize": 18,"fontWeight": "bolder","color": "#333"}
-                    fontSize: 20,
-                    fontStyle: 'normal',
-                    fontWeight: 'normal',
-                },
-            },
-            tooltip: {},
-            legend: {
-                data: ['本月数据', '对比数据']
-            },
-            xAxis: {
-                data: ['01日', '02日', '03日', '04日', '05日', '06日', '07日', '08日', '09日', '10日', '11日', '12日', '13日', '14日', '15日', '16日', '17日', '18日', '19日', '20日', '21日', '22日', '23日', '24日', '25日', '26日', '27日', '28日', '29日', '30日', '31日'],
-            },
-            yAxis: {},
-            series: [{
-                name: '本月数据',
-                type: 'line',
-                data: {{ thisMonth_service|safe }}
-            }, {
-                name: '对比数据',
-                type: 'line',
-                data: {{ otherMonth_service|safe }}
-            }]
-        };
 
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
     <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('main4'), 'maneu');
-        var option = {
-            title: {
-                show: true, //显示策略，默认值true,可选为：true（显示） | false（隐藏）
-                text: '客户数据对比', //主标题文本，'\n'指定换行
-                link: '', //主标题文本超链接,默认值true
-                target: null, //指定窗口打开主标题超链接，支持'self' | 'blank'，不指定等同为'blank'（新窗口）
-                x: '160', //水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
-                y: 'top', //垂直安放位置，默认为top，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
-                textAlign: null,//水平对齐方式，默认根据x设置自动调整，可选为： left' | 'right' | 'center
-                backgroundColor: 'rgba(0,0,0,0)', //标题背景颜色，默认'rgba(0,0,0,0)'透明
-                borderColor: '#ccc', //标题边框颜色,默认'#ccc'
-                borderWidth: 0, //标题边框线宽，单位px，默认为0（无边框）
-                padding: 5, //标题内边距，单位px，默认各方向内边距为5，接受数组分别设定上右下左边距
-                itemGap: 10, //主副标题纵向间隔，单位px，默认为10
-                textStyle: { //主标题文本样式{"fontSize": 18,"fontWeight": "bolder","color": "#333"}
-                    fontSize: 20,
-                    fontStyle: 'normal',
-                    fontWeight: 'normal',
-                },
-            },
-            tooltip: {},
-            legend: {
-                data: ['本月数据', '对比数据']
-            },
-            xAxis: {
-                data: ['01日', '02日', '03日', '04日', '05日', '06日', '07日', '08日', '09日', '10日', '11日', '12日', '13日', '14日', '15日', '16日', '17日', '18日', '19日', '20日', '21日', '22日', '23日', '24日', '25日', '26日', '27日', '28日', '29日', '30日', '31日'],
-            },
-            yAxis: {},
-            series: [{
-                name: '本月数据',
-                type: 'line',
-                data: {{ thisMonth_guess|safe }}
-            }, {
-                name: '对比数据',
-                type: 'line',
-                data: {{ otherMonth_guess|safe }}
-            }]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+        api_index = "{% url 'maneu_index:api_index' %}"
     </script>
+    <script type="text/javascript" src="{% static 'javascript/maneu_index/index.js' %}"></script>
 {% endblock %}
 {% block content %}
-    <div class="container-fluid row">
-        <div class="col-12 row" style="margin-top: 2%;margin-bottom: 2%">
-            <div class="col-10 offset-1 row" style="margin-bottom: 1%">
-                <h3 class="col-9">本月数据统计</h3>
-                <form class="col-3" method="get" action="{% url 'maneu_index:index' %}">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text">选择对比时间</span>
-                        <input class="form-control date_time" name="time" type="date" autocomplete="off"
-                               required="required" value="{{ day|safe }}">
-                        <input class="form-control" type="submit">
-                    </div>
-                </form>
-            </div>
-            <div class="col-10 offset-1 row" style="margin-bottom: 1%">
-                <div class="col-3">
-                    <div style="height: 150px; width: 300px; border: #FFC048 solid 1px; border-radius: 30px">
-                        <h5 style="text-align: left; margin: 5%">本月零售订单</h5>
-                        <h1 style="text-align: center; margin: 5%;">{{ orderv2_count }}</h1>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div style="height: 150px; width: 300px; border: #FFC048 solid 1px; border-radius: 30px">
-                        <h5 style="text-align: left; margin: 5%">本月批发订单</h5>
-                        <h1 style="text-align: center; margin: 5%;">{{ orderv1_count }}</h1>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div style="height: 150px; width: 300px; border: #FFC048 solid 1px; border-radius: 30px">
-                        <h5 style="text-align: left; margin: 5%">本月售后订单</h5>
-                        <h1 style="text-align: center; margin: 5%;">{{ service_count }}</h1>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div style="height: 150px; width: 300px; border: #FFC048 solid 1px; border-radius: 30px">
-                        <h5 style="text-align: left; margin: 5%">本月新增客户</h5>
-                        <h1 style="text-align: center; margin: 5%;">{{ guess_count }}</h1>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="col-2 offset-10">
+            <div class="input-group input-group-sm">
+                <input type="text" id="reportrange" class="form-control">
             </div>
         </div>
         <div id="main1" class="main"></div>
-        <div id="main3" class="main"></div>
-        <div id="main4" class="main"></div>
     </div>
 {% endblock %}

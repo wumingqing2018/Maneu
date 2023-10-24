@@ -10,7 +10,6 @@ urlpatterns = [
     path('detail/', views.detail, name='detail'),
     path('insert/', views.insert, name='insert'),
     path('update/', views.update, name='update'),
-    path('reference/', api.reference, name='reference'),
     path('index/', api.index, name='api_index'),
     path('delete/', api.delete, name='api_delete'),
     path('search/', api.search, name='api_search')
