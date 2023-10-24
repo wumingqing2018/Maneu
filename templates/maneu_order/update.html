@@ -52,42 +52,43 @@
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-1">右眼OD</span>
-                    <input autocomplete="off" type="text" name="OD_VA" list="VA" class="form-control" placeholder="裸眼视力">
+                    <input autocomplete="off" type="text" name="OD_VA" list="VA" class="form-control"
+                           placeholder="裸眼视力" value="{{ vision.OD_VA }}">
                     <input autocomplete="off" type="text" name="OD_SPH" list="CYL&SPH" class="form-control"
-                           placeholder="球镜">
+                           placeholder="球镜" value="{{ vision.OD_SPH }}">
                     <input autocomplete="off" type="text" name="OD_CYL" list="CYL&SPH" class="form-control"
-                           placeholder="柱镜">
+                           placeholder="柱镜" value="{{ vision.OD_CYL }}">
                     <input autocomplete="off" type="text" name="OD_AX" list="AX" class="form-control"
-                           placeholder="轴位">
+                           placeholder="轴位" value="{{ vision.OD_AX }}">
                     <input autocomplete="off" type="text" name="OD_PR" list="PR" class="form-control"
-                           placeholder="棱镜">
+                           placeholder="棱镜" value="{{ vision.OD_PR }}">
                     <input autocomplete="off" type="text" name="OD_FR" list="FR" class="form-control"
-                           placeholder="基地取向">
+                           placeholder="基地取向" value="{{ vision.OD_FR }}">
                     <input autocomplete="off" type="text" name="OD_ADD" list="ADD" class="form-control"
-                           placeholder="下加光">
+                           placeholder="下加光" value="{{ vision.OD_ADD }}">
                     <input autocomplete="off" type="text" name="OD_BCVA" list="VA" class="form-control"
-                           placeholder="矫正视力">
+                           placeholder="矫正视力" value="{{ vision.OD_BCVA }}">
                 </div>
             </div>
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-1">左眼OS</span>
                     <input autocomplete="off" type="text" name="OS_VA" list="VA" class="form-control"
-                           placeholder="裸眼视力">
+                           placeholder="裸眼视力" value="{{ vision.OS_VA }}">
                     <input autocomplete="off" type="text" name="OS_SPH" list="CYL&SPH" class="form-control"
-                           placeholder="球镜">
+                           placeholder="球镜" value="{{ vision.OS_SPH }}">
                     <input autocomplete="off" type="text" name="OS_CYL" list="CYL&SPH" class="form-control"
-                           placeholder="柱镜">
+                           placeholder="柱镜" value="{{ vision.OS_CYL }}">
                     <input autocomplete="off" type="text" name="OS_AX" list="AX" class="form-control"
-                           placeholder="轴位">
+                           placeholder="轴位" value="{{ vision.OS_AX }}">
                     <input autocomplete="off" type="text" name="OS_PR" list="PR" class="form-control"
-                           placeholder="棱镜">
+                           placeholder="棱镜" value="{{ vision.OS_PR }}">
                     <input autocomplete="off" type="text" name="OS_FR" list="FR" class="form-control"
-                           placeholder="基地取向">
+                           placeholder="基地取向" value="{{ vision.OS_FR }}">
                     <input autocomplete="off" type="text" name="OS_ADD" list="ADD" class="form-control"
-                           placeholder="下加光">
+                           placeholder="下加光" value="{{ vision.OS_ADD }}">
                     <input autocomplete="off" type="text" name="OS_BCVA" list="VA" class="form-control"
-                           placeholder="矫正视力">
+                           placeholder="矫正视力" value="{{ vision.OS_BCVA }}">
                 </div>
             </div>
             <div class="col-3 vertical1">
@@ -142,17 +143,17 @@
                     <input autocomplete="off" type="text" name="arg40" class="form-control product1" value="{{ store.arg40 }}" placeholder="类别">
                     <input autocomplete="off" type="text" name="arg41" class="form-control product1" value="{{ store.arg41 }}" placeholder="品牌">
                     <input autocomplete="off" type="text" name="arg42" class="form-control product1" value="{{ store.arg42 }}" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg13" class="form-control product2" value="{{ store.arg13 }}" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg14" class="form-control product2" value="{{ store.arg14 }}" placeholder="价格">
+                    <input autocomplete="off" type="text" name="arg43" class="form-control product2" value="{{ store.arg43 }}" placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg44" class="form-control product2" value="{{ store.arg44 }}" placeholder="价格">
                 </div>
             </div>
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
-                    <input autocomplete="off" type="text" name="arg10" class="form-control product1" value="{{ store.arg10 }}" placeholder="类别">
-                    <input autocomplete="off" type="text" name="arg11" class="form-control product1" value="{{ store.arg11 }}" placeholder="品牌">
-                    <input autocomplete="off" type="text" name="arg12" class="form-control product1" value="{{ store.arg12 }}" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg13" class="form-control product2" value="{{ store.arg13 }}" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg14" class="form-control product2" value="{{ store.arg14 }}" placeholder="价格">
+                    <input autocomplete="off" type="text" name="arg50" class="form-control product1" value="{{ store.arg50 }}" placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg51" class="form-control product1" value="{{ store.arg51 }}" placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg52" class="form-control product1" value="{{ store.arg52 }}" placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg53" class="form-control product2" value="{{ store.arg53 }}" placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg54" class="form-control product2" value="{{ store.arg54 }}" placeholder="价格">
                 </div>
             </div>
         </form>
@@ -571,11 +572,6 @@
 
 {% endblock %}
 {% block javascript %}
-    <script type="application/javascript">
-        vision = {{ vision|safe }};
-        store = {{ store|safe }};
-    </script>
-    <script type="application/javascript" src="{% static 'javascript/maneu/serialize_moudels.js' %}"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu_order/update.js' %}"></script>
 {% endblock %}
 {% block css %}

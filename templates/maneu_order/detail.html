@@ -16,6 +16,8 @@
                 </td>
             </tr>
         </table>
+
+
         <table class="table table-bordered table-sm text-left" style="margin-top: 2%; margin-bottom: 4%">
             <tr class="banner">
                 <td colspan="8">
@@ -80,15 +82,9 @@
                     <span>{{ guess.dfh }}</span>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <span>备注</span>
-                </td>
-                <td colspan="7">
-                    <span>{{ guess.remark }}</span>
-                </td>
-            </tr>
         </table>
+
+
         <table class="table table-bordered table-sm text-left" style="margin-top: 2%; margin-bottom: 4%">
             <tr class="banner">
                 <td colspan="9">
@@ -198,15 +194,9 @@
                     <span id="PD"></span>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <span>验光师建议</span>
-                </td>
-                <td colspan="8">
-                    <span id="remark"></span>
-                </td>
-            </tr>
         </table>
+
+
         <table class="table table-bordered table-sm text-left" style="margin-top: 2%; margin-bottom: 4%">
             <tr class="banner">
                 <td colspan="9">
@@ -232,6 +222,25 @@
             </tr>
             <tbody id="store_table"></tbody>
         </table>
+
+
+        <table class="table table-bordered table-sm text-left" style="margin-top: 2%; margin-bottom: 4%">
+            <tr class="banner">
+                <td colspan="8">
+                    <b>订单备注</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% if order.remark %}
+                        <span>{{ order.remark }}</span>
+                    {% else %}
+                        <span>暂无备注</span>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+
         <table class="table table-bordered table-sm text-left" style="margin-top: 2%; margin-bottom: 4%">
             <tr class="banner">
                 <td colspan="2">
