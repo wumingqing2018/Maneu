@@ -59,7 +59,6 @@ def update(request):
                    "vision": json.loads(service.ManeuVision_id(id=order.vision_id).content)}
         return render(request, 'maneu_order/update.html', content)
     if request.method == 'POST':
-        print(request.POST)
         service.ManeuVision_update(id=request.POST.get('vision_id'), content=request.POST.get('vision_form'))
         service.ManeuStore_update(id=request.POST.get('store_id'), content=request.POST.get('product_form'))
         service.ManeuGuess_update(id=request.POST.get('guess_id'), content=request.POST.get('guess_form'))
