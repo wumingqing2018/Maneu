@@ -98,6 +98,7 @@ def ManeuGuess_search(admin_id='', name='', time='', phone='', sex='', age='', o
 def ManeuGuess_update(id='', content=''):
     contents = json.loads(content)
     return ManeuGuess.objects.filter(id=id).update(name=contents['name'], phone=contents['phone'],
+                                                   age=contents['age'],
                                                    sex=contents['sex'], ot=contents['OT'], em=contents['EM'],
                                                    dfh=contents['DFH'])
 
