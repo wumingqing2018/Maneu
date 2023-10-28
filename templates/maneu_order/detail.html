@@ -308,7 +308,7 @@
         maneu_vision = {{ vision|safe }};
         guess_id = "{{ guess.id }}";
         order_id = "{{ order.id }}";
-        service_insert="{% url 'maneu_service:insert' %}";
+        service_insert="{% url 'maneu_order:service_insert' %}";
         csrf_token = $("[name='csrfmiddlewaretoken']").val();
     </script>
     <script type="application/javascript" src="{% static 'javascript/maneu/print.js' %}"></script>

@@ -12,6 +12,6 @@ urlpatterns = [
     path('update/', views.update, name='update'),
     path('index/', api.index, name='api_index'),
     path('delete/', api.delete, name='api_delete'),
-    path('search/', api.search, name='api_search')
-
+    path('search/', api.search, name='api_search'),
+    path('service_insert/', api.service_insert, name='service_insert')
 ]
