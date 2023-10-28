@@ -54,16 +54,16 @@ $(document).ready(function () {
             },
             success: function (res) {
                 alert('添加成功');
-                $("#server_list").empty();
-                $('#server_list').prepend(
-                    "<tr>\n"+
-                    "    <td width='10%'>\n"+
+                $('#server_list').append(
+                    "<div class='col-12 row'>\n"+
+                    "    <div class='col-1'>\n"+
                     "        <span>"+ res['data']['time'] +"</span>\n"+
-                    "    </>\n"+
-                    "    <td width='90%'>\n"+
+                    "    </div>\n"+
+                    "    <div class='col-11'>\n"+
                     "        <span>"+ res['data']['content'] +"</span>\n"+
-                    "    </>\n"+
-                    "</tr>\n"
+                    "    </div>\n"+
+                    "</div>\n"+
+                    "<hr style='color: white'>\n"
                 );
             }
         })

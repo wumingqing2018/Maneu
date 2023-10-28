@@ -239,47 +239,48 @@
             </tr>
         </table>
 
-        <table class="table table-bordered table-sm text-left" style="margin-top: 2%; margin-bottom: 4%">
-            <tr class="banner">
-                <td colspan="2">
-                    <b>产品售后记录（Product Orders）</b>
-                </td>
-            </tr>
-            <tr>
-                <td width="10%">
+
+        <div style="margin-top: 2%; margin-bottom: 4%">
+            <div class="col-12 row">
+                <div class="col-12">
+                    <h5>产品售后记录（Product Orders）</h5>
+                </div>
+                <hr style="color: white">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" id="server_value" placeholder="添加售后记录">
+                    <input autocomplete="off" type="button" class="btn btn-primary" id="server_button" value="提交">
+                </div>
+                <hr style="color: white">
+                <div class="col-2">
                     <span>时间</span>
-                </td>
-                <td width="90%">
+                </div>
+                <div class="col-10">
                     <span>内容</span>
-                </td>
-            </tr>
-            <tbody id="server_list">
-            {% if server.count == 0 %}
-                <tr>
-                    <td colspan="2">
-                        <span>暂无记录</span>
-                    </td>
-                </tr>
-            {% else %}
-                {% for foo in server %}
-                    <tr>
-                        <td width="10%">
-                            <span>{{ foo.time }}</span>
-                        </td>
-                        <td width="90%">
-                            <span>{{ foo.content }}</span>
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% endif %}
-            </tbody>
-        </table>
-
-
-        <div class="input-group input-group-sm">
-            <input type="text" class="form-control" id="server_value" placeholder="添加售后记录">
-            {% csrf_token %}
-            <input type="button" class="btn btn-primary" id="server_button" value="提交">
+                </div>
+                <hr style="color: white">
+            </div>
+            <div id="server_list">
+                {% if server.count == 0 %}
+                    <div class="col-12">
+                        <div class="col-12 row" style="text-align: center">
+                            <span>暂无记录</span>
+                        </div>
+                    </div>
+                    <hr style="color: white">
+                {% else %}
+                    {% for foo in server %}
+                        <div class="col-12 row">
+                            <div class="col-2">
+                                <span>{{ foo.time }}</span>
+                            </div>
+                            <div class="col-10">
+                                <span>{{ foo.content }}</span>
+                            </div>
+                        </div>
+                        <hr style="color: white">
+                    {% endfor %}
+                {% endif %}
+            </div>
         </div>
 
 

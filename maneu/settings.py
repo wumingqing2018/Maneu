@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'maneu_guest',
     'maneu_index',
     'maneu_order',
-    'maneu_service',
 ]
 
 """
