@@ -15,33 +15,33 @@
             <div class="vertical1 col-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">时间</span>
-                    <input class="form-control" id="time" name="time" type="datetime-local" value="{{ time }}" autocomplete="off">
+                    <input autocomplete="off" class="form-control" id="time" name="time" type="datetime-local" value="{{ time }}">
                 </div>
             </div>
             <div class="vertical1 col-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">电话</span>
-                    <input class="form-control" id="phone" name="phone" type="text">
+                    <input autocomplete="off" class="form-control" id="phone" name="phone" type="text">
                 </div>
             </div>
             <div class="vertical1 col-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">姓名</span>
-                    <input class="form-control" id="name" name="name" type="text">
+                    <input autocomplete="off" class="form-control" id="name" name="name" type="text">
                 </div>
             </div>
             <div class="vertical1 col-9">
                 <div class="input-group input-group-sm">
-                    <span class="input-group-text col-1">年龄</span>
-                    <input class="form-control" type="text" name="age" list="age">
                     <span class="input-group-text col-1">性别</span>
-                    <input class="form-control" type="text" name="sex" list="sex">
+                    <input autocomplete="off" class="form-control" type="text" name="sex" list="sex">
+                    <span class="input-group-text col-1">年龄</span>
+                    <input autocomplete="off" class="form-control" type="text" name="age" list="age">
                     <span class="input-group-text col-1">眼位</span>
-                    <input class="form-control" type="text" name="OT" list="OT">
+                    <input autocomplete="off" class="form-control" type="text" name="OT" list="OT">
                     <span class="input-group-text col-1">主视眼</span>
-                    <input class="form-control" type="text" name="EM" list="EM">
+                    <input autocomplete="off" class="form-control" type="text" name="EM" list="EM">
                     <span class="input-group-text col-1">病族史</span>
-                    <input class="form-control" type="text" name="DFH" list="DFH">
+                    <input autocomplete="off" class="form-control" type="text" name="DFH" list="DFH">
                 </div>
             </div>
         </form >
@@ -118,7 +118,8 @@
                     <input autocomplete="off" type="text" name="arg11" class="form-control product1" placeholder="品牌">
                     <input autocomplete="off" type="text" name="arg12" class="form-control product1" placeholder="型号">
                     <input autocomplete="off" type="text" name="arg13" class="form-control product2" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg14" class="form-control product3" value="0">
+                    <input autocomplete="off" type="text" name="arg14" class="form-control product3" placeholder="价格"
+                           value="0">
                 </div>
             </div>
             <div class="vertical1 col-9">
@@ -127,7 +128,8 @@
                     <input autocomplete="off" type="text" name="arg21" class="form-control product1" placeholder="品牌">
                     <input autocomplete="off" type="text" name="arg22" class="form-control product1" placeholder="型号">
                     <input autocomplete="off" type="text" name="arg23" class="form-control product2" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg24" class="form-control product3" value="0">
+                    <input autocomplete="off" type="text" name="arg24" class="form-control product3" placeholder="价格"
+                           value="0">
                 </div>
             </div>
             <div class="vertical1 col-9">
@@ -136,7 +138,8 @@
                     <input autocomplete="off" type="text" name="arg31" class="form-control product1" placeholder="品牌">
                     <input autocomplete="off" type="text" name="arg32" class="form-control product1" placeholder="型号">
                     <input autocomplete="off" type="text" name="arg33" class="form-control product2" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg34" class="form-control product3" value="0">
+                    <input autocomplete="off" type="text" name="arg34" class="form-control product3" placeholder="参数"
+                           value="0">
                 </div>
             </div>
             <div class="vertical1 col-9">
@@ -145,7 +148,8 @@
                     <input autocomplete="off" type="text" name="arg41" class="form-control product1" placeholder="品牌">
                     <input autocomplete="off" type="text" name="arg42" class="form-control product1" placeholder="型号">
                     <input autocomplete="off" type="text" name="arg43" class="form-control product2" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg44" class="form-control product3" value="0">
+                    <input autocomplete="off" type="text" name="arg44" class="form-control product3" placeholder="价格"
+                           value="0">
                 </div>
             </div>
             <div class="vertical1 col-9">
@@ -154,7 +158,8 @@
                     <input autocomplete="off" type="text" name="arg51" class="form-control product1" placeholder="品牌">
                     <input autocomplete="off" type="text" name="arg52" class="form-control product1" placeholder="型号">
                     <input autocomplete="off" type="text" name="arg53" class="form-control product2" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg54" class="form-control product3" value="0">
+                    <input autocomplete="off" type="text" name="arg54" class="form-control product3" placeholder="价格"
+                           value="0">
                 </div>
             </div>
         </form>
@@ -166,7 +171,7 @@
             <div class="vertical1 col-9">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-1">备注</span>
-                    <input class="form-control" id="remark" name="remark" type="text">
+                    <input autocomplete="off" class="form-control" id="remark" name="remark" type="text">
                 </div>
             </div>
         </form>
@@ -570,5 +575,5 @@
     <script type="application/javascript" src="{% static 'javascript/maneu_order/insert.js' %}"></script>
 {% endblock %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/maneu_order/insert.css' %}">
+    <link rel="stylesheet" href="{% static 'css/maneu_order/insert.css' %}">
 {% endblock %}
