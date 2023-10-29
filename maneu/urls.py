@@ -16,7 +16,5 @@ urlpatterns = [
     path('maneu_index/', include('maneu_index.urls')),
     # 零售订单子路由
     path('maneu_order/', include('maneu_order.urls')),
-    # 售后订单子路由
-    path('maneu_service/', include('maneu_service.urls')),
 
 ]

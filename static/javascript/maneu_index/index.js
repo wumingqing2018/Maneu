@@ -20,7 +20,7 @@ $(function() {
                     var option = {
                         title: {
                             show: true, //显示策略，默认值true,可选为：true（显示） | false（隐藏）
-                            text: '零售数据可视化', //主标题文本，'\n'指定换行
+                            text: '零售数据：'+ res.count +'单', //主标题文本，'\n'指定换行
                             link: '', //主标题文本超链接,默认值true
                             target: null, //指定窗口打开主标题超链接，支持'self' | 'blank'，不指定等同为'blank'（新窗口）
                             x: 'left', //水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）

@@ -16,4 +16,4 @@ def index(request):
         content_newList.append(str(a.time.date()))
     for b in time_list:
         time_newList.append(content_newList.count(b))
-    return JsonResponse({'time_list': time_list, 'time_newList': time_newList})
+    return JsonResponse({'time_list': time_list, 'time_newList': time_newList, 'count': content_list.count()})
