@@ -1,34 +1,17 @@
 import json
-from datetime import datetime
 
-from django.shortcuts import render, HttpResponseRedirect, reverse
+from django.shortcuts import render
 
 from common import common
 from maneu_guest import service
 
 
-def search(request):
-    """查找指定订单"""
-    text = request.GET.get('text')
-    time = request.GET.get('time')
-    if text:
-        list = service.ManeuGuess_search(admin_id=request.session.get('id'), text=text)
-        return render(request, 'maneu_guest/index.html', {'list': list})
-    if time:
-        list = service.ManeuGuess_time(admin_id=request.session.get('id'), time=datetime.strptime(time, "%Y-%m-%d"))
-        return render(request, 'maneu_guest/index.html', {'list': list})
-    else:
-        return HttpResponseRedirect(reverse('maneu_guest:index'))
-
-
 def index(request):
-    content = {}
-    content['list'] = service.ManeuGuess_all(admin_id=request.session.get('id'))
-    return render(request, 'maneu_guest/index.html', content)
+    return render(request, 'maneu_guest/index.html')
 
 
 def detail(request):
-    id = request.POST.get('guess_id')
+    id = request.GET.get('guess_id')
     guess = service.ManeuGuess_id(admin_id=request.session.get('id'), id=id)
     vision = service.ManeuOrderV2_all(guess_id=guess.id)
     server = service.ManeuService_all(guess_id=guess.id)
@@ -50,21 +33,28 @@ def detail(request):
 
 def insert(request):
     if request.method == 'POST':
-        ManeuGuess = service.ManeuGuess_insert(admin_id=request.session.get('id'),
-                                               time=request.POST['time'],
-                                               name=request.POST['name'],
-                                               phone=request.POST['phone'],
-                                               sex=request.POST['sex'],
-                                               age=request.POST['age'],
-                                               ot=request.POST['OT'],
-                                               em=request.POST['EM'],
-                                               dfh=request.POST['DFH'],
-                                               remark=request.POST['remark'])
+        subjective_null = '{"OD_VA":"","OD_SPH":"","OD_CYL":"","OD_AX":"","OD_ADD":"","OD_BCVA":"","OD_AL":"","OD_AK":"","OD_AD":"","OD_CCT":"","OD_LT":"","OD_VT":"","OS_VA":"","OS_SPH":"","OS_CYL":"","OS_AX":"","OS_ADD":"","OS_BCVA":"","OS_AL":"","OS_AK":"","OS_AD":"","OS_CCT":"","OS_LT":"","OS_VT":"","remark":""}'
+        guess_form = json.loads(request.POST['guess'])
+        guess = service.ManeuGuess_insert(admin_id=request.session.get('id'),
+                                          time=guess_form['time'],
+                                          name=guess_form['name'],
+                                          phone=guess_form['phone'],
+                                          sex=guess_form['sex'],
+                                          age=guess_form['age'],
+                                          ot=guess_form['OT'],
+                                          em=guess_form['EM'],
+                                          dfh=guess_form['DFH'],
+                                          remark=guess_form['remark'])[0]
+        if request.POST['subjective'] != subjective_null:
+            subjective = service.ManeuSubjectiveRefraction_insert(admin_id=request.session.get('id'),
+                                                                  guess_id=guess.id,
+                                                                  time=guess.time,
+                                                                  content=request.POST['subjective'])
         request.POST._mutable = True
-        request.POST['guess_id'] = ManeuGuess.id
+        request.POST['guess_id'] = guess.id
         request.POST._mutable = False
         return detail(request)
-    return render(request, 'maneu_guest/insert.html', {'today': common.today()})
+    return render(request, 'maneu_guest/insert.html', {'today': common.current_time()})
 
 
 def delete(request):
@@ -84,6 +74,9 @@ def update(request):
                                                em=request.POST['EM'],
                                                dfh=request.POST['DFH'],
                                                remark=request.POST['remark'])
+        request.GET._mutable = True
+        request.GET['guess_id'] = request.POST['guess_id']
+        request.GET._mutable = False
         return detail(request)
     guess = service.ManeuGuess_id(admin_id=request.session.get('id'), id=request.GET.get('guess_id'))
     return render(request, 'maneu_guest/update.html', {'guess': guess})

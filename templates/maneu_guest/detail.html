@@ -291,45 +291,6 @@
                 </tr>
             {% endif %}
         </table>
-        <table class="table test text-left" id="textArea">
-            <tr>
-                <td>
-                    <h5>售后维修记录</h5>
-                </td>
-                <td align="right">
-                    <form class="col-2" method="get" action="{% url 'maneu_service:insert' %}">
-                        <input type="hidden" name="order_id" value="{{ foo.id }}">
-                        <div class="input-group input-group-sm">
-                            <input type="submit" class="btn btn-primary" value="添加">
-                        </div>
-                    </form>
-                </td>
-            </tr>
-            {% if server %}
-                {% for foo in server %}
-                    <tr>
-                        <td style="width: 70%;word-break: break-all;white-space: normal;">
-                            <span>{{ foo.time }}：{{ foo.content }}</span>
-                        </td>
-                        <td align="right">
-                            <form class="col-2" method="post" action="{% url 'maneu_service:delete' %}">
-                                {% csrf_token %}
-                                <input type="hidden" name="server_id" value="{{ foo.id }}">
-                                <div class="input-group input-group-sm">
-                                    <input type="submit" class="btn btn-danger" value="删除">
-                                </div>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td colspan="2" align="center">
-                        <span>暂无记录</span>
-                    </td>
-                </tr>
-            {% endif %}
-        </table>
         <div id="echarts" class="col-12 test row">
             <div class="col-md-5 col-sm-12">
                 <div id="main0"></div>

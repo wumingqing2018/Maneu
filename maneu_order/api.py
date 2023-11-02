@@ -37,3 +37,16 @@ def service_insert(request):
         res['data']['content'] = content.content
     return JsonResponse(res)
 
+
+def service_insert(request):
+    res = common.res()
+    if request.method == 'POST':
+        content = service.ManeuService_insert(guess_id=request.POST.get('guess_id'),
+                                              admin_id=request.session.get('id'),
+                                              order_id=request.POST.get('order_id'),
+                                              content=request.POST.get('content'),
+                                              time=common.current_time())
+        res['data']['time'] = content.time
+        res['data']['content'] = content.content
+    return JsonResponse(res)
+

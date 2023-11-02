@@ -5,6 +5,13 @@ from django.db.models import Q
 from maneu.models import *
 
 
+def ManeuOrder_all(admin_id=''):
+    """
+    全部订单
+    """
+    return ManeuOrder.objects.filter(admin_id=admin_id).order_by('-time').all()
+
+
 def ManeuOrder_index(admin_id='', star='', end=''):
     """
     全部订单
@@ -18,6 +25,10 @@ def ManeuOrder_id(id='', admin_id=''):
     根据时间排序
     """
     return ManeuOrder.objects.filter(id=id, admin_id=admin_id).first()
+
+
+def ManeuOrder_time(admin_id='', time=''):
+    return ManeuOrder.objects.filter(admin_id=admin_id, time=time).order_by('-time').all()
 
 
 def ManeuOrder_delete(admin_id='', id=''):
@@ -76,6 +87,10 @@ def ManeuGuess_id(id=''):
     return ManeuGuess.objects.filter(id=id).first()
 
 
+def ManeuGuess_phone(phone=''):
+    return ManeuGuess.objects.filter(phone=phone).first()
+
+
 def ManeuGuess_search(admin_id='', name='', time='', phone='', sex='', age='', ot='', em='', dfh=''):
     return ManeuGuess.objects.get_or_create(admin_id=admin_id, name=name, phone=phone, defaults={'sex': sex, 'age': age, 'ot': ot, 'em': em, 'dfh': dfh, 'time': time})
 
@@ -88,13 +103,13 @@ def ManeuGuess_update(id='', content=''):
                                                    dfh=contents['DFH'])
 
 
-def ManeuService_insert(order_id='', guess_id='', admin_id='', content='', time=''):
-    return ManeuService.objects.create(guess_id=guess_id, admin_id=admin_id, order_id=order_id, content=content, time=time)
-
-
 def ManeuService_orderID(order_id=''):
     return ManeuService.objects.filter(order_id=order_id).order_by('-time').all()
 
 
 def ManeuService_delete_order_id(order_id=''):
     return ManeuService.objects.filter(order_id=order_id).all().delete()
+
+
+def ManeuRefraction_id(guess_id=''):
+    return ManeuRefraction.objects.filter(guess_id=guess_id).order_by('-time').first()

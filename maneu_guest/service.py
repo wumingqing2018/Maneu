@@ -3,31 +3,26 @@ from django.db.models import Q
 from maneu.models import *
 
 
+def ManeuGuess_index(admin_id='', star='', end=''):
+    return ManeuGuess.objects.filter(admin_id=admin_id, time__gte=star, time__lte=end).order_by('-time').all()
+
+
+def ManeuGuess_Search(admin_id='', text=''):
+    return ManeuGuess.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).order_by('-time').all()
+
+
 def ManeuGuess_id(admin_id='', id=''):
     return ManeuGuess.objects.filter(admin_id=admin_id, id=id).first()
 
 
-def ManeuGuess_all(admin_id=''):
-    return ManeuGuess.objects.filter(admin_id=admin_id).order_by('-time').all()
-
-
-def ManeuGuess_time(admin_id='', time=''):
-    return ManeuGuess.objects.filter(admin_id=admin_id, time=time).all()
-
-
 def ManeuGuess_insert(admin_id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):
-    return ManeuGuess.objects.create(time=time, admin_id=admin_id, name=name, phone=phone, sex=sex, age=age, ot=ot,
-                                     em=em, dfh=dfh, remark=remark)
+    return ManeuGuess.objects.get_or_create(admin_id=admin_id, name=name, phone=phone,
+                                            defaults={'sex': sex, 'age': age, 'ot': ot, 'em': em, 'dfh': dfh, 'time': time, 'remark': remark})
 
 
 def ManeuGuess_update(id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):
     return ManeuGuess.objects.filter(id=id).update(time=time, name=name, phone=phone, sex=sex, age=age, ot=ot, em=em,
                                                    dfh=dfh, remark=remark)
-
-
-def ManeuGuess_search(text='', admin_id=''):
-    return ManeuGuess.objects.filter(
-        Q(name__contains=text, admin_id=admin_id) | Q(phone__contains=text, admin_id=admin_id)).order_by('-time').all()
 
 
 def ManeuGuess_delete(id=''):
@@ -52,10 +47,6 @@ def ManeuSubjectiveRefraction_update(id='', admin_id='', content=''):
 
 def ManeuSubjectiveRefraction_delete(id='', admin_id=''):
     return ManeuRefraction.objects.filter(id=id, admin_id=admin_id).delete()
-
-
-def ManeuVisionSolutions_all(guess_id=''):
-    return ManeuVision.objects.filter(guess_id=guess_id).order_by('-time').all()
 
 
 def ManeuOrderV2_all(guess_id=''):
