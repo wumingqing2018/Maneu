@@ -3,6 +3,9 @@
 {% block css %}
     <link rel="stylesheet" type="text/css" href="{% static '/css/maneu_guess/insert.css' %}"/>
 {% endblock %}
+{% block javascript %}
+    <script type="application/javascript" src="{% static 'javascript/maneu_guest/insert.js' %}"></script>
+{% endblock %}
 {% block content %}
     <div class="container" style="margin-top: 5%;">
         <div class="col-5">
@@ -579,31 +582,4 @@
             <option>55</option>
         </datalist>
     </div>
-{% endblock %}
-{% block javascript %}
-    <script>
-        $.fn.serializeJsonStr = function () {
-            var o = {};
-            var a = this.serializeArray();
-            $.each(a, function () {
-                if (o[this.name] !== undefined) {
-                    if (!o[this.name].push) {
-                        o[this.name] = [o[this.name]];
-                    }
-                    o[this.name].push(this.value || '');
-                } else {
-                    o[this.name] = this.value || '';
-                }
-            });
-            return JSON.stringify(o);
-        }
-        $(document).ready(function () {
-            $("#insert").click(function () {
-                guess_form = $('#guess_form').serializeJsonStr();
-                subjective_form = $('#subjective_form').serializeJsonStr();
-                $("#guess").val(guess_form);
-                $("#subjective").val(subjective_form);
-            })
-        })
-    </script>
 {% endblock %}
