@@ -50,9 +50,9 @@ def insert(request):
                                                                   guess_id=guess.id,
                                                                   time=guess.time,
                                                                   content=request.POST['subjective'])
-        request.POST._mutable = True
-        request.POST['guess_id'] = guess.id
-        request.POST._mutable = False
+        request.GET._mutable = True
+        request.GET['guess_id'] = guess.id
+        request.GET._mutable = False
         return detail(request)
     return render(request, 'maneu_guest/insert.html', {'today': common.current_time()})
 
