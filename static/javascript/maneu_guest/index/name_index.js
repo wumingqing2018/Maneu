@@ -19,7 +19,7 @@ $(function() {
                         "                    <td valign='middle'>\n" +
                         "                        <span>" + res[i]['phone'] + "</span>\n" +
                         "                    </td>\n" +
-                        "                    <td valign='middle'colspan=\"2\">\n" +
+                        "                    <td valign='middle' colspan=\"2\">\n" +
                         "                        <span>" + res[i]['remark'] + "</span>\n" +
                         "                    </td>\n" +
                         "                    <td valign='middle' align='right'>\n" +
