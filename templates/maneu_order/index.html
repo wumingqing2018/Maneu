@@ -5,8 +5,8 @@
 {% endblock %}
 {% block javascript %}
     <script type="application/javascript">
-        api_detail = "{% url 'maneu_order:detail' %}"
         api_index = "{% url 'maneu_order:api_index' %}"
+        api_detail = "{% url 'maneu_order:detail' %}"
         api_search = "{% url 'maneu_order:api_search' %}"
         api_delete = "{% url 'maneu_order:api_delete' %}"
     </script>
@@ -19,7 +19,6 @@
 
 
     <script type="application/javascript" src='{% static "javascript/maneu_order/index/delete.js" %}'></script>
-{#    <script type="application/javascript" src='{% static "javascript/maneu_order/index/auto_index.js" %}'></script>#}
     <script type="application/javascript" src='{% static "javascript/maneu_order/index/time_index.js" %}'></script>
     <script type="application/javascript" src='{% static "javascript/maneu_order/index/name_index.js" %}'></script>
 {% endblock %}
@@ -33,12 +32,12 @@
                 </td>
                 <td>
                     <div class="input-group input-group-sm">
-                        <input type="text" id="reportrange" class="form-control">
+                        <input type="text" class="form-control" id="reportrange">
                     </div>
                 </td>
                 <td>
                     <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" name="search-value" placeholder="使用手机或姓名查询">
+                        <input type="text" class="form-control" id="search-value" placeholder="使用手机或姓名查询">
                     </div>
                 </td>
             </tr>

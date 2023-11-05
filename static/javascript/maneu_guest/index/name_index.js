@@ -1,10 +1,10 @@
 $(function() {
-    $('input[name="search-value"]').keyup(function () {
+    $('#search-value').keyup(function () {
         $('#body').empty()
         $.ajax({
             url: api_search,
             data: {
-                text: $('input[name="search-value"]').val()
+                text: $('#search-value').val()
             },
             success: function (res) {
                 for (i in res) {
