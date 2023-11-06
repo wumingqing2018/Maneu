@@ -12,14 +12,6 @@ $(document).ready(function () {
     $("#OD_ADD").text(maneu_vision.OD_ADD);
     $("#OD_BCVA").text(maneu_vision.OD_BCVA);
 
-    $("#OS_VA").text(maneu_vision.OD_VA);
-    $("#OS_SPH").text(maneu_vision.OD_SPH);
-    $("#OS_CYL").text(maneu_vision.OD_CYL);
-    $("#OS_AX").text(maneu_vision.OD_AX);
-    $("#OS_PR").text(maneu_vision.OD_PR);
-    $("#OS_FR").text(maneu_vision.OD_FR);
-    $("#OS_ADD").text(maneu_vision.OD_ADD);
-    $("#OS_BCVA").text(maneu_vision.OD_BCVA);
 
     upline = Object.keys(maneu_store).length / 5
     for (i = 1; i <= upline; i++) {
