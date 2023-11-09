@@ -56,10 +56,10 @@ $(document).ready(function () {
                 alert('添加成功');
                 $('#server_list').append(
                     "<div class='col-12 row'>\n"+
-                    "    <div class='col-1'>\n"+
+                    "    <div class='col-2'>\n"+
                     "        <span>"+ res['data']['time'] +"</span>\n"+
                     "    </div>\n"+
-                    "    <div class='col-11'>\n"+
+                    "    <div class='col-10'>\n"+
                     "        <span>"+ res['data']['content'] +"</span>\n"+
                     "    </div>\n"+
                     "</div>\n"+

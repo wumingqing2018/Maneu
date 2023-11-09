@@ -103,6 +103,10 @@ def ManeuGuess_update(id='', content=''):
                                                    dfh=contents['DFH'])
 
 
+def ManeuService_insert(guess_id='', admin_id='', order_id='', content='', time=''):
+    return ManeuService.objects.create(guess_id=guess_id, admin_id=admin_id, order_id=order_id, content=content, time=time)
+
+
 def ManeuService_orderID(order_id=''):
     return ManeuService.objects.filter(order_id=order_id).order_by('-time').all()
 
