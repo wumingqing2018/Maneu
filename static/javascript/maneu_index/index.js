@@ -16,11 +16,12 @@ $(function() {
                     end: end.format('YYYY-MM-DD 23:59:59'),
                 },
                 success:function (res) {
+                    console.log(res)
                     // 使用刚指定的配置项和数据显示图表。
                     var option = {
                         title: {
                             show: true, //显示策略，默认值true,可选为：true（显示） | false（隐藏）
-                            text: '零售数据：'+ res.count +'单', //主标题文本，'\n'指定换行
+                            // text: '零售数据：'+ res.count +'单\n\n新增客户：'+ res.count1 +'位' , //主标题文本，'\n'指定换行
                             link: '', //主标题文本超链接,默认值true
                             target: null, //指定窗口打开主标题超链接，支持'self' | 'blank'，不指定等同为'blank'（新窗口）
                             x: 'left', //水平安放位置，默认为'left'，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
@@ -39,16 +40,20 @@ $(function() {
                         },
                         tooltip: {},
                         legend: {
-                            data: ['本月数据']
+                            data: ['零售数据','客户数据']
                         },
                         xAxis: {
                             data: res.time_list
                         },
                         yAxis: {},
                         series: [{
-                            name: '本月数据',
+                            name: '零售数据',
                             type: 'line',
                             data: res.time_newList,
+                        },{
+                            name: '客户数据',
+                            type: 'line',
+                            data: res.time_newList1,
                         }]
                     };
                     myChart.setOption(option);
@@ -62,8 +67,10 @@ $(function() {
         ranges: {
             // 'Today': [moment(), moment()],
             // 'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            '7天内': [moment().subtract(6, 'days'), moment()],
-            '30天内': [moment().subtract(29, 'days'), moment()],
+            '今天': [moment(), moment()],
+            '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            '七天内': [moment().subtract(6, 'days'), moment()],
+            '三十天内': [moment().subtract(29, 'days'), moment()],
             '本月': [moment().startOf('month'), moment().endOf('month')],
             '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         }

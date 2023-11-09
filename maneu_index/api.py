@@ -15,4 +15,14 @@ def index(request):
         content_newList.append(str(a.time.date()))
     for b in time_list:
         time_newList.append(content_newList.count(b))
-    return JsonResponse({'time_list': time_list, 'time_newList': time_newList, 'count': content_list.count()})
+
+    content_list1 = service.ManeuGuess_index(admin_id=request.session.get('id'), start=request.GET['start'], end=request.GET['end'])
+    time_newList1 = []
+    content_newList1 = []
+    for a in content_list1:
+        content_newList1.append(str(a.time.date()))
+    for b in time_list:
+        time_newList1.append(content_newList1.count(b))
+
+    return JsonResponse({'time_list': time_list, 'time_newList': time_newList, 'count': content_list.count(),
+                         'time_newList1': time_newList1, 'count1': content_list1.count()})
