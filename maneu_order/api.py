@@ -50,3 +50,11 @@ def service_insert(request):
         res['data']['content'] = content.content
     return JsonResponse(res)
 
+
+def service_delete(request):
+    res = common.res()
+    if request.method == 'POST':
+        content = service.ManeuService_delete(admin_id=request.session.get('id'), id=request.POST.get('id'))
+        print(content)
+        res['data']['content'] = content
+    return JsonResponse(res)
