@@ -111,6 +111,10 @@ def ManeuService_delete(admin_id='', id=''):
     return ManeuService.objects.filter(admin_id=admin_id, id=id).all().delete()
 
 
+def ManeuService_update(admin_id='', id='', content=''):
+    return ManeuService.objects.filter(admin_id=admin_id, id=id).update(content=content)
+
+
 def ManeuService_orderID(order_id=''):
     return ManeuService.objects.filter(order_id=order_id).order_by('-time').all()
 

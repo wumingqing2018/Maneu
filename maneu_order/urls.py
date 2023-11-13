@@ -14,5 +14,6 @@ urlpatterns = [
     path('delete/', api.delete, name='api_delete'),
     path('search/', api.search, name='api_search'),
     path('service_insert/', api.service_insert, name='service_insert'),
-    path('service_delete/', api.service_delete, name='service_delete')
+    path('service_delete/', api.service_delete, name='service_delete'),
+    path('service_update/', api.service_update, name='service_update'),
 ]

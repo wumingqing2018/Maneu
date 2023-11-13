@@ -1,14 +1,17 @@
 function serviceDelete(obj){
-    console.log(obj.alt)
-    $.ajax({
-        url: service_delete,
-        type: 'POST',
-        data: {
-            "id": obj.alt,
-            "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
-        },
-        success: function (res) {
-            obj.parentElement.parentElement.parentElement.parentElement.remove()
-        }
-    })
+    if (confirm("您确定要删除吗？")) {
+        $.ajax({
+            url: service_delete,
+            type: 'POST',
+            data: {
+                "id": obj.previousElementSibling.value,
+                "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
+            },
+            success: function (res) {
+                obj.parentElement.remove()
+            }
+        })
+    } else {
+        return false;
+    }
 }

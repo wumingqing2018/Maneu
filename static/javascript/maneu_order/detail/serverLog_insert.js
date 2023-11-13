@@ -11,13 +11,13 @@ $("#server_button").click(function () {
         success: function (res) {
             alert('添加成功');
             $('#server_list').append(
-                "    <div class='col-2'>\n"+
-                "        <span>"+ res['data']['time'] +"</span>\n"+
-                "    </div>\n"+
-                "    <div class='col-10'>\n"+
-                "        <span>"+ res['data']['content'] +"</span>\n"+
-                "    </div>\n"+
-                "<hr style='color: white'>\n"
+                "                    <div class=\"input-group input-group-sm\" style=\"padding-bottom: 10px\">\n" +
+                "                        <span class=\"input-group-text\">{{ foo.time }}</span>\n" +
+                "                        <input type=\"text\" class=\"form-control\" id=\"content\" autocomplete=\"off\" placeholder=\"售后内容\" value=\"{{ foo.content }}\">\n" +
+                "                        <input type=\"button\" class=\"btn btn-primary\" value=\"更新\" onclick=\"serviceUpdate(this)\">\n" +
+                "                        <input type=\"hidden\" value=\"{{ foo.id }}\">\n" +
+                "                        <input type=\"button\" class=\"btn btn-primary\" value=\"删除\" onclick=\"serviceDelete(this)\">\n" +
+                "                    </div>\n"
             );
         }
     })
