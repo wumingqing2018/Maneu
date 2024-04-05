@@ -4,48 +4,79 @@
     <div class="container">
         <table class="table" style="margin-top: 3%; margin-bottom: 5%">
             <tr class="blue">
-                <td colspan="2">
+                <td colspan="3">
                     <h5>商家资料</h5>
                 </td>
             </tr>
             <tr class="blue">
-                <td style="width: 10%">名称</td>
-                <td style="width: 90%">{{ maneu_admin.nickname }}</td>
+                <td style="width: 10%">
+                    <span>名称</span>
+                </td>
+                <td style="width: 90%" colspan='2'>
+                    <span>{{ maneu_admin.nickname }}</span>
+                </td>
             </tr>
             <tr class="blue">
-                <td style="width: 10%">账号</td>
-                <td style="width: 90%">{{ maneu_admin.username }}</td>
+                <td style="width: 10%">
+                    <span>账号</span>
+                </td>
+                <td style="width: 90%" colspan='2'>
+                    <span>{{ maneu_admin.username }}</span>
+                </td>
             </tr>
             <tr class="blue">
-                <td style="width: 10%">地址</td>
-                <td style="width: 90%">{{ maneu_admin.localtion }}</td>
-            </tr>
-
-            <tr class="blue">
-                <td style="width: 10%">电话</td>
-                <td style="width: 90%">{{ maneu_admin.phone }}</td>
-            </tr>
-            <tr class="blue">
-                <td style="width: 10%">邮件</td>
-                <td style="width: 90%">{{ maneu_admin.email }}</td>
+                <td style="width: 10%">
+                    <span>地址</span>
+                </td>
+                <td style="width: 90%" colspan='2'>
+                    <span>{{ maneu_admin.localtion }}</span>
+                </td>
             </tr>
             <tr class="blue">
-                <td style="width: 10%">创建时间</td>
-                <td style="width: 90%">{{ maneu_admin.create_time }}</td>
+                <td style="width: 10%">
+                    <span>电话</span>
+                </td>
+                <td style="width: 90%" colspan='2'>
+                    <span>{{ maneu_admin.phone }}</span>
+                </td>
             </tr>
             <tr class="blue">
-                <td style="width: 10%">商家特色</td>
-                <td style="width: 90%">{{ maneu_admin.remark }}</td>
+                <td style="width: 10%">
+                    <span>邮件</span>
+                </td>
+                <td style="width: 90%" colspan='2'>
+                    <span>{{ maneu_admin.email }}</span>
+                </td>
             </tr>
             <tr class="blue">
-                <td style="width: 10%">账户操作</td>
-                <td style="width: 90%">
-                    <button class="btn btn-warning">
-                        <a style="color: black" href="{% url 'maneu_admin:user_updata' %}">修改资料</a>
-                    </button>
-                    <button class="btn btn-warning">
-                        <a style="color: black" href="{% url 'login' %}">退出登录</a>
-                    </button>
+                <td style="width: 10%">
+                    <span>创建时间</span>
+                </td>
+                <td style="width: 90%" colspan='2'>
+                    <span>{{ maneu_admin.create_time }}</span>
+                </td>
+            </tr>
+            <tr class="blue">
+                <td style="width: 10%">
+                    <span>商家特色</span>
+                </td>
+                <td style="width: 90%" colspan='2'>
+                    <span>{{ maneu_admin.remark }}</span>
+                </td>
+            </tr>
+            <tr class="blue">
+                <td style="width: 10%">
+                    <span>账户操作</span>
+                </td>
+                <td style="width: 10%">
+                    <div class="input-group input-group-sm">
+                        <a class="btn btn-warning" style="color: black" href="{% url 'maneu_admin:updata' %}">修改资料</a>
+                    </div>
+                </td>
+                <td style="width: 80%">
+                    <div class="input-group input-group-sm">
+                        <a class="btn btn-warning" style="color: black" href="{% url 'login' %}">退出登录</a>
+                    </div>    
                 </td>
             </tr>
         </table>

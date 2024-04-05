@@ -1,70 +1,100 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
 {% block content %}
-    <!--内容栏-->
-    <table class="table">
-        <tr class='yellow'>
-            <td>用户昵称</td>
-            <td>用户账号</td>
-            <td>用户状态</td>
-            <td>用户地址</td>
-            <td>等级权限</td>
-            <td>创建时间</td>
+<div class="container">
+    <table class="table col-12">
+        <thead>
+        <tr>
+            <td colspan="5" valign="middle">
+                <h5>客户管理系统</h5>
+            </td>
             <td>
-                <form method="get" action="{% url 'maneu_admin:user_insert' %}">
-                    <input type="submit" class="btn btn-primary col-md-12" value="添加">
-                </form>
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" id="reportrange">
+                </div>
+            </td>
+            <td>
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" id="search-value" placeholder="使用手机或姓名查询">
+                </div>
             </td>
         </tr>
-        {% for user in user_list %}
-            <tr class='yellow'>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.state }}</td>
-                <td>{{ user.localtion }}</td>
-                <td>{{ user.level }}</td>
-                <td>{{ user.create_time }}</td>
-                <td>
-                    <form method="get" action="{% url 'maneu_admin:user_detail' %}">
-                        <input type="hidden" name="user_id" value="{{ user.user_id }}">
-                        <input type="submit" class="btn btn-primary col-md-12" value="查看">
+        <tr>
+            <td valign='middle'>
+                <span>用户昵称</span>
+            </td>
+            <td valign='middle'>
+                <span>用户账号</span>
+            </td>
+            <td valign='middle'>
+                <span>用户状态</span>
+            </td>
+            <td valign='middle'>
+                <span>用户地址</span>
+            </td>
+            <td valign='middle'>
+                <span>等级权限</span>
+            </td>
+            <td valign='middle'>
+                <span>创建时间</span>
+            </td>
+            <td valign='middle' align="right">
+                <div class="col-6 row">
+                    <form method="get" action="{% url 'maneu_admin:insert' %}">
+                        <div class="input-group input-group-sm">
+                            <input type="submit" class="btn btn-primary col-md-12" value='添加客户'>
+                        </div>
                     </form>
+                </div>
+            </td>
+        </tr>
+        </thead>
+        <tbody id="body">
+            {% for user in user_list %}
+            <tr>
+                <td valign='middle'>
+                    <span>{{user.username}}</span>
                 </td>
-            </tr>
-        {% endfor %}
+                <td valign='middle'>
+                    <span>{{user.email}}</span>
+                </td>
+                <td valign='middle'>
+                    <span>{{user.state}}</span>
+                </td>
+                <td valign='middle'>
+                    <span>{{user.localtion}}</span>
+                </td>
+                <td valign='middle'>
+                    <span>{{user.level}}</span>
+                </td>
+                <td valign='middle'>
+                    <span>{{user.create_time}}</span>
+                </td>
+                <td valign='middle' align="right">
+                    <div class="col-9 row">
+                        <form class="col-4" method="get" action="{% url 'maneu_admin:detail' %}">
+                            <input type="hidden" name="user_id" value="{{ user.user_id }}">
+                            <div class="input-group input-group-sm">
+                                <input type="submit" class="btn btn-primary col-md-12" value='查看'>
+                            </div>
+                        </form>
+                        <form class="col-4" method="get" action="{% url 'maneu_admin:detail' %}">
+                            <input type="hidden" name="user_id" value="{{ user.user_id }}">
+                            <div class="input-group input-group-sm">
+                                <input type="submit" class="btn btn-primary col-md-12" value='删除'>
+                            </div>
+                        </form>
+                        <form class="col-4" method="get" action="{% url 'maneu_admin:updata' %}">
+                            <input type="hidden" name="user_id" value="{{ user.user_id }}">
+                            <div class="input-group input-group-sm">
+                                <input type="submit" class="btn btn-primary col-md-12" value='修改'>
+                            </div>
+                        </form>
+                    </div>
+                </td>
+            <tr>
+            {%endfor%}
+        </tbody>
     </table>
-{% endblock %}
-{% block js %}
-    <script>
-        user_freeze = "{% url 'maneu_admin:api_user_freeze' %}";
-        user_unfreeze = "{% url 'maneu_admin:api_user_unfreeze' %}"
-    </script>
-    <script>
-        $(document).ready(function () {
-            $("#btn_freeze").click(function () {
-                $.ajax({
-                    url: user_freeze,
-                    type: "POST",
-                    data: $("#user_freeze").serialize(),
-                    success: function (res) {
-                        $("#user_unfreeze").show();
-                        $("#user_freeze").hide();
-                        alert(res)
-                    }
-                })
-            })
-            $("#btn_unfreeze").click(function () {
-                $.ajax({
-                    url: user_unfreeze,
-                    type: "POST",
-                    data: $("#user_unfreeze").serialize(),
-                    success: function (res) {
-                        $("#user_freeze").show();
-                        $("#user_unfreeze").hide();
-                        alert(res)
-                    }
-                })
-            })
-        })
-    </script>
+</div>
 {% endblock %}

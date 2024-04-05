@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container yellow">
         <div class="col-md-6 offset-md-3" style="margin-top: 20%; margin-bottom: 20%">
-            <form method="post" action="{% url 'maneu_admin:user_insert' %}">
+            <form method="post" action="{% url 'maneu_admin:insert' %}">
                 {% csrf_token %}
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">邀请密码</span>
@@ -45,7 +45,7 @@
                 <p>{{ msg }}</p>
                 <input type="submit" class="col-md-12 btn btn-primary">
             </form>
-            <a href="{% url 'maneu_admin:user_list' %}" type="button" class="col-md-12 btn btn-warning">返回</a>
+            <a href="{% url 'maneu_admin:list' %}" type="button" class="col-md-12 btn btn-warning">返回</a>
         </div>
     </div>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container blue">
         <div class="col-md-6 offset-md-3" style="margin-top: 20%; margin-bottom: 20%">
-            <form method="post" action="{% url 'maneu_admin:user_updata' %}">
+            <form method="post" action="{% url 'maneu_admin:updata' %}">
                 {% csrf_token %}
                 <div class="input-group input-group-sm mb-2">
                     <span class="input-group-text">密码验证</span>
@@ -38,7 +38,7 @@
                 <input type="submit" class="col-md-12 btn btn-warning">
             </form>
             <br>
-            <form method='GET' action="{% url 'maneu_admin:user_detail' %}">
+            <form method='GET' action="{% url 'maneu_admin:detail' %}">
                 <input type="submit" class="col-md-12 btn btn-primary" value='返回'>
             </form>
         </div>

@@ -41,3 +41,7 @@ def user_updata(request):
             return HttpResponseRedirect(reverse('maneu_admin:user_detail'))
     user = serivce.find_user(admin_id)
     return render(request, 'maneu_admin/updata.html', {'maneu_admin': user, 'msg': msg})
+
+
+def api_delete(request):
+    return re
