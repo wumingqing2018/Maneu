@@ -8,7 +8,8 @@ from maneu_index import service
 
 def index(request):
     time_list = common.getEveryDay(begin_date=request.GET['start_day'], end_date=request.GET['end_day'])
-    content_list = service.ManeuOrder_index(admin_id=request.session.get('id'), start=request.GET['start'], end=request.GET['end'])
+    content_list = service.ManeuOrder_index(admin_id=request.session.get('id'), start=request.GET['start'],
+                                            end=request.GET['end'])
     time_newList = []
     content_newList = []
     for a in content_list:
@@ -16,7 +17,8 @@ def index(request):
     for b in time_list:
         time_newList.append(content_newList.count(b))
 
-    content_list1 = service.ManeuGuess_index(admin_id=request.session.get('id'), start=request.GET['start'], end=request.GET['end'])
+    content_list1 = service.ManeuGuess_index(admin_id=request.session.get('id'), start=request.GET['start'],
+                                             end=request.GET['end'])
     time_newList1 = []
     content_newList1 = []
     for a in content_list1:

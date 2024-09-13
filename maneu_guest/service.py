@@ -8,7 +8,9 @@ def ManeuGuess_index(admin_id='', star='', end=''):
 
 
 def ManeuGuess_Search(admin_id='', text=''):
-    return ManeuGuess.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).order_by('-time').all()
+    return ManeuGuess.objects.filter(
+        Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).order_by(
+        '-time').all()
 
 
 def ManeuGuess_id(admin_id='', id=''):
@@ -17,7 +19,8 @@ def ManeuGuess_id(admin_id='', id=''):
 
 def ManeuGuess_insert(admin_id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):
     return ManeuGuess.objects.get_or_create(admin_id=admin_id, name=name, phone=phone,
-                                            defaults={'sex': sex, 'age': age, 'ot': ot, 'em': em, 'dfh': dfh, 'time': time, 'remark': remark})
+                                            defaults={'sex': sex, 'age': age, 'ot': ot, 'em': em, 'dfh': dfh,
+                                                      'time': time, 'remark': remark})
 
 
 def ManeuGuess_update(id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):

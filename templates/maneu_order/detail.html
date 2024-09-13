@@ -248,7 +248,8 @@
                 </div>
                 <hr style="color: white">
                 <div class="input-group input-group-sm" style="padding-bottom: 10px; padding-left: 22px;">
-                    <input type="text" class="form-control" id="server_value" placeholder="添加售后记录" autocomplete="off">
+                    <input type="text" class="form-control" id="server_value" placeholder="添加售后记录"
+                           autocomplete="off">
                     <input type="button" class="btn btn-primary" id="server_button" value="提交">
                 </div>
                 <hr style="color: white">
@@ -266,7 +267,8 @@
                 {% for foo in server %}
                     <div class="input-group input-group-sm" style="padding-bottom: 10px">
                         <span class="input-group-text">{{ foo.time }}</span>
-                        <input type="text" class="form-control" id="content" autocomplete="off" placeholder="售后内容" value="{{ foo.content }}">
+                        <input type="text" class="form-control" id="content" autocomplete="off" placeholder="售后内容"
+                               value="{{ foo.content }}">
                         <input type="button" class="btn btn-primary" value="更新" onclick="serviceUpdate(this)">
                         <input type="hidden" value="{{ foo.id }}">
                         <input type="button" class="btn btn-primary" value="删除" onclick="serviceDelete(this)">
@@ -301,14 +303,17 @@
         maneu_vision = {{ vision|safe }};
         guess_id = "{{ guess.id }}";
         order_id = "{{ order.id }}";
-        service_insert="{% url 'maneu_order:service_insert' %}";
-        service_delete="{% url 'maneu_order:service_delete' %}";
-        service_update="{% url 'maneu_order:service_update' %}";
+        service_insert = "{% url 'maneu_order:service_insert' %}";
+        service_delete = "{% url 'maneu_order:service_delete' %}";
+        service_update = "{% url 'maneu_order:service_update' %}";
     </script>
     <script type="application/javascript" src="{% static 'javascript/maneu/print.js' %}"></script>
-    <script type="application/javascript" src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
+    <script type="application/javascript"
+            src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu/delete.js' %}"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu_order/detail/index.js' %}"></script>
-    <script type="application/javascript" src="{% static 'javascript/maneu_order/detail/serverLog_delete.js' %}"></script>
-    <script type="application/javascript" src="{% static 'javascript/maneu_order/detail/serverLog_insert.js' %}"></script>
+    <script type="application/javascript"
+            src="{% static 'javascript/maneu_order/detail/serverLog_delete.js' %}"></script>
+    <script type="application/javascript"
+            src="{% static 'javascript/maneu_order/detail/serverLog_insert.js' %}"></script>
 {% endblock %}

@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     $('#search-value').keyup(function () {
         $('#body').empty()
         $.ajax({

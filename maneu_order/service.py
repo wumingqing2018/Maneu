@@ -1,5 +1,4 @@
 import json
-
 from django.db.models import Q
 
 from maneu.models import *
@@ -40,11 +39,13 @@ def ManeuOrder_delete(admin_id='', id=''):
 
 
 def ManeuOrder_Search(text='', admin_id=''):
-    return ManeuOrder.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
+    return ManeuOrder.objects.filter(
+        Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
 
 
 def ManeuOrder_insert(name='', time='', phone='', guess_id='', admin_id='', store_id='', vision_id='', remark=''):
-    return ManeuOrder.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, admin_id=admin_id, store_id=store_id, vision_id=vision_id, remark=remark)
+    return ManeuOrder.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, admin_id=admin_id,
+                                     store_id=store_id, vision_id=vision_id, remark=remark)
 
 
 def ManeuOrder_update(id='', name='', phone='', time="", remark=""):
@@ -92,7 +93,9 @@ def ManeuGuess_phone(phone=''):
 
 
 def ManeuGuess_search(admin_id='', name='', time='', phone='', sex='', age='', ot='', em='', dfh=''):
-    return ManeuGuess.objects.get_or_create(admin_id=admin_id, name=name, phone=phone, defaults={'sex': sex, 'age': age, 'ot': ot, 'em': em, 'dfh': dfh, 'time': time})
+    return ManeuGuess.objects.get_or_create(admin_id=admin_id, name=name, phone=phone,
+                                            defaults={'sex': sex, 'age': age, 'ot': ot, 'em': em, 'dfh': dfh,
+                                                      'time': time})
 
 
 def ManeuGuess_update(id='', content=''):
@@ -104,7 +107,8 @@ def ManeuGuess_update(id='', content=''):
 
 
 def ManeuService_insert(guess_id='', admin_id='', order_id='', content='', time=''):
-    return ManeuService.objects.create(guess_id=guess_id, admin_id=admin_id, order_id=order_id, content=content, time=time)
+    return ManeuService.objects.create(guess_id=guess_id, admin_id=admin_id, order_id=order_id, content=content,
+                                       time=time)
 
 
 def ManeuService_delete(admin_id='', id=''):

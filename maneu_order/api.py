@@ -1,17 +1,21 @@
-from common import common
-
 from django.http import JsonResponse
 
+from common import common
 from maneu_order import service
 
 
 def index(request):
-    list1 = list(service.ManeuOrder_index(admin_id=request.session.get('id'), star=request.GET.get('star'), end=request.GET.get('end')).values('id', 'name', 'phone', 'time', 'remark'))
+    list1 = list(service.ManeuOrder_index(admin_id=request.session.get('id'), star=request.GET.get('star'),
+                                          end=request.GET.get('end')).values('id', 'name', 'phone', 'time', 'remark'))
     return JsonResponse(list1, safe=False)
 
 
 def search(request):
-    list1 = list(service.ManeuOrder_Search(text=request.GET.get('text'), admin_id=request.session.get('id')).values('id', 'name', 'phone', 'time', 'remark'))
+    list1 = list(
+        service.ManeuOrder_Search(text=request.GET.get('text'), admin_id=request.session.get('id')).values('id', 'name',
+                                                                                                           'phone',
+                                                                                                           'time',
+                                                                                                           'remark'))
     return JsonResponse(list1, safe=False)
 
 
@@ -62,6 +66,7 @@ def service_delete(request):
 def service_update(request):
     res = common.res()
     if request.method == 'POST':
-        content = service.ManeuService_update(admin_id=request.session.get('id'), id=request.POST.get('id'), content=request.POST.get('content'))
+        content = service.ManeuService_update(admin_id=request.session.get('id'), id=request.POST.get('id'),
+                                              content=request.POST.get('content'))
         res['data']['content'] = content
     return JsonResponse(res)

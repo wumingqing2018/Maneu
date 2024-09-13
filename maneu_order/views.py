@@ -1,5 +1,4 @@
 import json
-
 from django.shortcuts import render
 
 from common import common
@@ -32,7 +31,8 @@ def detail(request):
     store = service.ManeuStore_id(id=order.store_id).content
     vision = service.ManeuVision_id(id=order.vision_id).content
     server = service.ManeuService_orderID(order_id=order.id)
-    return render(request, 'maneu_order/detail.html', {'order': order, 'store': store, 'vision': vision, 'server': server, 'guess': guess})
+    return render(request, 'maneu_order/detail.html',
+                  {'order': order, 'store': store, 'vision': vision, 'server': server, 'guess': guess})
 
 
 def insert(request):
@@ -40,13 +40,18 @@ def insert(request):
     if request.method == 'POST':
         guess_form = json.loads(request.POST.get('guess_form'))
         guess_id = service.ManeuGuess_search(admin_id=request.session.get('id'), time=request.POST.get(
-            'order_time'), name=guess_form['name'], phone=guess_form['phone'], sex=guess_form['sex'], age=guess_form['age'], ot=guess_form['OT'], em=guess_form['EM'], dfh=guess_form['DFH'])[0].id
+            'order_time'), name=guess_form['name'], phone=guess_form['phone'], sex=guess_form['sex'],
+                                             age=guess_form['age'], ot=guess_form['OT'], em=guess_form['EM'],
+                                             dfh=guess_form['DFH'])[0].id
         vision_id = service.ManeuVision_insert(admin_id=request.session.get(
             'id'), guess_id=guess_id, time=request.POST.get('order_time'), content=request.POST.get('vision_form')).id
         store_id = service.ManeuStore_insert(admin_id=request.session.get(
             'id'), guess_id=guess_id, time=request.POST.get('order_time'), content=request.POST.get('product_form')).id
-        order_id = service.ManeuOrder_insert(time=request.POST.get('order_time'), name=request.POST.get('order_name'), phone=request.POST.get(
-            'order_phone'), remark=request.POST.get('order_remark'), admin_id=request.session.get('id'), guess_id=guess_id, store_id=store_id, vision_id=vision_id).id
+        order_id = service.ManeuOrder_insert(time=request.POST.get('order_time'), name=request.POST.get('order_name'),
+                                             phone=request.POST.get(
+                                                 'order_phone'), remark=request.POST.get('order_remark'),
+                                             admin_id=request.session.get('id'), guess_id=guess_id, store_id=store_id,
+                                             vision_id=vision_id).id
         request.POST._mutable = True
         request.POST['order_id'] = order_id
         request.POST._mutable = False
@@ -59,8 +64,10 @@ def update(request):
     if request.method == 'GET':
         order = service.ManeuOrder_id(id=request.GET.get(
             'order_id'), admin_id=request.session.get('id'))
-        content = {"order": order, "guess": service.ManeuGuess_id(id=order.guess_id), "store": json.loads(service.ManeuStore_id(
-            id=order.store_id).content), "vision": json.loads(service.ManeuVision_id(id=order.vision_id).content)}
+        content = {"order": order, "guess": service.ManeuGuess_id(id=order.guess_id),
+                   "store": json.loads(service.ManeuStore_id(
+                       id=order.store_id).content),
+                   "vision": json.loads(service.ManeuVision_id(id=order.vision_id).content)}
         return render(request, 'maneu_order/update.html', content)
     if request.method == 'POST':
         service.ManeuVision_update(id=request.POST.get(
@@ -69,7 +76,9 @@ def update(request):
             'store_id'), content=request.POST.get('product_form'))
         service.ManeuGuess_update(id=request.POST.get(
             'guess_id'), content=request.POST.get('guess_form'))
-        service.ManeuOrder_update(id=request.POST.get('order_id'), name=request.POST.get('order_name'), phone=request.POST.get(
-            'order_phone'), time=request.POST.get('order_time'), remark=request.POST.get('order_remark'))
+        service.ManeuOrder_update(id=request.POST.get('order_id'), name=request.POST.get('order_name'),
+                                  phone=request.POST.get(
+                                      'order_phone'), time=request.POST.get('order_time'),
+                                  remark=request.POST.get('order_remark'))
         return detail(request)
     return index(request)

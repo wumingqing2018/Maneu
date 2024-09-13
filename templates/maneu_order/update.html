@@ -9,41 +9,49 @@
         </form>
         <hr>
         {# 客户基础数据 #}
-        <form class="vertical2" id="guess" >
+        <form class="vertical2" id="guess">
             <h5>客户基础数据</h5>
             <div class="col-3 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">时间</span>
-                    <input autocomplete="off" class="form-control" id="time" name="time" type="datetime-local" value="{{ guess.time|safe }}">
+                    <input autocomplete="off" class="form-control" id="time" name="time" type="datetime-local"
+                           value="{{ guess.time|safe }}">
                 </div>
             </div>
             <div class="col-3 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">电话</span>
-                    <input autocomplete="off" class="form-control" id="phone" name="phone" type="text" value="{{ guess.phone }}">
+                    <input autocomplete="off" class="form-control" id="phone" name="phone" type="text"
+                           value="{{ guess.phone }}">
                 </div>
             </div>
             <div class="col-3 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">姓名</span>
-                    <input autocomplete="off" class="form-control" id="name" name="name" type="text" value="{{ guess.name }}">
+                    <input autocomplete="off" class="form-control" id="name" name="name" type="text"
+                           value="{{ guess.name }}">
                 </div>
             </div>
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-1">年龄</span>
-                    <input autocomplete="off" class="form-control" type="text" name="age" list="age" value="{{ guess.age }}">
+                    <input autocomplete="off" class="form-control" type="text" name="age" list="age"
+                           value="{{ guess.age }}">
                     <span class="input-group-text col-1">性别</span>
-                    <input autocomplete="off" class="form-control" type="text" name="sex" list="sex" value="{{ guess.sex }}">
+                    <input autocomplete="off" class="form-control" type="text" name="sex" list="sex"
+                           value="{{ guess.sex }}">
                     <span class="input-group-text col-1">眼位</span>
-                    <input autocomplete="off" class="form-control" type="text" name="OT" list="OT" value="{{ guess.ot }}">
+                    <input autocomplete="off" class="form-control" type="text" name="OT" list="OT"
+                           value="{{ guess.ot }}">
                     <span class="input-group-text col-1">主视眼</span>
-                    <input autocomplete="off" class="form-control" type="text" name="EM" list="EM" value="{{ guess.em }}">
+                    <input autocomplete="off" class="form-control" type="text" name="EM" list="EM"
+                           value="{{ guess.em }}">
                     <span class="input-group-text col-1">病族史</span>
-                    <input autocomplete="off" class="form-control" type="text" name="DFH" list="DFH" value="{{ guess.dfh }}">
+                    <input autocomplete="off" class="form-control" type="text" name="DFH" list="DFH"
+                           value="{{ guess.dfh }}">
                 </div>
             </div>
-        </form >
+        </form>
         <hr>
 
         {# 视力解决方案 #}
@@ -101,7 +109,8 @@
             <div class="col-3 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">瞳距</span>
-                    <input autocomplete="off" type="text" class="form-control" name="PD" list="PD" value="{{ vision.PD }}">
+                    <input autocomplete="off" type="text" class="form-control" name="PD" list="PD"
+                           value="{{ vision.PD }}">
                 </div>
             </div>
         </form>
@@ -113,47 +122,72 @@
             <h5>产品订单</h5>
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
-                    <input autocomplete="off" type="text" name="arg10" class="form-control product1" value="{{ store.arg10 }}" placeholder="类别">
-                    <input autocomplete="off" type="text" name="arg11" class="form-control product1" value="{{ store.arg11 }}" placeholder="品牌">
-                    <input autocomplete="off" type="text" name="arg12" class="form-control product1" value="{{ store.arg12 }}" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg13" class="form-control product2" value="{{ store.arg13 }}" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg14" class="form-control product2" value="{{ store.arg14 }}" placeholder="价格">
+                    <input autocomplete="off" type="text" name="arg10" class="form-control product1"
+                           value="{{ store.arg10 }}" placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg11" class="form-control product1"
+                           value="{{ store.arg11 }}" placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg12" class="form-control product1"
+                           value="{{ store.arg12 }}" placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg13" class="form-control product2"
+                           value="{{ store.arg13 }}" placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg14" class="form-control product2"
+                           value="{{ store.arg14 }}" placeholder="价格">
                 </div>
             </div>
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
-                    <input autocomplete="off" type="text" name="arg20" class="form-control product1" value="{{ store.arg20 }}" placeholder="类别">
-                    <input autocomplete="off" type="text" name="arg21" class="form-control product1" value="{{ store.arg21 }}" placeholder="品牌">
-                    <input autocomplete="off" type="text" name="arg22" class="form-control product1" value="{{ store.arg22 }}" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg23" class="form-control product2" value="{{ store.arg23 }}" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg24" class="form-control product2" value="{{ store.arg24 }}" placeholder="价格">
+                    <input autocomplete="off" type="text" name="arg20" class="form-control product1"
+                           value="{{ store.arg20 }}" placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg21" class="form-control product1"
+                           value="{{ store.arg21 }}" placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg22" class="form-control product1"
+                           value="{{ store.arg22 }}" placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg23" class="form-control product2"
+                           value="{{ store.arg23 }}" placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg24" class="form-control product2"
+                           value="{{ store.arg24 }}" placeholder="价格">
                 </div>
             </div>
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
-                    <input autocomplete="off" type="text" name="arg30" class="form-control product1" value="{{ store.arg30 }}" placeholder="类别">
-                    <input autocomplete="off" type="text" name="arg31" class="form-control product1" value="{{ store.arg31 }}" placeholder="品牌">
-                    <input autocomplete="off" type="text" name="arg32" class="form-control product1" value="{{ store.arg32 }}" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg33" class="form-control product2" value="{{ store.arg33 }}" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg34" class="form-control product2" value="{{ store.arg34 }}" placeholder="价格">
+                    <input autocomplete="off" type="text" name="arg30" class="form-control product1"
+                           value="{{ store.arg30 }}" placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg31" class="form-control product1"
+                           value="{{ store.arg31 }}" placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg32" class="form-control product1"
+                           value="{{ store.arg32 }}" placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg33" class="form-control product2"
+                           value="{{ store.arg33 }}" placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg34" class="form-control product2"
+                           value="{{ store.arg34 }}" placeholder="价格">
                 </div>
             </div>
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
-                    <input autocomplete="off" type="text" name="arg40" class="form-control product1" value="{{ store.arg40 }}" placeholder="类别">
-                    <input autocomplete="off" type="text" name="arg41" class="form-control product1" value="{{ store.arg41 }}" placeholder="品牌">
-                    <input autocomplete="off" type="text" name="arg42" class="form-control product1" value="{{ store.arg42 }}" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg43" class="form-control product2" value="{{ store.arg43 }}" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg44" class="form-control product2" value="{{ store.arg44 }}" placeholder="价格">
+                    <input autocomplete="off" type="text" name="arg40" class="form-control product1"
+                           value="{{ store.arg40 }}" placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg41" class="form-control product1"
+                           value="{{ store.arg41 }}" placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg42" class="form-control product1"
+                           value="{{ store.arg42 }}" placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg43" class="form-control product2"
+                           value="{{ store.arg43 }}" placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg44" class="form-control product2"
+                           value="{{ store.arg44 }}" placeholder="价格">
                 </div>
             </div>
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
-                    <input autocomplete="off" type="text" name="arg50" class="form-control product1" value="{{ store.arg50 }}" placeholder="类别">
-                    <input autocomplete="off" type="text" name="arg51" class="form-control product1" value="{{ store.arg51 }}" placeholder="品牌">
-                    <input autocomplete="off" type="text" name="arg52" class="form-control product1" value="{{ store.arg52 }}" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg53" class="form-control product2" value="{{ store.arg53 }}" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg54" class="form-control product2" value="{{ store.arg54 }}" placeholder="价格">
+                    <input autocomplete="off" type="text" name="arg50" class="form-control product1"
+                           value="{{ store.arg50 }}" placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg51" class="form-control product1"
+                           value="{{ store.arg51 }}" placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg52" class="form-control product1"
+                           value="{{ store.arg52 }}" placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg53" class="form-control product2"
+                           value="{{ store.arg53 }}" placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg54" class="form-control product2"
+                           value="{{ store.arg54 }}" placeholder="价格">
                 </div>
             </div>
         </form>
@@ -165,7 +199,8 @@
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-1">备注</span>
-                    <input autocomplete="off" class="form-control" id="remark" name="remark" type="text" value="{{ order.remark }}">
+                    <input autocomplete="off" class="form-control" id="remark" name="remark" type="text"
+                           value="{{ order.remark }}">
                 </div>
             </div>
         </form>

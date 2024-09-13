@@ -7,7 +7,7 @@ function serviceUpdate(obj) {
             "content": obj.previousElementSibling.value,
             "csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
         },
-        success:function (res) {
+        success: function (res) {
             alert('更新成功')
         }
     })

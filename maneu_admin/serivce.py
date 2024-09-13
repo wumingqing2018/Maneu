@@ -47,9 +47,9 @@ def user_delete(admin_id):
 
 def user_update(old_password='', localtion='', admin_id='', nickname='', password='', email='', phone='', remark=''):
     ManeuAdmin.objects.filter(id=admin_id, password=old_password).update(nickname=nickname, password=password,
-                                                                               email=email, phone=phone,
-                                                                               location=localtion,
-                                                                               content=remark)
+                                                                         email=email, phone=phone,
+                                                                         location=localtion,
+                                                                         content=remark)
 
 
 def user_updata(username, password):

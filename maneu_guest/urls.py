@@ -1,6 +1,6 @@
 from django.urls import path
 
-from maneu_guest import views,api
+from maneu_guest import views, api
 
 app_name = 'maneu_guest'
 

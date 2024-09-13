@@ -2,7 +2,7 @@ var time = new Date();
 var day = ("0" + time.getDate()).slice(-2);
 var month = ("0" + (time.getMonth() + 1)).slice(-2);
 var today = time.getFullYear() + "-" + (month) + "-" + (day);
-$(function() {
+$(function () {
     $.ajax({
         url: api_index,
         data: {
@@ -25,7 +25,7 @@ $(function() {
                     "                    <td valign='middle'>\n" +
                     "                        <span>999</span>\n" +
                     "                    </td>\n" +
-                                        "                    <td valign='middle'>\n" +
+                    "                    <td valign='middle'>\n" +
                     "                        <span>" + res[i]['remark'] + "</span>\n" +
                     "                    </td>\n" +
                     "                    <td valign='middle' align='right'>\n" +

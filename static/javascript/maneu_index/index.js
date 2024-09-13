@@ -1,21 +1,21 @@
-
-$(function() {
-    var start =moment().subtract(29, 'days');
-    var end =moment();
+$(function () {
+    var start = moment().subtract(29, 'days');
+    var end = moment();
     var myChart = echarts.init(document.getElementById('main1'), 'maneu');
+
     function cb(start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') +' - '+end.format('MMMM D, YYYY'));
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         $('#body').empty();
         $.ajax({
                 url: api_index,
                 type: 'GET',
                 data: {
-                    start_day:start.format('YYYY-MM-DD'),
+                    start_day: start.format('YYYY-MM-DD'),
                     end_day: end.format('YYYY-MM-DD'),
                     start: start.format('YYYY-MM-DD 00:00:00'),
                     end: end.format('YYYY-MM-DD 23:59:59'),
                 },
-                success:function (res) {
+                success: function (res) {
                     console.log(res)
                     // 使用刚指定的配置项和数据显示图表。
                     var option = {
@@ -40,7 +40,7 @@ $(function() {
                         },
                         tooltip: {},
                         legend: {
-                            data: ['零售数据','客户数据']
+                            data: ['零售数据', '客户数据']
                         },
                         xAxis: {
                             data: res.time_list
@@ -50,7 +50,7 @@ $(function() {
                             name: '零售数据',
                             type: 'line',
                             data: res.time_newList,
-                        },{
+                        }, {
                             name: '客户数据',
                             type: 'line',
                             data: res.time_newList1,
@@ -61,6 +61,7 @@ $(function() {
             }
         );
     }
+
     $('#reportrange').daterangepicker({
         startDate: start,
         endDate: end,
