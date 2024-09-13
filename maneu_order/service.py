@@ -1,4 +1,5 @@
 import json
+
 from django.db.models import Q
 
 from maneu.models import *

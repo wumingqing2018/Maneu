@@ -1,4 +1,5 @@
 import json
+
 from django.shortcuts import render
 
 from common import common
