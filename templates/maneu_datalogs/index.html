@@ -8,7 +8,7 @@
         var option = {
             title: {
                 text: '本月录入数据统计',
-                subtext: {{ order_count }} +'单',
+                subtext: {{ order_count }} + '单',
                 textStyle: {
                     fontSize: 18,
                     fontWeight: 'bolder',
@@ -16,10 +16,10 @@
             },
             tooltip: {},
             legend: {
-                data:['本月销量']
+                data: ['本月销量']
             },
             xAxis: {
-                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31'],
+                data: ['01日', '02日', '03日', '04日', '05日', '06日', '07日', '08日', '09日', '10日', '11日', '12日', '13日', '14日', '15日', '16日', '17日', '18日', '19日', '20日', '21日', '22日', '23日', '24日', '25日', '26日', '27日', '28日', '29日', '30日', '31'],
             },
             yAxis: {},
             series: [{
@@ -37,7 +37,7 @@
         var option = {
             title: {
                 text: '本月销售金额统计',
-                subtext: {{ money_count }} +'元',
+                subtext: {{ money_count }} + '元',
                 textStyle: {
                     fontSize: 18,
                     fontWeight: 'bolder',
@@ -45,10 +45,10 @@
             },
             tooltip: {},
             legend: {
-                data:['金额统计']
+                data: ['金额统计']
             },
             xAxis: {
-                data: ['01日','02日','03日','04日','05日','06日','07日','08日','09日','10日','11日','12日','13日','14日','15日','16日','17日','18日','19日','20日','21日','22日','23日','24日','25日','26日','27日','28日','29日','30日','31'],
+                data: ['01日', '02日', '03日', '04日', '05日', '06日', '07日', '08日', '09日', '10日', '11日', '12日', '13日', '14日', '15日', '16日', '17日', '18日', '19日', '20日', '21日', '22日', '23日', '24日', '25日', '26日', '27日', '28日', '29日', '30日', '31'],
             },
             yAxis: {},
             series: [{
@@ -75,7 +75,7 @@
             },
             tooltip: {},
             legend: {
-                data:['金额统计']
+                data: ['金额统计']
             },
             series: [{
                 name: '销售份额',
@@ -101,7 +101,7 @@
             },
             tooltip: {},
             legend: {
-                data:['金额统计']
+                data: ['金额统计']
             },
             series: [{
                 name: '销售份额',
@@ -116,17 +116,18 @@
 {% endblock %}
 {% block content %}
     <div class="container-fluid row">
-            <h3 class="col-2">徕可数据可视化</h3>
-            <div class="col-10">
-                <form class="col-3 offset-9" method="post" action="{% url 'maneu_datalogs:index' %}">
-                    {% csrf_token %}
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text">时间</span>
-                        <input class="form-control date_time" name="time" type="date" autocomplete="off" required="required" value="{{ day|safe }}">
-                        <input class="form-control" type="submit">
-                    </div>
-                </form>
-            </div>
+        <h3 class="col-2">徕可数据可视化</h3>
+        <div class="col-10">
+            <form class="col-3 offset-9" method="post" action="{% url 'maneu_datalogs:index' %}">
+                {% csrf_token %}
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text">时间</span>
+                    <input class="form-control date_time" name="time" type="date" autocomplete="off" required="required"
+                           value="{{ day|safe }}">
+                    <input class="form-control" type="submit">
+                </div>
+            </form>
+        </div>
         <div id="main1" style="width: 100%;height:400px;"></div>
         <div id="main2" style="width: 100%;height:400px;"></div>
         <div id="main3" style="width: 50%;height:400px;"></div>

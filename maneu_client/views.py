@@ -58,6 +58,7 @@ def detail(request):
                                                                'list_r': subjectiverefraction['OD_AL'],
                                                                'list_l': subjectiverefraction['OS_AL']})
 
+
 def detail_phone(request):
     guess = service.guess_phone(phone=request.POST.get('phone'))
     users = usersService.find_user(user_id=request.session.get('id'))
@@ -101,8 +102,11 @@ def detail_phone(request):
 def insert(request):
     today = common.today()
     if request.method == 'POST':
-        ManeuGuess = service.guess_insert(time=today, contents=request.POST.get('Guess_information'), user_id=request.session.get('id'))
-        ManeuSubjectiveRefraction = service.subjectiverefraction_insert(guess_id=ManeuGuess.id, content=request.POST.get('Subjective_refraction'))
+        ManeuGuess = service.guess_insert(time=today, contents=request.POST.get('Guess_information'),
+                                          user_id=request.session.get('id'))
+        ManeuSubjectiveRefraction = service.subjectiverefraction_insert(guess_id=ManeuGuess.id,
+                                                                        content=request.POST.get(
+                                                                            'Subjective_refraction'))
         return HttpResponseRedirect(reverse('maneu_client:index'))
     return render(request, 'maneu_client/insert.html', {'today': today})
 

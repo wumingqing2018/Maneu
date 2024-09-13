@@ -4,7 +4,6 @@ import json
 from django.shortcuts import render, reverse, HttpResponseRedirect
 
 from common import common
-from common import verify
 from common.checkMobile import judge_pc_or_mobile
 from maneu_alterSales import service as alterSalesServivce
 from maneu_order import service
@@ -89,9 +88,12 @@ def insert(request):
             ManeuGuess_id = service.guess_phone(phone=order['phone']).id
         except:
             ManeuGuess_id = ''
-        order = service.ManeuOrderV2_insert(time=order['time'], name=order['name'], phone=order['phone'], admin_id=request.session.get('id'), guess_id=ManeuGuess_id)
-        ManeuStore_id = service.ManeuStore_insert(time=order.time, order_id=order.id, content=request.POST.get('Product_Orders'))
-        ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(time=order.time, order_id=order.id, content=request.POST.get('Vision_Solutions'))
+        order = service.ManeuOrderV2_insert(time=order['time'], name=order['name'], phone=order['phone'],
+                                            admin_id=request.session.get('id'), guess_id=ManeuGuess_id)
+        ManeuStore_id = service.ManeuStore_insert(time=order.time, order_id=order.id,
+                                                  content=request.POST.get('Product_Orders'))
+        ManeuVisionSolutions_id = service.ManeuVisionSolutions_insert(time=order.time, order_id=order.id,
+                                                                      content=request.POST.get('Vision_Solutions'))
         if order:
             request.session['order_id'] = str(order.id)
             return HttpResponseRedirect(reverse('maneu_order:detail'))
@@ -121,8 +123,10 @@ def update(request):
             ManeuVisionSolutions_id = service.ManeuVisionSolutions_update(id=order.visionsolutions_id,
                                                                           content=request.POST.get('Vision_Solutions'))
             ManeuSubjectiveRefraction_id = service.ManeuSubjectiveRefraction_update(id=order.subjectiverefraction_id,
-                                                                                    content=request.POST.get('Subjective_refraction'))
+                                                                                    content=request.POST.get(
+                                                                                        'Subjective_refraction'))
             guess_content = json.loads(request.POST.get('Guess_information'))
-            service.ManeuOrderV2_update(order_id=order.id,name=guess_content['guess_name'],phone=guess_content['guess_phone'], )
+            service.ManeuOrderV2_update(order_id=order.id, name=guess_content['guess_name'],
+                                        phone=guess_content['guess_phone'], )
             return HttpResponseRedirect(reverse('maneu_order:detail'))
     return HttpResponseRedirect(reverse('maneu_order:update'))

@@ -5,8 +5,9 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
-from django.db import models
 import uuid
+
+from django.db import models
 
 
 class AuthGroup(models.Model):
@@ -155,7 +156,8 @@ class ManeuClass(models.Model):
     time = models.DateTimeField()
     series = models.CharField(max_length=36)
     color = models.CharField(max_length=36)
-    class_field = models.CharField(db_column='class', max_length=36)  # Field renamed because it was a Python reserved word.
+    class_field = models.CharField(db_column='class',
+                                   max_length=36)  # Field renamed because it was a Python reserved word.
     count = models.CharField(max_length=36)
     price = models.CharField(max_length=36)
     remark = models.CharField(max_length=255)
@@ -221,7 +223,8 @@ class ManeuOrderV2(models.Model):
     admin_id = models.CharField(max_length=36)
     store_id = models.CharField(max_length=36)
     visionsolutions_id = models.CharField(db_column='visionSolutions_id', max_length=36)  # Field name made lowercase.
-    subjectiverefraction_id = models.CharField(db_column='subjectiveRefraction_id', max_length=36)  # Field name made lowercase.
+    subjectiverefraction_id = models.CharField(db_column='subjectiveRefraction_id',
+                                               max_length=36)  # Field name made lowercase.
 
     class Meta:
         managed = False

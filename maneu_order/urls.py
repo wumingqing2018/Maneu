@@ -1,6 +1,5 @@
 from django.urls import path
 
-from maneu_order import api
 from maneu_order import views
 
 app_name = 'maneu_order'

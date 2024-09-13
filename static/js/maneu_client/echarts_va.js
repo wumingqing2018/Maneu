@@ -9,7 +9,7 @@ var option = {
     },
     tooltip: {},
     legend: {
-        data:['右眼']
+        data: ['右眼']
     },
     xAxis: {
         data: ['左眼视力', '右眼视力'],
@@ -17,8 +17,8 @@ var option = {
     yAxis: {
         min: 0.2,
         max: 1.2,
-        axisLabel:{
-            formatter: function (value,index) {
+        axisLabel: {
+            formatter: function (value, index) {
                 return value.toFixed(1)
             }
         }

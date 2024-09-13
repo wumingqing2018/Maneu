@@ -10,7 +10,8 @@ class OrderUpdateForm(forms.Form):
                              widget=widgets.TextInput(
                                  attrs={'class': 'form-control', 'placeholder': '客户姓名'}),
                              validators=[RegexValidator(r'^[\u4E00-\u9FA5A-Za-z0-9_]+$', '不能输入特殊字符')],
-                             error_messages={'required': '请输入姓名', 'min_length': '格式不正确', 'max_length': '格式不正确'})
+                             error_messages={'required': '请输入姓名', 'min_length': '格式不正确',
+                                             'max_length': '格式不正确'})
     c_phone = forms.CharField(label='客户电话',
                               required=True, strip=True,
                               min_length=11, max_length=11,

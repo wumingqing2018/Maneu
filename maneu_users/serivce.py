@@ -48,9 +48,9 @@ def user_delete(admin_id):
 def user_update(old_password='', localtion='', admin_id='', nickname='', password='', email='', phone='', remark=''):
     try:
         ManeuAdmin.objects.filter(admin_id=admin_id, password=old_password).update(nickname=nickname, password=password,
-                                                                                 email=email, phone=phone,
-                                                                                 localtion=localtion,
-                                                                                 remark=remark)
+                                                                                   email=email, phone=phone,
+                                                                                   localtion=localtion,
+                                                                                   remark=remark)
     except BaseException as msg:
         return str(msg)
 

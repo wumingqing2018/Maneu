@@ -1,20 +1,19 @@
 $(document).ready(function () {
-    var InputCount=1;
-    $("#AddMoreTextBox").click(function (e)
-    {
+    var InputCount = 1;
+    $("#AddMoreTextBox").click(function (e) {
         InputCount++;
         $("#Product_Orders_TABLE").append('    <div class="input-group input-group-sm mb-2">\n' +
-            '        <input autocomplete="off" type="text" name="arg'+InputCount+'0" class="form-control" style="width: 12%" placeholder="类别">\n' +
-            '        <input autocomplete="off" type="text" name="arg'+InputCount+'1" class="form-control" style="width: 12%" placeholder="品牌">\n' +
-            '        <input autocomplete="off" type="text" name="arg'+InputCount+'2" class="form-control" style="width: 12%" placeholder="型号">\n' +
-            '        <input autocomplete="off" type="text" name="arg'+InputCount+'3" class="form-control" style="width: 52%" placeholder="参数">\n' +
-            '        <input autocomplete="off" type="text" name="arg'+InputCount+'4" class="form-control" style="width: 12%" placeholder="价格">\n' +
+            '        <input autocomplete="off" type="text" name="arg' + InputCount + '0" class="form-control" style="width: 12%" placeholder="类别">\n' +
+            '        <input autocomplete="off" type="text" name="arg' + InputCount + '1" class="form-control" style="width: 12%" placeholder="品牌">\n' +
+            '        <input autocomplete="off" type="text" name="arg' + InputCount + '2" class="form-control" style="width: 12%" placeholder="型号">\n' +
+            '        <input autocomplete="off" type="text" name="arg' + InputCount + '3" class="form-control" style="width: 52%" placeholder="参数">\n' +
+            '        <input autocomplete="off" type="text" name="arg' + InputCount + '4" class="form-control" style="width: 12%" placeholder="价格">\n' +
             '    </div>\n' +
             '</div>\n');
     });
     $('#DeleteTextBox').click(function (e) {
-        if (InputCount >1){
-            InputCount = InputCount-1;
+        if (InputCount > 1) {
+            InputCount = InputCount - 1;
             $("#Product_Orders_TABLE>div").last().remove()
         }
     })

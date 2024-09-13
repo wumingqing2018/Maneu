@@ -49,7 +49,7 @@ def index(request):
     orderlist = service.find_order_month(admin_id=admin_id, year=year, month=month)  # 查找今日订单
     for order in orderlist:
         order_logs['order_count'] = order_logs['order_count'] + 1
-        order_logs['order_log']['%02d'%order.time.day] = order_logs['order_log']['%02d'%order.time.day] +1
+        order_logs['order_log']['%02d' % order.time.day] = order_logs['order_log']['%02d' % order.time.day] + 1
         store = json.loads(service.find_store_id(id=order.store_id).content)
         for i in store_list:
             try:
@@ -57,17 +57,18 @@ def index(request):
             except:
                 store[i] = 0
             order_logs['money_count'] = order_logs['money_count'] + store[i]
-            order_logs['money_log']['%02d' % order.time.day] = order_logs['money_log']['%02d'%order.time.day] + store[i]
+            order_logs['money_log']['%02d' % order.time.day] = order_logs['money_log']['%02d' % order.time.day] + store[
+                i]
         for i in brand_list:
             if store[i]:
                 if order_logs['brand_log'].get(store[i]):
-                    order_logs['brand_log'][store[i]] = order_logs['brand_log'][store[i]] +1
+                    order_logs['brand_log'][store[i]] = order_logs['brand_log'][store[i]] + 1
                 else:
                     order_logs['brand_log'][store[i]] = 1
         for i in class_list:
             if store[i]:
                 if order_logs['class_log'].get(store[i]):
-                    order_logs['class_log'][store[i]] = order_logs['class_log'][store[i]] +1
+                    order_logs['class_log'][store[i]] = order_logs['class_log'][store[i]] + 1
                 else:
                     order_logs['class_log'][store[i]] = 1
 
@@ -80,9 +81,10 @@ def index(request):
     for i in order_logs['class_log']:
         class_log.append({'value': order_logs['class_log'][i], 'name': i})
 
-    return render(request, 'maneu_datalogs/index.html', {'order_log': order_log, 'order_count': order_logs['order_count'],
-                                                         'money_log': money_log, 'money_count': order_logs['money_count'],
-                                                         'class_log': class_log, 'class_count': order_logs['class_count'],
-                                                         'brand_log': brand_log, 'brand_count': order_logs['brand_count'],
-                                                         'day': day
-                                                         })
+    return render(request, 'maneu_datalogs/index.html',
+                  {'order_log': order_log, 'order_count': order_logs['order_count'],
+                   'money_log': money_log, 'money_count': order_logs['money_count'],
+                   'class_log': class_log, 'class_count': order_logs['class_count'],
+                   'brand_log': brand_log, 'brand_count': order_logs['brand_count'],
+                   'day': day
+                   })

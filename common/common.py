@@ -21,6 +21,7 @@ def today():
     """
     return time.strftime("%Y-%m-%d", time.localtime())
 
+
 def day():
     """
     返回今天日期
@@ -29,6 +30,7 @@ def day():
     now_time = datetime.datetime.now()  # 如果数据库保存的是UTC时间,程序不会蹦但是会提示你这不是本地时间
     return now_time.day
 
+
 def month():
     """
     返回今天日期
@@ -36,6 +38,7 @@ def month():
     """
     now_time = datetime.datetime.now()  # 如果数据库保存的是UTC时间,程序不会蹦但是会提示你这不是本地时间
     return now_time.month
+
 
 def year():
     """
@@ -73,7 +76,7 @@ def generate_qrcode():
     data = '我爱python'
     img = qrcode.make(data)
 
-    buf = BytesIO()		# BytesIO实现了在内存中读写bytes
+    buf = BytesIO()  # BytesIO实现了在内存中读写bytes
     img.save(buf)
     return buf.getvalue()
 

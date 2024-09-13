@@ -1,8 +1,8 @@
+from maneu.models import ManeuAdmin
 from maneu.models import ManeuGuess
 from maneu.models import ManeuOrderV2
 from maneu.models import ManeuStore
 from maneu.models import ManeuSubjectiveRefraction
-from maneu.models import ManeuAdmin
 from maneu.models import ManeuVisionSolutions
 
 

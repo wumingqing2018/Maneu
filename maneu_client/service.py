@@ -36,11 +36,15 @@ def guess_phone(phone=''):
 
 def guess_insert(contents='', admin_id='', time=''):
     contents = json.loads(contents)
-    return ManeuGuess.objects.create(time=time, admin_id=admin_id, name=contents['guess_name'], phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'], ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'], remark=contents['remark'])
+    return ManeuGuess.objects.create(time=time, admin_id=admin_id, name=contents['guess_name'],
+                                     phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'],
+                                     ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'],
+                                     remark=contents['remark'])
 
 
 def subjectiverefraction_insert(guess_id='', content=''):
-        return ManeuSubjectiveRefraction.objects.create(guessid=guess_id, content=content)
+    return ManeuSubjectiveRefraction.objects.create(guessid=guess_id, content=content)
+
 
 def guess_update_admin_id(id='', admin_id=''):
     return ManeuGuess.objects.filter(id=id).update(admin_id=admin_id)
@@ -57,7 +61,8 @@ def guess_search(text='', admin_id=''):
 def guess_update(id='', content=''):
     contents = json.loads(content)
     return ManeuGuess.objects.filter(id=id).update(name=contents['guess_name'],
-                                                   phone=contents['guess_phone'], sex=contents['sex'], age=contents['age'],
+                                                   phone=contents['guess_phone'], sex=contents['sex'],
+                                                   age=contents['age'],
                                                    ot=contents['OT'], em=contents['EM'], dfh=contents['DFH'],
                                                    remark=contents['remark'])
 

@@ -7,7 +7,7 @@
 
 {% block javascript %}
     {# delete model #}
-    <script type="application/javascript"  src="{% static 'js/maneu/delete.js' %}"></script>
+    <script type="application/javascript" src="{% static 'js/maneu/delete.js' %}"></script>
     {# print model #}
     <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="text/javascript" src="{% static 'js/maneu/print.js' %}"></script>
@@ -26,12 +26,12 @@
                 },
             },
             tooltip: {
-                formatter:function(datas) {
+                formatter: function (datas) {
                     return datas.value.toFixed(1);
                 }
             },
             legend: {
-                data:['左眼视力', '右眼视力']
+                data: ['左眼视力', '右眼视力']
             },
             xAxis: {
                 data: ['左眼视力', '右眼视力'],
@@ -39,8 +39,8 @@
             yAxis: {
                 min: 0.2,
                 max: 1.2,
-                axisLabel:{
-                    formatter: function (value,index) {
+                axisLabel: {
+                    formatter: function (value, index) {
                         return value.toFixed(1)
                     }
                 }
@@ -80,7 +80,7 @@
             },
             tooltip: {},
             legend: {
-                data:['左眼眼轴', '右眼眼轴']
+                data: ['左眼眼轴', '右眼眼轴']
             },
             xAxis: {
                 data: ['左眼眼轴', '右眼眼轴'],
@@ -89,8 +89,8 @@
                 name: 'mm',
                 min: 16,
                 max: 28,
-                axisLabel:{
-                    formatter: function (value,index) {
+                axisLabel: {
+                    formatter: function (value, index) {
                         return value.toFixed(1)
                     }
                 }
@@ -104,7 +104,7 @@
                     data: [{
                         label: {
                             position: "middle",
-                            formatter: "标准值: "+ {{ stand_ax|safe }} +"mm",
+                            formatter: "标准值: " + {{ stand_ax|safe }} + "mm",
                             fontSize: "10",
                         },
                         yAxis: {{ stand_ax|safe }},
