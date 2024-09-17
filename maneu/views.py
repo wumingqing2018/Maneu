@@ -1,4 +1,6 @@
-import os, re, random
+import os
+import random
+import re
 
 from aliyunsdkcore.auth.credentials import AccessKeyCredential
 from aliyunsdkcore.client import AcsClient
@@ -7,8 +9,8 @@ from django.http import JsonResponse
 from django.shortcuts import HttpResponseRedirect, reverse, render
 
 from common import common
-from maneu import service
 from common.forms.loginForm import LoginForm
+from maneu import service
 
 
 def index(request):
