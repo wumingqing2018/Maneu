@@ -1,7 +1,12 @@
 # 依赖包
 import datetime
 import time
+import os
+import random
 
+from aliyunsdkcore.auth.credentials import AccessKeyCredential
+from aliyunsdkcore.client import AcsClient
+from aliyunsdkdysmsapi.request.v20170525.SendSmsRequest import SendSmsRequest
 
 def current_time():
     """
@@ -91,3 +96,24 @@ def getEveryDay(begin_date, end_date):
         date_list.append(date_str)
         begin_date += datetime.timedelta(days=1)
     return date_list
+
+
+def sendsms(code, call):
+    credentials = AccessKeyCredential(os.environ['ALIBABA_CLOUD_ACCESS_KEY_ID'],
+                                      os.environ['ALIBABA_CLOUD_ACCESS_KEY_SECRET'])
+
+    request = SendSmsRequest()
+    request.set_accept_format('json')
+    request.set_SignName("徕可")
+    request.set_TemplateCode("SMS_471990239")
+    request.set_PhoneNumbers(code)
+    request.set_TemplateParam({'code': call})
+
+    client = AcsClient(region_id='cn-shenzhen', credential=credentials)
+    response = client.do_action_with_exception(request)
+
+    return eval(response)
+
+
+def get_random_code():
+    return random.randint(100000, 999999)
