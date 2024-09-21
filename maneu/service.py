@@ -8,8 +8,8 @@ def find_user_username(username=''):
     return ManeuAdmin.objects.filter(username=username).first()
 
 
-def sendsms(phone='', password=''):
-    return ManeuAdmin.objects.filter(phone=phone).update(password=password)
+def sendsms(call='', code=''):
+    return ManeuAdmin.objects.filter(phone=call).update(password=code)
 
 
 def admin_login(call='', code=''):
