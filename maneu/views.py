@@ -59,6 +59,7 @@ def sendsms(request):
         data = service.sendsms(phone=phone_number, password=random_num)
         if data:
             response = common.sendsms(code=random_num, call=phone_number)
+            print(response)
             if response['Code'] == 'OK':
                 content = {'status': True, 'message': 'OK', 'data': {}}
             else:
