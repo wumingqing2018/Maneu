@@ -53,7 +53,7 @@
                     if (res.status === true){
                         window.location.href = {% url 'maneu_order:index' %}
                     }else {
-                        alert('1')
+                        $("#msg").value = res.message
                     }
                 },
             })
