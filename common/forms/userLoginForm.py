@@ -33,5 +33,5 @@ class LoginForm(forms.Form):
         username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
         verify = find_username_password(username, password)
-        if verify == None:
-            raise forms.ValidationError('登录失败')
+        if verify is None:
+            raise forms.ValidationError('登录失败，账号还是密码错误，请确认账号和密码')
