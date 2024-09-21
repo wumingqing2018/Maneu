@@ -56,7 +56,7 @@ body {
     text-align: center;
     padding: 10px;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 20px;
     background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
     color: #fff;
 }
@@ -66,13 +66,8 @@ label {
 }
 
 a {
-    text-decoration-line: none;
-    color: #abc1ee;
-}
-
-a.button {
-    text-decoration-line: none;
     color: white;
+    text-decoration-line: none;
 }
 
 .msg {

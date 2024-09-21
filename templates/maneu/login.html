@@ -21,17 +21,23 @@
     <div class="login-wrapper">
         <div class="header">徕可管理系统</div>
         <div class="form-wrapper">
-            <label for="username">账号:</label>
+            <label for="username">手机号:</label>
             <input type="text" class="input-item" id="call" placeholder="call" autocomplete="off">
-            <label for="password">密码:</label>
-            <input type="text" class="input-item" id="code" placeholder="code" autocomplete="off"><br>
+        </div>
+        <div class="form-wrapper" id="sendsms">
+            <button class="btn" id="sendsms-btn">获取验证码</button>
+        </div>
+        <div class="form-wrapper" id="password">
+            <label for="password">验证码:</label>
+            <input type="text" class="input-item" id="code" placeholder="code" autocomplete="off">
+            <button class="btn" id="login-btn">登录</button>
+        </div>
+        <div class="form-wrapper">
             <span class="msg" id="msg">{{ msg }}</span>
-                <button class="btn" id="login-btn">登录</button>
-            <a style="color: white" href="{% url 'index' %}">
-                <button class="btn">返回</button>
-            </a>
+            <a href="{% url 'index' %}"><button class="btn">返回</button></a>
         </div>
     </div>
+</div>
 </div>
 </body>
 
@@ -41,6 +47,24 @@
 </html>
 <script>
     $(document).ready(function () {
+        $("#password").hide();
+        $("#sendsms-btn").click(function () {
+            $.ajax({
+                url: {% url 'sendsms' %},
+                method: 'GET',
+                data: {
+                    call: $("#call").val(),
+                },
+                success: function (res) {
+                    if (res.status === true){
+                        $("#sendsms").hide();
+                        $("#password").show();
+                    }else {
+                        $("#msg").text("发送短信失败")
+                    }
+                }
+            })
+        })
         $("#login-btn").click(function () {
             $.ajax({
                 url: {% url 'loginVerify' %},

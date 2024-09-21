@@ -6,7 +6,7 @@ import re
 def is_date(code):
     try:
         pattern = re.compile(r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(19|20)\d\d (0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$')
-        if pattern.match(code) is None:
+        if pattern.match(code) is not None:
             return str(code)
         else:
             return None
@@ -17,7 +17,7 @@ def is_date(code):
 def is_call(code):
     try:
         pattern = re.compile(r'^1[3-9]\d{9}$')
-        if pattern.match(code) is None:
+        if pattern.match(code) is not None:
             return str(code)
         else:
             return None
@@ -28,7 +28,7 @@ def is_call(code):
 def is_uuid(code):
     try:
         pattern = re.compile(r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$')
-        if pattern.match(code) is None:
+        if pattern.match(code) is not None:
             return str(code)
         else:
             return None
@@ -39,7 +39,7 @@ def is_uuid(code):
 def is_code(code):
     try:
         pattern = re.compile(r'^\d{6}$')
-        if pattern.match(code) is None:
+        if pattern.match(code) is not None:
             return str(code)
         else:
             return None
