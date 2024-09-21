@@ -3,7 +3,7 @@ from django.shortcuts import HttpResponseRedirect, reverse, render
 
 from common import common
 from common import verify
-from common.forms.loginForm import LoginForm
+from common.forms.userLoginForm import LoginForm
 from maneu import service
 
 

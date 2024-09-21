@@ -3,7 +3,7 @@ from django.core.validators import RegexValidator
 from django.forms import widgets
 
 
-class VisionSolutionsInsertForm(forms.Form):
+class VSInsertForm(forms.Form):
     search = forms.CharField(label="单号",
                              required=True,
                              widget=widgets.TextInput(
