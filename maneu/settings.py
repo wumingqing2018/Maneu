@@ -81,6 +81,12 @@ TEMPLATES = [
         },
     },
 ]
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR + 'db.sqlite3',
+    }
+}
 
 """
 WSGI_应用程序
@@ -90,7 +96,6 @@ WSGI_APPLICATION = 'maneu.wsgi.application'
 """
 配置数据库
 https:#docs.djangoproject.com/en/3.0/ref/settings/#databases
-"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -101,6 +106,7 @@ DATABASES = {
         'PASSWORD': '',
     }
 }
+"""
 
 """
 密码验证

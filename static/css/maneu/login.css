@@ -70,6 +70,11 @@ a {
     color: #abc1ee;
 }
 
+a.button {
+    text-decoration-line: none;
+    color: white;
+}
+
 .msg {
     font-size: 10px;
     margin-left: 10px;

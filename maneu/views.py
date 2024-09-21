@@ -32,16 +32,32 @@ def login(request):
     return render(request, 'maneu/login.html', {'form': UserLoginForm()})
 
 
-def verify(request):
-    return JsonResponse()
+def loginVerify(request):
+    call = verify.is_call(request.GET.get('call'))
+    code = verify.is_code(request.GET.get('code'))
+
+    if code and call:
+        admin = service.admin_login(call, code)
+        if admin:
+            request.session['ip'] = common.get_ip(request)
+            request.session['id'] = admin.id
+            request.session['nickname'] = admin.nickname
+            content = {'status': True, 'message': '', 'data': {}}
+        else:
+            content = {'status': False, 'message': 'no user', 'data': {}}
+    else:
+        content = {'status': False, 'message': 'call and code is error', 'data': {}}
+
+    return JsonResponse(content)
 
 
 def sendsms(request):
-    phone_number = request.GET.get('call')
-    if verify.is_call(phone_number):
+    phone_number = verify.is_call(request.GET.get('call'))
+
+    if phone_number:
         random_num = common.get_random_code()
         data = service.sendsms(phone=phone_number, password=random_num)
-        if data is not None:
+        if data:
             response = common.sendsms(code=random_num, call=phone_number)
             if response['Code'] == 'OK':
                 content = {'status': True, 'message': 'OK', 'data': {}}

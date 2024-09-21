@@ -13,7 +13,6 @@
     <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
     <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -21,13 +20,16 @@
     <div class="login-wrapper">
         <div class="header">徕可管理系统</div>
         <div class="form-wrapper">
-            <label for="username">账号:</label>
-            <input type="text" class="input-item" id="call" placeholder="call" autocomplete="off">
-            <label for="password">密码:</label>
-            <input type="text" class="input-item" id="code" placeholder="code" autocomplete="off"><br>
-            <span class="msg">{{ msg }}</span>
-                <button class="btn" id="login-btn">登录</button>
-            <a style="color: white" href="{% url 'index' %}">
+            <form method="post" action="{% url 'login' %}" class="test1">
+                {% csrf_token %}
+                <label for="username">账号:</label>
+                <input type="text" name="username" class="input-item" placeholder="username" autocomplete="off">
+                <label for="password">密码:</label>
+                <input type="password" name="password" class="input-item" placeholder="password" autocomplete="off"><br>
+                {% if msg %}<span class="msg">{{ msg }}</span>{% endif %}
+                <input type="submit" class="btn" value="登录">
+            </form>
+            <a class="button" href="{% url 'index' %}">
                 <button class="btn">返回</button>
             </a>
         </div>
@@ -39,23 +41,3 @@
     <a href="https://beian.miit.gov.cn">粤ICP备2023070483号</a>
 </footer>
 </html>
-<script>
-    $(document).ready(function () {
-        $("#login-btn").click(function () {
-            $.ajax({
-                url: {% url 'loginVerify' %},
-                method: 'GET',
-                data: {
-                    call: $("#call").val(),
-                    code: $("#code").val()
-                },
-                success: function (res) {
-                                            console.log(res)
-                    if (res.status === true){
-                        console.log(res)
-                    }
-                },
-            })
-        })
-    })
-</script>

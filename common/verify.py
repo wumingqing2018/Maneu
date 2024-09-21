@@ -7,44 +7,44 @@ def is_date(code):
     try:
         pattern = re.compile(r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(19|20)\d\d (0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$')
         if pattern.match(code) is None:
-            return True
+            return str(code)
         else:
-            return False
+            return None
     except:
-        return False
+        return None
 
 
 def is_call(code):
     try:
         pattern = re.compile(r'^1[3-9]\d{9}$')
         if pattern.match(code) is None:
-            return True
+            return str(code)
         else:
-            return False
+            return None
     except:
-        return False
+        return None
 
 
 def is_uuid(code):
     try:
         pattern = re.compile(r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$')
         if pattern.match(code) is None:
-            return True
+            return str(code)
         else:
-            return False
+            return None
     except:
-        return False
+        return None
 
 
 def is_code(code):
     try:
         pattern = re.compile(r'^\d{6}$')
         if pattern.match(code) is None:
-            return True
+            return str(code)
         else:
-            return False
+            return None
     except:
-        return False
+        return None
 
 
 def is_mobile(ua):
@@ -65,6 +65,7 @@ def is_mobile(ua):
                     r'|mobile|o2|opera mini|palm( os)?|pda|plucker|pocket|psp|smartphone|symbian|treo|up\.(browser|link)' \
                     r'|vodafone|wap|windows ce; (iemobile|ppc)|xiino|maemo|fennec'
     _long_matches = re.compile(_long_matches, re.IGNORECASE)
+
     _short_matches = r'1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)' \
                      r'|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)' \
                      r'|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw' \
@@ -86,10 +87,11 @@ def is_mobile(ua):
 
     _short_matches = re.compile(_short_matches, re.IGNORECASE)
 
-    if _long_matches.search(factor) != None:
+    if _long_matches.search(factor):
         is_mobile = True
-    user_agent = factor[0:4]
-    if _short_matches.search(user_agent) != None:
-        is_mobile = True
+    else:
+        user_agent = factor[0:4]
+        if _short_matches.search(user_agent):
+            is_mobile = True
 
     return is_mobile

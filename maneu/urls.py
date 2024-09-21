@@ -7,7 +7,7 @@ urlpatterns = [
     # 首页
     path('', index, name='index'),
     path('login/', login, name='login'),
-    path('verify/', verify, name='verify'),
+    path('loginVerify/', loginVerify, name='loginVerify'),
     path('sendsms/', sendsms, name='sendsms'),
     # 用户子路由
     path('maneu_admin/', include('maneu_admin.urls')),
