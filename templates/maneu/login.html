@@ -23,6 +23,7 @@
         <div class="form-wrapper">
             <label for="username">手机号:</label>
             <input type="text" class="input-item" id="call" placeholder="call" autocomplete="off">
+            <span class="msg" id="msg"></span>
         </div>
         <div class="form-wrapper" id="sendsms">
             <button class="btn" id="sendsms-btn">获取验证码</button>
@@ -33,8 +34,9 @@
             <button class="btn" id="login-btn">登录</button>
         </div>
         <div class="form-wrapper">
-            <span class="msg" id="msg"></span>
-            <a href="{% url 'index' %}"><button class="btn">返回</button></a>
+            <a href="{% url 'index' %}">
+                <button class="btn">返回</button>
+            </a>
         </div>
     </div>
 </div>
@@ -56,28 +58,28 @@
                     call: $("#call").val(),
                 },
                 success: function (res) {
-                    if (res.status === true){
+                    if (res.status === true) {
                         $("#sendsms").hide();
                         $("#password").show();
                         $("#msg").text("")
-                    }else {
-                        $("#msg").text("发送短信失败"+ res.message)
+                    } else {
+                        $("#msg").text("发送短信失败" + res.message)
                     }
                 }
             })
         })
         $("#login-btn").click(function () {
             $.ajax({
-                url: {% url 'loginVerify' %},
+                url: {% url 'login_verify' %},
                 method: 'GET',
                 data: {
                     call: $("#call").val(),
                     code: $("#code").val()
                 },
                 success: function (res) {
-                    if (res.status === true){
+                    if (res.status === true) {
                         window.location.href = {% url 'maneu_order:index' %}
-                    }else {
+                    } else {
                         $("#msg").text(res.message)
                     }
                 },

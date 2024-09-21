@@ -1,9 +1,8 @@
 from django.http import JsonResponse
-from django.shortcuts import HttpResponseRedirect, reverse, render
+from django.shortcuts import render
 
 from common import common
 from common import verify
-from common.forms.userLoginForm import UserLoginForm
 from maneu import service
 
 
@@ -19,20 +18,10 @@ def login(request):
     登录模块
     获取session key并根据sessionkey 判断用户是否已经登录
     """
-    if request.method == 'POST':
-        form = UserLoginForm(request.POST)
-        if form.is_valid():
-            user_content = service.find_user_username(username=request.POST['username'])
-            request.session['ip'] = common.get_ip(request)
-            request.session['id'] = user_content.id
-            request.session['nickname'] = user_content.nickname
-            return HttpResponseRedirect(reverse('maneu_index:index'))
-        else:
-            print(form.errors)
-    return render(request, 'maneu/login.html', {'form': UserLoginForm()})
+    return render(request, 'maneu/login.html')
 
 
-def loginVerify(request):
+def login_verify(request):
     call = verify.is_call(request.GET.get('call'))
     code = verify.is_code(request.GET.get('code'))
 
