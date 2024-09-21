@@ -63,7 +63,7 @@ def sendsms(request):
             if response['Code'] == 'OK':
                 content = {'status': True, 'message': 'OK', 'data': {}}
             else:
-                content = {'status': False, 'message': '', 'data': response}
+                content = {'status': False, 'message': response["Message"], 'data': {}}
         else:
             content = {'status': False, 'message': 'phone is :none', 'data': {}}
     else:
