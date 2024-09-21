@@ -56,7 +56,7 @@
                     call: $("#call").val(),
                 },
                 success: function (res) {
-                    alert(res.status)
+                    alert(res.message)
                     if (res.status === true){
                         $("#sendsms").hide();
                         $("#password").show();
