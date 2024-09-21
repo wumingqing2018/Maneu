@@ -15,13 +15,10 @@ def is_date(code):
 
 
 def is_call(code):
-    try:
-        pattern = re.compile(r'^1[3-9]\d{9}$')
-        if pattern.match(code) is not None:
-            return code
-        else:
-            return None
-    except:
+    pattern = re.compile(r'^1[3-9]\d{9}$')
+    if pattern.match(code) is not None:
+        return str(code)
+    else:
         return None
 
 
