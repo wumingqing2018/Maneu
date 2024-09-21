@@ -9,7 +9,7 @@ def find_user_username(username=''):
 
 
 def sendsms(phone='', password=''):
-    return ManeuAdmin.objects.filter(phone=phone).first().update(password=password)
+    return ManeuAdmin.objects.filter(phone=phone).update(password=password)
 
 
 def admin_login(call='', code=''):
