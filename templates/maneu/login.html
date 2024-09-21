@@ -50,9 +50,8 @@
                     code: $("#code").val()
                 },
                 success: function (res) {
-                    alert(res)
                     if (res.status === true){
-                        alert(res)
+                        window.location.href = {% url 'maneu_order:index' %}
                     }
                 },
             })
