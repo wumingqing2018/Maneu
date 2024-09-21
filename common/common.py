@@ -105,8 +105,8 @@ def sendsms(code, call):
     request.set_accept_format('json')
     request.set_SignName("徕可")
     request.set_TemplateCode("SMS_471990239")
-    request.set_PhoneNumbers(code)
-    request.set_TemplateParam({'code': call})
+    request.set_PhoneNumbers(call)
+    request.set_TemplateParam({'code': code})
 
     client = AcsClient(region_id='cn-shenzhen', credential=credentials)
     response = client.do_action_with_exception(request)
