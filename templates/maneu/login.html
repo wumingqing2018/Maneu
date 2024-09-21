@@ -49,6 +49,7 @@
     $(document).ready(function () {
         $("#password").hide();
         $("#sendsms-btn").click(function () {
+            alert('a')
             $.ajax({
                 url: {% url 'sendsms' %},
                 method: 'GET',
