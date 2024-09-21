@@ -44,9 +44,9 @@ def loginVerify(request):
             request.session['nickname'] = admin.nickname
             content = {'status': True, 'message': '', 'data': {}}
         else:
-            content = {'status': False, 'message': 'no user', 'data': {}}
+            content = {'status': False, 'message': '请确认手机号', 'data': {}}
     else:
-        content = {'status': False, 'message': 'call and code is error', 'data': {}}
+        content = {'status': False, 'message': '请输入正确的手机号和验证码', 'data': {}}
 
     return JsonResponse(content)
 

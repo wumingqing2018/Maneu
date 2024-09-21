@@ -59,6 +59,7 @@
                     if (res.status === true){
                         $("#sendsms").hide();
                         $("#password").show();
+                        $("#msg").text("")
                     }else {
                         $("#msg").text("发送短信失败"+ res.message)
                     }
