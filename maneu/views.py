@@ -3,7 +3,7 @@ from django.shortcuts import HttpResponseRedirect, reverse, render
 
 from common import common
 from common import verify
-from common.forms.userLoginForm import LoginForm
+from common.forms.userLoginForm import UserLoginForm
 from maneu import service
 
 
@@ -20,7 +20,7 @@ def login(request):
     获取session key并根据sessionkey 判断用户是否已经登录
     """
     if request.method == 'POST':
-        form = LoginForm(request.POST)
+        form = UserLoginForm(request.POST)
         if form.is_valid():
             user_content = service.find_user_username(username=request.POST['username'])
             request.session['ip'] = common.get_ip(request)
@@ -29,7 +29,7 @@ def login(request):
             return HttpResponseRedirect(reverse('maneu_index:index'))
         else:
             print(form.errors)
-    return render(request, 'maneu/login.html', {'form': LoginForm()})
+    return render(request, 'maneu/login.html', {'form': UserLoginForm()})
 
 
 def verify(request):

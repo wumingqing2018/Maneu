@@ -5,7 +5,7 @@ from django.forms import widgets
 from maneu_admin.serivce import find_username_password
 
 
-class LoginForm(forms.Form):
+class UserLoginForm(forms.Form):
     username = forms.CharField(label="账号",
                                required=True,
                                strip=True,
