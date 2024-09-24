@@ -8,15 +8,15 @@ def index(request):
     admin_id = is_uuid(request.session.get('id'))
     start = is_date(request.GET.get('star'),)
     end = is_date(request.GET.get('end'),)
-    res = common.res()
+    content = common.res()
 
     if admin_id and start and end:
-        data = service.ManeuOrder_index(admin_id=request.session.get('id'),
-                                        star=request.GET.get('star'),
-                                        end=request.GET.get('end')).values('id', 'name', 'phone', 'time', 'remark')
-        res['status'] = True
-        res['data'] = data
-    return JsonResponse(res)
+        data = service.ManeuOrder_index(admin_id=admin_id, star=start, end=end).values('id', 'name', 'phone', 'time', 'remark')
+        content['status'] = True
+        content['data'] = data
+    else:
+        content['message'] = "参数错误请检查"
+    return JsonResponse(content)
 
 
 def search(request):

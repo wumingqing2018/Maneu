@@ -21,7 +21,7 @@ def login(request):
     return render(request, 'maneu/login.html')
 
 
-def login_verify(request):
+def login_api(request):
     call = verify.is_call(request.GET.get('call'))
     code = verify.is_code(request.GET.get('code'))
 

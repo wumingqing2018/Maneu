@@ -48,42 +48,8 @@
 </footer>
 </html>
 <script>
-    $(document).ready(function () {
-        $("#password").hide();
-        $("#sendsms-btn").click(function () {
-            $.ajax({
-                url: {% url 'sendsms' %},
-                method: 'GET',
-                data: {
-                    call: $("#call").val(),
-                },
-                success: function (res) {
-                    if (res.status === true) {
-                        $("#sendsms").hide();
-                        $("#password").show();
-                        $("#msg").text("")
-                    } else {
-                        $("#msg").text("发送短信失败" + res.message)
-                    }
-                }
-            })
-        })
-        $("#login-btn").click(function () {
-            $.ajax({
-                url: {% url 'login_verify' %},
-                method: 'GET',
-                data: {
-                    call: $("#call").val(),
-                    code: $("#code").val()
-                },
-                success: function (res) {
-                    if (res.status === true) {
-                        window.location.href = {% url 'maneu_order:index' %}
-                    } else {
-                        $("#msg").text(res.message)
-                    }
-                },
-            })
-        })
-    })
+    sendsms = "{% url 'sendsms' %}"
+    login_verify = "{% url 'login_api' %}"
+    maneu_order_index = "{% url 'maneu_order:index' %}"
 </script>
+<script scr="{% static 'javascript/maneu/login.js' %}"></script>
