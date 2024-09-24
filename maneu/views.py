@@ -28,7 +28,7 @@ def login_verify(request):
     if code and call:
         admin = service.admin_login(call, code)
         if admin:
-            request.session['ip'] = common.get_ip(request)
+            request.session['ip'] = common.getip(request)
             request.session['id'] = admin.id
             request.session['nickname'] = admin.nickname
             content = {'status': True, 'message': '', 'data': {}}

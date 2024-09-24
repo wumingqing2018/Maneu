@@ -1,0 +1,26 @@
+body {
+    background: #003153;
+    padding: 4%;
+}
+
+a {
+    color: #FFC048;
+}
+
+p {
+    color: #FFC048;
+}
+
+h4 {
+    color: #FFC048;
+}
+
+div.header {
+    padding: 4%;
+    text-align: center;
+}
+
+div.body {
+    padding: 2%;
+    text-align: center;
+}

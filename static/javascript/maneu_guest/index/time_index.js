@@ -11,7 +11,7 @@ $(function () {
                 star: start.format('YYYY-MM-DD 00:00:00'),
                 end: end.format('YYYY-MM-DD 23:59:59')
             },
-            success: function (res) {
+            success: function (res){
                 for (i in res) {
                     $('#body').append(
                         "                <tr>\n" +
@@ -50,16 +50,17 @@ $(function () {
     }
 
     $('#reportrange').daterangepicker({
-        startDate: start,
-        endDate: end,
-        ranges: {
-            '今天': [moment(), moment()],
-            '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            '七天内': [moment().subtract(6, 'days'), moment()],
-            '三十天内': [moment().subtract(29, 'days'), moment()],
-            '本月': [moment().startOf('month'), moment().endOf('month')],
-            '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        }
-    }, cb);
+            startDate: start,
+            endDate: end,
+            ranges: {
+                '今天': [moment(), moment()],
+                '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                '七天内': [moment().subtract(6, 'days'), moment()],
+                '三十天内': [moment().subtract(29, 'days'), moment()],
+                '本月': [moment().startOf('month'), moment().endOf('month')],
+                '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+        },
+        cb);
     cb(start, end);
 });
