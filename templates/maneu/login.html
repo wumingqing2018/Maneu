@@ -14,6 +14,13 @@
     <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+        sendsms = "{% url 'sendsms' %}"
+        login_verify = "{% url 'login_api' %}"
+        maneu_order_index = "{% url 'maneu_order:index' %}"
+    </script>
+    <script src="{% static 'javascript/maneu/login.js' %}"></script>
 </head>
 
 <body>
@@ -47,9 +54,3 @@
     <a href="https://beian.miit.gov.cn">粤ICP备2023070483号</a>
 </footer>
 </html>
-<script>
-    sendsms = "{% url 'sendsms' %}"
-    login_verify = "{% url 'login_api' %}"
-    maneu_order_index = "{% url 'maneu_order:index' %}"
-</script>
-<script scr="{% static 'javascript/maneu/login.js' %}"></script>
