@@ -28,7 +28,7 @@ def ManeuGuess_update(id='', time='', name='', phone='', sex='', age='', ot='', 
                                                    dfh=dfh, remark=remark)
 
 
-def ManeuGuess_delete(id=''):
+def ManeuGuess_delete(id='', admin=''):
     return ManeuGuess.objects.filter(id=id).delete()
 
 

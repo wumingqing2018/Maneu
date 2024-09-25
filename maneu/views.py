@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 from common import common
-from common import verify
+from common.verify import *
 from maneu import service
 
 
@@ -22,8 +22,8 @@ def login(request):
 
 
 def login_api(request):
-    call = verify.is_call(request.GET.get('call'))
-    code = verify.is_code(request.GET.get('code'))
+    call = is_call(request.GET.get('call'))
+    code = is_code(request.GET.get('code'))
 
     if code and call:
         admin = service.admin_login(call, code)
@@ -41,7 +41,7 @@ def login_api(request):
 
 
 def sendsms(request):
-    phone_number = verify.is_call(request.GET.get('call'))
+    phone_number = is_call(request.GET.get('call'))
 
     if phone_number:
         random_num = common.get_random_code()
