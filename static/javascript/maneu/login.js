@@ -9,7 +9,6 @@ $(document).ready(function () {
             },
             success: function (res) {
                 if (res.status === true) {
-                    $("#sendsms").hide();
                     $("#password").show();
                     $("#msg").text("")
                 } else {

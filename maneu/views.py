@@ -7,13 +7,11 @@ from common import common
 from common.verify import *
 from maneu import service
 
-
 def index(request):
     """
     首页
     """
     return render(request, 'maneu/index.html')
-
 
 def login(request):
     """
@@ -21,7 +19,6 @@ def login(request):
     获取session key并根据sessionkey 判断用户是否已经登录
     """
     return render(request, 'maneu/login.html')
-
 
 def login_api(request):
     call = is_call(request.GET.get('call'))
@@ -41,6 +38,19 @@ def login_api(request):
 
     return JsonResponse(content)
 
+def logout_api(request):
+    code = is_code(request.session.get('id'))
+
+    if code:
+        data = service.admin_logout(code)
+        if data:
+            content = {'status': True, 'message': '', 'data': {}}
+        else:
+            content = {'status': False, 'message': '123', 'data': {}}
+    else:
+        content = {'status': False, 'message': '456', 'data': {}}
+
+    return JsonResponse(content)
 
 def sendsms(request):
     phone_number = is_call(request.GET.get('call'))
@@ -58,5 +68,5 @@ def sendsms(request):
             content = {'status': False, 'message': 'phone is :none', 'data': {}}
     else:
         content = {'status': False, 'message': 'code is :none', 'data': {}}
-    print(content)
+
     return JsonResponse(content)

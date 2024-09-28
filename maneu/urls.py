@@ -8,6 +8,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('login/', login, name='login'),
     path('login_api/', login_api, name='login_api'),
+    path('logout_api/', logout_api, name='logout_api'),
     path('sendsms/', sendsms, name='sendsms'),
     # 用户子路由
     path('maneu_admin/', include('maneu_admin.urls')),
