@@ -58,5 +58,5 @@ def sendsms(request):
             content = {'status': False, 'message': 'phone is :none', 'data': {}}
     else:
         content = {'status': False, 'message': 'code is :none', 'data': {}}
-    pread(content)
+    print(content)
     return JsonResponse(content)
