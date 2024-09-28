@@ -1,3 +1,5 @@
+from lib2to3.fixes.fix_input import context
+
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -18,7 +20,7 @@ def login(request):
     """
     return render(request, 'maneu/login.html')
 
-def logout(request):
+def login_api(request):
     call = is_call(request.GET.get('call'))
     code = is_code(request.GET.get('code'))
 
@@ -33,8 +35,8 @@ def logout(request):
             content = {'status': False, 'message': '请确认手机号', 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的手机号和验证码', 'data': {}}
-    print(content)
-    return render(request, 'maneu/login.html')
+
+    return JsonResponse(content)
 
 def logout(request):
     code = is_code(request.session.get('id'))
@@ -48,7 +50,8 @@ def logout(request):
     else:
         content = {'status': False, 'message': '456', 'data': {}}
 
-    return JsonResponse(content)
+    print(content)
+    return render(request, 'maneu/login.html')
 
 def sendsms(request):
     phone_number = is_call(request.GET.get('call'))
