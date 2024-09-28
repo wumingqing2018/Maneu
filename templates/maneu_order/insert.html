@@ -1,24 +1,27 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
 {% block content %}
-    <div class="container">
+    < class="container">
         <form class="vertical2" method="get" action="{% url 'maneu_order:index' %}">
             <div class="input-group input-group-sm">
                 <input type="submit" class="btn btn-primary" value="返回列表">
             </div>
+            <hr>
         </form>
-        <hr>
+
+        <form class="vertical2">
+            <div class="vertical1 col-3">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-3">时间</span>
+                    <input autocomplete="off" class="form-control" id="time" type="datetime-local" value="{{ time }}">
+                </div>
+            </div>
+            <hr>
+        </form>
 
         {# 客户基础数据 #}
         <form class="vertical2" id="guess">
             <h5>客户基础数据</h5>
-            <div class="vertical1 col-3">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-text col-3">时间</span>
-                    <input autocomplete="off" class="form-control" id="time" name="time" type="datetime-local"
-                           value="{{ time }}">
-                </div>
-            </div>
             <div class="vertical1 col-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">电话</span>
@@ -45,8 +48,8 @@
                     <input autocomplete="off" class="form-control" type="text" name="DFH" list="DFH">
                 </div>
             </div>
+            <hr>
         </form>
-        <hr>
 
 
         {# 视力解决方案 #}
@@ -107,14 +110,44 @@
                     <input autocomplete="off" type="text" class="form-control" name="PD" list="PD">
                 </div>
             </div>
+            <hr>
         </form>
-        <hr>
 
 
         {# 产品信息 #}
-        <form class="vertical2" id="product">
+        <form class="vertical2">
             <h5>产品订单</h5>
-            <div class="vertical1 col-9">
+            <form class="vertical1 col-9 product">
+                <div class="input-group input-group-sm">
+                    <input autocomplete="off" type="text" name="arg10" class="form-control product1" placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg11" class="form-control product1" placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg12" class="form-control product1" placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg13" class="form-control product2" placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg14" class="form-control product3" placeholder="价格"
+                           value="1">
+                </div>
+            </form>
+            <form class="vertical1 col-9 product">
+                <div class="input-group input-group-sm">
+                    <input autocomplete="off" type="text" name="arg10" class="form-control product1" placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg11" class="form-control product1" placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg12" class="form-control product1" placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg13" class="form-control product2" placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg14" class="form-control product3" placeholder="价格"
+                           value="2">
+                </div>
+            </form>
+            <form class="vertical1 col-9 product">
+                <div class="input-group input-group-sm">
+                    <input autocomplete="off" type="text" name="arg10" class="form-control product1" placeholder="类别">
+                    <input autocomplete="off" type="text" name="arg11" class="form-control product1" placeholder="品牌">
+                    <input autocomplete="off" type="text" name="arg12" class="form-control product1" placeholder="型号">
+                    <input autocomplete="off" type="text" name="arg13" class="form-control product2" placeholder="参数">
+                    <input autocomplete="off" type="text" name="arg14" class="form-control product3" placeholder="参数"
+                           value="3">
+                </div>
+            </form>
+            <form class="vertical1 col-9 product">
                 <div class="input-group input-group-sm">
                     <input autocomplete="off" type="text" name="arg10" class="form-control product1" placeholder="类别">
                     <input autocomplete="off" type="text" name="arg11" class="form-control product1" placeholder="品牌">
@@ -123,61 +156,20 @@
                     <input autocomplete="off" type="text" name="arg14" class="form-control product3" placeholder="价格"
                            value="0">
                 </div>
-            </div>
-            <div class="vertical1 col-9">
-                <div class="input-group input-group-sm">
-                    <input autocomplete="off" type="text" name="arg20" class="form-control product1" placeholder="类别">
-                    <input autocomplete="off" type="text" name="arg21" class="form-control product1" placeholder="品牌">
-                    <input autocomplete="off" type="text" name="arg22" class="form-control product1" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg23" class="form-control product2" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg24" class="form-control product3" placeholder="价格"
-                           value="0">
-                </div>
-            </div>
-            <div class="vertical1 col-9">
-                <div class="input-group input-group-sm">
-                    <input autocomplete="off" type="text" name="arg30" class="form-control product1" placeholder="类别">
-                    <input autocomplete="off" type="text" name="arg31" class="form-control product1" placeholder="品牌">
-                    <input autocomplete="off" type="text" name="arg32" class="form-control product1" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg33" class="form-control product2" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg34" class="form-control product3" placeholder="参数"
-                           value="0">
-                </div>
-            </div>
-            <div class="vertical1 col-9">
-                <div class="input-group input-group-sm">
-                    <input autocomplete="off" type="text" name="arg40" class="form-control product1" placeholder="类别">
-                    <input autocomplete="off" type="text" name="arg41" class="form-control product1" placeholder="品牌">
-                    <input autocomplete="off" type="text" name="arg42" class="form-control product1" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg43" class="form-control product2" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg44" class="form-control product3" placeholder="价格"
-                           value="0">
-                </div>
-            </div>
-            <div class="vertical1 col-9">
-                <div class="input-group input-group-sm">
-                    <input autocomplete="off" type="text" name="arg50" class="form-control product1" placeholder="类别">
-                    <input autocomplete="off" type="text" name="arg51" class="form-control product1" placeholder="品牌">
-                    <input autocomplete="off" type="text" name="arg52" class="form-control product1" placeholder="型号">
-                    <input autocomplete="off" type="text" name="arg53" class="form-control product2" placeholder="参数">
-                    <input autocomplete="off" type="text" name="arg54" class="form-control product3" placeholder="价格"
-                           value="0">
-                </div>
-            </div>
-        </form>
-        <hr>
+            </form>
+            <hr>
+        </form>>
 
 
         <form class="vertical2">
             <h5>订单备注</h5>
             <div class="vertical1 col-9">
                 <div class="input-group input-group-sm">
-                    <span class="input-group-text col-1">备注</span>
-                    <input autocomplete="off" class="form-control" id="remark" name="remark" type="text">
+                    <input autocomplete="off" class="form-control" id="remark" type="text">
                 </div>
             </div>
+            <hr>
         </form>
-        <hr>
 
 
         {# 提交或返回按钮 #}
@@ -187,7 +179,6 @@
             <input type="hidden" name="order_time" id="order_time">
             <input type="hidden" name="order_phone" id="order_phone">
             <input type="hidden" name="order_remark" id="order_remark">
-
             <input type="hidden" name="guess_form" id="guess_form">
             <input type="hidden" name="vision_form" id="vision_form">
             <input type="hidden" name="product_form" id="product_form">
@@ -570,12 +561,26 @@
             <option>82.5</option>
         </datalist>
     </div>
+{% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/maneu_order/insert.css' %}">
 {% endblock %}
 {% block javascript %}
     <script type="application/javascript" src="{% static 'javascript/common/serialize_moudels.js' %}"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu_order/insert.js' %}"></script>
-{% endblock %}
-{% block css %}
-    <link rel="stylesheet" href="{% static 'css/maneu_order/insert.css' %}">
+    <script>
+        $(document).ready(function () {
+            test1 = []
+            $(".product").each(function () {
+                test = {}
+                test.agr10 = this['arg10'].value
+                test.agr11 = this['arg11'].value
+                test.agr12 = this['arg12'].value
+                test.agr13 = this['arg13'].value
+                test.agr14 = this['arg14'].value
+                test1.push(test)
+            })
+        })
+    </script>
 {% endblock %}
