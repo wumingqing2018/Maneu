@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    $("#password").hide();
     $("#sendsms-btn").click(function () {
         $.ajax({
             url: sendsms,
@@ -9,7 +8,6 @@ $(document).ready(function () {
             },
             success: function (res) {
                 if (res.status === true) {
-                    $("#password").show();
                     $("#msg").text("")
                 } else {
                     $("#msg").text("发送短信失败" + res.message)
