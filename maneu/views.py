@@ -1,5 +1,3 @@
-from os import pread
-
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -20,7 +18,7 @@ def login(request):
     """
     return render(request, 'maneu/login.html')
 
-def login_api(request):
+def logout(request):
     call = is_call(request.GET.get('call'))
     code = is_code(request.GET.get('code'))
 
@@ -35,10 +33,10 @@ def login_api(request):
             content = {'status': False, 'message': '请确认手机号', 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的手机号和验证码', 'data': {}}
+    print(content)
+    return render(request, 'maneu/login.html')
 
-    return JsonResponse(content)
-
-def logout_api(request):
+def logout(request):
     code = is_code(request.session.get('id'))
 
     if code:
