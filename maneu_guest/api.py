@@ -5,7 +5,7 @@ from maneu.models import ManeuAdmin, ManeuGuess
 from maneu_guest import service
 
 
-def guestIndex(request):
+def index(request):
     admin_id = is_uuid(request.session.get('id'))
     start = is_date(request.GET.get('star'),)
     end = is_date(request.GET.get('end'),)
@@ -19,7 +19,7 @@ def guestIndex(request):
     return JsonResponse(content)
 
 
-def guestSearch(request):
+def search(request):
     admin_id = is_uuid(request.session.get('id'))
 
     if admin_id:
@@ -31,7 +31,7 @@ def guestSearch(request):
     return JsonResponse(content)
 
 
-def guestDelete(request):
+def delete(request):
     admin_id = is_uuid(request.session.get('id'))
     guess_id = is_uuid(request.GET.get('guess_id'))
     if admin_id and guess_id:
