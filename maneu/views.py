@@ -1,3 +1,5 @@
+from os import pread
+
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -56,5 +58,5 @@ def sendsms(request):
             content = {'status': False, 'message': 'phone is :none', 'data': {}}
     else:
         content = {'status': False, 'message': 'code is :none', 'data': {}}
-
+    pread(content)
     return JsonResponse(content)
