@@ -42,6 +42,9 @@ def logout(request):
     code = is_code(request.session.get('id'))
 
     if code:
+        request.session['ip'] = None
+        request.session['id'] = None
+        request.session['nickname'] = None
         data = service.admin_logout(code)
         if data:
             content = {'status': True, 'message': '', 'data': {}}
@@ -50,7 +53,6 @@ def logout(request):
     else:
         content = {'status': False, 'message': '456', 'data': {}}
 
-    print(content)
     return render(request, 'maneu/login.html')
 
 def sendsms(request):

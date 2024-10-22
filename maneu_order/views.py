@@ -31,8 +31,7 @@ def detail(request):
     store = service.ManeuStore_id(id=order.store_id).content
     vision = service.ManeuVision_id(id=order.vision_id).content
     server = service.ManeuService_orderID(order_id=order.id)
-    return render(request, 'maneu_order/detail.html',
-                  {'order': order, 'store': store, 'vision': vision, 'server': server, 'guess': guess})
+    return render(request, 'maneu_order/detail.html',{'order': order, 'store': store, 'vision': vision, 'server': server, 'guess': guess})
 
 
 def insert(request):

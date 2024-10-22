@@ -12,6 +12,7 @@ $(function () {
                 end: end.format('YYYY-MM-DD 23:59:59')
             },
             success: function (res) {
+                console.log(res)
                 for (i in res) {
                     $('#body').append(
                         "<tr>\n" +
