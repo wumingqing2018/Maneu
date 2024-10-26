@@ -8,8 +8,8 @@ $(function () {
         $.ajax({
             url: api_index,
             data: {
-                star: start.format('YYYY-MM-DD 00:00:00'),
-                end: end.format('YYYY-MM-DD 23:59:59')
+                star: start.format('YYYY-MM-DD'),
+                end: end.format('YYYY-MM-DD')
             },
             success: function (res){
                 console.log(res)
