@@ -9,7 +9,7 @@ def index(request):
 
     if admin_id:
         data = service.ManeuOrder_index(admin_id=admin_id, star=request.GET.get('star'), end=request.GET.get('end')).values('id', 'name', 'phone', 'time', 'remark')
-        content = {'status': True, 'message': '', 'data': data}
+        content = {'status': True, 'message': '', 'data': list(data)}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
