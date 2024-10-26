@@ -6,9 +6,9 @@ from maneu_order import service
 
 def index(request):
     admin_id = is_uuid(request.session.get('id'))
-    print(request.GET.get('star'))
     start = is_date(request.GET.get('star'))
     end = is_date(request.GET.get('end'))
+    print( start, end, admin_id)
 
     if start and end and admin_id:
         data = service.ManeuOrder_index(admin_id=admin_id, star=start, end=end).values('id', 'name', 'phone', 'time', 'remark')
