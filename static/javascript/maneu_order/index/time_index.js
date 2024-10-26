@@ -18,26 +18,26 @@ $(function () {
                     $('#body').append(
                         "<tr>\n" +
                         "    <td valign='middle'>\n" +
-                        "        <span>" + res[i]['time'] + "</span>\n" +
+                        "        <span>" + data[i]['time'] + "</span>\n" +
                         "    </td>\n" +
                         "    <td valign='middle'>\n" +
-                        "        <span>" + res[i]['name'] + "</span>\n" +
+                        "        <span>" + data[i]['name'] + "</span>\n" +
                         "    </td>\n" +
                         "    <td valign='middle'>\n" +
-                        "        <span>" + res[i]['phone'] + "</span>\n" +
+                        "        <span>" + data[i]['phone'] + "</span>\n" +
                         "    </td>\n" +
                         "    <td valign='middle'>\n" +
-                        "        <span>" + res[i]['remark'] + "</span>\n" +
+                        "        <span>" + data[i]['remark'] + "</span>\n" +
                         "    </td>\n" +
                         "    <td valign='middle' align='right'>\n" +
                         "        <div class='col-6 row'>\n" +
                         "            <form class='col-6'>\n" +
                         "                <div class='col-6 input-group input-group-sm'>\n" +
-                        "                    <input type='button' class='btn btn-danger col-12' onclick='deleteBtn(this)' alt=" + res[i]['id'] + " value='删除'>\n" +
+                        "                    <input type='button' class='btn btn-danger col-12' onclick='deleteBtn(this)' alt=" + data[i]['id'] + " value='删除'>\n" +
                         "                </div>\n" +
                         "            </form>\n" +
                         "            <form class='col-6' method='get' action=" + api_detail + " >\n" +
-                        "                <input type='hidden' name='order_id' value=" + res[i]['id'] + ">\n" +
+                        "                <input type='hidden' name='order_id' value=" + data[i]['id'] + ">\n" +
                         "                <div class='input-group input-group-sm'>\n" +
                         "                    <input type='submit' class='btn btn-primary col-12' value='查看'>\n" +
                         "                </div>\n" +
