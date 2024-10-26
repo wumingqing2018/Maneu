@@ -6,6 +6,7 @@ from maneu_order import service
 
 def index(request):
     admin_id = is_uuid(request.session.get('id'))
+    print(request.GET.get('star'))
     start = is_date(request.GET.get('star'))
     end = is_date(request.GET.get('end'))
 
