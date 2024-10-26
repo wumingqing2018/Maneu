@@ -5,7 +5,7 @@ from common.verify import *
 from maneu_order import service
 
 def index(request):
-    admin_id = is_uuid(request.session.get('id'))
+    admin_id = is_md5(request.session.get('id'))
     start = is_date(request.GET.get('star'))
     end = is_date(request.GET.get('end'))
     print(request.session.get('id'))
