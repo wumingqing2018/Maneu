@@ -7,8 +7,7 @@ import re
 
 def is_date(code):
     try:
-        pattern = re.compile(
-            r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(19|20)\d\d (0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$')
+        pattern = re.compile(r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(19|20)\d\d (0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$')
         if pattern.match(code) is not None:
             return str(code)
         else:
