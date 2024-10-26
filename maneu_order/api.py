@@ -8,6 +8,7 @@ def index(request):
     admin_id = is_uuid(request.session.get('id'))
     start = is_date(request.GET.get('star'))
     end = is_date(request.GET.get('end'))
+    print(request.session.get('id'))
 
     if admin_id:
         data = service.ManeuOrder_index(admin_id=admin_id, star=start, end=end).values('id', 'name', 'phone', 'time', 'remark')
