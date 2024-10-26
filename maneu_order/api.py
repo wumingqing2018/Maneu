@@ -6,12 +6,9 @@ from maneu_order import service
 
 def index(request):
     admin_id = is_md5(request.session.get('id'))
-    start = is_date(request.GET.get('star'))
-    end = is_date(request.GET.get('end'))
-    print(request.session.get('id'))
 
     if admin_id:
-        data = service.ManeuOrder_index(admin_id=admin_id, star=start, end=end).values('id', 'name', 'phone', 'time', 'remark')
+        data = service.ManeuOrder_index(admin_id=admin_id, star=request.GET.get('star'), end=request.GET.get('end')).values('id', 'name', 'phone', 'time', 'remark')
         content = {'status': True, 'message': '', 'data': data}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
