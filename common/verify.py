@@ -38,6 +38,17 @@ def is_uuid(code):
         return None
 
 
+def is_md5(code):
+    try:
+        pattern = re.compile(r'^\d{32}$')
+        if pattern.match(code) is not None:
+            return str(code)
+        else:
+            return None
+    except:
+        return None
+
+
 def is_code(code):
     try:
         pattern = re.compile(r'^\d{6}$')
