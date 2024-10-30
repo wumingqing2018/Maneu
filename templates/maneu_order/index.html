@@ -21,53 +21,40 @@
 
 
     <script src='{% static "javascript/maneu_order/index/delete.js" %}' type="application/javascript"></script>
-    <script src='{% static "javascript/maneu_order/index/time_index.js" %}' type="application/javascript"></script>
-    <script src='{% static "javascript/maneu_order/index/name_index.js" %}' type="application/javascript"></script>
+    <script src='{% static "javascript/maneu_order/index/index.js" %}' type="application/javascript"></script>
 {% endblock %}
 {% block content %}
-    <div class="container">
-        <table class="table col-12">
-            <thead>
-            <tr>
-                <td colspan="3" valign="middle">
-                    <h5>零售订单管理系统</h5>
-                </td>
-                <td>
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" id="reportrange">
-                    </div>
-                </td>
-                <td>
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" id="search-value" placeholder="使用手机或姓名查询">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td valign='middle'>
-                    <span>录入时间</span>
-                </td>
-                <td valign='middle'>
-                    <span>客户姓名</span>
-                </td>
-                <td valign='middle'>
-                    <span>客户电话</span>
-                </td>
-                <td valign='middle'>
-                    <span>订单备注</span>
-                </td>
-                <td valign='middle' align="right">
-                    <div class="col-6 row">
-                        <form method="get" action="{% url 'maneu_order:insert' %}">
-                            <div class="input-group input-group-sm">
-                                <input type="submit" class="btn btn-warning col-12" value='添加订单'>
-                            </div>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-            </thead>
-            <tbody id="body"></tbody>
-        </table>
+    <div class="container" style="margin-top: 2%; margin-bottom: 3%">
+        <div class="col-12 row">
+            <div class="col-6">
+                <h5>零售订单管理系统</h5>
+            </div>
+            <div class="col-3">
+                <input type="text" class="col-12 form-control" id="reportrange">
+            </div>
+            <div class="col-3">
+                <input type="text" class="col-12 form-control" id="search-value" placeholder="使用手机或姓名查询">
+            </div>
+        </div>
+        <hr style="color: white">
+        <div class="col-12 row">
+            <div class="col-2">
+                <p>录入时间</p>
+            </div>
+            <div class="col-1">
+                <p>客户姓名</p>
+            </div>
+            <div class="col-1">
+                <p>客户电话</p>
+            </div>
+            <div class="col-6">
+                <p>订单备注</p>
+            </div>
+            <div class="col-2" align="right">
+                <input type="submit" class="btn btn-warning col-6" value='添加订单'>
+            </div>
+        </div>
+        <hr style="color: white">
+        <div id="body"></div>
     </div>
 {% endblock %}

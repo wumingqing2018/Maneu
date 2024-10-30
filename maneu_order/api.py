@@ -5,11 +5,16 @@ from common.verify import *
 from maneu_order import service
 
 def index(request):
-    admin_id = is_md5(request.session.get('id'))
+    admin_id = is_uuid(request.session.get('id'))
+    start = is_date(request.GET.get('start'))
+    end = is_date(request.GET.get('end'))
 
-    if admin_id:
-        data = service.ManeuOrder_index(admin_id=admin_id, star=request.GET.get('star'), end=request.GET.get('end')).values('id', 'name', 'phone', 'time', 'remark')
-        content = {'status': True, 'message': '', 'data': list(data)}
+    if admin_id and start and end:
+        try:
+            data = service.ManeuOrder_index(admin_id, start, end).values('id', 'name', 'phone', 'time', 'remark')
+            content = {'status': True, 'message': '', 'data': list(data)}
+        except Exception as e:
+            content = {'status': False, 'message': e, 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
@@ -20,8 +25,11 @@ def search(request):
     admin_id = is_uuid(request.session.get('id'))
 
     if admin_id:
-        data = service.ManeuOrder_Search(text=request.GET.get('text'), admin_id=request.session.get('id'))
-        content = {'status': True, 'message': '', 'data': data}
+        try:
+            data = service.ManeuOrder_Search(text=request.GET.get('text'), admin_id=admin_id).values('id', 'name', 'phone', 'time', 'remark')
+            content = {'status': True, 'message': '', 'data': list(data)}
+        except Exception as e:
+            content = {'status': False, 'message': e, 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
@@ -35,13 +43,17 @@ def delete(request):
     if admin_id and order_id:
         order = service.ManeuOrder_id(id=order_id, admin_id=admin_id)
         if order:
-            store = service.ManeuStore_delete(id=order)
+            store = service.ManeuStore_delete(id=order.store_id)
+            print(store)
             vision = service.ManeuVision_delete(id=order.vision_id)
-            server = service.ManeuService_delete_order_id(order_id=request.GET.get('order_id'))
+            print(vision)
+            server = service.ManeuService_delete_order_id(order_id=order.id)
+            print(server)
             order = service.ManeuOrder_delete(admin_id=request.session.get('id'), id=request.GET.get('order_id'))
+            print(order)
             content = {'status': True, 'message': '', 'data': {}}
         else:
-            content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
+            content = {'status': False, 'message': '请输入order的参数', 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 

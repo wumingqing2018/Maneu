@@ -12,11 +12,11 @@ def ManeuOrder_all(admin_id=''):
     return ManeuOrder.objects.filter(admin_id=admin_id).order_by('-time').all()
 
 
-def ManeuOrder_index(admin_id='', star='', end=''):
+def ManeuOrder_index(admin_id='', star='', end='', name='', phone=''):
     """
     全部订单
     """
-    return ManeuOrder.objects.filter(admin_id=admin_id, time__gte=star, time__lte=end).order_by('-time').all()
+    return ManeuOrder.objects.filter(admin_id=admin_id, time__gte=star, time__lte=end, phone__contains=phone, name__contains=name).order_by('-time').all()
 
 
 def ManeuOrder_id(id='', admin_id=''):
@@ -40,8 +40,7 @@ def ManeuOrder_delete(admin_id='', id=''):
 
 
 def ManeuOrder_Search(text='', admin_id=''):
-    return ManeuOrder.objects.filter(
-        Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
+    return ManeuOrder.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
 
 
 def ManeuOrder_insert(name='', time='', phone='', guess_id='', admin_id='', store_id='', vision_id='', remark=''):
@@ -58,7 +57,7 @@ def ManeuStore_id(id=''):
 
 
 def ManeuStore_delete(id=''):
-    return ManeuStore.objects.filter(id=id).delete()
+    return ManeuStore.objects.filter(id=id).all().delete()
 
 
 def ManeuStore_insert(admin_id='', guess_id='', time='', content=''):

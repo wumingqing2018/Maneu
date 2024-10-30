@@ -7,6 +7,10 @@
 .blue {
     background: #003153;
 }
+p {
+    color: #FFC048;
+    display: block;
+}
 
 span {
     font-size: 10px;
