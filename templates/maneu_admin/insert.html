@@ -1,7 +1,7 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
 {% block content %}
-    <div class="container yellow">
+    <div class="container">
         <div class="col-md-6 offset-md-3" style="margin-top: 20%; margin-bottom: 20%">
             <form method="post" action="{% url 'maneu_admin:insert' %}">
                 {% csrf_token %}

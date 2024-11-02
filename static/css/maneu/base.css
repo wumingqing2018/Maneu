@@ -7,6 +7,7 @@
 .blue {
     background: #003153;
 }
+
 p {
     color: #FFC048;
     display: block;
@@ -22,6 +23,14 @@ span.banner {
     font-size: 10px;
     color: black;
     display: block;
+}
+
+h3 {
+    color: #FFC048;
+}
+
+h4 {
+    color: #FFC048;
 }
 
 h5 {

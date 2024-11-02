@@ -4,35 +4,37 @@ $(function () {
 
     function forList(res) {
         for (i in res) {
-            $('#body').append(
-                "<div class='col-12 row'>\n" +
-                "    <div class='col-2'>\n" +
-                "        <span>" + res[i]['time'] + "</span>\n" +
-                "    </div>\n" +
-                "    <div class='col-1'>\n" +
-                "        <span>" + res[i]['name'] + "</span>\n" +
-                "    </div>\n" +
-                "    <div class='col-1'>\n" +
-                "        <span>" + res[i]['phone'] + "</span>\n" +
-                "    </div>\n" +
-                "    <div class='col-6'>\n" +
-                "        <span>" + res[i]['remark'] + "</span>\n" +
-                "    </div>\n" +
-                "    <div class='col-2 row' align='right'>\n" +
-                "        <form class='col-6'>\n" +
-                "            <div class='col-12 input-group input-group-sm'>\n" +
-                "                <input type='button' class='btn btn-danger col-12' onclick='deleteBtn(this)' value='删除' alt=" + res[i]['id'] + ">\n" +
+            $('.container').append(
+                "<div>\n" +
+                "    <div class='col-12 row'>\n" +
+                "        <div class='col-2'>\n" +
+                "            <p>" + res[i]['time'] + "</p>\n" +
+                "        </div>\n" +
+                "        <div class='col-1'>\n" +
+                "            <p>" + res[i]['name'] + "</p>\n" +
+                "        </div>\n" +
+                "        <div class='col-1'>\n" +
+                "            <p>" + res[i]['phone'] + "</p>\n" +
+                "        </div>\n" +
+                "        <div class='col-6'>\n" +
+                "            <p>" + res[i]['remark'] + "</p>\n" +
+                "        </div>\n" +
+                "        <div class='col-1'>\n" +
+                "            <div class='input-group input-group-sm'>\n" +
+                "                <input type='button' class='col-12 btn btn-danger' onclick='deleteBtn(this)' value='删除订单' alt=" + res[i]['id'] + ">\n" +
                 "            </div>\n" +
-                "        </form>\n" +
-                "        <form class='col-6' method='get' action=" + api_detail + " >\n" +
-                "            <input type='hidden' name='order_id' value=" + res[i]['id'] + ">\n" +
-                "            <div class='col-12 input-group input-group-sm'>\n" +
-                "                <input type='submit' class='btn btn-primary col-12' value='查看'>\n" +
-                "            </div>\n" +
-                "        </form>\n" +
+                "        </div>\n" +
+                "        <div class='col-1'>\n" +
+                "            <form method='GET' action='" + api_detail + "'>\n" +
+                "                <input type='hidden' name='order_id' value=" + res[i]['id'] + ">\n" +
+                "                <div class='input-group input-group-sm'>\n" +
+                "                    <input type='submit' class='col-12 btn btn-primary' value='查看订单'>\n" +
+                "                </div>\n" +
+                "            </form>\n" +
+                "        </div>\n" +
                 "    </div>\n" +
-                "</div>\n" +
-                "<hr style='color: white'>\n"
+                "    <hr style='color: white'>\n" +
+                "</div>\n"
             )
         }
     }
@@ -41,9 +43,11 @@ $(function () {
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         $('#body').empty();
         $.ajax({
-            url: api_index, data: {
+            url: api_index,
+            data: {
                 start: start.format('YYYY-MM-DD 00:00:00'), end: end.format('YYYY-MM-DD 23:59:59')
-            }, success: function (res) {
+            },
+            success: function (res) {
                 forList(res.data)
             },
         });
@@ -52,9 +56,11 @@ $(function () {
     $('#search-value').keyup(function () {
         $('#body').empty()
         $.ajax({
-            url: api_search, data: {
+            url: api_search,
+            data: {
                 text: $('#search-value').val()
-            }, success: function (res) {
+            },
+            success: function (res) {
                 forList(res.data)
             }
         })
