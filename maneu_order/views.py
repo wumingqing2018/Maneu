@@ -2,7 +2,7 @@ import json
 
 from django.shortcuts import render
 
-from common import common
+from common.common import current_time
 from maneu_order import service
 
 
@@ -36,28 +36,7 @@ def detail(request):
 
 def insert(request):
     """添加订单"""
-    if request.method == 'POST':
-        guess_form = json.loads(request.POST.get('guess_form'))
-        guess_id = service.ManeuGuess_search(admin_id=request.session.get('id'), time=request.POST.get('order_time'),
-                                             name=guess_form['name'], phone=guess_form['phone'], sex=guess_form['sex'],
-                                             age=guess_form['age'], ot=guess_form['OT'], em=guess_form['EM'],
-                                             dfh=guess_form['DFH'])[0].id
-        vision_id = service.ManeuVision_insert(admin_id=request.session.get('id'), guess_id=guess_id,
-                                               time=request.POST.get('order_time'),
-                                               content=request.POST.get('vision_form')).id
-        store_id = service.ManeuStore_insert(admin_id=request.session.get('id'), guess_id=guess_id,
-                                             time=request.POST.get('order_time'),
-                                             content=request.POST.get('product_form')).id
-        order_id = service.ManeuOrder_insert(time=request.POST.get('order_time'), name=request.POST.get('order_name'),
-                                             phone=request.POST.get('order_phone'),
-                                             remark=request.POST.get('order_remark'),
-                                             admin_id=request.session.get('id'), guess_id=guess_id, store_id=store_id,
-                                             vision_id=vision_id).id
-        request.POST._mutable = True
-        request.POST['order_id'] = order_id
-        request.POST._mutable = False
-        return detail(request)
-    return render(request, 'maneu_order/insert.html', {'time': common.current_time()})
+    return render(request, 'maneu_order/insert.html', {'time': current_time()})
 
 
 def update(request):

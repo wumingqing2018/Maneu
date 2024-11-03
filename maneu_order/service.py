@@ -43,8 +43,8 @@ def ManeuOrder_Search(text='', admin_id=''):
     return ManeuOrder.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
 
 
-def ManeuOrder_insert(name='', time='', phone='', guess_id='', admin_id='', store_id='', vision_id='', remark=''):
-    return ManeuOrder.objects.create(name=name, time=time, phone=phone, guess_id=guess_id, admin_id=admin_id,
+def ManeuOrder_insert(name='', time='', call='', guess_id='', admin_id='', store_id='', vision_id='', remark=''):
+    return ManeuOrder.objects.create(name=name, time=time, phone=call, guess_id=guess_id, admin_id=admin_id,
                                      store_id=store_id, vision_id=vision_id, remark=remark)
 
 
@@ -92,8 +92,8 @@ def ManeuGuess_phone(phone=''):
     return ManeuGuess.objects.filter(phone=phone).first()
 
 
-def ManeuGuess_search(admin_id='', name='', time='', phone='', sex='', age='', ot='', em='', dfh=''):
-    return ManeuGuess.objects.get_or_create(admin_id=admin_id, name=name, phone=phone,
+def ManeuGuess_search(admin_id='', name='', time='', call='', sex='', age='', ot='', em='', dfh=''):
+    return ManeuGuess.objects.get_or_create(admin_id=admin_id, name=name, phone=call,
                                             defaults={'sex': sex, 'age': age, 'ot': ot, 'em': em, 'dfh': dfh,
                                                       'time': time})
 

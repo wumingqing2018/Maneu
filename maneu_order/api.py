@@ -1,8 +1,9 @@
 from django.http import JsonResponse
 
 from common import common
-from common.verify import *
+from common.verify import is_uuid, is_date
 from maneu_order import service
+import json
 
 def index(request):
     admin_id = is_uuid(request.session.get('id'))
@@ -96,6 +97,41 @@ def service_update(request):
     if admin_id and service_id:
         data = service.ManeuService_update(admin_id, service_id, request.POST.get('content'))
         content = {'status': True, 'message': '', 'data': data}
+    else:
+        content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
+
+    return JsonResponse(content)
+
+
+def insert(request):
+    print(request.GET)
+    admin_id = is_uuid(request.session.get('id'))
+    if admin_id:
+        guest_form = json.loads(request.GET.get('guest'))
+        guest_id = service.ManeuGuess_search(admin_id=admin_id,
+                                             time=request.GET.get('time'),
+                                             name=guest_form['name'],
+                                             call=guest_form['call'],
+                                             sex=guest_form['sex'],
+                                             age=guest_form['age'],
+                                             ot=guest_form['OT'],
+                                             em=guest_form['EM'],
+                                             dfh=guest_form['DFH'])[0].id
+        if guest_id:
+            store_id = service.ManeuStore_insert(admin_id=admin_id,
+                                                 guess_id=guest_id,
+                                                 time=request.GET.get('time'),
+                                                 content=request.GET.get('store')).id
+            if store_id:
+                order_id = service.ManeuOrder_insert(admin_id=admin_id,
+                                                     guess_id=guest_id,
+                                                     store_id=store_id,
+                                                     time=request.GET.get('time'),
+                                                     name=request.GET.get('name'),
+                                                     call=request.GET.get('call'),
+                                                     remark=request.GET.get('remark')).id
+                if order_id:
+                    content = {'status': True, 'message': '', 'data': {'id': order_id}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
