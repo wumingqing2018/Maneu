@@ -104,7 +104,6 @@ def service_update(request):
 
 
 def insert(request):
-    print(request.GET)
     admin_id = is_uuid(request.session.get('id'))
     if admin_id:
         guest_form = json.loads(request.GET.get('guest'))
