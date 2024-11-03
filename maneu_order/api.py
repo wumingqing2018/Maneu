@@ -38,7 +38,7 @@ def search(request):
 
 def delete(request):
     admin_id = is_uuid(request.session.get('id'))
-    order_id = is_uuid(request.GET.get('order_id'))
+    order_id = is_uuid(request.GET.get('id'))
 
     if admin_id and order_id:
         order = service.ManeuOrder_id(id=order_id, admin_id=admin_id)

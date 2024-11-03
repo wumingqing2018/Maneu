@@ -3,14 +3,12 @@ from django.db.models import Q
 from maneu.models import *
 
 
-def ManeuGuess_index(admin_id='', star='', end=''):
-    return ManeuGuess.objects.filter(admin_id=admin_id, time__gte=star, time__lte=end).order_by('-time').all()
+def ManeuGuess_index(admin_id='', start='', end=''):
+    return ManeuGuess.objects.filter(admin_id=admin_id, time__gte=start, time__lte=end).order_by('-time').all()
 
 
 def ManeuGuess_Search(admin_id='', text=''):
-    return ManeuGuess.objects.filter(
-        Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).order_by(
-        '-time').all()
+    return ManeuGuess.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).order_by('-time').all()
 
 
 def ManeuGuess_id(admin_id='', id=''):
@@ -28,8 +26,8 @@ def ManeuGuess_update(id='', time='', name='', phone='', sex='', age='', ot='', 
                                                    dfh=dfh, remark=remark)
 
 
-def ManeuGuess_delete(id='', admin=''):
-    return ManeuGuess.objects.filter(id=id).delete()
+def ManeuGuess_delete(id='', admin_id=''):
+    return ManeuGuess.objects.filter(id=id, admin_id=admin_id).delete()
 
 
 def ManeuSubjectiveRefraction_id(id=''):

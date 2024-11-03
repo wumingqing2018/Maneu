@@ -7,7 +7,7 @@ function deleteBtn(obj) {
                 order_id: obj.alt,
             },
             success: function (res) {
-                obj.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
+                obj.parentElement.parentElement.parentElement.parentElement.remove()
             }
         })
     } else {

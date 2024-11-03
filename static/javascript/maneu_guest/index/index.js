@@ -1,11 +1,28 @@
+function deleteBtn(obj) {
+    if (confirm("您确定要删除吗？")) {
+        $.ajax({
+            url: api_delete,
+            type: 'GET',
+            data: {
+                id: obj.alt,
+            },
+            success: function (res) {
+                obj.parentElement.parentElement.parentElement.parentElement.remove()
+            }
+        })
+    } else {
+        return false;
+    }
+}
+
 $(function () {
     var start = moment().subtract(29, 'days');
     var end = moment();
 
     function forList(res) {
-        $('#body').empty();
+        $('.body').empty();
         for (i in res) {
-            $('.container').append(
+            $('.body').append(
                 "<div>\n" +
                 "    <div class='col-12 row'>\n" +
                 "        <div class='col-2'>\n" +
@@ -42,13 +59,15 @@ $(function () {
 
     function cb(start, end) {
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        $('#body').empty();
         $.ajax({
             url: api_index,
             data: {
                 start: start.format('YYYY-MM-DD 00:00:00'),
                 end: end.format('YYYY-MM-DD 23:59:59'),
             },
-            success: function (res) {
+            success: function (res){
+                console.log(res)
                 forList(res.data)
             },
         });
@@ -61,21 +80,26 @@ $(function () {
                 text: $('#search-value').val()
             },
             success: function (res) {
+                console.log(res)
                 forList(res.data)
             }
         })
     })
 
+
     $('#reportrange').daterangepicker({
-        startDate: start, endDate: end, ranges: {
-            '今天': [moment(), moment()],
-            '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            '七天内': [moment().subtract(6, 'days'), moment()],
-            '三十天内': [moment().subtract(29, 'days'), moment()],
-            '本月': [moment().startOf('month'), moment().endOf('month')],
-            '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        }
-    }, cb);
+            startDate: start,
+            endDate: end,
+            ranges: {
+                '今天': [moment(), moment()],
+                '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                '七天内': [moment().subtract(6, 'days'), moment()],
+                '三十天内': [moment().subtract(29, 'days'), moment()],
+                '本月': [moment().startOf('month'), moment().endOf('month')],
+                '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+        },
+        cb);
 
     cb(start, end);
 });

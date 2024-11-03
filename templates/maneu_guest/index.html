@@ -13,62 +13,63 @@
     </script>
 
 
-    <script type="application/javascript" src="https://cdn.staticfile.org/moment.js/2.29.4/moment.min.js"></script>
-    <script type="application/javascript" src="https://cdn.staticfile.org/moment.js/2.29.4/locale/zh-cn.js"></script>
+    <script type="application/javascript"
+            src="https://cdn.staticfile.org/moment.js/2.29.4/moment.min.js"></script>
+    <script type="application/javascript"
+            src="https://cdn.staticfile.org/moment.js/2.29.4/locale/zh-cn.js"></script>
     <script type="application/javascript"
             src="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.js"></script>
     {#https://www.datetimepicker.cn/daterangepicker/#}
 
 
-    <script type="application/javascript" src='{% static "javascript/maneu_guest/index/delete.js" %}'></script>
-    {#    <script type="application/javascript" src='{% static "javascript/maneu_guest/index/auto_index.js" %}'></script>#}
-    <script type="application/javascript" src='{% static "javascript/maneu_guest/index/time_index.js" %}'></script>
-    <script type="application/javascript" src='{% static "javascript/maneu_guest/index/name_index.js" %}'></script>
+    <script type="application/javascript" src='{% static "javascript/maneu_guest/index/index.js" %}'></script>
 {% endblock %}
 {% block content %}
     <div class="container">
-        <table class="table col-12">
-            <thead>
-            <tr>
-                <td colspan="4" valign="middle">
-                    <h5>客户信息管理系统</h5>
-                </td>
-                <td>
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" id="reportrange">
+        <div class="header">
+            <div>
+                <div class="col-12 row">
+                    <div class="col-8">
+                        <h5>用户管理</h5>
                     </div>
-                </td>
-                <td>
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" id="search-value" placeholder="使用手机或姓名查询">
+                    <div class="col-2">
+                        <div class='input-group input-group-sm'>
+                            <input type="text" class="col-12 form-control" id="reportrange">
+                        </div>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td valign='middle'>
-                    <span>录入时间</span>
-                </td>
-                <td valign='middle'>
-                    <span>客户姓名</span>
-                </td>
-                <td valign='middle'>
-                    <span>客户电话</span>
-                </td>
-                <td valign='middle' colspan="2">
-                    <span>订单备注</span>
-                </td>
-                <td valign='middle' align="right">
-                    <div class="col-6 row">
+                    <div class="col-2">
+                        <div class='input-group input-group-sm'>
+                            <input type="text" class="col-12 form-control" id="search-value" placeholder="使用手机或姓名查询">
+                        </div>
+                    </div>
+                </div>
+                <hr style="color:white;">
+            </div>
+            <div>
+                <div class="col-12 row">
+                    <div class="col-2">
+                        <p>录入时间</p>
+                    </div>
+                    <div class="col-1">
+                        <p>客户姓名</p>
+                    </div>
+                    <div class="col-1">
+                        <p>客户电话</p>
+                    </div>
+                    <div class="col-7">
+                        <p>客户备注</p>
+                    </div>
+                    <div class="col-1">
                         <form method="get" action="{% url 'maneu_guest:insert' %}">
-                            <div class="input-group input-group-sm">
-                                <input type="submit" class="btn btn-warning col-12" value='添加订单'>
+                            <div class='input-group input-group-sm'>
+                                <input type="submit" class="col-12 btn btn-warning" value='添加客户'>
                             </div>
                         </form>
                     </div>
-                </td>
-            </tr>
-            </thead>
-            <tbody id="body"></tbody>
-        </table>
+                </div>
+                <hr style="color:white;">
+            </div>
+        </div>
+        <div class="body"></div>
     </div>
 {% endblock %}

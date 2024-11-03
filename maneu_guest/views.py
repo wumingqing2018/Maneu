@@ -11,7 +11,9 @@ def index(request):
 
 
 def detail(request):
-    id = request.GET.get('guess_id')
+    id = request.GET.get('id')
+    print(id)
+
     guess = ManeuGuess_id(admin_id=request.session.get('id'), id=id)
     vision = ManeuOrderV2_all(guess_id=guess.id)
     server = ManeuService_all(guess_id=guess.id)
@@ -43,12 +45,6 @@ def insert(request):
         request.GET._mutable = False
         return detail(request)
     return render(request, 'maneu_guest/insert.html', {'today': common.current_time()})
-
-
-def delete(request):
-    ManeuGuess_delete(id=request.GET.get('guess_id'))
-    return index(request)
-
 
 def update(request):
     if request.method == 'POST':

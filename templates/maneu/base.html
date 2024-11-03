@@ -1,19 +1,19 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>徕可</title>
     <link rel="icon" href="{% static 'images/logo.svg' %}">
     <link rel="stylesheet" href="{% static 'css/maneu/base.css' %}">
     <!-- 新 Bootstrap5 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
     <!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
     <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
     <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
+
 
 <body class="blue">
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -49,7 +49,9 @@
 {% block css %}{% endblock %}
 {% block javascript %}{% endblock %}
 </body>
-<footer class="text-center" style="margin: 2%">
-    <a style="color: #FFC048;" href="https://beian.miit.gov.cn">粤ICP备2023070483号</a>
+
+
+<footer class="text-center">
+    <a href="https://beian.miit.gov.cn">粤ICP备2023070483号</a>
 </footer>
 </html>

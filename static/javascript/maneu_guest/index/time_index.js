@@ -2,6 +2,43 @@ $(function () {
     var start = moment().subtract(29, 'days');
     var end = moment();
 
+    function forList(res) {
+        for (i in res) {
+            $('.container').append(
+                "<div>\n" +
+                "    <div class='col-12 row'>\n" +
+                "        <div class='col-2'>\n" +
+                "            <p>" + res[i]['time'] + "</p>\n" +
+                "        </div>\n" +
+                "        <div class='col-1'>\n" +
+                "            <p>" + res[i]['name'] + "</p>\n" +
+                "        </div>\n" +
+                "        <div class='col-1'>\n" +
+                "            <p>" + res[i]['phone'] + "</p>\n" +
+                "        </div>\n" +
+                "        <div class='col-6'>\n" +
+                "            <p>" + res[i]['remark'] + "</p>\n" +
+                "        </div>\n" +
+                "        <div class='col-1'>\n" +
+                "            <div class='input-group input-group-sm'>\n" +
+                "                <input type='button' class='col-12 btn btn-danger' onclick='deleteBtn(this)' value='删除订单' alt=" + res[i]['id'] + ">\n" +
+                "            </div>\n" +
+                "        </div>\n" +
+                "        <div class='col-1'>\n" +
+                "            <form method='GET' action='" + api_detail + "'>\n" +
+                "                <input type='hidden' name='order_id' value=" + res[i]['id'] + ">\n" +
+                "                <div class='input-group input-group-sm'>\n" +
+                "                    <input type='submit' class='col-12 btn btn-primary' value='查看订单'>\n" +
+                "                </div>\n" +
+                "            </form>\n" +
+                "        </div>\n" +
+                "    </div>\n" +
+                "    <hr style='color: white'>\n" +
+                "</div>\n"
+            )
+        }
+    }
+
     function cb(start, end) {
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         $('#body').empty();
@@ -9,45 +46,27 @@ $(function () {
             url: api_index,
             data: {
                 star: start.format('YYYY-MM-DD 00:00:00'),
-                end: end.format('YYYY-MM-DD 23:59:59')
+                end: end.format('YYYY-MM-DD 23:59:59'),
             },
             success: function (res){
-                for (i in res) {
-                    $('#body').append(
-                        "                <tr>\n" +
-                        "                    <td valign='middle'>\n" +
-                        "                        <span>" + res[i]['time'] + "</span>\n" +
-                        "                    </td>\n" +
-                        "                    <td valign='middle'>\n" +
-                        "                        <span>" + res[i]['name'] + "</span>\n" +
-                        "                    </td>\n" +
-                        "                    <td valign='middle'>\n" +
-                        "                        <span>" + res[i]['phone'] + "</span>\n" +
-                        "                    </td>\n" +
-                        "                    <td valign='middle' colspan=\"2\">\n" +
-                        "                        <span>" + res[i]['remark'] + "</span>\n" +
-                        "                    </td>\n" +
-                        "                    <td valign='middle' align='right'>\n" +
-                        "                        <div class='col-6 row'>\n" +
-                        "                            <form class='col-6'>\n" +
-                        "                                <div class='col-6 input-group input-group-sm'>\n" +
-                        "                                    <input type='button' class='btn btn-danger col-12' onclick='deleteBtn(this)' alt=" + res[i]['id'] + " value='删除'>\n" +
-                        "                                </div>\n" +
-                        "                            </form>\n" +
-                        "                            <form class='col-6' method='get' action=" + api_detail + " >\n" +
-                        "                                <input type='hidden' name='guess_id' value=" + res[i]['id'] + ">\n" +
-                        "                                <div class='input-group input-group-sm'>\n" +
-                        "                                    <input type='submit' class='btn btn-primary col-12' value='查看'>\n" +
-                        "                                </div>\n" +
-                        "                            </form>\n" +
-                        "                        </div>\n" +
-                        "                    </td>\n" +
-                        "                </tr>\n"
-                    )
-                }
+                forList(res.data)
             },
         });
     }
+
+    $('#search-value').keyup(function () {
+        $('#body').empty()
+        $.ajax({
+            url: api_search,
+            data: {
+                text: $('#search-value').val()
+            },
+            success: function (res) {
+                forList(res.data)
+            }
+        })
+    })
+
 
     $('#reportrange').daterangepicker({
             startDate: start,
@@ -62,5 +81,6 @@ $(function () {
             }
         },
         cb);
+
     cb(start, end);
 });
