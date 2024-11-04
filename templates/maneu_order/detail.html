@@ -1,10 +1,7 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
-{% block css %}
-    <link rel="stylesheet" href="{% static 'css/maneu_order/detail.css' %}">
-{% endblock %}
+
 {% block content %}
-    {% csrf_token %}
     <div class="container">
         <table class="table-sm text-left" style="margin-top: 2%; margin-bottom: 4%">
             <tr>
@@ -307,13 +304,19 @@
         service_delete = "{% url 'maneu_order:service_delete' %}";
         service_update = "{% url 'maneu_order:service_update' %}";
     </script>
-    <script type="application/javascript" src="{% static 'javascript/common/print.js' %}"></script>
+    <script type="application/javascript"
+            src="{% static 'javascript/common/print.js' %}"></script>
     <script type="application/javascript"
             src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
-    <script type="application/javascript" src="{% static 'javascript/common/delete.js' %}"></script>
-    <script type="application/javascript" src="{% static 'javascript/maneu_order/detail/index.js' %}"></script>
+    <script type="application/javascript" 
+            src="{% static 'javascript/common/delete.js' %}"></script>
+    <script type="application/javascript" 
+            src="{% static 'javascript/maneu_order/detail/index.js' %}"></script>
     <script type="application/javascript"
             src="{% static 'javascript/maneu_order/detail/serverLog_delete.js' %}"></script>
     <script type="application/javascript"
             src="{% static 'javascript/maneu_order/detail/serverLog_insert.js' %}"></script>
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/maneu_order/detail.css' %}">
 {% endblock %}

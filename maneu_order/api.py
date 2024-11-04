@@ -135,3 +135,24 @@ def insert(request):
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
     return JsonResponse(content)
+
+def update(request):
+    service.ManeuStore_update(id=request.POST.get('store_id'), content=request.POST.get('product_form'))
+    service.ManeuOrder_update(id=request.POST.get('order_id'), name=request.POST.get('order_name'),
+                              phone=request.POST.get('order_phone'), time=request.POST.get('order_time'),
+                              remark=request.POST.get('order_remark'))
+
+def detail(request):
+    admin_id = is_uuid(request.session.get('id'))
+    order_id = is_uuid(request.GET.get('id'))
+
+    if admin_id and order_id:
+        data = service.ManeuOrder_id(id=order_id, admin_id=admin_id)
+        if data:
+            content = {'status': True, 'message': '', 'data': {'data': data}}
+        else:
+            content = {'status': False, 'message': '没有数据', 'data': {}}
+    else:
+        content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
+
+    return JsonResponse(content)

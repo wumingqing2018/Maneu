@@ -50,3 +50,19 @@ def delete(request):
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
     return JsonResponse(content)
+
+
+def detail(request):
+    admin_id = is_uuid(request.session.get('id'))
+    guess_id = is_uuid(request.GET.get('id'))
+
+    if admin_id and guess_id:
+        data = service.ManeuGuess_id(id=guess_id, admin_id=admin_id)
+        if data:
+            content = {'status': True, 'message': '', 'data': data}
+        else:
+            content = {'status': False, 'message': '没有数据', 'data': {}}
+    else:
+        content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
+
+    return JsonResponse(content)

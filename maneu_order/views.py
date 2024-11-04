@@ -41,18 +41,5 @@ def insert(request):
 
 def update(request):
     """更新订单"""
-    if request.method == 'GET':
-        order = service.ManeuOrder_id(id=request.GET.get('order_id'), admin_id=request.session.get('id'))
-        content = {"order": order, "guess": service.ManeuGuess_id(id=order.guess_id),
-                   "store": json.loads(service.ManeuStore_id(id=order.store_id).content),
-                   "vision": json.loads(service.ManeuVision_id(id=order.vision_id).content)}
-        return render(request, 'maneu_order/update.html', content)
-    if request.method == 'POST':
-        service.ManeuVision_update(id=request.POST.get('vision_id'), content=request.POST.get('vision_form'))
-        service.ManeuStore_update(id=request.POST.get('store_id'), content=request.POST.get('product_form'))
-        service.ManeuGuess_update(id=request.POST.get('guess_id'), content=request.POST.get('guess_form'))
-        service.ManeuOrder_update(id=request.POST.get('order_id'), name=request.POST.get('order_name'),
-                                  phone=request.POST.get('order_phone'), time=request.POST.get('order_time'),
-                                  remark=request.POST.get('order_remark'))
-        return detail(request)
-    return index(request)
+    id = request.GET.get('id')
+    return render(request, 'maneu_order/update.html', {'id':id})
