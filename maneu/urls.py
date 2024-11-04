@@ -18,5 +18,6 @@ urlpatterns = [
     path('maneu_index/', include('maneu_index.urls')),
     # 零售订单子路由
     path('maneu_order/', include('maneu_order.urls')),
+    path('maneu_report/', include('maneu_report.urls')),
 
 ]

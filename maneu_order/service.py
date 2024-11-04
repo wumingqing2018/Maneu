@@ -129,3 +129,7 @@ def ManeuService_delete_order_id(order_id=''):
 
 def ManeuRefraction_id(guess_id=''):
     return ManeuRefraction.objects.filter(guess_id=guess_id).order_by('-time').first()
+
+
+def ManeuReport_id(admin_id, id):
+    return ManeuVision.objects.filter(admin_id=admin_id, id=id).first()
