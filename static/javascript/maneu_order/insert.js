@@ -7,10 +7,10 @@ $(document).ready(function (){
                 name: $('#name').val(),
                 time: $('#time').val(),
                 call: $('#call').val(),
-                remark: $('#remark').val(),
                 guest: $('#guest').serializeJsonStr(),
                 store: $('#store').serializeJsonStr(),
                 report: $('#report').serializeJsonStr(),
+                remark: $('#remark').val(),
             },
             success: function (res) {
                 console.log(res)

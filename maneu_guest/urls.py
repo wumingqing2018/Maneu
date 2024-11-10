@@ -14,7 +14,9 @@ urlpatterns = [
     path('Subjective_delete/', views.Subjective_delete, name='Subjective_delete'),
     path('Subjective_update/', views.Subjective_update, name='Subjective_update'),
     path('api_index/', api.index, name='api_index'),
+    path('api_insert/', api.insert, name='api_insert'),
     path('api_search/', api.search, name='api_search'),
     path('api_delete/', api.delete, name='api_delete'),
+    path('api_detail/', api.detail, name='api_detail'),
 
 ]

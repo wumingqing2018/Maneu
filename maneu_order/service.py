@@ -5,18 +5,11 @@ from django.db.models import Q
 from maneu.models import *
 
 
-def ManeuOrder_all(admin_id=''):
+def ManeuOrder_index(admin_id='', star='', end=''):
     """
     全部订单
     """
-    return ManeuOrder.objects.filter(admin_id=admin_id).order_by('-time').all()
-
-
-def ManeuOrder_index(admin_id='', star='', end='', name='', phone=''):
-    """
-    全部订单
-    """
-    return ManeuOrder.objects.filter(admin_id=admin_id, time__gte=star, time__lte=end, phone__contains=phone, name__contains=name).order_by('-time').all()
+    return ManeuOrder.objects.filter(admin_id=admin_id, time__gte=star, time__lte=end).order_by('-time').all()
 
 
 def ManeuOrder_id(id='', admin_id=''):
@@ -25,10 +18,6 @@ def ManeuOrder_id(id='', admin_id=''):
     根据时间排序
     """
     return ManeuOrder.objects.filter(id=id, admin_id=admin_id).first()
-
-
-def ManeuOrder_time(admin_id='', time=''):
-    return ManeuOrder.objects.filter(admin_id=admin_id, time=time).order_by('-time').all()
 
 
 def ManeuOrder_delete(admin_id='', id=''):

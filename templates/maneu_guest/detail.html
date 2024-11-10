@@ -1,7 +1,7 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static '/css/maneu_guess/detail.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/maneu_guest/detail.css' %}"/>
 {% endblock %}
 {% block javascript %}
     {# delete model #}
@@ -9,113 +9,103 @@
     {# print model #}
     <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="text/javascript" src="{% static 'javascript/common/print.js' %}"></script>
-    {# echarts model #}
-    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
-    <script type="text/javascript" src="{% static 'javascript/maneu_index/echarts.js' %}"></script>
-    {# 视力标准 echarts start #}
-    <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('main0'), 'maneu');
-        var option = {
-            title: {
-                text: '视力',
-                textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                },
-            },
-            tooltip: {
-                formatter: function (datas) {
-                    return datas.value.toFixed(1);
-                }
-            },
-            legend: {
-                data: ['左眼视力', '右眼视力']
-            },
-            xAxis: {
-                data: ['左眼视力', '右眼视力'],
-            },
-            yAxis: {
-                min: 0.2,
-                max: 1.2,
-                axisLabel: {
-                    formatter: function (value, index) {
-                        return value.toFixed(1)
-                    }
-                }
-            },
-            series: [{
-                type: 'bar',
-                barWidth: 20,
-                data: [{{ subjectiverefraction.OS_VA|safe }}, {{ subjectiverefraction.OD_VA|safe }}],
-                markLine: {
-                    symbol: "none",
-                    data: [{
-                        label: {
-                            position: "middle",
-                            formatter: "标准值：1.0",
-                            fontSize: "10",
-                        },
-                        yAxis: 1.0,
-                    }],
-                    silent: true,
-                },
-            }]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
-    {# 眼轴长度 echarts start #}
-    <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('main1'), 'maneu');
-        var option = {
-            title: {
-                text: '眼轴长度',
-                textStyle: {
-                    fontSize: 18,
-                    fontWeight: 'bolder',
-                },
-            },
-            tooltip: {},
-            legend: {
-                data: ['左眼眼轴', '右眼眼轴']
-            },
-            xAxis: {
-                data: ['左眼眼轴', '右眼眼轴'],
-            },
-            yAxis: {
-                name: 'mm',
-                min: 16,
-                max: 28,
-                axisLabel: {
-                    formatter: function (value, index) {
-                        return value.toFixed(1)
-                    }
-                }
-            },
-            series: [{
-                type: 'bar',
-                barWidth: 20,
-                data: [{{ subjective_refraction.OD_AL|safe }}, {{ subjective_refraction.OS_AL|safe }}],
-                markLine: {
-                    symbol: "none",
-                    data: [{
-                        label: {
-                            position: "middle",
-                            formatter: "标准值: " + {{ stand_ax|safe }} + "mm",
-                            fontSize: "10",
-                        },
-                        yAxis: {{ stand_ax|safe }},
-                    }],
-                    silent: true,
-                    color: ["#99CC33"], // 折线的颜色
-                },
-            }]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
 {% endblock %}
 {% block content %}
+    <div class="container">
+        <div class="vertical2">
+            <div class="vertical1 col-1">
+                <form method="get" action="{% url 'maneu_guest:index' %}">
+                    <div class="input-group input-group-sm">
+                        <input type="submit" class="btn btn-primary" value="返回列表">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr>
+
+        <div class="vertical2">
+            <h5>客户信息</h5>
+            <div class="vertical1 col-12">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-1">姓名</span>
+                    <span class="input-group-text col-2" id="name"></span>
+                    <span class="input-group-text col-1">电话</span>
+                    <span class="input-group-text col-3" id="call"></span>
+                    <span class="input-group-text col-1">时间</span>
+                    <span class="input-group-text col-2" id="time"></span>
+                </div>
+            </div>
+            <div class="vertical1 col-12">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-1">性别</span>
+                    <span class="input-group-text col-1" id="sex"></span>
+                    <span class="input-group-text col-1">年龄</span>
+                    <span class="input-group-text col-1" id="age"></span>
+                    <span class="input-group-text col-1">眼位</span>
+                    <span class="input-group-text col-1" id="em"></span>
+                    <span class="input-group-text col-1">主视眼</span>
+                    <span class="input-group-text col-1" id="ot"></span>
+                    <span class="input-group-text col-1">病族史</span>
+                    <span class="input-group-text col-1" id="dfh"></span>
+                </div>
+            </div>
+            <div class="vertical1 col-12">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-1">备注</span>
+                    <span class="input-group-text col-9" id="remark"></span>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="vertical2">
+            <h5>订单列表</h5>
+            <div class="vertical1 col-12">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">购买时间</span>
+                    <span class="input-group-text col-7">订单备注</span>
+                    <a type="button" class="btn btn-warning col-1">添加数据</a>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="vertical2">
+            <h5>报告列表</h5>
+            <div class="vertical1 col-12">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">购买时间</span>
+                    <span class="input-group-text col-7">订单备注</span>
+                    <a type="button" class="btn btn-warning col-1">添加数据</a>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="vertical2 row">
+            <div class="vertical1 col-1">
+                <div class="input-group input-group-sm">
+                    <button class="btn btn-primary" id="print_btn">打印页面</button>
+                </div>
+            </div>
+            <div class="vertical1 col-1">
+                <form method="get" action="{% url 'maneu_order:update' %}">
+                    <input type="hidden" name="order_id" value="{{ order.id }}">
+                    <div class="input-group input-group-sm">
+                        <input type="submit" class="btn btn-warning" value="修改数据">
+                    </div>
+                </form>
+            </div>
+            <div class="vertical1 col-1">
+                <div class="input-group input-group-sm">
+                    <button class="btn btn-danger" id="delete">删除数据</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="container">
         <div class="col-2 test">
             <div class="input-group input-group-sm">
@@ -166,7 +156,7 @@
         </table>
         <div class="col-12 test row">
             <div class="col-md-2 col-sm-6">
-                <form action="{% url 'maneu_guest:delete' %}" method="get">
+                <form method="get">
                     <input name="guess_id" type="hidden" value="{{ guess.id }}">
                     <div class="input-group input-group-sm">
                         <input type="submit" id="delete" class="btn btn-danger" value="删除信息">
@@ -174,7 +164,7 @@
                 </form>
             </div>
             <div class="col-md-2 col-sm-6">
-                <form action="{% url 'maneu_guest:update' %}" method="get">
+                <form method="get">
                     <input name="guess_id" type="hidden" value="{{ guess.id }}">
                     <div class="input-group input-group-sm">
                         <input type="submit" class="btn btn-warning" value="修改信息">
@@ -188,7 +178,7 @@
                     <h5>屈光检验报告</h5>
                 </td>
                 <td align="right">
-                    <form class="col-2" method="get" action="{% url 'maneu_guest:Subjective_insert' %}">
+                    <form class="col-2" method="get">
                         <input type="hidden" name="guess_id" value="{{ guess.id }}">
                         <div class="input-group input-group-sm">
                             <input type="submit" class="btn btn-primary" value="添加">
@@ -203,7 +193,7 @@
                             <span>{{ foo.time }}</span>
                         </td>
                         <td align="right">
-                            <form class="col-2" method="post" action="{% url 'maneu_guest:Subjective_detail' %}">
+                            <form class="col-2" method="post">
                                 {% csrf_token %}
                                 <input type="hidden" name="subjective_id" value="{{ foo.id }}">
                                 <div class="input-group input-group-sm">
@@ -227,7 +217,7 @@
                     <h5>视力解决方案</h5>
                 </td>
                 <td align="right">
-                    <form class="col-2" method="get" action="{% url 'maneu_order:insert' %}">
+                    <form class="col-2" method="get">
                         {% csrf_token %}
                         <input type="hidden" name="order_id" value="{{ foo.id }}">
                         <div class="input-group input-group-sm">
@@ -243,7 +233,7 @@
                             <span>{{ foo.time }}</span>
                         </td>
                         <td align="right">
-                            <form class="col-2" method="post" action="{% url 'maneu_order:detail' %}">
+                            <form class="col-2" method="post">
                                 {% csrf_token %}
                                 <input type="hidden" name="order_id" value="{{ foo.id }}">
                                 <div class="input-group input-group-sm">

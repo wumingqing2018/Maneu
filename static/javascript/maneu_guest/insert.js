@@ -15,9 +15,22 @@ $.fn.serializeJsonStr = function () {
 }
 $(document).ready(function () {
     $("#insert").click(function () {
-        guess_form = $('#guess_form').serializeJsonStr();
-        subjective_form = $('#subjective_form').serializeJsonStr();
-        $("#guess").val(guess_form);
-        $("#subjective").val(subjective_form);
+        $.ajax({
+            url: api_insert,
+            method: 'GET',
+            data: {
+                time: $("[name='time']").val(),
+                name: $("[name='name']").val(),
+                call: $("[name='call']").val(),
+                age: $("[name='age']").val(),
+                sex: $("[name='sex']").val(),
+                dfh: $("[name='dfh']").val(),
+                ot: $("[name='ot']").val(),
+                em: $("[name='em']").val(),
+            },
+            success: function (res) {
+                console.log('d')
+            }
+        })
     })
 })

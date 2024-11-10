@@ -6,7 +6,7 @@
 {% endblock %}
 {% block javascript %}
     <script type="application/javascript">
-        api_index = "{% url 'maneu_order:api_index' %}"
+        api_index = "{% url 'maneu_report:api_index' %}"
         api_detail = "{% url 'maneu_order:detail' %}"
         api_search = "{% url 'maneu_order:api_search' %}"
         api_delete = "{% url 'maneu_order:api_delete' %}"
@@ -31,7 +31,7 @@
         <div>
             <div class="col-12 row">
                 <div class="col-8">
-                    <h5>订单管理</h5>
+                    <h5>报告管理</h5>
                 </div>
                 <div class="col-2">
                     <div class='input-group input-group-sm'>

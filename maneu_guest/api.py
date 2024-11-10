@@ -1,3 +1,4 @@
+from django.forms import model_to_dict
 from django.http import JsonResponse
 
 from common.verify import *
@@ -11,7 +12,7 @@ def index(request):
 
     if start and end and admin_id:
         try:
-            data = service.ManeuGuess_index(admin_id, start, end).values('id', 'name', 'phone', 'time', 'remark')
+            data = service.ManeuGuest_index(admin_id, start, end).values('id', 'name', 'phone', 'time', 'remark')
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
             content = {'status': False, 'message': e, 'data': {}}
@@ -26,7 +27,7 @@ def search(request):
 
     if admin_id:
         try:
-            data = service.ManeuGuess_Search(text=request.GET.get('text'), admin_id=admin_id).values('id', 'name', 'phone', 'time', 'remark')
+            data = service.ManeuGuest_Search(text=request.GET.get('text'), admin_id=admin_id).values('id', 'name', 'phone', 'time', 'remark')
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
             content = {'status': False, 'message': e, 'data': {}}
@@ -36,13 +37,37 @@ def search(request):
     return JsonResponse(content)
 
 
+def insert(request):
+    admin_id = is_uuid(request.session.get('id'))
+
+    if admin_id:
+        try:
+            data = service.ManeuGuess_insert(admin_id=admin_id,
+                                             time=request.GET.get('time'),
+                                             name=request.GET.get('name'),
+                                             phone=request.GET.get('call'),
+                                             sex=request.GET.get('sex'),
+                                             age=request.GET.get('age'),
+                                             dfh=request.GET.get('dfh'),
+                                             ot=request.GET.get('ot'),
+                                             em=request.GET.get('em'),
+                                             remark=request.GET.get('remark'))
+            content = {'status': True, 'message': '', 'data': data[0].id}
+        except Exception as e:
+            content = {'status': False, 'message': str(e), 'data': {}}
+    else:
+        content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
+
+    return JsonResponse(content)
+
+
 def delete(request):
     admin_id = is_uuid(request.session.get('id'))
-    guess_id = is_uuid(request.GET.get('id'))
+    guest_id = is_uuid(request.GET.get('id'))
 
-    if admin_id and guess_id:
+    if admin_id and guest_id:
         try:
-            data = service.ManeuGuess_delete(id=guess_id, admin_id=admin_id)
+            data = service.Maneuguest_delete(id=guest_id, admin_id=admin_id)
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
             content = {'status': False, 'message': e, 'data': {}}
@@ -53,15 +78,15 @@ def delete(request):
 
 
 def detail(request):
+    guest_id = is_uuid(request.GET.get('id'))
     admin_id = is_uuid(request.session.get('id'))
-    guess_id = is_uuid(request.GET.get('id'))
 
-    if admin_id and guess_id:
-        data = service.ManeuGuess_id(id=guess_id, admin_id=admin_id)
-        if data:
-            content = {'status': True, 'message': '', 'data': data}
-        else:
-            content = {'status': False, 'message': '没有数据', 'data': {}}
+    if admin_id and guest_id:
+        try:
+            data = service.ManeuGuest_id(id=guest_id, admin_id=admin_id)
+            content = {'status': True, 'message': '', 'data': model_to_dict(data)}
+        except Exception as e:
+            content = {'status': False, 'message': e, 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
