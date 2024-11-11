@@ -1,7 +1,7 @@
 from django.forms import model_to_dict
 from django.http import JsonResponse
 
-from common.verify import *
+from common.verify import is_uuid,is_date
 from maneu_guest import service
 
 
@@ -42,7 +42,7 @@ def insert(request):
 
     if admin_id:
         try:
-            data = service.ManeuGuess_insert(admin_id=admin_id,
+            data = service.ManeuGuest_insert(admin_id=admin_id,
                                              time=request.GET.get('time'),
                                              name=request.GET.get('name'),
                                              phone=request.GET.get('call'),
@@ -67,7 +67,7 @@ def delete(request):
 
     if admin_id and guest_id:
         try:
-            data = service.ManeuGuess_delete(id=guest_id, admin_id=admin_id)
+            data = service.ManeuGuest_delete(id=guest_id, admin_id=admin_id)
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
@@ -99,7 +99,7 @@ def update(request):
 
     if admin_id and guest_id:
         try:
-            data = service.ManeuGuess_update(id=guest_id,
+            data = service.ManeuGuest_update(id=guest_id,
                                              admin_id=admin_id,
                                              phone=request.GET.get('call'),
                                              time=request.GET.get('time'),

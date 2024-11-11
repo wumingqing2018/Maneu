@@ -66,11 +66,11 @@ def delete(request):
 
 def service_insert(request):
     admin_id = is_uuid(request.session.get('id'))
-    guess_id = is_uuid(request.POST.get('guess_id'))
+    guest_id = is_uuid(request.POST.get('guest_id'))
     order_id = is_uuid(request.POST.get('order_id'))
 
-    if admin_id and guess_id and order_id:
-        data = service.ManeuService_insert(guess_id, admin_id, order_id,
+    if admin_id and guest_id and order_id:
+        data = service.ManeuService_insert(guest_id, admin_id, order_id,
                                            content=request.POST.get('content'),
                                            time=current_time())
         content = {'status': True, 'message': '', 'data': data}
@@ -110,7 +110,7 @@ def insert(request):
     admin_id = is_uuid(request.session.get('id'))
     if admin_id:
         guest_form = json.loads(request.GET.get('guest'))
-        guest_id = service.ManeuGuess_search(admin_id=admin_id,
+        guest_id = service.ManeuGuest_search(admin_id=admin_id,
                                              time=request.GET.get('time'),
                                              name=guest_form['name'],
                                              call=guest_form['call'],
@@ -121,12 +121,12 @@ def insert(request):
                                              dfh=guest_form['DFH'])[0].id
         if guest_id:
             store_id = service.ManeuStore_insert(admin_id=admin_id,
-                                                 guess_id=guest_id,
+                                                 guest_id=guest_id,
                                                  time=request.GET.get('time'),
                                                  content=request.GET.get('store')).id
             if store_id:
                 order_id = service.ManeuOrder_insert(admin_id=admin_id,
-                                                     guess_id=guest_id,
+                                                     guest_id=guest_id,
                                                      store_id=store_id,
                                                      time=request.GET.get('time'),
                                                      name=request.GET.get('name'),

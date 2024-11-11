@@ -9,46 +9,46 @@
         </form>
         <hr>
         {# 客户基础数据 #}
-        <form class="vertical2" id="guess">
+        <form class="vertical2" id="guest">
             <h5>客户基础数据</h5>
             <div class="col-3 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">时间</span>
                     <input autocomplete="off" class="form-control" id="time" name="time" type="datetime-local"
-                           value="{{ guess.time|safe }}">
+                           value="{{ guest.time|safe }}">
                 </div>
             </div>
             <div class="col-3 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">电话</span>
                     <input autocomplete="off" class="form-control" id="phone" name="phone" type="text"
-                           value="{{ guess.phone }}">
+                           value="{{ guest.phone }}">
                 </div>
             </div>
             <div class="col-3 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">姓名</span>
                     <input autocomplete="off" class="form-control" id="name" name="name" type="text"
-                           value="{{ guess.name }}">
+                           value="{{ guest.name }}">
                 </div>
             </div>
             <div class="col-9 vertical1">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-1">年龄</span>
                     <input autocomplete="off" class="form-control" type="text" name="age" list="age"
-                           value="{{ guess.age }}">
+                           value="{{ guest.age }}">
                     <span class="input-group-text col-1">性别</span>
                     <input autocomplete="off" class="form-control" type="text" name="sex" list="sex"
-                           value="{{ guess.sex }}">
+                           value="{{ guest.sex }}">
                     <span class="input-group-text col-1">眼位</span>
                     <input autocomplete="off" class="form-control" type="text" name="OT" list="OT"
-                           value="{{ guess.ot }}">
+                           value="{{ guest.ot }}">
                     <span class="input-group-text col-1">主视眼</span>
                     <input autocomplete="off" class="form-control" type="text" name="EM" list="EM"
-                           value="{{ guess.em }}">
+                           value="{{ guest.em }}">
                     <span class="input-group-text col-1">病族史</span>
                     <input autocomplete="off" class="form-control" type="text" name="DFH" list="DFH"
-                           value="{{ guess.dfh }}">
+                           value="{{ guest.dfh }}">
                 </div>
             </div>
         </form>
@@ -217,12 +217,12 @@
 
 
             <input type="hidden" name="order_id" value="{{ order.id }}">
-            <input type="hidden" name="guess_id" value="{{ order.guess_id }}">
+            <input type="hidden" name="guest_id" value="{{ order.guest_id }}">
             <input type="hidden" name="store_id" value="{{ order.store_id }}">
             <input type="hidden" name="vision_id" value="{{ order.vision_id }}">
 
 
-            <input type="hidden" name="guess_form" id="guess_form">
+            <input type="hidden" name="guest_form" id="guest_form">
             <input type="hidden" name="vision_form" id="vision_form">
             <input type="hidden" name="product_form" id="product_form">
             <div class="input-group input-group-sm">

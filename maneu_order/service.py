@@ -32,8 +32,8 @@ def ManeuOrder_Search(text='', admin_id=''):
     return ManeuOrder.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
 
 
-def ManeuOrder_insert(name='', time='', call='', guess_id='', admin_id='', store_id='', vision_id='', remark=''):
-    return ManeuOrder.objects.create(name=name, time=time, phone=call, guess_id=guess_id, admin_id=admin_id,
+def ManeuOrder_insert(name='', time='', call='', guest_id='', admin_id='', store_id='', vision_id='', remark=''):
+    return ManeuOrder.objects.create(name=name, time=time, phone=call, guest_id=guest_id, admin_id=admin_id,
                                      store_id=store_id, vision_id=vision_id, remark=remark)
 
 
@@ -49,8 +49,8 @@ def ManeuStore_delete(id=''):
     return ManeuStore.objects.filter(id=id).all().delete()
 
 
-def ManeuStore_insert(admin_id='', guess_id='', time='', content=''):
-    return ManeuStore.objects.create(admin_id=admin_id, guess_id=guess_id, time=time, content=content)
+def ManeuStore_insert(admin_id='', guest_id='', time='', content=''):
+    return ManeuStore.objects.create(admin_id=admin_id, guest_id=guest_id, time=time, content=content)
 
 
 def ManeuStore_update(content='', id=''):
@@ -65,38 +65,38 @@ def ManeuVision_delete(id=''):
     return ManeuVision.objects.filter(id=id).delete()
 
 
-def ManeuVision_insert(admin_id='', guess_id='', time='', content=''):
-    return ManeuVision.objects.create(admin_id=admin_id, guess_id=guess_id, time=time, content=content)
+def ManeuVision_insert(admin_id='', guest_id='', time='', content=''):
+    return ManeuVision.objects.create(admin_id=admin_id, guest_id=guest_id, time=time, content=content)
 
 
 def ManeuVision_update(id='', content=''):
     return ManeuVision.objects.filter(id=id).update(content=content)
 
 
-def ManeuGuess_id(id=''):
-    return ManeuGuess.objects.filter(id=id).first()
+def ManeuGuest_id(id=''):
+    return ManeuGuest.objects.filter(id=id).first()
 
 
-def ManeuGuess_phone(phone=''):
-    return ManeuGuess.objects.filter(phone=phone).first()
+def ManeuGuest_phone(phone=''):
+    return ManeuGuest.objects.filter(phone=phone).first()
 
 
-def ManeuGuess_search(admin_id='', name='', time='', call='', sex='', age='', ot='', em='', dfh=''):
-    return ManeuGuess.objects.get_or_create(admin_id=admin_id, name=name, phone=call,
+def ManeuGuest_search(admin_id='', name='', time='', call='', sex='', age='', ot='', em='', dfh=''):
+    return ManeuGuest.objects.get_or_create(admin_id=admin_id, name=name, phone=call,
                                             defaults={'sex': sex, 'age': age, 'ot': ot, 'em': em, 'dfh': dfh,
                                                       'time': time})
 
 
-def ManeuGuess_update(id='', content=''):
+def ManeuGuest_update(id='', content=''):
     contents = json.loads(content)
-    return ManeuGuess.objects.filter(id=id).update(name=contents['name'], phone=contents['phone'],
+    return ManeuGuest.objects.filter(id=id).update(name=contents['name'], phone=contents['phone'],
                                                    age=contents['age'],
                                                    sex=contents['sex'], ot=contents['OT'], em=contents['EM'],
                                                    dfh=contents['DFH'])
 
 
-def ManeuService_insert(guess_id='', admin_id='', order_id='', content='', time=''):
-    return ManeuService.objects.create(guess_id=guess_id, admin_id=admin_id, order_id=order_id, content=content,
+def ManeuService_insert(guest_id='', admin_id='', order_id='', content='', time=''):
+    return ManeuService.objects.create(guest_id=guest_id, admin_id=admin_id, order_id=order_id, content=content,
                                        time=time)
 
 
@@ -116,8 +116,8 @@ def ManeuService_delete_order_id(order_id=''):
     return ManeuService.objects.filter(order_id=order_id).all().delete()
 
 
-def ManeuRefraction_id(guess_id=''):
-    return ManeuRefraction.objects.filter(guess_id=guess_id).order_by('-time').first()
+def ManeuRefraction_id(guest_id=''):
+    return ManeuRefraction.objects.filter(guest_id=guest_id).order_by('-time').first()
 
 
 def ManeuReport_id(admin_id, id):

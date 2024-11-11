@@ -1,10 +1,7 @@
-from django.forms import model_to_dict
 from django.shortcuts import render
 
 from common.common import current_time
-from common.verify import is_uuid
 
-from maneu_order import service
 
 def index(request):
     """

@@ -7,7 +7,7 @@ $(document).ready(function (){
                 name: $('#name').val(),
                 time: $('#time').val(),
                 call: $('#call').val(),
-                                remark: $('#remark').val(),
+                remark: $('#remark').val(),
                 report: $('#report').serializeJsonStr(),
             },
             success: function (res) {

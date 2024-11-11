@@ -19,8 +19,8 @@ $(document).ready(function () {
         $('#order_time').val($('#time').val())
         $('#order_phone').val($('#phone').val())
         $('#order_remark').val($('#remark').val())
-        guess = $('#guess').serializeJsonStr();
-        $('#guess_form').val(guess);
+        guest = $('#guest').serializeJsonStr();
+        $('#guest_form').val(guest);
         vision = $('#vision').serializeJsonStr();
         $('#vision_form').val(vision);
         product = $('#product').serializeJsonStr();
