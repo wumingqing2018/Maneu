@@ -18,7 +18,7 @@ def index(request):
             data = service.ManeuOrder_index(admin_id, start, end).values('id', 'name', 'phone', 'time', 'remark')
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
-            content = {'status': False, 'message': e, 'data': {}}
+            content = {'status': False, 'message': str(e), 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
@@ -33,7 +33,7 @@ def search(request):
             data = service.ManeuOrder_Search(text=request.GET.get('text'), admin_id=admin_id).values('id', 'name', 'phone', 'time', 'remark')
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
-            content = {'status': False, 'message': e, 'data': {}}
+            content = {'status': False, 'message': str(e), 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
@@ -162,7 +162,7 @@ def detail(request):
             data = service.ManeuOrder_id(id=order_id, admin_id=admin_id)
             content = {'status': True, 'message': '', 'data': model_to_dict(data)}
         except Exception as e:
-            content = {'status': False, 'message': e, 'data': {}}
+            content = {'status': False, 'message': str(e), 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 

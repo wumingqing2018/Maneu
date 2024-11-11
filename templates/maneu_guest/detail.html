@@ -4,11 +4,16 @@
     <link rel="stylesheet" type="text/css" href="{% static '/css/maneu_guest/detail.css' %}"/>
 {% endblock %}
 {% block javascript %}
+    <script>
+        api_detail = "{% url 'maneu_guest:api_detail' %}"
+        guest_id = "{{ id }}"
+    </script>
     {# delete model #}
     <script type="application/javascript" src="{% static 'javascript/common/delete.js' %}"></script>
     {# print model #}
     <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="text/javascript" src="{% static 'javascript/common/print.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascript/maneu_guest/detail.js' %}"></script>
 {% endblock %}
 {% block content %}
     <div class="container">
@@ -64,7 +69,7 @@
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-2">购买时间</span>
                     <span class="input-group-text col-7">订单备注</span>
-                    <a type="button" class="btn btn-warning col-1">添加数据</a>
+                    <a type="button" class="btn btn-warning col-1" href="{% url 'maneu_order:insert' %}">添加数据</a>
                 </div>
             </div>
         </div>
@@ -100,163 +105,6 @@
                 <div class="input-group input-group-sm">
                     <button class="btn btn-danger" id="delete">删除数据</button>
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="container">
-        <div class="col-2 test">
-            <div class="input-group input-group-sm">
-                <a class="btn btn-primary" type="button" href="{% url 'maneu_guest:index' %}">返回列表</a>
-            </div>
-        </div>
-        <table class="table text-left" id="textArea">
-            <tr>
-                <td colspan="12">
-                    <h5>客户信息（Guess information）</h5>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="12">
-                    <span>姓名：{{ guess.name }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="12">
-                    <span>电话：{{ guess.phone }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-2">
-                    <span>性别：{{ guess.sex }}</span>
-                </td>
-                <td class="col-2">
-                    <span>年龄：{{ guess.age }}</span>
-                </td>
-                <td class="col-2">
-                    <span>眼位：{{ guess.ot }}</span>
-                </td>
-                <td class="col-2">
-                    <span>主视眼：{{ guess.em }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="12">
-                    <span>病族史：{{ guess.dfh }}</span>
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="12">
-                    <span>备注：{{ guess.remark }}</span>
-                </td>
-            </tr>
-        </table>
-        <div class="col-12 test row">
-            <div class="col-md-2 col-sm-6">
-                <form method="get">
-                    <input name="guess_id" type="hidden" value="{{ guess.id }}">
-                    <div class="input-group input-group-sm">
-                        <input type="submit" id="delete" class="btn btn-danger" value="删除信息">
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-2 col-sm-6">
-                <form method="get">
-                    <input name="guess_id" type="hidden" value="{{ guess.id }}">
-                    <div class="input-group input-group-sm">
-                        <input type="submit" class="btn btn-warning" value="修改信息">
-                    </div>
-                </form>
-            </div>
-        </div>
-        <table class="table test text-left" id="textArea">
-            <tr>
-                <td>
-                    <h5>屈光检验报告</h5>
-                </td>
-                <td align="right">
-                    <form class="col-2" method="get">
-                        <input type="hidden" name="guess_id" value="{{ guess.id }}">
-                        <div class="input-group input-group-sm">
-                            <input type="submit" class="btn btn-primary" value="添加">
-                        </div>
-                    </form>
-                </td>
-            </tr>
-            {% if subjective %}
-                {% for foo in subjective %}
-                    <tr>
-                        <td>
-                            <span>{{ foo.time }}</span>
-                        </td>
-                        <td align="right">
-                            <form class="col-2" method="post">
-                                {% csrf_token %}
-                                <input type="hidden" name="subjective_id" value="{{ foo.id }}">
-                                <div class="input-group input-group-sm">
-                                    <input type="submit" class="btn btn-primary" value="查看">
-                                </div>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td colspan="2" align="center">
-                        <span>暂无记录</span>
-                    </td>
-                </tr>
-            {% endif %}
-        </table>
-        <table class="table test text-left" id="textArea">
-            <tr>
-                <td>
-                    <h5>视力解决方案</h5>
-                </td>
-                <td align="right">
-                    <form class="col-2" method="get">
-                        {% csrf_token %}
-                        <input type="hidden" name="order_id" value="{{ foo.id }}">
-                        <div class="input-group input-group-sm">
-                            <input type="submit" class="btn btn-primary" value="添加">
-                        </div>
-                    </form>
-                </td>
-            </tr>
-            {% if vision %}
-                {% for foo in vision %}
-                    <tr>
-                        <td>
-                            <span>{{ foo.time }}</span>
-                        </td>
-                        <td align="right">
-                            <form class="col-2" method="post">
-                                {% csrf_token %}
-                                <input type="hidden" name="order_id" value="{{ foo.id }}">
-                                <div class="input-group input-group-sm">
-                                    <input type="submit" class="btn btn-primary" value="查看">
-                                </div>
-                            </form>
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td colspan="2" align="center">
-                        <span>暂无记录</span>
-                    </td>
-                </tr>
-            {% endif %}
-        </table>
-        <div id="echarts" class="col-12 test row">
-            <div class="col-md-5 col-sm-12">
-                <div id="main0"></div>
-            </div>
-            <div class="col-md-5 col-sm-12">
-                <div id="main1"></div>
             </div>
         </div>
     </div>

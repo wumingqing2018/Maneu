@@ -15,7 +15,7 @@ def index(request):
             data = service.ManeuGuest_index(admin_id, start, end).values('id', 'name', 'phone', 'time', 'remark')
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
-            content = {'status': False, 'message': e, 'data': {}}
+            content = {'status': False, 'message': str(e), 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
@@ -30,7 +30,7 @@ def search(request):
             data = service.ManeuGuest_Search(text=request.GET.get('text'), admin_id=admin_id).values('id', 'name', 'phone', 'time', 'remark')
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
-            content = {'status': False, 'message': e, 'data': {}}
+            content = {'status': False, 'message': str(e), 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
@@ -67,10 +67,10 @@ def delete(request):
 
     if admin_id and guest_id:
         try:
-            data = service.Maneuguest_delete(id=guest_id, admin_id=admin_id)
+            data = service.ManeuGuess_delete(id=guest_id, admin_id=admin_id)
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
-            content = {'status': False, 'message': e, 'data': {}}
+            content = {'status': False, 'message': str(e), 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
@@ -86,7 +86,7 @@ def detail(request):
             data = service.ManeuGuest_id(id=guest_id, admin_id=admin_id)
             content = {'status': True, 'message': '', 'data': model_to_dict(data)}
         except Exception as e:
-            content = {'status': False, 'message': e, 'data': {}}
+            content = {'status': False, 'message': str(e), 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 

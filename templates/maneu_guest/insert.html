@@ -92,6 +92,7 @@
 {% endblock %}
 {% block javascript %}
     <script>
+        web_index = "{% url 'maneu_guest:index' %}"
         api_insert = "{% url 'maneu_guest:api_insert' %}"
     </script>
     <script type="application/javascript" src="{% static 'javascript/maneu_guest/insert.js' %}"></script>

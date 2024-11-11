@@ -19,6 +19,7 @@ $(document).ready(function () {
             url: api_insert,
             method: 'GET',
             data: {
+                remark: $("[name='remark']").val(),
                 time: $("[name='time']").val(),
                 name: $("[name='name']").val(),
                 call: $("[name='call']").val(),
@@ -29,7 +30,12 @@ $(document).ready(function () {
                 em: $("[name='em']").val(),
             },
             success: function (res) {
-                console.log('d')
+                if(res.status === true){
+                    alert('提交成功,返回上一页')
+                    window.location.href = web_index
+                }else {
+                    alert("提交失败" + res.message)
+                }
             }
         })
     })
