@@ -83,7 +83,7 @@ def detail(request):
 
     if admin_id and guest_id:
         try:
-            data = service.ManeuGuest_id(id=guest_id, admin_id=admin_id)
+            data = service.ManeuGuest_detail(id=guest_id, admin_id=admin_id)
             content = {'status': True, 'message': '', 'data': model_to_dict(data)}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
