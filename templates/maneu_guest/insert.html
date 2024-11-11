@@ -1,5 +1,15 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
+{% block javascript %}
+    <script>
+        web_index = "{% url 'maneu_guest:index' %}"
+        api_insert = "{% url 'maneu_guest:api_insert' %}"
+    </script>
+    <script type="application/javascript" src="{% static 'javascript/maneu_guest/insert.js' %}"></script>
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/maneu_guest/insert.css' %}">
+{% endblock %}
 {% block content %}
     <div class="container">
         <form class="vertical2" method="get" action="{% url 'maneu_guest:index' %}">
@@ -89,14 +99,4 @@
         </datalist>
     </div>
     
-{% endblock %}
-{% block javascript %}
-    <script>
-        web_index = "{% url 'maneu_guest:index' %}"
-        api_insert = "{% url 'maneu_guest:api_insert' %}"
-    </script>
-    <script type="application/javascript" src="{% static 'javascript/maneu_guest/insert.js' %}"></script>
-{% endblock %}
-{% block css %}
-    <link rel="stylesheet" href="{% static 'css/maneu_guest/insert.css' %}">
 {% endblock %}

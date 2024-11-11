@@ -1,6 +1,10 @@
 $(document).ready(function () {
     $('.delete').click(function () {
-        return confirm("确定要删除吗？");
+        if (confirm("确定要删除吗？")) {
+            guest_delete(guest_id);
+        } else {
+            return false;
+        }
     })
 
     function guest_detail(guest_id) {
@@ -22,11 +26,31 @@ $(document).ready(function () {
                     $('#ot').text(res.data.ot)
                     $('#em').text(res.data.em)
                     $('#remark').text(res.data.remark)
-
+                } else {
+                    console.log(res.message)
                 }
             }
         })
     }
+
+    function guest_delete(guest_id) {
+        $.ajax({
+            url: api_delete,
+            method: 'GET',
+            data: {
+                id: guest_id
+            },
+            success: function (res) {
+                if (res.status === true) {
+                    alert("删除成功，即将跳转到列表页。")
+                    window.location.href = web_detail
+                } else {
+                    console.log(res.message)
+                }
+            }
+        })
+    }
+
 
     guest_detail(guest_id)
 })

@@ -91,3 +91,29 @@ def detail(request):
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
     return JsonResponse(content)
+
+
+def update(request):
+    guest_id = is_uuid(request.GET.get('id'))
+    admin_id = is_uuid(request.session.get('id'))
+
+    if admin_id and guest_id:
+        try:
+            data = service.ManeuGuess_update(id=guest_id,
+                                             admin_id=admin_id,
+                                             phone=request.GET.get('call'),
+                                             time=request.GET.get('time'),
+                                             name=request.GET.get('name'),
+                                             sex=request.GET.get('sex'),
+                                             age=request.GET.get('age'),
+                                             ot=request.GET.get('ot'),
+                                             em=request.GET.get('em'),
+                                             dfh=request.GET.get('dfh'),
+                                             remark=request.GET.get('remark'))
+            content = {'status': True, 'message': '', 'data':{}}
+        except Exception as e:
+            content = {'status': False, 'message': str(e), 'data': {}}
+    else:
+        content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
+
+    return JsonResponse(content)

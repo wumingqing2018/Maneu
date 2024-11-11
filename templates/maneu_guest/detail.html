@@ -5,11 +5,11 @@
 {% endblock %}
 {% block javascript %}
     <script>
+        api_delete = "{% url 'maneu_guest:api_delete' %}"
         api_detail = "{% url 'maneu_guest:api_detail' %}"
+        web_detail = "{% url 'maneu_guest:detail' %}"
         guest_id = "{{ id }}"
     </script>
-    {# delete model #}
-    <script type="application/javascript" src="{% static 'javascript/common/delete.js' %}"></script>
     {# print model #}
     <script src="https://cdn.bootcdn.net/ajax/libs/jQuery.print/1.6.2/jQuery.print.js"></script>
     <script type="text/javascript" src="{% static 'javascript/common/print.js' %}"></script>
@@ -94,8 +94,8 @@
                 </div>
             </div>
             <div class="vertical1 col-1">
-                <form method="get" action="{% url 'maneu_order:update' %}">
-                    <input type="hidden" name="order_id" value="{{ order.id }}">
+                <form method="get" action="{% url 'maneu_guest:update' %}">
+                    <input type="hidden" name="id" value="{{ id }}">
                     <div class="input-group input-group-sm">
                         <input type="submit" class="btn btn-warning" value="修改数据">
                     </div>
@@ -103,7 +103,7 @@
             </div>
             <div class="vertical1 col-1">
                 <div class="input-group input-group-sm">
-                    <button class="btn btn-danger" id="delete">删除数据</button>
+                    <input type="submit" class="btn btn-danger delete" value="删除数据">
                 </div>
             </div>
         </div>

@@ -5,14 +5,6 @@
           rel="stylesheet" type="text/css"/>
 {% endblock %}
 {% block javascript %}
-    <script type="application/javascript">
-        api_index = "{% url 'maneu_report:api_index' %}"
-        api_detail = "{% url 'maneu_order:detail' %}"
-        api_search = "{% url 'maneu_order:api_search' %}"
-        api_delete = "{% url 'maneu_order:api_delete' %}"
-    </script>
-
-
     <script src="https://cdn.staticfile.org/moment.js/2.29.4/moment.min.js"
             type="application/javascript"></script>
     <script src="https://cdn.staticfile.org/moment.js/2.29.4/locale/zh-cn.js"
@@ -20,10 +12,15 @@
     <script src="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.js"
             type="application/javascript"></script>
     {#https://www.datetimepicker.cn/daterangepicker/#}
-    
+    <script type="application/javascript">
+        detail = "{% url 'maneu_report:detail' %}"
+        api_index = "{% url 'maneu_report:api_index' %}"
+        api_search = "{% url 'maneu_report:api_search' %}"
+        api_delete = "{% url 'maneu_report:api_delete' %}"
+    </script>
     <script src='{% static "javascript/maneu_order/index/delete.js" %}'
             type="application/javascript"></script>
-    <script src='{% static "javascript/maneu_order/index/index.js" %}' 
+    <script src='{% static "javascript/maneu_report/index.js" %}'
             type="application/javascript"></script>
 {% endblock %}
 {% block content %}
@@ -40,7 +37,8 @@
                 </div>
                 <div class="col-2">
                     <div class='input-group input-group-sm'>
-                        <input type="text" class="col-12 form-control" id="search-value" placeholder="使用手机或姓名查询">
+                        <input type="text" class="col-12 form-control" id="search-value"
+                               placeholder="使用手机或姓名查询">
                     </div>
                 </div>
             </div>
@@ -58,12 +56,12 @@
                     <p>客户电话</p>
                 </div>
                 <div class="col-7">
-                    <p>订单备注</p>
+                    <p>备注</p>
                 </div>
                 <div class="col-1">
-                    <form method="get" action="{% url 'maneu_order:insert' %}">
+                    <form method="get" action="{% url 'maneu_report:insert' %}">
                         <div class='input-group input-group-sm'>
-                            <input type="submit" class="col-12 btn btn-warning" value='添加订单'>
+                            <input type="submit" class="col-12 btn btn-warning" value='添加数据'>
                         </div>
                     </form>
                 </div>

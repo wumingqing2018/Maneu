@@ -17,11 +17,16 @@ $(function () {
                 "        <div class='col-1'>\n" +
                 "            <p>" + res[i]['phone'] + "</p>\n" +
                 "        </div>\n" +
-                "        <div class='col-7'>\n" +
+                "        <div class='col-6'>\n" +
                 "            <p>" + res[i]['remark'] + "</p>\n" +
                 "        </div>\n" +
                 "        <div class='col-1'>\n" +
-                "            <form method='GET' action='" + detail + "'>\n" +
+                "            <div class='input-group input-group-sm'>\n" +
+                "                <input type='button' class='col-12 btn btn-danger' onclick='deleteBtn(this)' value='删除订单' alt=" + res[i]['id'] + ">\n" +
+                "            </div>\n" +
+                "        </div>\n" +
+                "        <div class='col-1'>\n" +
+                "            <form method='GET' action='" + api_detail + "'>\n" +
                 "                <input type='hidden' name='id' value=" + res[i]['id'] + ">\n" +
                 "                <div class='input-group input-group-sm'>\n" +
                 "                    <input type='submit' class='col-12 btn btn-primary' value='查看订单'>\n" +

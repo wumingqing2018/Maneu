@@ -21,9 +21,8 @@ def ManeuGuess_insert(admin_id='', time='', name='', phone='', sex='', age='', o
                                                       'time': time, 'remark': remark})
 
 
-def ManeuGuess_update(id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):
-    return ManeuGuess.objects.filter(id=id).update(time=time, name=name, phone=phone, sex=sex, age=age, ot=ot, em=em,
-                                                   dfh=dfh, remark=remark)
+def ManeuGuess_update(admin_id='', id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):
+    return ManeuGuess.objects.filter(id=id, admin_id=admin_id).update(time=time, name=name, phone=phone, sex=sex, age=age, ot=ot, em=em, dfh=dfh, remark=remark)
 
 
 def ManeuGuess_delete(id='', admin_id=''):
