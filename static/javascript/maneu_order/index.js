@@ -1,3 +1,23 @@
+function deleteBtn(obj) {
+    if (confirm("您确定要删除吗？")) {
+        $.ajax({
+            url: api_delete,
+            type: 'GET',
+            data: {
+                order_id: obj.alt,
+            },
+            success: function (res) {
+                if (res.status === true){
+                    obj.parentElement.parentElement.parentElement.parentElement.remove()
+                }else {
+                    alert(res.message)
+                }
+            },
+        })
+    } else {
+        return false;
+    }
+}
 $(function () {
     var start = moment().subtract(29, 'days');
     var end = moment();
@@ -5,7 +25,7 @@ $(function () {
     function forList(res) {
         $('#body').empty();
         for (i in res) {
-            $('.container').append(
+            $('#body').append(
                 "<div>\n" +
                 "    <div class='col-12 row'>\n" +
                 "        <div class='col-2'>\n" +

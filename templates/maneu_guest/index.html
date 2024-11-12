@@ -5,14 +5,6 @@
           href="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.css"/>
 {% endblock %}
 {% block javascript %}
-    <script type="application/javascript">
-        api_index = "{% url 'maneu_guest:api_index' %}"
-        api_detail = "{% url 'maneu_guest:detail' %}"
-        api_search = "{% url 'maneu_guest:api_search' %}"
-        api_delete = "{% url 'maneu_guest:api_delete' %}"
-    </script>
-
-
     <script type="application/javascript"
             src="https://cdn.staticfile.org/moment.js/2.29.4/moment.min.js"></script>
     <script type="application/javascript"
@@ -20,8 +12,12 @@
     <script type="application/javascript"
             src="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.js"></script>
     {#https://www.datetimepicker.cn/daterangepicker/#}
-
-
+    <script type="application/javascript">
+        api_index = "{% url 'maneu_guest:api_index' %}"
+        api_detail = "{% url 'maneu_guest:detail' %}"
+        api_search = "{% url 'maneu_guest:api_search' %}"
+        api_delete = "{% url 'maneu_guest:api_delete' %}"
+    </script>
     <script type="application/javascript" src='{% static "javascript/maneu_guest/index.js" %}'></script>
 {% endblock %}
 {% block content %}

@@ -5,14 +5,6 @@
           rel="stylesheet" type="text/css"/>
 {% endblock %}
 {% block javascript %}
-    <script type="application/javascript">
-        api_index = "{% url 'maneu_order:api_index' %}"
-        api_detail = "{% url 'maneu_order:detail' %}"
-        api_search = "{% url 'maneu_order:api_search' %}"
-        api_delete = "{% url 'maneu_order:api_delete' %}"
-    </script>
-
-
     <script src="https://cdn.staticfile.org/moment.js/2.29.4/moment.min.js"
             type="application/javascript"></script>
     <script src="https://cdn.staticfile.org/moment.js/2.29.4/locale/zh-cn.js"
@@ -20,11 +12,13 @@
     <script src="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.js"
             type="application/javascript"></script>
     {#https://www.datetimepicker.cn/daterangepicker/#}
-    
-    <script src='{% static "javascript/maneu_order/index/delete.js" %}'
-            type="application/javascript"></script>
-    <script src='{% static "javascript/maneu_order/index/index.js" %}' 
-            type="application/javascript"></script>
+    <script type="application/javascript">
+        api_index = "{% url 'maneu_order:api_index' %}"
+        api_detail = "{% url 'maneu_order:detail' %}"
+        api_search = "{% url 'maneu_order:api_search' %}"
+        api_delete = "{% url 'maneu_order:api_delete' %}"
+    </script>
+    <script src='{% static "javascript/maneu_order/index.js" %}' type="application/javascript"></script>
 {% endblock %}
 {% block content %}
     <div class="container">
@@ -70,5 +64,6 @@
             </div>
             <hr style="color:white;">
         </div>
+        <div id="body"></div>
     </div>
 {% endblock %}

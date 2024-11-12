@@ -3,10 +3,9 @@ $(function () {
     var end = moment();
 
     function forList(res) {
-        console.log(res)
         $('#body').empty();
         for (i in res) {
-            $('.container').append(
+            $('#body').append(
                 "<div>\n" +
                 "    <div class='col-12 row'>\n" +
                 "        <div class='col-2'>\n" +
