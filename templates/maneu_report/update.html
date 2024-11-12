@@ -72,7 +72,7 @@
                            placeholder="晶体厚度">
                     <input autocomplete="off" class="form-control" type="text" name="VT" list="VT"
                            placeholder="玻璃体厚度">
-                    <input autocomplete="off" class="form-control" type="text" name="BCVA" list="VA"
+                    <input autocomplete="off" class="form-control" type="text" name="OS_BCVA" list="VA"
                            placeholder="矫正视力">
                 </div>
             </form>
@@ -105,7 +105,7 @@
                            placeholder="晶体厚度">
                     <input autocomplete="off" class="form-control" type="text" name="VT" list="VT"
                            placeholder="玻璃体厚度">
-                    <input autocomplete="off" class="form-control" type="text" name="BCVA" list="VA"
+                    <input autocomplete="off" class="form-control" type="text" name="OS_BCVA" list="VA"
                            placeholder="矫正视力">
                 </div>
             </form>
@@ -514,7 +514,9 @@
 {% endblock %}
 {% block javascript %}
     <script>
-        api_insert = "{% url 'maneu_report:api_insert' %}"
+        api_detail = "{% url 'maneu_report:api_detail' %}"
+        api_update = "{% url 'maneu_report:api_update' %}"
+        id = "{{ id }}"
     </script>
     <script type="application/javascript" src="{% static 'javascript/common/serialize_moudels.js' %}"></script>
     <script type="application/javascript" src="{% static 'javascript/maneu_report/insert.js' %}"></script>

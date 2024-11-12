@@ -3,6 +3,7 @@ $(function () {
     var end = moment();
 
     function forList(res) {
+        console.log(res)
         $('#body').empty();
         for (i in res) {
             $('.container').append(
