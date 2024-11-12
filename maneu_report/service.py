@@ -22,6 +22,9 @@ def report_insert(admin_id='', guest_id='', name='', time='', phone='', remark='
 def report_detail(admin_id='', id=''):
     return ManeuReport.objects.filter(admin_id=admin_id, id=id).first()
 
+def report_update(id='', admin_id='', guest_id='', time='', name='', phone='', content='', remark=''):
+    return ManeuReport.objects.filter(id=id, admin_id=admin_id).update(guest_id=guest_id, name=name, time=time, phone=phone, remark=remark, content=content)
+
 
 def guest_insert(admin_id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):
     return ManeuGuest.objects.get_or_create(admin_id=admin_id, name=name, phone=phone,

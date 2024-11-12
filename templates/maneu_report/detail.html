@@ -110,6 +110,14 @@
                 </div>
             </div>
         </form>
+        <form class="vertical2" method="get" action="{% url 'maneu_report:update' %}">
+            <div class="vertical1 col-1">
+                <input type="hidden" name="id" value="{{ id }}">
+                <div class="input-group input-group-sm">
+                    <input type="submit" class="btn btn-warning" value="修改数据">
+                </div>
+            </div>
+        </form>
     </div>
 
     <div>
