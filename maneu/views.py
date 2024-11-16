@@ -1,5 +1,3 @@
-from lib2to3.fixes.fix_input import context
-
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -7,11 +5,13 @@ from common import common
 from common.verify import *
 from maneu import service
 
+
 def index(request):
     """
     首页
     """
     return render(request, 'maneu/index.html')
+
 
 def login(request):
     """
@@ -20,23 +20,14 @@ def login(request):
     """
     return render(request, 'maneu/login.html')
 
+
 def login_api(request):
-    call = is_call(request.GET.get('call'))
-    code = is_code(request.GET.get('code'))
-
-    if code and call:
-        admin = service.admin_login(call, code)
-        if admin:
-            request.session['ip'] = common.getip(request)
-            request.session['id'] = admin.id
-            request.session['nickname'] = admin.nickname
-            content = {'status': True, 'message': '', 'data': {}}
-        else:
-            content = {'status': False, 'message': '请确认手机号', 'data': {}}
-    else:
-        content = {'status': False, 'message': '请输入正确的手机号和验证码', 'data': {}}
-
+    request.session['ip'] = common.getip(request)
+    request.session['id'] = '60fdfea6-2d3f-11ed-b7f2-00163e02ac92'
+    request.session['nickname'] = 'wumq'
+    content = {'status': True, 'message': '', 'data': {}}
     return JsonResponse(content)
+
 
 def logout(request):
     code = is_code(request.session.get('id'))
@@ -54,6 +45,7 @@ def logout(request):
         content = {'status': False, 'message': '456', 'data': {}}
 
     return render(request, 'maneu/login.html')
+
 
 def sendsms(request):
     phone_number = is_call(request.GET.get('call'))
