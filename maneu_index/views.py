@@ -170,6 +170,10 @@ def index2(request):
     return render(request, 'maneu/base.html')
 
 def index3(request):
+
+    ManeuAdmin.objects.filter(id='36483774080401481140071775853431').update(id='f8e85e26-36cf-11ee-954d-e0d55ebbde98')
+    ManeuAdmin.objects.filter(id='23208668181988748078136965958996').update(id='086fd1ef-4aca-11ed-a8ac-00163e02ac92')
+
     ManeuGuest.objects.filter(admin_id='36483774080401481140071775853431').update(admin_id='f8e85e26-36cf-11ee-954d-e0d55ebbde98')
     ManeuGuest.objects.filter(admin_id='23208668181988748078136965958996').update(admin_id='086fd1ef-4aca-11ed-a8ac-00163e02ac92')
     ManeuReport.objects.filter(admin_id='36483774080401481140071775853431').update(admin_id='f8e85e26-36cf-11ee-954d-e0d55ebbde98')
