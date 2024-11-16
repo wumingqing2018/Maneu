@@ -16,11 +16,11 @@ def index(request):
     if admin_id and start and end:
         try:
             data = service.ManeuOrder_index(admin_id, start, end).values('id', 'name', 'phone', 'time', 'remark')
-            content = {'status': True, 'message': '', 'data': list(data)}
+            content = {'status': True, 'message': admin_id, 'data': list(data)}
         except Exception as e:
-            content = {'status': False, 'message': 'str(2,e)', 'data': {}}
+            content = {'status': False, 'message': admin_id, 'data': {}}
     else:
-        content = {'status': False, 'message': '1,请输入正确的参数', 'data': {}}
+        content = {'status': False, 'message': admin_id, 'data': {}}
 
     return JsonResponse(content)
 
