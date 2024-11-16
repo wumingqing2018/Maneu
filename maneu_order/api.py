@@ -18,7 +18,7 @@ def index(request):
             data = service.ManeuOrder_index(admin_id, start, end).values('id', 'name', 'phone', 'time', 'remark')
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
-            content = {'status': False, 'message': str(2,e), 'data': {}}
+            content = {'status': False, 'message': 'str(2,e)', 'data': {}}
     else:
         content = {'status': False, 'message': '1,请输入正确的参数', 'data': {}}
 

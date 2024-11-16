@@ -168,3 +168,17 @@ def index2(request):
                 ManeuGuest.objects.filter(id=i.id).update(admin_id=i.admin_id, time=i.time, name=i.name, phone=i.phone, remark=i.remark, age=i.age, dfh=i.dfh, sex=i.sex, ot=i.ot, em=i.em)
 
     return render(request, 'maneu/base.html')
+
+def index3(request):
+    ManeuGuest.objects.filter(admin_id='36483774080401481140071775853431').update(admin_id='f8e85e26-36cf-11ee-954d-e0d55ebbde98')
+    ManeuGuest.objects.filter(admin_id='23208668181988748078136965958996').update(admin_id='086fd1ef-4aca-11ed-a8ac-00163e02ac92')
+    ManeuReport.objects.filter(admin_id='36483774080401481140071775853431').update(admin_id='f8e85e26-36cf-11ee-954d-e0d55ebbde98')
+    ManeuReport.objects.filter(admin_id='23208668181988748078136965958996').update(admin_id='086fd1ef-4aca-11ed-a8ac-00163e02ac92')
+    ManeuStore.objects.filter(admin_id='36483774080401481140071775853431').update(admin_id='f8e85e26-36cf-11ee-954d-e0d55ebbde98')
+    ManeuStore.objects.filter(admin_id='23208668181988748078136965958996').update(admin_id='086fd1ef-4aca-11ed-a8ac-00163e02ac92')
+    ManeuUsers.objects.filter(admin_id='36483774080401481140071775853431').update(admin_id='f8e85e26-36cf-11ee-954d-e0d55ebbde98')
+    ManeuUsers.objects.filter(admin_id='23208668181988748078136965958996').update(admin_id='086fd1ef-4aca-11ed-a8ac-00163e02ac92')
+    ManeuService.objects.filter(admin_id='36483774080401481140071775853431').update(admin_id='f8e85e26-36cf-11ee-954d-e0d55ebbde98')
+    ManeuService.objects.filter(admin_id='23208668181988748078136965958996').update(admin_id='086fd1ef-4aca-11ed-a8ac-00163e02ac92')
+    ManeuOrder.objects.filter(admin_id='36483774080401481140071775853431').update(admin_id='f8e85e26-36cf-11ee-954d-e0d55ebbde98')
+    ManeuOrder.objects.filter(admin_id='23208668181988748078136965958996').update(admin_id='086fd1ef-4aca-11ed-a8ac-00163e02ac92')
