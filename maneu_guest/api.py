@@ -39,7 +39,6 @@ def search(request):
 
 def insert(request):
     admin_id = is_uuid(request.session.get('id'))
-
     if admin_id:
         try:
             data = service.ManeuGuest_insert(admin_id=admin_id,
@@ -48,9 +47,9 @@ def insert(request):
                                              phone=request.GET.get('call'),
                                              sex=request.GET.get('sex'),
                                              age=request.GET.get('age'),
-                                             dfh=request.GET.get('dfh'),
-                                             ot=request.GET.get('ot'),
-                                             em=request.GET.get('em'),
+                                             dfh=request.GET.get('DFH'),
+                                             ot=request.GET.get('OT'),
+                                             em=request.GET.get('EM'),
                                              remark=request.GET.get('remark'))
             content = {'status': True, 'message': '', 'data': data[0].id}
         except Exception as e:

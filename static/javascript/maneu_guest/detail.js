@@ -21,10 +21,10 @@ $(document).ready(function () {
                     $('#name').text(res.data.name)
                     $('#call').text(res.data.phone)
                     $('#age').text(res.data.age)
-                    $('#dfh').text(res.data.dfh)
+                    $('#DFH').text(res.data.dfh)
                     $('#sex').text(res.data.sex)
-                    $('#ot').text(res.data.ot)
-                    $('#em').text(res.data.em)
+                    $('#OT').text(res.data.ot)
+                    $('#EM').text(res.data.em)
                     $('#remark').text(res.data.remark)
                 } else {
                     console.log(res.message)

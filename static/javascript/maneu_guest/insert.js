@@ -25,9 +25,9 @@ $(document).ready(function () {
                 call: $("[name='call']").val(),
                 age: $("[name='age']").val(),
                 sex: $("[name='sex']").val(),
-                dfh: $("[name='dfh']").val(),
-                ot: $("[name='ot']").val(),
-                em: $("[name='em']").val(),
+                DFH: $("[name='DFH']").val(),
+                OT: $("[name='OT']").val(),
+                EM: $("[name='EM']").val(),
             },
             success: function (res) {
                 if(res.status === true){
