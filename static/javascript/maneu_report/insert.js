@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('#insert').click(function () {
+        console.log( $("#content").serializeJsonStr())
         $.ajax({
             url: api_insert,
             method: "GET",

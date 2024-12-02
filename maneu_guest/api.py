@@ -2,6 +2,8 @@ from django.forms import model_to_dict
 from django.http import JsonResponse
 
 from common.verify import is_uuid,is_date
+from common.common import current_time
+
 from maneu_guest import service
 
 
@@ -47,9 +49,9 @@ def insert(request):
                                              phone=request.GET.get('call'),
                                              sex=request.GET.get('sex'),
                                              age=request.GET.get('age'),
-                                             dfh=request.GET.get('DFH'),
-                                             ot=request.GET.get('OT'),
-                                             em=request.GET.get('EM'),
+                                             dfh=request.GET.get('dfh'),
+                                             ot=request.GET.get('ot'),
+                                             em=request.GET.get('em'),
                                              remark=request.GET.get('remark'))
             content = {'status': True, 'message': '', 'data': data[0].id}
         except Exception as e:

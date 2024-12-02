@@ -82,3 +82,12 @@ def sendsms(code, call):
 
 def get_random_code():
     return random.randint(100000, 999999)
+
+
+def guest_simple(reuqest_dict):
+    reuqest_dict = reuqest_dict.dict()
+    simple = {'remark': '', 'time': current_time(), 'name': '', 'call': '', 'age': '0', 'sex': '男', 'DFH': '无',
+              'OT': '正', 'EM': '左'}
+
+    simple.update(reuqest_dict)
+    return simple
