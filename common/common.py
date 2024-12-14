@@ -115,31 +115,31 @@ def report_simple(reuqest_dict):
     except:
         reuqest['PD'] = 60
 
-    data = {'VA': 1.0,
+    data = {'VA': 1.00,
             'SPH': 0,
             'CYL': 0,
             'AX': 90,
             'PR': 10,
             'FR': 0,
-            'ADD': 1.0,
+            'ADD': 1.00,
             'AL': 24,
             'AK': 39,
-            'AD': 2.5,
-            'CCT': 0.5,
-            'LT': 3.5,
+            'AD': 2.50,
+            'CCT': 0.50,
+            'LT': 3.50,
             'VT': 16,
-            'BCVA': 1.0,
+            'BCVA': 1.00,
             }
 
     for i in list(data.keys()):
         try:
-            float(reuqest['OD'][i])
+            float(reuqest['OD'][i], '.2f')
         except:
             reuqest['OD'][i] = data[i]
 
     for i in list(data.keys()):
         try:
-            float(reuqest['OS'][i])
+            float(reuqest['OS'][i], '.2f')
         except :
             reuqest['OS'][i] = data[i]
     return json.dumps(reuqest)
