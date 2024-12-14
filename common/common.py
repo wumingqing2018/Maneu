@@ -132,7 +132,7 @@ def report_simple(reuqest_dict):
             'BCVA': 1.0,
             }
 
-    for i in list(reuqest['OD'].keys()):
+    for i in list(data.keys()):
         try:
             float(reuqest['OD'][i])
         except:
