@@ -96,7 +96,10 @@ def guest_simple(reuqest_dict):
 
 
 def report_simple(reuqest_dict):
-    reuqest = json.loads(reuqest_dict)
+    try:
+        reuqest = json.loads(reuqest_dict)
+    except:
+        reuqest = eval(reuqest_dict)
 
     try:
         if reuqest['Function'] == '两用解决方案':
