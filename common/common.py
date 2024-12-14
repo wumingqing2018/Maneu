@@ -138,7 +138,7 @@ def report_simple(reuqest_dict):
         except:
             reuqest['OD'][i] = data[i]
 
-    for i in list(reuqest['OS'].keys()):
+    for i in list(data.keys()):
         try:
             float(reuqest['OS'][i])
         except :
