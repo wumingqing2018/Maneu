@@ -18,7 +18,7 @@ $(document).ready(function () {
                     $("#call").text(data.phone)
                     $("#remark").text(data.remark)
                     $("#PD").text(content.PD)
-                    $("#function").text(content.Function)
+                    $("#PLAN").text(content.PLAN)
                     $("#OD>.VA").text(content.OD.VA)
                     $("#OD>.SPH").text(content.OD.SPH)
                     $("#OD>.CYL").text(content.OD.CYL)
@@ -32,7 +32,7 @@ $(document).ready(function () {
                     $("#OD>.CCT").text(content.OD.CCT)
                     $("#OD>.LT").text(content.OD.LT)
                     $("#OD>.VT").text(content.OD.VT)
-                    $("#OD>.BC").text(content.OD.BC)
+                    $("#OD>.BCVA").text(content.OD.BCVA)
 
 
                     $("#OS>.VA").text(content.OS.VA)
@@ -48,7 +48,7 @@ $(document).ready(function () {
                     $("#OS>.CCT").text(content.OS.CCT)
                     $("#OS>.LT").text(content.OS.LT)
                     $("#OS>.VT").text(content.OS.VT)
-                    $("#OS>.BC").text(content.OS.BC)
+                    $("#OS>.BCVA").text(content.OS.BCVA)
                 } else {
                     alert('查看订单失败，即将返回上一页。');
                     history.back()

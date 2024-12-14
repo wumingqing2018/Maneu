@@ -96,21 +96,17 @@ def guest_simple(reuqest_dict):
 
 
 def report_simple(reuqest_dict):
-    try:
-        reuqest = json.loads(reuqest_dict)
-    except:
-        reuqest = eval(reuqest_dict)
+    reuqest = json.loads(reuqest_dict)
 
     try:
-        if reuqest['Function'] == '两用解决方案':
+        if reuqest['PLAN'] == '两用解决方案':
             reuqest['PLAN'] = reuqest['Function']
-        elif reuqest['Function'] == '近用解决方案':
+        elif reuqest['PLAN'] == '近用解决方案':
             reuqest['PLAN'] = reuqest['Function']
-        elif reuqest['Function'] == '远用解决方案':
+        elif reuqest['PLAN'] == '远用解决方案':
             reuqest['PLAN'] = reuqest['Function']
         else:
             reuqest['PLAN'] = '两用解决方案'
-            del reuqest['Function']
     except:
         reuqest['PLAN'] = '两用解决方案'
 
