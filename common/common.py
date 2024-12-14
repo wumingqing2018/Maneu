@@ -133,13 +133,13 @@ def report_simple(reuqest_dict):
 
     for i in list(data.keys()):
         try:
-            float(reuqest['OD'][i], '.2f')
+            reuqest['OD'][i] = float(reuqest['OD'][i], '.2f')
         except:
             reuqest['OD'][i] = data[i]
 
     for i in list(data.keys()):
         try:
-            float(reuqest['OS'][i], '.2f')
+            reuqest['OS'][i] = float(reuqest['OS'][i], '.2f')
         except :
             reuqest['OS'][i] = data[i]
     return json.dumps(reuqest)
