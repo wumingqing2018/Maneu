@@ -32,7 +32,7 @@ $(document).ready(function () {
                     $("#OD>.CCT").text(content.OD.CCT)
                     $("#OD>.LT").text(content.OD.LT)
                     $("#OD>.VT").text(content.OD.VT)
-                    $("#OD>.BCVA").text(content.OD.BCVA)
+                    $("#OD>.BC").text(content.OD.BC)
 
 
                     $("#OS>.VA").text(content.OS.VA)
@@ -48,7 +48,7 @@ $(document).ready(function () {
                     $("#OS>.CCT").text(content.OS.CCT)
                     $("#OS>.LT").text(content.OS.LT)
                     $("#OS>.VT").text(content.OS.VT)
-                    $("#OS>.BCVA").text(content.OS.BCVA)
+                    $("#OS>.BC").text(content.OS.BC)
                 } else {
                     alert('查看订单失败，即将返回上一页。');
                     history.back()
