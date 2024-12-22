@@ -108,38 +108,23 @@ def service_update(request):
 
 def insert(request):
     admin_id = is_uuid(request.session.get('id'))
-    if admin_id:
-        guest_form = json.loads(request.GET.get('guest'))
-        guest_id = service.ManeuGuest_search(admin_id=admin_id,
-                                             time=request.GET.get('time'),
-                                             name=guest_form['name'],
-                                             call=guest_form['call'],
-                                             sex=guest_form['sex'],
-                                             age=guest_form['age'],
-                                             ot=guest_form['OT'],
-                                             em=guest_form['EM'],
-                                             dfh=guest_form['DFH'])[0].id
-        if guest_id:
-            store_id = service.ManeuStore_insert(admin_id=admin_id,
-                                                 guest_id=guest_id,
-                                                 time=request.GET.get('time'),
-                                                 content=request.GET.get('store')).id
-            if store_id:
-                order_id = service.ManeuOrder_insert(admin_id=admin_id,
-                                                     guest_id=guest_id,
-                                                     store_id=store_id,
-                                                     time=request.GET.get('time'),
-                                                     name=request.GET.get('name'),
-                                                     call=request.GET.get('call'),
-                                                     remark=request.GET.get('remark')).id
-                if order_id:
-                    content = {'status': True, 'message': '', 'data': {'id': order_id}}
-                else:
-                    content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
-            else:
-                content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
-        else:
-            content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
+    store_id = is_uuid(request.GET.get('store_id'))
+    guest_id = is_uuid(request.GET.get('guest_id'))
+    report_id = is_uuid(request.GET.get('report_id'))
+
+    if admin_id and store_id and guest_id and report_id:
+        try:
+            order = service.ManeuOrder_insert(admin_id=admin_id,
+                                              guest_id=guest_id,
+                                              store_id=store_id,
+                                              report_id = report_id,
+                                              time=request.GET.get('time'),
+                                              name=request.GET.get('name'),
+                                              call=request.GET.get('call'),
+                                              remark=request.GET.get('remark'))
+            content = {'status': True, 'message': '', 'data': {'id': order.id}}
+        except Exception as e:
+            content = {'status': False, 'message': str(e), 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
