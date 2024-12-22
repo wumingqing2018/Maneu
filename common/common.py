@@ -3,7 +3,6 @@ import json
 import os
 import random
 import time
-from logging import exception
 
 from aliyunsdkcore.auth.credentials import AccessKeyCredential
 from aliyunsdkcore.client import AcsClient
@@ -97,6 +96,7 @@ def guest_simple(reuqest_dict):
 
 def report_simple(reuqest_dict):
     reuqest = json.loads(reuqest_dict)
+    data = ['AL','AK','AX','AD','ADD','BCVA','CYL','CCT','VA','SPH','PR','FR','LT','VT',]
 
     try:
         if reuqest['PLAN'] == '两用解决方案':
@@ -113,33 +113,17 @@ def report_simple(reuqest_dict):
     try:
         reuqest['PD'] = float(reuqest['PD'])
     except:
-        reuqest['PD'] = 60
+        reuqest['PD'] = ''
 
-    data = {'VA': 1.00,
-            'SPH': 0,
-            'CYL': 0,
-            'AX': 90,
-            'PR': 10,
-            'FR': 0,
-            'ADD': 1.00,
-            'AL': 24,
-            'AK': 39,
-            'AD': 2.50,
-            'CCT': 0.50,
-            'LT': 3.50,
-            'VT': 16,
-            'BCVA': 1.00,
-            }
-
-    for i in list(data.keys()):
+    for i in data:
         try:
             reuqest['OD'][i] = format(reuqest['OD'][i], '.2f')
         except:
-            reuqest['OD'][i] = data[i]
+            reuqest['OD'][i] = ''
 
-    for i in list(data.keys()):
+    for i in data:
         try:
             reuqest['OS'][i] = format(reuqest['OS'][i], '.2f')
         except :
-            reuqest['OS'][i] = data[i]
+            reuqest['OS'][i] = ''
     return json.dumps(reuqest)

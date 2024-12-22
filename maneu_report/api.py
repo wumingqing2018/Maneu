@@ -90,13 +90,11 @@ def update(request):
     report_id = is_uuid(request.GET.get('id'))
     admin_id = is_uuid(request.session.get('id'))
     time = request.GET.get('time')
-    print(request.GET)
     if admin_id and report_id:
         try:
             guest_id = service.guest_insert(admin_id, name=request.GET.get('name'), phone=request.GET.get('phone'), time=time)[0].id
             if guest_id:
                 content = report_simple(request.GET.get('content'))
-                print(content)
                 report = service.report_update(id=report_id,
                                                admin_id=admin_id,
                                                guest_id=guest_id,
