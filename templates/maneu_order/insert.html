@@ -149,7 +149,6 @@
         <form class="vertical2" id="store">
             <div class="vertical1 col-10 row">
                 <h5 class="col-11">产品订单</h5>
-                <a class="col-1" id="store_add">添加</a>
             </div>
             <div class='vertical1 col-10 row store'>
                 <div class='col-11'>
@@ -166,8 +165,85 @@
                                placeholder='价格'>
                     </div>
                 </div>
-                <div class='col-1'>
-                    <a class='col-1' onclick="store_remove()">移除</a>
+            </div>
+            <div class='vertical1 col-10 row store'>
+                <div class='col-11'>
+                    <div class='input-group input-group-sm'>
+                        <input autocomplete='off' type='text' name='arg10' class='form-control product1'
+                               placeholder='类别'>
+                        <input autocomplete='off' type='text' name='arg11' class='form-control product1'
+                               placeholder='品牌'>
+                        <input autocomplete='off' type='text' name='arg12' class='form-control product1'
+                               placeholder='型号'>
+                        <input autocomplete='off' type='text' name='arg13' class='form-control product2'
+                               placeholder='参数'>
+                        <input autocomplete='off' type='text' name='arg14' class='form-control product3'
+                               placeholder='价格'>
+                    </div>
+                </div>
+            </div>
+            <div class='vertical1 col-10 row store'>
+                <div class='col-11'>
+                    <div class='input-group input-group-sm'>
+                        <input autocomplete='off' type='text' name='arg10' class='form-control product1'
+                               placeholder='类别'>
+                        <input autocomplete='off' type='text' name='arg11' class='form-control product1'
+                               placeholder='品牌'>
+                        <input autocomplete='off' type='text' name='arg12' class='form-control product1'
+                               placeholder='型号'>
+                        <input autocomplete='off' type='text' name='arg13' class='form-control product2'
+                               placeholder='参数'>
+                        <input autocomplete='off' type='text' name='arg14' class='form-control product3'
+                               placeholder='价格'>
+                    </div>
+                </div>
+            </div>
+            <div class='vertical1 col-10 row store'>
+                <div class='col-11'>
+                    <div class='input-group input-group-sm'>
+                        <input autocomplete='off' type='text' name='arg10' class='form-control product1'
+                               placeholder='类别'>
+                        <input autocomplete='off' type='text' name='arg11' class='form-control product1'
+                               placeholder='品牌'>
+                        <input autocomplete='off' type='text' name='arg12' class='form-control product1'
+                               placeholder='型号'>
+                        <input autocomplete='off' type='text' name='arg13' class='form-control product2'
+                               placeholder='参数'>
+                        <input autocomplete='off' type='text' name='arg14' class='form-control product3'
+                               placeholder='价格'>
+                    </div>
+                </div>
+            </div>
+            <div class='vertical1 col-10 row store'>
+                <div class='col-11'>
+                    <div class='input-group input-group-sm'>
+                        <input autocomplete='off' type='text' name='arg10' class='form-control product1'
+                               placeholder='类别'>
+                        <input autocomplete='off' type='text' name='arg11' class='form-control product1'
+                               placeholder='品牌'>
+                        <input autocomplete='off' type='text' name='arg12' class='form-control product1'
+                               placeholder='型号'>
+                        <input autocomplete='off' type='text' name='arg13' class='form-control product2'
+                               placeholder='参数'>
+                        <input autocomplete='off' type='text' name='arg14' class='form-control product3'
+                               placeholder='价格'>
+                    </div>
+                </div>
+            </div>
+            <div class='vertical1 col-10 row store'>
+                <div class='col-11'>
+                    <div class='input-group input-group-sm'>
+                        <input autocomplete='off' type='text' name='arg10' class='form-control product1'
+                               placeholder='类别'>
+                        <input autocomplete='off' type='text' name='arg11' class='form-control product1'
+                               placeholder='品牌'>
+                        <input autocomplete='off' type='text' name='arg12' class='form-control product1'
+                               placeholder='型号'>
+                        <input autocomplete='off' type='text' name='arg13' class='form-control product2'
+                               placeholder='参数'>
+                        <input autocomplete='off' type='text' name='arg14' class='form-control product3'
+                               placeholder='价格'>
+                    </div>
                 </div>
             </div>
         </form>
@@ -560,6 +636,9 @@
 {% endblock %}
 {% block javascript %}
     <script>
+        order_id = ''
+        guest_id = ''
+        report_id = ''
         order_api = "{% url 'maneu_order:api_insert' %}"
         guest_api = "{% url 'maneu_guest:api_insert' %}"
         report_api = "{% url 'maneu_report:api_insert' %}"

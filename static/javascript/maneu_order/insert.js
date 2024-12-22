@@ -1,5 +1,8 @@
 $(document).ready(function () {
     $('#insert').click(function () {
+        guest_insert()
+        store_insert()
+        report_insert()
         store = []
         $(".store").each(function () {
             data = {
@@ -39,7 +42,7 @@ $(document).ready(function () {
             store.push(data)
         })
         $.ajax({
-            url: order_api,
+            url: store,
             method: 'GET',
             data: {
                 remark: $("#remark").val(),
@@ -47,11 +50,10 @@ $(document).ready(function () {
                 name: $("#name").val(),
                 call: $("#call").val(),
                 guest_id: guest_id,
-                vision_id: vision_id,
                 store: JSON.stringify(store),
             },
             success: function (res) {
-
+                console.log(res)
             }
         })
     }
@@ -73,8 +75,8 @@ $(document).ready(function () {
             },
             success: function (res) {
                 if (res.status === true) {
-                    alert('提交成功,返回上一页')
-                    window.location.href = web_index
+                    console.log(res)
+                    guest_id = res.data
                 } else {
                     alert("提交失败" + res.message)
                 }
@@ -83,54 +85,61 @@ $(document).ready(function () {
     }
 
     function report_insert() {
+        content = {
+            PLAN: $("#PLAN").val(),
+            PD: $("#PD").val(),
+            OD: {
+                'VA': $("#OD_VA").val(),
+                'SPH': $("#OD_SPH").val(),
+                'CYL': $("#OD_CYL").val(),
+                'AX': $("#OD_AX").val(),
+                'PR': $("#OD_PR").val(),
+                'FR': $("#OD_FR").val(),
+                'ADD': $("#OD_ADD").val(),
+                'AL': $("#OD_AL").val(),
+                'AK': $("#OD_AK").val(),
+                'AD': $("#OD_AD").val(),
+                'CCT': $("#OD_CCT").val(),
+                'LT': $("#OD_LT").val(),
+                'VT': $("#OD_VT").val(),
+                'BC': $("#OD_BC").val(),
+            },
+            OS: {
+                'VA': $("#OS_VA").val(),
+                'SPH': $("#OS_SPH").val(),
+                'CYL': $("#OS_CYL").val(),
+                'AX': $("#OS_AX").val(),
+                'PR': $("#OS_PR").val(),
+                'FR': $("#OS_FR").val(),
+                'ADD': $("#OS_ADD").val(),
+                'AL': $("#OS_AL").val(),
+                'AK': $("#OS_AK").val(),
+                'AD': $("#OS_AD").val(),
+                'CCT': $("#OS_CCT").val(),
+                'LT': $("#OS_LT").val(),
+                'VT': $("#OS_VT").val(),
+                'BC': $("#OS_BC").val(),
+            },
+        }
         $.ajax({
             url: report_api,
             method: "GET",
             data: {
-                Function: $("#function").val(),
                 time: $("#time").val(),
                 name: $("#name").val(),
-                phone: $("#call").val(),
+                call: $("#call").val(),
                 remark: $("#remark").val(),
-                PD: $("#PD").val(),
-                OD: $("#OD").serializeJsonStr(),
-                OS: $("#OS").serializeJsonStr(),
+                content: JSON.stringify(content)
             },
             success: function (res) {
+                console.log(res)
                 if (res.status === true) {
-                    alert("提交成功，可以继续填写")
+                    console.log(res)
+                                        report_id = res.data
                 } else {
                     alert("提交失败，请确认数据后再次重试")
                 }
             }
         })
     }
-
-
 });
-$('#store_add').click(function () {
-    $("#store").append(
-        "<div class='vertical1 col-10 row store'>\n" +
-        "    <div class='col-11'>\n" +
-        "        <div class='input-group input-group-sm'>\n" +
-        "            <input autocomplete='off' type='text' name='arg10' class='form-control product1'\n" +
-        "                   placeholder='类别'>\n" +
-        "            <input autocomplete='off' type='text' name='arg11' class='form-control product1'\n" +
-        "                   placeholder='品牌'>\n" +
-        "            <input autocomplete='off' type='text' name='arg12' class='form-control product1'\n" +
-        "                   placeholder='型号'>\n" +
-        "            <input autocomplete='off' type='text' name='arg13' class='form-control product2'\n" +
-        "                   placeholder='参数'>\n" +
-        "            <input autocomplete='off' type='text' name='arg14' class='form-control product3'\n" +
-        "                   placeholder='价格'>\n" +
-        "        </div>\n" +
-        "    </div>\n" +
-        "    <div class='col-1'>\n" +
-        "        <a class='col-1' onclick='store_remove()'>移除</a>\n" +
-        "    </div>\n" +
-        "</div>\n"
-    )
-})
-function store_remove () {
-    this.remove();
-}

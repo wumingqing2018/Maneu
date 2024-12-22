@@ -99,16 +99,16 @@ def report_simple(reuqest_dict):
     data = ['AL','AK','AX','AD','ADD','BCVA','CYL','CCT','VA','SPH','PR','FR','LT','VT',]
 
     try:
-        if reuqest['PLAN'] == '两用解决方案':
-            reuqest['PLAN'] = reuqest['Function']
-        elif reuqest['PLAN'] == '近用解决方案':
-            reuqest['PLAN'] = reuqest['Function']
-        elif reuqest['PLAN'] == '远用解决方案':
-            reuqest['PLAN'] = reuqest['Function']
+        if reuqest['function'] == '两用解决方案':
+            reuqest['function'] = reuqest['Function']
+        elif reuqest['function'] == '近用解决方案':
+            reuqest['function'] = reuqest['Function']
+        elif reuqest['function'] == '远用解决方案':
+            reuqest['function'] = reuqest['Function']
         else:
-            reuqest['PLAN'] = '两用解决方案'
+            reuqest['function'] = '两用解决方案'
     except:
-        reuqest['PLAN'] = '两用解决方案'
+        reuqest['function'] = '两用解决方案'
 
     try:
         reuqest['PD'] = float(reuqest['PD'])
