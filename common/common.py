@@ -102,9 +102,15 @@ def report_simple(reuqest_dict):
     try:
         reuqest['Function'] = reuqest['function']
         del reuqest['function']
+    except:
+        pass
+    try:
         reuqest['OD']['BC'] = reuqest['OD']['BCVA']
-        reuqest['OS']['BC'] = reuqest['OS']['BCVA']
         del reuqest['OD']['BCVA']
+    except:
+        pass
+    try:
+        reuqest['OS']['BC'] = reuqest['OS']['BCVA']
         del reuqest['OS']['BCVA']
     except:
         pass
