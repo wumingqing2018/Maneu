@@ -148,4 +148,4 @@ def report_simple(reuqest_dict):
     try:
         return json.dumps(reuqest)
     except:
-        return test
+        return json.dumps(test)
