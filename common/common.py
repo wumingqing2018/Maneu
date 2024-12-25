@@ -99,6 +99,7 @@ def report_simple(reuqest_dict):
         reuqest = json.loads(reuqest_dict)
     except:
         reuqest = reuqest_dict
+    print(reuqest)
     data = ['AL','AK','AX','AD','ADD','BC','CYL','CCT','VA','SPH','PR','FR','LT','VT']
 
 
