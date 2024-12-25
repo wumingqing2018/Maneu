@@ -96,7 +96,15 @@ def guest_simple(reuqest_dict):
 
 def report_simple(reuqest_dict):
     reuqest = json.loads(reuqest_dict)
-    data = ['AL','AK','AX','AD','ADD','BC','CYL','CCT','VA','SPH','PR','FR','LT','VT',]
+    data = ['AL','AK','AX','AD','ADD','BC','CYL','CCT','VA','SPH','PR','FR','LT','VT']
+    try:
+        reuqest['OD']['BC'] = int(reuqest['OD']['BC'])
+        reuqest['OS']['BC'] = int(reuqest['OS']['BC'])
+    except:
+        reuqest['OD']['BC'] = reuqest['OD']['BCVA']
+        reuqest['OS']['BC'] = reuqest['OS']['BCVA']
+        del reuqest['OD']['BCVA']
+        del reuqest['OS']['BCVA']
 
     try:
         if reuqest['function'] == '两用解决方案':
