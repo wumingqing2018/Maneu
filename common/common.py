@@ -122,17 +122,18 @@ def report_simple(request_dict):
     try:
         data['PD'] = int(request['PD'])
     except:
-        data['PD'] = ''
+        pass
 
     for i in data:
         try:
             data['OD'][i] = format(int(request['OD'][i]), '.2f')
-        except Exception as e:
-            data['OD'][i] = ''
+        except:
+            pass
 
     for i in data:
         try:
             data['OS'][i] = format(int(request['OD'][i]), '.2f')
-        except Exception as e:
-            data['OS'][i] = ''
+        except:
+            pass
+    print(data)
     return json.dumps(data)
