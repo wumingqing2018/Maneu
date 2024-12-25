@@ -95,10 +95,8 @@ def guest_simple(request_dict):
 
 
 def report_simple(request_dict):
-    try:
-        request = json.loads(request_dict)
-    except Exception as e:
-        request = request_dict
+    request = json.loads(request_dict)
+
     data = {
         'Function': '',
         'PD': '',
