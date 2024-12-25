@@ -124,13 +124,13 @@ def report_simple(request_dict):
 
     for i in list(data['OD']):
         try:
-            data['OD'][i] = format(int(request['OD'][i]), '.2f')
+            data['OD'][i] = format(float(request['OD'][i]), '.2f')
         except Exception as e:
             print(e)
 
     for i in list(data['OS']):
         try:
-            data['OS'][i] = format(int(request['OD'][i]), '.2f')
+            data['OS'][i] = format(float(request['OD'][i]), '.2f')
         except Exception as e:
             print(e)
     return json.dumps(data)
