@@ -97,14 +97,14 @@ def guest_simple(reuqest_dict):
 def report_simple(reuqest_dict):
     reuqest = json.loads(reuqest_dict)
     data = ['AL','AK','AX','AD','ADD','BC','CYL','CCT','VA','SPH','PR','FR','LT','VT']
+    print(reuqest)
     try:
-        reuqest['OD']['BC'] = int(reuqest['OD']['BC'])
-        reuqest['OS']['BC'] = int(reuqest['OS']['BC'])
-    except:
         reuqest['OD']['BC'] = reuqest['OD']['BCVA']
         reuqest['OS']['BC'] = reuqest['OS']['BCVA']
         del reuqest['OD']['BCVA']
         del reuqest['OS']['BCVA']
+    except:
+        pass
 
     try:
         if reuqest['function'] == '两用解决方案':
@@ -127,13 +127,11 @@ def report_simple(reuqest_dict):
         try:
             reuqest['OD'][i] = format(int(reuqest['OD'][i]), '.2f')
         except Exception as e:
-            print(e)
             reuqest['OD'][i] = ''
 
     for i in data:
         try:
             reuqest['OS'][i] = format(int(reuqest['OD'][i]), '.2f')
         except Exception as e:
-            print(e)
             reuqest['OS'][i] = ''
     return json.dumps(reuqest)
