@@ -99,52 +99,40 @@ def report_simple(request_dict):
         request = json.loads(request_dict)
     except:
         request = request_dict
-    print(request)
-    data = ['AL','AK','AX','AD','ADD','BC','CYL','CCT','VA','SPH','PR','FR','LT','VT']
+    data = {
+        'Function': '',
+        'PD': '',
+        'OD': {
+            'AL': '', 'AK': '', 'AX': '', 'AD': '', 'ADD': '', 'BC': '', 'CYL': '', 'CCT': '', 'VA': '', 'SPH': '',
+            'PR': '', 'FR': '', 'LT': '', 'VT': ''
+        },
+        'OS': {
+            'AL':'', 'AK':'', 'AX':'', 'AD':'', 'ADD':'', 'BC':'', 'CYL':'', 'CCT':'', 'VA':'', 'SPH':'', 'PR':'', 'FR':'', 'LT':'', 'VT':''
+        }
+    }
+
 
 
     try:
-        request['Function'] = request['function']
-        del request['function']
+        if request['Function'] == '两用解决方案' or '远用解决方案' or '近用解决方案':
+            data['Function'] = request['Function']
     except:
         pass
-    try:
-        request['OD']['BC'] = request['OD']['BCVA']
-        del request['OD']['BCVA']
-    except:
-        pass
-    try:
-        request['OS']['BC'] = request['OS']['BCVA']
-        del request['OS']['BCVA']
-    except:
-        pass
 
     try:
-        if request['Function'] == '两用解决方案':
-            request['Function'] = request['Function']
-        elif request['Function'] == '近用解决方案':
-            request['Function'] = request['Function']
-        elif request['Function'] == '远用解决方案':
-            request['Function'] = request['Function']
-        else:
-            request['Function'] = '两用解决方案'
+        data['PD'] = int(request['PD'])
     except:
-        request['Function'] = '两用解决方案'
-
-    try:
-        request['PD'] = float(request['PD'])
-    except:
-        request['PD'] = ''
+        data['PD'] = ''
 
     for i in data:
         try:
-            request['OD'][i] = format(int(request['OD'][i]), '.2f')
+            data['OD'][i] = format(int(request['OD'][i]), '.2f')
         except Exception as e:
-            request['OD'][i] = ''
+            data['OD'][i] = ''
 
     for i in data:
         try:
-            request['OS'][i] = format(int(request['OD'][i]), '.2f')
+            data['OS'][i] = format(int(request['OD'][i]), '.2f')
         except Exception as e:
-            request['OS'][i] = ''
-    return json.dumps(request)
+            data['OS'][i] = ''
+    return json.dumps(data)
