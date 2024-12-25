@@ -97,14 +97,15 @@ def guest_simple(reuqest_dict):
 def report_simple(reuqest_dict):
     reuqest = json.loads(reuqest_dict)
     data = ['AL','AK','AX','AD','ADD','BC','CYL','CCT','VA','SPH','PR','FR','LT','VT']
+    print(reuqest)
+
     try:
         reuqest['Function'] = reuqest['function']
+        del reuqest['function']
         reuqest['OD']['BC'] = reuqest['OD']['BCVA']
         reuqest['OS']['BC'] = reuqest['OS']['BCVA']
         del reuqest['OD']['BCVA']
         del reuqest['OS']['BCVA']
-        del reuqest['function']
-        print(reuqest)
     except:
         pass
 
