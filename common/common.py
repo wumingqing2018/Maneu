@@ -85,66 +85,66 @@ def get_random_code():
     return random.randint(100000, 999999)
 
 
-def guest_simple(reuqest_dict):
-    reuqest_dict = reuqest_dict.dict()
+def guest_simple(request_dict):
+    request_dict = request_dict.dict()
     simple = {'remark': '', 'time': current_time(), 'name': '', 'call': '', 'age': '0', 'sex': '男', 'DFH': '无',
               'OT': '正', 'EM': '左'}
 
-    simple.update(reuqest_dict)
+    simple.update(request_dict)
     return simple
 
 
-def report_simple(reuqest_dict):
+def report_simple(request_dict):
     try:
-        reuqest = json.loads(reuqest_dict)
+        request = json.loads(request_dict)
     except:
-        reuqest = reuqest_dict
-    print(reuqest)
+        request = request_dict
+    print(request)
     data = ['AL','AK','AX','AD','ADD','BC','CYL','CCT','VA','SPH','PR','FR','LT','VT']
 
 
     try:
-        reuqest['Function'] = reuqest['function']
-        del reuqest['function']
+        request['Function'] = request['function']
+        del request['function']
     except:
         pass
     try:
-        reuqest['OD']['BC'] = reuqest['OD']['BCVA']
-        del reuqest['OD']['BCVA']
+        request['OD']['BC'] = request['OD']['BCVA']
+        del request['OD']['BCVA']
     except:
         pass
     try:
-        reuqest['OS']['BC'] = reuqest['OS']['BCVA']
-        del reuqest['OS']['BCVA']
+        request['OS']['BC'] = request['OS']['BCVA']
+        del request['OS']['BCVA']
     except:
         pass
 
     try:
-        if reuqest['Function'] == '两用解决方案':
-            reuqest['Function'] = reuqest['Function']
-        elif reuqest['Function'] == '近用解决方案':
-            reuqest['Function'] = reuqest['Function']
-        elif reuqest['Function'] == '远用解决方案':
-            reuqest['Function'] = reuqest['Function']
+        if request['Function'] == '两用解决方案':
+            request['Function'] = request['Function']
+        elif request['Function'] == '近用解决方案':
+            request['Function'] = request['Function']
+        elif request['Function'] == '远用解决方案':
+            request['Function'] = request['Function']
         else:
-            reuqest['Function'] = '两用解决方案'
+            request['Function'] = '两用解决方案'
     except:
-        reuqest.update({'Function': '两用解决方案'})
+        request['Function'] = '两用解决方案'
 
     try:
-        reuqest['PD'] = float(reuqest['PD'])
+        request['PD'] = float(request['PD'])
     except:
-        reuqest['PD'] = ''
+        request['PD'] = ''
 
     for i in data:
         try:
-            reuqest['OD'][i] = format(int(reuqest['OD'][i]), '.2f')
+            request['OD'][i] = format(int(request['OD'][i]), '.2f')
         except Exception as e:
-            reuqest['OD'][i] = ''
+            request['OD'][i] = ''
 
     for i in data:
         try:
-            reuqest['OS'][i] = format(int(reuqest['OD'][i]), '.2f')
+            request['OS'][i] = format(int(request['OD'][i]), '.2f')
         except Exception as e:
-            reuqest['OS'][i] = ''
-    return json.dumps(reuqest)
+            request['OS'][i] = ''
+    return json.dumps(request)
