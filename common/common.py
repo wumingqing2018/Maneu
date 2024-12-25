@@ -97,7 +97,6 @@ def guest_simple(reuqest_dict):
 def report_simple(reuqest_dict):
     reuqest = json.loads(reuqest_dict)
     data = ['AL','AK','AX','AD','ADD','BC','CYL','CCT','VA','SPH','PR','FR','LT','VT']
-    print(reuqest)
     try:
         reuqest['Function'] = reuqest['function']
         reuqest['OD']['BC'] = reuqest['OD']['BCVA']
@@ -136,5 +135,8 @@ def report_simple(reuqest_dict):
             reuqest['OS'][i] = format(int(reuqest['OD'][i]), '.2f')
         except Exception as e:
             reuqest['OS'][i] = ''
-    print(reuqest)
-    return json.dumps(reuqest)
+    try:
+        reuqest = json.dumps(reuqest)
+    except:
+        print(reuqest)
+    return reuqest
