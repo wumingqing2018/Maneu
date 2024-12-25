@@ -129,7 +129,7 @@ def report_simple(reuqest_dict):
         else:
             reuqest['Function'] = '两用解决方案'
     except:
-        reuqest['Function'] = '两用解决方案'
+        reuqest.update({'Function': '两用解决方案'})
 
     try:
         reuqest['PD'] = float(reuqest['PD'])
