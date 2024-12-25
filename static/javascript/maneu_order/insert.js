@@ -200,7 +200,7 @@ $(document).ready(function () {
                 'CCT': $("#OD_CCT").val(),
                 'LT': $("#OD_LT").val(),
                 'VT': $("#OD_VT").val(),
-                'BCVA': $("#OD_BC").val(),
+                'BC': $("#OD_BC").val(),
             },
             OS: {
                 'VA': $("#OS_VA").val(),
@@ -216,7 +216,7 @@ $(document).ready(function () {
                 'CCT': $("#OS_CCT").val(),
                 'LT': $("#OS_LT").val(),
                 'VT': $("#OS_VT").val(),
-                'BCVA': $("#OS_BC").val(),
+                'BC': $("#OS_BC").val(),
             },
         }
         $.ajax({

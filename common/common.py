@@ -96,7 +96,7 @@ def guest_simple(reuqest_dict):
 
 def report_simple(reuqest_dict):
     reuqest = json.loads(reuqest_dict)
-    data = ['AL','AK','AX','AD','ADD','BCVA','CYL','CCT','VA','SPH','PR','FR','LT','VT',]
+    data = ['AL','AK','AX','AD','ADD','BC','CYL','CCT','VA','SPH','PR','FR','LT','VT',]
 
     try:
         if reuqest['function'] == '两用解决方案':
