@@ -117,13 +117,15 @@ def report_simple(reuqest_dict):
 
     for i in data:
         try:
-            reuqest['OD'][i] = format(reuqest['OD'][i], '.2f')
-        except:
+            reuqest['OD'][i] = format(int(reuqest['OD'][i]), '.2f')
+        except Exception as e:
+            print(e)
             reuqest['OD'][i] = ''
 
     for i in data:
         try:
-            reuqest['OS'][i] = format(reuqest['OS'][i], '.2f')
-        except :
+            reuqest['OS'][i] = format(int(reuqest['OD'][i]), '.2f')
+        except Exception as e:
+            print(e)
             reuqest['OS'][i] = ''
     return json.dumps(reuqest)
