@@ -95,11 +95,11 @@ def guest_simple(reuqest_dict):
 
 
 def report_simple(reuqest_dict):
-    print(reuqest_dict)
-
-    reuqest = json.loads(reuqest_dict)
+    try:
+        reuqest = json.loads(reuqest_dict)
+    except:
+        reuqest = reuqest_dict
     data = ['AL','AK','AX','AD','ADD','BC','CYL','CCT','VA','SPH','PR','FR','LT','VT']
-    test = {'OD': {'VA': '', 'SPH': '', 'CYL': '', 'AX': '', 'AL': '', 'AK': '', 'AD': '', 'CCT': '', 'LT': '', 'VT': '', 'PR': '', 'FR': '', 'ADD': '', 'BC': ''}, 'OS': {'VA': '', 'SPH': '', 'CYL': '', 'AX': '', 'AL': '', 'AK': '', 'AD': '', 'CCT': '', 'LT': '', 'VT': '', 'PR': '', 'FR': '', 'ADD': '', 'BC': ''}, 'PD': '', 'Function': '两用解决方案'}
 
 
     try:
@@ -146,7 +146,4 @@ def report_simple(reuqest_dict):
             reuqest['OS'][i] = format(int(reuqest['OD'][i]), '.2f')
         except Exception as e:
             reuqest['OS'][i] = ''
-    try:
-        return json.dumps(reuqest)
-    except:
-        return json.dumps(test)
+    return json.dumps(reuqest)
