@@ -1,5 +1,40 @@
 $(document).ready(function () {
     $('#insert').click(function () {
+        guest_insert(function (data) {
+            if (data.status === true){
+                console.log(data.data.id)
+                report_insert(data.data.id,function (data) {
+                    if (data.status === true){
+                        console.log(data.data.id)
+                    }else {
+                        alert(data.message)
+                    }
+                })
+            }else {
+                alert(data.message)
+            }
+        });
+    })
+
+    function guest_insert(callback) {
+        $.ajax({
+            url: guest_api,
+            method: "GET",
+            data: {
+                time: $("#time").val(),
+                name: $("#name").val(),
+                call: $("#call").val(),
+            },
+            success: function (res) {
+                callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+            },
+            error: function (res) {
+                callback(false); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+            }
+        })
+    }
+
+    function report_insert(guest_id, callback) {
         content = {
             PLAN: $("#PLAN").val(),
             PD: $("#PD").val(),
@@ -37,9 +72,10 @@ $(document).ready(function () {
             },
         }
         $.ajax({
-            url: api_insert,
+            url: report_api,
             method: "GET",
             data: {
+                guest_id: guest_id,
                 time: $("#time").val(),
                 name: $("#name").val(),
                 call: $("#call").val(),
@@ -47,12 +83,11 @@ $(document).ready(function () {
                 content: JSON.stringify(content)
             },
             success: function (res) {
-                if (res.status === true) {
-                    alert("提交成功，可以继续填写")
-                } else {
-                    alert("提交失败，请确认数据后再次重试")
-                }
+                callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+            },
+            error: function (res) {
+                callback(false); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
-    })
+    }
 })

@@ -17,7 +17,10 @@ $(document).ready(function () {
             },
             success: function (res) {
                 if (res.status === true){
-
+                    alert('更新成功')
+                    guest_detail(guest_id)
+                }else {
+                    alert('更新失败')
                 }
             }
         })
@@ -41,7 +44,7 @@ $(document).ready(function () {
                     $("[name='ot']").val(res.data.ot)
                     $("[name='em']").val(res.data.em)
                 } else {
-                    console.log(res.message)
+                    alert(res.message)
                 }
             }
         })

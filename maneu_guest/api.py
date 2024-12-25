@@ -2,7 +2,7 @@ from django.forms import model_to_dict
 from django.http import JsonResponse
 
 from common.verify import is_uuid,is_date
-from common.common import current_time
+from common.common import guest_simple
 
 from maneu_guest import service
 
@@ -43,17 +43,19 @@ def insert(request):
     admin_id = is_uuid(request.session.get('id'))
     if admin_id:
         try:
+            content = guest_simple(request)
             data = service.ManeuGuest_insert(admin_id=admin_id,
-                                             time=request.GET.get('time'),
-                                             name=request.GET.get('name'),
-                                             phone=request.GET.get('call'),
-                                             sex=request.GET.get('sex'),
-                                             age=request.GET.get('age'),
-                                             dfh=request.GET.get('dfh'),
-                                             ot=request.GET.get('ot'),
-                                             em=request.GET.get('em'),
-                                             remark=request.GET.get('remark'))
-            content = {'status': True, 'message': '', 'data': data[0].id}
+                                             time=content['time'],
+                                             name=content['name'],
+                                             phone=content['call'],
+                                             sex=content['sex'],
+                                             age=content['age'],
+                                             dfh=content['dfh'],
+                                             ot=content['ot'],
+                                             em=content['em'],
+                                             remark=content['remark'])
+
+            content = {'status': True, 'message': '', 'data': {'id':data[0].id}}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
     else:

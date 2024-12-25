@@ -85,29 +85,32 @@ def get_random_code():
     return random.randint(100000, 999999)
 
 
-def guest_simple(request_dict):
-    request_dict = request_dict.dict()
-    simple = {'remark': '', 'time': current_time(), 'name': '', 'call': '', 'age': '0', 'sex': '男', 'DFH': '无',
-              'OT': '正', 'EM': '左'}
+def guest_simple(request):
+    simple = {'remark': '', 'time': current_time(), 'name': '', 'call': '', 'age': '', 'sex': '', 'dfh': '无',
+              'ot': '正', 'em': '左'}
 
-    simple.update(request_dict)
+    for i in list(simple):
+        try:
+            if request.GET.get(i):
+                simple[i] = request.GET.get(i)
+        except:
+            pass
+
     return simple
 
 
 def report_simple(request_dict):
-    try:
-        request = json.loads(request_dict)
-    except:
-        request = request_dict
+    request = json.loads(request_dict)
     data = {
-        'Function': '',
+        'Function': '远用解决方案',
         'PD': '',
         'OD': {
-            'AL': '', 'AK': '', 'AX': '', 'AD': '', 'ADD': '', 'BC': '', 'CYL': '', 'CCT': '', 'VA': '', 'SPH': '',
-            'PR': '', 'FR': '', 'LT': '', 'VT': ''
+            'AL': '', 'AK': '', 'AX': '0.00', 'AD': '', 'ADD': '0.00', 'BC': '', 'CYL': '0.00', 'CCT': '', 'VA': '', 'SPH': '0.00',
+            'PR': '0.00', 'FR': '', 'LT': '', 'VT': ''
         },
         'OS': {
-            'AL':'', 'AK':'', 'AX':'', 'AD':'', 'ADD':'', 'BC':'', 'CYL':'', 'CCT':'', 'VA':'', 'SPH':'', 'PR':'', 'FR':'', 'LT':'', 'VT':''
+            'AL': '', 'AK': '', 'AX': '0.00', 'AD': '', 'ADD': '0.00', 'BC': '', 'CYL': '0.00', 'CCT': '', 'VA': '', 'SPH': '0.00',
+            'PR': '0.00', 'FR': '', 'LT': '', 'VT': ''
         }
     }
 
@@ -121,18 +124,18 @@ def report_simple(request_dict):
 
     try:
         data['PD'] = int(request['PD'])
-    except Exception as e:
-        print(e)
+    except:
+            pass
 
     for i in list(data['OD']):
         try:
             data['OD'][i] = format(int(request['OD'][i]), '.2f')
-        except Exception as e:
-            print(e)
+        except:
+            pass
 
     for i in list(data['OS']):
         try:
             data['OS'][i] = format(int(request['OD'][i]), '.2f')
-        except Exception as e:
-            print(e)
+        except:
+            pass
     return json.dumps(data)

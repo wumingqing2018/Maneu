@@ -1,17 +1,5 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
-{% block javascript %}
-    <script>
-        api_updata = "{% url 'maneu_guest:api_update' %}"
-        api_detail = "{% url 'maneu_guest:api_detail' %}"
-        web_detail = "{% url 'maneu_guest:detail' %}"
-        guest_id = "{{ id }}"
-    </script>
-    <script type="application/javascript" src="{% static 'javascript/maneu_guest/update.js' %}"></script>
-{% endblock %}
-{% block css %}
-    <link rel="stylesheet" href="{% static 'css/maneu_guest/insert.css' %}">
-{% endblock %}
 {% block content %}
     <div class="container">
         <form class="vertical2" method="get" action="{% url 'maneu_guest:detail' %}">
@@ -101,4 +89,16 @@
             <option>女</option>
         </datalist>
     </div>
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/maneu_guest/insert.css' %}">
+{% endblock %}
+{% block javascript %}
+    <script>
+        api_updata = "{% url 'maneu_guest:api_update' %}"
+        api_detail = "{% url 'maneu_guest:api_detail' %}"
+        web_detail = "{% url 'maneu_guest:detail' %}"
+        guest_id = "{{ id }}"
+    </script>
+    <script type="application/javascript" src="{% static 'javascript/maneu_guest/update.js' %}"></script>
 {% endblock %}

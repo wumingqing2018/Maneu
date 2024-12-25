@@ -1,15 +1,5 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
-{% block javascript %}
-    <script>
-        web_index = "{% url 'maneu_guest:index' %}"
-        api_insert = "{% url 'maneu_guest:api_insert' %}"
-    </script>
-    <script type="application/javascript" src="{% static 'javascript/maneu_guest/insert.js' %}"></script>
-{% endblock %}
-{% block css %}
-    <link rel="stylesheet" href="{% static 'css/maneu_guest/insert.css' %}">
-{% endblock %}
 {% block content %}
     <div class="container">
         <form class="vertical2" method="get" action="{% url 'maneu_guest:index' %}">
@@ -23,23 +13,14 @@
 
         {# 基础数据 #}
         <form class="vertical2">
-            <h5>订单信息</h5>
+            {# 客户数据 #}
+            <h5>客户数据</h5>
             <div class="vertical1 col-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">时间</span>
                     <input autocomplete="off" class="form-control" name="time" type="datetime-local" value="{{ time }}">
                 </div>
             </div>
-            <div class="vertical1 col-9">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-text col-1">备注</span>
-                    <input autocomplete="off" class="form-control" type="text" name="remark">
-                </div>
-            </div>
-            <hr>
-
-            {# 客户数据 #}
-            <h5>客户数据</h5>
             <div class="vertical1 col-3">
                 <div class="input-group input-group-sm">
                     <span class="input-group-text col-3">电话</span>
@@ -64,6 +45,12 @@
                     <input autocomplete="off" class="form-control" type="text" name="EM" list="EM">
                     <span class="input-group-text col-1">病族史</span>
                     <input autocomplete="off" class="form-control" type="text" name="DFH" list="DFH">
+                </div>
+            </div>
+            <div class="vertical1 col-9">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-1">备注</span>
+                    <input autocomplete="off" class="form-control" type="text" name="remark">
                 </div>
             </div>
         </form>
@@ -98,5 +85,15 @@
             <option>女</option>
         </datalist>
     </div>
-    
+
+{% endblock %}
+{% block javascript %}
+    <script>
+        guest_index = "{% url 'maneu_guest:index' %}"
+        guest_api = "{% url 'maneu_guest:api_insert' %}"
+    </script>
+    <script type="application/javascript" src="{% static 'javascript/maneu_guest/insert.js' %}"></script>
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/maneu_guest/insert.css' %}">
 {% endblock %}
