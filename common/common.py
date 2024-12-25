@@ -97,7 +97,7 @@ def guest_simple(request_dict):
 def report_simple(request_dict):
     try:
         request = json.loads(request_dict)
-    except:
+    except Exception as e:
         request = request_dict
     data = {
         'Function': '',
@@ -116,24 +116,23 @@ def report_simple(request_dict):
     try:
         if request['Function'] == '两用解决方案' or '远用解决方案' or '近用解决方案':
             data['Function'] = request['Function']
-    except:
-        pass
+    except Exception as e:
+        print(e)
 
     try:
         data['PD'] = int(request['PD'])
-    except:
-        pass
+    except Exception as e:
+        print(e)
 
-    for i in data:
+    for i in list(data['OD']):
         try:
             data['OD'][i] = format(int(request['OD'][i]), '.2f')
-        except:
-            pass
+        except Exception as e:
+            print(e)
 
-    for i in data:
+    for i in list(data['OS']):
         try:
             data['OS'][i] = format(int(request['OD'][i]), '.2f')
-        except:
-            pass
-    print(data)
+        except Exception as e:
+            print(e)
     return json.dumps(data)
