@@ -161,7 +161,7 @@
         <div class="vertical2">
             <div class="vertical1 col-6">
                 <div class="input-group input-group-sm">
-                    <input type="button" class="btn btn-danger col-2" id="insert" value="提交订单">
+                    <input type="button" class="btn btn-primary col-2" id="insert" value="提交订单">
                 </div>
             </div>
         </div>
@@ -544,6 +544,7 @@
 {% endblock %}
 {% block javascript %}
     <script>
+        index_api = "{% url 'maneu_report:index' %}"
         guest_api = "{% url 'maneu_guest:api_insert' %}"
         report_api = "{% url 'maneu_report:api_insert' %}"
     </script>

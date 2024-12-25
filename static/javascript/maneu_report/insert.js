@@ -5,7 +5,7 @@ $(document).ready(function () {
                 console.log(data.data.id)
                 report_insert(data.data.id,function (data) {
                     if (data.status === true){
-                        console.log(data.data.id)
+                        window.location.href = index_api
                     }else {
                         alert(data.message)
                     }
