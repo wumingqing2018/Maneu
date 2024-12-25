@@ -136,4 +136,5 @@ def report_simple(reuqest_dict):
             reuqest['OS'][i] = format(int(reuqest['OD'][i]), '.2f')
         except Exception as e:
             reuqest['OS'][i] = ''
+    print(reuqest)
     return json.dumps(reuqest)
