@@ -104,6 +104,7 @@ def report_simple(reuqest_dict):
         del reuqest['OD']['BCVA']
         del reuqest['OS']['BCVA']
         del reuqest['function']
+        print(reuqest)
     except:
         pass
 
