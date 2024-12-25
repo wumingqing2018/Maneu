@@ -137,4 +137,4 @@ def test(request):
     for i in data:
         content = report_simple(i.content)
         ManeuReport.objects.filter(id=i.id).update(content=content)
-    return JsonResponse({'1',''})
+    return JsonResponse('')
