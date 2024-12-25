@@ -95,11 +95,12 @@ def guest_simple(reuqest_dict):
 
 
 def report_simple(reuqest_dict):
+    print(reuqest_dict)
+
     reuqest = json.loads(reuqest_dict)
     data = ['AL','AK','AX','AD','ADD','BC','CYL','CCT','VA','SPH','PR','FR','LT','VT']
     test = {'OD': {'VA': '', 'SPH': '', 'CYL': '', 'AX': '', 'AL': '', 'AK': '', 'AD': '', 'CCT': '', 'LT': '', 'VT': '', 'PR': '', 'FR': '', 'ADD': '', 'BC': ''}, 'OS': {'VA': '', 'SPH': '', 'CYL': '', 'AX': '', 'AL': '', 'AK': '', 'AD': '', 'CCT': '', 'LT': '', 'VT': '', 'PR': '', 'FR': '', 'ADD': '', 'BC': ''}, 'PD': '', 'Function': '两用解决方案'}
 
-    print(reuqest)
 
     try:
         reuqest['Function'] = reuqest['function']
