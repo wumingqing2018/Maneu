@@ -135,7 +135,7 @@ def report_simple(request_dict):
 
     for i in list(data['OS']):
         try:
-            data['OS'][i] = format(float(request['OD'][i]), '.2f')
+            data['OS'][i] = format(float(request['OS'][i]), '.2f')
         except:
             pass
     return json.dumps(data)
