@@ -5,13 +5,17 @@ $(document).ready(function () {
                 console.log(data.data.id)
                 report_insert(data.data.id,function (data) {
                     if (data.status === true){
-                        window.location.href = index_api
+                        if (confirm("提交成功是否继续填写？")) {
+                            window.location.href = insert_web
+                        } else {
+                            window.location.href = index_web
+                        }
                     }else {
-                        alert(data.message)
+                        alert('提交失败，错误信息：'+data.message)
                     }
                 })
             }else {
-                alert(data.message)
+                alert('提交失败，错误信息：'+data.message)
             }
         });
     })

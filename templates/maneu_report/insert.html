@@ -544,7 +544,8 @@
 {% endblock %}
 {% block javascript %}
     <script>
-        index_api = "{% url 'maneu_report:index' %}"
+        index_web = "{% url 'maneu_report:index' %}"
+        insert_web = "{% url 'maneu_report:insert' %}"
         guest_api = "{% url 'maneu_guest:api_insert' %}"
         report_api = "{% url 'maneu_report:api_insert' %}"
     </script>
