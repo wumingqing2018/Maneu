@@ -2,7 +2,7 @@ from django.forms import model_to_dict
 from django.http import JsonResponse
 
 from common.verify import is_uuid,is_date
-from common.common import guest_simple
+from common.simple import guest_simple
 
 from maneu_guest import service
 

@@ -1,7 +1,7 @@
 from django.forms import model_to_dict
 from django.http import JsonResponse
 
-from common.common import report_simple
+from common.simple import report_simple
 from common.verify import is_uuid, is_date
 from maneu.models import ManeuReport
 from maneu_report import service

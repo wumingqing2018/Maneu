@@ -1,19 +1,6 @@
-$('#delete').click(function () {
-    if (confirm("确定要删除吗？")) {
-        return true;
-    } else {
-        return false;
-    }
-})
-$('#update').click(function () {
-    if (confirm("确定要修改吗？")) {
-        return true;
-    } else {
-        return false;
-    }
-})
+
 $(document).ready(function () {
-    window.onload = report_detail()
+    report_detail()
     $('#delete').click(report_delete)
     $('#update').click(report_update)
 
@@ -28,7 +15,6 @@ $(document).ready(function () {
                 if (res.status === true) {
                     data = res.data
                     content = $.parseJSON(data.content)
-                    console.log(data,content)
 
                     $("#time").val(data.time)
                     $("#name").val(data.name)
@@ -74,77 +60,85 @@ $(document).ready(function () {
         })
     }
     function report_delete() {
-        $.ajax({
-            url:api_delete,
-            method: 'GET',
-            data: {
-                id: id
-            },
-            success: function (res) {
-                if (res.status === true) {
-                    alert('删除成功，即将返回上一页。')
-                    window.location.href = api_index
-                }else {
-                    alert('删除失败，请重试。')
+        if (confirm("确定要删除吗？")) {
+            $.ajax({
+                url:api_delete,
+                method: 'GET',
+                data: {
+                    id: id
+                },
+                success: function (res) {
+                    if (res.status === true) {
+                        alert('删除成功，即将返回上一页。')
+                        window.location.href = api_index
+                    }else {
+                        alert('删除失败，请重试。')
+                    }
                 }
-            }
-        })
+            })
+        } else {
+            return false;
+        }
     }
     function report_update() {
-        content = {
-            PLAN: $("#PLAN").val(),
-            PD: $("#PD").val(),
-            OD: {
-                'VA': $("#OD_VA").val(),
-                'SPH': $("#OD_SPH").val(),
-                'CYL': $("#OD_CYL").val(),
-                'AX': $("#OD_AX").val(),
-                'PR': $("#OD_PR").val(),
-                'FR': $("#OD_FR").val(),
-                'ADD': $("#OD_ADD").val(),
-                'AL': $("#OD_AL").val(),
-                'AK': $("#OD_AK").val(),
-                'AD': $("#OD_AD").val(),
-                'CCT': $("#OD_CCT").val(),
-                'LT': $("#OD_LT").val(),
-                'VT': $("#OD_VT").val(),
-                'BC': $("#OD_BC").val(),
-            },
-            OS: {
-                'VA': $("#OS_VA").val(),
-                'SPH': $("#OS_SPH").val(),
-                'CYL': $("#OS_CYL").val(),
-                'AX': $("#OS_AX").val(),
-                'PR': $("#OS_PR").val(),
-                'FR': $("#OS_FR").val(),
-                'ADD': $("#OS_ADD").val(),
-                'AL': $("#OS_AL").val(),
-                'AK': $("#OS_AK").val(),
-                'AD': $("#OS_AD").val(),
-                'CCT': $("#OS_CCT").val(),
-                'LT': $("#OS_LT").val(),
-                'VT': $("#OS_VT").val(),
-                'BC': $("#OS_BC").val(),
-            },
+        if (confirm("确定要修改吗？")) {
+            content = {
+                PLAN: $("#PLAN").val(),
+                PD: $("#PD").val(),
+                OD: {
+                    'VA': $("#OD_VA").val(),
+                    'SPH': $("#OD_SPH").val(),
+                    'CYL': $("#OD_CYL").val(),
+                    'AX': $("#OD_AX").val(),
+                    'PR': $("#OD_PR").val(),
+                    'FR': $("#OD_FR").val(),
+                    'ADD': $("#OD_ADD").val(),
+                    'AL': $("#OD_AL").val(),
+                    'AK': $("#OD_AK").val(),
+                    'AD': $("#OD_AD").val(),
+                    'CCT': $("#OD_CCT").val(),
+                    'LT': $("#OD_LT").val(),
+                    'VT': $("#OD_VT").val(),
+                    'BC': $("#OD_BC").val(),
+                },
+                OS: {
+                    'VA': $("#OS_VA").val(),
+                    'SPH': $("#OS_SPH").val(),
+                    'CYL': $("#OS_CYL").val(),
+                    'AX': $("#OS_AX").val(),
+                    'PR': $("#OS_PR").val(),
+                    'FR': $("#OS_FR").val(),
+                    'ADD': $("#OS_ADD").val(),
+                    'AL': $("#OS_AL").val(),
+                    'AK': $("#OS_AK").val(),
+                    'AD': $("#OS_AD").val(),
+                    'CCT': $("#OS_CCT").val(),
+                    'LT': $("#OS_LT").val(),
+                    'VT': $("#OS_VT").val(),
+                    'BC': $("#OS_BC").val(),
+                },
+            }
+            $.ajax({
+                url: api_update,
+                method: "GET",
+                data: {
+                    report_id: id,
+                    time: $("#time").val(),
+                    name: $("#name").val(),
+                    call: $("#call").val(),
+                    remark: $("#remark").val(),
+                    content: JSON.stringify(content)
+                },
+                success: function (res) {
+                    if (res.status === true){
+                        alert('更新成功')
+                    }else {
+                        alert('更新失败')
+                    }
+                },
+            })
+        } else {
+            return false;
         }
-        $.ajax({
-            url: api_update,
-            method: "GET",
-            data: {
-                report_id: id,
-                time: $("#time").val(),
-                name: $("#name").val(),
-                call: $("#call").val(),
-                remark: $("#remark").val(),
-                content: JSON.stringify(content)
-            },
-            success: function (res) {
-                if (res.status === true){
-                    alert('更新成功')
-                }else {
-                    alert('更新失败')
-                }
-            },
-        })
     }
 })
