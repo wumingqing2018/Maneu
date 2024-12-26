@@ -119,13 +119,13 @@ def report_simple(request_dict):
     try:
         if request['Function'] == '两用解决方案' or '远用解决方案' or '近用解决方案':
             data['Function'] = request['Function']
-    except Exception as e:
-        print(e)
+    except:
+        pass
 
     try:
         data['PD'] = int(request['PD'])
     except:
-            pass
+        pass
 
     for i in list(data['OD']):
         try:
