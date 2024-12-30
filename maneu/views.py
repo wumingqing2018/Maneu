@@ -22,10 +22,19 @@ def login(request):
 
 
 def login_api(request):
-    request.session['ip'] = common.getip(request)
-    request.session['id'] = '60fdfea6-2d3f-11ed-b7f2-00163e02ac92'
-    request.session['nickname'] = 'wumq'
-    content = {'status': True, 'message': '', 'data': {}}
+    call = is_call(request.GET.get('call'))
+    code = is_code(request.GET.get('code'))
+    if code and call:
+        try:
+            content=service.admin_login(call,code)
+            request.session['ip'] = common.getip(request)
+            request.session['id'] = content.id
+            request.session['nickname'] = content.nickname
+            content = {'status': True, 'message': '', 'data': {}}
+        except Exception as e:
+            content = {'status': False, 'message': str(e), 'data': {}}
+    else:
+        content = {'status': False, 'message': '', 'data': {}}
     return JsonResponse(content)
 
 
