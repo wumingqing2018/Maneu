@@ -8,7 +8,12 @@ $(document).ready(function () {
             },
             success: function (res) {
                 if (res.status === true) {
-                    $("#msg").text("")
+                    $("#wait-btn").show();
+                    $("#sendsms-btn").hide();
+                    setTimeout(function () {
+                        $("#wait-btn").hide();
+                        $("#sendsms-btn").show();
+                    },60000);
                 } else {
                     $("#msg").text("发送短信失败" + res.message)
                 }

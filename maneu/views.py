@@ -69,8 +69,8 @@ def sendsms(request):
             else:
                 content = {'status': False, 'message': response["Message"], 'data': {}}
         else:
-            content = {'status': False, 'message': 'phone is :none', 'data': {}}
+            content = {'status': False, 'message': '请输入正确的手机号', 'data': {}}
     else:
-        content = {'status': False, 'message': 'code is :none', 'data': {}}
+        content = {'status': False, 'message': '请输入正确的手机号', 'data': {}}
 
     return JsonResponse(content)
