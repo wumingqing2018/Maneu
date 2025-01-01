@@ -15,7 +15,6 @@ def guest_simple(request):
 
     return simple
 
-
 def report_simple(request_dict):
     request = json.loads(request_dict)
     data = {
@@ -56,3 +55,7 @@ def report_simple(request_dict):
         except:
             pass
     return json.dumps(data)
+
+def store_simple(content):
+    request = json.loads(content)
+

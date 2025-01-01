@@ -49,10 +49,6 @@ def ManeuStore_delete(id=''):
     return ManeuStore.objects.filter(id=id).all().delete()
 
 
-def ManeuStore_insert(admin_id='', guest_id='', time='', content=''):
-    return ManeuStore.objects.create(admin_id=admin_id, guess_id=guest_id, time=time, content=content)
-
-
 def ManeuStore_update(content='', id=''):
     return ManeuStore.objects.filter(id=id).update(content=content)
 
