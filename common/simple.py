@@ -22,6 +22,8 @@ def order_simple(request_dict):
     for i in request:
         if i != simple:
             data.append(i)
+            if len(data) ==0:
+                data.append({'arg10':'无', 'arg11':'无', 'arg12':'无', 'arg13':'无', 'arg14':'无'})
 
     return json.dumps(data)
 
