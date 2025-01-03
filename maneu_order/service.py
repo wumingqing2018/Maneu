@@ -32,9 +32,9 @@ def ManeuOrder_Search(text='', admin_id=''):
     return ManeuOrder.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
 
 
-def ManeuOrder_insert(name='', time='', call='', guest_id='', admin_id='', store_id='', report_id='', remark=''):
+def ManeuOrder_insert(name='', time='', call='', content='', guest_id='', admin_id='', store_id='', report_id='', remark=''):
     return ManeuOrder.objects.create(name=name, time=time, phone=call, guest_id=guest_id, admin_id=admin_id,
-                                     store_id=store_id, report_id=report_id, remark=remark)
+                                     store_id=store_id, report_id=report_id, remark=remark, content=content)
 
 
 def ManeuOrder_update(id='', name='', phone='', time="", remark=""):

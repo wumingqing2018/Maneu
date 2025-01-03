@@ -15,6 +15,17 @@ def guest_simple(request):
 
     return simple
 
+def order_simple(request_dict):
+    request = json.loads(request_dict)
+    simple = {'arg10':'', 'arg11':'', 'arg12':'', 'arg13':'', 'arg14':''}
+    data = []
+    for i in request:
+        if i != simple:
+            data.append(i)
+
+    return json.dumps(data)
+
+
 def report_simple(request_dict):
     request = json.loads(request_dict)
     data = {
@@ -55,7 +66,3 @@ def report_simple(request_dict):
         except:
             pass
     return json.dumps(data)
-
-def store_simple(content):
-    request = json.loads(content)
-

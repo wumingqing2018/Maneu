@@ -1,12 +1,10 @@
-import json
-
 from django.forms import model_to_dict
 from django.http import JsonResponse
 
 from common.common import current_time
 from common.verify import is_uuid, is_date
 from maneu_order import service
-
+from common.simple import order_simple
 
 def index(request):
     admin_id = is_uuid(request.session.get('id'))
@@ -108,19 +106,19 @@ def service_update(request):
 
 def insert(request):
     admin_id = is_uuid(request.session.get('id'))
-    store_id = is_uuid(request.GET.get('store_id'))
     guest_id = is_uuid(request.GET.get('guest_id'))
     report_id = is_uuid(request.GET.get('report_id'))
 
-    if admin_id and store_id and guest_id and report_id:
+    if admin_id and guest_id and report_id:
         try:
+            content = order_simple(request.GET.get('content'))
             order = service.ManeuOrder_insert(admin_id=admin_id,
                                               guest_id=guest_id,
-                                              store_id=store_id,
                                               report_id = report_id,
                                               time=request.GET.get('time'),
                                               name=request.GET.get('name'),
                                               call=request.GET.get('call'),
+                                              content = content,
                                               remark=request.GET.get('remark'))
             content = {'status': True, 'message': '', 'data': {'id': order.id}}
         except Exception as e:

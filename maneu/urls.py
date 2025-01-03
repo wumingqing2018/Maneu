@@ -13,6 +13,5 @@ urlpatterns = [
     path('maneu_guest/', include('maneu_guest.urls')),
     path('maneu_index/', include('maneu_index.urls')),
     path('maneu_order/', include('maneu_order.urls')),
-    path('maneu_store/', include('maneu_store.urls')),
     path('maneu_report/', include('maneu_report.urls')),
 ]
