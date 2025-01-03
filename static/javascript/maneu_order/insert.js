@@ -162,7 +162,6 @@ $(document).ready(function () {
                 content: JSON.stringify(content)
             },
             success: function (res) {
-                console.log(res)
                 if (res.status === true){
                     callback(res.data.id); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }else {

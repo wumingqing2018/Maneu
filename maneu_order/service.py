@@ -5,14 +5,14 @@ from django.db.models import Q
 from maneu.models import *
 
 
-def ManeuOrder_index(admin_id='', star='', end=''):
+def order_index(admin_id='', star='', end=''):
     """
     全部订单
     """
     return ManeuOrder.objects.filter(admin_id=admin_id, time__gte=star, time__lte=end).order_by('-time').all()
 
 
-def ManeuOrder_id(id='', admin_id=''):
+def order_id(id='', admin_id=''):
     """
     查找指定订单
     根据时间排序
@@ -28,17 +28,17 @@ def ManeuOrder_delete(admin_id='', id=''):
     return ManeuOrder.objects.filter(admin_id=admin_id, id=id).delete()
 
 
-def ManeuOrder_Search(text='', admin_id=''):
+def order_search(text='', admin_id=''):
     return ManeuOrder.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
 
 
-def ManeuOrder_insert(name='', time='', call='', content='', guest_id='', admin_id='', store_id='', report_id='', remark=''):
+def order_insert(name='', time='', call='', content='', guest_id='', admin_id='', store_id='', report_id='', remark=''):
     return ManeuOrder.objects.create(name=name, time=time, phone=call, guest_id=guest_id, admin_id=admin_id,
                                      store_id=store_id, report_id=report_id, remark=remark, content=content)
 
 
-def ManeuOrder_update(id='', name='', phone='', time="", remark=""):
-    return ManeuOrder.objects.filter(id=id).update(name=name, phone=phone, time=time, remark=remark)
+def order_update(admin_id='', order_id='', name='', call='', time="", remark="", content=''):
+    return ManeuOrder.objects.filter(id=order_id, admin_id=admin_id).update(name=name, phone=call, time=time, remark=remark, content=content)
 
 
 def ManeuStore_id(id=''):

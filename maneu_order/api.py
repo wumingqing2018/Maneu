@@ -1,10 +1,10 @@
 from django.forms import model_to_dict
 from django.http import JsonResponse
 
-from common.common import current_time
+from common.simple import order_simple
 from common.verify import is_uuid, is_date
 from maneu_order import service
-from common.simple import order_simple
+
 
 def index(request):
     admin_id = is_uuid(request.session.get('id'))
@@ -13,12 +13,12 @@ def index(request):
 
     if admin_id and start and end:
         try:
-            data = service.ManeuOrder_index(admin_id, start, end).values('id', 'name', 'phone', 'time', 'remark')
+            data = service.order_index(admin_id, start, end).values('id', 'name', 'phone', 'time', 'remark')
             content = {'status': True, 'message': admin_id, 'data': list(data)}
         except Exception as e:
-            content = {'status': False, 'message': admin_id, 'data': {}}
+            content = {'status': False, 'message': str(e), 'data': {}}
     else:
-        content = {'status': False, 'message': admin_id, 'data': {}}
+        content = {'status': False, 'message': '参数错误请确认', 'data': {}}
 
     return JsonResponse(content)
 
@@ -28,12 +28,12 @@ def search(request):
 
     if admin_id:
         try:
-            data = service.ManeuOrder_Search(text=request.GET.get('text'), admin_id=admin_id).values('id', 'name', 'phone', 'time', 'remark')
+            data = service.order_search(text=request.GET.get('text'), admin_id=admin_id).values('id', 'name', 'phone', 'time', 'remark')
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
     else:
-        content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
+        content = {'status': False, 'message': '参数错误请确认', 'data': {}}
 
     return JsonResponse(content)
 
@@ -46,29 +46,44 @@ def insert(request):
     if admin_id and guest_id and report_id:
         try:
             content = order_simple(request.GET.get('content'))
-            order = service.ManeuOrder_insert(admin_id=admin_id,
-                                              guest_id=guest_id,
-                                              report_id = report_id,
-                                              time=request.GET.get('time'),
-                                              name=request.GET.get('name'),
-                                              call=request.GET.get('call'),
-                                              content = content,
-                                              remark=request.GET.get('remark'))
+            order = service.order_insert(admin_id=admin_id,
+                                         guest_id=guest_id,
+                                         report_id = report_id,
+                                         time=request.GET.get('time'),
+                                         name=request.GET.get('name'),
+                                         call=request.GET.get('call'),
+                                         content = content,
+                                         remark=request.GET.get('remark'))
             content = {'status': True, 'message': '', 'data': {'id': order.id}}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
     else:
-        content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
+        content = {'status': False, 'message': '参数错误请确认', 'data': {}}
 
     return JsonResponse(content)
 
 
 def update(request):
-    service.ManeuStore_update(id=request.POST.get('store_id'), content=request.POST.get('product_form'))
-    service.ManeuOrder_update(id=request.POST.get('order_id'), name=request.POST.get('order_name'),
-                              phone=request.POST.get('order_phone'), time=request.POST.get('order_time'),
-                              remark=request.POST.get('order_remark'))
+    admin_id = is_uuid(request.session.get('id'))
+    order_id = is_uuid(request.GET.get('order_id'))
 
+    if admin_id and order_id:
+        try:
+            content = order_simple(request.GET.get('content'))
+            order = service.order_update(admin_id=admin_id,
+                                         order_id=order_id,
+                                         time=request.GET.get('time'),
+                                         name=request.GET.get('name'),
+                                         call=request.GET.get('call'),
+                                         content = content,
+                                         remark=request.GET.get('remark'))
+            content = {'status': True, 'message': '', 'data': {'id': order.id}}
+        except Exception as e:
+            content = {'status': False, 'message': str(e), 'data': {}}
+    else:
+        content = {'status': False, 'message': '参数错误请确认', 'data': {}}
+
+    return JsonResponse(content)
 
 def detail(request):
     order_id = is_uuid(request.GET.get('id'))
@@ -76,7 +91,7 @@ def detail(request):
 
     if admin_id and order_id:
         try:
-            data = service.ManeuOrder_id(id=order_id, admin_id=admin_id)
+            data = service.order_id(id=order_id, admin_id=admin_id)
             content = {'status': True, 'message': '', 'data': model_to_dict(data)}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
@@ -91,7 +106,7 @@ def delete(request):
     admin_id = is_uuid(request.session.get('id'))
 
     if admin_id and order_id:
-        order = service.ManeuOrder_id(id=order_id, admin_id=admin_id)
+        order = service.order_id(id=order_id, admin_id=admin_id)
         if order:
             store = service.ManeuStore_delete(id=order.store_id)
             print(store)
