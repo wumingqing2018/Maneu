@@ -28,7 +28,8 @@ def search(request):
 
     if admin_id:
         try:
-            data = service.order_search(text=request.GET.get('text'), admin_id=admin_id).values('id', 'name', 'phone', 'time', 'remark')
+            data = service.order_search(text=request.GET.get('text'), admin_id=admin_id).values('id', 'name', 'phone',
+                                                                                                'time', 'remark')
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
@@ -48,11 +49,11 @@ def insert(request):
             content = order_simple(request.GET.get('content'))
             order = service.order_insert(admin_id=admin_id,
                                          guest_id=guest_id,
-                                         report_id = report_id,
+                                         report_id=report_id,
                                          time=request.GET.get('time'),
                                          name=request.GET.get('name'),
                                          call=request.GET.get('call'),
-                                         content = content,
+                                         content=content,
                                          remark=request.GET.get('remark'))
             content = {'status': True, 'message': '', 'data': {'id': order.id}}
         except Exception as e:
@@ -75,7 +76,7 @@ def update(request):
                                          time=request.GET.get('time'),
                                          name=request.GET.get('name'),
                                          call=request.GET.get('call'),
-                                         content = content,
+                                         content=content,
                                          remark=request.GET.get('remark'))
             content = {'status': True, 'message': '', 'data': {'id': order.id}}
         except Exception as e:
@@ -85,13 +86,14 @@ def update(request):
 
     return JsonResponse(content)
 
+
 def detail(request):
     order_id = is_uuid(request.GET.get('id'))
     admin_id = is_uuid(request.session.get('id'))
 
     if admin_id and order_id:
         try:
-            data = service.order_id(id=order_id, admin_id=admin_id)
+            data = service.order_id(order_id=order_id, admin_id=admin_id)
             content = {'status': True, 'message': '', 'data': model_to_dict(data)}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}

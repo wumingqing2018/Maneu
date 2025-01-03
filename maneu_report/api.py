@@ -118,11 +118,3 @@ def detail(request):
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 
     return JsonResponse(content)
-
-
-def test(request):
-    data = ManeuReport.objects.filter().all()
-    for i in data:
-        content = report_simple(i.content)
-        ManeuReport.objects.filter(id=i.id).update(content=content)
-    return JsonResponse('')
