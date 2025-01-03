@@ -106,19 +106,13 @@ def delete(request):
     admin_id = is_uuid(request.session.get('id'))
 
     if admin_id and order_id:
-        order = service.order_id(id=order_id, admin_id=admin_id)
-        if order:
-            store = service.ManeuStore_delete(id=order.store_id)
-            print(store)
-            vision = service.ManeuVision_delete(id=order.vision_id)
-            print(vision)
-            server = service.ManeuService_delete_order_id(order_id=order.id)
-            print(server)
-            order = service.ManeuOrder_delete(admin_id=request.session.get('id'), id=request.GET.get('order_id'))
-            print(order)
+        try:
+            order = service.order_id(order_id=order_id, admin_id=admin_id)
+            report = service.report_delete(report_id=order.report_id, admin_id=admin_id)
+            order = service.order_delete(order_id=order_id, admin_id=admin_id)
             content = {'status': True, 'message': '', 'data': {}}
-        else:
-            content = {'status': False, 'message': '请输入order的参数', 'data': {}}
+        except Exception as e:
+            content = {'status': False, 'message': str(e), 'data': {}}
     else:
         content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
 

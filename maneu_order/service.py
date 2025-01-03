@@ -1,8 +1,10 @@
-import json
-
 from django.db.models import Q
 
-from maneu.models import *
+from maneu.models import ManeuOrder, ManeuReport
+
+
+def report_delete(report_id='', admin_id=''):
+    return ManeuReport.objects.filter(admin_id=admin_id, id=report_id).delete()
 
 
 def order_index(admin_id='', star='', end=''):
@@ -12,20 +14,20 @@ def order_index(admin_id='', star='', end=''):
     return ManeuOrder.objects.filter(admin_id=admin_id, time__gte=star, time__lte=end).order_by('-time').all()
 
 
-def order_id(id='', admin_id=''):
+def order_id(order_id='', admin_id=''):
     """
     查找指定订单
     根据时间排序
     """
-    return ManeuOrder.objects.filter(id=id, admin_id=admin_id).first()
+    return ManeuOrder.objects.filter(id=order_id, admin_id=admin_id).first()
 
 
-def ManeuOrder_delete(admin_id='', id=''):
+def order_delete(admin_id='', order_id=''):
     """
     查找指定订单a
     根据时间排序
     """
-    return ManeuOrder.objects.filter(admin_id=admin_id, id=id).delete()
+    return ManeuOrder.objects.filter(admin_id=admin_id, id=order_id).delete()
 
 
 def order_search(text='', admin_id=''):
@@ -39,82 +41,3 @@ def order_insert(name='', time='', call='', content='', guest_id='', admin_id=''
 
 def order_update(admin_id='', order_id='', name='', call='', time="", remark="", content=''):
     return ManeuOrder.objects.filter(id=order_id, admin_id=admin_id).update(name=name, phone=call, time=time, remark=remark, content=content)
-
-
-def ManeuStore_id(id=''):
-    return ManeuStore.objects.filter(id=id).first()
-
-
-def ManeuStore_delete(id=''):
-    return ManeuStore.objects.filter(id=id).all().delete()
-
-
-def ManeuStore_update(content='', id=''):
-    return ManeuStore.objects.filter(id=id).update(content=content)
-
-
-def ManeuVision_id(id=''):
-    return ManeuVision.objects.filter(id=id).first()
-
-
-def ManeuVision_delete(id=''):
-    return ManeuVision.objects.filter(id=id).delete()
-
-
-def ManeuVision_insert(admin_id='', guest_id='', time='', content=''):
-    return ManeuVision.objects.create(admin_id=admin_id, guest_id=guest_id, time=time, content=content)
-
-
-def ManeuVision_update(id='', content=''):
-    return ManeuVision.objects.filter(id=id).update(content=content)
-
-
-def ManeuGuest_id(id=''):
-    return ManeuGuest.objects.filter(id=id).first()
-
-
-def ManeuGuest_phone(phone=''):
-    return ManeuGuest.objects.filter(phone=phone).first()
-
-
-def ManeuGuest_search(admin_id='', name='', time='', call='', sex='', age='', ot='', em='', dfh=''):
-    return ManeuGuest.objects.get_or_create(admin_id=admin_id, name=name, phone=call,
-                                            defaults={'sex': sex, 'age': age, 'ot': ot, 'em': em, 'dfh': dfh,
-                                                      'time': time})
-
-
-def ManeuGuest_update(id='', content=''):
-    contents = json.loads(content)
-    return ManeuGuest.objects.filter(id=id).update(name=contents['name'], phone=contents['phone'],
-                                                   age=contents['age'],
-                                                   sex=contents['sex'], ot=contents['OT'], em=contents['EM'],
-                                                   dfh=contents['DFH'])
-
-
-def ManeuService_insert(guest_id='', admin_id='', order_id='', content='', time=''):
-    return ManeuService.objects.create(guest_id=guest_id, admin_id=admin_id, order_id=order_id, content=content,
-                                       time=time)
-
-
-def ManeuService_delete(admin_id='', id=''):
-    return ManeuService.objects.filter(admin_id=admin_id, id=id).all().delete()
-
-
-def ManeuService_update(admin_id='', id='', content=''):
-    return ManeuService.objects.filter(admin_id=admin_id, id=id).update(content=content)
-
-
-def ManeuService_orderID(order_id=''):
-    return ManeuService.objects.filter(order_id=order_id).order_by('-time').all()
-
-
-def ManeuService_delete_order_id(order_id=''):
-    return ManeuService.objects.filter(order_id=order_id).all().delete()
-
-
-def ManeuRefraction_id(guest_id=''):
-    return ManeuRefraction.objects.filter(guest_id=guest_id).order_by('-time').first()
-
-
-def ManeuReport_id(admin_id, id):
-    return ManeuVision.objects.filter(admin_id=admin_id, id=id).first()
