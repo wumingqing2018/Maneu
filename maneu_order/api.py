@@ -1,3 +1,5 @@
+import json
+
 from django.forms import model_to_dict
 from django.http import JsonResponse
 
@@ -93,8 +95,17 @@ def detail(request):
 
     if admin_id and order_id:
         try:
-            data = service.order_id(order_id=order_id, admin_id=admin_id)
-            content = {'status': True, 'message': '', 'data': model_to_dict(data)}
+            order = service.order_id(order_id=order_id, admin_id=admin_id)
+            content = {
+                'content': json.loads(order.content),
+                'guest_id': order.guest_id,
+                'report_id': order.report_id,
+                'name': order.name,
+                'phone': order.phone,
+                'remark': order.remark,
+                'time': order.time
+            }
+            content = {'status': True, 'message': '', 'data': content}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
     else:
