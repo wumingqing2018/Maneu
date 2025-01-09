@@ -118,7 +118,7 @@ $(document).ready(function () {
     }
     function report_insert(guest_id, callback) {
         content = {
-            Function: $("#function").val(),
+            PLAN: $("#PLAN").val(),
             PD: $("#PD").val(),
             OD: {
                 'VA': $("#OD_VA").val(),

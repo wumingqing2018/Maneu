@@ -50,7 +50,7 @@ def report_simple(request_dict):
         pass
 
     try:
-        data['PD'] = int(request['PD'])
+        data['PD'] = format(float(request['PD']), '.1f')
     except:
         pass
 

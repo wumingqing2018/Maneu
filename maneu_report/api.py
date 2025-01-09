@@ -60,7 +60,9 @@ def insert(request):
     guest_id = is_uuid(request.GET.get('guest_id'))
 
     if admin_id and guest_id:
+        print(request.GET.get('content'))
         content = report_simple(request.GET.get('content'))
+        print(content)
         try:
             report = service.report_insert(admin_id=admin_id,
                                            guest_id=guest_id,
