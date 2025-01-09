@@ -8,22 +8,24 @@ def guest_simple(request):
 
     for i in list(simple):
         try:
-            if request.GET.get(i):
-                simple[i] = request.GET.get(i)
+            if request.GET.get(i): simple[i] = request.GET.get(i)
         except:
             pass
 
     return simple
 
 def order_simple(request_dict):
-    request = json.loads(request_dict)
     simple = {'arg10':'', 'arg11':'', 'arg12':'', 'arg13':'', 'arg14':''}
     data = []
-    for i in request:
-        if i != simple:
-            data.append(i)
-            if len(data) ==0:
-                data.append({'arg10':'无', 'arg11':'无', 'arg12':'无', 'arg13':'无', 'arg14':'无'})
+
+    try:
+        request = json.loads(request_dict)
+        for i in request:
+            if i != simple: data.append(i)
+    except:
+        pass
+
+    if len(data)==0: data.append({'arg10':'无', 'arg11':'无', 'arg12':'无', 'arg13':'无', 'arg14':'无'})
 
     return json.dumps(data)
 
@@ -31,23 +33,19 @@ def order_simple(request_dict):
 def report_simple(request_dict):
     request = json.loads(request_dict)
     data = {
-        'Function': '远用解决方案',
+        'PLAN': '远用解决方案',
         'PD': '',
         'OD': {
-            'AL': '', 'AK': '', 'AX': '0.00', 'AD': '', 'ADD': '0.00', 'BC': '', 'CYL': '0.00', 'CCT': '', 'VA': '', 'SPH': '0.00',
-            'PR': '0.00', 'FR': '', 'LT': '', 'VT': ''
+            'AL': '', 'AK': '', 'AX': '0.00', 'AD': '', 'ADD': '0.00', 'BC': '', 'CYL': '0.00', 'CCT': '', 'VA': '', 'SPH': '0.00', 'PR': '0.00', 'FR': '', 'LT': '', 'VT': ''
         },
         'OS': {
-            'AL': '', 'AK': '', 'AX': '0.00', 'AD': '', 'ADD': '0.00', 'BC': '', 'CYL': '0.00', 'CCT': '', 'VA': '', 'SPH': '0.00',
-            'PR': '0.00', 'FR': '', 'LT': '', 'VT': ''
+            'AL': '', 'AK': '', 'AX': '0.00', 'AD': '', 'ADD': '0.00', 'BC': '', 'CYL': '0.00', 'CCT': '', 'VA': '', 'SPH': '0.00', 'PR': '0.00', 'FR': '', 'LT': '', 'VT': ''
         }
     }
 
-
-
     try:
-        if request['Function'] == '两用解决方案' or '远用解决方案' or '近用解决方案':
-            data['Function'] = request['Function']
+        if request['PLAN'] == '两用解决方案' or '远用解决方案' or '近用解决方案':
+            data['PLAN'] = request['PLAN']
     except:
         pass
 
@@ -67,4 +65,5 @@ def report_simple(request_dict):
             data['OS'][i] = format(float(request['OS'][i]), '.2f')
         except:
             pass
+
     return json.dumps(data)
