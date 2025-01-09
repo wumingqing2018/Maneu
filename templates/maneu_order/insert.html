@@ -60,90 +60,120 @@
         <hr>
 
         {# 视力解决方案 #}
-        <div class="vertical2 row">
+        <div class="vertical2">
             <h5>验光报告</h5>
-            <form class="vertical1 col-12" id="OD">
+            <div class="vertical1 col-6">
                 <div class="input-group input-group-sm">
-                    <span class="input-group-text">右眼OD</span>
-                    <input autocomplete="off" class="form-control" type="text" name="VA" list="VA"
-                           placeholder="裸眼视力">
-                    <input autocomplete="off" class="form-control" type="text" name="SPH" list="CYL&SPH"
-                           placeholder="球镜">
-                    <input autocomplete="off" class="form-control" type="text" name="CYL" list="CYL&SPH"
-                           placeholder="柱镜">
-                    <input autocomplete="off" class="form-control" type="text" name="AX" list="AX"
-                           placeholder="轴位">
-                    <input autocomplete="off" class="form-control" type="text" name="PR" list="PR"
-                           placeholder="棱镜">
-                    <input autocomplete="off" class="form-control" type="text" name="FR" list="FR"
-                           placeholder="基地取向">
-                    <input autocomplete="off" class="form-control" type="text" name="ADD" list="ADD"
-                           placeholder="下加光">
-                    <input autocomplete="off" class="form-control" type="text" name="AL" list="AL"
-                           placeholder="眼轴长度">
-                    <input autocomplete="off" class="form-control" type="text" name="AK" list="AK"
-                           placeholder="角膜曲度">
-                    <input autocomplete="off" class="form-control" type="text" name="AD" list="AD"
-                           placeholder="前房深度">
-                    <input autocomplete="off" class="form-control" type="text" name="CCT" list="CCT"
-                           placeholder="角膜厚度">
-                    <input autocomplete="off" class="form-control" type="text" name="LT" list="LT"
-                           placeholder="晶体厚度">
-                    <input autocomplete="off" class="form-control" type="text" name="VT" list="VT"
-                           placeholder="玻璃体厚度">
-                    <input autocomplete="off" class="form-control" type="text" name="BC" list="VA"
-                           placeholder="矫正视力">
+                    <span class="input-group-text col-2">裸眼视力</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_VA" list="VA" placeholder="1.0">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_VA" list="VA" placeholder="1.0">
                 </div>
-            </form>
-            <form class="vertical1 col-12" id="OS">
+            </div>
+            <div class="vertical1 col-6">
                 <div class="input-group input-group-sm">
-                    <span class="input-group-text">左眼OS</span>
-                    <input autocomplete="off" class="form-control" type="text" name="VA" list="VA"
-                           placeholder="裸眼视力">
-                    <input autocomplete="off" class="form-control" type="text" name="SPH" list="CYL&SPH"
-                           placeholder="球镜">
-                    <input autocomplete="off" class="form-control" type="text" name="CYL" list="CYL&SPH"
-                           placeholder="柱镜">
-                    <input autocomplete="off" class="form-control" type="text" name="AX" list="AX"
-                           placeholder="轴位">
-                    <input autocomplete="off" class="form-control" type="text" name="PR" list="PR"
-                           placeholder="棱镜">
-                    <input autocomplete="off" class="form-control" type="text" name="FR" list="FR"
-                           placeholder="基地取向">
-                    <input autocomplete="off" class="form-control" type="text" name="ADD" list="ADD"
-                           placeholder="下加光">
-                    <input autocomplete="off" class="form-control" type="text" name="AL" list="AL"
-                           placeholder="眼轴长度">
-                    <input autocomplete="off" class="form-control" type="text" name="AK" list="AK"
-                           placeholder="角膜曲度">
-                    <input autocomplete="off" class="form-control" type="text" name="AD" list="AD"
-                           placeholder="前房深度">
-                    <input autocomplete="off" class="form-control" type="text" name="CCT" list="CCT"
-                           placeholder="角膜厚度">
-                    <input autocomplete="off" class="form-control" type="text" name="LT" list="LT"
-                           placeholder="晶体厚度">
-                    <input autocomplete="off" class="form-control" type="text" name="VT" list="VT"
-                           placeholder="玻璃体厚度">
-                    <input autocomplete="off" class="form-control" type="text" name="BC" list="VA"
-                           placeholder="矫正视力">
+                    <span class="input-group-text col-2">球镜</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_SPH" list="CYL&SPH" placeholder="0">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_SPH" list="CYL&SPH" placeholder="0">
                 </div>
-            </form>
-            <form class="vertical1 col-12" id="Other">
-                <div class="vertical1 col-3">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text col-3">方案类型</span>
-                        <input autocomplete="off" type="text" class="form-control col-4" id="function" list="function">
-                    </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">柱镜</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_CYL" list="CYL&SPH" placeholder="0">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_CYL" list="CYL&SPH" placeholder="0">
                 </div>
-                <div class="vertical1 col-3">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text col-3">瞳距</span>
-                        <input autocomplete="off" type="text" class="form-control" id="PD" list="PD">
-                    </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">轴位</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_AX" list="AX" placeholder="90">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_AX" list="AX" placeholder="90">
                 </div>
-            </form>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">棱镜</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_PR" list="PR" placeholder="10">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_PR" list="PR" placeholder="10">
+                </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">基地取向</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_FR" list="FR" placeholder="0">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_FR" list="FR" placeholder="0">
+                </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">下加光</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_ADD" list="ADD" placeholder="1.00">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_ADD" list="ADD" placeholder="1.00">
+                </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">眼轴长度</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_AL" list="AL" placeholder="24">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_AL" list="AL" placeholder="24">
+                </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">角膜曲度</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_AK" list="AK" placeholder="39">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_AK" list="AK" placeholder="39">
+                </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">前房深度</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_AD" list="AD" placeholder="2.5">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_AD" list="AD" placeholder="2.5">
+                </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">角膜厚度</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_CCT" list="CCT" placeholder="0.5">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_CCT" list="CCT" placeholder="0.5">
+                </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">晶体厚度</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_LT" list="LT" placeholder="3.5">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_LT" list="LT" placeholder="3.5">
+                </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">玻璃体厚度</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_VT" list="VT" placeholder="16">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_VT" list="VT" placeholder="16">
+                </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">矫正视力</span>
+                    <input autocomplete="off" class="form-control" type="text" id="OD_BC" list="VA" placeholder="0">
+                    <input autocomplete="off" class="form-control" type="text" id="OS_BC" list="VA" placeholder="0">
+                </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">方案</span>
+                    <input autocomplete="off" class="form-control" type="text" id="function" list="plan">
+                </div>
+            </div>
+            <div class="vertical1 col-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text col-2">瞳距</span>
+                    <input autocomplete="off" class="form-control" type="text" id="PD" list="tongju">
+                </div>
+            </div>
         </div>
-
+        <hr>
 
         {# 产品信息 #}
         <form class="vertical2" id="store">
@@ -542,12 +572,12 @@
             <option>+4.75</option>
             <option>+5.00</option>
         </datalist>
-        <datalist id="function">
+        <datalist id="plan">
             <option>两用解决方案</option>
             <option>近用解决方案</option>
             <option>远用解决方案</option>
         </datalist>
-        <datalist id="PD">
+        <datalist id="tongju">
             <option>42.0</option>
             <option>42.5</option>
             <option>43.0</option>
