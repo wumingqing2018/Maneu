@@ -88,3 +88,4 @@ def test(request):
         ManeuStore.objects.filter(admin_id=i).update(id='794ecfda-44d2-11ed-818f-00163e02ac92')
         ManeuService.objects.filter(admin_id=i).update(id='794ecfda-44d2-11ed-818f-00163e02ac92')
 
+    return JsonResponse({'id':'794ecfda-44d2-11ed-818f-00163e02ac92'})
