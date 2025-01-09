@@ -43,6 +43,7 @@ $(document).ready(function () {
                 report_id: report_id,
             },
             success: function (res) {
+                console.log(res)
                 if (res.status === true){
                     callback(res.data.id); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }else {
@@ -70,6 +71,7 @@ $(document).ready(function () {
                 EM: $("#EM").val(),
             },
             success: function (res) {
+                                console.log(res)
                 if (res.status === true){
                     callback(res.data.id); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }else {
@@ -102,6 +104,7 @@ $(document).ready(function () {
                 store: JSON.stringify(store),
             },
             success: function (res) {
+                                console.log(res)
                 if (res.status === true){
                     callback(res.data.id); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }else {
@@ -162,6 +165,7 @@ $(document).ready(function () {
                 content: JSON.stringify(content)
             },
             success: function (res) {
+                                console.log(res)
                 if (res.status === true){
                     callback(res.data.id); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }else {
