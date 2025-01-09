@@ -43,7 +43,7 @@ $(document).ready(function (){
             return false;
         }
     })
-    $('#delete').click(function () {
+    $('#update').click(function () {
         if (confirm("确定要修改记录吗？")) {
 
         } else {
@@ -175,7 +175,8 @@ $(document).ready(function (){
             }
         })
     }
-    function update_order(){
+
+    function update_order(callback){
         $(".store").each(function () {
             data = {
                 arg10: $(this).find("[name='arg10']").val(),
@@ -210,7 +211,7 @@ $(document).ready(function (){
             }
         })
     }
-    function update_guest(){
+    function update_guest(callback){
         $.ajax({
             url: guest_api,
             method: 'GET',
@@ -235,7 +236,7 @@ $(document).ready(function (){
             }
         })
     }
-    function update_report(){
+    function update_report(callback){
         content = {
             PLAN: $("#PLAN").val(),
             PD: $("#PD").val(),
