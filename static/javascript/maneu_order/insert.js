@@ -1,11 +1,11 @@
 $(document).ready(function () {
     $('#insert').click(function () {
-        var guest_id = ''
-        var report_id = ''
+        var guest_id = null
+        var report_id = null
 
         guest_insert(function (data) {
             guest_id = data
-            if(guest_id != null){
+            if(guest_id){
                 report_insert(guest_id,function (data) {
                     report_id = data
                     if (report_id != null){
@@ -47,11 +47,11 @@ $(document).ready(function () {
                 if (res.status === true){
                     callback(res.data.id); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }else {
-                    callback(''); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                    callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }
             },
             error: function (res) {
-                callback(''); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
@@ -71,15 +71,15 @@ $(document).ready(function () {
                 EM: $("#EM").val(),
             },
             success: function (res) {
-                                console.log(res)
+                console.log(res)
                 if (res.status === true){
                     callback(res.data.id); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }else {
-                    callback(''); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                    callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }
             },
             error: function (res) {
-                callback(''); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
@@ -104,15 +104,15 @@ $(document).ready(function () {
                 store: JSON.stringify(store),
             },
             success: function (res) {
-                                console.log(res)
+                console.log(res)
                 if (res.status === true){
                     callback(res.data.id); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }else {
-                    callback(''); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                    callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }
             },
             error: function (res) {
-                callback(''); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
@@ -165,15 +165,15 @@ $(document).ready(function () {
                 content: JSON.stringify(content)
             },
             success: function (res) {
-                                console.log(res)
+                console.log(res)
                 if (res.status === true){
                     callback(res.data.id); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }else {
-                    callback(''); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                    callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
                 }
             },
             error: function (res) {
-                callback(''); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
