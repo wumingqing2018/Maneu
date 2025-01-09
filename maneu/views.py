@@ -4,6 +4,7 @@ from django.shortcuts import render
 from common import common
 from common.verify import *
 from maneu import service
+from maneu.models import *
 
 
 def index(request):
@@ -74,3 +75,16 @@ def sendsms(request):
         content = {'status': False, 'message': '请输入正确的手机号', 'data': {}}
 
     return JsonResponse(content)
+
+def test(request):
+    adminList=['36483774080401481140071775853431',
+               '23208668181988748078136965958996']
+
+    for i in adminList:
+        ManeuAdmin.objects.filter(id=i).update(id='794ecfda-44d2-11ed-818f-00163e02ac92')
+        ManeuOrder.objects.filter(admin_id=i).update(id='794ecfda-44d2-11ed-818f-00163e02ac92')
+        ManeuGuest.objects.filter(admin_id=i).update(id='794ecfda-44d2-11ed-818f-00163e02ac92')
+        ManeuReport.objects.filter(admin_id=i).update(id='794ecfda-44d2-11ed-818f-00163e02ac92')
+        ManeuStore.objects.filter(admin_id=i).update(id='794ecfda-44d2-11ed-818f-00163e02ac92')
+        ManeuService.objects.filter(admin_id=i).update(id='794ecfda-44d2-11ed-818f-00163e02ac92')
+
