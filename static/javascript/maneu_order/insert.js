@@ -6,7 +6,7 @@ $(document).ready(function () {
         guest_insert(function (data) {
             guest_id = data
             if(guest_id != null){
-                report_insert(data,function (data) {
+                report_insert(guest_id,function (data) {
                     report_id = data
                     if (report_id != null){
                         order_insert(guest_id, report_id, function (data) {
