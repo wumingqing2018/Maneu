@@ -5,7 +5,7 @@ from maneu.views import *
 
 urlpatterns = [
     path('', index, name='index'),
-    path('', test, name='test'),
+    path('test/', test, name='test'),
     path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
     path('sendsms/', sendsms, name='sendsms'),
