@@ -85,7 +85,6 @@ def update(request):
     admin_id = is_uuid(request.session.get('id'))
     if admin_id and report_id:
         try:
-            print(float('1'))
             content = report_simple(request.GET.get('content'))
             report = service.report_update(id=report_id,
                                            admin_id=admin_id,
@@ -98,7 +97,6 @@ def update(request):
                 content = {'status': True, 'message': '', 'data': {'id': report_id}}
             else:
                 content = {'status': False, 'message': '请输入正确的参数3', 'data': {}}
-
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
     else:

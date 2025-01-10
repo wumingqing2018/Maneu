@@ -18,10 +18,11 @@ $(document).ready(function () {
 
                     $("#time").val(data.time)
                     $("#name").val(data.name)
-                    $("#call").val(data.phone)
+                    $("#phone").val(data.phone)
                     $("#remark").val(data.remark)
                     $("#PD").val(content.PD)
-                    $("#function").val(content.Function)
+                    $("#PLAN").val(content.PLAN)
+
                     $("#OD_VA").val(content.OD.VA)
                     $("#OD_SPH").val(content.OD.SPH)
                     $("#OD_CYL").val(content.OD.CYL)
@@ -36,7 +37,6 @@ $(document).ready(function () {
                     $("#OD_LT").val(content.OD.LT)
                     $("#OD_VT").val(content.OD.VT)
                     $("#OD_BC").val(content.OD.BC)
-
 
                     $("#OS_VA").val(content.OS.VA)
                     $("#OS_SPH").val(content.OS.SPH)

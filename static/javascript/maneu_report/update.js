@@ -85,6 +85,7 @@ $(document).ready(function () {
                 id: id
             },
             success: function (res) {
+                console.log(res)
                 if (res.status === true) {
                     data = res.data
                     content = $.parseJSON(data.content)
