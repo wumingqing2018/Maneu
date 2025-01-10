@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#insert').click(function () {
         guest_insert(function (data) {
             console.log(data)
@@ -26,6 +27,29 @@ $(document).ready(function () {
         });
     });
 
+    function guest_insert(callback) {
+        $.ajax({
+            url: guest_api,
+            method: 'GET',
+            data: {
+                remark: $("#remark").val(),
+                time: $("#time").val(),
+                name: $("#name").val(),
+                call: $("#call").val(),
+                age: $("#age").val(),
+                sex: $("#sex").val(),
+                DFH: $("#DFH").val(),
+                OT: $("#OT").val(),
+                EM: $("#EM").val(),
+            },
+            success: function (res) {
+                callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+            },
+            error: function (res) {
+                callback({'status':false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+            }
+        })
+    }
     function order_insert(guest_id, report_id, callback) {
         store = []
         $(".store").each(function () {
@@ -49,29 +73,6 @@ $(document).ready(function () {
                 call: $("#call").val(),
                 guest_id: guest_id,
                 report_id: report_id,
-            },
-            success: function (res) {
-                callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
-            },
-            error: function (res) {
-                callback({'status':false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
-            }
-        })
-    }
-    function guest_insert(callback) {
-        $.ajax({
-            url: guest_api,
-            method: 'GET',
-            data: {
-                remark: $("#remark").val(),
-                time: $("#time").val(),
-                name: $("#name").val(),
-                call: $("#call").val(),
-                age: $("#age").val(),
-                sex: $("#sex").val(),
-                DFH: $("#DFH").val(),
-                OT: $("#OT").val(),
-                EM: $("#EM").val(),
             },
             success: function (res) {
                 callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
