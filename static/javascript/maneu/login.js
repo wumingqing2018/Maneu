@@ -37,4 +37,13 @@ $(document).ready(function () {
             },
         })
     })
+    $("#code").keyup(function () {
+        if($("#code").val() === ''){
+            $("#login-hold").show()
+            $("#login-btn").hide()
+        }else {
+            $("#login-hold").hide()
+            $("#login-btn").show()
+        }
+    })
 })
