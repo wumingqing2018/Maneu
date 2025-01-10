@@ -1,21 +1,30 @@
 $(document).ready(function () {
     $('#insert').click(function () {
-        var guest_id = null
-        var report_id = null
-
         guest_insert(function (data) {
-            guest_id = data
-            if(guest_id){
+            if (data.status === true){
+                guest_id = data.data.id
+                console.log(guest_id)
                 report_insert(guest_id,function (data) {
-                    report_id = data
-                    if (report_id != null){
-                        order_insert(guest_id, report_id, function (data) {
-                            console.log(data)
+                    if (data.status === true){
+                        report_id = data.data.id
+                        console.log(report_id)
+                        order_insert(guest_id,report_id,function (data) {
+                            order_id = data.data.id
+                            console.log(order_id)
+                            if (confirm("提交成功是否继续填写？")) {
+                                window.location.href = insert_web
+                            } else {
+                                window.location.href = index_web
+                            }
                         })
+                    }else {
+                        alert('提交失败，错误信息：'+data.message)
                     }
                 })
+            }else {
+                alert('提交失败，错误信息：'+data.message)
             }
-        })
+        });
     });
 
     function order_insert(guest_id, report_id, callback) {
@@ -69,39 +78,6 @@ $(document).ready(function () {
                 DFH: $("#DFH").val(),
                 OT: $("#OT").val(),
                 EM: $("#EM").val(),
-            },
-            success: function (res) {
-                console.log(res)
-                if (res.status === true){
-                    callback(res.data.id); // 第一个参数为null表示没有错误，第二个参数为请求的数据
-                }else {
-                    callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
-                }
-            },
-            error: function (res) {
-                callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
-            }
-        })
-    }
-    function store_insert(guest_id, callback){
-        store = []
-        $(".store").each(function () {
-            data = {
-                arg10: $(this).find("[name='arg10']").val(),
-                arg11: $(this).find("[name='arg11']").val(),
-                arg12: $(this).find("[name='arg12']").val(),
-                arg13: $(this).find("[name='arg13']").val(),
-                arg14: $(this).find("[name='arg14']").val(),
-            };
-            store.push(data)
-        })
-        $.ajax({
-            url: store_api,
-            method: 'GET',
-            data: {
-                time: $("#time").val(),
-                guest_id: guest_id,
-                store: JSON.stringify(store),
             },
             success: function (res) {
                 console.log(res)
