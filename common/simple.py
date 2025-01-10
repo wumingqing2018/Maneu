@@ -44,8 +44,7 @@ def report_simple(request_dict):
     }
 
     try:
-        if request['PLAN'] == '两用解决方案' or '远用解决方案' or '近用解决方案':
-            data['PLAN'] = request['PLAN']
+        if request['PLAN'] == '两用解决方案' or '远用解决方案' or '近用解决方案': data['PLAN'] = request['PLAN']
     except:
         pass
 
@@ -65,5 +64,15 @@ def report_simple(request_dict):
             data['OS'][i] = format(float(request['OS'][i]), '.2f')
         except:
             pass
+
+    try:
+        if request['OD']['FR'] == 'BU' or 'BD' or 'BO' or 'BI': data['OD']['FR'] = request['OD']['FR']
+    except:
+        pass
+
+    try:
+        if request['OS']['FR'] == 'BU' or 'BD' or 'BO' or 'BI': data['OS']['FR'] = request['OS']['FR']
+    except:
+        pass
 
     return json.dumps(data)
