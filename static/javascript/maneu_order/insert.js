@@ -1,20 +1,19 @@
 $(document).ready(function () {
     $('#insert').click(function () {
         guest_insert(function (data) {
+            console.log(data)
             if (data.status === true){
                 guest_id = data.data.id
-                console.log(guest_id)
                 report_insert(guest_id,function (data) {
+                    console.log(data)
                     if (data.status === true){
                         report_id = data.data.id
-                        console.log(report_id)
                         order_insert(guest_id,report_id,function (data) {
-                            order_id = data.data.id
-                            console.log(order_id)
+                            console.log(data)
                             if (confirm("提交成功是否继续填写？")) {
-                                window.location.href = insert_web
+                                window.location.href = web_insert
                             } else {
-                                window.location.href = index_web
+                                window.location.href = web_index
                             }
                         })
                     }else {
@@ -52,15 +51,10 @@ $(document).ready(function () {
                 report_id: report_id,
             },
             success: function (res) {
-                console.log(res)
-                if (res.status === true){
-                    callback(res.data.id); // 第一个参数为null表示没有错误，第二个参数为请求的数据
-                }else {
-                    callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
-                }
+                callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             },
             error: function (res) {
-                callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback({'status':false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
@@ -83,7 +77,7 @@ $(document).ready(function () {
                 callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             },
             error: function (res) {
-                callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback({'status':false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
@@ -139,7 +133,7 @@ $(document).ready(function () {
                 callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             },
             error: function (res) {
-                callback(null); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback({'status':false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
