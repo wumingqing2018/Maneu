@@ -68,11 +68,11 @@ $(document).ready(function () {
         store = []
         $(".store").each(function () {
             data = {
-                arg10: $(this).find("[name='arg10']").val(),
-                arg11: $(this).find("[name='arg11']").val(),
-                arg12: $(this).find("[name='arg12']").val(),
-                arg13: $(this).find("[name='arg13']").val(),
-                arg14: $(this).find("[name='arg14']").val(),
+                arg10: $(this).find(".arg10").val(),
+                arg11: $(this).find(".arg11").val(),
+                arg12: $(this).find(".arg12").val(),
+                arg13: $(this).find(".arg13").val(),
+                arg14: $(this).find(".arg14").val(),
             };
             store.push(data)
         })
