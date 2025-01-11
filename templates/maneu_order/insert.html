@@ -4,24 +4,17 @@
     <div class="container">
         <form class="vertical2" method="get" action="{% url 'maneu_order:index' %}">
             <div class="vertical1 col-1">
-                <div class="input-group input-group-sm">
+                <div class="input-group">
                     <input type="submit" class="btn btn-primary" value="返回列表">
                 </div>
             </div>
         </form>
         <hr>
         <form class="vertical2">
-            <h5>订单信息</h5>
             <div class="vertical1 col-3">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-text col-3">时间</span>
+                <div class="input-group">
+                    <span class="input-group-text">时间</span>
                     <input autocomplete="off" class="form-control" id="time" type="datetime-local" value="{{ time }}">
-                </div>
-            </div>
-            <div class="vertical1 col-9">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-text col-1">备注</span>
-                    <input autocomplete="off" type="text" class="form-control" id="remark">
                 </div>
             </div>
         </form>
@@ -31,31 +24,35 @@
         <form class="vertical2" id="guest">
             <button type="button" class="vertical1 btn btn-primary" id="guest_show">客户数据  >  展开参数</button>
             <button type="button" class="vertical1 btn btn-primary" id="guest_hide">客户数据  <  收起参数</button>
-            
-            <div class="vertical1 col-3">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-text col-3">电话</span>
+
+            <div class="vertical1 col-6">
+                <div class="input-group">
+                    <span class="input-group-text">姓名</span>
+                    <input autocomplete="off" class="form-control" id="name" type="text">
+                    <span class="input-group-text">电话</span>
                     <input autocomplete="off" class="form-control" id="call" type="text">
                 </div>
             </div>
-            <div class="vertical1 col-3">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-text col-3">姓名</span>
-                    <input autocomplete="off" class="form-control" id="name" type="text">
+            <div id="guest_content">
+                <div class="vertical1 col-9">
+                    <div class="input-group">
+                        <span class="input-group-text col-1">性别</span>
+                        <input autocomplete="off" class="form-control" type="text" id="sex" list="sex">
+                        <span class="input-group-text col-1">年龄</span>
+                        <input autocomplete="off" class="form-control" type="text" id="age" list="age">
+                        <span class="input-group-text col-1">眼位</span>
+                        <input autocomplete="off" class="form-control" type="text" id="OT" list="OT">
+                        <span class="input-group-text col-1">主视眼</span>
+                        <input autocomplete="off" class="form-control" type="text" id="EM" list="EM">
+                        <span class="input-group-text col-1">病族史</span>
+                        <input autocomplete="off" class="form-control" type="text" id="DFH" list="DFH">
+                    </div>
                 </div>
-            </div>
-            <div class="vertical1 col-9" id="guest_content">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-text col-1">性别</span>
-                    <input autocomplete="off" class="form-control" type="text" id="sex" list="sex">
-                    <span class="input-group-text col-1">年龄</span>
-                    <input autocomplete="off" class="form-control" type="text" id="age" list="age">
-                    <span class="input-group-text col-1">眼位</span>
-                    <input autocomplete="off" class="form-control" type="text" id="OT" list="OT">
-                    <span class="input-group-text col-1">主视眼</span>
-                    <input autocomplete="off" class="form-control" type="text" id="EM" list="EM">
-                    <span class="input-group-text col-1">病族史</span>
-                    <input autocomplete="off" class="form-control" type="text" id="DFH" list="DFH">
+                <div class="vertical1 col-9">
+                    <div class="input-group">
+                        <span class="input-group-text col-1">备注</span>
+                        <input autocomplete="off" type="text" class="form-control" id="remark">
+                    </div>
                 </div>
             </div>
         </form>
@@ -65,8 +62,8 @@
         <div class="vertical2">
             <button type="button" class="vertical1 btn btn-primary" id="report_show">验光报告  >  展开参数</button>
             <button type="button" class="vertical1 btn btn-primary" id="report_hide">验光报告  <  收起参数</button>
-            
-            <div class="vertical1 input-group input-group-sm">
+
+            <div class="vertical1 input-group">
                 <span class="input-group-text">右眼</span>
                 <input autocomplete="off" class="form-control" type="text" id="OD_VA" list="VA" placeholder="裸眼视力">
                 <input autocomplete="off" class="form-control" type="text" id="OD_SPH" list="CYL&SPH" placeholder="球镜">
@@ -84,7 +81,7 @@
                 <input autocomplete="off" class="form-control" type="text" id="OD_BC" list="VA" placeholder="矫正视力">
             </div>
 
-            <div class="vertical1 input-group input-group-sm">
+            <div class="vertical1 input-group">
                 <span class="input-group-text">左眼</span>
                 <input autocomplete="off" class="form-control" type="text" id="OS_VA" list="VA" placeholder="裸眼视力">
                 <input autocomplete="off" class="form-control" type="text" id="OS_SPH" list="CYL&SPH" placeholder="球镜">
@@ -103,13 +100,13 @@
             </div>
 
             <div class="vertical1 col-3">
-                <div class="input-group input-group-sm">
+                <div class="input-group">
                     <span class="input-group-text">方案</span>
                     <input autocomplete="off" class="form-control" type="text" id="PLAN" list="PLAN1">
                 </div>
             </div>
             <div class="vertical1 col-3">
-                <div class="input-group input-group-sm">
+                <div class="input-group">
                     <span class="input-group-text">瞳距</span>
                     <input autocomplete="off" class="form-control" type="text" id="PD" list="PD1">
                 </div>
@@ -120,12 +117,10 @@
 
         {# 产品信息 #}
         <form class="vertical2" id="store">
-            <div class="vertical1 col-10 row">
-                <h5 class="col-11">产品订单</h5>
-            </div>
+            <button type="button" class="vertical1 btn btn-primary">产品订单</button>
             <div class='vertical1 col-10 row store'>
                 <div class='col-11'>
-                    <div class='input-group input-group-sm'>
+                    <div class='input-group'>
                         <input autocomplete='off' type='text' name='arg10' class='form-control product1'
                                placeholder='类别'>
                         <input autocomplete='off' type='text' name='arg11' class='form-control product1'
@@ -141,7 +136,7 @@
             </div>
             <div class='vertical1 col-10 row store'>
                 <div class='col-11'>
-                    <div class='input-group input-group-sm'>
+                    <div class='input-group'>
                         <input autocomplete='off' type='text' name='arg10' class='form-control product1'
                                placeholder='类别'>
                         <input autocomplete='off' type='text' name='arg11' class='form-control product1'
@@ -157,7 +152,7 @@
             </div>
             <div class='vertical1 col-10 row store'>
                 <div class='col-11'>
-                    <div class='input-group input-group-sm'>
+                    <div class='input-group'>
                         <input autocomplete='off' type='text' name='arg10' class='form-control product1'
                                placeholder='类别'>
                         <input autocomplete='off' type='text' name='arg11' class='form-control product1'
@@ -173,7 +168,7 @@
             </div>
             <div class='vertical1 col-10 row store'>
                 <div class='col-11'>
-                    <div class='input-group input-group-sm'>
+                    <div class='input-group'>
                         <input autocomplete='off' type='text' name='arg10' class='form-control product1'
                                placeholder='类别'>
                         <input autocomplete='off' type='text' name='arg11' class='form-control product1'
@@ -189,7 +184,7 @@
             </div>
             <div class='vertical1 col-10 row store'>
                 <div class='col-11'>
-                    <div class='input-group input-group-sm'>
+                    <div class='input-group'>
                         <input autocomplete='off' type='text' name='arg10' class='form-control product1'
                                placeholder='类别'>
                         <input autocomplete='off' type='text' name='arg11' class='form-control product1'
@@ -205,7 +200,7 @@
             </div>
             <div class='vertical1 col-10 row store'>
                 <div class='col-11'>
-                    <div class='input-group input-group-sm'>
+                    <div class='input-group'>
                         <input autocomplete='off' type='text' name='arg10' class='form-control product1'
                                placeholder='类别'>
                         <input autocomplete='off' type='text' name='arg11' class='form-control product1'
@@ -225,7 +220,7 @@
         {# 提交或返回按钮 #}
         <form class="vertical2">
             <div class="vertical1 col-1">
-                <div class="input-group input-group-sm">
+                <div class="input-group">
                     <input type="button" class="btn btn-danger" id="insert" value="提交订单">
                 </div>
             </div>
