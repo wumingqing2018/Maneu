@@ -62,14 +62,14 @@ $(document).ready(function (){
                 $('#name').val(res.data.name)
                 $('#call').val(res.data.phone)
                 $('#time').val(res.data.time)
-
+                console.log(res.data.content)
                 for (var i = 0; i < res.data.content.length; i++){
                     store = $(".store:eq(" + i + ")")
-                    store.find("[name='arg10']").val(1)
-                    store.find("[name='arg11']").val(2)
-                    store.find("[name='arg12']").val(3)
-                    store.find("[name='arg13']").val(4)
-                    store.find("[name='arg14']").val(5)
+                    store.find("[name='arg10']").val(res.data.content[i]['arg10'])
+                    store.find("[name='arg11']").val(res.data.content[i]['arg11'])
+                    store.find("[name='arg12']").val(res.data.content[i]['arg12'])
+                    store.find("[name='arg13']").val(res.data.content[i]['arg13'])
+                    store.find("[name='arg14']").val(res.data.content[i]['arg14'])
                 }
 
                 report_id = res.data.report_id;
