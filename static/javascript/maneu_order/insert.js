@@ -1,5 +1,12 @@
 $(document).ready(function () {
     report_hide()
+    guest_hide()
+    $('#guest_hide').click(function () {
+        guest_hide()
+    })
+    $('#guest_show').click(function (){
+        guest_show()
+    })
     $('#report_hide').click(function () {
         report_hide()
     })
@@ -192,5 +199,15 @@ $(document).ready(function () {
         $("#OS_LT").show()
         $("#OS_VT").show()
         $("#OS_BC").show()
+    }
+    function guest_hide() {
+        $("#guest_hide").hide()
+        $("#guest_show").show()
+        $("#guest_content").hide()
+    }
+    function guest_show() {
+        $("#guest_hide").show()
+        $("#guest_show").hide()
+        $("#guest_content").show()
     }
 });
