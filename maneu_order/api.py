@@ -80,7 +80,7 @@ def update(request):
                                          call=request.GET.get('call'),
                                          content=content,
                                          remark=request.GET.get('remark'))
-            content = {'status': True, 'message': '', 'data': {'id': order.id}}
+            content = {'status': True, 'message': '', 'data': order}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
     else:

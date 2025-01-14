@@ -97,7 +97,7 @@ def detail(request):
 
 
 def update(request):
-    guest_id = is_uuid(request.GET.get('id'))
+    guest_id = is_uuid(request.GET.get('guest_id'))
     admin_id = is_uuid(request.session.get('id'))
 
     if admin_id and guest_id:
@@ -113,7 +113,7 @@ def update(request):
                                              em=request.GET.get('em'),
                                              dfh=request.GET.get('dfh'),
                                              remark=request.GET.get('remark'))
-            content = {'status': True, 'message': '', 'data':{}}
+            content = {'status': True, 'message': '', 'data': data}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
     else:
