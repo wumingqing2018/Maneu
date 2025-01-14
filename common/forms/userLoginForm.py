@@ -2,7 +2,7 @@ from django import forms
 from django.core.validators import RegexValidator
 from django.forms import widgets
 
-from maneu_admin.serivce import find_username_password
+from maneu_admin.service import find_username_password
 
 
 class UserLoginForm(forms.Form):
