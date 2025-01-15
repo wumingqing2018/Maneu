@@ -1,56 +1,96 @@
 $(document).ready(function () {
-    $('.delete').click(function () {
-        if (confirm("确定要删除吗？")) {
-            guest_delete(guest_id);
+    detail_guest(function (data) {
+        console.log(data)
+    })
+    $('#delete').click(function () {
+        if (confirm("确定要删除记录吗？")) {
+            delete_guest(function (data) {
+                if (data === true) {
+                    alert('删除成功')
+                    window.location.href = guest_index
+                } else {
+                    alert(data.message)
+                }
+            })
+        } else {
+            return false;
+        }
+    })
+    $('#update').click(function () {
+        if (confirm("确定要修改记录吗？")) {
+            update_guest(function (data) {
+                if (data.status === true) {
+                    alert('修改成功')
+                } else {
+                    alert(data.message)
+                }
+            })
         } else {
             return false;
         }
     })
 
-    function guest_detail(guest_id) {
+
+    function detail_guest(callback) {
         $.ajax({
-            url: api_detail,
-            method: 'GET',
+            url: guest_detail,
             data: {
-                id: guest_id
+                'id': guest_id
             },
             success: function (res) {
-                if (res.status === true) {
-                    console.log(res)
-                    $('#time').text(res.data.time)
-                    $('#name').text(res.data.name)
-                    $('#call').text(res.data.phone)
-                    $('#age').text(res.data.age)
-                    $('#DFH').text(res.data.dfh)
-                    $('#sex').text(res.data.sex)
-                    $('#OT').text(res.data.ot)
-                    $('#EM').text(res.data.em)
-                    $('#remark').text(res.data.remark)
-                } else {
-                    console.log(res.message)
-                }
+                content = res.data
+                $('#name').val(content.name)
+                $('#call').val(content.phone)
+                $('#age').val(content.age)
+                $('#DFH').val(content.dfh)
+                $('#EM').val(content.em)
+                $('#OT').val(content.ot)
+                $('#sex').val(content.sex)
+                callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+            },
+            error: function (res) {
+                callback(false); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
 
-    function guest_delete(guest_id) {
+    function delete_guest(callback) {
         $.ajax({
-            url: api_delete,
-            method: 'GET',
+            url: guest_delete,
             data: {
-                id: guest_id
+                'id': guest_id
             },
             success: function (res) {
-                if (res.status === true) {
-                    alert("删除成功，即将跳转到列表页。")
-                    window.location.href = web_detail
-                } else {
-                    console.log(res.message)
-                }
+                callback(res)
+            },
+            error: function () {
+                callback({"status": false, 'message': 'order,网络出错'})
             }
         })
     }
 
-
-    guest_detail(guest_id)
-})
+    function update_guest(callback) {
+        $.ajax({
+            url: guest_update,
+            method: 'GET',
+            data: {
+                guest_id: guest_id,
+                remark: $("#remark").val(),
+                time: $("#time").val(),
+                name: $("#name").val(),
+                call: $("#call").val(),
+                age: $("#age").val(),
+                sex: $("#sex").val(),
+                DFH: $("#DFH").val(),
+                OT: $("#OT").val(),
+                EM: $("#EM").val(),
+            },
+            success: function (res) {
+                callback(res)
+            },
+            error: function () {
+                callback({"status": false, 'message': 'guest,网络出错'})
+            }
+        })
+    }
+});
