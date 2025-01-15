@@ -8,7 +8,9 @@ def ManeuGuest_index(admin_id='', start='', end=''):
 
 
 def ManeuGuest_Search(admin_id='', text=''):
-    return ManeuGuest.objects.filter(Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).order_by('-time').all()
+    return ManeuGuest.objects.filter(
+        Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).order_by(
+        '-time').all()
 
 
 def ManeuGuest_detail(admin_id='', id=''):
@@ -22,7 +24,8 @@ def ManeuGuest_insert(admin_id='', time='', name='', phone='', sex='', age='', o
 
 
 def ManeuGuest_update(admin_id='', id='', time='', name='', phone='', sex='', age='', ot='', em='', dfh='', remark=''):
-    return ManeuGuest.objects.filter(id=id, admin_id=admin_id).update(time=time, name=name, phone=phone, sex=sex, age=age, ot=ot, em=em, dfh=dfh, remark=remark)
+    return ManeuGuest.objects.filter(id=id, admin_id=admin_id).update(time=time, name=name, phone=phone, sex=sex,
+                                                                      age=age, ot=ot, em=em, dfh=dfh, remark=remark)
 
 
 def ManeuGuest_delete(id='', admin_id=''):

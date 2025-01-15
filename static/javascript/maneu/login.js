@@ -13,7 +13,7 @@ $(document).ready(function () {
                     setTimeout(function () {
                         $("#wait-btn").hide();
                         $("#sendsms-btn").show();
-                    },60000);
+                    }, 60000);
                 } else {
                     $("#msg").text("发送短信失败" + res.message)
                 }
@@ -38,10 +38,10 @@ $(document).ready(function () {
         })
     })
     $("#code").keyup(function () {
-        if($("#code").val() === ''){
+        if ($("#code").val() === '') {
             $("#login-hold").show()
             $("#login-btn").hide()
-        }else {
+        } else {
             $("#login-hold").hide()
             $("#login-btn").show()
         }

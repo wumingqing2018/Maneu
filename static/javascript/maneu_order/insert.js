@@ -4,26 +4,26 @@ $(document).ready(function () {
     $('#guest_hide').click(function () {
         guest_hide()
     })
-    $('#guest_show').click(function (){
+    $('#guest_show').click(function () {
         guest_show()
     })
     $('#report_hide').click(function () {
         report_hide()
     })
-    $('#report_show').click(function (){
+    $('#report_show').click(function () {
         report_show()
     })
 
     $('#insert').click(function () {
         guest_insert(function (data) {
             console.log(data)
-            if (data.status === true){
+            if (data.status === true) {
                 guest_id = data.data.id
-                report_insert(guest_id,function (data) {
+                report_insert(guest_id, function (data) {
                     console.log(data)
-                    if (data.status === true){
+                    if (data.status === true) {
                         report_id = data.data.id
-                        order_insert(guest_id,report_id,function (data) {
+                        order_insert(guest_id, report_id, function (data) {
                             console.log(data)
                             if (confirm("提交成功是否继续填写？")) {
                                 window.location.href = web_insert
@@ -31,12 +31,12 @@ $(document).ready(function () {
                                 window.location.href = web_index
                             }
                         })
-                    }else {
-                        alert('提交失败，错误信息：'+data.message)
+                    } else {
+                        alert('提交失败，错误信息：' + data.message)
                     }
                 })
-            }else {
-                alert('提交失败，错误信息：'+data.message)
+            } else {
+                alert('提交失败，错误信息：' + data.message)
             }
         });
     });
@@ -60,10 +60,11 @@ $(document).ready(function () {
                 callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             },
             error: function (res) {
-                callback({'status':false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback({'status': false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
+
     function order_insert(guest_id, report_id, callback) {
         store = []
         $(".store").each(function () {
@@ -92,10 +93,11 @@ $(document).ready(function () {
                 callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             },
             error: function (res) {
-                callback({'status':false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback({'status': false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
+
     function report_insert(guest_id, callback) {
         content = {
             PLAN: $("#PLAN").val(),
@@ -148,10 +150,11 @@ $(document).ready(function () {
                 callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             },
             error: function (res) {
-                callback({'status':false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback({'status': false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
+
     function report_hide() {
         $("#report_hide").hide()
         $("#report_show").show()
@@ -176,6 +179,7 @@ $(document).ready(function () {
         $("#OS_VT").hide()
         $("#OS_BC").hide()
     }
+
     function report_show() {
         $("#report_hide").show()
         $("#report_show").hide()
@@ -200,11 +204,13 @@ $(document).ready(function () {
         $("#OS_VT").show()
         $("#OS_BC").show()
     }
+
     function guest_hide() {
         $("#guest_hide").hide()
         $("#guest_show").show()
         $("#guest_content").hide()
     }
+
     function guest_show() {
         $("#guest_hide").show()
         $("#guest_show").hide()

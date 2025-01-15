@@ -1,4 +1,4 @@
-$.fn.serializeJsonStr = function (){
+$.fn.serializeJsonStr = function () {
     var o = {};
     var a = this.serializeArray();
     $.each(a, function () {

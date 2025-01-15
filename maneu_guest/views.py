@@ -1,4 +1,5 @@
 from django.shortcuts import render
+
 from common.common import current_time
 
 
@@ -11,4 +12,4 @@ def insert(request):
 
 
 def detail(request):
-    return render(request, 'maneu_guest/detail.html',{'id': request.GET.get('id')})
+    return render(request, 'maneu_guest/detail.html', {'id': request.GET.get('id')})

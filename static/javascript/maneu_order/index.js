@@ -7,9 +7,9 @@ function deleteBtn(obj) {
                 order_id: obj.alt,
             },
             success: function (res) {
-                if (res.status === true){
+                if (res.status === true) {
                     obj.parentElement.parentElement.parentElement.parentElement.remove()
-                }else {
+                } else {
                     alert(res.message)
                 }
             },
@@ -18,6 +18,7 @@ function deleteBtn(obj) {
         return false;
     }
 }
+
 $(function () {
     var start = moment().subtract(29, 'days');
     var end = moment();

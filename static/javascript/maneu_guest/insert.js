@@ -15,10 +15,10 @@ $(document).ready(function () {
                 EM: $("[name='EM']").val(),
             },
             success: function (res) {
-                if(res.status === true){
+                if (res.status === true) {
                     alert('提交成功,返回上一页')
                     window.location.href = guest_index
-                }else {
+                } else {
                     alert("提交失败" + res.message)
                 }
             }

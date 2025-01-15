@@ -33,11 +33,11 @@ $(document).ready(function () {
             update_guest(function (data) {
                 if (data.status === true) {
                     update_report(function (data) {
-                                if (data.status === true) {
-                                    alert('修改成功')
-                                } else {
-                                    alert(data.message)
-                                }
+                        if (data.status === true) {
+                            alert('修改成功')
+                        } else {
+                            alert(data.message)
+                        }
                     })
                 } else {
                     alert(data.message)

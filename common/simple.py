@@ -1,4 +1,5 @@
 import json
+
 from common.common import current_time
 
 
@@ -14,8 +15,9 @@ def guest_simple(request):
 
     return simple
 
+
 def order_simple(request_dict):
-    simple = {'arg10':'', 'arg11':'', 'arg12':'', 'arg13':'', 'arg14':''}
+    simple = {'arg10': '', 'arg11': '', 'arg12': '', 'arg13': '', 'arg14': ''}
     data = []
 
     try:
@@ -25,7 +27,7 @@ def order_simple(request_dict):
     except:
         pass
 
-    if len(data)==0: data.append({'arg10':'无', 'arg11':'无', 'arg12':'无', 'arg13':'无', 'arg14':'无'})
+    if len(data) == 0: data.append({'arg10': '无', 'arg11': '无', 'arg12': '无', 'arg13': '无', 'arg14': '无'})
 
     return json.dumps(data)
 
@@ -36,10 +38,12 @@ def report_simple(request_dict):
         'PLAN': '远用解决方案',
         'PD': '',
         'OD': {
-            'AL': '', 'AK': '', 'AX': '0.00', 'AD': '', 'ADD': '0.00', 'BC': '', 'CYL': '0.00', 'CCT': '', 'VA': '', 'SPH': '0.00', 'PR': '0.00', 'FR': '', 'LT': '', 'VT': ''
+            'AL': '', 'AK': '', 'AX': '0.00', 'AD': '', 'ADD': '0.00', 'BC': '', 'CYL': '0.00', 'CCT': '', 'VA': '',
+            'SPH': '0.00', 'PR': '0.00', 'FR': '', 'LT': '', 'VT': ''
         },
         'OS': {
-            'AL': '', 'AK': '', 'AX': '0.00', 'AD': '', 'ADD': '0.00', 'BC': '', 'CYL': '0.00', 'CCT': '', 'VA': '', 'SPH': '0.00', 'PR': '0.00', 'FR': '', 'LT': '', 'VT': ''
+            'AL': '', 'AK': '', 'AX': '0.00', 'AD': '', 'ADD': '0.00', 'BC': '', 'CYL': '0.00', 'CCT': '', 'VA': '',
+            'SPH': '0.00', 'PR': '0.00', 'FR': '', 'LT': '', 'VT': ''
         }
     }
 

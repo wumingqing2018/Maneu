@@ -16,15 +16,16 @@ $(document).ready(function () {
                 id: guest_id,
             },
             success: function (res) {
-                if (res.status === true){
+                if (res.status === true) {
                     alert('更新成功')
                     guest_detail(guest_id)
-                }else {
+                } else {
                     alert('更新失败')
                 }
             }
         })
     })
+
     function guest_detail(guest_id) {
         $.ajax({
             url: api_detail,
@@ -49,5 +50,6 @@ $(document).ready(function () {
             }
         })
     }
+
     guest_detail(guest_id)
 })

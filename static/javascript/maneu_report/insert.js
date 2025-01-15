@@ -2,18 +2,18 @@ $(document).ready(function () {
     $('#insert').click(function () {
         guest_insert(function (data) {
             console.log(data)
-            if (data.status === true){
+            if (data.status === true) {
                 guest_id = data.data.id
-                report_insert(guest_id,function (data) {
+                report_insert(guest_id, function (data) {
                     console.log(data)
-                    if (data.status === true){
+                    if (data.status === true) {
                         alert('提交成功')
-                    }else {
-                        alert('提交失败，错误信息：'+data.message)
+                    } else {
+                        alert('提交失败，错误信息：' + data.message)
                     }
                 })
-            }else {
-                alert('提交失败，错误信息：'+data.message)
+            } else {
+                alert('提交失败，错误信息：' + data.message)
             }
         });
     });
@@ -37,10 +37,11 @@ $(document).ready(function () {
                 callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             },
             error: function (res) {
-                callback({'status':false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback({'status': false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }
+
     function report_insert(guest_id, callback) {
         content = {
             PLAN: $("#PLAN").val(),
@@ -93,7 +94,7 @@ $(document).ready(function () {
                 callback(res); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             },
             error: function (res) {
-                callback({'status':false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
+                callback({'status': false, 'message': '请求出错请刷新页面'}); // 第一个参数为null表示没有错误，第二个参数为请求的数据
             }
         })
     }

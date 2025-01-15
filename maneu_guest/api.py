@@ -1,9 +1,8 @@
 from django.forms import model_to_dict
 from django.http import JsonResponse
 
-from common.verify import is_uuid,is_date
 from common.simple import guest_simple
-
+from common.verify import is_uuid, is_date
 from maneu_guest import service
 
 
@@ -29,7 +28,9 @@ def search(request):
 
     if admin_id:
         try:
-            data = service.ManeuGuest_Search(text=request.GET.get('text'), admin_id=admin_id).values('id', 'name', 'phone', 'time', 'remark')
+            data = service.ManeuGuest_Search(text=request.GET.get('text'), admin_id=admin_id).values('id', 'name',
+                                                                                                     'phone', 'time',
+                                                                                                     'remark')
             content = {'status': True, 'message': '', 'data': list(data)}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
@@ -55,7 +56,7 @@ def insert(request):
                                              em=content['em'],
                                              remark=content['remark'])
 
-            content = {'status': True, 'message': '', 'data': {'id':data[0].id}}
+            content = {'status': True, 'message': '', 'data': {'id': data[0].id}}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
     else:

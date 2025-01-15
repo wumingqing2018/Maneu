@@ -66,7 +66,7 @@ $(function () {
                 start: start.format('YYYY-MM-DD 00:00:00'),
                 end: end.format('YYYY-MM-DD 23:59:59'),
             },
-            success: function (res){
+            success: function (res) {
                 console.log(res)
                 forList(res.data)
             },
