@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from maneu_order import service
+
 from common.common import current_time
 
 
@@ -8,19 +8,12 @@ def index(request):
     订单列表功能
     在session获取商家id 通过商家id查找订单列表
     """
-    service.test()
     return render(request, 'maneu_order/index.html')
 
 
 def insert(request):
     """添加订单"""
     return render(request, 'maneu_order/insert.html', {'time': current_time()})
-
-
-def update(request):
-    """更新订单"""
-    id = request.GET.get('id')
-    return render(request, 'maneu_order/update.html', {'order_id': id})
 
 
 def detail(request):

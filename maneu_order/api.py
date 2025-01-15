@@ -1,6 +1,5 @@
 import json
 
-from django.forms import model_to_dict
 from django.http import JsonResponse
 
 from common.simple import order_simple
@@ -95,7 +94,7 @@ def detail(request):
 
     if admin_id and order_id:
         try:
-            order = service.order_id(order_id=order_id, admin_id=admin_id)
+            order = service.order_detail(order_id=order_id, admin_id=admin_id)
             content = {
                 'content': json.loads(order.content),
                 'guest_id': order.guest_id,
@@ -120,10 +119,8 @@ def delete(request):
 
     if admin_id and order_id:
         try:
-            order = service.order_id(order_id=order_id, admin_id=admin_id)
-            report = service.report_delete(report_id=order.report_id, admin_id=admin_id)
-            order = service.order_delete(order_id=order_id, admin_id=admin_id)
-            content = {'status': True, 'message': '', 'data': {}}
+            data = service.order_delete(order_id=order_id, admin_id=admin_id)
+            content = {'status': True, 'message': '', 'data': data}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
     else:

@@ -3,7 +3,6 @@ from django.http import JsonResponse
 
 from common.simple import report_simple
 from common.verify import is_uuid, is_date
-from maneu.models import ManeuReport
 from maneu_report import service
 
 
@@ -71,7 +70,7 @@ def insert(request):
                                            phone=request.GET.get('call'),
                                            remark=request.GET.get('remark'),
                                            content=content)
-            content = {'status': True, 'message': '', 'data': {'id':report.id}}
+            content = {'status': True, 'message': '', 'data': {'id': report.id}}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
     else:
