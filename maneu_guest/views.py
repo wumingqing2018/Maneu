@@ -12,7 +12,3 @@ def insert(request):
 
 def detail(request):
     return render(request, 'maneu_guest/detail.html',{'id': request.GET.get('id')})
-
-
-def update(request):
-    return render(request, 'maneu_guest/update.html', {'id': request.GET.get('id')})
