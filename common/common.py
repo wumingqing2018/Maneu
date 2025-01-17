@@ -1,6 +1,6 @@
 import os
 import random
-import time
+import time,datetime
 
 from aliyunsdkcore.auth.credentials import AccessKeyCredential
 from aliyunsdkcore.client import AcsClient
@@ -41,3 +41,19 @@ def sendsms(code, call):
 
 def get_random_code():
     return random.randint(100000, 999999)
+
+
+def time_start():
+    # 获取当前时间
+    now = datetime.datetime.now()
+    zero_today = now - datetime.timedelta(hours=now.hour, minutes=now.minute, seconds=now.second, microseconds=now.microsecond)
+
+    return zero_today
+
+def time_end():
+    # 获取当前时间
+    now = datetime.datetime.now()
+    zero_today = now - datetime.timedelta(hours=now.hour, minutes=now.minute, seconds=now.second, microseconds=now.microsecond)
+    last_today = zero_today + datetime.timedelta(hours=23, minutes=59, seconds=59)
+
+    return last_today
