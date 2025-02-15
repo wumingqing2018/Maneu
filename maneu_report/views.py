@@ -1,10 +1,10 @@
 from django.shortcuts import render
 
-from common.common import current_time
+from common.common import current_time, time_start, time_end
 
 
 def index(request):
-    return render(request, 'maneu_report/index.html')
+    return render(request, 'maneu_report/index.html', {'timeS': time_start, 'timeE': time_end})
 
 
 def insert(request):

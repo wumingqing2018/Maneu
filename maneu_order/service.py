@@ -3,13 +3,6 @@ from django.db.models import Q
 from maneu.models import ManeuOrder
 
 
-def order_index(admin_id='', star='', end=''):
-    """
-    全部订单
-    """
-    return ManeuOrder.objects.filter(admin_id=admin_id, time__gte=star, time__lte=end).order_by('-time').all()
-
-
 def order_detail(admin_id='', order_id=''):
     """
     查找指定订单
@@ -26,9 +19,8 @@ def order_delete(admin_id='', order_id=''):
     return ManeuOrder.objects.filter(admin_id=admin_id, id=order_id).delete()
 
 
-def order_search(admin_id='', text=''):
-    return ManeuOrder.objects.filter(
-        Q(name__icontains=text, admin_id=admin_id) | Q(phone__icontains=text, admin_id=admin_id)).all()
+def order_search(admin_id='', star='', end='', value=''):
+    return ManeuOrder.objects.filter(Q(name__icontains=value, admin_id=admin_id, time__gte=star, time__lte=end,) | Q(phone__icontains=value, admin_id=admin_id, time__gte=star, time__lte=end, )).order_by('-time').all()
 
 
 def order_insert(admin_id='', name='', time='', call='', content='', guest_id='', store_id='', report_id='', remark=''):

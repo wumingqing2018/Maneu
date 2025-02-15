@@ -19,10 +19,8 @@ function deleteBtn(obj) {
     }
 }
 
-$(function () {
-    var start = moment().subtract(29, 'days');
-    var end = moment();
-
+$(document).ready(function () {
+    getList()
     function forList(res) {
         $('#body').empty();
         for (i in res) {
@@ -47,7 +45,7 @@ $(function () {
                 "            </div>\n" +
                 "        </div>\n" +
                 "        <div class='col-1'>\n" +
-                "            <form method='GET' action='" + api_detail + "'>\n" +
+                "            <form method='GET' action='" + web_detail + "'>\n" +
                 "                <input type='hidden' name='id' value=" + res[i]['id'] + ">\n" +
                 "                <div class='input-group input-group-sm'>\n" +
                 "                    <input type='submit' class='col-12 btn btn-primary' value='查看订单'>\n" +
@@ -60,43 +58,22 @@ $(function () {
             )
         }
     }
-
-    function cb(start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        $.ajax({
-            url: api_index,
-            data: {
-                start: start.format('YYYY-MM-DD 00:00:00'),
-                end: end.format('YYYY-MM-DD 23:59:59'),
-            },
-            success: function (res) {
-                forList(res.data)
-            },
-        });
-    }
-
-    $('#search-value').keyup(function () {
+    function getList(){
         $.ajax({
             url: api_search,
+            method: 'GET',
             data: {
-                text: $('#search-value').val()
+                value: $("#value").val(),
+                timeE: $("#timeE").val(),
+                timeS: $("#timeS").val(),
             },
             success: function (res) {
                 forList(res.data)
             }
         })
+    }
+
+    $('#search_button').click(function () {
+        getList()
     })
-
-    $('#reportrange').daterangepicker({
-        startDate: start, endDate: end, ranges: {
-            '今天': [moment(), moment()],
-            '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            '七天内': [moment().subtract(6, 'days'), moment()],
-            '三十天内': [moment().subtract(29, 'days'), moment()],
-            '本月': [moment().startOf('month'), moment().endOf('month')],
-            '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        }
-    }, cb);
-
-    cb(start, end);
-});
+})

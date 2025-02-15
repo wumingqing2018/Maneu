@@ -1,6 +1,6 @@
 import os
 import random
-import time,datetime
+import time
 
 from aliyunsdkcore.auth.credentials import AccessKeyCredential
 from aliyunsdkcore.client import AcsClient
@@ -44,16 +44,8 @@ def get_random_code():
 
 
 def time_start():
-    # 获取当前时间
-    now = datetime.datetime.now()
-    zero_today = now - datetime.timedelta(hours=now.hour, minutes=now.minute, seconds=now.second, microseconds=now.microsecond)
+    return time.strftime("%Y-%m-%d 00:00:00", time.localtime())
 
-    return zero_today
 
 def time_end():
-    # 获取当前时间
-    now = datetime.datetime.now()
-    zero_today = now - datetime.timedelta(hours=now.hour, minutes=now.minute, seconds=now.second, microseconds=now.microsecond)
-    last_today = zero_today + datetime.timedelta(hours=23, minutes=59, seconds=59)
-
-    return last_today
+    return time.strftime("%Y-%m-%d 23:59:59", time.localtime())

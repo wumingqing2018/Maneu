@@ -93,6 +93,7 @@ $(document).ready(function () {
                 'id': guest_id
             },
             success: function (res) {
+                console.log(res.data)
                 content = res.data
                 $('#name').val(content.name)
                 $('#call').val(content.phone)
@@ -123,6 +124,7 @@ $(document).ready(function () {
                 $('#OD_ADD').val(content.OD.ADD)
                 $('#OD_AK').val(content.OD.AK)
                 $('#OD_AL').val(content.OD.AL)
+                $('#OD_AX').val(content.OD.AX)
                 $('#OD_BC').val(content.OD.BC)
                 $('#OD_CCT').val(content.OD.CCT)
                 $('#OD_CYL').val(content.OD.CYL)
@@ -137,6 +139,7 @@ $(document).ready(function () {
                 $('#OS_ADD').val(content.OS.ADD)
                 $('#OS_AK').val(content.OS.AK)
                 $('#OS_AL').val(content.OS.AL)
+                $('#OS_AX').val(content.OS.AX)
                 $('#OS_BC').val(content.OS.BC)
                 $('#OS_CCT').val(content.OS.CCT)
                 $('#OS_CYL').val(content.OS.CYL)

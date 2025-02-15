@@ -46,11 +46,6 @@ def report_simple(request_dict):
     }
 
     try:
-        if request['PLAN'] == '两用解决方案' or '远用解决方案' or '近用解决方案': data['PLAN'] = request['PLAN']
-    except:
-        pass
-
-    try:
         data['PD'] = format(float(request['PD']), '.1f')
     except:
         pass
@@ -67,14 +62,11 @@ def report_simple(request_dict):
         except:
             pass
 
-    try:
-        if request['OD']['FR'] == 'BU' or 'BD' or 'BO' or 'BI': data['OD']['FR'] = request['OD']['FR']
-    except:
-        pass
-
-    try:
-        if request['OS']['FR'] == 'BU' or 'BD' or 'BO' or 'BI': data['OS']['FR'] = request['OS']['FR']
-    except:
-        pass
+    if request['PLAN'] == '两用解决方案' or request['PLAN'] == '远用解决方案' or request['PLAN'] == '近用解决方案':
+        data['PLAN'] = request['PLAN']
+    if request['OD']['FR'] == 'BU' or request['OD']['FR'] == 'BD' or request['OD']['FR'] == request['OD']['FR'] == 'BO' or request['OD']['FR'] == 'BI':
+        data['OD']['FR'] = request['OD']['FR']
+    if request['OS']['FR'] == 'BU' or request['OS']['FR'] == 'BD' or request['OS']['FR'] == request['OS']['FR'] == 'BO' or request['OS']['FR'] == 'BI':
+        data['OS']['FR'] = request['OS']['FR']
 
     return json.dumps(data)

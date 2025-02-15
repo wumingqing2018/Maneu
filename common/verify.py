@@ -8,14 +8,8 @@ from common.common import current_time
 
 
 def is_date(code):
-    try:
-        pattern = re.compile(r'^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$')
-        if pattern.match(code):
-            return str(code)
-        else:
-            return current_time
-    except:
-        return current_time
+    pattern = r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$"
+    return re.match(pattern, code) is not None
 
 
 def is_call(code):

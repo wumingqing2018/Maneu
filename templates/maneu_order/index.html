@@ -1,20 +1,8 @@
 {% extends 'maneu/base.html' %}
 {% load static %}
-{% block css %}
-    <link href="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.css"
-          rel="stylesheet" type="text/css"/>
-{% endblock %}
 {% block javascript %}
-    <script src="https://cdn.staticfile.org/moment.js/2.29.4/moment.min.js"
-            type="application/javascript"></script>
-    <script src="https://cdn.staticfile.org/moment.js/2.29.4/locale/zh-cn.js"
-            type="application/javascript"></script>
-    <script src="https://cdn.staticfile.org/bootstrap-daterangepicker/3.0.5/daterangepicker.js"
-            type="application/javascript"></script>
-    {#https://www.datetimepicker.cn/daterangepicker/#}
     <script type="application/javascript">
-        api_index = "{% url 'maneu_order:api_index' %}"
-        api_detail = "{% url 'maneu_order:detail' %}"
+        web_detail = "{% url 'maneu_order:detail' %}"
         api_search = "{% url 'maneu_order:api_search' %}"
         api_delete = "{% url 'maneu_order:api_delete' %}"
     </script>
@@ -22,49 +10,44 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-        <div>
-            <div class="col-12 row">
-                <div class="col-8">
-                    <h5>订单管理</h5>
-                </div>
-                <div class="col-2">
-                    <div class='input-group input-group-sm'>
-                        <input type="text" class="col-12 form-control" id="reportrange">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class='input-group input-group-sm'>
-                        <input type="text" class="col-12 form-control" id="search-value"
-                               placeholder="使用手机或姓名查询">
-                    </div>
+        <div class="col-12 row">
+            <div class="col-4">
+                <h5>订单管理</h5>
+            </div>
+            <div class="col-8">
+                <div class="vertical1 input-group">
+                    <span class="input-group-text">开始时间</span>
+                    <input autocomplete="off" class="form-control" id="timeS" min="2020-01-01 00:00" max="{{ timeE }}" type="datetime-local" value="{{ timeS }}">
+                    <span class="input-group-text">结束时间</span>
+                    <input autocomplete="off" class="form-control" id="timeE" min="2020-01-01 00:00" max="{{ timeE }}" type="datetime-local" value="{{ timeE }}">
+                    <input type="text" class="col-12 form-control" id="value" placeholder="使用手机或姓名查询">
+                    <input type="button" class="btn btn-primary" id="search_button" value="搜索">
                 </div>
             </div>
-            <hr style="color:white;">
         </div>
-        <div>
-            <div class="col-12 row">
-                <div class="col-2">
-                    <p>录入时间</p>
-                </div>
-                <div class="col-1">
-                    <p>客户姓名</p>
-                </div>
-                <div class="col-1">
-                    <p>客户电话</p>
-                </div>
-                <div class="col-7">
-                    <p>订单备注</p>
-                </div>
-                <div class="col-1">
-                    <form method="get" action="{% url 'maneu_order:insert' %}">
-                        <div class='input-group input-group-sm'>
-                            <input type="submit" class="col-12 btn btn-warning" value='添加订单'>
-                        </div>
-                    </form>
-                </div>
+        <hr style="color:white;">
+        <div class="col-12 row">
+            <div class="col-2">
+                <p>录入时间</p>
             </div>
-            <hr style="color:white;">
+            <div class="col-1">
+                <p>客户姓名</p>
+            </div>
+            <div class="col-1">
+                <p>客户电话</p>
+            </div>
+            <div class="col-7">
+                <p>订单备注</p>
+            </div>
+            <div class="col-1">
+                <form method="get" action="{% url 'maneu_order:insert' %}">
+                    <div class='input-group input-group-sm'>
+                        <input type="submit" class="col-12 btn btn-warning" value='添加订单'>
+                    </div>
+                </form>
+            </div>
         </div>
+        <hr style="color:white;">
         <div id="body"></div>
     </div>
 {% endblock %}

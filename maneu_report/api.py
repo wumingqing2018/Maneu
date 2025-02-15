@@ -6,36 +6,23 @@ from common.verify import is_uuid, is_date
 from maneu_report import service
 
 
-def index(request):
-    admin_id = is_uuid(request.session.get('id'))
-    start = is_date(request.GET.get('start'))
-    end = is_date(request.GET.get('end'))
-
-    if admin_id and start and end:
-        try:
-            data = service.report_index(admin_id, start, end).values('id', 'name', 'phone', 'time', 'remark')
-            content = {'status': True, 'message': '', 'data': list(data)}
-        except Exception as e:
-            content = {'status': False, 'message': str(e), 'data': {}}
-    else:
-        content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
-
-    return JsonResponse(content)
-
-
 def search(request):
     admin_id = is_uuid(request.session.get('id'))
-    text = request.GET.get('text')
-    if admin_id:
+    value = request.GET.get('value')
+    timeS = request.GET.get('timeS')
+    timeE = request.GET.get('timeE')
+
+    if admin_id and timeS and timeE:
         try:
-            data = service.report_search(text=text, admin_id=admin_id).values('id', 'name', 'phone', 'time', 'remark')
-            content = {'status': True, 'message': '', 'data': list(data)}
+            data = service.report_search(admin_id, timeS, timeE, value).values('id', 'name', 'phone', 'time', 'remark')
+            content = {'status': True, 'message': admin_id, 'data': list(data)}
         except Exception as e:
             content = {'status': False, 'message': str(e), 'data': {}}
     else:
-        content = {'status': False, 'message': '请输入正确的参数', 'data': {}}
+        content = {'status': False, 'message': '参数错误请确认', 'data': {}}
 
     return JsonResponse(content)
+
 
 
 def delete(request):
@@ -59,7 +46,6 @@ def insert(request):
     guest_id = is_uuid(request.GET.get('guest_id'))
 
     if admin_id and guest_id:
-        print(request.GET.get('content'))
         content = report_simple(request.GET.get('content'))
         print(content)
         try:
